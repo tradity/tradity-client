@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Tradity</title>
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+		var socket = io.connect('/');
+			socket.on('response', function (data) {
+			console.log(data);
+		});
+		
+		function enterEmail(email) {
+			socket.emit('query', { type: 'insertPSEmail', email: email });
+		}
+		</script>
+	</head>
+	<body>
+		<input type="email" id="email" />
+		<input type="button" id="insertemail" onclick="enterEmail(document.getElementById('email').value);" />
+	</body>
+</html>

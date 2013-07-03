@@ -9,12 +9,15 @@
 		var socket = io.connect('/');
 		socket.on('response', function (data) {
 			console.log(data);
+            if(data.code == "email-enter-success"){
+                var emailForm = document.getElementById('email');
+                emailForm.innerHTML = '<p class="success">Dankeschön! Wir benachrichtigen dich, sobald Neuigkeiten verfügbar sind.</p>';
+            }
 		});
 
 		function enterEmail(email) {
 			socket.emit('query', { type: 'insertPSEmail', email: email, 'id': 42 });
-			var emailForm = document.getElementById('email');
-            emailForm.innerHTML = '<p class="success">Dankeschön! Wir benachrichtigen dich, sobald Neuigkeiten verfügbar sind.</p>';
+			
             // email validation lasse ich mal
 		}
 		</script>

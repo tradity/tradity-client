@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Tradity</title>
 		<script src="/socket.io/socket.io.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="//entless.org/js/jquery.js"></script>
 		<script>
 
 		var socket = io.connect('/');
@@ -22,7 +22,7 @@
 		});
 
 		function enterEmail(email) {
-			socket.emit('query', { type: 'insertPSEmail', email: email, 'id': 42 });
+			socket.emit('query', { type: 'insertPSEmail', email: email, id: 42 });
 			$("email-qt").prop('disabled', true);
             $("email-sb").prop('disabled', true);
             // email validation lasse ich mal

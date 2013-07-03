@@ -4,20 +4,27 @@
         <meta charset="utf-8">
         <title>Tradity</title>
 		<script src="/socket.io/socket.io.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>3
 		<script>
 
 		var socket = io.connect('/');
 		socket.on('response', function (data) {
 			console.log(data);
-            if(data.code == "email-enter-success"){
+            if (data.code == 'email-enter-success'){
                 var emailForm = document.getElementById('email');
                 emailForm.innerHTML = '<p class="success">Dankeschön! Wir benachrichtigen dich, sobald Neuigkeiten verfügbar sind.</p>';
+            }
+            else if (data.code == 'email-already-present'){
+                alert('Diese E-Mail wurde bereits eingetragen!');
+                $("email-qt").prop('disabled', false);
+                $("email-sb").prop('disabled', false);
             }
 		});
 
 		function enterEmail(email) {
 			socket.emit('query', { type: 'insertPSEmail', email: email, 'id': 42 });
-			
+			$("email-qt").prop('disabled', true);
+            $("email-sb").prop('disabled', true);
             // email validation lasse ich mal
 		}
 		</script>

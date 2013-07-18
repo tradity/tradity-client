@@ -296,6 +296,8 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Abel', sans-serif;
     padding-left: 0px;
     text-align: center;
+    list-style: none;
+    list-style-image: none;
 }
 
 #nav ul li {

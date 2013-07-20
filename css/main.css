@@ -345,14 +345,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-block-symbol {
-    position: absolute;
-    margin: -20px 0 0 0;
+    margin: 10px 0 0 0;
     display: block;
     font-size: 80px;
+    line-height: 50px;
 }
 
 .nav-block-title {
-    position: absolute;
     display: block;
 }
 

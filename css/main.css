@@ -23,7 +23,7 @@ hr {
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #a7a7a7;
     margin: 1em 0;
     padding: 0;
 }
@@ -285,7 +285,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #footer {
-    border-top: thin solid #ccc;
+    border-top: thin solid #a7a7a7;
     height: 1000px; /* test */
     clear: both;
     text-align: right;
@@ -305,18 +305,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #nav ul li a{
-    color: #666;
+    width: 148px;
+    height: 100px;
+    padding: 8px 1px 1px 1px;
     display: block;
-    padding: 25px 1px;
+    color: #a7a7a7;
 }
 
 #nav ul li a:hover{
+    padding: 7px 0 0 0;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
     border: thin solid #ccc;
-    color: #000;    
-    padding: 24px 0;
+    color: #369;
     -webkit-transition:color 0.3s ease-in;  
     -moz-transition:color 0.3s ease-in;  
     -o-transition:color 0.3s ease-in;  
@@ -329,22 +331,22 @@ h1, h2, h3, h4, h5, h6 {
     margin: -25px 0; 
 }
 
-.black{
-    color: #000;
-}
-
 h1#tradity {
-    color: #ccc;
+    -webkit-box-shadow: 50px 50px 20px 20px #fff;
+    box-shadow: 0px 0px 20px 20px #fff;
+    background-color: #fff;
+    color: #369;
     display: none;
     position: fixed;
     font-size: 35px;
-    margin: 5px 27px;
-    text-shadow: 1px 1px 3px #3b3b3b;
-    filter: dropshadow(color=#3b3b3b, offx=1, offy=1);
+    margin: 5px;
+    width:150px;
+    text-align: center;
 }
 
 #tradity:hover {
-    color: #000;
+    color: #dc6; 
+    filter: dropshadow(color=#3b3b3b, offx=1, offy=1);
     -webkit-transition:color 0.3s ease-in;  
     -moz-transition:color 0.3s ease-in;  
     -o-transition:color 0.3s ease-in;  
@@ -372,7 +374,7 @@ h1#tradity {
 
 .nick {
     font-size: 20px;
-    color: #666;
+    color: #369;
 }
 
 .title {
@@ -382,13 +384,13 @@ h1#tradity {
 }
 
 .name-container {
-    margin: 0 0 0 10px;       
+    margin: 0 0 0 10px;
 }
 
 .fixed-name-container {
     -webkit-box-shadow: 0px 10px 0px 1px ffffff;
     box-shadow: 0px 10px 0px 1px ffffff;
-    border-bottom: thin solid #ccc;
+    border-bottom: thin solid #a7a7a7;
     padding: 15px 10px;
     position: fixed;
     top: 0px;
@@ -425,7 +427,7 @@ h1#tradity {
 }
 
 .social-link {
-    color: #aaa;
+    color: #a7a7a7;
     float: left;
     display: block;
     margin: -15px 0;
@@ -451,4 +453,8 @@ h1#tradity {
 .footer-text {
     color: #aaa;
     font-size: 12px;
+}
+
+.dark {
+    color : #444;
 }

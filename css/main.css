@@ -301,7 +301,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #nav ul {
-    font-family: 'Abel', sans-serif;
+    font-family: 'Abel', 'Droid Sans', sans-serif;
     padding-left: 0px;
     text-align: center;
     list-style: none;
@@ -343,17 +343,18 @@ h1, h2, h3, h4, h5, h6 {
     outline: none;
 }
 
+/* folgende 2 klassen optimiert für windows. verstehe die schriftdarstellungsunterschiede der systeme nicht */
 .nav-block-symbol {
     margin: 10px 0 0 0;
-    display: inline;
+    display: block;
     font-size: 5em;
-    line-height: 0.8em;
+    height: 120px;
 }
 
 .nav-block-title {
     display: block;
     position: relative;
-    bottom: 10px;
+    bottom: 20px;
 }
 
 h1#tradity {
@@ -405,7 +406,9 @@ h1#tradity {
 }
 
 .title {
+    font-family: 'Abel', 'Droid Sans', sans-serif;
     font-size: 11px;
+    letter-spacing: 1px;
     margin: 0;
     color: #aaa;
 }
@@ -415,8 +418,6 @@ h1#tradity {
 }
 
 .fixed-name-container {
-    -webkit-box-shadow: 0px 10px 0px 1px ffffff;
-    box-shadow: 0px 10px 0px 1px ffffff;
     border-bottom: thin solid #a7a7a7;
     padding: 15px 10px;
     position: fixed;
@@ -450,7 +451,6 @@ h1#tradity {
 
 #placement {
     width: 100px;
-    text-align: center;
 }
 
 .social-link {

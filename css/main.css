@@ -317,7 +317,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1px;
     display: block;
     color: #a7a7a7;
-    position: relative;
+    overflow: hidden;
 }
 
 #nav ul li a:hover{
@@ -348,13 +348,15 @@ h1, h2, h3, h4, h5, h6 {
     margin: 10px 0 0 0;
     display: block;
     font-size: 5em;
-    height: 120px;
+    height: 75px;
+    position: relative;
+    bottom: 40px;
 }
 
 .nav-block-title {
     display: block;
     position: relative;
-    bottom: 20px;
+    top: -20px;
 }
 
 h1#tradity {

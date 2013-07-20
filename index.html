@@ -3,13 +3,13 @@
     <head>
         <meta charset="utf-8">
         <title>Tradity</title>
-		<script src="/socket.io/socket.io.js"></script>
+                <script src="/socket.io/socket.io.js"></script>
         <script src="//entless.org/js/jquery.js"></script>
-		<script>
+                <script>
 
-		var socket = io.connect('/');
-		socket.on('response', function (data) {
-			console.log(data);
+                var socket = io.connect('/');
+                socket.on('response', function (data) {
+                        console.log(data);
             if (data.code == 'email-enter-success'){
                 var emailForm = document.getElementById('email');
                 emailForm.innerHTML = '<p class="success">Dankeschön! Wir benachrichtigen dich, sobald Neuigkeiten verfügbar sind.</p>';
@@ -19,15 +19,15 @@
                 $("email-qt").prop('disabled', false);
                 $("email-sb").prop('disabled', false);
             }
-		});
+                });
 
-		function enterEmail(email) {
-			socket.emit('query', { type: 'insertPSEmail', email: email, id: 42 });
-			$("email-qt").prop('disabled', true);
+                function enterEmail(email) {
+                        socket.emit('query', { type: 'insertPSEmail', email: email, id: 42 });
+                        $("email-qt").prop('disabled', true);
             $("email-sb").prop('disabled', true);
             // email validation lasse ich mal
-		}
-		</script>
+                }
+                </script>
         <style>
             ::-moz-selection {
                 background: #b3d4fc;
@@ -55,7 +55,7 @@
             }
 
             body {
-            	position: relative;
+                position: relative;
                 max-width: 700px;
                 _width: 700px;
                 padding: 30px 20px 50px;
@@ -158,10 +158,10 @@
             }
 
             #partner {
-            	position: absolute;
-            	bottom: -100px;
-            	height: 100px;
-            	width: 241px;
+                position: absolute;
+                bottom: -100px;
+                height: 100px;
+                width: 241px;
             }
             #date{
                 position: absolute;
@@ -175,18 +175,19 @@
                 color: silver;
             }
         </style>
-	</head>
-	<body>
+        </head>
+        <body>
         <div class="container">
-	        <h1>Tradity</h1>
-	        <h2>Börsenspiel 2.0</h2>
-				<!--<p class="success">Dankeschön! Wir benachrichtigen dich, sobald Neuigkeiten verfügbar sind.</p>-->
-	            <p>Sei Teil des ersten <strong>Social Trading Börsenspiels</strong> der Welt und lerne eine <em>neue</em> Art des Tradens kennen!</p>
-	            <p style="font-size: 13px;">Gib hier deine E-Mail-Adresse an, um über den Start des Wettbewerbs benachrichtigt zu werden.</p>
-	        <div id="email" ng-controller="App.email">
-	       		<input name="email-qt" type="email" id="email-qt" ng-model="email" placeholder="E-Mail" />
-				<input type="button" value="Los!" id="email-sb" onclick="enterEmail(document.getElementById('email-qt').value);" ng-click="submit()" />
-		    </div>
+                <h1><img src="img/tradityLogo.jpg" alt="Tradity"></h1>
+                    <!--<p class="success">Dankeschön! Wir benachrichtigen dich, sobald Neuigkeiten verfügbar sind.</p>-->
+                    <p>Sei Teil des ersten <strong>Social Trading Börsenspiels</strong> der Welt und lerne eine <em>neue</em> Art des Tradens kennen!</p>
+                    <p style="font-size: 13px;">Börsenspiele bieten die Möglichkeit, Erfahrungen über das Thema Aktien zu sammeln, ohne dabei echtes Geld zu riskieren. Noch besser - wenn man ein Händchen für das Traden hat, kann man auch noch interessante Preise gewinnen. Was jedoch, wenn man dieses nicht hat?
+Social Trading macht aus dem Thema Traden, bei dem man häufig auf sich allein gestellt ist, eine Community-Sache. Der Neuling kann jetzt einfach erfolgreichen Teilnehmern "folgen" und die gleiche Performance wie diese erzielen, wofür dann auf Win-Win-Basis eine Provision gezahlt wird. </p>
+                    <p style="font-size: 13px;">Gib hier deine E-Mail-Adresse an, um über den Start des Wettbewerbs benachrichtigt zu werden.</p>
+                <div id="email" ng-controller="App.email">
+                        <input name="email-qt" type="email" id="email-qt" ng-model="email" placeholder="E-Mail" />
+                                <input type="button" value="Los!" id="email-sb" onclick="enterEmail(document.getElementById('email-qt').value);" ng-click="submit()" />
+                    </div>
         </div>
         <div id="partner">
             <span class="little-silver">Partner:</span><br />
@@ -197,8 +198,8 @@
         </div>
 
         <!--
-			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
-			<script src="splash.js"></script>
-        -->
-	</body>
+                        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+                        <script src="splash.js"></script>
+       -->
+        </body>
 </html>

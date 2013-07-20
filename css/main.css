@@ -314,15 +314,14 @@ h1, h2, h3, h4, h5, h6 {
 
 #nav ul li a{
     width: 148px;
-    height: 100px;
-    padding: 8px 1px 1px 1px;
+    padding: 1px;
     display: block;
     color: #a7a7a7;
     position: relative;
 }
 
 #nav ul li a:hover{
-    padding: 7px 0 0 0;
+    padding: 0;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -335,7 +334,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #nav ul li a:active, #nav ul li a:focus{
-    padding: 7px 0 0 0;
+    padding: 0;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -346,13 +345,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-block-symbol {
     margin: 10px 0 0 0;
-    display: block;
-    font-size: 80px;
-    line-height: 50px;
+    display: inline;
+    font-size: 5em;
+    line-height: 0.8em;
 }
 
 .nav-block-title {
     display: block;
+    position: relative;
+    bottom: 10px;
 }
 
 h1#tradity {

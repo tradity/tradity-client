@@ -19,6 +19,14 @@ a {
   color: inherit;
 }
 
+a:active {
+  outline: none;
+}
+
+:focus {
+  -moz-outline-style: none;
+}
+
 hr {
     display: block;
     height: 1px;
@@ -310,6 +318,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 8px 1px 1px 1px;
     display: block;
     color: #a7a7a7;
+    position: relative;
 }
 
 #nav ul li a:hover{
@@ -325,10 +334,26 @@ h1, h2, h3, h4, h5, h6 {
     transition:color 0.3s ease-in;
 }
 
-.block-symbol {
+#nav ul li a:active, #nav ul li a:focus{
+    padding: 7px 0 0 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: thin solid #369;
+    color: #369;
+    outline: none;
+}
+
+.nav-block-symbol {
+    margin: -20px 0 0 0;
     display: block;
     font-size: 80px;
-    margin: -25px 0; 
+    width: 150px;
+    height: 80px;
+}
+
+.nav-block-title {
+    display: block;
 }
 
 h1#tradity {

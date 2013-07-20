@@ -345,20 +345,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-block-symbol {
+    position: absolute;
     margin: -20px 0 0 0;
     display: block;
     font-size: 80px;
-    width: 150px;
-    height: 80px;
 }
 
 .nav-block-title {
+    position: absolute;
     display: block;
 }
 
 h1#tradity {
     -webkit-box-shadow: 50px 50px 20px 20px #fff;
     box-shadow: 0px 0px 20px 20px #fff;
+    -moz-box-shadow: 0px 0px 20px 20px #fff;
     background-color: #fff;
     color: #369;
     display: none;
@@ -367,6 +368,7 @@ h1#tradity {
     margin: 5px;
     width:150px;
     text-align: center;
+    z-index: 1;
 }
 
 #tradity:hover {

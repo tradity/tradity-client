@@ -6,13 +6,12 @@ function SoTrade(socket) {
 	this.listeners = {}; // listener name -> array of callbacks
 	this.ids = []; // numeric id -> callback for that id
 	this.id = 0;
-	this.key = null;
 	
 	this.socket.on('response', (function(data) {
 		var rid = data['is-reply-to'].split('--');
 		var type = rid[0];
 		if (type == 'login')
-			this.key = data.key;
+			this.setKey(data.key);
 		
 		// general listeners
 		var listeners = this.listeners[type] || [];
@@ -34,11 +33,25 @@ SoTrade.prototype.emit = function(evname, data, cb) {
 	data.type = evname;
 	var id = ++this.id;
 	data.id = evname + '--' + id;
-	if (this.key && !data.key)
-		data.key = this.key;
+	if (this.getKey() && !data.key)
+		data.key = this.getKey();
 	if (cb)
 		this.ids[id] = cb;
 	this.socket.emit('query', data);
+}
+
+SoTrade.prototype.getKey = function() {
+	var cookie = document.cookie.split(';');
+	for (var i = 0; i < cookie.length; ++i) {
+		var c = cookie[i].trim().split('=');
+		if (c[0].toLowerCase() == 'key')
+			return c[1];
+	}
+	return null;
+}
+
+SoTrade.prototype.setKey = function(k) {
+	document.cookie = 'key=' + k + '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
 }
 
 SoTrade.prototype.on = function(evname, cb) {

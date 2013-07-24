@@ -14,12 +14,16 @@ function SoTrade(socket) {
 		if (type == 'login')
 			this.key = data.key;
 		
+		// general listeners
 		var listeners = this.listeners[type] || [];
 		for (var i = 0; i < listeners.length; ++i) 
 			listeners[i](data);
 		
-		var idcb = this.ids[parseInt(rid[1])] || function() {};
+		// specific listeners
+		var numericID = parseInt(rid[1]);
+		var idcb = this.ids[numericID] || function() {};
 		idcb(data);
+		delete this.ids[numericID];
 	}).bind(this));
 }
 

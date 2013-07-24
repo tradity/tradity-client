@@ -2,7 +2,7 @@
 
 angular.module('tradity.controllers', []).
   controller('LoginCtrl', function($scope, socket) {
-    socket.on('response', function(data) {
+    socket.on('login', function(data) {
       console.log('Möglichkeit 2', data);
     });
     $scope.register = function() {

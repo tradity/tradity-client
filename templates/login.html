@@ -1,5 +1,7 @@
 <div>
-  <input type="text" placeholder="Benutzername" ng-model="username">
-  <input type="password" placeholder="Passwort" ng-model="password">
-  <button ng-click="register()">
+  <form ngSubmit="register()">
+    <input type="text" placeholder="Benutzername" ng-model="username">
+    <input type="password" placeholder="Passwort" ng-model="password">
+    <input type="submit">
+  </form>
 </div>

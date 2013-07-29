@@ -8,6 +8,7 @@ function SoTrade(socket) {
 	this.id = 0;
 	
 	this.socket.on('response', (function(data) {
+                console.log(data); // remove for production
 		var rid = data['is-reply-to'].split('--');
 		var type = rid[0];
 		if (type == 'login')
@@ -38,6 +39,8 @@ SoTrade.prototype.emit = function(evname, data, cb) {
 	if (cb)
 		this.ids[id] = cb;
 	this.socket.emit('query', data);
+        // only for debugging, remove for production
+        console.log(data);
 }
 
 SoTrade.prototype.getKey = function() {

@@ -1,5 +1,5 @@
 <div id="registration" class="main-content">
-  <form>
+  <form ng-submit="register()">
     <input type="text" ng-model="name">
     <input type="text" ng-model="giv_name">
     <input type="text" ng-model="fam_name">
@@ -12,5 +12,6 @@
       <option value="female">Weiblich</option>
       <option value="undisclosed">Keine Angabe</option>
     <input type="text" ng-model="school">
+    <input type="submit">
   </form>
 </div>

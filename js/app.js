@@ -15,11 +15,16 @@ angular.module('tradity', [
       templateUrl: 'templates/stats.html'
     }).
     when('/options', {
-      templateUrl: 'templates/options.html'
+      templateUrl: 'templates/options.html',
+      controller: 'OptionsCtrl'
     }).
     when('/login', {
       templateUrl: 'templates/login.html',
       controller: 'LoginCtrl'
+    }).
+    when('/register', {
+      templateUrl: 'templates/registration.html',
+      controller: 'RegistrationCtrl'
     }).
     otherwise({
       redirectTo: '/'

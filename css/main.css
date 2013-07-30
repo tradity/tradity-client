@@ -273,7 +273,8 @@ h1, h2, h3, h4, h5, h6 {
     float: left;
 }
 
-#profile, #footer, .main-content {
+#profile, #footer,
+.main-content {
     width: 750px;
     margin: 5px 0 0 0;
     float: right;
@@ -344,7 +345,8 @@ h1, h2, h3, h4, h5, h6 {
     transition:color 0.3s ease-in;
 }
 
-#nav ul li a:active, #nav ul li a:focus{
+#nav ul li a:active,
+#nav ul li a:focus{
     padding: 0;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -534,7 +536,7 @@ h1#tradity {
 }
 
 .feed-entry-symbol {
-    font-size: 15px;
+    font-size: 14px;
     margin: 0 0 0 5px;
     float: left;
 }
@@ -558,7 +560,7 @@ h1#tradity {
 }
 
 /* ==========================================================================
-    options / register
+    options / register / trade
    ========================================================================== */
 
 .options-input,
@@ -577,12 +579,19 @@ h1#tradity {
     box-shadow: inset 0 1px 1px #ccc;
 }
 
+#options-input:hover,
+#options-input:focus {
+    border-color: #105cb6;
+    outline: 0;
+    color: #222;
+}
+
 #options-sb {
     border-radius: 3px;
     display: inline-block;
     height: 40px;
     padding: 0 15px;
-    margin: 5px 0 0 0;
+    margin: 12px 24px 0 0;
     white-space: nowrap;
     cursor: pointer;
     background-color: #ddd;
@@ -606,7 +615,7 @@ h1#tradity {
 /* Auch für Ordertyp */
 
 .options-button {
-    margin: 5px 5px 5px 0;
+    margin: 5px 7px 5px 0;
     background-color: #ddd;
     border-radius: 3px;
     border: 1px solid #ccc;
@@ -616,7 +625,7 @@ h1#tradity {
 
 .options-button label {
     float: left;
-    width: 120px;
+    width: 230px;
 }
 
 .options-button label span {
@@ -646,12 +655,14 @@ h1#tradity {
 }
 
 .options-field legend {
-    padding: 10px;
-    font-family: "Abel", "Dorid Sans", sans-serif;
+    padding: 15px;
+    font-family: "Abel", "Droid Sans", sans-serif;
 }
 
-.options-field input {
+.options-field input,
+.options-field textarea {
     vertical-align: middle;
+    width: 373px;
 }
 
 .options-field > label {
@@ -673,6 +684,15 @@ h1#tradity {
 #desc{
     height: 100px;
 }
+
+/* ==========================================================================
+     trade
+   ========================================================================== */
+
+#limit-stop {
+    width: 140px;
+}
+
 
 /* ==========================================================================
     display-trade

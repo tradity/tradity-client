@@ -1,3 +1,31 @@
 <div id="trade" class="main-content">
-	<p>TBD<p>
+	<form>
+		<fieldset class="options-field"> 
+			<legend>Ordertyp</legend>
+			<div class="options-button order-type">
+				<label for="market">
+					<input type="radio" name="ordertype" ng-model="" value="" id="market"><span>Market</span>
+				</label>
+			</div>
+			<div class="options-button order-type">
+				<label for="limit"> 
+					<input type="radio" name="ordertype" ng-model="" value="" id="limit"><span>Limit</span>
+				</label>
+			</div>
+			<div class="options-button order-type">
+				<label for="stop">
+					<input type="radio" name="ordertype" ng-model="" value="" id="stop"><span>Stop</span>
+				</label>
+			</div>
+
+		<!-- FALLS LIMIT ODER STOP  soll am besten ja so aufploppen -->
+
+			<legend>Stop-/Limitwert</legend><!-- angularykeyword damits eindeutig wird? -->
+		      <label for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label><!-- angularykeyword damits eindeutig wird? -->
+		      <input type="number" ng-model="" placeholder="Stop-/Limitwert" id="limit-stop" class="options-input"> <!-- angularykeyword damits eindeutig wird? im placeholder -->
+	   	</fieldset>
+	   	<div style="text-align: right">
+	    	<a class="text-link" style="margin-right: 20px;" href="http://tradimo.de" title="Tradimo!">Wie genau funktioniert das mit dem Traden?</a><input type="submit" value="Trade" id="options-sb">
+	    </div>
+	</form>
 </div>

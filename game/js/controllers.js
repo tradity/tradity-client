@@ -33,10 +33,11 @@ angular.module('tradity.controllers', []).
       }
     });
   }).
-  controller('RegistrationCtrl', function($scope, socket) {
+  controller('RegistrationCtrl', function($scope, $location, socket) {
     socket.on('register', function(data) {
       if (data.code == 'reg-success') {
         alert('Registrierung erfolgreich');
+        $location.path('/');
       } else if (data.code == 'reg-email-failed') {
         alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
       }
@@ -139,4 +140,45 @@ angular.module('tradity.controllers', []).
         alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
       }
     });
+  }).
+  controller('depotCtrl', function($scope, socket) {
+    socket.emit('list-own-depot', {});
+  }).
+  controller('profileCtrl', function($scope, $routeParams, socket) {
+    $scope.getUserInfo = function() {
+      socket.emit('get-user-info', {
+        lookfor: $routeParams.userId
+      },
+      function(data) {
+        if (data.code == 'get-user-info-notfound') {
+          alert('Benutzer existiert nicht');
+        } else if (data.code == 'get-user-info-success') {
+          $scope.user = data.result;
+          $scope.orders = data.orders;
+          $scope.values = data.values;
+        }
+      });
+    };
+    $scope.getUserInfo();
+  }).
+  controller('rankingCtrl', function($scope, socket) {
+    $scope.rtype = 'general';
+    $scope.startindex = 1;
+    $scope.endindex = 100;
+    $scope.studentonly = false;
+    $scope.fromschool = null;
+    $scope.results = []
+    $scope.getRanking = function() {
+      socket.emit('get-ranking', {
+        rtype: $scope.rtype,
+        startindex: $scope.startindex,
+        endindex: $scope.endindex,
+        studentonly: $scope.studentonly,
+        fromschool: $scope.fromschool
+      },
+      function(data) {
+        $scope.results = data.result;
+      });
+    };
+    $scope.getRanking();
   });

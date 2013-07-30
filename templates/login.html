@@ -1,7 +1,15 @@
-<div>
+<div class="main-content">
   <form ng-submit="login()">
-    <input type="text" placeholder="Benutzername" ng-model="username">
-    <input type="password" placeholder="Passwort" ng-model="password">
-    <input type="submit">
+    <fieldset class="options-field"> 
+    <legend>Login</legend>
+    <label for="name">Benutzername</label>
+    <input type="text" ng-model="username" placeholder="Benutzername" id="name" class="options-input"><br>
+    <label for="password">Passwort</label>
+    <input type="password" ng-model="password" placeholder="Passwort" id="password" class="options-input"><br>
+    </fieldset>
+   	<div style="text-align: right">
+    	<a class="text-link" style="margin-right: 20px;" href="#/register" title="Noch nicht registriert?">Noch nicht registriert?</a><input type="submit" value="Login" id="options-sb">
+    </div>
   </form>
+  
 </div>

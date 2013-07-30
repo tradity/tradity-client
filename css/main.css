@@ -209,28 +209,17 @@ textarea {
     @font-faces
    ========================================================================== */
 
-/* Designed by Daniel Bruce (http://danielbruce.se/)  Danke! */
-
 @font-face {
-  font-family: "entypo";
-  src: url("type/entypo.eot");
+  font-family: "batch";
+  src: url("type/batch/batch.eot");
   src: local("☺"),
-    url("type/entypo.woff") format("woff"),
-    url("type/entypo.otf") format("opentype"),
-    url("type/entypo.svg#entypo") format("svg");
-}
-
-@font-face {
-  font-family: "entypo-social";
-  src: url("type/entypo-social.eot");
-  src: local("☺"),
-    url("type/entypo-social.woff") format("woff"),
-    url("type/entypo-social.otf") format("opentype"),
-    url("type/entypo-social.svg#entypo-social") format("svg");
+    url("type/batch/batch.woff") format("woff"),
+    url("type/batch/batch.otf") format("opentype"),
+    url("type/batch/batch.svg#batch") format("svg");
 }
 
 /* ==========================================================================
-    User Styles 
+    User Styles - Main
    ========================================================================== */
 
 body {
@@ -241,12 +230,33 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Droid Sans', sans-serif;
 }
 
-.entypo {
-    font-family: 'entypo', sans-serif;
+.alarm-box {
+    background-color: #bf414c;
+    border: thin solid #a13547;
+    color: #fff;
+    font-family: "Abel", "Droid Sans", sans-serif;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 3px;
+    line-height: 1;
+    display: inline-block;
 }
 
-.entypo-social {
-    font-family: 'entypo-social', sans-serif;
+.text-link {
+    color: #369;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+.text-link:active {
+    color: #000;
+}
+
+.batch {
+    font-family: 'batch', sans-serif;
 }
 
 #wrapper {
@@ -277,10 +287,7 @@ h1, h2, h3, h4, h5, h6 {
 .main-content {
     min-height: 550px;
     padding: 0 10px;
-}
-
-#feed{
-
+    margin: 20px 0 0 0; /* windows anpassen */
 }
 
 #logo {
@@ -298,10 +305,10 @@ h1, h2, h3, h4, h5, h6 {
 
 #footer {
     border-top: thin solid #a7a7a7;
-    height: 1000px; /* test */
     clear: both;
     text-align: right;
     padding: 0 10px;
+    margin: 30px 0 0 0;
 }
 
 #nav ul {
@@ -347,14 +354,14 @@ h1, h2, h3, h4, h5, h6 {
     outline: none;
 }
 
-/* folgende 2 klassen optimiert für windows. verstehe die schriftdarstellungsunterschiede der systeme nicht */
+/* folgende 2 klassen optimiert für windows. verstehe die schriftdarstellungsunterschiede der systeme nicht */ /* windows anpassen */
 .nav-block-symbol {
     margin: 10px 0 0 0;
     display: block;
-    font-size: 5em;
+    font-size: 30px;
     height: 75px;
     position: relative;
-    bottom: 40px;
+    bottom: -8px;
 }
 
 .nav-block-title {
@@ -437,7 +444,7 @@ h1#tradity {
 .profile-box {
     font-size: 11px;
     float: left;
-    padding: 0 0 0 15px;
+    padding: 0 0 0 10px;
     overflow: hidden;
     height: 110px;
 }
@@ -452,35 +459,39 @@ h1#tradity {
 }
 
 #social-links {
-    width: 200px;
+    margin: 0 10px 0 0;
+    float: right;
+    list-style-type: none;
+    padding: 0;
+}
+
+#social-links li {
+    margin: 10px 0 0 0;
 }
 
 #placement {
     width: 100px;
 }
 
-.social-link {
-    color: #a7a7a7;
-    float: left;
+.block-link {
     display: block;
-    margin: -15px 0;
-    font-size: 80px;
+    overflow: hidden;
 }
 
 .placement-number {
     font-size: 25px;
 }
 
-.facebook:hover{
-    color: #3b5998;
+.facebook img:hover {
+    background-color: #3b5998;
 }
 
-.google:hover{
-    color: #cd3d2a;
+.google img:hover {
+    background-color: #cd3d2a;
 }
 
-.twitter:hover{
-    color: #00acee;
+.twitter img:hover {
+    background-color: #00acee;
 }
 
 .footer-text {
@@ -491,3 +502,178 @@ h1#tradity {
 .dark {
     color : #444;
 }
+
+/* ==========================================================================
+    Feed
+   ========================================================================== */
+
+.feed-item {
+    padding: 5px 0 5px 5px;
+    border-left: 4px solid;
+    border-bottom: 1px solid;
+}
+
+.feed-yourself { /* hihi */
+    border-color: #369;
+}
+
+.feed-somebody { /* hihi */
+    border-color: #dc6;
+}
+
+.feed-link {
+    color: #369;
+}
+
+.feed-link:active {
+    color: #000;
+}
+
+.feed-link:hover {
+    text-decoration: underline;   
+}
+
+.feed-entry-symbol {
+    font-size: 15px;
+    margin: 0 0 0 5px;
+    float: left;
+}
+
+.feed-entry-content {
+    margin: 0 0 0 28px;
+}
+
+.feed-time {
+    font-size: 10px;
+    color: #a7a7a7;
+    display: block;
+    width: 100px;
+    float: right;
+    text-align: right;
+    margin: 5px 0 0 0;
+}
+
+.feed-item-hover{
+    border-left-style: dotted;
+}
+
+/* ==========================================================================
+    options / register
+   ========================================================================== */
+
+.options-input,
+#options-sb {
+    border: 1px solid #a7a7a7;
+    font-size: 16px;
+    line-height: normal;
+    border-radius: 3px;
+}
+
+.options-input {
+    width: 220px;
+    height: 20px;
+    padding: 5px;
+    margin: 5px 0 5px 0;
+    box-shadow: inset 0 1px 1px #ccc;
+}
+
+#options-sb {
+    border-radius: 3px;
+    display: inline-block;
+    height: 40px;
+    padding: 0 15px;
+    margin: 5px 0 0 0;
+    white-space: nowrap;
+    cursor: pointer;
+    background-color: #ddd;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    *overflow: visible;
+    *display: inline;
+    *zoom: 1;
+}
+
+#options-sb:hover {
+    background-color: #ccc;
+}
+
+#options-sb:active {
+    background-color: #369;
+    color: #fff;
+}
+
+/* Auch für Ordertyp */
+
+.options-button {
+    margin: 5px 5px 5px 0;
+    background-color: #ddd;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    overflow: auto;
+    float: left;
+}
+
+.options-button label {
+    float: left;
+    width: 120px;
+}
+
+.options-button label span {
+    text-align: center;
+    padding: 5px 0px;
+    display: block;
+    cursor: pointer;
+}
+
+.options-button label input {
+    position: absolute;
+    top: -20px;
+}
+
+.options-button input:checked + span {
+    background-color: #369;
+    color: #fff;
+}
+
+.options-button:hover {
+    background: #ccc;
+}
+
+.options-field {
+    border: thin solid #a7a7a7;
+    padding: 5px 15px 15px 15px;
+}
+
+.options-field legend {
+    padding: 10px;
+    font-family: "Abel", "Dorid Sans", sans-serif;
+}
+
+.options-field input {
+    vertical-align: middle;
+}
+
+.options-field > label {
+    display: inline-block;
+    width: 320px;
+}
+
+#realnamepublish {
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    margin: 5px 0;
+}
+
+#provision {
+    width: 40px;
+}
+
+#desc{
+    height: 100px;
+}
+
+/* ==========================================================================
+    display-trade
+   ========================================================================== */

@@ -1,12 +1,110 @@
 <div id="feed" class="main-content">
-    <p>Seiteninhalt</p>
-    <p>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-    </p>
-    <p>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-    </p>
-    <p>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-    </p>
+    
+    <!-- 
+        Feedeinträge chronologisch
+        https://github.com/philbooth/vagueTime.js
+        vielleicht sowas um zeit darzustellen
+
+
+        Aktionen vor dir sind blau -> css-klasse feed-yourself
+        Die von andren sind orange -> css-klasse feed-somebody
+
+        Sollen watcher eigene Farbe bekommen?
+     -->
+
+
+    <!-- Kommentarbeitrag feed -->
+    <div class="feed-item feed-somebody">
+        <!-- LINKS EINFÜGEN Namen, Zeit aktualisieren -->
+        <div class="batch feed-entry-symbol">&#xf139;</div> 
+        <div class="feed-entry-content">
+            <a href="#depotVonDem" class="feed-link">Miro</a> hat einen deiner <a href="#deintrade" class="feed-link">Trades</a> kommentiert.
+            <span class="feed-time">10:05 &ndash; 03.08.12</span>
+        </div>
+    </div>
+
+    <!-- Einer, den du watcht hat einen Trade gemacht feed -->
+    <div class="feed-item feed-somebody">
+        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
+        <div class="batch feed-entry-symbol">&#xF153;</div> 
+        <div class="feed-entry-content">
+            <a href="#depotVonDem" class="feed-link">Buffett</a> hat <a href="#seinTrade" class="feed-link">getradet</a>. <!-- mehr infos wären schön -->
+            <span class="feed-time">17:24 &ndash; 31.07.12</span>
+        </div>
+    </div>
+
+    <!-- Du hast einen Trade gemacht! feed -->
+    <div class="feed-item feed-yourself">
+        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
+        <div class="batch feed-entry-symbol">&#xF153;</div> 
+        <div class="feed-entry-content">
+            <a href="#depotVonDir" class="feed-link">Du</a> hast <a href="#deinTrade" class="feed-link">getradet</a>. <!-- mehr infos wären schön -->
+            <span class="feed-time">14:07 &ndash; 30.07.12</span>
+        </div>
+    </div>
+
+    <!-- Jemand watcht dich feed -->
+    <div class="feed-item feed-somebody">
+        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
+        <div class="batch feed-entry-symbol">&#xF178;</div> 
+        <div class="feed-entry-content">
+            <a href="#depotVonDem" class="feed-link">Kiyosaki</a> hat dich auf seine Watchlist gesetzt.
+            <span class="feed-time">12:01 &ndash; 28.07.12</span>
+        </div>
+    </div>
+
+    <!-- Du watcht jemanden feed -->
+    <div class="feed-item feed-yourself">
+        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
+        <div class="batch feed-entry-symbol">&#xF178;</div> 
+        <div class="feed-entry-content">
+            <a href="#depotVonDir" class="feed-link">Du</a> hast <a href="#depotVonDem" class="feed-link">Buffett</a> auf deine Watchlist gesetzt.
+            <span class="feed-time">03:07 &ndash; 01.07.12</span>
+        </div>
+    </div>
+
+    <!-- Du kommentierst einen trade feed -->
+    <div class="feed-item feed-yourself">
+        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
+        <div class="batch feed-entry-symbol">&#xf139;</div> 
+        <div class="feed-entry-content">
+            <a href="#depotVonDir" class="feed-link">Du</a> hast einen <a href="#seinTrade" class="feed-link">Trade</a> von <a href="#depotVonDem" class="feed-link">Buffett</a> kommentiert. <!-- was, wenn du einen deiner eigenen Trades kommentierst -->
+            <span class="feed-time">20:14 &ndash; 30.06.12</span>
+        </div>
+    </div>
+
+    <!-- Du followst jemandem feed -->
+    <div class="feed-item feed-yourself">
+        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
+        <div class="batch feed-entry-symbol">&#xF0B8;</div> 
+        <div class="feed-entry-content">
+            <a href="#depotVonDir" class="feed-link">Du</a> folgst <a href="#deinFollowTrade" class="feed-link">Buffett</a>.<!-- den begriff "folgen" mag ich nich. klingt nich nach einer investition -->
+            <span class="feed-time">23:01 &ndash; 28.06.12</span>
+        </div>
+    </div>
+
+    <!-- Jemand followt dir feed -->
+    <div class="feed-item feed-somebody">
+        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
+        <div class="batch feed-entry-symbol">&#xF0B8;</div> 
+        <div class="feed-entry-content">
+            <a href="#depotVonDem" class="feed-link">Kiyosaki</a> folgt dir.
+            <span class="feed-time">17:39 &ndash; 25.06.12</span>
+        </div>
+    </div>
+
+    <!-- Jemand, den du watcht followt jemanden feed -->
+    <div class="feed-item feed-somebody">
+        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
+        <div class="batch feed-entry-symbol">&#xF0B8;</div> 
+        <div class="feed-entry-content">
+            <a href="#depotVonDem" class="feed-link">Buffett</a> folgt <a href="#depotVonDem" class="feed-link">Kiyosaki</a>.
+            <span class="feed-time">12:17 &ndash; 25.06.12</span>
+        </div>
+    </div>
+
+<!-- Irgendeine Form von weiter mit Button oder scroll oder keine ahnung -->
+
 </div>
+
+

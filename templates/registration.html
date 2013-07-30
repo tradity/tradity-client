@@ -1,17 +1,41 @@
 <div id="registration" class="main-content">
   <form ng-submit="register()">
-    <input type="text" ng-model="name">
-    <input type="text" ng-model="giv_name">
-    <input type="text" ng-model="fam_name">
-    <input type="checkbox" ng-model="realnamepublish">
-    <input type="password" ng-model="password">
-    <input type="password" ng-model="password_check">
-    <input type="email" ng-model="email">
-    <select ng-model="gender">
-      <option value="male">Männlich</option>
-      <option value="female">Weiblich</option>
-      <option value="undisclosed">Keine Angabe</option>
-    <input type="text" ng-model="school">
-    <input type="submit">
+    <fieldset class="options-field"> 
+      <legend>Registration</legend>
+      <label for="name">Benutzername</label>
+      <input type="text" ng-model="name" placeholder="Benutzername" id="name" class="options-input"><br>
+      <label for="password">Passwort</label>
+      <input type="password" ng-model="password" placeholder="Passwort" id="password" class="options-input"><br>
+      <label for="password_check">Wiederhole dein Passwort</label>
+      <input type="password" ng-model="password_check" placeholder="Passwort" id="password" class="options-input"><br>
+      <label for="email">E-Mail</label>
+      <input type="email" ng-model="email" placeholder="E-Mail" id="email" class="options-input"><br>
+      <label for="giv_name">Vorname</label>
+      <input type="text" ng-model="giv_name" placeholder="Vorname" id="giv_name" class="options-input"><br>
+      <label for="fam_name">Nachname</label>
+      <input type="text" ng-model="fam_name" placeholder="Nachname" id="fam_name" class="options-input"><br>
+      <label for="realnamepublish">Soll dein Klarname veröffentlicht werden?</label>
+      <input type="checkbox" ng-model="realnamepublish" id="realnamepublish"><br>
+      <label for="school">Schule</label>
+      <input type="text" ng-model="school" placeholder="Schule" id="school" class="options-input"><br>
+      <div class="options-button">
+        <label>
+            <input type="radio" name="gender" ng-model="gender" value="undisclosed"><span>Keine Angabe</span>
+          </label>
+      </div>
+      <div class="options-button">
+        <label>
+          <input type="radio" name="gender" ng-model="gender" value="female"><span>Weiblich</span>
+        </label>
+      </div>
+      <div class="options-button">
+        <label>
+          <input type="radio" name="gender" ng-model="gender" value="male"><span>Männlich</span>
+        </label>
+      </div>
+    </fieldset>
+    <div style="text-align: right">
+      <input type="submit" value="Registrieren" id="options-sb">
+    </div>
   </form>
 </div>

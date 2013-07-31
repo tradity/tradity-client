@@ -48,15 +48,12 @@
                         <h3 class="title">Platz: <br /></h3>
                         <span class="placement-number">1337</span>
                     </div>
-                    <ul id="social-links" class="profile-box">
+                    <ul id="buttons" class="profile-box">
                         <li>
-                            <a class="social-link twitter" target="_blank" href="http://twitter.com/peterustinox"><img src="img/glyphicons/glyphicons_social_31_twitter.png"></a>
+                            <a class="batch font-20" href="#" title="Logout">&#xF02B;</a> <!-- LOGOUT HINZUFÜGEN -->
                         </li>
                         <li>
-                            <a class="social-link facebook" target="_blank" href="http://facebook.com/grandmasterofentless"><img src="img/glyphicons/glyphicons_social_30_facebook.png"></a>
-                        </li>
-                        <li>
-                            <a class="social-link google" target="_blank" href="http://plus.google.com/105109199307218462131/"><img src="img/glyphicons/glyphicons_social_02_google_plus.png"></a>
+                            <a class="batch font-20" href="#/options" title="Optionen">&#xF138;</a>
                         </li>
                     </ul>
                 </div>
@@ -104,7 +101,18 @@
             </nav>
             <div ng-view></div>
             <footer id="footer">
-            <span class="footer-text"> &copy; tradity, 2013 </span>
+                <ul id="social-links" class="profile-box">
+                    <li>
+                        <a class="social-link twitter" target="_blank" href="http://twitter.com/peterustinox"><img src="img/glyphicons/glyphicons_social_31_twitter.png"></a>
+                    </li>
+                    <li>
+                        <a class="social-link facebook" target="_blank" href="http://facebook.com/grandmasterofentless"><img src="img/glyphicons/glyphicons_social_30_facebook.png"></a>
+                    </li>
+                    <li>
+                        <a class="social-link google" target="_blank" href="http://plus.google.com/105109199307218462131/"><img src="img/glyphicons/glyphicons_social_02_google_plus.png"></a>
+                    </li>
+                </ul>
+                <span class="footer-text"> &copy; tradity, 2013 </span>
             </footer>
         </div>
         <script src="js/vendor/jquery-2.0.3.min.js"></script>

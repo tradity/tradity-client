@@ -460,15 +460,38 @@ h1#tradity {
     width: 200px;
 }
 
-#social-links {
+#buttons {
     margin: 0 10px 0 0;
     float: right;
     list-style-type: none;
     padding: 0;
 }
 
-#social-links li {
+#buttons li {
     margin: 10px 0 0 0;
+    color: #a7a7a7;
+}
+
+#buttons li:hover {
+    color: #369;
+    -webkit-transition:color 0.3s ease-in;  
+    -moz-transition:color 0.3s ease-in;  
+    -o-transition:color 0.3s ease-in;  
+    transition:color 0.3s ease-in;
+}
+
+#social-links {
+    margin: 5px 10px 0 0;
+    float: left;
+    list-style-type: none;
+    padding: 0;
+}
+
+#social-links li {
+    display: block;
+    float:left;
+    height: 32px;
+    width: 32px;
 }
 
 #placement {
@@ -503,6 +526,10 @@ h1#tradity {
 
 .dark {
     color : #444;
+}
+
+.font-20 {
+    font-size: 20px;
 }
 
 /* ==========================================================================

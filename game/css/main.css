@@ -564,7 +564,8 @@ h1#tradity {
    ========================================================================== */
 
 .options-input,
-#options-sb {
+#options-sb,
+#search-button {
     border: 1px solid #a7a7a7;
     font-size: 16px;
     line-height: normal;
@@ -579,14 +580,14 @@ h1#tradity {
     box-shadow: inset 0 1px 1px #ccc;
 }
 
-#options-input:hover,
-#options-input:focus {
+.options-input:hover,
+.options-input:focus {
     border-color: #105cb6;
     outline: 0;
     color: #222;
 }
 
-#options-sb {
+#options-sb, #search-button {
     border-radius: 3px;
     display: inline-block;
     height: 40px;
@@ -603,11 +604,17 @@ h1#tradity {
     *zoom: 1;
 }
 
-#options-sb:hover {
+#search-button {
+    width: auto;
+    margin: 0;
+    height: 32px;
+}
+
+#options-sb:hover, #search-button:hover {
     background-color: #ccc;
 }
 
-#options-sb:active {
+#options-sb:active, #search-button:active {
     background-color: #369;
     color: #fff;
 }
@@ -689,11 +696,53 @@ h1#tradity {
      trade
    ========================================================================== */
 
-#limit-stop {
-    width: 140px;
+#limit-stop, #amount {
+    width: 135px;
 }
 
+.trade-label {
+    font-family: "Abel", "Droid Sans", sans-serif;
+    color: #a7a7a7;
+}
+
+.trade-label-button{
+    margin: 60px 0 0 0;
+}
+
+label.trade-label-input {
+    width: auto;
+    color: #000;
+    margin: 0 20px 0 0;
+ }
+
+#paper {
+    width: 313px;
+ }
 
 /* ==========================================================================
     display-trade
    ========================================================================== */
+
+/* ==========================================================================
+    depot
+   ========================================================================== */
+
+.one-item-list {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    width: 200px;
+    margin: 0 15px;
+    text-align: center;
+}
+
+.one-item-list li {
+    font-family: "Abel", "Droid Sans", sans-serif;
+    color: #a7a7a7;
+    margin: 0 0 15px 0;
+}
+
+.one-item-list li + li {
+    font-family: "Droid Sans", sans-serif;
+    color: #000;
+}

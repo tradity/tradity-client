@@ -20,14 +20,24 @@
     <body>
         <div id="wrapper" class="clearfix" ng-controller="MainCtrl">
             <header id="header" class="clearfix">
-                <div id="logo"></div><h1 id="tradity"><a href="#">tradity</a></h1>  
+                <div id="logo"></div><h1 id="tradity"><a href="#">tradity</a></h1>
+
+                <!-- 
+                
+                Was ist eigentlich mit folgendem Abschnitt? Ist das umsetzbar (weil es nicht im ng-view liegt)? Dieser soll Link zum eigenen Profil werden ("a div.name-container")
+                Dann ist das Depot das Userprofil 2 in 1. Außerdem sehen fremde Profile genauso aus wie das eigene. Wie es auch Twitter macht!
+
+                -->
+
                 <div id="profile">
-                    <div class="name-container" class="clearfix">
-                        <h2 class="name">Max <span class="nick">"MaxNick"</span> Mustermann </h2>
-                        <div class="depot">
-                            <h2 class="title">Depot: </h2>
-                            <span class="depot-wert">20000€</span>
-                        </div>
+                    <div class="name-container clearfix">
+                        <a href="#/depot" title="Hier gehts zu deinem Profil" class="block-link">
+                            <h2 class="name">Max <span class="nick">"MaxNick"</span> Mustermann </h2>
+                            <div class="depot">
+                                <h2 class="title">Gesamtvermögen</h2>
+                                <span class="depot-wert">+1354€</span>
+                            </div>
+                        </a>
                     </div>
                     <img id="profile-picture"  class="profile-box" src="img/profile.png" />
                     <div id="bio" class="profile-box">
@@ -50,6 +60,13 @@
                         </li>
                     </ul>
                 </div>
+
+                <!-- 
+                
+                Ende des o.g. Abschnitts!
+
+                -->
+
             </header>
             <nav id="nav">
                 <ul>

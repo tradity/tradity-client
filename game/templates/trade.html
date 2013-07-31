@@ -1,6 +1,15 @@
 <div id="trade" class="main-content">
 	<form>
 		<fieldset class="options-field"> 
+				<legend>Wertpapiername</legend>
+				<div class="trade-label">
+					Suche hier nach einem Wertpapier, das du handeln möchtest und bestätige dann deine Auswahl.
+				</div>
+				<label for="paper" class="trade-label trade-label-input">Name</label>
+				<input type="text" class="options-input" placeholder="WKN/ISIN/Name" id="paper" ng-model="">
+				<input type="button" id="search-button" value="Suchen"> <!-- ergebnisse auflisten, richtiges ergebnis auswählen, dann gehts weiter, als bestätigungsschritt. eigentlich nötig aber vorerst kann das ja auch weggelassen werden... die suchergebnisse müssten ja auch gestyled werden etc. -->
+		</fieldset>
+		<fieldset class="options-field"> 
 			<legend>Ordertyp</legend>
 			<div class="options-button order-type">
 				<label for="market">
@@ -18,12 +27,30 @@
 				</label>
 			</div>
 
+			<div class="trade-label trade-label-button">Kauf/Verkauf</div> <!-- redundant? -->
+			<div class="options-button order-type">
+				<label for="buy"> 
+					<input type="radio" name="sellbuy" ng-model="" value="" id="buy"><span>Kaufen</span>
+				</label>
+			</div>
+			<div class="options-button order-type">
+				<label for="sell">
+					<input type="radio" name="sellbuy" ng-model="" value="" id="sell"><span>Verkaufen</span>
+				</label>
+			</div>
+
 		<!-- FALLS LIMIT ODER STOP  soll am besten ja so aufploppen -->
 
-			<legend>Stop-/Limitwert</legend><!-- angularykeyword damits eindeutig wird? -->
-		      <label for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label><!-- angularykeyword damits eindeutig wird? -->
-		      <input type="number" ng-model="" placeholder="Stop-/Limitwert" id="limit-stop" class="options-input"> <!-- angularykeyword damits eindeutig wird? im placeholder -->
+			<div class="trade-label trade-label-button">Stop-/Limitwert</div><!-- angularykeyword damits eindeutig wird? redundant?  -->
+		    <label for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label><!-- angularykeyword damits eindeutig wird? -->
+		    <input type="number" ng-model="" placeholder="Stop-/Limitwert" id="limit-stop" class="options-input"> <!-- angularykeyword damits eindeutig wird? im placeholder -->
+
 	   	</fieldset>
+		<fieldset class="options-field"> 
+			<legend>Anzahl</legend>
+		    <input type="number" ng-model="" placeholder="Anzahl" id="amount" class="options-input">
+		    <!-- Hier folgen dann noch schöne Berechnungen mit deinen Kauf, wie viel du dir leisten kannst etc. -->
+		</fieldset>
 	   	<div style="text-align: right">
 	    	<a class="text-link" style="margin-right: 20px;" href="http://tradimo.de" title="Tradimo!">Wie genau funktioniert das mit dem Traden?</a><input type="submit" value="Trade" id="options-sb">
 	    </div>

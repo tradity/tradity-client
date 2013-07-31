@@ -294,7 +294,7 @@ h1, h2, h3, h4, h5, h6 {
 #logo {
     width: 150px;
     height: 150px;
-    background-image: url('../img/tradity.png');
+    background-image: url('../img/logo_tradity.png');
 }
 
 #profile {
@@ -356,7 +356,6 @@ h1, h2, h3, h4, h5, h6 {
     outline: none;
 }
 
-/* folgende 2 klassen optimiert für windows. verstehe die schriftdarstellungsunterschiede der systeme nicht */ /* windows anpassen */
 .nav-block-symbol {
     margin: 10px 0 0 0;
     display: block;
@@ -472,7 +471,7 @@ h1#tradity {
     color: #a7a7a7;
 }
 
-#buttons li:hover {
+#buttons li:hover, .trade:hover {
     color: #369;
     -webkit-transition:color 0.3s ease-in;  
     -moz-transition:color 0.3s ease-in;  
@@ -543,11 +542,11 @@ h1#tradity {
 }
 
 .feed-yourself { /* hihi */
-    border-color: #369;
+    border-color: rgba(50, 100, 150, 0.5);
 }
 
 .feed-somebody { /* hihi */
-    border-color: #dc6;
+    border-color: rgba(220, 200, 100, 0.5);
 }
 
 .feed-link {
@@ -765,11 +764,55 @@ label.trade-label-input {
 
 .one-item-list li {
     font-family: "Abel", "Droid Sans", sans-serif;
-    color: #a7a7a7;
+    color : #444;
     margin: 0 0 15px 0;
 }
 
 .one-item-list li + li {
     font-family: "Droid Sans", sans-serif;
     color: #000;
+}
+
+.transaction-history {
+    width: 100%;
+    text-align: left;
+}
+
+.transaction-history th{
+    font-family: "Abel", "Droid Sans", sans-serif;
+}
+
+.transaction-history tr + tr{
+    border-bottom: thin solid black;
+}
+
+.transaction-history td {
+}
+
+.transaction-history td, .transaction-history th {
+    padding: 15px;
+}
+
+.transaction-history tr:first-child th {
+    padding: 5px 15px 0px 15px;
+}
+
+.transaction-history tr:first-child th:nth-child(2) {
+    background-color: #fff;
+}
+
+.transaction-history tr td:last-child, .transaction-history tr th:last-child {
+    text-align: center; 
+}
+
+.transaction-history .column-2 {
+    background-color: rgba(200, 200, 200, 0.3);
+}
+
+.transaction-history .column-4-5 {
+    background-color: rgba(50, 100, 150, 0.3);
+}
+
+.transaction-history .column-6-7 {
+    background-color: rgba(220, 200, 100, 0.3);
 }

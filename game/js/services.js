@@ -25,6 +25,14 @@ function SoTrade(socket) {
 		idcb(data);
 		delete this.ids[numericID];
 	}).bind(this));
+	
+	this.socket.on('push', (function(data) {
+                console.log(data); // remove for production
+		var type = data.type;
+		var listeners = this.listeners[type] || [];
+		for (var i = 0; i < listeners.length; ++i) 
+			listeners[i](data);
+	}).bind(this));
 }
 
 SoTrade.prototype.emit = function(evname, data, cb) {

@@ -61,7 +61,18 @@ textarea {
    Media Queries
    ========================================================================== */
 
-@media only screen and (min-width: 35em) {
+@media only screen and (min-width: 960px) {
+
+div.fixed-name-container {
+    border-bottom: thin solid #a7a7a7;
+    padding: 15px 10px;
+    position: fixed;
+    top: 0px;
+    width: 750px;
+    background-color: #fff;
+    display: none;
+    margin: 0px;
+}
 
 }
 
@@ -273,7 +284,8 @@ h1, h2, h3, h4, h5, h6 {
     float: left;
 }
 
-#profile, #footer,
+#profile,
+#footer,
 .main-content {
     width: 750px;
     margin: 5px 0 0 0;
@@ -288,7 +300,7 @@ h1, h2, h3, h4, h5, h6 {
 .main-content {
     min-height: 550px;
     padding: 0 10px;
-    margin: 20px 0 0 0; /* windows anpassen */
+    margin: 0;
 }
 
 #logo {
@@ -431,16 +443,7 @@ h1#tradity {
     margin: 0 0 0 10px;
 }
 
-.fixed-name-container {
-    border-bottom: thin solid #a7a7a7;
-    padding: 15px 10px;
-    position: fixed;
-    top: 0px;
-    width: 750px;
-    background-color: #fff;
-    display: none;
-    margin: 0px;
-}
+
 
 .profile-box {
     font-size: 11px;
@@ -471,7 +474,8 @@ h1#tradity {
     color: #a7a7a7;
 }
 
-#buttons li:hover, .trade:hover {
+#buttons li:hover,
+.trade:hover {
     color: #369;
     -webkit-transition:color 0.3s ease-in;  
     -moz-transition:color 0.3s ease-in;  
@@ -531,9 +535,24 @@ h1#tradity {
     font-size: 20px;
 }
 
+.transparent-30 {
+    filter:alpha(opacity=30);
+    -moz-opacity: 0.3;
+    opacity: 0.3;
+}
+
+.transparent-30:hover {
+    filter:alpha(opacity=80);
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+}
+
 /* ==========================================================================
     Feed
    ========================================================================== */
+#feed {
+    margin: 20px 0 0 0;
+}
 
 .feed-item {
     padding: 5px 0 5px 5px;
@@ -565,6 +584,7 @@ h1#tradity {
     font-size: 14px;
     margin: 0 0 0 5px;
     float: left;
+    color: #444;
 }
 
 .feed-entry-content {
@@ -613,7 +633,8 @@ h1#tradity {
     color: #222;
 }
 
-#options-sb, #search-button {
+#options-sb,
+#search-button {
     border-radius: 3px;
     display: inline-block;
     height: 40px;
@@ -636,11 +657,13 @@ h1#tradity {
     height: 32px;
 }
 
-#options-sb:hover, #search-button:hover {
+#options-sb:hover,
+#search-button:hover {
     background-color: #ccc;
 }
 
-#options-sb:active, #search-button:active {
+#options-sb:active,
+#search-button:active {
     background-color: #369;
     color: #fff;
 }
@@ -780,16 +803,18 @@ label.trade-label-input {
 
 .transaction-history th{
     font-family: "Abel", "Droid Sans", sans-serif;
+    color: #444;
 }
 
 .transaction-history tr + tr{
-    border-bottom: thin solid black;
+    border-bottom: thin solid #a7a7a7;
 }
 
 .transaction-history td {
 }
 
-.transaction-history td, .transaction-history th {
+.transaction-history td,
+.transaction-history th {
     padding: 15px;
 }
 
@@ -801,18 +826,29 @@ label.trade-label-input {
     background-color: #fff;
 }
 
-.transaction-history tr td:last-child, .transaction-history tr th:last-child {
-    text-align: center; 
+.transaction-history tr td:last-child,
+.transaction-history tr th:last-child {
+    text-align: center;
+    color: #444;
 }
 
-.transaction-history .column-2 {
-    background-color: rgba(200, 200, 200, 0.3);
+.transaction-history .column-2,
+.depot-follower  {
+    background-color: rgba(200, 200, 200, 0.4);
 }
 
 .transaction-history .column-4-5 {
-    background-color: rgba(50, 100, 150, 0.3);
+    background-color: rgba(50, 100, 150, 0.4);
 }
 
 .transaction-history .column-6-7 {
-    background-color: rgba(220, 200, 100, 0.3);
+    background-color: rgba(220, 200, 100, 0.4);
+}
+
+.depot-sell {
+    background-color: rgba(150, 0, 0, 0.2);
+}
+
+.depot-buy {
+    background-color: rgba(0, 150, 0, 0.2);    
 }

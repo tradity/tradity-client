@@ -241,10 +241,10 @@ angular.module('tradity.controllers', []).
     $scope.value = null;
     $scope.stockid = null;
     $scope.leader = null;
-    $scope.comment = null;
+    $scope.comment = '';
     $scope.xtype = 'market';
     $scope.xvalue = null;
-    $scope.sellbuy = -1;
+    $scope.sellbuy = 1;
     $scope.buy = function() {
       socket.emit('stock-buy', {
         amount: $scope.amount * $scope.sellbuy,

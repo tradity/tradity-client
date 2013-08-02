@@ -12,7 +12,7 @@ angular.module('tradity', [
       templateUrl: 'templates/trade.html',
       controller: 'TradeCtrl'
     }).
-    when('/traded/:tradeId', {
+    when('/trade/:tradeId', {
       templateUrl: 'templates/tradeDetails.html',
       controller: 'TradeDetailsCtrl'
     }).
@@ -29,6 +29,10 @@ angular.module('tradity', [
       controller: 'OptionsCtrl'
     }).
     when('/login', {
+      templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl'
+    }).
+    when('/login/:emailVerifCode/:uid', {
       templateUrl: 'templates/login.html',
       controller: 'LoginCtrl'
     }).

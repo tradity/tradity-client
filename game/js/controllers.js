@@ -1,7 +1,28 @@
 'use strict';
 
 angular.module('tradity.controllers', []).
-  controller('LoginCtrl', function($scope, $location, socket) {
+  controller('LoginCtrl', function($scope, $routeParams, $location, socket) {
+    if ($routeParams.emailVerifCode && $routeParams.uid) {
+      socket.emit('emailverif', {
+        key: $routeParams.emailVerifCode,
+        uid: $routeParams.uid
+      },
+      function(data) {
+        switch (data.code) {
+          case 'email-verify-success':
+            alert('Emailadresse erfolgreich bestätigt');
+            break;
+          case 'email-verify-already-verified':
+            alert('Emailadresse bereits bestätigt');
+            break;
+          case 'email-verify-other-already-verified':
+            alert('Jemand anderes hat diese Emailadresse bereits bestätigt');
+            break;
+          case 'email-verify-failure':
+            alert('Fehler beim Bestätigen der Emailadresse');
+        }
+      });
+    }
     $scope.login = function() {
       socket.emit('login', {
         name: $scope.username,

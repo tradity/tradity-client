@@ -9,15 +9,20 @@ angular.module('tradity', [
       templateUrl: 'templates/feed.html'
     }).
     when('/trade', {
-      templateUrl: 'templates/trade.html'
+      templateUrl: 'templates/trade.html',
+      controller: 'TradeCtrl'
+    }).
+    when('/traded/:tradeId', {
+      templateUrl: 'templates/tradeDetails.html',
+      controller: 'TradeDetailsCtrl'
     }).
     when('/depot', {
       templateUrl: 'templates/depot.html',
-      controller: 'depotCtrl'
+      controller: 'DepotCtrl'
     }).
     when('/ranking', {
       templateUrl: 'templates/ranking.html',
-      controller: 'rankingCtrl'
+      controller: 'RankingCtrl'
     }).
     when('/options', {
       templateUrl: 'templates/options.html',
@@ -33,7 +38,7 @@ angular.module('tradity', [
     }).
     when('/user/:userId', {
       templateUrl: 'templates/profile.html',
-      controller: 'profileCtrl'
+      controller: 'ProfileCtrl'
     }).
     otherwise({
       redirectTo: '/'

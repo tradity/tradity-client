@@ -1,41 +1,48 @@
 <div id="trade" class="main-content">
-	<form>
+	<form ng-submit="buy()">
 		<fieldset class="options-field"> 
 				<legend>Wertpapiername</legend>
 				<div class="trade-label">
 					Suche hier nach einem Wertpapier, das du handeln möchtest und bestätige dann deine Auswahl.
 				</div>
 				<label for="paper" class="trade-label trade-label-input">Name</label>
-				<input type="text" class="options-input" placeholder="WKN/ISIN/Name" id="paper" ng-model="">
-				<input type="button" id="search-button" value="Suchen"> <!-- ergebnisse auflisten, richtiges ergebnis auswählen, dann gehts weiter, als bestätigungsschritt. eigentlich nötig aber vorerst kann das ja auch weggelassen werden... die suchergebnisse müssten ja auch gestyled werden etc. -->
+				<input type="text" class="options-input"
+                                placeholder="WKN/ISIN/Name" id="paper" ng-model="stockid">
+				<input type="button" id="search-button" value="Suchen"
+                                ng-click="search()"> <!-- ergebnisse auflisten, richtiges ergebnis auswählen, dann gehts weiter, als bestätigungsschritt. eigentlich nötig aber vorerst kann das ja auch weggelassen werden... die suchergebnisse müssten ja auch gestyled werden etc. -->
 		</fieldset>
 		<fieldset class="options-field"> 
 			<legend>Ordertyp</legend>
 			<div class="options-button order-type">
 				<label for="market">
-					<input type="radio" name="ordertype" ng-model="" value="" id="market"><span>Market</span>
+					<input type="radio" name="ordertype" ng-model="xtype"
+                                        value="market" id="market"><span>Market</span>
 				</label>
 			</div>
 			<div class="options-button order-type">
 				<label for="limit"> 
-					<input type="radio" name="ordertype" ng-model="" value="" id="limit"><span>Limit</span>
+					<input type="radio" name="ordertype" ng-model="xtype"
+                                        value="limit" id="limit"><span>Limit</span>
 				</label>
 			</div>
 			<div class="options-button order-type">
 				<label for="stop">
-					<input type="radio" name="ordertype" ng-model="" value="" id="stop"><span>Stop</span>
+					<input type="radio" name="ordertype" ng-model="xtype"
+                                        value="stop" id="stop"><span>Stop</span>
 				</label>
 			</div>
 
 			<div class="trade-label trade-label-button">Kauf/Verkauf</div> <!-- redundant? -->
 			<div class="options-button order-type">
 				<label for="buy"> 
-					<input type="radio" name="sellbuy" ng-model="" value="" id="buy"><span>Kaufen</span>
+					<input type="radio" name="sellbuy" ng-model="sellbuy"
+                                        value="1" id="buy"><span>Kaufen</span>
 				</label>
 			</div>
 			<div class="options-button order-type">
 				<label for="sell">
-					<input type="radio" name="sellbuy" ng-model="" value="" id="sell"><span>Verkaufen</span>
+					<input type="radio" name="sellbuy" ng-model="sellbuy"
+                                        value="-1" id="sell"><span>Verkaufen</span>
 				</label>
 			</div>
 
@@ -43,12 +50,12 @@
 
 			<div class="trade-label trade-label-button">Stop-/Limitwert</div><!-- angularykeyword damits eindeutig wird? redundant?  -->
 		    <label for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label><!-- angularykeyword damits eindeutig wird? -->
-		    <input type="number" ng-model="" placeholder="Stop-/Limitwert" id="limit-stop" class="options-input"> <!-- angularykeyword damits eindeutig wird? im placeholder -->
+		    <input type="number" ng-model="xvalue" placeholder="Stop-/Limitwert" id="limit-stop" class="options-input"> <!-- angularykeyword damits eindeutig wird? im placeholder -->
 
 	   	</fieldset>
 		<fieldset class="options-field"> 
 			<legend>Anzahl</legend>
-		    <input type="number" ng-model="" placeholder="Anzahl" id="amount" class="options-input">
+		    <input type="number" ng-model="amount" placeholder="Anzahl" id="amount" class="options-input">
 		    <!-- Hier folgen dann noch schöne Berechnungen mit deinen Kauf, wie viel du dir leisten kannst etc. -->
 		</fieldset>
 	   	<div style="text-align: right">

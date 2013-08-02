@@ -34,6 +34,10 @@ angular.module('tradity.controllers', []).
     });
   }).
   controller('RegistrationCtrl', function($scope, $location, socket) {
+    $scope.school = null;
+    socket.emit('list-schools', {}, function(data) {
+      $scope.schools = data.result;
+    });
     socket.on('register', function(data) {
       if (data.code == 'reg-success') {
         alert('Registrierung erfolgreich');
@@ -42,7 +46,6 @@ angular.module('tradity.controllers', []).
         alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
       }
     });
-    $scope.school = null;
     $scope.register = function() {
       socket.emit('register', {
         name: $scope.name,
@@ -141,10 +144,12 @@ angular.module('tradity.controllers', []).
       }
     });
   }).
-  controller('depotCtrl', function($scope, socket) {
-    socket.emit('list-own-depot', {});
+  controller('DepotCtrl', function($scope, socket) {
+    socket.emit('list-own-depot', {}, function(data) {
+      $scope.results = data.results;
+    });
   }).
-  controller('profileCtrl', function($scope, $routeParams, socket) {
+  controller('ProfileCtrl', function($scope, $routeParams, socket) {
     $scope.getUserInfo = function() {
       socket.emit('get-user-info', {
         lookfor: $routeParams.userId
@@ -161,7 +166,7 @@ angular.module('tradity.controllers', []).
     };
     $scope.getUserInfo();
   }).
-  controller('rankingCtrl', function($scope, socket) {
+  controller('RankingCtrl', function($scope, socket) {
     $scope.rtype = 'general';
     $scope.startindex = 1;
     $scope.endindex = 100;
@@ -181,4 +186,64 @@ angular.module('tradity.controllers', []).
       });
     };
     $scope.getRanking();
+  }).
+  controller('TradeDetailsCtrl', function($scope, $routeParams, socket) {
+    $scope.getTradeInfo = function() {
+      socket.emit('get-trade-info', {
+        tradeid: $routeParams.tradeId
+      },
+      function(data) {
+        if (data.code == 'get-trade-info-notfound') {
+          alert('Trade existiert nicht');
+        } else if (data.code == 'get-trade-info-success') {
+          $scope.trade = data.trade;
+          $scope.comments = data.comments;
+        }
+      });
+    };
+    $scope.getTradeInfo();
+  }).
+  controller('TradeCtrl', function($scope, socket) {
+    $scope.amount = null;
+    $scope.value = null;
+    $scope.stockid = null;
+    $scope.leader = null;
+    $scope.comment = null;
+    $scope.xtype = 'market';
+    $scope.xvalue = null;
+    $scope.sellbuy = -1;
+    $scope.buy = function() {
+      socket.emit('stock-buy', {
+        amount: $scope.amount * $scope.sellbuy,
+        value: $scope.value,
+        stockid: $scope.stockid,
+        leader: $scope.leader,
+        comment: $scope.comment,
+        xtype: $scope.xtype,
+        xvalue: $scope.xvalue
+      },
+      function(data) {
+        switch (data.code) {
+          case 'stock-buy-success':
+            alert('Kauf erfolgreich');
+            break;
+          case 'stock-buy-out-of-money':
+            alert('Nicht genügend Geld zum Kauf');
+            break;
+          case 'stock-buy-not-enough-stocks':
+            alert('Nicht genug Wertpapiere');
+            break;
+          case 'stock-buy-stock-not-found':
+            alert('Wertpapier existiert nicht');
+            break;
+          case 'stock-buy-round-result-zero':
+            alert('Zu niedriger Kaufwert');
+        }
+      });
+    };
+    $scope.search = function() {
+      socket.emit('stock-search', {
+        name: $scope.stockid
+      });
+    };
   });

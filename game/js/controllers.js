@@ -186,6 +186,18 @@ angular.module('tradity.controllers', []).
       });
     };
     $scope.getUserInfo();
+    var data = {
+      labels: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni'],
+      datasets: [{
+        fillColor: 'rgba(220,220,220,0.5)',
+        strokeColor: 'rgba(220,220,220,1)',
+        pointColor: 'rgba(220,220,220,1)',
+        pointStrokeColor: '#fff',
+        data: [65, 59, 90, 81, 56, 55]
+      }]
+    };
+    var ctx = document.getElementById("depotPerformanceChart").getContext("2d");
+    var depotPerformanceChart = new Chart(ctx).Line(data);
   }).
   controller('RankingCtrl', function($scope, socket) {
     $scope.rtype = 'general';
@@ -193,7 +205,7 @@ angular.module('tradity.controllers', []).
     $scope.endindex = 100;
     $scope.studentonly = false;
     $scope.fromschool = null;
-    $scope.results = []
+    $scope.results = [];
     $scope.getRanking = function() {
       socket.emit('get-ranking', {
         rtype: $scope.rtype,

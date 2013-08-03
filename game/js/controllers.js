@@ -76,7 +76,8 @@ angular.module('tradity.controllers', []).
         password: $scope.password,
         email: $scope.email,
         gender: $scope.gender,
-        school: $scope.school
+        school: $scope.school,
+        betakey: $scope.betakey
       },
       function(data) {
         switch (data.code) {
@@ -94,6 +95,9 @@ angular.module('tradity.controllers', []).
             break;
           case 'reg-too-short-pw':
             alert('Das Passwort ist zu kurz');
+            break;
+          case 'reg-beta-necessary':
+            alert('Beta-Schlüssel ungültig oder nicht angegeben');
             break;
           case 'reg-name-invalid-char':
             alert('Der Benutzername enthält unerlaubte Zeichen');

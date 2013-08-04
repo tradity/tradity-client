@@ -807,15 +807,16 @@ label.trade-label-input {
 .transaction-history td,
 .transaction-history th {
     height: 100%;
-    padding: 15px;
+    padding: 10px;
     vertical-align: middle;
 }
 
 .transaction-history tr:first-child th {
-    padding: 5px 15px 0px 15px;
+    padding: 5px 10px 0px 10px;
 }
 
-.transaction-history tr:first-child th:nth-child(2) {
+.transaction-history tr:first-child th:nth-child(2),
+.transaction-history tr:first-child th:nth-child(4) {
     background-color: #fff;
 }
 
@@ -836,7 +837,8 @@ label.trade-label-input {
     padding-top: 15px;
 }
 
-.transaction-history .column-2,
+.transaction-history .column-1,
+.transaction-history .column-3,
 .depot-follower  {
     background-color: rgba(200, 200, 200, 0.4);
 }

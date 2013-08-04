@@ -214,9 +214,15 @@
                     <p>Sei Teil des ersten <strong>Social Trading Börsenspiels</strong> der Welt und lerne eine <em>neue</em> Art des Tradens kennen!</p>
                     <p style="font-size: 13px;">Börsenspiele bieten die Möglichkeit, Erfahrungen über das Thema Aktien zu sammeln, ohne dabei echtes Geld zu riskieren. Noch besser – wenn man ein Händchen für das Traden hat, kann man auch noch interessante Preise gewinnen. Was jedoch, wenn man dieses nicht hat? <br />
 Social Trading macht aus dem Thema Traden, bei dem man häufig auf sich allein gestellt ist, eine Community-Sache. Der Neuling kann jetzt einfach erfolgreichen Teilnehmern „folgen“ und die gleiche Performance wie diese erzielen, wofür dann auf Win-Win-Basis eine Provision gezahlt wird. </p>
-                <div class="little-silver" style="font-size: 15px;">
+                    <p style="font-size: 13px;">Gib hier deine E-Mail-Adresse an, um über den Start des Wettbewerbs benachrichtigt zu werden.</p>
+                <div id="email" ng-controller="App.email">
+                        <input name="email-qt" type="email" id="email-qt" ng-model="email" placeholder="E-Mail" />
+                                <input type="button" value="Los!" id="email-sb" onclick="enterEmail(document.getElementById('email-qt').value);" ng-click="submit()" /><br>
+                        <span style="font-size: 10px; position: relative; top: -10px;">Selbstverständlich werden die E-Mails nicht missbraucht oder an Dritte weitergegeben.</span>
+                </div>
+                <div class="little-silver">
                     Geschlossene-Beta: <br>
-                    <a href="https://dev.tradity.de/game/#/login">Login</a> | <a href="https://dev.tradity.de/game/#/register">Registrierung</a>
+                    <a href="https://dev.tradity.de/game/#/login">Login</a>
                 </div>
                 <div id="social-links">
                     <a class="social-link facebook no-border" style="filter:alpha(opacity=50); -moz-opacity: 0.50; opacity: 0.50;" target="_blank" href="http://facebook.com/tradity.de"><img src="img/glyphicons/glyphicons_social_30_facebook.png"></a>

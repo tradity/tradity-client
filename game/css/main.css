@@ -65,13 +65,17 @@ textarea {
 
 div.fixed-name-container {
     border-bottom: thin solid #a7a7a7;
-    padding: 15px 10px;
+    padding: 15px 0px;
     position: fixed;
     top: 0px;
     width: 750px;
     background-color: #fff;
     display: none;
     margin: 0px;
+    filter:alpha(opacity=90);
+    -moz-opacity: 0.9;
+    opacity: 0.9;
+}
 }
 
 }
@@ -299,7 +303,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .main-content {
     min-height: 550px;
-    padding: 0 10px;
     margin: 0;
 }
 
@@ -310,9 +313,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #profile {
-    width: 770px;
+    width: 750px;
     padding: 0px;
-    height: 130px; 
     margin: 5px 0 5px 0;
 }
 
@@ -407,8 +409,6 @@ h1#tradity {
     transition:color 0.3s ease-in;
 }
 
-#name-container {
-}
 
 .name, .depot {
     overflow: hidden;
@@ -439,16 +439,10 @@ h1#tradity {
     color: #aaa;
 }
 
-.name-container {
-    margin: 0 0 0 10px;
-}
-
-
-
 .profile-box {
     font-size: 11px;
     float: left;
-    padding: 0 0 0 10px;
+    padding: 0 10px 0 0;
     overflow: hidden;
     height: 110px;
 }

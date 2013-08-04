@@ -22,14 +22,6 @@
         <div id="wrapper" class="clearfix" ng-controller="MainCtrl">
             <header id="header" class="clearfix">
                 <div id="logo"><a class="block-link" style="width: 150px; height: 150px;" href="#"></a></div><h1 id="tradity"><a href="#">tradity</a></h1>
-
-                <!-- 
-                
-                Was ist eigentlich mit folgendem Abschnitt? Ist das umsetzbar (weil es nicht im ng-view liegt)? Dieser soll Link zum eigenen Profil werden ("a div.name-container")
-                Dann ist das Depot das Userprofil 2 in 1. Außerdem sehen fremde Profile genauso aus wie das eigene. Wie es auch Twitter macht!
-
-                -->
-
                 <div id="profile">
                     <div class="name-container clearfix">
                         <a href="#/depot" title="Hier gehts zu deinem Profil" class="block-link">
@@ -81,6 +73,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="#/user/#MeinProfil">
+                            <span class="batch nav-block-symbol">&#xF048;</span>
+                            <span class="dark nav-block-title">Mein Profil</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="#/trade">
                             <span class="batch nav-block-symbol">&#xF153;</span>
                             <span class="dark nav-block-title">Trade</span>
@@ -104,14 +102,16 @@
             <footer id="footer">
                 <ul id="social-links" class="profile-box">
                     <li>
-                        <a class="transparent-30 social-link twitter" target="_blank" href="http://twitter.com/peterustinox"><img src="img/glyphicons/glyphicons_social_31_twitter.png" alt="Twitter"></a>
+                        <a class="transparent-30 social-link twitter" target="_blank" href="http://twitter.com/tradityde"><img src="img/glyphicons/glyphicons_social_31_twitter.png" alt="Twitter"></a>
                     </li>
                     <li>
-                        <a class="transparent-30 social-link facebook" target="_blank" href="http://facebook.com/grandmasterofentless"><img src="img/glyphicons/glyphicons_social_30_facebook.png" alt="Facebook"></a>
+                        <a class="transparent-30 social-link facebook" target="_blank" href="http://facebook.com/tradityde"><img src="img/glyphicons/glyphicons_social_30_facebook.png" alt="Facebook"></a>
                     </li>
+                    <!--
                     <li>
                         <a class="transparent-30 social-link google" target="_blank" href="http://plus.google.com/105109199307218462131/"><img src="img/glyphicons/glyphicons_social_02_google_plus.png" alt="Google+"></a>
                     </li>
+                    -->
                 </ul>
                 <span class="footer-text"> &copy; tradity, 2013 </span>
             </footer>

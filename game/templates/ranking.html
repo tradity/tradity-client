@@ -1,9 +1,9 @@
 <div id="stats" class="main-content">
 	<table class="ranking">
-		<tr>
-			<td>1</td>
-			<td>MaxNick</td>
-			<td></td>
+		<tr ng-repeat="result in results">
+			<td>{{result.rank}}</td>
+			<td>{{result.name}}</td>
+			<td>{{result.totalvalue}}</td>
 		</tr>
 	</table>
 </div>

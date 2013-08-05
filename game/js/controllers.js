@@ -190,6 +190,7 @@ angular.module('tradity.controllers', []).
       });
     };
     $scope.getUserInfo();
+    /*
     var data = {
       labels: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni'],
       datasets: [{
@@ -202,6 +203,7 @@ angular.module('tradity.controllers', []).
     };
     var ctx = document.getElementById("depotPerformanceChart").getContext("2d");
     var depotPerformanceChart = new Chart(ctx).Line(data);
+    */
   }).
   controller('RankingCtrl', function($scope, socket) {
     $scope.rtype = 'general';
@@ -278,9 +280,14 @@ angular.module('tradity.controllers', []).
         }
       });
     };
-    $scope.search = function() {
+    $scope.acFetcher = new Object();
+    $scope.acFetcher.fetchAutoComplete = function(ac, s) {
       socket.emit('stock-search', {
-        name: $scope.stockid
+        name: s
+      },
+      function(data) {
+        ac.putData(data.stocks, s);
       });
     };
+    $scope.ac = new AC('paper', $scope.acFetcher, false, 3, null);
   });

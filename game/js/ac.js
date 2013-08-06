@@ -172,8 +172,9 @@ AC.prototype.displayAc = function(req, cacheid, cached, id) {
 		var _number = this.dataFetcher.entryExtra(this, s[e]);
 
 		if (typeof(_value) == 'string') {
+			var oldvalue = _value;
 			_value = {};
-			_value[this.id] = _value;
+			_value[this.id] = oldvalue;
 		}
 
 		for (var key in _value) {

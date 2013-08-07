@@ -1,6 +1,6 @@
 <div id="stats" class="main-content">
 	<table class="ranking">
-		<tr ng-repeat="result in results">
+		<tr ng-repeat="result in results | orderBy:'rank'">
 			<td>{{result.rank}}</td>
 			<td>{{result.name}}</td>
 			<td>{{result.totalvalue}}</td>

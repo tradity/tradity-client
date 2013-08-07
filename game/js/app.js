@@ -16,6 +16,10 @@ angular.module('tradity', [
       templateUrl: 'templates/tradeDetails.html',
       controller: 'TradeDetailsCtrl'
     }).
+    when('/trade/sell/:stockId', {
+      templateUrl: 'templates/templates/trade.html',
+      controller: 'TradeCtrl'
+    }).
     when('/depot', {
       templateUrl: 'templates/depot.html',
       controller: 'DepotCtrl'
@@ -43,6 +47,10 @@ angular.module('tradity', [
     when('/user/:userId', {
       templateUrl: 'templates/profile.html',
       controller: 'ProfileCtrl'
+    }).
+    when('/watchlist', {
+      templateUrl: 'templates/watchlist.html',
+      controller: 'WatchlistCtrl'
     }).
     otherwise({
       redirectTo: '/'

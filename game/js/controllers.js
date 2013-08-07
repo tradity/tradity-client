@@ -171,7 +171,9 @@ angular.module('tradity.controllers', []).
   }).
   controller('DepotCtrl', function($scope, socket) {
     socket.emit('list-own-depot', {}, function(data) {
-      $scope.results = data.results;
+      if (data.code == 'list-own-depot-success') {
+        $scope.results = data.results;
+      }
     });
   }).
   controller('ProfileCtrl', function($scope, $routeParams, socket) {
@@ -186,6 +188,18 @@ angular.module('tradity.controllers', []).
           $scope.user = data.result;
           $scope.orders = data.orders;
           $scope.values = data.values;
+        }
+      });
+    };
+    $scope.addToWatchlist = function() {
+      socket.emit('watchlist-add', {
+        userid: $scope.user.uid
+      },
+      function(data) {
+        if (data.code == 'watchlist-add-success') {
+          alert($scope.user.name + 'zur Watchlist hinzugefügt');
+        } else if (data.code == 'watchlist-add-notfound') {
+          alert('Benutzer nicht gefunden. Hier läuft etwas falsch.');
         }
       });
     };
@@ -221,7 +235,9 @@ angular.module('tradity.controllers', []).
         fromschool: $scope.fromschool
       },
       function(data) {
-        $scope.results = data.result;
+        if (data.code == 'get-ranking-success') {
+          $scope.results = data.result;
+        }
       });
     };
     $scope.getRanking();
@@ -286,12 +302,34 @@ angular.module('tradity.controllers', []).
         name: s
       },
       function(data) {
-        var suggestions = [];
-        for (var i in data.results) {
-          suggestions.push([data.results[i].stockid, data.results[i].name]);
+        if (data.code == 'stock-search-success') {
+          var suggestions = [];
+          for (var i in data.results) {
+            suggestions.push([data.results[i].stockid, data.results[i].name]);
+          }
+          ac.putData(suggestions, s);
         }
-        ac.putData(suggestions, s);
       });
     };
     $scope.ac = new AC('paper', $scope.acFetcher, false, 3, null);
+  }).
+  controller('WatchlistCtrl', function($scope, socket) {
+    $scope.showWatchlist = function() {
+      socket.emit('watchlist-show', {}, function(data) {
+        if (data.code == 'watchlist-show-success') {
+          $scope.watchlist = data.results;
+        }
+      });
+    };
+    $scope.removeFromWatchlist = function(userId) {
+      socket.emit('watchlist-remove', {
+        userid: userId
+      },
+      function(data) {
+        if (data.code == 'watchlist-remove-success') {
+          alert(userId + 'von der Watchlist entfernt');
+        }
+      });
+    };
+    $scope.showWatchlist();
   });

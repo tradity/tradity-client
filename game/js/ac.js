@@ -1,6 +1,6 @@
 /**
  * ac.js - Simple autocompletion for JavaScript
- * Copyright (C) 2010,2011 Hauke Henningsen <sqrt@entless.org>
+ * Copyright (C) 2010,2011,2013 Hauke Henningsen <sqrt@entless.org>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,15 +21,15 @@
  *
  * new AC(id, fetcher, lastonly, minlen, timer):
  *    constructor arguments:
- *       id: [string] sgml/xml id of the input field to enable
- *           autocompletion for; .onkeyup and .onblur will be set.
+ *       id: [string] html/xml id of the input field to enable
+ *           autocompletion for
  *       fetcher: [object] backend for AC, see below
- *       lastonly: [boolean] use only the last word of the input's content?
+ *       lastonly: [boolean] use only the last word of the input's content? (optional)
  *       minlen: [integer] minimal length of the current word required to fetch
- *           the autocompletion data
+ *           the autocompletion data (optional)
  *       timer: [integer] milliseconds to wait for more input until
  *           autocompletion will be fetched; if non-null, AC will make the
- *           assumption that setTimeout() exists and words
+ *           assumption that setTimeout() exists and works (optional)
  *
  *    member functions:
  *       putData(data, value):
@@ -37,201 +37,208 @@
  *           of fetchAutoComplete, i. e. the search string
  *           data should be an array of object, with every object
  *           representing one entry.
- *
- *           Default actions if entryValue, entryName, entryExtra are not set:
- *           Each entry is an sub-array of the second parameter.
- *           These sub-arrays have one or two entries, of which
- *           the first is the possible result and the optional
- *           second one describes some associated text, e. g.
- *           the number of entries found for the given search string.
+ * 
+ *           data should be an array of entries, of which each has the
+ *           following format:
+ *            * ['text']
+ *            * ['text', 'extra information']
+ *           or has the methods getEntryName(), getExtra() and getInputTextValue() implemented.
  *
  * fetcher object:
  *    member functions:
  *       submit(ac):
  *           called when the user chose a value (by clicking on it)
- *           (facultative)
+ *           (optional)
  *       fetchAutoComplete(ac, value):
  *           called when AC decides to fetch autocompletion data;
- *           should proably always call ac.putData()
- *       entryValue(ac, entry):
- *       entryName(ac, entry):
- *       entryExtra(ac, entry):
- *           yield the value, name and extra information associated to an
- *           single entry returned from putData()
- *           (facultative, all three)
+ *           should probably always call ac.putData().
  **/
 
 /**
  * Changelog:
  *
+ * Version 1.1
+ *  - Cleanup
  * Version 1.0
  *  - Initial version after some good bunch of untracked development
  */
 
-if (typeof(AC_INCLUDED) == "undefined") { var AC_INCLUDED = 1;
+if (typeof(AC_INCLUDED) == "undefined") { var AC_INCLUDED = 1; 
+"use strict";
 
 function AC(id, fetcher, lastonly, minlen, timer) {
+	this.managedElements = {}; // Element ID -> ACInputElement
 	if (typeof id == 'string')
 		id = [id];
-	this.id = id[0];
-	this.e = {}
 
-	for (var _id in id) {
-		this.e[id[_id]] = document.getElementById(id[_id]);
-	}
-
-	this.respCache = {}
-	this.curFocus = -1;
-	this.maxFocus = 0;
+	for (var i = 0; i < id.length; ++i) 
+		this.managedElements[id] = new ACInputElement(id, this, lastonly, minlen, timer);
+	
+	this.masterID = id[0];
+	this.respCache = {}; // response cache
 	this.dataFetcher = fetcher;
-	this.lastOnly = lastonly;
-	this.minlen = minlen;
-	this.timer = timer;
 	this.lastWanted = null;
+
+	if (!this.dataFetcher.submit) this.dataFetcher.submit = function() {}
+}
+
+function ACInputElement(id, master, lastonly, minlen, timer) {
+	this.e = document.getElementById(id);
+	this.acPanel = null;
+	this.master = master;
+	
+	if (!this.e)
+		console.warn('AC: No such element: ', id);
+	
+	this.entries = [];
+	
+	this.lastOnly = lastonly || false;
+	this.curFocusIndex = -1;
+	this.minlen = minlen || 3;
+	this.timer = parseInt(timer) || 500;
+	
 	var _this = this;
+	
+	this.e.addEventListener('keyup', function(e) { _this.handleKey(e); });
+	this.e.addEventListener('blur', function (e) { _this.removeACData(); });
+	this.e.setAttribute('autocomplete', 'off');
+}
 
-	if (!('submit' in this.dataFetcher)) this.dataFetcher.submit = function() {}
-	if (!('entryValue' in this.dataFetcher)) this.dataFetcher.entryValue = function(ac, e) { return e[0]; }
-	if (!('entryName' in this.dataFetcher)) this.dataFetcher.entryName = function(ac, e) { return e[0]; }
-	if (!('entryExtra' in this.dataFetcher)) this.dataFetcher.entryExtra = function(ac, e) { return e.length > 1 ? e[1] : null; }
+function ACEntry(master, data) {
+	this.master = master;
+	this.data = data;
+	this.e = document.createElement('li');
+	this.e.setAttribute('class', 'autocomplete-inactive');
+	var _this = this;
+	this.e.addEventListener('mouseover', function() { master.focus(_this); });
+	this.e.addEventListener('mouseup', function() { master.focus(_this); master.master.dataFetcher.submit(master); });
 
-	for (var key in this.e) {
-		this.e[key].onkeyup = function(k) { return function (e) { _this.ac(e, k); } } (key);
-		this.e[key].onblur = function (e) { _this.removeAc(); }
-		this.e[key].setAttribute('autocomplete', 'off');
+	var _name = this.data.getEntryName ? this.data.getEntryName() : this.data[0];
+	var _number = this.data.getExtra ? this.data.getExtra() : (this.data.length > 1 ? this.data[1] : null);
+
+	var name = document.createElement('span');
+	name.appendChild(document.createTextNode(_name));
+	name.setAttribute('class', 'autocomplete-left');
+	this.e.appendChild(name);
+
+	if (_number !== null) {
+		var number = document.createElement('span');
+		number.appendChild(document.createTextNode(_number));
+		number.setAttribute('class', 'autocomplete-right');
+		this.e.appendChild(number);
 	}
 }
 
-AC.prototype.unfocusAc = function() {
-	var e = document.getElementById('autocomplete_' + this.id + '_' + this.curFocus);
-	if (!e) return;
-	e.setAttribute('class', 'autocomplete-inactive');
+ACEntry.prototype.unfocus = function() {
+	this.e.setAttribute('class', 'autocomplete-inactive');
 }
 
-AC.prototype.focusAc = function(n) {
-	var e = document.getElementById('autocomplete_' + this.id + '_' + n);
-	if (!e) return;
-	e.setAttribute('class', 'autocomplete-active');
+ACEntry.prototype.getInputTextValue = function() {
+	return this.data.getInputTextValue ? this.data.getInputTextValue() : this.data[0];
+}
 
-	for (var _id in this.e) {
-		var new_s = document.getElementById('autocomplete_' + this.id + '_' + n + '_' + _id + '_value').firstChild.data;
+ACInputElement.prototype.focusnth = function(n) {
+	this.focus(this.entries[n]);
+}
 
-		if (this.lastOnly) {
-			var s = this.e[_id].value;
-			s = s.split(' ');
-			s.pop()
-			s.push(new_s);
-			this.e[_id].value = s.join(' ');
-		} else {
-			this.e[_id].value = new_s;
-		}
+ACInputElement.prototype.focus = function(entry) {
+	var old = this.entries[this.curFocusIndex];
+	if (old)
+		old.unfocus();
+	for (var i = 0; i < this.entries.length; ++i)
+		if (entry == this.entries[i])
+			this.curFocusIndex = i;
+	entry.focus();
+
+	var newString = entry.getInputTextValue();
+
+	if (this.lastOnly) {
+		var s = this.e.value;
+		s = s.split(' ');
+		s.pop()
+		s.push(newString);
+		this.e.value = s.join(' ');
+	} else {
+		this.e.value = newString;
 	}
 }
 
-AC.prototype.getAc = function() { return document.getElementById('autocomplete_' + this.id); }
-AC.prototype.removeAc = function() { var e = this.getAc(); if(e) e.parentNode.removeChild(e); }
+ACEntry.prototype.focus = function() {
+	this.e.setAttribute('class', 'autocomplete-active');
+}
 
-AC.prototype.displayAc = function(req, cacheid, cached, id) {
+ACInputElement.prototype.removeACData = function() {
+	if (this.acPanel) {
+		this.acPanel.parentNode.removeChild(this.acPanel);
+		this.acPanel = null;
+	}
+}
+
+AC.prototype.displayACData = function(req, cacheid, cached, inputElement) {
 	var s = null;
 	if (!cached) {
 		s = req;
-		this.respCache[cacheid] = s;
+		this.master.respCache[cacheid] = s;
 	} else {
-		s = req; // we have been cache-fetched
+		s = req; // the data have been cache-fetched
 	}
 
-	if (cacheid != this.lastWanted) return;
+	if (cacheid != this.lastWanted)
+		return;
 
-	if (id == null)
-		id = this.id;
+	if (!inputElement)
+		inputElement = this.managedElements[0];
 
-	this.curFocus = -1;
-	this.maxFocus = s.length - 1;
+	inputElement.displayACData(s);
+}
+
+ACInputElement.prototype.displayACData = function(s) {
 	var _this = this;
-	var input = this.e[id];
-	var inputRect = input.getBoundingClientRect();
-	var d = document.createElement('div');
-	d.id = 'autocomplete_' + this.id;
-	d.style.position = 'absolute';
-	d.style.top = parseInt(inputRect.top) + parseInt(inputRect.height ? inputRect.height : input.clientHeight) + 3 + 'px';
-	d.style.left = parseInt(inputRect.left) + 'px';
-	d.style.width = parseInt(inputRect.width ? inputRect.width : input.clientWidth) + 'px';
+		
+	var d = document.createElement('ul');
 	d.setAttribute('class', 'autocomplete');
+	
+	var inputRect = this.e.getBoundingClientRect();
+	d.style.position = 'absolute';
+	d.style.top = parseInt(inputRect.top) + parseInt(inputRect.height ? inputRect.height : this.e.clientHeight) + 3 + 'px';
+	d.style.left = parseInt(inputRect.left) + 'px';
+	d.style.width = parseInt(inputRect.width ? inputRect.width : this.e.clientWidth) + 'px';
 
 	for (var e in s) {
-		var subd = document.createElement('div');
-		subd.idnumber = e;
-		subd.setAttribute('id', 'autocomplete_' + this.id + '_' + e);
-		subd.style.padding = '1%%';
-		subd.setAttribute('class', 'autocomplete-inactive');
-		subd.onmouseover = function() { _this.unfocusAc(); _this.curFocus = this.idnumber; _this.focusAc(this.idnumber); }
-		subd.onmousedown = function() { _this.focusAc(this.idnumber); _this.dataFetcher.submit(_this); }
-
-		var _value = this.dataFetcher.entryValue(this, s[e]);
-		var _name = this.dataFetcher.entryName(this, s[e]);
-		var _number = this.dataFetcher.entryExtra(this, s[e]);
-
-		if (typeof(_value) == 'string') {
-			var oldvalue = _value;
-			_value = {};
-			_value[this.id] = oldvalue;
-		}
-
-		for (var key in _value) {
-			var value = document.createElement('span');
-			value.id = 'autocomplete_' + this.id + '_' + e + '_' + key + '_value';
-			value.appendChild(document.createTextNode(_value[key]));
-			value.style.display = 'none';
-			subd.appendChild(value);
-		}
-
-		var name = document.createElement('span');
-		name.id = 'autocomplete_' + this.id + '_' + e + '_name';
-		name.appendChild(document.createTextNode(_name));
-		name.setAttribute('class', 'autocomplete-left');
-		subd.appendChild(name);
-
-		if (_number !== null) {
-			var number = document.createElement('span');
-			number.appendChild(document.createTextNode(_number));
-			number.setAttribute('class', 'autocomplete-right');
-			subd.appendChild(number);
-		}
-
-		d.appendChild(subd);
+		var entry = new ACEntry(this, s[e]);
+		d.appendChild(entry.e);
+		this.entries.push(entry);
 	}
-	this.removeAc();
+	
+	this.removeACData();
+	this.acPanel = d;
+	
 	document.body.appendChild(d);
 }
 
-AC.prototype.handleAc = function(up) {
-	this.unfocusAc();
-	if (this.curFocus == -1) {
-		if (up)
-			this.curFocus = this.maxFocus;
-		else
-			this.curFocus = 0;
+ACInputElement.prototype.handleKeyMove = function(up) {
+	var newIndex = this.curFocusIndex;
+	
+	if (up) {
+		if (--newIndex < 0)
+			newIndex = this.entries.length - 1;
 	} else {
-		if (up) {
-			if (--this.curFocus == -1)
-				this.curFocus = this.maxFocus;
-		} else {
-			if (++this.curFocus > this.maxFocus)
-				this.curFocus = 0;
-		}
+		if (++newIndex > this.entries.length)
+			newIndex = 0;
 	}
-	this.focusAc(this.curFocus);
+	
+	this.focusnth(newIndex);
 }
 
-AC.prototype.ac = function(ev, id) {
-	if (!ev) ev = window.event;
+ACInputElement.prototype.handleKey = function(ev) {
+	if (!ev)
+		ev = window.event;
 	var w = ev.which ? ev.which : ev.keyCode;
-	if (w == 38 || w == 40) {
-		this.handleAc(w == 38);
-		return;
-	}
+	
+	if (w == 38 || w == 40) 
+		return this.handleKeyMove (w == 38);
 
-	var s = this.e[id].value;
+	var s = this.e.value;
 
 	if (this.lastOnly) {
 		s = s.split(' ');
@@ -240,8 +247,8 @@ AC.prototype.ac = function(ev, id) {
 
 	this.lastWanted = s;
 
-	if (this.respCache[s]) {
-		this.displayAc(this.respCache[s], s, true, id);
+	if (this.master.respCache[s]) {
+		this.master.displayACData(this.respCache[s], s, true, this);
 		return;
 	}
 
@@ -249,20 +256,20 @@ AC.prototype.ac = function(ev, id) {
 
 	var fnc = function() {
 		if (_this.lastWanted == s)
-			_this.dataFetcher.fetchAutoComplete(_this, s);
-	}
+			_this.master.dataFetcher.fetchAutoComplete(_this, s);
+	};
 
-	if (s.length < this.minlen) return;
-//	alert(s);
-//	alert(this.timer);
+	if (s.length < this.minlen)
+		return;
+	
 	if (!this.timer)
 		fnc();
 	else
 		setTimeout(fnc, this.timer);
 }
 
-AC.prototype.putData = function(data, s) {
-	this.displayAc(data, s, false, null);
+ACInputElement.prototype.putData = function(data, s) {
+	this.displayACData(data, s, false, null);
 }
 
 }

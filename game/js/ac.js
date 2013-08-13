@@ -46,7 +46,7 @@
  *
  * fetcher object:
  *    member functions:
- *       submit(ac):
+ *       submit(ac, data):
  *           called when the user chose a value (by clicking on it)
  *           (optional)
  *       fetchAutoComplete(ac, value):
@@ -85,7 +85,6 @@ function AC(id, fetcher, lastonly, minlen, timer) {
 function ACInputElement(id, master, lastonly, minlen, timer) {
 	this.e = document.getElementById(id);
 	this.acPanel = null;
-	this.inputWrap = null;
 	this.master = master;
 	
 	if (!this.e)
@@ -97,12 +96,20 @@ function ACInputElement(id, master, lastonly, minlen, timer) {
 	this.curFocusIndex = -1;
 	this.minlen = minlen || 3;
 	this.timer = parseInt(timer) || 500;
+	this.blockBlur = false;
 	
 	var _this = this;
 	
 	this.e.addEventListener('keyup', function(e) { _this.handleKey(e); });
-	this.e.addEventListener('blur', function (e) { _this.removeACData(); });
+	this.e.addEventListener('blur', function (e) { if (!_this.blockBlur) _this.removeACData(); });
 	this.e.setAttribute('autocomplete', 'off');
+	
+	this.inputWrap = document.createElement('div');
+	this.e.parentNode.insertBefore(this.inputWrap, this.e);
+	this.inputWrap.appendChild(this.e);
+	this.inputWrap.style.position = 'relative';
+	this.inputWrap.style.display = this.e.style.display ? this.e.style.display : 'inline';
+	this.inputWrap.setAttribute('class', 'autocomplete-inputwrap');
 }
 
 function ACEntry(master, data) {
@@ -112,8 +119,10 @@ function ACEntry(master, data) {
 	this.e.setAttribute('class', 'autocomplete-inactive');
 	var _this = this;
 	this.e.addEventListener('mouseover', function() { master.focus(_this); });
-	this.e.addEventListener('mouseup', function() { master.focus(_this); master.master.dataFetcher.submit(master); });
-
+	this.e.addEventListener('mousedown', function() { master.blockBlur = true; });
+	this.e.addEventListener('mouseout', function() { master.blockBlur = false; });
+	this.e.addEventListener('mouseup', function() { master.blockBlur = false; master.focus(_this); master.master.dataFetcher.submit(master, _this.data); master.removeACData(); });
+	
 	var _name = this.data.getEntryName ? this.data.getEntryName() : this.data[0];
 	var _number = this.data.getExtra ? this.data.getExtra() : (this.data.length > 1 ? this.data[1] : null);
 
@@ -147,7 +156,7 @@ ACInputElement.prototype.focus = function(entry) {
 	if (old)
 		old.unfocus();
 	for (var i = 0; i < this.entries.length; ++i)
-		if (entry == this.entries[i])
+		if (entry && entry == this.entries[i])
 			this.curFocusIndex = i;
 	entry.focus();
 
@@ -195,16 +204,7 @@ AC.prototype.displayACData = function(req, cacheid, cached, inputElement) {
 
 ACInputElement.prototype.displayACData = function(s) {
 	var _this = this;
-	
-	if (!this.inputWrap) {
-		this.inputWrap = document.createElement('div');
-		this.e.parentNode.insertBefore(this.inputWrap, this.e);
-		this.inputWrap.appendChild(this.e);
-		this.inputWrap.style.position = 'relative';
-		this.inputWrap.style.display = this.e.style.display ? this.e.style.display : 'inline';
-		this.inputWrap.setAttribute('class', 'autocomplete-inputwrap');
-	}
-	
+		
 	var d = document.createElement('ul');
 	d.setAttribute('class', 'autocomplete');
 	
@@ -233,7 +233,7 @@ ACInputElement.prototype.handleKeyMove = function(up) {
 		if (--newIndex < 0)
 			newIndex = this.entries.length - 1;
 	} else {
-		if (++newIndex > this.entries.length)
+		if (++newIndex >= this.entries.length)
 			newIndex = 0;
 	}
 	

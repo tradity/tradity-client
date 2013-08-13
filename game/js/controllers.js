@@ -262,10 +262,9 @@ angular.module('tradity.controllers', []).
     $scope.amount = null;
     $scope.value = null;
     $scope.stockid = null;
+    $scope.stockname = null;
     $scope.leader = null;
     $scope.comment = '';
-    $scope.xtype = 'market';
-    $scope.xvalue = null;
     $scope.sellbuy = 1;
     $scope.buy = function() {
       socket.emit('stock-buy', {
@@ -273,9 +272,7 @@ angular.module('tradity.controllers', []).
         value: $scope.value,
         stockid: $scope.stockid,
         leader: $scope.leader,
-        comment: $scope.comment,
-        xtype: $scope.xtype,
-        xvalue: $scope.xvalue
+        comment: $scope.comment
       },
       function(data) {
         switch (data.code) {
@@ -304,12 +301,20 @@ angular.module('tradity.controllers', []).
           if (data.code == 'stock-search-success') {
             var suggestions = [];
             for (var i in data.results) {
-              suggestions.push([data.results[i].stockid, data.results[i].name]);
+			  data.results[i].getEntryName = 
+			  data.results[i].getInputTextValue = function() { return this.leader ? 'Leader: ' + this.leadername : this.name; };
+			  data.results[i].getExtra = function() { return this.lastvalue / 10000; };
+              suggestions.push(data.results[i]);
             }
             ac.putData(suggestions, s);
           }
         });
-      }
+      },
+      submit: function(ac, data) {
+		  $scope.stockid = data.leader ? null : data.stockid;
+		  $scope.stockname = data.name;
+		  $scope.leader = data.leader ? data.leader : null;
+	  }
     };
     $scope.ac = new AC('paper', $scope.acFetcher, false, 3, null);
   }).

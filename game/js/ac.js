@@ -13,7 +13,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  **/
 
 /**
@@ -85,6 +85,7 @@ function AC(id, fetcher, lastonly, minlen, timer) {
 function ACInputElement(id, master, lastonly, minlen, timer) {
 	this.e = document.getElementById(id);
 	this.acPanel = null;
+	this.inputWrap = null;
 	this.master = master;
 	
 	if (!this.e)
@@ -194,14 +195,23 @@ AC.prototype.displayACData = function(req, cacheid, cached, inputElement) {
 
 ACInputElement.prototype.displayACData = function(s) {
 	var _this = this;
-		
+	
+	if (!this.inputWrap) {
+		this.inputWrap = document.createElement('div');
+		this.e.parentNode.insertBefore(this.inputWrap, this.e);
+		this.inputWrap.appendChild(this.e);
+		this.inputWrap.style.position = 'relative';
+		this.inputWrap.style.display = this.e.style.display ? this.e.style.display : 'inline';
+		this.inputWrap.setAttribute('class', 'autocomplete-inputwrap');
+	}
+	
 	var d = document.createElement('ul');
 	d.setAttribute('class', 'autocomplete');
 	
 	var inputRect = this.e.getBoundingClientRect();
 	d.style.position = 'absolute';
-	d.style.top = parseInt(inputRect.top) + parseInt(inputRect.height ? inputRect.height : this.e.clientHeight) + 3 + 'px';
-	d.style.left = parseInt(inputRect.left) + 'px';
+	d.style.top = parseInt(inputRect.height ? inputRect.height : this.e.clientHeight) + 3 + 'px';
+	d.style.left = '0px';
 	d.style.width = parseInt(inputRect.width ? inputRect.width : this.e.clientWidth) + 'px';
 
 	for (var e in s) {
@@ -213,7 +223,7 @@ ACInputElement.prototype.displayACData = function(s) {
 	this.removeACData();
 	this.acPanel = d;
 	
-	document.body.appendChild(d);
+	this.inputWrap.appendChild(d);
 }
 
 ACInputElement.prototype.handleKeyMove = function(up) {

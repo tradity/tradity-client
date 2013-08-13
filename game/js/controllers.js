@@ -296,20 +296,20 @@ angular.module('tradity.controllers', []).
         }
       });
     };
-    $scope.acFetcher = new Object();
-    $scope.acFetcher.fetchAutoComplete = function(ac, s) {
-      socket.emit('stock-search', {
-        name: s
-      },
-      function(data) {
-        if (data.code == 'stock-search-success') {
-          var suggestions = [];
-          for (var i in data.results) {
-            suggestions.push([data.results[i].stockid, data.results[i].name]);
+    $scope.acFetcher = {
+      fetchAutoComplete: function(ac, s) {
+        socket.emit('stock-search', {
+          name: s
+        }, function(data) {
+          if (data.code == 'stock-search-success') {
+            var suggestions = [];
+            for (var i in data.results) {
+              suggestions.push([data.results[i].stockid, data.results[i].name]);
+            }
+            ac.putData(suggestions, s);
           }
-          ac.putData(suggestions, s);
-        }
-      });
+        });
+      }
     };
     $scope.ac = new AC('paper', $scope.acFetcher, false, 3, null);
   }).

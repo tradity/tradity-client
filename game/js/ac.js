@@ -282,4 +282,9 @@ ACInputElement.prototype.putData = function(data, s) {
 	this.displayACData(data, s, false, null);
 }
 
+AC.prototype.keyStroke = function() {
+	for (var i = 0; i < this.managedElements.length; ++i)
+		this.managedElements[i].handleKey({which: 20});
+}
+
 }

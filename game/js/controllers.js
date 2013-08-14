@@ -258,7 +258,7 @@ angular.module('tradity.controllers', []).
     };
     $scope.getTradeInfo();
   }).
-  controller('TradeCtrl', function($scope, socket) {
+  controller('TradeCtrl', function($scope, $routeParams, socket) {
     $scope.amount = null;
     $scope.value = null;
     $scope.stockid = null;
@@ -293,6 +293,7 @@ angular.module('tradity.controllers', []).
         }
       });
     };
+    var gotData;
     $scope.acFetcher = {
       fetchAutoComplete: function(ac, s) {
         socket.emit('stock-search', {
@@ -310,13 +311,30 @@ angular.module('tradity.controllers', []).
           }
         });
       },
-      submit: function(ac, data) {
-		  $scope.stockid = data.leader ? null : data.stockid;
-		  $scope.stockname = data.name;
-		  $scope.leader = data.leader ? data.leader : null;
-	  }
+      submit: gotData = function(ac, data) {
+        document.getElementById('paper').value =
+        $scope.stockname = data.leader ? 'Leader: ' + data.leadername : data.name;
+        $scope.stockid = data.leader ? null : data.stockid;
+        $scope.leader = data.leader ? data.leader : null;
+      }
     };
     $scope.ac = new AC('paper', $scope.acFetcher, false, 3, null);
+    
+    if ($routeParams.stockId) {
+      $scope.stockid = $routeParams.stockId;
+      socket.emit('stock-search', {
+        name: $scope.stockid
+      }, function(data) {
+        if (data.code == 'stock-search-success') {
+          for (var i = 0; i < data.results.length; ++i) {
+            if (data.results[i].stockid == $scope.stockid) {
+	          gotData($scope.ac, data.results[i]);
+	          break;
+            }
+          }
+        }
+	  });
+	}
   }).
   controller('WatchlistCtrl', function($scope, socket) {
     $scope.showWatchlist = function() {

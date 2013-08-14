@@ -858,7 +858,3 @@ label.trade-label-input {
 .depot-buy {
     background-color: rgba(0, 150, 0, 0.2);    
 }
-
-.autocomplete-inputwrap {
-	z-index: -1; /* below clearfix */
-}

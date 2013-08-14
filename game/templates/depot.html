@@ -100,7 +100,7 @@
 				<th>Trade</th>
 			</tr>
 			<tr ng-repeat="result in results">
-				<td>{{result.stockid}}</td>
+				<td>{{result.stockname}}</td>
 				<td>{{result.buytime * 1000 | date:'d.M.yy'}}</td>
 				<td>{{result.total / 10000 | currency:'€'}}</td>
 				<td>{{result.amount}}</td>
@@ -110,7 +110,7 @@
                                 / result.buymoney * 100 | number:2}}%</td>
 				<td>{{(result.lastvalue - result.daystartvalue) /
                                 result.daystartvalue * 100 | number:2}}%</td>
-				<td class="trade-td"><a href="#/trade/#dieseAktieMitVerkaufEingestellt" class="batch block-link trade">&#xF153;</a></td>
+				<td class="trade-td"><a href="#/trade/sell/{{result.stockid}}" class="batch block-link trade">&#xF153;</a></td>
 			</tr>
 		</table>
 	</fieldset>

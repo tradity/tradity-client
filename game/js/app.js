@@ -17,7 +17,7 @@ angular.module('tradity', [
       controller: 'TradeDetailsCtrl'
     }).
     when('/trade/sell/:stockId', {
-      templateUrl: 'templates/templates/trade.html',
+      templateUrl: 'templates/trade.html',
       controller: 'TradeCtrl'
     }).
     when('/depot', {

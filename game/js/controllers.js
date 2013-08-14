@@ -275,7 +275,13 @@ angular.module('tradity.controllers', []).
         amount: $scope.amount ? $scope.amount * $scope.sellbuy : null,
         stockid: $scope.stockid,
         leader: $scope.leader,
-        comment: $scope.comment
+        comment: $scope.comment,
+        dquerydata: { /* will be returned in the dquery-exec event */
+          xtype: $scope.xtype,
+          xvalue: $scope.xvalue,
+          name: $scope.stockname,
+          ordertime: new Date().getTime()
+        }
       };
       var qtype = 'stock-buy';
       if ($scope.xtype != 'market') {
@@ -289,7 +295,6 @@ angular.module('tradity.controllers', []).
         else
           stockid = '__LEADER_' + $scope.leader + '__';
         condition += 'stock::' + stockid + '::' + fieldname + ' ' + compar + ' ' + ($scope.xvalue * 10000);
-        query.dquerydata = {xtype:$scope.xtype, xvalue:$scope.xvalue};
         query.type = qtype;
         query = {
           condition: condition,

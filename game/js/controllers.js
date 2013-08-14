@@ -50,6 +50,14 @@ angular.module('tradity.controllers', []).
     };
   }).
   controller('MainCtrl', function($scope, $location, socket) {
+    $scope.logout = function() {
+      socket.emit('logout', {}, function(data) {
+        if (data.code == 'logout-success') {
+          alert('Erfolgreich ausgeloggt');
+          $location.path('/login');
+        }
+      });
+    };
     socket.on('response', function(data) {
       if (data.code == 'not-logged-in') {
         alert('Nicht eingeloggt');

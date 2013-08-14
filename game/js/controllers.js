@@ -318,7 +318,7 @@ angular.module('tradity.controllers', []).
         $scope.leader = data.leader ? data.leader : null;
       }
     };
-    $scope.ac = new AC('paper', $scope.acFetcher, false, 3, null);
+    $scope.ac = new AC('paper', $scope.acFetcher, false, 3, null, 'img/throbber.gif');
     
     if ($routeParams.stockId) {
       $scope.stockid = $routeParams.stockId;

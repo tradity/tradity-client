@@ -43,3 +43,11 @@
 .autocomplete-left {
 	text-align: left;
 }
+
+.autocomplete-throbber {
+	position: absolute;
+	right: 5px;
+	padding: 0px;
+	border: 0px;
+	margin: 0px;
+}

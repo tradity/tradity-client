@@ -19,7 +19,7 @@
 /**
  * AC API:
  *
- * new AC(id, fetcher, lastonly, minlen, timer):
+ * new AC(id, fetcher, lastonly, minlen, timer, throbber):
  *    constructor arguments:
  *       id: [string] html/xml id of the input field to enable
  *           autocompletion for
@@ -30,6 +30,7 @@
  *       timer: [integer] milliseconds to wait for more input until
  *           autocompletion will be fetched; if non-null, AC will make the
  *           assumption that setTimeout() exists and works (optional)
+ *       throbber: [string] path to an image that indicates loading of data (optional)
  *
  *    member functions:
  *       putData(data, value):
@@ -47,8 +48,11 @@
  * fetcher object:
  *    member functions:
  *       submit(ac, data):
- *           called when the user chose a value (by clicking on it)
+ *           called when the user chooses a value (by clicking on it)
  *           (optional)
+ *       valuecreate(ac, data, element):
+ *           called when a value entry is created, just before it is inserted
+ *           into the DOM tree, so you can install extra stuff on your own.
  *       fetchAutoComplete(ac, value):
  *           called when AC decides to fetch autocompletion data;
  *           should probably always call ac.putData().
@@ -66,13 +70,13 @@
 if (typeof(AC_INCLUDED) == "undefined") { var AC_INCLUDED = 1; 
 "use strict";
 
-function AC(id, fetcher, lastonly, minlen, timer) {
+function AC(id, fetcher, lastonly, minlen, timer, throbber) {
 	this.managedElements = {}; // Element ID -> ACInputElement
 	if (typeof id == 'string')
 		id = [id];
 
 	for (var i = 0; i < id.length; ++i) 
-		this.managedElements[id] = new ACInputElement(id, this, lastonly, minlen, timer);
+		this.managedElements[id] = new ACInputElement(id, this, lastonly, minlen, timer, throbber);
 	
 	this.masterID = id[0];
 	this.respCache = {}; // response cache
@@ -80,12 +84,14 @@ function AC(id, fetcher, lastonly, minlen, timer) {
 	this.lastWanted = null;
 
 	if (!this.dataFetcher.submit) this.dataFetcher.submit = function() {}
+	if (!this.dataFetcher.valuecreate) this.dataFetcher.valuecreate = function() {}
 }
 
-function ACInputElement(id, master, lastonly, minlen, timer) {
+function ACInputElement(id, master, lastonly, minlen, timer, throbber) {
 	this.e = document.getElementById(id);
 	this.acPanel = null;
 	this.master = master;
+	this.throbber = null;
 	
 	if (!this.e)
 		console.warn('AC: No such element: ', id);
@@ -110,6 +116,14 @@ function ACInputElement(id, master, lastonly, minlen, timer) {
 	this.inputWrap.style.position = 'relative';
 	this.inputWrap.style.display = this.e.style.display ? this.e.style.display : 'inline';
 	this.inputWrap.setAttribute('class', 'autocomplete-inputwrap');
+	
+	if (throbber) {
+		this.throbber = document.createElement('img');
+		this.throbber.style.display = 'none';
+		this.throbber.setAttribute('class', 'autocomplete-throbber');
+		this.throbber.setAttribute('src', throbber);
+		this.inputWrap.appendChild(this.throbber);
+	}
 }
 
 function ACEntry(master, data) {
@@ -137,6 +151,8 @@ function ACEntry(master, data) {
 		number.setAttribute('class', 'autocomplete-right');
 		this.e.appendChild(number);
 	}
+	
+	master.master.dataFetcher.valuecreate(master, this.data, this.e);
 }
 
 ACEntry.prototype.unfocus = function() {
@@ -202,18 +218,28 @@ AC.prototype.displayACData = function(req, cacheid, cached, inputElement) {
 	inputElement.displayACData(s);
 }
 
+ACInputElement.prototype.getInputHeight = function() { 
+	var inputRect = this.e.getBoundingClientRect();
+	return parseInt(inputRect.height ? inputRect.height : this.e.clientHeight);
+}
+
+ACInputElement.prototype.getInputWidth = function() { 
+	var inputRect = this.e.getBoundingClientRect();
+	return parseInt(inputRect.width ? inputRect.width : this.e.clientWidth);
+}
+
 ACInputElement.prototype.displayACData = function(s) {
 	var _this = this;
 		
 	var d = document.createElement('ul');
 	d.setAttribute('class', 'autocomplete');
 	
-	var inputRect = this.e.getBoundingClientRect();
 	d.style.position = 'absolute';
-	d.style.top = parseInt(inputRect.height ? inputRect.height : this.e.clientHeight) + 3 + 'px';
+	
 	d.style.left = '0px';
-	d.style.width = parseInt(inputRect.width ? inputRect.width : this.e.clientWidth) + 'px';
-
+	d.style.top = this.getInputHeight() + 3 + 'px';
+	d.style.width = this.getInputWidth() + 'px';
+	
 	for (var e in s) {
 		var entry = new ACEntry(this, s[e]);
 		d.appendChild(entry.e);
@@ -223,6 +249,9 @@ ACInputElement.prototype.displayACData = function(s) {
 	this.removeACData();
 	this.acPanel = d;
 	
+	if (this.throbber) { console.log('hide');
+		this.throbber.style.display = 'none'; }
+		
 	this.inputWrap.appendChild(d);
 }
 
@@ -265,8 +294,18 @@ ACInputElement.prototype.handleKey = function(ev) {
 	var _this = this;
 
 	var fnc = function() {
-		if (_this.lastWanted == s)
+		if (_this.lastWanted == s) {
+			if (_this.throbber) {
+				var h = _this.getInputHeight();
+				_this.throbber.style.top = h * 0.1 + 'px';
+				_this.throbber.style.width =
+				_this.throbber.style.height = (h * 0.6) + 'px';
+				_this.throbber.style.display = 'block';
+				console.log('show');
+			}
+			
 			_this.master.dataFetcher.fetchAutoComplete(_this, s);
+		}
 	};
 
 	if (s.length < this.minlen)

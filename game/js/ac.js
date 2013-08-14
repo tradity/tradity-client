@@ -249,8 +249,8 @@ ACInputElement.prototype.displayACData = function(s) {
 	this.removeACData();
 	this.acPanel = d;
 	
-	if (this.throbber) { console.log('hide');
-		this.throbber.style.display = 'none'; }
+	if (this.throbber)
+		this.throbber.style.display = 'none';
 		
 	this.inputWrap.appendChild(d);
 }
@@ -301,7 +301,6 @@ ACInputElement.prototype.handleKey = function(ev) {
 				_this.throbber.style.width =
 				_this.throbber.style.height = (h * 0.6) + 'px';
 				_this.throbber.style.display = 'block';
-				console.log('show');
 			}
 			
 			_this.master.dataFetcher.fetchAutoComplete(_this, s);

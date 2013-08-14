@@ -28,21 +28,21 @@
                 <div id="profile">
                     <div class="name-container clearfix">
                         <a href="#/depot" title="Hier gehts zu deinem Profil" class="block-link">
-                            <h2 class="name">Max <span class="nick">"MaxNick"</span> Mustermann </h2>
+                            <h2 class="name">{{user.giv_name}} <span class="nick">"{{user.name}}"</span> {{user.fam_name}}</h2>
                             <div class="depot">
                                 <h2 class="title">Gesamtvermögen</h2>
-                                <span class="depot-wert">+1354€</span>
+                                <span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
                             </div>
                         </a>
                     </div>
                     <img id="profile-picture"  class="profile-box" src="img/profile.png" alt="Profilbild">
                     <div id="bio" class="profile-box">
                         <h3 class="title">Kurzbeschreibung: <br /></h3>
-                        Das ist eine Kurzbeschreibung von mir. Lorem Ipsum 2002 Weltherrschaft. Dann tötete ich Galactico... Master of the Universer etc.
+                        {{user.desc}}
                     </div>
                     <div id="placement" class="profile-box">
                         <h3 class="title">Platz: <br /></h3>
-                        <span class="placement-number">1337</span>
+                        <span class="placement-number">{{user.rank}}</span>
                     </div>
                     <ul id="buttons" class="profile-box">
                         <li>
@@ -76,7 +76,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#/user/#MeinProfil">
+                        <a href="#/user/{{user.name}}">
                             <span class="batch nav-block-symbol">&#xF048;</span>
                             <span class="dark nav-block-title">Mein Profil</span>
                         </a>

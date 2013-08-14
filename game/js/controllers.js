@@ -53,6 +53,14 @@ angular.module('tradity.controllers', []).
         $location.path('/login');
       }
     });
+    socket.on('self-info', function(data) {
+      $scope.user = data;
+    });
+    socket.emit('fetch-events', {
+      since: 0,
+      all: false,
+      count: 0
+    });
   }).
   controller('RegistrationCtrl', function($scope, $location, socket) {
     $scope.school = null;

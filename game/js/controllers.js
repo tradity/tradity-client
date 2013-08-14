@@ -264,6 +264,8 @@ angular.module('tradity.controllers', []).
     $scope.stockid = null;
     $scope.stockname = null;
     $scope.leader = null;
+    $scope.xtype = 'market';
+    $scope.xvalue = null;
     $scope.comment = '';
     $scope.sellbuy = 1;
     $scope.buy = function() {

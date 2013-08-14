@@ -3,7 +3,7 @@
 		<tr ng-repeat="result in results | orderBy:'rank'">
 			<td>{{result.rank}}</td>
 			<td>{{result.name}}</td>
-			<td>{{result.totalvalue}}</td>
+			<td>{{result.totalvalue / 10000 | currency}}</td>
 		</tr>
 	</table>
 </div>

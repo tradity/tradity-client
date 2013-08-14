@@ -2,6 +2,9 @@
 
 angular.module('tradity.controllers', []).
   controller('LoginCtrl', function($scope, $routeParams, $location, socket) {
+    $scope.username = '';
+    $scope.password = '';
+    $scope.stayloggedin = false;
     if ($routeParams.emailVerifCode && $routeParams.uid) {
       socket.emit('emailverif', {
         key: $routeParams.emailVerifCode,
@@ -27,7 +30,7 @@ angular.module('tradity.controllers', []).
       socket.emit('login', {
         name: $scope.username,
         pw: $scope.password,
-        stayloggedin: false
+        stayloggedin: $scope.stayloggedin
       },
       function(data) {
         switch (data.code) {

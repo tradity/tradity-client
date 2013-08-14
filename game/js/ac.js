@@ -152,11 +152,20 @@ function ACEntry(master, data) {
 		this.e.appendChild(number);
 	}
 	
-	master.master.dataFetcher.valuecreate(master, this.data, this.e);
+	this.focushandlers = [];
+	master.master.dataFetcher.valuecreate(master, this.data, this.e, this.focushandlers);
 }
 
 ACEntry.prototype.unfocus = function() {
 	this.e.setAttribute('class', 'autocomplete-inactive');
+	for (var i = 0; i < this.focushandlers.length; ++i) 
+		this.focushandlers[i](this.master, this.data, 'unfocus', this.e);
+}
+
+ACEntry.prototype.focus = function() {
+	this.e.setAttribute('class', 'autocomplete-active');
+	for (var i = 0; i < this.focushandlers.length; ++i) 
+		this.focushandlers[i](this.master, this.data, 'focus', this.e);
 }
 
 ACEntry.prototype.getInputTextValue = function() {
@@ -168,12 +177,17 @@ ACInputElement.prototype.focusnth = function(n) {
 }
 
 ACInputElement.prototype.focus = function(entry) {
-	var old = this.entries[this.curFocusIndex];
-	if (old)
-		old.unfocus();
+	var oldFocusIndex = this.curFocusIndex;
+	var old = this.entries[oldFocusIndex];
 	for (var i = 0; i < this.entries.length; ++i)
 		if (entry && entry == this.entries[i])
 			this.curFocusIndex = i;
+	
+	if (this.curFocusIndex == oldFocusIndex)
+		return;
+	
+	if (old)
+		old.unfocus();
 	entry.focus();
 
 	var newString = entry.getInputTextValue();
@@ -187,10 +201,6 @@ ACInputElement.prototype.focus = function(entry) {
 	} else {
 		this.e.value = newString;
 	}
-}
-
-ACEntry.prototype.focus = function() {
-	this.e.setAttribute('class', 'autocomplete-active');
 }
 
 ACInputElement.prototype.removeACData = function() {
@@ -240,6 +250,7 @@ ACInputElement.prototype.displayACData = function(s) {
 	d.style.top = this.getInputHeight() + 3 + 'px';
 	d.style.width = this.getInputWidth() + 'px';
 	
+	this.entries = [];
 	for (var e in s) {
 		var entry = new ACEntry(this, s[e]);
 		d.appendChild(entry.e);

@@ -1,6 +1,6 @@
 <div id="trade" class="main-content">
 	<form ng-submit="buy()">
-		<fieldset class="options-field"> 
+		<fieldset class="options-field" style="float:left;margin-right:0"> 
 				<legend>Wertpapiername</legend>
 				<div class="trade-label">
 					Suche hier nach einem Wertpapier, das du handeln möchtest und bestätige dann deine Auswahl.
@@ -9,6 +9,19 @@
 				<input type="text" class="options-input"
                                 placeholder="Wertpapiername" id="paper" ng-model="stockname">
 		</fieldset>
+		<div class="options-field" style="float:right;margin-left:0"> 
+			<div>
+				Notlösung für Aktienanzeige
+			</div>
+			<table>
+				<tr><th>Name</th><td ng-show="cur">{{stockname}}</td></tr>
+				<tr><th>Ask</th><td ng-show="cur">{{cur.ask / 10000}}</td></tr>
+				<tr><th>Bid</th><td ng-show="cur">{{cur.bid / 10000}}</td></tr>
+				<tr><th>Wert</th><td ng-show="cur">{{cur.lastvalue / 10000}}</td></tr>
+				<tr ng-hide="leader"><th>Exchange</th><td ng-show="cur">{{cur.exchange}}</td></tr>
+			</table>
+		</div>
+		<div style="clear:both" />
 		<fieldset class="options-field"> 
 			<legend>Ordertyp</legend>
 			<div class="options-button order-type">

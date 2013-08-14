@@ -283,6 +283,7 @@ angular.module('tradity.controllers', []).
     $scope.stockid = null;
     $scope.stockname = null;
     $scope.leader = null;
+    $scope.cur = null;
     $scope.xtype = 'market';
     $scope.xvalue = null;
     $scope.comment = '';
@@ -354,9 +355,9 @@ angular.module('tradity.controllers', []).
           if (data.code == 'stock-search-success') {
             var suggestions = [];
             for (var i in data.results) {
-			  data.results[i].getEntryName = 
-			  data.results[i].getInputTextValue = function() { return this.leader ? 'Leader: ' + this.leadername : this.name; };
-			  data.results[i].getExtra = function() { return this.lastvalue / 10000; };
+              data.results[i].getEntryName = 
+              data.results[i].getInputTextValue = function() { return this.leader ? 'Leader: ' + this.leadername : this.name; };
+              data.results[i].getExtra = function() { return (parseInt(this.lastvalue / 100) / 100) + (this.exchange ? ' ' + this.exchange : ''); };
               suggestions.push(data.results[i]);
             }
             ac.putData(suggestions, s);
@@ -368,6 +369,9 @@ angular.module('tradity.controllers', []).
         $scope.stockname = data.leader ? 'Leader: ' + data.leadername : data.name;
         $scope.stockid = data.leader ? null : data.stockid;
         $scope.leader = data.leader ? data.leader : null;
+        $scope.cur = data;
+      }, valuecreate: function(ac, data, element, focusHandlers) {
+        focusHandlers.push(function(ac, data, type) { console.log(data,type);if (type == 'focus') $scope.$apply(function(){gotData(ac, data);}); });
       }
     };
     $scope.ac = new AC('paper', $scope.acFetcher, false, 3, null, 'img/throbber.gif');

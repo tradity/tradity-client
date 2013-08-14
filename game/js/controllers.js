@@ -269,29 +269,55 @@ angular.module('tradity.controllers', []).
     $scope.comment = '';
     $scope.sellbuy = 1;
     $scope.buy = function() {
-      socket.emit('stock-buy', {
-        amount: $scope.amount * $scope.sellbuy,
-        value: $scope.value,
+      if (!$scope.amount && !$scope.value)
+        return;
+	    var query = {
+        amount: $scope.amount ? $scope.amount * $scope.sellbuy : null,
         stockid: $scope.stockid,
         leader: $scope.leader,
         comment: $scope.comment
-      },
+      };
+      var qtype = 'stock-buy';
+      if ($scope.xtype != 'market') {
+        var fieldname = ($scope.amount >= 0) ^ ($scope.sellbuy < 0) ? 'ask' : 'bid';
+        var compar =  !(($scope.xtype == 'limit') ^ ($scope.amount >= 0) ^ ($scope.sellbuy < 0)) ? '<' : '>';
+        
+        var condition = '';
+        var stockid = $scope.stockid;
+        if (!$scope.leader)
+          condition = 'stock::' + $scope.stockid + '::exchange-open > 0 ∧ ';
+        else
+          stockid = '__LEADER_' + $scope.leader + '__';
+        condition += 'stock::' + stockid + '::' + fieldname + ' ' + compar + ' ' + ($scope.xvalue * 10000);
+        query.dquerydata = {xtype:$scope.xtype, xvalue:$scope.xvalue};
+        query.type = qtype;
+        query = {
+          condition: condition,
+          query: query
+        };
+        qtype = 'dquery';
+      }
+      socket.emit(qtype, query,
       function(data) {
         switch (data.code) {
+          case 'dquery-success':
+            alert('Der Trade wird ausgeführt, sobald die angegebenen Bedingungen erfüllt sind.');
+            break;
           case 'stock-buy-success':
-            alert('Kauf erfolgreich');
+            alert('Trade erfolgreich');
             break;
           case 'stock-buy-out-of-money':
-            alert('Nicht genügend Geld zum Kauf');
+            alert('Nicht genügend Geld zum Trade');
             break;
           case 'stock-buy-not-enough-stocks':
             alert('Nicht genug Wertpapiere');
             break;
+          case 'stock-buy-autodelay-sxnotopen':
+            alert('Der Trade wird ausgeführt, sobald der Handelsplatz öffnet');
+            break;
           case 'stock-buy-stock-not-found':
             alert('Wertpapier existiert nicht');
             break;
-          case 'stock-buy-round-result-zero':
-            alert('Zu niedriger Kaufwert');
         }
       });
     };

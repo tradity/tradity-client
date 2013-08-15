@@ -35,6 +35,11 @@ angular.module('tradity.controllers', []).
       function(data) {
         switch (data.code) {
           case 'login-success':
+            socket.emit('fetch-events', {
+              since: 0,
+              all: false,
+              count: 0
+            });
             $location.path('/')
             break;
           case 'login-badname':
@@ -53,14 +58,13 @@ angular.module('tradity.controllers', []).
     $scope.logout = function() {
       socket.emit('logout', {}, function(data) {
         if (data.code == 'logout-success') {
-          alert('Erfolgreich ausgeloggt');
+          $scope.user = null;
           $location.path('/login');
         }
       });
     };
     socket.on('response', function(data) {
       if (data.code == 'not-logged-in') {
-        alert('Nicht eingeloggt');
         $location.path('/login');
       }
     });

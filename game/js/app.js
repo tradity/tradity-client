@@ -6,7 +6,8 @@ angular.module('tradity', [
 ]).config(['$routeProvider', function ($routeProvider, $locationProvider) {
   $routeProvider.
     when('/', {
-      templateUrl: 'templates/feed.html'
+      templateUrl: 'templates/feed.html',
+      controller: 'FeedCtrl'
     }).
     when('/trade', {
       templateUrl: 'templates/trade.html',

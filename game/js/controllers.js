@@ -55,6 +55,7 @@ angular.module('tradity.controllers', []).
     };
   }).
   controller('MainCtrl', function($scope, $location, socket) {
+    $scope.user = null;
     $scope.logout = function() {
       socket.emit('logout', {}, function(data) {
         if (data.code == 'logout-success') {
@@ -65,6 +66,7 @@ angular.module('tradity.controllers', []).
     };
     socket.on('response', function(data) {
       if (data.code == 'not-logged-in') {
+        $scope.user = null;
         $location.path('/login');
       }
     });
@@ -415,4 +417,21 @@ angular.module('tradity.controllers', []).
       });
     };
     $scope.showWatchlist();
+  }).
+  controller('FeedCtrl', function($scope, socket) {
+    $scope.messages = [];
+    socket.on('self-info', function(data) {
+      $scope.user = data;
+    });
+    socket.on('watch-add', function(data) {
+      var message = {
+        type: 'watch-add',
+        
+      }
+    });
+    socket.emit('fetch-events', {
+      since: 0,
+      all: false,
+      count: 10
+    });
   });

@@ -1,19 +1,19 @@
 <div id="profile">
     <div class="clearfix">
-        <h2 class="name">Max <span class="nick">"MaxNick"</span> Mustermann </h2>
+        <h2 class="name">{{user.giv_name}} <span class="nick">"{{user.name}}"</span> {{user.fam_name}}</h2>
         <div class="depot">
             <h2 class="title">Gesamtvermögen</h2>
-            <span class="depot-wert">+1354€</span>
+            <span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
         </div>
     </div>
     <img id="profile-picture"  class="profile-box" src="img/profile.png" alt="Profilbild">
     <div id="bio" class="profile-box">
         <h3 class="title">Kurzbeschreibung: <br /></h3>
-        Das ist eine Kurzbeschreibung von mir. Lorem Ipsum 2002 Weltherrschaft. Dann tötete ich Galactico... Master of the Universer etc.
+        {{user.desc}}
     </div>
     <div id="placement" class="profile-box">
         <h3 class="title">Platz: <br /></h3>
-        <span class="placement-number">1337</span>
+        <span class="placement-number">{{user.rank}}</span>
     </div>
 </div>
 <div class="main-content">
@@ -37,21 +37,12 @@
 				<th>Preis</th>
 				<th>Performance</th>
 			</tr>
-			<tr>
-				<td class="depot-sell">Adidas</td>
-				<td>13.3.13</td>
-				<td>+128934,34€</td>
-				<td>132</td>
-				<td>132,12€</td>
-				<td>-2,3%</td>
-
-			</tr>
-			<tr>
-				<td class="depot-buy">Adidas</td>
-				<td>13.3.13</td>
-				<td>-132000,00€</td>
-				<td>132</td>
-				<td>100,00€</td>
+			<tr ng-repeat="order in orders">
+				<td class="{{order.ordertype}}">{{order.stocktextid}}</td>
+				<td>{{order.buytime | date:'d.M.yy HH:mm'}}</td>
+				<td>{{(order.money * -1) / 10000 | currency}}</td>
+				<td></td>
+				<td></td>
 				<td></td>
 			</tr>
 		</table>

@@ -211,8 +211,18 @@ angular.module('tradity.controllers', []).
           alert('Benutzer existiert nicht');
         } else if (data.code == 'get-user-info-success') {
           $scope.user = data.result;
-          $scope.orders = data.orders;
           $scope.values = data.values;
+          var orders = data.orders;
+          for (var i in orders) {
+            if (orders[i].money > 0) {
+              orders[i].ordertype = 'depot-buy';
+            } else if (orders[i].money < 0) {
+              orders[i].ordertype = 'depot-sell';
+            } else {
+              orders[i].ordertype = '';
+            }
+          }
+          $scope.orders = orders;
         }
       });
     };

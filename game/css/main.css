@@ -697,7 +697,6 @@ h1#tradity {
 /* für Ordertyp */
 
 .options-button {
-    position: relative;
     margin: 5px 7px 5px 0;
     background-color: #ddd;
     border-radius: 3px;

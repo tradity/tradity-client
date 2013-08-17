@@ -71,6 +71,7 @@ div.fixed-name-container {
     width: 750px;
     background-color: #fff;
     display: none;
+    z-index: 3;
     margin: 0px;
     filter:alpha(opacity=90);
     -moz-opacity: 0.9;
@@ -245,17 +246,48 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Droid Sans', sans-serif;
 }
 
-.alarm-box {
-    background-color: #bf414c;
-    border: thin solid #a13547;
+.box {
+    border: thin solid #fff; 
     color: #fff;
     font-family: "Abel", "Droid Sans", sans-serif;
     padding: 10px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
     line-height: 1;
     display: inline-block;
+}
+
+.alarm {
+    border-color: #a13547;
+    background-color: #bf414c;
+}
+
+.alarm:before {
+     content: "\F15A  ";
+    font-family: 'batch', sans-serif;
+}
+
+
+.hint {
+    border-color: #ace;
+    background-color: #269;
+}
+
+.hint:before {
+    content: "\F132  ";
+    font-family: 'batch', sans-serif;
+}
+
+
+.correct {
+    border-color: #5ec962;
+    background-color: #36a350;
+}
+
+.correct:before {
+    content: "\F0CA  ";
+    font-family: 'batch', sans-serif;
 }
 
 .text-link {
@@ -662,9 +694,10 @@ h1#tradity {
     color: #fff;
 }
 
-/* Auch für Ordertyp */
+/* für Ordertyp */
 
 .options-button {
+    position: relative;
     margin: 5px 7px 5px 0;
     background-color: #ddd;
     border-radius: 3px;
@@ -715,12 +748,17 @@ h1#tradity {
     width: 373px;
 }
 
-.options-field > label {
+.options-field > label{
     display: inline-block;
     width: 320px;
 }
+#stayloggedin-right {
+    font-family: "Abel", sans-serif;
+    margin-left: 330px;
+    width: auto;
+}
 
-#realnamepublish {
+#realnamepublish, #stayloggedin {
     vertical-align: middle;
     width: 20px;
     height: 20px;
@@ -761,6 +799,37 @@ label.trade-label-input {
 #paper {
     width: 313px;
  }
+
+.paper-preview th {
+    font-family: "Abel", sans-serif;
+    text-align: right;
+}
+.paper-preview td {
+    padding: 3px 10px;
+}
+
+.paper-preview-box {
+    float:right;
+    margin: 0 0 0 0;
+}
+
+/* hover infos */
+
+ li[data-info]:hover:after {
+  content:  attr(data-info);
+  padding: 4px;
+  color: #333;
+  background-color: #fff;
+  position: absolute;
+  top: 83px;
+  left: 410px;
+  white-space: nowrap; 
+  z-index: 3;
+  -moz-border-radius: 3px; 
+  -webkit-border-radius: 3px;  
+  border-radius: 3px;  
+  border: thin solid #a7a7a7;
+}
 
 /* ==========================================================================
     display-trade

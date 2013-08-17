@@ -1,5 +1,5 @@
 <div id="options" class="main-content">
-  <div class="alarm-box"><span class="batch">&#xf132;</span> Vergiss nicht, deine Einstellungen zu speichern!</div>
+  <div class="hint box">Vergiss nicht, deine Einstellungen zu speichern!</div>
   <form ng-submit="changeOptions()">
     <fieldset class="options-field">
       <legend>Geschäftliches</legend>
@@ -24,7 +24,7 @@
       <label for="fam_name">Nachname</label>
       <input type="text" ng-model="fam_name" placeholder="Nachname" id="fam_name" class="options-input"><br>
       <label for="realnamepublish">Soll dein Klarname veröffentlicht werden?</label>
-      <input type="checkbox" ng-model="realnamepublish" id="realnamepublish"><br>
+      <input type="checkbox" ng-model="realnamepublish" id="realnamepublish"> Ja<br>
       <label for="school">Schule</label>
       <input type="text" ng-model="school" placeholder="Schule" id="school" class="options-input"><br>
       <label for="birthday">Geburtstagsdatum</label>
@@ -33,21 +33,6 @@
       <textarea ng-model="desc" id="desc" placeholder="Sage uns was dich ausmacht" class="options-input"></textarea><br>
       <label for="address">Adresse</label>
       <input type="text" ng-model="address" placeholder="Adresse" id="address" class="options-input"><br>
-      <div class="options-button">
-        <label for="undisclosed">
-            <input type="radio" name="gender" ng-model="gender" value="undisclosed" id="undisclosed"><span>Keine Angabe</span>
-          </label>
-      </div>
-      <div class="options-button">
-        <label for="female">
-          <input type="radio" name="gender" ng-model="gender" value="female" id="female"><span>Weiblich</span>
-        </label>
-      </div>
-      <div class="options-button">
-        <label for="male">
-          <input type="radio" name="gender" ng-model="gender" value="male" id="male"><span>Männlich</span>
-        </label>
-      </div>
     </fieldset>
     <div style="text-align: right">
       <input type="submit" value="Speichern" id="options-sb">

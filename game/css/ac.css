@@ -18,8 +18,11 @@
 
 .autocomplete {
 	background-color: white;
-	border: 1px solid black;
-	z-index: 10;
+	border: 1px solid #a7a7a7;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+	z-index: 2;
 	list-style-type: none;
 	padding: 0;
 	margin: 0;
@@ -30,7 +33,9 @@
 }
 
 .autocomplete-active {
-	background-color: #ADD8E6; /* Lightblue */
+	background-color: #269; /* Lightblue */
+	color: #fff;
+	cursor: pointer;
 }
 
 .autocomplete-right {

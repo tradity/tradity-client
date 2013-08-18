@@ -291,18 +291,6 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'batch', sans-serif;
 }
 
-.text-link {
-    color: #369;
-}
-
-.text-link:hover {
-    text-decoration: underline;
-}
-
-.text-link:active {
-    color: #000;
-}
-
 .batch {
     font-family: 'batch', sans-serif;
 }
@@ -561,6 +549,7 @@ h1#tradity {
 .footer-text {
     color: #aaa;
     font-size: 12px;
+    margin-left: 20px;
 }
 
 .dark {
@@ -582,6 +571,19 @@ h1#tradity {
     -moz-opacity: 0.8;
     opacity: 0.8;
 }
+
+.text-link {
+    color: #369;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+.text-link:active {
+    color: #000;
+}
+
 
 /* ==========================================================================
     Feed

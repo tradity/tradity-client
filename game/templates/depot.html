@@ -6,7 +6,7 @@
 				Gesamt
 			</li>
 			<li>
-				+1354€
+				{{ownUser.totalvalue / 10000 | currency}}
 			</li>
 		</ul>
 		<ul class="one-item-list">
@@ -14,7 +14,7 @@
 				Konto
 			</li>
 			<li>
-				+1000€
+				{{ownUser.balance / 10000 | currency}}
 			</li>
 		</ul>
 		<ul class="one-item-list">
@@ -22,7 +22,7 @@
 				Depot
 			</li>
 			<li>
-				+354€
+				{{ownUser.depotvalue / 10000 | currency}}
 			</li>
 		</ul>
 	</fieldset>
@@ -38,7 +38,7 @@
 				Heute
 			</li>
 			<li>
-				+13%
+				%
 			</li>
 		</ul>
 		<ul class="one-item-list">
@@ -46,7 +46,7 @@
 				Gestern
 			</li>
 			<li>
-				+37%
+				%
 			</li>
 		</ul>
 	</fieldset>

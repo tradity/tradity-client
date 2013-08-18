@@ -198,10 +198,30 @@ angular.module('tradity.controllers', []).
     socket.emit('list-own-depot', {}, function(data) {
       if (data.code == 'list-own-depot-success') {
         $scope.results = data.results;
+        socket.emit('get-user-info', {
+          lookfor: '$self',
+          nohistory: true
+        },
+        function(data) {
+          $scope.ownUser = data.result;
+          $scope.ownUser.depotvalue = 0;
+          for (var i in $scope.results) {
+            $scope.ownUser.depotvalue += $scope.results[i].total;
+          }
+          $scope.ownUser.balance = $scope.ownUser.totalvalue - $scope.ownUser.depotvalue;
+        });
       }
     });
   }).
   controller('ProfileCtrl', function($scope, $routeParams, socket) {
+    socket.emit('get-user-info', {
+      lookfor: '$self',
+      nohistory: true
+    },
+    function(data) {
+      $scope.ownUser = data.result;
+      $scope.isThisMe = ($routeParams.userId == $scope.ownUser.name);
+    });
     $scope.getUserInfo = function() {
       socket.emit('get-user-info', {
         lookfor: $routeParams.userId
@@ -391,7 +411,13 @@ angular.module('tradity.controllers', []).
       }
     };
     $scope.ac = new AC('paper', $scope.acFetcher, false, 3, null, 'img/throbber.gif');
-    
+    $scope.calcValue = function() {
+      $scope.value = $scope.amount * ($scope.cur.lastvalue / 10000);
+    };
+    $scope.calcAmount = function() {
+      $scope.amount = ($scope.cur.lastvalue / 10000) / $scope.value;
+    };
+
     if ($routeParams.stockId) {
       $scope.stockid = $routeParams.stockId;
       socket.emit('stock-search', {
@@ -405,8 +431,8 @@ angular.module('tradity.controllers', []).
             }
           }
         }
-	  });
-	}
+      });
+    }
   }).
   controller('WatchlistCtrl', function($scope, socket) {
     $scope.showWatchlist = function() {

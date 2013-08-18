@@ -1,4 +1,4 @@
-<div id="profile">
+<div id="profile" ng-hide="isThisMe">
     <div class="clearfix">
         <h2 class="name">{{user.giv_name}} <span class="nick">"{{user.name}}"</span> {{user.fam_name}}</h2>
         <div class="depot">
@@ -19,8 +19,8 @@
 <div class="main-content">
     <div style="text-align: right">
       <button ng-click="getUserInfo()" class="click-button"><span class="batch">&#xF0B2; </span>Refresh</button>
-      <button ng-click="addToWatchlist()" class="click-button"><span class="batch">&#xF179; </span>Add to Watchlist</button> <!-- folgende beiden bei sich selbst ausblenden und followbutton implementieren! -->
-      <button class="click-button block-link"><a href="#FOLLOWEN"><span class="batch">&#xF0B8; </span>Folgen</a></button>
+      <button ng-click="addToWatchlist()" class="click-button" ng-hide="isThisMe"><span class="batch">&#xF179; </span>Add to Watchlist</button>
+      <button class="click-button block-link" ng-hide="isThisMe"><a href="#FOLLOWEN"><span class="batch">&#xF0B8; </span>Folgen</a></button>
     </div>
 	<fieldset class="options-field">
 		<legend>Transaktionshistorie</legend>

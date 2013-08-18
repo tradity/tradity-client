@@ -637,7 +637,8 @@ h1#tradity {
 
 .options-input,
 #options-sb,
-#search-button {
+#search-button,
+.click-button {
     border: 1px solid #a7a7a7;
     font-size: 16px;
     line-height: normal;
@@ -660,7 +661,8 @@ h1#tradity {
 }
 
 #options-sb,
-#search-button {
+#search-button,
+.click-button {
     border-radius: 3px;
     display: inline-block;
     height: 40px;
@@ -684,12 +686,14 @@ h1#tradity {
 }
 
 #options-sb:hover,
-#search-button:hover {
+#search-button:hover,
+.click-button:hover {
     background-color: #ccc;
 }
 
 #options-sb:active,
-#search-button:active {
+#search-button:active,
+.click-button:active {
     background-color: #369;
     color: #fff;
 }
@@ -831,8 +835,15 @@ label.trade-label-input {
 }
 
 /* ==========================================================================
-    display-trade
+    angulars-classes
    ========================================================================== */
+
+.ng-valid {
+    outline-color: #0f0;
+}
+.ng-invalid {
+    outline-color: #f00;
+}
 
 /* ==========================================================================
     depot
@@ -858,7 +869,8 @@ label.trade-label-input {
     color: #000;
 }
 
-.transaction-history {
+.transaction-history,
+.ranking {
     width: 100%;
     text-align: left;
 }
@@ -868,12 +880,15 @@ label.trade-label-input {
     color: #444;
 }
 
-.transaction-history tr + tr{
+.transaction-history tr + tr,
+.ranking tr + tr{
     border-bottom: thin solid #a7a7a7;
 }
 
 .transaction-history td,
-.transaction-history th {
+.transaction-history th,
+.ranking td,
+.ranking th {
     height: 100%;
     padding: 10px;
     vertical-align: middle;
@@ -900,9 +915,10 @@ label.trade-label-input {
 
 .transaction-history .trade-td a {
     display: inline-block;
+    vertical-align: middle;
+    padding: 15px 0;
     height:100%;
     width:100%;
-    padding-top: 15px;
 }
 
 .transaction-history .column-1,
@@ -926,3 +942,8 @@ label.trade-label-input {
 .depot-buy {
     background-color: rgba(0, 150, 0, 0.2);    
 }
+
+/* ==========================================================================
+    Rangliste
+   ========================================================================== */
+

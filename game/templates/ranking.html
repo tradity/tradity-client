@@ -1,5 +1,10 @@
 <div id="stats" class="main-content">
 	<table class="ranking">
+		<tr>
+			<th>Platz</th>
+			<th>Name</th>
+			<th>Gesamtvermögen</th>
+		</tr>
 		<tr ng-repeat="result in results | orderBy:'rank'">
 			<td>{{result.rank}}</td>
 			<td>{{result.name}}</td>

@@ -252,7 +252,7 @@ angular.module('tradity.controllers', []).
       },
       function(data) {
         if (data.code == 'watchlist-add-success') {
-          alert($scope.user.name + 'zur Watchlist hinzugefügt');
+          alert($scope.user.name + ' zur Watchlist hinzugefügt');
         } else if (data.code == 'watchlist-add-notfound') {
           alert('Benutzer nicht gefunden. Hier läuft etwas falsch.');
         }

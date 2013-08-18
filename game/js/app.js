@@ -53,6 +53,9 @@ angular.module('tradity', [
       templateUrl: 'templates/watchlist.html',
       controller: 'WatchlistCtrl'
     }).
+    when('/faq', {
+      templateUrl: 'templates/faq.html'
+    }).
     otherwise({
       redirectTo: '/'
     });

@@ -1,5 +1,10 @@
 <div id="stats" class="main-content">
 	<table class="ranking">
+		<colgroup>
+		  	<col class="rankcol-1">
+		    <col class="rankcol-2">
+		    <col class="rankcol-3">
+		</colgroup>
 		<tr>
 			<th>Platz</th>
 			<th>Name</th>
@@ -7,7 +12,7 @@
 		</tr>
 		<tr ng-repeat="result in results | orderBy:'rank'">
 			<td>{{result.rank}}</td>
-			<td>{{result.name}}</td>
+			<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
 			<td>{{result.totalvalue / 10000 | currency}}</td>
 		</tr>
 	</table>

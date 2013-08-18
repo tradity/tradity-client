@@ -1,6 +1,7 @@
 body {
     font-size: 1em;
     line-height: 1.4;
+    background: #f0f0f0;
 }
 
 ::-moz-selection {
@@ -307,8 +308,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #wrapper {
-    width: 960px;
+    width: 1000px;
+    padding: 0 20px;
     margin: 0 auto;
+    box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
+    background-color: #fff
 }
 
 #header {
@@ -375,8 +379,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 1px;
     display: block;
     color: #a7a7a7;
-    overflow: hidden;
-}
+    overflow: hidden;}
 
 #nav ul li a:hover{
     padding: 0;
@@ -389,6 +392,13 @@ h1, h2, h3, h4, h5, h6 {
     -moz-transition:color 0.3s ease-in;  
     -o-transition:color 0.3s ease-in;  
     transition:color 0.3s ease-in;
+    background: -moz-linear-gradient(top,  rgba(102,102,102,0.1) 0%, rgba(255,255,255,0) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(102,102,102,0.1)), color-stop(100%,rgba(255,255,255,0)));
+    background: -webkit-linear-gradient(top,  rgba(102,102,102,0.1) 0%,rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(top,  rgba(102,102,102,0.1) 0%,rgba(255,255,255,0) 100%);
+    background: -ms-linear-gradient(top,  rgba(102,102,102,0.1) 0%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(to bottom,  rgba(102,102,102,0.1) 0%,rgba(255,255,255,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a666666', endColorstr='#00ffffff',GradientType=0 );
 }
 
 #nav ul li a:active,
@@ -670,7 +680,13 @@ h1#tradity {
     margin: 12px 24px 0 0;
     white-space: nowrap;
     cursor: pointer;
-    background-color: #ddd;
+    background: -moz-linear-gradient(top,  rgba(167,167,167,0.65) 0%, rgba(183,183,183,0) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(167,167,167,0.65)), color-stop(100%,rgba(183,183,183,0)));
+    background: -webkit-linear-gradient(top,  rgba(167,167,167,0.65) 0%,rgba(183,183,183,0) 100%);
+    background: -o-linear-gradient(top,  rgba(167,167,167,0.65) 0%,rgba(183,183,183,0) 100%);
+    background: -ms-linear-gradient(top,  rgba(167,167,167,0.65) 0%,rgba(183,183,183,0) 100%);
+    background: linear-gradient(to bottom,  rgba(167,167,167,0.65) 0%,rgba(183,183,183,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6a7a7a7', endColorstr='#00b7b7b7',GradientType=0 );
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -694,8 +710,8 @@ h1#tradity {
 #options-sb:active,
 #search-button:active,
 .click-button:active {
-    background-color: #369;
     color: #fff;
+    background: #ff8f27;
 }
 
 /* für Ordertyp */
@@ -721,13 +737,33 @@ h1#tradity {
     cursor: pointer;
 }
 
+.options-button label .tooltip,
+.tooltip {
+    display: inline;
+    font-weight: 400;
+}
+
+.tooltip:hover {
+    display: inline;
+    color: #ff8f27;
+    font-weight: 400;
+    cursor: pointer;
+    text-align: left;
+}
+
 .options-button label input {
     position: absolute;
     top: -20px;
 }
 
 .options-button input:checked + span {
-    background-color: #369;
+    background: -moz-linear-gradient(top,  rgba(51,102,153,0.8) 0%, rgba(19,136,198,0.8) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(51,102,153,0.8)), color-stop(100%,rgba(19,136,198,0.8)));
+    background: -webkit-linear-gradient(top,  rgba(51,102,153,0.8) 0%,rgba(19,136,198,0.8) 100%);
+    background: -o-linear-gradient(top,  rgba(51,102,153,0.8) 0%,rgba(19,136,198,0.8) 100%);
+    background: -ms-linear-gradient(top,  rgba(51,102,153,0.8) 0%,rgba(19,136,198,0.8) 100%);
+    background: linear-gradient(to bottom,  rgba(51,102,153,0.8) 0%,rgba(19,136,198,0.8) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc336699', endColorstr='#cc1388c6',GradientType=0 );
     color: #fff;
 }
 
@@ -818,15 +854,13 @@ label.trade-label-input {
 
 /* hover infos */
 
- li[data-info]:hover:after {
+ .tooltip[data-info]:hover:after {
   content:  attr(data-info);
-  padding: 4px;
+  padding: 6px;
   color: #333;
+  width: 200px;
   background-color: #fff;
   position: absolute;
-  top: 83px;
-  left: 410px;
-  white-space: nowrap; 
   z-index: 3;
   -moz-border-radius: 3px; 
   -webkit-border-radius: 3px;  
@@ -915,7 +949,6 @@ label.trade-label-input {
 
 .transaction-history .trade-td a {
     display: inline-block;
-    vertical-align: middle;
     padding: 15px 0;
     height:100%;
     width:100%;
@@ -932,7 +965,7 @@ label.trade-label-input {
 }
 
 .transaction-history .column-6-7 {
-    background-color: rgba(220, 200, 100, 0.4);
+    background-color: rgba(255, 143, 39, 0.4)
 }
 
 .depot-sell {
@@ -947,3 +980,51 @@ label.trade-label-input {
     Rangliste
    ========================================================================== */
 
+.rankcol-1 {
+
+}
+
+.rankcol-2 {
+
+}
+
+.rankcol-3 {
+
+}
+
+.ranking tr td:first-child,
+.ranking tr th:first-child {
+    text-align: center;
+    font-weight: 900;
+}
+
+.ranking tr th {
+    font-family: "Abel", sans-serif;
+}
+
+.ranking .rank-name a {
+    color: #369;
+    display: inline-block;
+    height:100%;
+    width:100%;
+}
+
+.ranking .rank-name a:hover {
+    text-decoration: underline;
+}
+
+.ranking .rank-name a:active {
+    text-decoration: none;
+}
+
+.ranking tr td:last-child,
+.ranking tr th:last-child {
+    text-align: right;
+}
+
+.ranking tr:nth-child(even) {
+    background-color: rgba(200, 200, 200, 0.2);
+}
+
+
+/* ff8f27 */

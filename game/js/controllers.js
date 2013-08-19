@@ -212,6 +212,23 @@ angular.module('tradity.controllers', []).
         });
       }
     });
+    socket.emit('dquery-list', {}, function(data) {
+      $scope.delayedOrders = data.results;
+    });
+    $scope.removeDelayedOrder = function(id) {
+      socket.emit('dquery-remove', {
+        queryid: id
+      },
+      function(data) {
+        if (data.code == 'dquery-remove-success') {
+          socket.emit('dquery-list', {}, function(data) {
+            $scope.delayedOrders = data.results;
+          });
+        } else if (data.code == 'dquery-remove-notfound') {
+          alert('Order nicht gefunden. Möglicherweise wurde sie bereits ausgeführt.');
+        }
+      });
+    };
   }).
   controller('ProfileCtrl', function($scope, $routeParams, socket) {
     socket.emit('get-user-info', {

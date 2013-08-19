@@ -84,7 +84,7 @@
 			</tr>
 			<tr ng-repeat="result in results">
 				<td>{{result.stockname}}</td>
-				<td>{{result.buytime * 1000 | date:'d.M.yy'}}</td>
+				<td>{{result.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
 				<td>{{result.total / 10000 | currency}}</td>
 				<td>{{result.amount}}</td>
 				<td>{{result.buymoney / result.amount / 10000 | currency}}</td>
@@ -114,12 +114,12 @@
 				<th>Stop/Limit Marke</th>
 				<th>Trade</th>
 			</tr>
-			<tr>
-				<td class="depot-buy">felix</td>
-				<td>2.2.12</td>
-				<td>Market</td>
-				<td></td>
-				<td class="trade-td"><a ng-href="#/trade/sell/" class="batch block-link trade">&#xF153;</a></td>
+			<tr ng-repeat="order in delayedOrders">
+				<td class="depot-buy" title="{{order.query.dquerydata.name}}">{{order.query.stockid}}</td>
+				<td>{{order.query.dquerydata.ordertime | date:'d.M.yy HH:mm'}}</td>
+				<td>{{order.query.dquerydata.xtype}}</td>
+				<td>{{order.condition}}</td>
+				<td class="trade-td"><a ng-click="removeDelayedOrder({{order.queryid}})" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF153;</a></td>
 			</tr>
 		</table>
 	</fieldset>

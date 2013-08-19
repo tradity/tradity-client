@@ -57,9 +57,10 @@ und verkaufst erst dann, wenn der Wert unter den von dir festgelegten Stop-Wert 
 	   	</fieldset>
 		<fieldset class="options-field"> 
 			<legend>Anzahl</legend>
-		    <input type="number" ng-model="amount" placeholder="Anzahl" id="amount" class="options-input" ngBlur="calcValue()">
+		    <input type="number" ng-model="amount" placeholder="Anzahl" id="amount" class="options-input">
+		    <!--
 		    <legend>Kaufwert</legend>
-		    <input type="text" ng-model="value" placeholder="Kaufwert" id="value" class="options-input" onblur="calcAmount();">
+		    <input type="text" ng-model="value" placeholder="Kaufwert" id="value" class="options-input">-->
 			<div class="options-field paper-preview-box"> 
 				<table class="paper-preview">
 					<tr ng-show="leader"><th>Name</th><td><a href="#/user/{{cur.leadername}}">{{stockname}}</a></td></tr>

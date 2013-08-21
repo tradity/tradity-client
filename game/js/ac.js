@@ -50,9 +50,11 @@
  *       submit(ac, data):
  *           called when the user chooses a value (by clicking on it)
  *           (optional)
- *       valuecreate(ac, data, element):
+ *       valuecreate(ac, data, element, focusnotify):
  *           called when a value entry is created, just before it is inserted
  *           into the DOM tree, so you can install extra stuff on your own.
+ *           focusnotify is an object on which you can .push() handlers for focusevents,
+ *           which have the form (ac, data, 'focus'/'unfocus').
  *       fetchAutoComplete(ac, value):
  *           called when AC decides to fetch autocompletion data;
  *           should probably always call ac.putData().
@@ -251,6 +253,8 @@ ACInputElement.prototype.displayACData = function(s) {
 	d.style.width = this.getInputWidth() + 'px';
 	
 	this.entries = [];
+	this.curFocusIndex = -1;
+	
 	for (var e in s) {
 		var entry = new ACEntry(this, s[e]);
 		d.appendChild(entry.e);

@@ -374,6 +374,7 @@ angular.module('tradity.controllers', []).
     $scope.xvalue = null;
     $scope.comment = '';
     $scope.sellbuy = 1;
+
     $scope.buy = function() {
       if (!$scope.amount && !$scope.value)
         return;
@@ -467,7 +468,7 @@ angular.module('tradity.controllers', []).
       $scope.value = $scope.amount * ($scope.cur.lastvalue / 10000);
     };
     $scope.calcAmount = function() {
-      $scope.amount = ($scope.cur.lastvalue / 10000) / $scope.value;
+      $scope.amount = Math.floor($scope.value / ($scope.cur.lastvalue / 10000));
     };
 
     if ($routeParams.stockId) {

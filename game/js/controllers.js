@@ -290,6 +290,7 @@ angular.module('tradity.controllers', []).
             } else {
               orders[i].ordertype = '';
             }
+            orders[i].price = Math.abs(orders[i].money / orders[i].amount);
           }
           $scope.orders = orders;
         }

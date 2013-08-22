@@ -43,12 +43,12 @@
 				<th>Transaktionskosten</th>
 			</tr>
 			<tr ng-repeat="order in orders">
-				<td class="{{order.ordertype}}">{{order.stocktextid}}</td>
-				<td>{{order.buytime | date:'d.M.yy HH:mm'}}</td>
+				<td class="{{order.ordertype}}">{{order.stockname}}</td>
+				<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
 				<td>{{(order.money * -1) / 10000 | currency}}</td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>{{order.amount}}</td>
+				<td>{{order.price}}</td>
+				<td>{{order.fee}}</td>
 			</tr>
 		</table>
 	</fieldset>

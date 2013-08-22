@@ -19,7 +19,7 @@
 /**
  * AC API:
  *
- * new AC(id, fetcher, lastonly, minlen, timer, throbber):
+ * new AC(id, fetcher, lastonly, minlen, timer, throbber, automatch):
  *    constructor arguments:
  *       id: [string] html/xml id of the input field to enable
  *           autocompletion for
@@ -31,6 +31,10 @@
  *           autocompletion will be fetched; if non-null, AC will make the
  *           assumption that setTimeout() exists and works (optional)
  *       throbber: [string] path to an image that indicates loading of data (optional)
+ *       automatch: [function/true/null] if non-null, uses a constant list of possible entries.
+ *           If a function is given, it should take (data, str) as parameters and return a
+ *           similarity value from 0.0 to 1.0. If true, a default comparison function will be used.
+ *           In both cases, fetchAutoComplete() will still be called each time.
  *
  *    member functions:
  *       putData(data, value):
@@ -72,13 +76,13 @@
 if (typeof(AC_INCLUDED) == "undefined") { var AC_INCLUDED = 1; 
 "use strict";
 
-function AC(id, fetcher, lastonly, minlen, timer, throbber) {
+function AC(id, fetcher, lastonly, minlen, timer, throbber, automatch) {
 	this.managedElements = {}; // Element ID -> ACInputElement
 	if (typeof id == 'string')
 		id = [id];
 
 	for (var i = 0; i < id.length; ++i) 
-		this.managedElements[id] = new ACInputElement(id, this, lastonly, minlen, timer, throbber);
+		this.managedElements[id] = new ACInputElement(id, this, lastonly, minlen, timer, throbber, automatch);
 	
 	this.masterID = id[0];
 	this.respCache = {}; // response cache
@@ -89,7 +93,7 @@ function AC(id, fetcher, lastonly, minlen, timer, throbber) {
 	if (!this.dataFetcher.valuecreate) this.dataFetcher.valuecreate = function() {}
 }
 
-function ACInputElement(id, master, lastonly, minlen, timer, throbber) {
+function ACInputElement(id, master, lastonly, minlen, timer, throbber, automatch) {
 	this.e = document.getElementById(id);
 	this.acPanel = null;
 	this.master = master;
@@ -105,6 +109,10 @@ function ACInputElement(id, master, lastonly, minlen, timer, throbber) {
 	this.minlen = minlen || 3;
 	this.timer = parseInt(timer) || 500;
 	this.blockBlur = false;
+	this.automatch = automatch;
+	
+	if (this.automatch === true)
+		this.automatch = master.defaultComparison;
 	
 	var _this = this;
 	
@@ -332,12 +340,53 @@ ACInputElement.prototype.handleKey = function(ev) {
 }
 
 ACInputElement.prototype.putData = function(data, s) {
+	if (this.automatch) {
+		var newData = [];
+		for (var i = 0; i < data.length; ++i)
+			newData.push([data[i], this.automatch(data[i], s)]);
+		newData.sort(function(a,b) { return b[1] - a[1]; });
+		for (var i = 0; i < newData.length; ++i)
+			newData[i] = newData[i][0];
+		data = newData;
+	}
+	
 	this.displayACData(data, s, false, null);
 }
 
 AC.prototype.keyStroke = function() {
 	for (var i = 0; i < this.managedElements.length; ++i)
 		this.managedElements[i].handleKey({which: 20});
+}
+
+AC.prototype.defaultComparison = function(data, str) {
+	var levenshtein = function(a,b) {
+		if (a == b) return 0;
+		if (!a) return b.length;
+		if (!b) return a.length;
+		
+		var matrix = [];
+		for (var i = 0; i <= b.length; ++i)
+			matrix[i] = [i];
+		for (var j = 0; j <= a.length; ++j)
+			matrix[0][j] = j;
+		for (var i = 1; i <= b.length; ++i) {
+			for (var j = 1; j <= a.length; ++j) {
+				if (b.charAt(i-1) == a.charAt(j-1)) {
+					matrix[i][j] = matrix[i-1][j-1];
+					continue;
+				}
+				
+				matrix[i][j] = Math.min(matrix[i-1][j-1], matrix[i][j-1], matrix[i-1][j]) + 1;
+			}
+		}
+		
+		return matrix[b.length][a.length];
+	}	
+	
+	var a = (data.getEntryName ? data.getEntryName() : data[0]).toUpperCase();
+	var b = str.toUpperCase();
+	var dist = levenshtein(a, b) / a.length;
+	return 1.0/(dist + 1.0);
 }
 
 }

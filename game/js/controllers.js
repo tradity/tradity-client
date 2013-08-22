@@ -1,5 +1,35 @@
 'use strict';
 
+var useSchoolAC = function($scope, socket) {
+  $scope.onLSResult = [];
+  $scope.schoolList = [];
+  socket.emit('list-schools', null, function(result) {
+    $scope.schoolList = result.result;
+    for (var i = 0; i < $scope.schoolList.length; ++i) {
+      $scope.schoolList[i].getInputTextValue = 
+      $scope.schoolList[i].getEntryName = function() { return this.name; };
+      $scope.schoolList[i].getExtra = function() { return this.usercount + ' Personen'; };
+    }
+    for (var i = 0; i < $scope.onLSResult.length; ++i)
+      $scope.onLSResult[i]();
+  });
+  
+  $scope.acFetcher = {
+    fetchAutoComplete: function(ac, s) {
+      var enter = function() { ac.putData($scope.schoolList, s); };
+      if ($scope.schoolList.length)
+        enter();
+      else
+        $scope.onLSResult.push(enter);
+    },
+    submit: function(ac, data) {
+      $scope.schoolname = document.getElementById('schoolname').value = data.name;
+      $scope.school = data.id;
+    }
+  };
+  $scope.ac = new AC('schoolname', $scope.acFetcher, false, 1, 1, null, true);
+};
+
 angular.module('tradity.controllers', []).
   controller('LoginCtrl', function($scope, $routeParams, $location, socket) {
     $scope.username = '';
@@ -81,9 +111,7 @@ angular.module('tradity.controllers', []).
   }).
   controller('RegistrationCtrl', function($scope, $location, socket) {
     $scope.school = null;
-    socket.emit('list-schools', {}, function(data) {
-      $scope.schools = data.result;
-    });
+    $scope.schoolname = document.getElementById('schoolname').value = '';
     socket.on('register', function(data) {
       if (data.code == 'reg-success') {
         alert('Registrierung erfolgreich');
@@ -101,7 +129,7 @@ angular.module('tradity.controllers', []).
         password: $scope.password,
         email: $scope.email,
         gender: $scope.gender,
-        school: $scope.school,
+        school: $scope.schoolname ? ($scope.school ? $scope.school : $scope.schoolname) : null,
         betakey: $scope.betakey
       },
       function(data) {
@@ -129,6 +157,7 @@ angular.module('tradity.controllers', []).
         }
       });
     };
+    useSchoolAC($scope, socket); 
   }).
   controller('OptionsCtrl', function($scope, socket) {
     socket.emit('get-own-options', {}, function(data) {
@@ -141,12 +170,14 @@ angular.module('tradity.controllers', []).
       $scope.email = data.result.email;
       $scope.gender = data.result.gender;
       $scope.school = data.result.school;
+      $scope.schoolname = document.getElementById('schoolname').value = data.result.schoolname;
       $scope.birthday = data.result.birthday;
       $scope.desc = data.result.desc;
       $scope.provision = data.result.provision;
       $scope.address = data.result.address;
     });
     $scope.changeOptions = function() {
+      $scope.schoolname = document.getElementById('schoolname').value;
       socket.emit('change-options', {
         name: $scope.name,
         giv_name: $scope.giv_name,
@@ -155,7 +186,7 @@ angular.module('tradity.controllers', []).
         password: $scope.password,
         email: $scope.email,
         gender: $scope.gender,
-        school: $scope.school,
+        school: $scope.schoolname ? ($scope.school ? $scope.school : $scope.schoolname) : null,
         birthday: $scope.birthday,
         desc: $scope.desc,
         provision: $scope.provision,
@@ -193,6 +224,7 @@ angular.module('tradity.controllers', []).
         alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
       }
     });
+    useSchoolAC($scope, socket);
   }).
   controller('DepotCtrl', function($scope, socket) {
     socket.emit('list-own-depot', {}, function(data) {

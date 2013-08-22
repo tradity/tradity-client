@@ -42,8 +42,8 @@
 				<th>Preis</th>
 				<th>Transaktionskosten</th>
 			</tr>
-			<tr ng-repeat="order in orders">
-				<td class="{{order.ordertype}}">{{order.stockname}}</td>
+			<tr ng-repeat="order in orders | orderBy:'order.orderid':reverse">
+				<td class="{{order.ordertype}}" title="{{order.stockname}}">{{order.stocktextid}}</td>
 				<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
 				<td>{{(order.money * -1) / 10000 | currency}}</td>
 				<td>{{order.amount}}</td>

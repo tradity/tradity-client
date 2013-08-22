@@ -119,7 +119,7 @@
 				<td>{{order.query.dquerydata.ordertime | date:'d.M.yy HH:mm'}}</td>
 				<td>{{order.query.dquerydata.xtype}}</td>
 				<td>{{order.condition}}</td>
-				<td class="trade-td"><a ng-click="removeDelayedOrder({{order.queryid}})" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF153;</a></td>
+				<td class="trade-td"><a ng-click="removeDelayedOrder(order.queryid)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF153;</a></td>
 			</tr>
 		</table>
 	</fieldset>

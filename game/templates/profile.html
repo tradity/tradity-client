@@ -47,8 +47,8 @@
 				<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
 				<td>{{(order.money * -1) / 10000 | currency}}</td>
 				<td>{{order.amount}}</td>
-				<td>{{order.price}}</td>
-				<td>{{order.fee}}</td>
+				<td>{{order.price / 10000 | currency}}</td>
+				<td>{{order.fee / 10000 | currency}}</td>
 			</tr>
 		</table>
 	</fieldset>

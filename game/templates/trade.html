@@ -10,10 +10,6 @@
                                 placeholder="Wertpapiername" id="paper" ng-model="stockname">
 		</fieldset>
 		<fieldset class="options-field"> 
-			<legend>Anzahl</legend>
-		    <input type="number" ng-model="amount" ng-change="calcValue();" placeholder="Anzahl" id="amount" class="options-input">
-		    <legend>Kaufwert</legend>
-		    <input type="text" ng-model="value" ng-change="calcAmount();" placeholder="Kaufwert" id="value" class="options-input">
 			<div class="options-field paper-preview-box"> 
 				<table class="paper-preview">
 					<tr ng-show="leader"><th>Name</th><td><a href="#/user/{{cur.leadername}}">{{stockname}}</a></td></tr>
@@ -21,10 +17,13 @@
 					<tr><th><span class="batch tooltip" data-info="(Auch Geldkurs oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span> Ask</th><td ng-show="cur">{{cur.ask / 10000}}</td></tr>
 					<tr><th><span class="batch tooltip" data-info="(Auch Briefkurs oder Angebot) ist der höchste Preis, den ein Händler fur eine Aktie bereit ist zu zahlen">&#xF0AD;</span> Bid</th><td ng-show="cur">{{cur.bid / 10000}}</td></tr>
 					<tr><th>Wert</th><td ng-show="cur">{{cur.lastvalue / 10000}}</td></tr>
-					<tr ng-hide="leader"><th><span class="batch tooltip" data-info="Die Börse an der diese Aktie gehandelt wird">&#xF0AD;</span> Exchange</th><td ng-show="cur">{{cur.exchange}}</td></tr>
+					<tr ng-hide="leader"><th><span class="batch tooltip" data-info="Die Börse, an der diese Aktie gehandelt wird">&#xF0AD;</span> Exchange</th><td ng-show="cur">{{cur.exchange}}</td></tr>
 				</table>
 			</div>
-		    <!-- Hier folgen dann noch schöne Berechnungen mit deinen Kauf, wie viel du dir leisten kannst etc. -->
+			<legend>Anzahl</legend>
+		    <input type="number" ng-model="amount" ng-change="calcValue();" placeholder="Anzahl" id="amount" class="options-input">
+		    <legend>Kaufwert</legend>
+		    <input type="text" ng-model="value" ng-change="calcAmount();" placeholder="Kaufwert" id="value" class="options-input">
 		</fieldset>
 		<div style="clear: both" />
 		<fieldset class="options-field"> 
@@ -32,8 +31,8 @@
 			<div class="options-button order-type">
 				<label for="market">
 					<input type="radio" name="ordertype" ng-model="xtype"
-                                        value="market" id="market"><span>Market <span class="batch tooltip" data-info="Du kaufst zum Ask Preis
-und verkaufst zum Bid Preis">&#xF0AD;</span></span>
+                                        value="market" id="market"><span>Market <span class="batch tooltip" data-info="Du kaufst zum „Ask“-Preis
+und verkaufst zum „Bid“-Preis">&#xF0AD;</span></span>
 
 				</label>
 			</div>

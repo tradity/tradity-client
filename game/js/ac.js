@@ -116,6 +116,7 @@ function ACInputElement(id, master, lastonly, minlen, timer, throbber, automatch
 	
 	var _this = this;
 	
+	this.e.addEventListener('focus', function(e) { _this.handleKey(e); });
 	this.e.addEventListener('keyup', function(e) { _this.handleKey(e); });
 	this.e.addEventListener('blur', function (e) { if (!_this.blockBlur) _this.removeACData(); });
 	this.e.setAttribute('autocomplete', 'off');
@@ -125,7 +126,7 @@ function ACInputElement(id, master, lastonly, minlen, timer, throbber, automatch
 	this.inputWrap.appendChild(this.e);
 	this.inputWrap.style.position = 'relative';
 	this.inputWrap.style.display = this.e.style.display ? this.e.style.display : 'inline';
-	this.inputWrap.setAttribute('class', 'autocomplete-inputwrap');
+	this.inputWrap.className = 'autocomplete-inputwrap';
 	
 	if (throbber) {
 		this.throbber = document.createElement('img');
@@ -140,7 +141,7 @@ function ACEntry(master, data) {
 	this.master = master;
 	this.data = data;
 	this.e = document.createElement('li');
-	this.e.setAttribute('class', 'autocomplete-inactive');
+	this.e.className = 'autocomplete-inactive';
 	var _this = this;
 	this.e.addEventListener('mouseover', function() { master.focus(_this); });
 	this.e.addEventListener('mousedown', function() { master.blockBlur = true; });
@@ -152,13 +153,13 @@ function ACEntry(master, data) {
 
 	var name = document.createElement('span');
 	name.appendChild(document.createTextNode(_name));
-	name.setAttribute('class', 'autocomplete-left');
+	name.className = 'autocomplete-left';
 	this.e.appendChild(name);
 
 	if (_number !== null) {
 		var number = document.createElement('span');
 		number.appendChild(document.createTextNode(_number));
-		number.setAttribute('class', 'autocomplete-right');
+		number.className = 'autocomplete-right';
 		this.e.appendChild(number);
 	}
 	
@@ -167,13 +168,13 @@ function ACEntry(master, data) {
 }
 
 ACEntry.prototype.unfocus = function() {
-	this.e.setAttribute('class', 'autocomplete-inactive');
+	this.e.className = this.e.className.replace(/(?:^|\s)autocomplete-(in)?active(?!\S)/g, '') + ' autocomplete-inactive';
 	for (var i = 0; i < this.focushandlers.length; ++i) 
 		this.focushandlers[i](this.master, this.data, 'unfocus', this.e);
 }
 
 ACEntry.prototype.focus = function() {
-	this.e.setAttribute('class', 'autocomplete-active');
+	this.e.className = this.e.className.replace(/(?:^|\s)autocomplete-(in)?active(?!\S)/g, '') + ' autocomplete-active';
 	for (var i = 0; i < this.focushandlers.length; ++i) 
 		this.focushandlers[i](this.master, this.data, 'focus', this.e);
 }
@@ -252,7 +253,7 @@ ACInputElement.prototype.displayACData = function(s) {
 	var _this = this;
 		
 	var d = document.createElement('ul');
-	d.setAttribute('class', 'autocomplete');
+	d.className = 'autocomplete';
 	
 	d.style.position = 'absolute';
 	

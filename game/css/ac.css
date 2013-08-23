@@ -38,6 +38,11 @@
 	cursor: pointer;
 }
 
+
+.ac-prevschool.autocomplete-inactive {
+	background-color: #ccc;
+}
+
 .autocomplete-right {
 	position: absolute;
 	right: 5px;

@@ -25,6 +25,10 @@ var useSchoolAC = function($scope, socket) {
     submit: function(ac, data) {
       $scope.schoolname = document.getElementById('schoolname').value = data.name;
       $scope.school = data.id;
+    },
+    valuecreate: function(ac, data, element) {
+      if ($scope.prevschool && $scope.prevschool == data.id)
+        element.className += ' ac-prevschool';
     }
   };
   $scope.ac = new AC('schoolname', $scope.acFetcher, false, 1, 1, null, true);
@@ -169,6 +173,7 @@ angular.module('tradity.controllers', []).
       $scope.password_check = null;
       $scope.email = data.result.email;
       $scope.gender = data.result.gender;
+      $scope.prevschool = data.result.school;
       $scope.school = data.result.school;
       $scope.schoolname = document.getElementById('schoolname').value = data.result.schoolname;
       $scope.birthday = data.result.birthday;

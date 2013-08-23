@@ -470,10 +470,18 @@ angular.module('tradity.controllers', []).
     };
     $scope.ac = new AC('paper', $scope.acFetcher, false, 3, null, 'img/throbber.gif');
     $scope.calcValue = function() {
-      $scope.value = $scope.amount * ($scope.cur.lastvalue / 10000);
+      if ($scope.sellbuy == 1) {
+        $scope.value = $scope.amount * ($scope.cur.ask / 10000);
+      } else if ($scope.sellbuy == -1) {
+        $scope.value = $scope.amount * ($scope.cur.bid / 10000);
+      }
     };
     $scope.calcAmount = function() {
-      $scope.amount = Math.floor($scope.value / ($scope.cur.lastvalue / 10000));
+      if ($scope.sellbuy == 1) {
+        $scope.amount = Math.floor($scope.value / ($scope.cur.ask / 10000));
+      } else if ($scope.sellbuy == -1) {
+        $scope.amount = Math.floor($scope.value / ($scope.cur.bid / 10000));
+      }
     };
 
     if ($routeParams.stockId) {

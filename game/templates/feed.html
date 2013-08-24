@@ -12,96 +12,110 @@
         Sollen watcher eigene Farbe bekommen?
      -->
 
-
-    <!-- Kommentarbeitrag feed -->
+    <!--
     <div class="feed-item feed-somebody">
-        <!-- LINKS EINFÜGEN Namen, Zeit aktualisieren -->
         <div class="batch feed-entry-symbol">&#xf139;</div> 
         <div class="feed-entry-content">
             <a href="#depotVonDem" class="feed-link">Miro</a> hat einen deiner <a href="#deintrade" class="feed-link">Trades</a> kommentiert.
             <span class="feed-time">10:05 &ndash; 03.08.12</span>
         </div>
     </div>
-
-    <!-- Einer, den du watcht hat einen Trade gemacht feed -->
     <div class="feed-item feed-somebody">
-        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
         <div class="batch feed-entry-symbol">&#xF153;</div> 
         <div class="feed-entry-content">
-            <a href="#depotVonDem" class="feed-link">Buffett</a> hat <a href="#seinTrade" class="feed-link">getradet</a>. <!-- mehr infos wären schön -->
+            <a href="#depotVonDem" class="feed-link">Buffett</a> hat <a href="#seinTrade" class="feed-link">getradet</a>.
             <span class="feed-time">17:24 &ndash; 31.07.12</span>
         </div>
     </div>
-
-    <!-- Du hast einen Trade gemacht! feed -->
     <div class="feed-item feed-yourself">
-        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
         <div class="batch feed-entry-symbol">&#xF153;</div> 
         <div class="feed-entry-content">
-            <a href="#depotVonDir" class="feed-link">Du</a> hast <a href="#deinTrade" class="feed-link">getradet</a>. <!-- mehr infos wären schön -->
+            <a href="#depotVonDir" class="feed-link">Du</a> hast <a href="#deinTrade" class="feed-link">getradet</a>.
             <span class="feed-time">14:07 &ndash; 30.07.12</span>
         </div>
     </div>
-
-    <!-- Jemand watcht dich feed -->
     <div class="feed-item feed-somebody">
-        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
         <div class="batch feed-entry-symbol">&#xF178;</div> 
         <div class="feed-entry-content">
             <a href="#depotVonDem" class="feed-link">Kiyosaki</a> hat dich auf seine Watchlist gesetzt.
             <span class="feed-time">12:01 &ndash; 28.07.12</span>
         </div>
     </div>
-
-    <!-- Du watcht jemanden feed -->
     <div class="feed-item feed-yourself">
-        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
         <div class="batch feed-entry-symbol">&#xF178;</div> 
         <div class="feed-entry-content">
             <a href="#depotVonDir" class="feed-link">Du</a> hast <a href="#depotVonDem" class="feed-link">Buffett</a> auf deine Watchlist gesetzt.
             <span class="feed-time">03:07 &ndash; 01.07.12</span>
         </div>
     </div>
-
-    <!-- Du kommentierst einen trade feed -->
     <div class="feed-item feed-yourself">
-        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
         <div class="batch feed-entry-symbol">&#xf139;</div> 
         <div class="feed-entry-content">
-            <a href="#depotVonDir" class="feed-link">Du</a> hast einen <a href="#seinTrade" class="feed-link">Trade</a> von <a href="#depotVonDem" class="feed-link">Buffett</a> kommentiert. <!-- was, wenn du einen deiner eigenen Trades kommentierst -->
+            <a href="#depotVonDir" class="feed-link">Du</a> hast einen <a href="#seinTrade" class="feed-link">Trade</a> von <a href="#depotVonDem" class="feed-link">Buffett</a> kommentiert.
             <span class="feed-time">20:14 &ndash; 30.06.12</span>
         </div>
     </div>
-
-    <!-- Du followst jemandem feed -->
     <div class="feed-item feed-yourself">
-        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
         <div class="batch feed-entry-symbol">&#xF0B8;</div> 
         <div class="feed-entry-content">
-            <a href="#depotVonDir" class="feed-link">Du</a> folgst <a href="#deinFollowTrade" class="feed-link">Buffett</a>.<!-- den begriff "folgen" mag ich nich. klingt nich nach einer investition -->
+            <a href="#depotVonDir" class="feed-link">Du</a> folgst <a href="#deinFollowTrade" class="feed-link">Buffett</a>.
             <span class="feed-time">23:01 &ndash; 28.06.12</span>
         </div>
     </div>
-
-    <!-- Jemand followt dir feed -->
     <div class="feed-item feed-somebody">
-        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
         <div class="batch feed-entry-symbol">&#xF0B8;</div> 
         <div class="feed-entry-content">
             <a href="#depotVonDem" class="feed-link">Kiyosaki</a> folgt dir.
             <span class="feed-time">17:39 &ndash; 25.06.12</span>
         </div>
     </div>
-
-    <!-- Jemand, den du watcht followt jemanden feed -->
     <div class="feed-item feed-somebody">
-        <!-- LINKS EINFÜGEN  Namen, Zeit aktualisieren -->
         <div class="batch feed-entry-symbol">&#xF0B8;</div> 
         <div class="feed-entry-content">
             <a href="#depotVonDem" class="feed-link">Buffett</a> folgt <a href="#depotVonDem" class="feed-link">Kiyosaki</a>.
             <span class="feed-time">12:17 &ndash; 25.06.12</span>
         </div>
     </div>
+    -->
+
+    <div ng-repeat="message in messages" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type">
+        <div ng-switch-when="watch-add">
+            <div class="batch feed-entry-symbol">&#xF178;</div>
+            <div class="feed-entry-content">
+                <a href="#/user/{{message.srcuser}}" class="feed-link">{{message.srcuser}}</a> hat <a href="#/user/{{message.targetid}}" class="feed-link">{{message.targetid}}</a> auf seine Watchlist gesetzt.
+                <span class="feed-time">12:17 &ndash; 25.06.12</span>
+            </div>
+        </div>
+        <div ng-switch-when="watch-add-self">
+            <div class="batch feed-entry-symbol">&#xF178;</div>
+            <div class="feed-entry-content">
+                Du hast <a href="#/user/{{message.targetid}}" class="feed-link">{{message.targetid}}</a> auf Deine Watchlist gesetzt.
+                <span class="feed-time">12:17 &ndash; 25.06.12</span>
+            </div>
+        </div>
+        <div ng-switch-when="watch-add-me">
+            <div class="batch feed-entry-symbol">&#xF178;</div>
+            <div class="feed-entry-content">
+                <a href="#/user/{{message.srcuser}}" class="feed-link">{{message.srcuser}}</a> hat Dich auf seine Watchlist gesetzt.
+                <span class="feed-time">12:17 &ndash; 25.06.12</span>
+            </div>
+        </div>
+        <div ng-switch-when="trade">
+            <div class="batch feed-entry-symbol">&#xF153;</div>
+            <div class="feed-entry-content">
+                <a href="#/user/{{message.srcuser}}" class="feed-link">{{message.srcuser}}</a> hat <a ng-href="#/trade/{{message.targetid}}" class="feed-link">getradet</a>.
+                <span class="feed-time">12:17 &ndash; 25.06.12</span>
+            </div>
+        </div>
+        <div ng-switch-when="trade-self">
+            <div class="batch feed-entry-symbol">&#xF153;</div>
+            <div class="feed-entry-content">
+                Du hast <a ng-href="#/trade/{{message.targetid}}" class="feed-link">getradet</a>.
+                <span class="feed-time">12:17 &ndash; 25.06.12</span>
+            </div>
+        </div>
+    </div>
+
 
 <!-- Irgendeine Form von weiter mit Button oder scroll oder keine ahnung -->
 

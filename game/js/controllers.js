@@ -484,7 +484,12 @@ angular.module('tradity.controllers', []).
       }
     };
 
-    if ($routeParams.stockId) {
+    if ($routeParams.sellbuy) {
+      if ($routeParams.sellbuy == 'sell') {
+        $scope.sellbuy = -1;
+      } else if ($routeParams.sellbuy == 'buy') {
+        $scope.sellbuy = 1;
+      }
       $scope.stockid = $routeParams.stockId;
       socket.emit('stock-search', {
         name: $scope.stockid
@@ -496,6 +501,8 @@ angular.module('tradity.controllers', []).
 	          break;
             }
           }
+          $scope.amount = $routeParams.amount;
+          $scope.calcValue();
         }
       });
     }
@@ -526,11 +533,40 @@ angular.module('tradity.controllers', []).
       $scope.user = data;
     });
     socket.on('watch-add', function(data) {
-      var message = {
-        type: 'watch-add',
-        
+      if (data.srcuser == $scope.user.uid) {
+        var typePerson = 'yourself';
+        var type = 'watch-add-self';
+      } else if (data.targetid == $scope.user.uid) {
+        var typePerson = 'somebody';
+        var type = 'watch-add-me';
+      } else {
+        var typePerson = 'somebody';
+        var type = 'watch-add';
       }
+      var message = {
+        type: type,
+        typePerson: typePerson,
+        srcuser: data.srcuser,
+        targetid: data.targetid
+      };
+      $scope.messages.push(message);
     });
+    socket.on('trade', function(data) {
+      if (data.srcuser == $scope.user.uid) {
+        var typePerson = 'yourself';
+        var type = 'trade-self';
+      } else {
+        var typePerson = 'somebody';
+        var type = 'trade';
+      }
+      var message = {
+        type: type,
+        typePerson: typePerson,
+        srcuser: data.srcuser,
+        targetid: data.targetid
+      };
+      $scope.messages.push(message);
+    })
     socket.emit('fetch-events', {
       since: 0,
       all: false,

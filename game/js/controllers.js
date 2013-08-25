@@ -89,9 +89,9 @@ angular.module('tradity.controllers', []).
     };
     socket.on('password-reset', function(data) {
       if (data.code == 'password-reset-success') {
-        alert('Email zum Zurücksetzen des Passwortes erfolgreich versandt');
+        alert('Neues Passwort erfolgreich versandt');
       } else if (data.code == 'password-reset-failed') {
-        alert('Die Email zum Zurücksetzen des Passwortes konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
+        alert('Das neue Passwort konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
       }
     });
     $scope.passwordReset = function() {
@@ -102,7 +102,7 @@ angular.module('tradity.controllers', []).
         if (data.code == 'password-reset-notfound') {
           alert('Benutzer existiert nicht');
         } else if (data.code == 'password-reset-sending') {
-          alert('Email zum Zurücksetzen des Passwortes wird versandt');
+          alert('Neues Passwort wird versandt');
         }
       });
     };

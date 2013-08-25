@@ -1,5 +1,5 @@
 <div class="main-content">
-  <form ng-submit="login()">
+  <form>
     <fieldset class="options-field"> 
       <legend>Login</legend>
       <label for="name">Benutzername</label>
@@ -10,7 +10,9 @@
       <input type="checkbox" ng-model="stayloggedin" id="stayloggedin"><br>
     </fieldset>
    	<div style="text-align: right">
-    	<a class="text-link" style="margin-right: 20px;" href="#/register" title="Noch nicht registriert?">Noch nicht registriert?</a><input type="submit" value="Login" id="options-sb">
+    	<a class="text-link" style="margin-right: 20px;" href="#/register" title="Noch nicht registriert?">Noch nicht registriert?</a><!--
+      --><button ng-click="passwordReset();">Passwort vergessen?</button><!--
+      --><button id="options-sb" ng-click="login();">Login</button>
     </div>
   </form>
   

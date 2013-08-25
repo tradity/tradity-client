@@ -87,6 +87,25 @@ angular.module('tradity.controllers', []).
         }
       });
     };
+    socket.on('password-reset', function(data) {
+      if (data.code == 'password-reset-success') {
+        alert('Email zum Zurücksetzen des Passwortes erfolgreich versandt');
+      } else if (data.code == 'password-reset-failed') {
+        alert('Die Email zum Zurücksetzen des Passwortes konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
+      }
+    });
+    $scope.passwordReset = function() {
+      socket.emit('password-reset', {
+        name: $scope.username
+      },
+      function(data) {
+        if (data.code == 'password-reset-notfound') {
+          alert('Benutzer existiert nicht');
+        } else if (data.code == 'password-reset-sending') {
+          alert('Email zum Zurücksetzen des Passwortes wird versandt');
+        }
+      });
+    };
   }).
   controller('MainCtrl', function($scope, $location, socket) {
     $scope.user = null;

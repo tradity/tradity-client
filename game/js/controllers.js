@@ -555,7 +555,7 @@ angular.module('tradity.controllers', []).
       if (data.srcuser == $scope.user.uid) {
         var typePerson = 'yourself';
         var type = 'watch-add-self';
-      } else if (data.targetid == $scope.user.uid) {
+      } else if (data.watched == $scope.user.uid) {
         var typePerson = 'somebody';
         var type = 'watch-add-me';
       } else {
@@ -566,7 +566,7 @@ angular.module('tradity.controllers', []).
         type: type,
         typePerson: typePerson,
         srcusername: data.srcusername,
-        targetid: data.targetid
+        targetid: data.watched
       };
       $scope.messages.push(message);
     });

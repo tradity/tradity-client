@@ -565,7 +565,7 @@ angular.module('tradity.controllers', []).
       var message = {
         type: type,
         typePerson: typePerson,
-        srcuser: data.srcuser,
+        srcusername: data.srcusername,
         targetid: data.targetid
       };
       $scope.messages.push(message);
@@ -581,8 +581,9 @@ angular.module('tradity.controllers', []).
       var message = {
         type: type,
         typePerson: typePerson,
-        srcuser: data.srcuser,
-        targetid: data.targetid
+        srcusername: data.srcusername,
+        targetid: data.targetid,
+        stocktextid: data.stocktextid
       };
       $scope.messages.push(message);
     })

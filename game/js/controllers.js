@@ -520,7 +520,7 @@ angular.module('tradity.controllers', []).
 	          break;
             }
           }
-          $scope.amount = $routeParams.amount;
+          $scope.amount = parseInt($routeParams.amount);
           $scope.calcValue();
         }
       });

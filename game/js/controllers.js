@@ -566,7 +566,8 @@ angular.module('tradity.controllers', []).
         type: type,
         typePerson: typePerson,
         srcusername: data.srcusername,
-        targetid: data.watched
+        targetid: data.watched,
+        targetname: data.watchedname
       };
       $scope.messages.push(message);
     });

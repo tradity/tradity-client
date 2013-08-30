@@ -279,13 +279,23 @@ angular.module('tradity.controllers', []).
       $scope.prevschool = data.result.school;
       $scope.school = data.result.school;
       $scope.schoolname = document.getElementById('schoolname').value = data.result.schoolname;
-      $scope.birthday = data.result.birthday;
       $scope.desc = data.result.desc;
       $scope.provision = data.result.provision;
       $scope.address = data.result.address;
+      
+      if (data.result.birthday !== null) {
+        var d = new Date(data.result.birthday);
+        $scope.birthdayd = d.getUTCDate();
+        $scope.birthdaym = d.getUTCMonth()+1;
+        $scope.birthdayy = d.getUTCFullYear();
+      }
     });
     $scope.changeOptions = function() {
       $scope.schoolname = document.getElementById('schoolname').value;
+      var d = Date.UTC($scope.birthdayy, $scope.birthdaym-1, $scope.birthdayd);
+      if (!$scope.birthdayy)
+        d = null;
+      
       socket.emit('change-options', {
         name: $scope.name,
         giv_name: $scope.giv_name,
@@ -295,7 +305,7 @@ angular.module('tradity.controllers', []).
         email: $scope.email,
         gender: $scope.gender,
         school: $scope.schoolname ? ($scope.school ? $scope.school : $scope.schoolname) : null,
-        birthday: $scope.birthday,
+        birthday: d,
         desc: $scope.desc,
         provision: $scope.provision,
         address: $scope.address

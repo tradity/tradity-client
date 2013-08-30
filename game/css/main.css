@@ -814,6 +814,11 @@ h1#tradity {
     height: 100px;
 }
 
+#birthdayd { width: 50px; }
+#birthdaym { width: 50px; }
+#birthdayy { width: 100px; }
+#birthdayd, #birthdaym, #birthdayy { display: inline; }
+
 /* ==========================================================================
      trade
    ========================================================================== */

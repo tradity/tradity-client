@@ -350,7 +350,15 @@ angular.module('tradity.controllers', []).
       }
     }, $scope);
     socket.on('dquery-list', function(data) {
-      $scope.delayedOrders = data.results;
+      $scope.delayedOrders = [];
+      for (var i = 0; i < data.results.length; ++i) {
+        var q = data.results[i];
+        if (q.query.type == 'stock-buy') {
+          q.buysell = q.query.amount < 0 ? 'sell' : 'buy';
+          q.amount = Math.abs(q.query.amount);
+          $scope.delayedOrders.push(q);
+        }
+      }
     }, $scope);
     $scope.$on('user-update', ownDepotOrUser);
     

@@ -69,11 +69,7 @@ angular.module('tradity.controllers', []).
       function(data) {
         switch (data.code) {
           case 'login-success':
-            socket.emit('fetch-events', {
-              since: 0,
-              all: false,
-              count: 0
-            });
+            $scope.pokeEvents();
             $location.path('/')
             break;
           case 'login-badname':
@@ -92,55 +88,159 @@ angular.module('tradity.controllers', []).
         alert('Neues Passwort erfolgreich versandt');
       } else if (data.code == 'password-reset-failed') {
         alert('Das neue Passwort konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
+      } else if (data.code == 'password-reset-notfound') {
+        alert('Benutzer existiert nicht');
+      } else if (data.code == 'password-reset-sending') {
+        alert('Neues Passwort wird versandt');
       }
     });
     $scope.passwordReset = function() {
       socket.emit('password-reset', {
         name: $scope.username
-      },
-      function(data) {
-        if (data.code == 'password-reset-notfound') {
-          alert('Benutzer existiert nicht');
-        } else if (data.code == 'password-reset-sending') {
-          alert('Neues Passwort wird versandt');
-        }
       });
     };
+    socket.emit('ping', function(data) {
+      if (data.uid)
+        $location.path('/');
+    });
   }).
   controller('MainCtrl', function($scope, $location, socket) {
-    $scope.user = null;
+    $scope.ownUser = null;
     $scope.logout = function() {
-      socket.emit('logout', {}, function(data) {
+      socket.emit('logout', function(data) {
         if (data.code == 'logout-success') {
-          $scope.user = null;
+          $scope.ownUser = null;
+          $scope.$broadcast('user-update');
           $location.path('/login');
         }
       });
     };
     socket.on('response', function(data) {
       if (data.code == 'not-logged-in') {
-        $scope.user = null;
+        $scope.ownUser = null;
         $location.path('/login');
       }
-    });
+    }, $scope);
     socket.on('self-info', function(data) {
-      $scope.user = data;
+      $scope.ownUser = data;
+      $scope.$broadcast('user-update');
+    }, $scope);
+    socket.on('get-user-info', function(data) {
+      if (data.isSelf) {
+        $scope.ownUser = data;
+        $scope.$broadcast('user-update');
+      }
+    }, $scope);
+    
+    var feedEvents = ['trade', 'watch-add'];
+    $scope.messages = [];
+    $scope.eventIDs = {};
+    
+    for (var i = 0; i < feedEvents.length; ++i) {
+      socket.on(feedEvents[i], function(ev) {
+        var id = ev.eventid;
+        if ($scope.eventIDs[id])
+          return;
+        $scope.eventIDs[id] = true;
+        $scope.$broadcast(ev.type, ev);
+        $scope.messages.sort(function(a, b) { return b.time - a.time; });
+        $scope.$broadcast('messages-changed');
+      }, $scope);
+    }
+    
+    $scope.pokeEvents = function() {
+      socket.emit('fetch-events', {
+        since: 0,
+        all: false,
+        count: null
+      });
+    }
+    
+    $scope.fetchSelf = function() {
+      socket.emit('get-user-info', {
+        lookfor: '$self',
+        nohistory: true
+      });
+    }
+    
+    $scope.pokeEvents();
+    
+    /* events */
+    $scope.$on('watch-add', function(angEv, data) {
+      if (data.srcuser == $scope.ownUser.uid) {
+        var typePerson = 'yourself';
+        var type = 'watch-add-self';
+      } else if (data.watched == $scope.ownUser.uid) {
+        var typePerson = 'somebody';
+        var type = 'watch-add-me';
+      } else {
+        var typePerson = 'somebody';
+        var type = 'watch-add';
+      }
+      var message = {
+        type: type,
+        typePerson: typePerson,
+        srcusername: data.srcusername,
+        targetid: data.watched,
+        targetname: data.watchedname,
+        time: data.eventtime
+      };
+      $scope.messages.push(message);
     });
-    socket.emit('fetch-events', {
-      since: 0,
-      all: false,
-      count: 0
+    
+    $scope.$on('trade', function(angEv, data) {
+      if (data.srcuser == $scope.ownUser.uid) {
+        var typePerson = 'yourself';
+        var type = 'trade-self';
+      } else {
+        var typePerson = 'somebody';
+        var type = 'trade';
+      }
+      var message = {
+        type: type,
+        typePerson: typePerson,
+        srcusername: data.srcusername,
+        targetid: data.targetid,
+        stocktextid: data.stocktextid,
+        stockname: data.stockname,
+        time: data.eventtime
+      };
+      $scope.messages.push(message);
     });
   }).
   controller('RegistrationCtrl', function($scope, $location, socket) {
     $scope.school = null;
     $scope.schoolname = document.getElementById('schoolname').value = '';
     socket.on('register', function(data) {
-      if (data.code == 'reg-success') {
-        alert('Registrierung erfolgreich');
-        $location.path('/');
-      } else if (data.code == 'reg-email-failed') {
-        alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
+      switch (data.code) {
+        case 'reg-success':
+          alert('Registrierung erfolgreich');
+          $location.path('/');
+          break;
+        case 'reg-email-failed':
+          alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
+          break;
+        case 'reg-email-sending':
+          alert('Aktivierungsmail wird versandt');
+          break;
+        case 'reg-email-already-present':
+          alert('Email bereits vorhanden');
+          break;
+        case 'reg-name-already-present':
+          alert('Benutzername bereits vergeben');
+          break;
+        case 'reg-unknown-school':
+          alert('Unbekannte Schule');
+          break;
+        case 'reg-too-short-pw':
+          alert('Das Passwort ist zu kurz');
+          break;
+        case 'reg-beta-necessary':
+          alert('Beta-Schlüssel ungültig oder nicht angegeben');
+          break;
+        case 'reg-name-invalid-char':
+          alert('Der Benutzername enthält unerlaubte Zeichen');
+          break;
       }
     });
     $scope.register = function() {
@@ -154,36 +254,12 @@ angular.module('tradity.controllers', []).
         gender: $scope.gender,
         school: $scope.schoolname ? ($scope.school ? $scope.school : $scope.schoolname) : null,
         betakey: $scope.betakey
-      },
-      function(data) {
-        switch (data.code) {
-          case 'reg-email-sending':
-            alert('Aktivierungsmail wird versandt');
-            break;
-          case 'reg-email-already-present':
-            alert('Email bereits vorhanden');
-            break;
-          case 'reg-name-already-present':
-            alert('Benutzername bereits vergeben');
-            break;
-          case 'reg-unknown-school':
-            alert('Unbekannte Schule');
-            break;
-          case 'reg-too-short-pw':
-            alert('Das Passwort ist zu kurz');
-            break;
-          case 'reg-beta-necessary':
-            alert('Beta-Schlüssel ungültig oder nicht angegeben');
-            break;
-          case 'reg-name-invalid-char':
-            alert('Der Benutzername enthält unerlaubte Zeichen');
-        }
       });
     };
     useSchoolAC($scope, socket); 
   }).
   controller('OptionsCtrl', function($scope, socket) {
-    socket.emit('get-own-options', {}, function(data) {
+    socket.emit('get-own-options', function(data) {
       $scope.name = data.result.name;
       $scope.giv_name = data.result.giv_name;
       $scope.fam_name = data.result.fam_name;
@@ -251,35 +327,36 @@ angular.module('tradity.controllers', []).
     useSchoolAC($scope, socket);
   }).
   controller('DepotCtrl', function($scope, socket) {
-    socket.emit('list-own-depot', {}, function(data) {
+    var ownDepotOrUser = function() {
+      $scope.ownUser.depotvalue = 0;
+      for (var i in $scope.results) {
+        $scope.ownUser.depotvalue += $scope.results[i].total;
+      }
+      $scope.ownUser.balance = $scope.ownUser.totalvalue - $scope.ownUser.depotvalue;
+    }
+    
+    socket.on('list-own-depot', function(data) {
       if (data.code == 'list-own-depot-success') {
         $scope.results = data.results;
-        socket.emit('get-user-info', {
-          lookfor: '$self',
-          nohistory: true
-        },
-        function(data) {
-          $scope.ownUser = data.result;
-          $scope.ownUser.depotvalue = 0;
-          for (var i in $scope.results) {
-            $scope.ownUser.depotvalue += $scope.results[i].total;
-          }
-          $scope.ownUser.balance = $scope.ownUser.totalvalue - $scope.ownUser.depotvalue;
-        });
+        ownDepotOrUser();
       }
-    });
-    socket.emit('dquery-list', {}, function(data) {
+    }, $scope);
+    socket.on('dquery-list', function(data) {
       $scope.delayedOrders = data.results;
-    });
+    }, $scope);
+    $scope.$on('user-update', ownDepotOrUser);
+    
+    $scope.fetchSelf();
+    
+    socket.emit('list-own-depot');
+    socket.emit('dquery-list');
     $scope.removeDelayedOrder = function(id) {
       socket.emit('dquery-remove', {
         queryid: id
       },
       function(data) {
         if (data.code == 'dquery-remove-success') {
-          socket.emit('dquery-list', {}, function(data) {
-            $scope.delayedOrders = data.results;
-          });
+          socket.emit('dquery-list');
         } else if (data.code == 'dquery-remove-notfound') {
           alert('Order nicht gefunden. Möglicherweise wurde sie bereits ausgeführt.');
         }
@@ -287,13 +364,8 @@ angular.module('tradity.controllers', []).
     };
   }).
   controller('ProfileCtrl', function($scope, $routeParams, socket) {
-    socket.emit('get-user-info', {
-      lookfor: '$self',
-      nohistory: true
-    },
-    function(data) {
-      $scope.ownUser = data.result;
-      $scope.isThisMe = ($routeParams.userId == $scope.ownUser.name);
+    $scope.$on('user-update', function() {
+      $scope.isThisMe = ([$scope.ownUser.name, $scope.ownUser.uid].indexOf($routeParams.userId) != -1);
     });
     $scope.getUserInfo = function() {
       socket.emit('get-user-info', {
@@ -355,6 +427,7 @@ angular.module('tradity.controllers', []).
     $scope.studentonly = false;
     $scope.fromschool = null;
     $scope.results = [];
+    
     $scope.getRanking = function() {
       socket.emit('get-ranking', {
         rtype: $scope.rtype,
@@ -417,7 +490,7 @@ angular.module('tradity.controllers', []).
       var qtype = 'stock-buy';
       if ($scope.xtype != 'market') {
         if ($scope.xvalue == null)
-          return alert('Bitte geben Sie den Stop-/Limitwert als Zahl an\n(Nachkommastellen mit . getrennt)');
+          return alert('Bitte geben Sie den Stop-/Limitwert als Zahl an\n(Nachkommastellen mit . getrennt, z. B. 4213.37 für 4213,37 €)');
         var fieldname = ($scope.amount >= 0) ^ ($scope.sellbuy < 0) ? 'ask' : 'bid';
         var compar =  !(($scope.xtype == 'limit') ^ ($scope.amount >= 0) ^ ($scope.sellbuy < 0)) ? '<' : '>';
         
@@ -528,7 +601,7 @@ angular.module('tradity.controllers', []).
   }).
   controller('WatchlistCtrl', function($scope, socket) {
     $scope.showWatchlist = function() {
-      socket.emit('watchlist-show', {}, function(data) {
+      socket.emit('watchlist-show', function(data) {
         if (data.code == 'watchlist-show-success') {
           $scope.watchlist = data.results;
         }
@@ -547,50 +620,16 @@ angular.module('tradity.controllers', []).
     $scope.showWatchlist();
   }).
   controller('FeedCtrl', function($scope, socket) {
-    $scope.messages = [];
-    socket.on('self-info', function(data) {
-      $scope.user = data;
+    $scope.displaymessages = [];
+    
+    $scope.displayFeed = function() {
+      // Example: Always display 10 most recent messages in feed
+      $scope.displaymessages = $scope.messages.slice(0, 10);
+    };
+    
+    $scope.$on('messages-changed', function() {
+      $scope.displayFeed();
     });
-    socket.on('watch-add', function(data) {
-      if (data.srcuser == $scope.user.uid) {
-        var typePerson = 'yourself';
-        var type = 'watch-add-self';
-      } else if (data.watched == $scope.user.uid) {
-        var typePerson = 'somebody';
-        var type = 'watch-add-me';
-      } else {
-        var typePerson = 'somebody';
-        var type = 'watch-add';
-      }
-      var message = {
-        type: type,
-        typePerson: typePerson,
-        srcusername: data.srcusername,
-        targetid: data.watched,
-        targetname: data.watchedname
-      };
-      $scope.messages.push(message);
-    });
-    socket.on('trade', function(data) {
-      if (data.srcuser == $scope.user.uid) {
-        var typePerson = 'yourself';
-        var type = 'trade-self';
-      } else {
-        var typePerson = 'somebody';
-        var type = 'trade';
-      }
-      var message = {
-        type: type,
-        typePerson: typePerson,
-        srcusername: data.srcusername,
-        targetid: data.targetid,
-        stocktextid: data.stocktextid
-      };
-      $scope.messages.push(message);
-    })
-    socket.emit('fetch-events', {
-      since: 0,
-      all: false,
-      count: 10
-    });
+    $scope.displayFeed();
   });
+  

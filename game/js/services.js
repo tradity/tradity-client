@@ -8,7 +8,7 @@ function SoTrade(socket) {
 	this.id = 0;
 	
 	this.socket.on('response', (function(data) {
-                console.log(data); // remove for production
+				console.log(data); // remove for production
 		var rid = data['is-reply-to'].split('--');
 		var type = rid[0];
 		if (type == 'login')
@@ -27,7 +27,7 @@ function SoTrade(socket) {
 	}).bind(this));
 	
 	this.socket.on('push', (function(data) {
-                console.log(data); // remove for production
+				console.log(data); // remove for production
 		var type = data.type;
 		var listeners = this.listeners[type] || [];
 		for (var i = 0; i < listeners.length; ++i) 
@@ -36,6 +36,11 @@ function SoTrade(socket) {
 }
 
 SoTrade.prototype.emit = function(evname, data, cb) {
+	if (typeof data == 'function') {
+		cb = data;
+		data = null;
+	}
+	
 	data = data || {};
 	if (!evname)
 		return console.warn('event name missing');
@@ -47,8 +52,8 @@ SoTrade.prototype.emit = function(evname, data, cb) {
 	if (cb)
 		this.ids[id] = cb;
 	this.socket.emit('query', data);
-        // only for debugging, remove for production
-        console.log(data);
+				// only for debugging, remove for production
+				console.log(data);
 }
 
 SoTrade.prototype.getKey = function() {
@@ -65,32 +70,36 @@ SoTrade.prototype.setKey = function(k) {
 	document.cookie = 'key=' + k + '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
 }
 
-SoTrade.prototype.on = function(evname, cb) {
-	(this.listeners[evname] = (this.listeners[evname] || [])).push(cb);
+SoTrade.prototype.on = function(evname, cb, angularScope) {
+	var index = (this.listeners[evname] = (this.listeners[evname] || [])).push(cb) - 1;
 	this.socket.on(evname, cb);
+	if (angularScope) {
+		var this_ = this;
+		angularScope.$on('$destroy', function() { delete this_.listeners[index]; });
+	}
 }
 
 angular.module('tradity.services', []).
-  factory('socket', function ($rootScope) {
-    var socket = new SoTrade(io.connect('https://dev.tradity.de:443'));
-    return {
-      on: function (eventName, callback) {
-        socket.on(eventName, function () {
-          var args = arguments;
-          $rootScope.$apply(function () {
-            callback.apply(socket, args);
-          });
-        });
-      },
-      emit: function (eventName, data, callback) {
-        socket.emit(eventName, data, function () {
-          var args = arguments;
-          $rootScope.$apply(function () {
-            if (callback) {
-              callback.apply(socket, args);
-            }
-          });
-        });
-      }
-    };
-  });
+	factory('socket', function ($rootScope) {
+		var socket = new SoTrade(io.connect('https://dev.tradity.de:443'));
+		return {
+			on: function (eventName, callback) {
+				socket.on(eventName, function () {
+					var args = arguments;
+					$rootScope.$apply(function () {
+						callback.apply(socket, args);
+					});
+				});
+			},
+			emit: function (eventName, data, callback) {
+				socket.emit(eventName, data, function () {
+					var args = arguments;
+					$rootScope.$apply(function () {
+						if (callback) {
+							callback.apply(socket, args);
+						}
+					});
+				});
+			}
+		};
+	});

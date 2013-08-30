@@ -43,7 +43,7 @@
 				<th>Transaktionskosten</th>
 			</tr>
 			<tr ng-repeat="order in orders">
-				<td class="{{order.ordertype}}" title="{{order.stockname}}"><a ng-href="#/trade/{{order.orderid}}">{{order.stocktextid}}</a></td>
+				<td class="{{order.ordertype}}" title="{{order.stocktextid}}"><a ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a></td>
 				<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
 				<td>{{(order.money * -1) / 10000 | currency}}</td>
 				<td>{{order.amount}}</td>

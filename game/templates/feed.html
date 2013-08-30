@@ -78,7 +78,7 @@
     </div>
     -->
 
-    <div ng-repeat="message in messages" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type">
+    <div ng-repeat="message in displaymessages" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type">
         <div ng-switch-when="watch-add">
             <div class="batch feed-entry-symbol">&#xF178;</div>
             <div class="feed-entry-content">
@@ -103,14 +103,14 @@
         <div ng-switch-when="trade">
             <div class="batch feed-entry-symbol">&#xF153;</div>
             <div class="feed-entry-content">
-                <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat in {{message.stocktextid}} <a ng-href="#/trade/{{message.targetid}}" class="feed-link">investiert</a>.
+                <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat in {{message.stockname}} <a ng-href="#/trade/{{message.targetid}}" class="feed-link">investiert</a>.
                 <span class="feed-time">12:17 &ndash; 25.06.12</span>
             </div>
         </div>
         <div ng-switch-when="trade-self">
             <div class="batch feed-entry-symbol">&#xF153;</div>
             <div class="feed-entry-content">
-                Du hast in {{message.stocktextid}} <a ng-href="#/trade/{{message.targetid}}" class="feed-link">investiert</a>.
+                Du hast in {{message.stockname}} <a ng-href="#/trade/{{message.targetid}}" class="feed-link">investiert</a>.
                 <span class="feed-time">12:17 &ndash; 25.06.12</span>
             </div>
         </div>

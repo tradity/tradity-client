@@ -115,10 +115,13 @@
 				<th>Trade</th>
 			</tr>
 			<tr ng-repeat="order in delayedOrders">
-				<td class="depot-buy" title="{{order.query.dquerydata.name}}">{{order.query.stockid}}</td>
+				<td class="depot-buy" title="{{order.query.stockid}}">{{order.query.dquerydata.name}}</td>
 				<td>{{order.query.dquerydata.ordertime | date:'d.M.yy HH:mm'}}</td>
 				<td>{{order.query.dquerydata.xtype}}</td>
-				<td>{{order.condition}}</td>
+				<td>
+					<span ng-show="order.query.dquerydata.xvalue">{{order.query.dquerydata.xvalue | currency}}</span>
+					<span ng-hide="order.query.dquerydata.xvalue">—</span>
+				</td>
 				<td class="trade-td"><a ng-click="removeDelayedOrder(order.queryid)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF153;</a></td>
 			</tr>
 		</table>

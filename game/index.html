@@ -25,24 +25,24 @@
         <div id="wrapper" class="clearfix" ng-controller="MainCtrl">
             <header id="header" class="clearfix">
                 <div id="logo"><a class="block-link" style="width: 150px; height: 150px;" href="#"></a></div><h1 id="tradity"><a href="#">tradity</a></h1>
-                <div id="profile" ng-show="user">
+                <div id="profile" ng-show="ownUser">
                     <div class="name-container clearfix">
                         <a href="#/depot" title="Hier gehts zu deinem Depot" class="block-link">
-                            <h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
+                            <h2 class="name">{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>
                             <div class="depot">
                                 <h2 class="title">Gesamtvermögen</h2>
-                                <span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
+                                <span class="depot-wert">{{ownUser.totalvalue / 10000 | currency}}</span>
                             </div>
                         </a>
                     </div>
                     <img id="profile-picture"  class="profile-box" src="img/profile.png" alt="Profilbild">
                     <div id="bio" class="profile-box">
                         <h3 class="title">Kurzbeschreibung: <br /></h3>
-                        {{user.desc}}
+                        {{ownUser.desc}}
                     </div>
                     <div id="placement" class="profile-box">
                         <h3 class="title">Platz: <br /></h3>
-                        <span class="placement-number">{{user.rank}}</span>
+                        <span class="placement-number">{{ownUser.rank}}</span>
                     </div>
                     <ul id="buttons" class="profile-box">
                         <li>
@@ -54,7 +54,7 @@
                     </ul>
                 </div>
             </header>
-            <nav id="nav" ng-show="user">
+            <nav id="nav" ng-show="ownUser">
                 <ul>
                     <li>
                         <a href="#/">
@@ -69,7 +69,7 @@
                         </a>
                     </li>
                     <li>
-                        <a ng-href="#/user/{{user.name}}" style="cursor: pointer">
+                        <a ng-href="#/user/{{ownUser.name}}" style="cursor: pointer">
                             <span class="batch nav-block-symbol">&#xF048;</span>
                             <span class="dark nav-block-title">Mein Profil</span>
                         </a>

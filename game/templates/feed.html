@@ -96,21 +96,21 @@
         <div ng-switch-when="watch-add-me">
             <div class="batch feed-entry-symbol">&#xF178;</div>
             <div class="feed-entry-content">
-                <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat dich auf seine Watchlist gesetzt.
+                <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat Dich auf seine Watchlist gesetzt.
                 <span class="feed-time">12:17 &ndash; 25.06.12</span>
             </div>
         </div>
         <div ng-switch-when="trade">
             <div class="batch feed-entry-symbol">&#xF153;</div>
             <div class="feed-entry-content">
-                <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat in {{message.stockname}} <a ng-href="#/trade/{{message.targetid}}" class="feed-link">investiert</a>.
+                <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/trade/{{message.targetid}}" class="feed-link">getradet</a>.
                 <span class="feed-time">12:17 &ndash; 25.06.12</span>
             </div>
         </div>
         <div ng-switch-when="trade-self">
             <div class="batch feed-entry-symbol">&#xF153;</div>
             <div class="feed-entry-content">
-                Du hast in {{message.stockname}} <a ng-href="#/trade/{{message.targetid}}" class="feed-link">investiert</a>.
+                Du hast <a ng-href="#/trade/{{message.targetid}}" class="feed-link">getradet</a>.
                 <span class="feed-time">12:17 &ndash; 25.06.12</span>
             </div>
         </div>

@@ -10,6 +10,7 @@
                                 placeholder="Wertpapiername" id="paper" ng-model="stockname">
 		</fieldset>
 		<fieldset class="options-field"> 
+			<legend>Menge</legend>
 			<div class="options-field paper-preview-box"> 
 				<table class="paper-preview">
 					<tr ng-show="leader"><th>Name</th><td><a href="#/user/{{cur.leadername}}">{{stockname}}</a></td></tr>
@@ -20,10 +21,17 @@
 					<tr ng-hide="leader"><th><span class="batch tooltip" data-info="Die Börse, an der diese Aktie gehandelt wird">&#xF0AD;</span> Exchange</th><td ng-show="cur">{{cur.exchange}}</td></tr>
 				</table>
 			</div>
-			<legend>Anzahl</legend>
-		    <input type="number" ng-model="amount" ng-change="calcValue();" placeholder="Anzahl" id="amount" class="options-input">
-		    <legend>Kaufwert</legend>
-		    <input type="text" ng-model="value" ng-change="calcAmount();" placeholder="Kaufwert" id="value" class="options-input">
+			<div>
+				<label>Anzahl</label>
+				<input type="number" ng-model="amount" ng-change="calcValue();" placeholder="Anzahl" id="amount" autocomplete="off" class="options-input">
+			</div>
+			<div>
+				<label>Kaufwert</label>
+				<input type="text" ng-model="value" ng-change="calcAmount();" placeholder="Kaufwert" id="value" autocomplete="off" class="options-input">
+			</div>
+			<div>
+				Transaktionsgebühren: {{fee / 10000 | currency}}
+			</div
 		</fieldset>
 		<div style="clear: both" />
 		<fieldset class="options-field"> 

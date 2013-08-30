@@ -106,6 +106,8 @@ angular.module('tradity.controllers', []).
   }).
   controller('MainCtrl', function($scope, $location, socket) {
     $scope.ownUser = null;
+    $scope.serverConfig = {};
+    
     $scope.logout = function() {
       socket.emit('logout', function(data) {
         if (data.code == 'logout-success') {
@@ -131,6 +133,11 @@ angular.module('tradity.controllers', []).
         $scope.$broadcast('user-update');
       }
     }, $scope);
+    socket.on('get-config', function(data) {
+      var cfg = data.config;
+      for (var k in cfg)
+        $scope.serverConfig[k] = cfg[k];
+    });
     
     var feedEvents = ['trade', 'watch-add'];
     $scope.messages = [];
@@ -164,6 +171,7 @@ angular.module('tradity.controllers', []).
     }
     
     $scope.pokeEvents();
+    socket.emit('get-config');
     
     /* events */
     $scope.$on('watch-add', function(angEv, data) {
@@ -471,6 +479,7 @@ angular.module('tradity.controllers', []).
     $scope.xvalue = null;
     $scope.comment = '';
     $scope.sellbuy = 1;
+    $scope.fee = 0;
 
     $scope.buy = function() {
       if (!$scope.amount && !$scope.value)
@@ -557,23 +566,31 @@ angular.module('tradity.controllers', []).
         $scope.leader = data.leader ? data.leader : null;
         $scope.cur = data;
       }, valuecreate: function(ac, data, element, focusHandlers) {
-        focusHandlers.push(function(ac, data, type) { console.log(data,type);if (type == 'focus') $scope.$apply(function(){gotData(ac, data);}); });
+        focusHandlers.push(function(ac, data, type) { if (type == 'focus') $scope.$apply(function(){gotData(ac, data);}); });
       }
     };
     $scope.ac = new AC('paper', $scope.acFetcher, false, 3, null, 'img/throbber.gif');
     $scope.calcValue = function() {
+      if (!$scope.cur) return;
       if ($scope.sellbuy == 1) {
         $scope.value = $scope.amount * ($scope.cur.ask / 10000);
       } else if ($scope.sellbuy == -1) {
         $scope.value = $scope.amount * ($scope.cur.bid / 10000);
       }
+      $scope.calcFee();
     };
     $scope.calcAmount = function() {
+      if (!$scope.cur) return;
       if ($scope.sellbuy == 1) {
         $scope.amount = Math.floor($scope.value / ($scope.cur.ask / 10000));
       } else if ($scope.sellbuy == -1) {
         $scope.amount = Math.floor($scope.value / ($scope.cur.bid / 10000));
       }
+      $scope.calcFee();
+    };
+    $scope.calcFee = function() {
+      console.log($scope.serverConfig);
+      $scope.fee = Math.max(Math.abs($scope.serverConfig['transaction-fee-perc'] * $scope.value), $scope.serverConfig['transaction-fee-min']);
     };
 
     if ($routeParams.sellbuy) {

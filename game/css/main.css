@@ -818,7 +818,7 @@ h1#tradity {
      trade
    ========================================================================== */
 
-#limit-stop, #amount {
+#limit-stop, #amount, #value {
     width: 135px;
 }
 

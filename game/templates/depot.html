@@ -38,15 +38,15 @@
 				Heute
 			</li>
 			<li>
-				%
+				{{(ownUser.lastvalue / ownUser.daystartvalue - 1) * 100}} %
 			</li>
 		</ul>
 		<ul class="one-item-list">
 			<li>
-				Gestern
+				Woche
 			</li>
 			<li>
-				%
+				{{(ownUser.lastvalue / ownUser.weekstartvalue - 1) * 100}} %
 			</li>
 		</ul>
 	</fieldset>

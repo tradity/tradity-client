@@ -380,9 +380,6 @@ angular.module('tradity.controllers', []).
     };
   }).
   controller('ProfileCtrl', function($scope, $routeParams, socket) {
-    $scope.$on('user-update', function() {
-      $scope.isThisMe = ([$scope.ownUser.name, $scope.ownUser.uid].indexOf($routeParams.userId) != -1);
-    });
     $scope.getUserInfo = function() {
       socket.emit('get-user-info', {
         lookfor: $routeParams.userId

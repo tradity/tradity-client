@@ -490,6 +490,8 @@ angular.module('tradity.controllers', []).
             orders[i].price = Math.abs(orders[i].money / orders[i].amount);
           }
           $scope.orders = orders;
+          if (!$scope.user.profilepic)
+            $scope.user.profilepic = $scope.serverConfig.defaultprofile;
         }
       });
     };

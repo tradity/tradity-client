@@ -6,7 +6,7 @@
             <span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
         </div>
     </div>
-    <img id="profile-picture"  class="profile-box" src="img/profile.png" alt="Profilbild">
+    <img id="profile-picture"  class="profile-box" src="{{user.profilepic}}" alt="Profilbild">
     <div id="bio" class="profile-box">
         <h3 class="title">Kurzbeschreibung: <br /></h3>
         {{user.desc}}

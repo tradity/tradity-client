@@ -56,6 +56,9 @@ angular.module('tradity', [
     when('/faq', {
       templateUrl: 'templates/faq.html'
     }).
+    when('/imprint', {
+      templateUrl: 'templates/imprint.html'
+    }).
     otherwise({
       redirectTo: '/'
     });

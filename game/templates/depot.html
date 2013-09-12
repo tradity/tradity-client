@@ -32,13 +32,15 @@
 			<li>
 				Gesamt
 			</li>
+			<li>
+				{{ownUser.totalvalue / 100000000 | number:2}} %
 		</ul>
 		<ul class="one-item-list">
 			<li>
 				Heute
 			</li>
 			<li>
-				{{(ownUser.lastvalue / ownUser.daystartvalue - 1) * 100}} %
+				{{(ownUser.lastvalue / ownUser.daystartvalue - 1) * 100 | number:2}} %
 			</li>
 		</ul>
 		<ul class="one-item-list">
@@ -46,7 +48,7 @@
 				Woche
 			</li>
 			<li>
-				{{(ownUser.lastvalue / ownUser.weekstartvalue - 1) * 100}} %
+				{{(ownUser.lastvalue / ownUser.weekstartvalue - 1) * 100 | number:2}} %
 			</li>
 		</ul>
 	</fieldset>

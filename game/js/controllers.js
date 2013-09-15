@@ -426,7 +426,7 @@ angular.module('tradity.controllers', []).
     var ownDepotOrUser = function() {
       $scope.ownUser.depotvalue = 0;
       for (var i in $scope.results) {
-        $scope.ownUser.depotvalue += $scope.results[i].total;
+        $scope.ownUser.depotvalue += parseInt($scope.results[i].total);
       }
       $scope.ownUser.balance = $scope.ownUser.totalvalue - $scope.ownUser.depotvalue;
     }

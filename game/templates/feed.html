@@ -1,3 +1,4 @@
+<button class="tutbtn" onclick="javascript:introJs().start()">?</button>
 <div id="feed" class="main-content">
     
     <!-- 
@@ -77,45 +78,45 @@
         </div>
     </div>
     -->
-
-    <div ng-repeat="message in displaymessages" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type">
-        <div ng-switch-when="watch-add">
-            <div class="batch feed-entry-symbol">&#xF178;</div>
-            <div class="feed-entry-content">
-                <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/user/{{message.targetname}}" class="feed-link">{{message.targetname}}</a> auf seine Watchlist gesetzt.
-                <span class="feed-time">12:17 &ndash; 25.06.12</span>
+    <div data-step="1" data-position="left" data-intro="Hier findest Du die Aktivität von dir und Leuten aus deiner Watchlist.">
+        <div ng-repeat="message in displaymessages" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type">
+            <div ng-switch-when="watch-add">
+                <div class="batch feed-entry-symbol">&#xF178;</div>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/user/{{message.targetname}}" class="feed-link">{{message.targetname}}</a> auf seine Watchlist gesetzt.
+                    <span class="feed-time">12:17 &ndash; 25.06.12</span>
+                </div>
             </div>
-        </div>
-        <div ng-switch-when="watch-add-self">
-            <div class="batch feed-entry-symbol">&#xF178;</div>
-            <div class="feed-entry-content">
-                Du hast <a ng-href="#/user/{{message.targetname}}" class="feed-link">{{message.targetname}}</a> auf Deine Watchlist gesetzt.
-                <span class="feed-time">12:17 &ndash; 25.06.12</span>
+            <div ng-switch-when="watch-add-self">
+                <div class="batch feed-entry-symbol">&#xF178;</div>
+                <div class="feed-entry-content">
+                    Du hast <a ng-href="#/user/{{message.targetname}}" class="feed-link">{{message.targetname}}</a> auf Deine Watchlist gesetzt.
+                    <span class="feed-time">12:17 &ndash; 25.06.12</span>
+                </div>
             </div>
-        </div>
-        <div ng-switch-when="watch-add-me">
-            <div class="batch feed-entry-symbol">&#xF178;</div>
-            <div class="feed-entry-content">
-                <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat Dich auf seine Watchlist gesetzt.
-                <span class="feed-time">12:17 &ndash; 25.06.12</span>
+            <div ng-switch-when="watch-add-me">
+                <div class="batch feed-entry-symbol">&#xF178;</div>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat Dich auf seine Watchlist gesetzt.
+                    <span class="feed-time">12:17 &ndash; 25.06.12</span>
+                </div>
             </div>
-        </div>
-        <div ng-switch-when="trade">
-            <div class="batch feed-entry-symbol">&#xF153;</div>
-            <div class="feed-entry-content">
-                <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/trade/{{message.targetid}}" class="feed-link">getradet</a>.
-                <span class="feed-time">12:17 &ndash; 25.06.12</span>
+            <div ng-switch-when="trade">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/trade/{{message.targetid}}" class="feed-link">getradet</a>.
+                    <span class="feed-time">12:17 &ndash; 25.06.12</span>
+                </div>
             </div>
-        </div>
-        <div ng-switch-when="trade-self">
-            <div class="batch feed-entry-symbol">&#xF153;</div>
-            <div class="feed-entry-content">
-                Du hast <a ng-href="#/trade/{{message.targetid}}" class="feed-link">getradet</a>.
-                <span class="feed-time">12:17 &ndash; 25.06.12</span>
+            <div ng-switch-when="trade-self">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    Du hast <a ng-href="#/trade/{{message.targetid}}" class="feed-link">getradet</a>.
+                    <span class="feed-time">12:17 &ndash; 25.06.12</span>
+                </div>
             </div>
         </div>
     </div>
-
 
 <!-- Irgendeine Form von weiter mit Button oder scroll oder keine ahnung -->
 

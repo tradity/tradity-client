@@ -1,15 +1,13 @@
+<button class="tutbtn" onclick="javascript:introJs().start()">?</button>
 <div id="trade" class="main-content">
 	<form ng-submit="buy()">
-		<fieldset class="options-field" style="position: relative;"> 
+		<fieldset class="options-field" style="position: relative;" data-step="1" data-position="left" data-intro="Suche hier nach einem Wertpapier, das du handeln möchtest und bestätige dann deine Auswahl."> 
 				<legend>Wertpapiername</legend>
-				<div class="trade-label">
-					Suche hier nach einem Wertpapier, das du handeln möchtest und bestätige dann deine Auswahl.
-				</div>
-				<label for="paper" class="trade-label-input">Name</label>
+				<label for="paper" class="trade-label">Name</label>
 				<input type="text" class="options-input"
                                 placeholder="Wertpapiername" id="paper" ng-model="stockname">
 		</fieldset>
-		<fieldset class="options-field"> 
+		<fieldset class="options-field" data-step="2" data-position="left" data-intro="Gib die Anzahl des Wertpapiers oder den Wert an, den du bereit bist zu zahlen. Die Anzahl der Aktien, die du dir davon leisten kannst, wird automatisch berechnet. Hier erfährst du außerdem wie viele Transaktionskosten du bezahlen musst."> 
 			<legend>Menge</legend>
 			<div class="options-field paper-preview-box"> 
 				<table class="paper-preview">
@@ -23,19 +21,21 @@
 				</table>
 			</div>
 			<div>
-				<label>Anzahl</label>
-				<input style="margin-left: 19px;" type="number" ng-model="amount" ng-change="calcValue();" placeholder="Anzahl" id="amount" autocomplete="off" class="options-input">
+				<label for="amount" class="trade-label trade">Anzahl</label>
+				<input type="number" ng-model="amount" ng-change="calcValue();" placeholder="Anzahl" id="amount" autocomplete="off" class="options-input">
 			</div>
 			<div>
-				<label>Kaufwert</label>
-				<input style="margin-left: 2px;" type="text" ng-model="value" ng-change="calcAmount();" placeholder="Kaufwert" id="value" autocomplete="off" class="options-input">
+				<label for="value" class="trade-label trade">Kaufwert</label>
+				<input type="text" ng-model="value" ng-change="calcAmount();" placeholder="Kaufwert" id="value" autocomplete="off" class="options-input">
 			</div>
-			<div style="margin-top: 10px;">
-				Transaktionsgebühren: {{fee | currency}}
+			<div style="margin-top: 10px; font-size: 12px;" class="trade-label">
+				Transaktionskosten:
 			</div>
+			{{fee | currency}}
+			
 		</fieldset>
 		<div style="clear: both" />
-		<fieldset class="options-field"> 
+		<fieldset class="options-field"  data-step="3" data-position="left" data-intro="Du kannst deine Order auf verschiedene Weisen aufgeben, um mehr darüber zu erfahren musst du deine Maus nur über das kleine Etikett auf den Buttons halten. Falls du dich für Limi oder Stop entscheidest, musst du den jeweiligen Stop- oder Limitwert angeben."> 
 			<legend>Ordertyp</legend>
 			<div class="options-button order-type">
 				<label for="market">
@@ -59,7 +59,7 @@ und verkaufst erst dann, wenn der Wert unter den von dir festgelegten Stop-Wert 
 				</label>
 			</div>
 
-			<div class="trade-label trade-label-button">Kauf/Verkauf</div> <!-- redundant? -->
+			<div class="trade-label-button">Kauf/Verkauf</div> <!-- redundant? -->
 			<div class="options-button order-type">
 				<label for="buy"> 
 					<input type="radio" name="sellbuy" ng-model="sellbuy"
@@ -73,11 +73,9 @@ und verkaufst erst dann, wenn der Wert unter den von dir festgelegten Stop-Wert 
 				</label>
 			</div>
 
-		<!-- FALLS LIMIT ODER STOP  soll am besten ja so aufploppen -->
-
-			<div class="trade-label trade-label-button">Stop-/Limitwert</div><!-- angularykeyword damits eindeutig wird? redundant?  -->
-		    <label for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label><!-- angularykeyword damits eindeutig wird? -->
-		    <input type="number" ng-model="xvalue" placeholder="Stop-/Limitwert" id="limit-stop" class="options-input"> <!-- angularykeyword damits eindeutig wird? im placeholder -->
+			<div class="trade-label-button">Stop-/Limitwert</div>
+		    <label for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label>
+		    <input type="number" ng-model="xvalue" placeholder="Stop-/Limitwert" id="limit-stop" class="options-input"> 
 	   	</fieldset>
 	   	<div style="text-align: right">
 	    	<a class="text-link" style="margin-right: 20px;" href="http://tradimo.de" title="Tradimo!">Wie genau funktioniert das mit dem Traden?</a><input type="submit" value="Order aufgeben" id="options-sb">

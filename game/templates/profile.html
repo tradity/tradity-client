@@ -1,3 +1,4 @@
+<button class="tutbtn" onclick="javascript:introJs().start()">?</button>
 <div id="profile" ng-hide="user.isSelf">
     <div class="clearfix">
         <h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
@@ -16,7 +17,7 @@
         <span class="placement-number">{{user.rank}}</span>
     </div>
 </div>
-<div class="main-content">
+<div class="main-content" data-step="1" data-position="left" data-intro="Alles was du hier siehst, ist dein öffentliches Profil. Je nach deinen Einstellungen ist dein Klarname einsehbar.">
     <div style="text-align: right">
       <button ng-click="getUserInfo()" class="click-button"><span class="batch">&#xF0B2; </span>Refresh</button>
       <button ng-click="addToWatchlist()" class="click-button" ng-hide="user.isSelf"><span class="batch">&#xF179; </span>Add to Watchlist</button>
@@ -43,7 +44,7 @@
 				<th>Transaktionskosten</th>
 			</tr>
 			<tr ng-repeat="order in orders">
-				<td class="{{order.ordertype}}" title="{{order.stocktextid}}"><a ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a></td>
+				<td class="{{order.ordertype}}" title="{{order.stocktextid}}"><a class="text-link" ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a></td>
 				<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
 				<td>{{(order.money * -1) / 10000 | currency}}</td>
 				<td>{{order.amount}}</td>

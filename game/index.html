@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/ac.css">
+        <link rel="stylesheet" href="css/introjs.css">
 
         <script type="text/javascript" src="js/ac.js"></script>
         <script type="text/javascript" src="js/chart.min.js"></script>
@@ -20,6 +21,7 @@
         <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/services.js"></script>
         <script type="text/javascript" src="js/controllers.js"></script>
+        <script type="text/javascript" src="js/intro.js"></script>
     </head>
     <body>
         <div id="wrapper" class="clearfix" ng-controller="MainCtrl">
@@ -48,13 +50,10 @@
                         <li>
                             <a class="batch font-20" style="cursor: pointer" ng-click="logout()" title="Logout">&#xF02B;</a>
                         </li>
-                        <li>
-                            <a class="batch font-20" href="#/options" title="Optionen">&#xF138;</a>
-                        </li>
                     </ul>
                 </div>
             </header>
-            <nav id="nav" ng-show="ownUser">
+            <nav id="nav" ng-show="ownUser" data-step="100" data-position="right" data-intro="Finde mehr heraus indem du dich durch die Navigation klickst.">
                 <ul>
                     <li>
                         <a href="#/" accesskey="f">

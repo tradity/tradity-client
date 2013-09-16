@@ -1,12 +1,13 @@
+<button class="tutbtn" onclick="javascript:introJs().start()">?</button>
 <div id="depot" class="main-content">
-	<fieldset class="options-field">
+	<fieldset class="options-field"  data-step="1" data-position="left" data-intro="Hier siehst du deine absoluten Vermögenswerte. Dein Startgesamtwert liegt bei 100.000. Dieser Wert ist aufgeteilt in das was auf deinem Konto liegt, dieses Geld ist unverzinst und kann für den Wertpapierkauf benutzt werden und deinem Depot, der Wert deiner Wertpapiere.">
 		<legend>Vermögen</legend>
 		<ul class="one-item-list">
 			<li>
 				Gesamt
 			</li>
 			<li>
-				{{ownUser.totalvalue / 10000 | currency}}
+				{{ownUser.totalvalue / 10000| currency}}
 			</li>
 		</ul>
 		<ul class="one-item-list">
@@ -26,7 +27,7 @@
 			</li>
 		</ul>
 	</fieldset>
-	<fieldset class="options-field">
+	<fieldset class="options-field"  data-step="2" data-position="left" data-intro="Deine Performance spiegelt deine Leistung prozentual wider. Hier in 3 verschiedenen Zeiträumen (Gesamt, Heute und der letzten Woche)">
 		<legend>Performance</legend>
 		<ul class="one-item-list">
 			<li>
@@ -52,9 +53,9 @@
 			</li>
 		</ul>
 	</fieldset>
-	<fieldset class="options-field">
+	<fieldset class="options-field"  data-step="3" data-position="left" data-intro="Ab hier beginnt dein Depot. Hier sind deine derzeit in Besitz befindlichen Wertpapiere">
 		<legend>Wertpapiere in Besitz</legend>
-		<table class="transaction-history">
+		<table class="owned-trades">
 		  <colgroup>
 		  	<col class="column-0">
 		    <col class="column-1">
@@ -99,7 +100,7 @@
 			</tr>
 		</table>
 	</fieldset>
-	<fieldset class="options-field">
+	<fieldset class="options-field"   data-step="4" data-position="left" data-intro="Und hier welche, die es bald werden können. Diese warten entweder darauf, dass sich der jeweilige Handelsplatz öffnet oder ein Stop-/Limitwert erreicht wird.">
 		<legend>Noch nicht ausgeführte Transaktionen</legend>
 		<table class="transaction-history">
 		  <colgroup>

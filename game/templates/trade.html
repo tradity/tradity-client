@@ -1,20 +1,20 @@
 <button class="tutbtn" onclick="javascript:introJs().start()">?</button>
 <div id="trade" class="main-content">
 	<form ng-submit="buy()">
-		<fieldset class="options-field" style="position: relative;" data-step="1" data-position="left" data-intro="Suche hier nach einem Wertpapier, das du handeln möchtest und bestätige dann deine Auswahl."> 
+		<fieldset class="options-field" style="position: relative;" data-step="1" data-position="left" data-intro="Suche hier nach einem Wertpapier, das Du handeln möchtest und bestätige dann Deine Auswahl.">
 				<legend>Wertpapiername</legend>
 				<label for="paper" class="trade-label">Name</label>
 				<input type="text" class="options-input"
                                 placeholder="Wertpapiername" id="paper" ng-model="stockname">
 		</fieldset>
-		<fieldset class="options-field" data-step="2" data-position="left" data-intro="Gib die Anzahl des Wertpapiers oder den Wert an, den du bereit bist zu zahlen. Die Anzahl der Aktien, die du dir davon leisten kannst, wird automatisch berechnet. Hier erfährst du außerdem wie viele Transaktionskosten du bezahlen musst."> 
+		<fieldset class="options-field" data-step="2" data-position="left" data-intro="Gib die Anzahl des Wertpapiers oder den Wert an, den Du bereit bist zu zahlen. Die Anzahl der Aktien, die Du Dir damit leisten kannst, wird automatisch berechnet. Hier erfährst Du außerdem welche Transaktionskosten du zahlen musst.">
 			<legend>Menge</legend>
 			<div class="options-field paper-preview-box"> 
 				<table class="paper-preview">
 					<tr ng-show="leader"><th>Name</th><td><a href="#/user/{{cur.leadername}}">{{stockname}}</a></td></tr>
 					<tr ng-hide="leader"><th>Name</th><td ng-show="cur">{{stockname}}</td></tr>
 					<tr><th><span class="batch tooltip" data-info="(Auch Geldkurs oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span> Ask</th><td ng-show="cur">{{cur.ask / 10000 | currency}}</td></tr>
-					<tr><th><span class="batch tooltip" data-info="(Auch Briefkurs oder Angebot) ist der höchste Preis, den ein Händler fur eine Aktie bereit ist zu zahlen">&#xF0AD;</span> Bid</th><td ng-show="cur">{{cur.bid / 10000 | currency}}</td></tr>
+					<tr><th><span class="batch tooltip" data-info="(Auch Briefkurs oder Angebot) ist der höchste Preis, den ein Händler für eine Aktie bereit ist zu zahlen">&#xF0AD;</span> Bid</th><td ng-show="cur">{{cur.bid / 10000 | currency}}</td></tr>
 					<tr><th>Wert</th><td ng-show="cur">{{cur.lastvalue / 10000 | currency}}</td></tr>
 					<tr ng-show="leader"><th>Provision</th><td ng-show="cur">{{cur.provision}} %</td></tr>
 					<tr ng-hide="leader"><th><span class="batch tooltip" data-info="Die Börse, an der diese Aktie gehandelt wird">&#xF0AD;</span> Exchange</th><td ng-show="cur">{{cur.exchange}}</td></tr>
@@ -35,7 +35,7 @@
 			
 		</fieldset>
 		<div style="clear: both" />
-		<fieldset class="options-field"  data-step="3" data-position="left" data-intro="Du kannst deine Order auf verschiedene Weisen aufgeben, um mehr darüber zu erfahren musst du deine Maus nur über das kleine Etikett auf den Buttons halten. Falls du dich für Limi oder Stop entscheidest, musst du den jeweiligen Stop- oder Limitwert angeben."> 
+		<fieldset class="options-field"  data-step="3" data-position="left" data-intro="Du kannst Deine Order auf verschiedene Arten aufgeben. Um mehr darüber zu erfahren musst Du deine Maus nur über das kleine Etikett auf den Buttons halten. Falls Du Dich für Limi oder Stop entscheidest, musst Du den jeweiligen Stop- oder Limitwert angeben."> 
 			<legend>Ordertyp</legend>
 			<div class="options-button order-type">
 				<label for="market">
@@ -48,14 +48,14 @@ und verkaufst zum „Bid“-Preis">&#xF0AD;</span></span>
 			<div class="options-button order-type">
 				<label for="limit"> 
 					<input type="radio" name="ordertype" ng-model="xtype"
-                                        value="limit" id="limit"><span>Limit <span class="batch tooltip" data-info="Du kaufst nur dann, wenn der Wert unter dem von dir eingegebenen Limit-Wert fällt und verkaufst nur dann, wenn der Wert über den von dir festgelegten Limit-Wert steigt">&#xF0AD;</span></span>
+                                        value="limit" id="limit"><span>Limit <span class="batch tooltip" data-info="Du kaufst nur dann, wenn der Wert unter dem von Dir eingegebenen Limit-Wert fällt und verkaufst nur dann, wenn der Wert über den von Dir festgelegten Limit-Wert steigt">&#xF0AD;</span></span>
 				</label>
 			</div>
 			<div class="options-button order-type">
 				<label for="stop">
 					<input type="radio" name="ordertype" ng-model="xtype"
-                                        value="stop" id="stop"><span>Stop <span class="batch tooltip" data-info="Du kaufst erst dann, wenn der Wert über den von dir festgelegten Stop-Wert steigt
-und verkaufst erst dann, wenn der Wert unter den von dir festgelegten Stop-Wert fällt">&#xF0AD;</span></span>
+                                        value="stop" id="stop"><span>Stop <span class="batch tooltip" data-info="Du kaufst erst dann, wenn der Wert über den von Dir festgelegten Stop-Wert steigt
+und verkaufst erst dann, wenn der Wert unter den von Dir festgelegten Stop-Wert fällt">&#xF0AD;</span></span>
 				</label>
 			</div>
 

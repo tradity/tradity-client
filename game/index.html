@@ -42,7 +42,7 @@
                             </div>
                         </a>
                     </div>
-                    <img id="profile-picture"  class="profile-box" src="{{ownUser.profilepic}}" alt="Profilbild">
+                    <img id="profile-picture"  class="profile-box" ng-src="{{ownUser.profilepic}}" alt="Profilbild">
                     <div id="bio" class="profile-box">
                         <h3 class="title">Kurzbeschreibung: <br /></h3>
                         {{ownUser.desc}}
@@ -61,31 +61,31 @@
             <nav id="nav" ng-show="ownUser" data-step="100" data-position="right" data-intro="Finde mehr heraus indem du dich durch die Navigation klickst.">
                 <ul>
                     <li>
-                        <a href="#/" accesskey="f">
+                        <a href="#/" accesskey="f" title="ALT+SHIFT+F">
                             <span class="batch nav-block-symbol">&#xF003;</span>
                             <span class="dark nav-block-title">Mein Feed</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#/depot" accesskey="d">
+                        <a href="#/depot" accesskey="d" title="ALT+SHIFT+D">
                             <span class="batch nav-block-symbol">&#xF034;</span>
                             <span class="dark nav-block-title">Mein Depot</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#/trade" accesskey="t">
+                        <a href="#/trade" accesskey="t" title="ALT+SHIFT+T">
                             <span class="batch nav-block-symbol">&#xF153;</span>
                             <span class="dark nav-block-title">Trade</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#/ranking" accesskey="r">
+                        <a href="#/ranking" accesskey="r" title="ALT+SHIFT+R">
                             <span class="batch nav-block-symbol">&#xF160;</span>
                             <span class="dark nav-block-title">Rangliste</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#/options" accesskey="o">
+                        <a href="#/options" accesskey="o" title="ALT+SHIFT+O">
                             <span class="batch nav-block-symbol">&#xF138;</span>
                             <span class="dark nav-block-title">Optionen</span>
                         </a>

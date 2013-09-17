@@ -74,7 +74,7 @@
         <div class="batch feed-entry-symbol">&#xF0B8;</div> 
         <div class="feed-entry-content">
             <a href="#depotVonDem" class="feed-link">Buffett</a> folgt <a href="#depotVonDem" class="feed-link">Kiyosaki</a>.
-            <span class="feed-time">12:17 &ndash; 25.06.12</span>
+            <span class="feed-time">{{message.eventtime | date}}</span>
         </div>
     </div>
     -->
@@ -84,35 +84,35 @@
                 <div class="batch feed-entry-symbol">&#xF178;</div>
                 <div class="feed-entry-content">
                     <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/user/{{message.targetname}}" class="feed-link">{{message.targetname}}</a> auf seine Watchlist gesetzt.
-                    <span class="feed-time">12:17 &ndash; 25.06.12</span>
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
                 </div>
             </div>
             <div ng-switch-when="watch-add-self">
                 <div class="batch feed-entry-symbol">&#xF178;</div>
                 <div class="feed-entry-content">
                     Du hast <a ng-href="#/user/{{message.targetname}}" class="feed-link">{{message.targetname}}</a> auf Deine Watchlist gesetzt.
-                    <span class="feed-time">12:17 &ndash; 25.06.12</span>
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
                 </div>
             </div>
             <div ng-switch-when="watch-add-me">
                 <div class="batch feed-entry-symbol">&#xF178;</div>
                 <div class="feed-entry-content">
                     <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat Dich auf seine Watchlist gesetzt.
-                    <span class="feed-time">12:17 &ndash; 25.06.12</span>
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
                 </div>
             </div>
             <div ng-switch-when="trade">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
                     <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/trade/{{message.targetid}}" class="feed-link">getradet</a>.
-                    <span class="feed-time">12:17 &ndash; 25.06.12</span>
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
                 </div>
             </div>
             <div ng-switch-when="trade-self">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
                     Du hast <a ng-href="#/trade/{{message.targetid}}" class="feed-link">getradet</a>.
-                    <span class="feed-time">12:17 &ndash; 25.06.12</span>
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
                 </div>
             </div>
         </div>

@@ -12,7 +12,10 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/ac.css">
         <link rel="stylesheet" href="css/introjs.css">
+        <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.css">
 
+        <script type="text/javascript" src="js/vendor/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
         <script type="text/javascript" src="js/ac.js"></script>
         <script type="text/javascript" src="js/chart.min.js"></script>
         <script type="text/javascript" src="https://dev.tradity.de/socket.io/socket.io.js"></script>
@@ -23,6 +26,7 @@
         <script type="text/javascript" src="js/controllers.js"></script>
         <script type="text/javascript" src="js/intro.js"></script>
         <script type="text/javascript" src="js/vagueTime.min.js"></script>
+
     </head>
     <body>
         <div id="wrapper" class="clearfix" ng-controller="MainCtrl">
@@ -30,7 +34,7 @@
                 <div id="logo"><a class="block-link" style="width: 150px; height: 150px;" href="#"></a></div><h1 id="tradity"><a href="#">tradity</a></h1>
                 <div id="profile" ng-show="ownUser">
                     <div class="name-container clearfix">
-                        <a href="#/depot" title="Hier gehts zu deinem Depot" class="block-link">
+                        <a ng-href="#/user/{{ownUser.name}}" style="cursor: pointer"  accesskey="p" title="Hier gehts zu deinem Depot" class="block-link">
                             <h2 class="name">{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>
                             <div class="depot">
                                 <h2 class="title">Gesamtvermögen</h2>
@@ -66,12 +70,6 @@
                         <a href="#/depot" accesskey="d">
                             <span class="batch nav-block-symbol">&#xF034;</span>
                             <span class="dark nav-block-title">Mein Depot</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a ng-href="#/user/{{ownUser.name}}" style="cursor: pointer"  accesskey="p">
-                            <span class="batch nav-block-symbol">&#xF048;</span>
-                            <span class="dark nav-block-title">Mein Profil</span>
                         </a>
                     </li>
                     <li>
@@ -112,7 +110,6 @@
                 <a class="text-link footer-text" href="#/faq">FAQ</a> <a class="text-link footer-text" href="#/imprint">Impressum</a> <span class="footer-text">tradity, 2013</span>
             </footer>
         </div>
-        <script src="js/vendor/jquery-2.0.3.min.js"></script>
-        <script src="js/main.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>

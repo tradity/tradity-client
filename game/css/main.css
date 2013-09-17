@@ -24,6 +24,8 @@ a:active {
   outline: none;
 }
 
+a:focus{border: none; outline: none;}
+
 :focus {
   -moz-outline-style: none;
 }
@@ -977,8 +979,14 @@ label.trade-label-input {
 .owned-trades,
 .transaction-history,
 .ranking {
-    width: 748px;  /* 100% */
+    font-family: "Droid Sans", sans-serif;
+    width: 748px;  /* 100% leider kein maxwert */
     text-align: left;
+}
+
+.owned-trades,
+.transaction-history {
+    font-size: 14px;
 }
 
 .owned-trades,
@@ -1005,7 +1013,7 @@ label.trade-label-input {
 .ranking td,
 .ranking th {
     height: 100%;
-    padding: 10px;
+    padding: 8px;
     vertical-align: middle;
 }
 
@@ -1031,9 +1039,13 @@ label.trade-label-input {
     padding: 0;
 }
 
+.owned-trades tr:first-child {
+    text-align: center;
+}
+
 .owned-trades .trade-td a {
     display: inline-block;
-    padding: 25px 0;
+    padding: 20px 0;
     height:100%;
     width:100%;
 }

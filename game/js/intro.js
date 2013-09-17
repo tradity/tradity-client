@@ -35,9 +35,9 @@
       /* Previous button label in tooltip box */
       prevLabel: '&larr; zurück',
       /* Skip button label in tooltip box */
-      skipLabel: 'beenden',
+      skipLabel: 'Beenden',
       /* Done button label in tooltip box */
-      doneLabel: 'fertig',
+      doneLabel: 'Fertig',
       /* Default tooltip box position */
       tooltipPosition: 'bottom',
       /* Next CSS class for tooltip boxes */

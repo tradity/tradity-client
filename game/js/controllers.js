@@ -197,12 +197,17 @@ angular.module('tradity.controllers', []).
     });
     
     $scope.$on('trade', function(angEv, data) {
-      if (data.srcuser == $scope.ownUser.uid) {
-        var typePerson = 'yourself';
-        var type = 'trade-self';
+      var typePerson = 'somebody';
+      if (data.amount < 0) {
+        var type = 'trade-sell';
       } else {
-        var typePerson = 'somebody';
-        var type = 'trade';
+        var type = 'trade-buy';
+      }
+      if (data.srcuser == $scope.ownUser.uid) {
+        type += '-self';
+        typePerson = 'yourself';
+      } else if (data.stocktextid == '__LEADER_' + $scope.ownUser.uid + '__') {
+        type += '-me';
       }
       var message = {
         type: type,
@@ -211,7 +216,8 @@ angular.module('tradity.controllers', []).
         targetid: data.targetid,
         stocktextid: data.stocktextid,
         stockname: data.stockname,
-        time: data.eventtime
+        time: data.eventtime,
+        amount: Math.abs(data.amount)
       };
       $scope.messages.push(message);
     });

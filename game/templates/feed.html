@@ -101,17 +101,45 @@
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
                 </div>
             </div>
-            <div ng-switch-when="trade">
+            <div ng-switch-when="trade-buy">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
-                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/trade/{{message.targetid}}" class="feed-link">getradet</a>.
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an {{message.stockname}} <a ng-href="#/trade/{{message.targetid}}" class="feed-link">gekauft</a>.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
                 </div>
             </div>
-            <div ng-switch-when="trade-self">
+            <div ng-switch-when="trade-sell">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
-                    Du hast <a ng-href="#/trade/{{message.targetid}}" class="feed-link">getradet</a>.
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an {{message.stockname}} <a ng-href="#/trade/{{message.targetid}}" class="feed-link">verkauft</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="trade-buy-self">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    Du hast {{message.amount}} Anteile an {{message.stockname}} <a ng-href="#/trade/{{message.targetid}}" class="feed-link">gekauft</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="trade-sell-self">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    Du hast {{message.amount}} Anteile an {{message.stockname}} <a ng-href="#/trade/{{message.targetid}}" class="feed-link">verkauft</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="trade-buy-me">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an Dir <a ng-href="#/trade/{{message.targetid}}" class="feed-link">gekauft</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="trade-sell-me">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an Dir <a ng-href="#/trade/{{message.targetid}}" class="feed-link">verkauft</a>.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
                 </div>
             </div>

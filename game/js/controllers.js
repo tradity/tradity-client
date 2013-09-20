@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 var useSchoolAC = function($scope, socket) {
   $scope.onLSResult = [];
   $scope.schoolList = [];
@@ -191,7 +189,7 @@ angular.module('tradity.controllers', []).
         type: type,
         typePerson: typePerson,
         srcusername: data.srcusername,
-        targetid: data.watched,
+        targetid: data.watcheduser,
         targetname: data.watchedname,
         time: data.eventtime
       };
@@ -505,7 +503,7 @@ angular.module('tradity.controllers', []).
     };
     $scope.addToWatchlist = function() {
       socket.emit('watchlist-add', {
-        userid: $scope.user.uid
+        stockid: $scope.user.lstockid
       },
       function(data) {
         if (data.code == 'watchlist-add-success') {

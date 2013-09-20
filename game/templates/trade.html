@@ -40,7 +40,7 @@
 			<div class="options-button order-type">
 				<label for="market">
 					<input type="radio" name="ordertype" ng-model="xtype"
-                                        value="market" id="market"><span>Market <span class="batch tooltip" data-info="Du kaufst zum „Ask“-Preis
+                                        value="market" id="market" ng-click="isMarketOrder = true"><span>Market <span class="batch tooltip" data-info="Du kaufst zum „Ask“-Preis
 und verkaufst zum „Bid“-Preis">&#xF0AD;</span></span>
 
 				</label>
@@ -48,13 +48,13 @@ und verkaufst zum „Bid“-Preis">&#xF0AD;</span></span>
 			<div class="options-button order-type">
 				<label for="limit"> 
 					<input type="radio" name="ordertype" ng-model="xtype"
-                                        value="limit" id="limit"><span>Limit <span class="batch tooltip" data-info="Du kaufst nur dann, wenn der Wert unter dem von Dir eingegebenen Limit-Wert fällt und verkaufst nur dann, wenn der Wert über den von Dir festgelegten Limit-Wert steigt">&#xF0AD;</span></span>
+                                        value="limit" id="limit" ng-click="isMarketOrder = false"><span>Limit <span class="batch tooltip" data-info="Du kaufst nur dann, wenn der Wert unter dem von Dir eingegebenen Limit-Wert fällt und verkaufst nur dann, wenn der Wert über den von Dir festgelegten Limit-Wert steigt">&#xF0AD;</span></span>
 				</label>
 			</div>
 			<div class="options-button order-type">
 				<label for="stop">
 					<input type="radio" name="ordertype" ng-model="xtype"
-                                        value="stop" id="stop"><span>Stop <span class="batch tooltip" data-info="Du kaufst erst dann, wenn der Wert über den von Dir festgelegten Stop-Wert steigt
+                                        value="stop" id="stop" ng-click="isMarketOrder = false"><span>Stop <span class="batch tooltip" data-info="Du kaufst erst dann, wenn der Wert über den von Dir festgelegten Stop-Wert steigt
 und verkaufst erst dann, wenn der Wert unter den von Dir festgelegten Stop-Wert fällt">&#xF0AD;</span></span>
 				</label>
 			</div>
@@ -72,10 +72,11 @@ und verkaufst erst dann, wenn der Wert unter den von Dir festgelegten Stop-Wert 
                                         value="-1" id="sell"><span>Verkaufen</span>
 				</label>
 			</div>
-
-			<div class="trade-label-button">Stop-/Limitwert</div>
-		    <label for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label>
-		    <input type="number" ng-model="xvalue" placeholder="Stop-/Limitwert" id="limit-stop" class="options-input"> 
+			<div ng-hide="isMarketOrder">
+				<div class="trade-label-button">Stop-/Limitwert</div>
+			    <label for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label>
+			    <input type="number" ng-model="xvalue" placeholder="Stop-/Limitwert" id="limit-stop" class="options-input">
+			</div> 
 	   	</fieldset>
 	   	<div style="text-align: right">
 	    	<a class="text-link" style="margin-right: 20px;" href="http://tradimo.de" title="Tradimo!">Wie genau funktioniert das mit dem Traden?</a><input type="submit" value="Order aufgeben" id="options-sb">

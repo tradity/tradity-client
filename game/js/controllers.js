@@ -581,6 +581,7 @@ angular.module('tradity.controllers', []).
     $scope.comment = '';
     $scope.sellbuy = 1;
     $scope.fee = 0;
+    $scope.isMarketOrder = true;
 
     $scope.buy = function() {
       if (!$scope.amount && !$scope.value)

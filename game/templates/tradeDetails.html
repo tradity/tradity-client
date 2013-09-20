@@ -1,5 +1,62 @@
-<div id="depot" class="trade-details">
-  <button ng-click="getUserInfo()" class="click-button"><span class="batch">&#xF0B2; </span>Refresh</button>
-  <br>
-  <p>This is not finished yet.</p>
+<div id="trade-details" class="main-content">
+	<div id="profile" ng-hide="user.isSelf">
+	    <div class="clearfix">
+	        <h2 class="name"><a ng-href="#/user/{{user.name}}" style="cursor: pointer">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</a></h2>
+	        <div class="depot">
+	            <h2 class="title">Gesamtvermögen</h2>
+	            <span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
+	        </div>
+	    </div>
+	    <img id="profile-picture"  class="profile-box" src="{{user.profilepic}}" alt="Profilbild">
+	    <div id="bio" class="profile-box">
+	        <h3 class="title">Kurzbeschreibung: <br /></h3>
+	        {{user.desc}}
+	    </div>
+	    <div id="placement" class="profile-box">
+	        <h3 class="title">Platz: <br /></h3>
+	        <span class="placement-number">{{user.rank}}</span>
+	    </div>
+	</div>
+		<fieldset class="options-field">
+			<legend>Trade-Details</legend>
+			<table class="transaction-history">
+			  <colgroup>
+			  	<col class="column-0">
+			    <col class="column-1">
+			    <col class="column-2">
+			    <col class="column-3">
+			    <col class="column-4-5">
+			    <col class="column-6-7">
+			  </colgroup>
+				<tr>
+					<th>Name</th>
+					<th>Datum</th>
+					<th>Bilanz</th>
+					<th>Anzahl</th>
+					<th>Preis</th>
+					<th>Transaktionskosten</th>
+				</tr>
+				<tr ng-repeat="order in orders">
+					<td class="{{order.ordertype}}" title="{{order.stocktextid}}"><a class="text-link" ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a></td>
+					<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
+					<td>{{(order.money * -1) / 10000 | currency}}</td>
+					<td>{{order.amount}}</td>
+					<td>{{order.price / 10000 | currency}}</td>
+					<td>{{order.fee / 10000 | currency}}</td>
+				</tr>
+			</table>
+		</fieldset>
+		<div class="commenter">DusselTrader</div>
+		<div class="comment comment-somebody">
+			Was für ein fail TRADE! as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!
+			<span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">Vorvorestern</span>
+		</div>
+		<div class="commenter">PeterUstinox</div>
+		<div class="comment comment-yourself">
+			Halt die Klappe! du hast keine Ahnung. ich bin so viel besser!
+			<span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">Vorgestern</span>
+		</div>
+		<button class="click-button comment-button">Abschicken</button>
+		<textarea class="options-input comment-textarea" placeholder="Was sagst du zu diesem Trade?"></textarea>
+	<!-- <button ng-click="getUserInfo()" class="click-button"><span class="batch">&#xF0B2; </span>Refresh</button> -->
 </div>

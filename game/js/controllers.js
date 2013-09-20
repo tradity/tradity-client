@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 var useSchoolAC = function($scope, socket) {
   $scope.onLSResult = [];
   $scope.schoolList = [];

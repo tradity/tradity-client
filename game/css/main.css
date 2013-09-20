@@ -609,17 +609,20 @@ h1#tradity {
     margin: 20px 0 0 0;
 }
 
-.feed-item {
+.feed-item,
+.comment {
     padding: 5px 0 5px 5px;
     border-left: 4px solid;
     border-bottom: 1px solid;
 }
 
-.feed-yourself { /* hihi */
+.feed-yourself,
+.comment-yourself { /* hihi */
     border-color: rgba(50, 100, 150, 0.5);
 }
 
-.feed-somebody { /* hihi */
+.feed-somebody,
+.comment-somebody { /* hihi */
     border-color: rgba(220, 200, 100, 0.5);
 }
 
@@ -1158,4 +1161,43 @@ label.trade-label-input {
     height: 30px;
     color: #fff;
     background-color: #ff5000;
+}
+
+
+/* ==========================================================================
+    tradeDetails
+   ========================================================================== */
+
+.comment {
+    float: left;
+    width: 580px;
+}
+
+.commenter {
+    text-align: right;
+    width: 150px;
+    overflow: hidden;
+    font-size: 15px;
+    margin: 5px;
+    float: left;
+    font-family: "Abel", "Droid Sans", sans-serif;
+    font-weight: 900;
+}
+
+.comment-button {
+    line-height: 0px;
+    height: 32px;
+    width: 150px;
+    float: left;
+    margin: 2px 14px 0 0;
+}
+
+.comment-textarea {
+    margin: 0 0 0 0;
+    width: 574px;
+    height: 24px;
+    float: left;
+    margin: 0px;
+    border-radius: 0px;
+    border-top: none;
 }

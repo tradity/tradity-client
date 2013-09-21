@@ -781,6 +781,8 @@ angular.module('tradity.controllers', []).
         $scope.messages[i].vtime = vagueTime.get({to: $scope.messages[i].time, units: 's', lang: 'de'});
       
       $scope.displaymessages = $scope.messages.slice(0, parseInt($scope.messageCount));
+      console.log($scope.messages);
+      console.log($scope.displaymessages);
     };
 
     $scope.lastScrollCheck = 0;

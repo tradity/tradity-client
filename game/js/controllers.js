@@ -442,6 +442,12 @@ angular.module('tradity.controllers', []).
         $scope.results = data.results;
         ownDepotOrUser();
       }
+      socket.emit('get-user-info', {
+        lookfor: $scope.ownUser.uid
+      },
+      function(data) {
+          $scope.orders = data.orders;
+      });
     }, $scope);
     socket.on('dquery-list', function(data) {
       $scope.delayedOrders = [];
@@ -561,12 +567,37 @@ angular.module('tradity.controllers', []).
       function(data) {
         if (data.code == 'get-trade-info-notfound') {
           alert('Trade existiert nicht');
-        } else if (data.code == 'get-trade-info-success') {
+        } else if (data.code == 'get-trade-info-succes') {
           $scope.trade = data.trade;
           $scope.comments = data.comments;
+          $scope.getUserInfo();
         }
       });
     };
+    $scope.getUserInfo = function() {
+      socket.emit('get-user-info', {
+        lookfor: $scope.trade.userid
+      },
+      function(data) {
+        $scope.user = data.result;
+        if (!$scope.user.profilepic)
+            $scope.user.profilepic = $scope.serverConfig.defaultprofile;
+      });
+    };
+    $scope.sendComment = function() {
+      socket.emit('comment', {
+        eventid: $scope.trade.orderid,
+        comment: $scope.comment
+      },
+      function(data) {
+        if (data.code == 'comment-notfound') {
+          alert('Trade nicht gefunden. Hier läuft etwas falsch.');
+        } else if (data.code == 'comment-success') {
+          alert('Erfolgreich kommentiert');
+
+        }
+      })
+    }
     $scope.getTradeInfo();
   }).
   controller('TradeCtrl', function($scope, $routeParams, socket) {

@@ -36,17 +36,17 @@
 					<th>Preis</th>
 					<th>Transaktionskosten</th>
 				</tr>
-				<tr ng-repeat="order in orders">
-					<td class="{{order.ordertype}}" title="{{order.stocktextid}}"><a class="text-link" ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a></td>
-					<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
-					<td>{{(order.money * -1) / 10000 | currency}}</td>
-					<td>{{order.amount}}</td>
-					<td>{{order.price / 10000 | currency}}</td>
-					<td>{{order.fee / 10000 | currency}}</td>
+				<tr>
+					<td title="{{trade.stocktextid}}">{{trade.stockname}}</td>
+					<td>{{trade.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
+					<td>{{(trade.money * -1) / 10000 | currency}}</td>
+					<td>{{trade.amount}}</td>
+					<td>{{trade.price / 10000 | currency}}</td>
+					<td>{{trade.fee / 10000 | currency}}</td>
 				</tr>
 			</table>
 		</fieldset>
-		<div class="commenter">DusselTrader</div>
+		<!--<div class="commenter">DusselTrader</div>
 		<div class="comment comment-somebody">
 			Was für ein fail TRADE! as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!as für ein fail TRADE!
 			<span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">Vorvorestern</span>
@@ -55,8 +55,17 @@
 		<div class="comment comment-yourself">
 			Halt die Klappe! du hast keine Ahnung. ich bin so viel besser!
 			<span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">Vorgestern</span>
+		</div>-->
+		<div ng-repeat="comment in comments">
+			<div class="commenter">{{comment.name}}</div>
+			<div class="comment comment-somebody">
+				{{comment.comment}}
+				<span class="feed-time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">Vorvorgestern</span>
+			</div>
 		</div>
-		<button class="click-button comment-button">Abschicken</button>
-		<textarea class="options-input comment-textarea" placeholder="Was sagst du zu diesem Trade?"></textarea>
+		<form ng-submit="sendComment()">
+			<input type="submit" class="click-button comment-button" value="Abschicken">
+			<textarea ng-model="comment" class="options-input comment-textarea" placeholder="Was sagst Du zu diesem Trade?"></textarea>
+		</form>
 	<!-- <button ng-click="getUserInfo()" class="click-button"><span class="batch">&#xF0B2; </span>Refresh</button> -->
 </div>

@@ -60,7 +60,7 @@
 			<div class="commenter">{{comment.username}}</div>
 			<div class="comment comment-somebody">
 				{{comment.comment}}
-				<span class="feed-time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">Vorvorgestern</span>
+				<span class="feed-time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{comment.vtime}}</span>
 			</div>
 		</div>
 		<form ng-submit="sendComment()">

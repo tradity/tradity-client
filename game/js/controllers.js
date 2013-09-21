@@ -570,6 +570,8 @@ angular.module('tradity.controllers', []).
         } else if (data.code == 'get-trade-info-succes') {
           $scope.trade = data.trade;
           $scope.comments = data.comments;
+          for (var i = 0; i < $scope.comments.length; ++i)
+            $scope.comments[i].vtime = vagueTime.get({to: $scope.comments[i].time, units: 's', lang: 'de'});
           $scope.getUserInfo();
         }
       });
@@ -781,8 +783,6 @@ angular.module('tradity.controllers', []).
         $scope.messages[i].vtime = vagueTime.get({to: $scope.messages[i].time, units: 's', lang: 'de'});
       
       $scope.displaymessages = $scope.messages.slice(0, parseInt($scope.messageCount));
-      console.log($scope.messages);
-      console.log($scope.displaymessages);
     };
 
     $scope.lastScrollCheck = 0;

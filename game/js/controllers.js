@@ -586,7 +586,7 @@ angular.module('tradity.controllers', []).
     };
     $scope.sendComment = function() {
       socket.emit('comment', {
-        eventid: $scope.trade.orderid,
+        eventid: $scope.trade.eventid,
         comment: $scope.comment
       },
       function(data) {

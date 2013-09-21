@@ -109,6 +109,7 @@ angular.module('tradity.controllers', []).
     $scope.serverConfig = {};
     
     $scope.logout = function() {
+      $scope.messages = [];
       socket.emit('logout', function(data) {
         if (data.code == 'logout-success') {
           $scope.ownUser = null;

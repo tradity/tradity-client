@@ -179,7 +179,7 @@ angular.module('tradity.controllers', []).
       if (data.srcuser == $scope.ownUser.uid) {
         var typePerson = 'yourself';
         var type = 'watch-add-self';
-      } else if (data.watched == $scope.ownUser.uid) {
+      } else if (data.watcheduser == $scope.ownUser.uid) {
         var typePerson = 'somebody';
         var type = 'watch-add-me';
       } else {

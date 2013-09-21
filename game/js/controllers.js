@@ -392,7 +392,7 @@ angular.module('tradity.controllers', []).
                   break;
                 case 'publish-inacceptable-role':
                 case 'publish-inacceptable-mime':
-                  alert('Es gab beim Hochladen deines Profilbilds leider technische Schwierigkeiten.\nWende dich bitte an tech@tradity.de');
+                  alert('Es gab beim Hochladen Deines Profilbilds leider technische Schwierigkeiten.\nWende dich bitte an tech@tradity.de');
                   break;
               }
             });
@@ -443,7 +443,7 @@ angular.module('tradity.controllers', []).
     )};
     socket.on('change-options', function(data) {
       if (data.code == 'reg-success') {
-        alert('Aktivierungsmail erfolgreich versandt');
+        alert('Optionen erfolgreich gespeichert');
       } else if (data.code == 'reg-email-failed') {
         alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
       }

@@ -140,7 +140,7 @@ angular.module('tradity.controllers', []).
         $scope.serverConfig[k] = cfg[k];
     });
     
-    var feedEvents = ['trade', 'watch-add'];
+    var feedEvents = ['trade', 'watch-add', 'comment'];
     $scope.messages = [];
     $scope.eventIDs = {};
     
@@ -219,6 +219,27 @@ angular.module('tradity.controllers', []).
         stockname: data.stockname,
         time: data.eventtime,
         amount: Math.abs(data.amount)
+      };
+      $scope.messages.push(message);
+    });
+
+    $scope.$on('comment', function(angEv, data) {
+      var typePerson = 'somebody';
+      var type = 'comment';
+      if (data.srcuser == $scope.ownUser.uid) {
+        typePerson = 'yourself';
+        type += '-self';
+      }
+      if (data.userid == $scope.ownUser.uid) {
+        type += '-me';
+      }
+      var message = {
+        type: type,
+        typePerson: typePerson,
+        srcusername: data.srcusername,
+        orderid: data.orderid,
+        targetname: data.targetname,
+        time: data.eventtime
       };
       $scope.messages.push(message);
     });

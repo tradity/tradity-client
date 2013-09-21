@@ -596,8 +596,13 @@ angular.module('tradity.controllers', []).
         if (data.code == 'comment-notfound') {
           alert('Trade nicht gefunden. Hier läuft etwas falsch.');
         } else if (data.code == 'comment-success') {
-          alert('Erfolgreich kommentiert');
-
+          var time = new Date();
+          $scope.comments.push({
+            comment: $scope.comment,
+            username: $scope.ownUser.name,
+            time: time.getTime() / 1000 - 1,
+            vtime: vagueTime.get({to: time.getTime() / 1000 - 1, units: 's', lang: 'de'})
+          });
         }
       })
     }

@@ -176,25 +176,22 @@ angular.module('tradity.controllers', []).
     
     /* events */
     $scope.$on('watch-add', function(angEv, data) {
+      var typePerson = 'somebody';
+      var type = 'watch-add';
       if (data.srcuser == $scope.ownUser.uid) {
         var typePerson = 'yourself';
-        var type = 'watch-add-self';
+        type += '-self';
       } else if (data.watcheduser == $scope.ownUser.uid) {
-        var typePerson = 'somebody';
-        var type = 'watch-add-me';
-      } else {
-        var typePerson = 'somebody';
-        var type = 'watch-add';
+        type += '-me';
       }
-      var message = {
+      $scope.messages.push({
         type: type,
         typePerson: typePerson,
         srcusername: data.srcusername,
         targetid: data.watcheduser,
         targetname: data.watchedname,
         time: data.eventtime
-      };
-      $scope.messages.push(message);
+      });
     });
     
     $scope.$on('trade', function(angEv, data) {
@@ -210,7 +207,7 @@ angular.module('tradity.controllers', []).
       } else if (data.stocktextid == '__LEADER_' + $scope.ownUser.uid + '__') {
         type += '-me';
       }
-      var message = {
+      $scope.messages.push({
         type: type,
         typePerson: typePerson,
         srcusername: data.srcusername,
@@ -219,8 +216,7 @@ angular.module('tradity.controllers', []).
         stockname: data.stockname,
         time: data.eventtime,
         amount: Math.abs(data.amount)
-      };
-      $scope.messages.push(message);
+      });
     });
 
     $scope.$on('comment', function(angEv, data) {
@@ -233,15 +229,14 @@ angular.module('tradity.controllers', []).
       if (data.userid == $scope.ownUser.uid) {
         type += '-me';
       }
-      var message = {
+      $scope.messages.push({
         type: type,
         typePerson: typePerson,
         srcusername: data.srcusername,
         orderid: data.orderid,
         targetname: data.targetname,
         time: data.eventtime
-      };
-      $scope.messages.push(message);
+      });
     });
   }).
   controller('RegistrationCtrl', function($scope, $location, socket) {

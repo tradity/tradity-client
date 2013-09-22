@@ -386,7 +386,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #a7a7a7;
     overflow: hidden;}
 
-#nav ul li a:hover{
+#nav ul li a:hover {
     padding: 0;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -404,6 +404,10 @@ h1, h2, h3, h4, h5, h6 {
     background: -ms-linear-gradient(top,  rgba(102,102,102,0.1) 0%,rgba(255,255,255,0) 100%);
     background: linear-gradient(to bottom,  rgba(102,102,102,0.1) 0%,rgba(255,255,255,0) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a666666', endColorstr='#00ffffff',GradientType=0 );
+}
+
+.active {
+    color: #369;
 }
 
 #nav ul li a:active,
@@ -1145,6 +1149,9 @@ label.trade-label-input {
    visibility:hidden;
 }
 
+.radio-fix {
+    margin-top: 9999px;
+}
 
 /* ==========================================================================
     IntroJS
@@ -1162,7 +1169,6 @@ label.trade-label-input {
     color: #fff;
     background-color: #ff5000;
 }
-
 
 /* ==========================================================================
     tradeDetails

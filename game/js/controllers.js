@@ -108,6 +108,10 @@ angular.module('tradity.controllers', []).
   controller('MainCtrl', function($scope, $location, socket) {
     $scope.ownUser = null;
     $scope.serverConfig = {};
+
+    $scope.isActive = function(route) {
+        return route === $location.path(); 
+    };
     
     $scope.logout = function() {
       $scope.messages = [];

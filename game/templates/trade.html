@@ -41,7 +41,7 @@
 			<div class="options-button order-type">
 				<label for="market">
 					<input type="radio" name="ordertype" ng-model="xtype"
-                                        value="market" id="market" ng-click="isMarketOrder = true"><span>Market <span class="batch tooltip" data-info="Du kaufst zum „Ask“-Preis
+                                        value="market" id="market" class="radio-fix" ng-click="isMarketOrder = true"><span>Market <span class="batch tooltip" data-info="Du kaufst zum „Ask“-Preis
 und verkaufst zum „Bid“-Preis">&#xF0AD;</span></span>
 
 				</label>
@@ -49,13 +49,13 @@ und verkaufst zum „Bid“-Preis">&#xF0AD;</span></span>
 			<div class="options-button order-type">
 				<label for="limit"> 
 					<input type="radio" name="ordertype" ng-model="xtype"
-                                        value="limit" id="limit" ng-click="isMarketOrder = false"><span>Limit <span class="batch tooltip" data-info="Du kaufst nur dann, wenn der Wert unter dem von Dir eingegebenen Limit-Wert fällt und verkaufst nur dann, wenn der Wert über den von Dir festgelegten Limit-Wert steigt">&#xF0AD;</span></span>
+                                        value="limit" id="limit" class="radio-fix" ng-click="isMarketOrder = false"><span>Limit <span class="batch tooltip" data-info="Du kaufst nur dann, wenn der Wert unter dem von Dir eingegebenen Limit-Wert fällt und verkaufst nur dann, wenn der Wert über den von Dir festgelegten Limit-Wert steigt">&#xF0AD;</span></span>
 				</label>
 			</div>
 			<div class="options-button order-type">
 				<label for="stop">
 					<input type="radio" name="ordertype" ng-model="xtype"
-                                        value="stop" id="stop" ng-click="isMarketOrder = false"><span>Stop <span class="batch tooltip" data-info="Du kaufst erst dann, wenn der Wert über den von Dir festgelegten Stop-Wert steigt
+                                        value="stop" id="stop" class="radio-fix" ng-click="isMarketOrder = false"><span>Stop <span class="batch tooltip" data-info="Du kaufst erst dann, wenn der Wert über den von Dir festgelegten Stop-Wert steigt
 und verkaufst erst dann, wenn der Wert unter den von Dir festgelegten Stop-Wert fällt">&#xF0AD;</span></span>
 				</label>
 			</div>
@@ -64,13 +64,13 @@ und verkaufst erst dann, wenn der Wert unter den von Dir festgelegten Stop-Wert 
 			<div class="options-button order-type">
 				<label for="buy"> 
 					<input type="radio" name="sellbuy" ng-model="sellbuy"
-                                        value="1" id="buy"><span>Kaufen</span>
+                                        value="1" id="buy" class="radio-fix"><span>Kaufen</span>
 				</label>
 			</div>
 			<div class="options-button order-type">
 				<label for="sell">
 					<input type="radio" name="sellbuy" ng-model="sellbuy"
-                                        value="-1" id="sell"><span>Verkaufen</span>
+                                        value="-1" id="sell" class="radio-fix"><span>Verkaufen</span>
 				</label>
 			</div>
 			<br>

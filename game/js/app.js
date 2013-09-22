@@ -59,6 +59,12 @@ angular.module('tradity', [
     when('/imprint', {
       templateUrl: 'templates/imprint.html'
     }).
+    when('/about', {
+      templateUrl: 'templates/about.html'
+    }).
+    when('/tos', {
+      templateUrl: 'templates/tos.html'
+    }).
     otherwise({
       redirectTo: '/'
     });

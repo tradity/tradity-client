@@ -236,7 +236,7 @@ angular.module('tradity.controllers', []).
         srcusername: data.srcusername,
         orderid: data.orderid,
         tradername: tn,
-        tradername_genitive: 'xs'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’';
+        tradername_genitive: 'xs'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’',
         time: data.eventtime
       });
     });

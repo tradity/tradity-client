@@ -350,7 +350,7 @@ h1, h2, h3, h4, h5, h6 {
 #logo {
     width: 150px;
     height: 150px;
-    background-image: url('../img/logo_tradity.png');
+    background-image: url('../img/tradity_symbol.png');
 }
 
 #profile {
@@ -865,7 +865,7 @@ h1#tradity {
     width: auto;
 }
 
-#realnamepublish, #stayloggedin {
+#realnamepublish, #stayloggedin, #delayorderhist {
     vertical-align: middle;
     width: 20px;
     height: 20px;

@@ -204,6 +204,18 @@
             .no-border {
                 border: none;
             }
+            .text-link {
+                color: #369;
+                text-decoration: none;
+            }
+
+            .text-link:hover {
+                text-decoration: underline;
+            }
+
+            .text-link:active {
+                color: #000;
+            }
 
         </style>
     </head>
@@ -215,15 +227,13 @@
                     <p style="font-size: 13px;">Börsenspiele bieten die Möglichkeit, Erfahrungen über das Thema Aktien zu sammeln, ohne dabei echtes Geld zu riskieren. Noch besser – wenn man ein Händchen für das Traden hat, kann man auch noch interessante Preise gewinnen. Was jedoch, wenn man dieses nicht hat? <br />
 Social Trading macht aus dem Thema Traden, bei dem man häufig auf sich allein gestellt ist, eine Community-Sache. Der Neuling kann jetzt einfach erfolgreichen Teilnehmern „folgen“ und die gleiche Performance wie diese erzielen, wofür dann auf Win-Win-Basis eine Provision gezahlt wird. </p>
                     <p style="font-size: 13px;">Gib hier deine E-Mail-Adresse an, um über den Start des Wettbewerbs benachrichtigt zu werden.</p>
-                <div id="email" ng-controller="App.email">
-                        <input name="email-qt" type="email" id="email-qt" ng-model="email" placeholder="E-Mail" />
-                                <input type="button" value="Los!" id="email-sb" onclick="enterEmail(document.getElementById('email-qt').value);" ng-click="submit()" /><br>
-                        <span style="font-size: 10px; position: relative; top: -10px;">Selbstverständlich werden die E-Mails nicht missbraucht oder an Dritte weitergegeben.</span>
+                <div id="email" style="text-align: center;">
+                <div style="color: silver;">
+                    Beta <br>
                 </div>
-                <div class="little-silver">
-                    Geschlossene-Beta: <br>
-                    <a href="/game/#/login">Login</a>
+                    <a href="game/#/register" title="Registrier dich jetzt zur Beta" class="text-link no-border" style="font-size: 30px;">Registrieren</a>
                 </div>
+
                 <div id="social-links">
                     <a class="social-link facebook no-border" style="filter:alpha(opacity=50); -moz-opacity: 0.50; opacity: 0.50;" target="_blank" href="https://facebook.com/tradity.de"><img src="img/glyphicons/glyphicons_social_30_facebook.png"></a>
                     <a class="social-link twitter no-border" style="filter:alpha(opacity=50); -moz-opacity: 0.50; opacity: 0.50;" target="_blank" href="https://twitter.com/TradityDe"><img src="img/glyphicons/glyphicons_social_31_twitter.png"></a>

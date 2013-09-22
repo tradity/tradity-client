@@ -78,6 +78,9 @@
         </div>
     </div>
     -->
+    <div ng-hide="messages.length > 0">
+    <h3>Willkommen bei Tradity!</h3>
+    </div>
     <div data-step="1" data-position="left" data-intro="Hier findest Du die Aktivität von dir und Leuten aus deiner Watchlist.">
         <div ng-repeat="message in displaymessages" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type">
             <div ng-switch-when="watch-add">

@@ -111,7 +111,7 @@
             <div ng-switch-when="comment-self">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
-                    Du hast <a ng-href="#/user/{{message.targetname}}" class="feed-link">{{message.targetname}}'s</a> <a ng-href="#/trade/{{message.orderid}}" class="feed-link">Trade</a> kommentiert.
+                    Du hast <a ng-href="#/user/{{message.tradername}}" class="feed-link">{{message.tradername_genitive}}</a> <a ng-href="#/trade/{{message.orderid}}" class="feed-link">Trade</a> kommentiert.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
                 </div>
             </div>

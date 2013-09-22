@@ -629,6 +629,7 @@ angular.module('tradity.controllers', []).
             time: time.getTime() / 1000 - 1,
             vtime: vagueTime.get({to: time.getTime() / 1000 - 1, units: 's', lang: 'de'})
           });
+          $scope.comment = '';
         }
       })
     }

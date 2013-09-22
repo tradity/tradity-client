@@ -308,6 +308,7 @@ angular.module('tradity.controllers', []).
       $scope.desc = data.result.desc;
       $scope.provision = data.result.provision;
       $scope.address = data.result.address;
+      $scope.delayorderhist = data.result.delayorderhist;
       
       if (data.result.birthday !== null) {
         var d = new Date(data.result.birthday);
@@ -412,7 +413,8 @@ angular.module('tradity.controllers', []).
         birthday: d,
         desc: $scope.desc,
         provision: $scope.provision,
-        address: $scope.address
+        address: $scope.address,
+        delayorderhist: $scope.delayorderhist
       },
       function(data) {
         switch (data.code) {

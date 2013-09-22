@@ -598,7 +598,8 @@ angular.module('tradity.controllers', []).
     };
     $scope.getUserInfo = function() {
       socket.emit('get-user-info', {
-        lookfor: $scope.trade.userid
+        lookfor: $scope.trade.userid,
+        nohistory: true
       },
       function(data) {
         $scope.user = data.result;

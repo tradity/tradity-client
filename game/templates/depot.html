@@ -48,7 +48,7 @@
 						Gesamt
 					</li>
 					<li>
-						{{((ownUser.totalvalue / 10000) - 100000 ) / 1000 | number:2}}%
+						{{((ownUser.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -56,7 +56,7 @@
 						Heute
 					</li>
 					<li>
-						{{(ownUser.lastvalue / ownUser.daystartvalue - 1) * 100 | number:2}}%
+						{{(ownUser.lastvalue / ownUser.daystartvalue - 1) * 100 | number:2}} %
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -64,7 +64,7 @@
 						Woche
 					</li>
 					<li>
-						{{(ownUser.lastvalue / ownUser.weekstartvalue - 1) * 100 | number:2}}%
+						{{(ownUser.lastvalue / ownUser.weekstartvalue - 1) * 100 | number:2}} %
 					</li>
 				</ul>
 			</fieldset>
@@ -75,7 +75,7 @@
 						Gesamt
 					</li>
 					<li>
-						<!-- fill -->
+						{{ownUser.totalfperf * 100 | number:2}} %
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -83,7 +83,7 @@
 						Heute
 					</li>
 					<li>
-						<!-- fill -->
+						{{ownUser.dayfperf * 100 | number:2}} %
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -91,7 +91,7 @@
 						Woche
 					</li>
 					<li>
-						<!-- fill -->
+						{{ownUser.weekfperf * 100 | number:2}} %
 					</li>
 				</ul>
 			</fieldset>

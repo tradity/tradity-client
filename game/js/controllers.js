@@ -229,12 +229,14 @@ angular.module('tradity.controllers', []).
       if (data.userid == $scope.ownUser.uid) {
         type += '-me';
       }
+      var tn = data.tradername;
       $scope.messages.push({
         type: type,
         typePerson: typePerson,
         srcusername: data.srcusername,
         orderid: data.orderid,
-        targetname: data.targetname,
+        tradername: tn,
+        tradername_genitive: 'xs'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’';
         time: data.eventtime
       });
     });

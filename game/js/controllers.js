@@ -66,9 +66,10 @@ angular.module('tradity.controllers', []).
         pw: $scope.password,
         stayloggedin: $scope.stayloggedin
       },
-      function(data) {
+      function(data) {        
         switch (data.code) {
           case 'login-success':
+            $scope.fetchSelf();
             $scope.pokeEvents();
             $location.path('/')
             break;

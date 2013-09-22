@@ -57,7 +57,7 @@
 			<span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">Vorgestern</span>
 		</div>-->
 		<div ng-repeat="comment in comments">
-			<div class="commenter">{{comment.username}}</div>
+			<div class="commenter"><a href="#/user/{{comment.username}}" class="text-link">{{comment.username}}</a></div>
 			<div class="comment comment-somebody">
 				{{comment.comment}}
 				<span class="feed-time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{comment.vtime}}</span>

@@ -104,28 +104,28 @@
             <div ng-switch-when="comment">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
-                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/user/{{message.tradername}}" class="feed-link">{{message.tradername_genitive}}</a> <a ng-href="#/trade/{{message.orderid}}" class="feed-link">Trade</a> kommentiert.
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/user/{{message.tradername}}" class="feed-link">{{message.tradername_genitive}}</a> Trade <a ng-href="#/trade/{{message.orderid}}" class="feed-link">kommentiert</a>.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
                 </div>
             </div>
             <div ng-switch-when="comment-self">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
-                    Du hast <a ng-href="#/user/{{message.tradername}}" class="feed-link">{{message.tradername_genitive}}</a> <a ng-href="#/trade/{{message.orderid}}" class="feed-link">Trade</a> kommentiert.
+                    Du hast <a ng-href="#/user/{{message.tradername}}" class="feed-link">{{message.tradername_genitive}}</a> Trade <a ng-href="#/trade/{{message.orderid}}" class="feed-link">kommentiert</a>.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
                 </div>
             </div>
             <div ng-switch-when="comment-me">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
-                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat Deinen <a ng-href="#/trade/{{message.orderid}}" class="feed-link">Trade</a> kommentiert.
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat Deinen Trade <a ng-href="#/trade/{{message.orderid}}" class="feed-link">kommentiert</a>.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
                 </div>
             </div>
             <div ng-switch-when="comment-self-me">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
-                    Du hast Deinen <a ng-href="#/trade/{{message.orderid}}" class="feed-link">Trade</a> kommentiert.
+                    Du hast Deinen eigenen Trade <a ng-href="#/trade/{{message.orderid}}" class="feed-link">kommentiert</a>.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{message.vtime}}</span>
                 </div>
             </div>

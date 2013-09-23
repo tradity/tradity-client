@@ -1232,6 +1232,12 @@ label.trade-label-input {
     margin-bottom: 0;
 }
 
+.tutorial {
+    background-image: url('../img/bg.png');
+    background-repeat: no-repeat;
+    background-position: 40px 100px; 
+}
+
 .tutorial .text {
     font-weight: 700;
     line-height: 30px;

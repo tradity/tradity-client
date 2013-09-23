@@ -472,17 +472,18 @@ angular.module('tradity.controllers', []).
         lookfor: $scope.ownUser.uid
       },
       function(data) {
-          $scope.orders = data.orders;
-          for (var i in orders) {
-            if (orders[i].money > 0) {
-              orders[i].ordertype = 'depot-buy';
-            } else if (orders[i].money < 0) {
-              orders[i].ordertype = 'depot-sell';
-            } else {
-              orders[i].ordertype = '';
-            }
-            orders[i].price = Math.abs(orders[i].money / orders[i].amount);
+        var orders = data.orders;
+        for (var i in orders) {
+          if (orders[i].money > 0) {
+            orders[i].ordertype = 'depot-buy';
+          } else if (orders[i].money < 0) {
+            orders[i].ordertype = 'depot-sell';
+          } else {
+            orders[i].ordertype = '';
           }
+          orders[i].price = Math.abs(orders[i].money / orders[i].amount);
+        }
+        $scope.orders = orders;
       });
     }, $scope);
     socket.on('dquery-list', function(data) {

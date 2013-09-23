@@ -75,7 +75,7 @@
 						Gesamt
 					</li>
 					<li>
-						{{ownUser.totalfperf * 100 | number:2}} %
+						{{(ownUser.totalfperf-1) * 100 | number:2}} %
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -83,7 +83,7 @@
 						Heute
 					</li>
 					<li>
-						{{ownUser.dayfperf * 100 | number:2}} %
+						{{(ownUser.dayfperf-1) * 100 | number:2}} %
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -91,7 +91,7 @@
 						Woche
 					</li>
 					<li>
-						{{ownUser.weekfperf * 100 | number:2}} %
+						{{(ownUser.weekfperf-1) * 100 | number:2}} %
 					</li>
 				</ul>
 			</fieldset>

@@ -282,6 +282,8 @@ angular.module('tradity.controllers', []).
       }
     });
     $scope.register = function() {
+      if (!$scope.agbread)
+        return alert('Bitte bestätige, dass du die AGB gelesen hast.');
       socket.emit('register', {
         name: $scope.name,
         giv_name: $scope.giv_name,

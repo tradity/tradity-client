@@ -759,18 +759,18 @@ angular.module('tradity.controllers', []).
     $scope.calcValue = function() {
       if (!$scope.cur) return;
       if ($scope.sellbuy == 1) {
-        $scope.value = $scope.amount * ($scope.cur.ask / 10000);
+        $scope.value = String($scope.amount * ($scope.cur.ask / 10000)).replace('.', ',');
       } else if ($scope.sellbuy == -1) {
-        $scope.value = $scope.amount * ($scope.cur.bid / 10000);
+        $scope.value = String($scope.amount * ($scope.cur.bid / 10000)).replace('.', ',');
       }
       $scope.calcFee();
     };
     $scope.calcAmount = function() {
       if (!$scope.cur) return;
       if ($scope.sellbuy == 1) {
-        $scope.amount = Math.floor($scope.value / ($scope.cur.ask / 10000));
+        $scope.amount = Math.floor(parseFloat($scope.value.replace(',', '.')) / ($scope.cur.ask / 10000));
       } else if ($scope.sellbuy == -1) {
-        $scope.amount = Math.floor($scope.value / ($scope.cur.bid / 10000));
+        $scope.amount = Math.floor(parseFloat($scope.value.replace(',', '.')) / ($scope.cur.bid / 10000));
       }
       $scope.calcFee();
     };

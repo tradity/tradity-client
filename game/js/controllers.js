@@ -606,6 +606,7 @@ angular.module('tradity.controllers', []).
           alert('Trade existiert nicht');
         } else if (data.code == 'get-trade-info-succes') {
           $scope.trade = data.trade;
+          $scope.trade.price = Math.abs($scope.trade.money / $scope.trade.amount);
           $scope.comments = data.comments;
           for (var i = 0; i < $scope.comments.length; ++i)
             $scope.comments[i].vtime = vagueTime.get({to: $scope.comments[i].time, units: 's', lang: 'de'});

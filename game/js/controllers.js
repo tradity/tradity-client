@@ -473,6 +473,16 @@ angular.module('tradity.controllers', []).
       },
       function(data) {
           $scope.orders = data.orders;
+          for (var i in orders) {
+            if (orders[i].money > 0) {
+              orders[i].ordertype = 'depot-buy';
+            } else if (orders[i].money < 0) {
+              orders[i].ordertype = 'depot-sell';
+            } else {
+              orders[i].ordertype = '';
+            }
+            orders[i].price = Math.abs(orders[i].money / orders[i].amount);
+          }
       });
     }, $scope);
     socket.on('dquery-list', function(data) {
@@ -736,6 +746,7 @@ angular.module('tradity.controllers', []).
         $scope.stockid = data.leader ? null : data.stockid;
         $scope.leader = data.leader ? data.leader : null;
         $scope.cur = data;
+        $scope.value = $scope.amount = null;
       }, valuecreate: function(ac, data, element, focusHandlers) {
         focusHandlers.push(function(ac, data, type) { if (type == 'focus') $scope.$apply(function(){gotData(ac, data);}); });
       }

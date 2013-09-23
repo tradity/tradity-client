@@ -18,6 +18,10 @@ body {
     text-shadow: none;
 }
 
+.no-border {
+    border: none;
+}
+
 a {
   text-decoration: inherit;
   font-style: inherit;
@@ -1150,14 +1154,15 @@ label.trade-label-input {
 }
 
 .radio-fix {
-    margin-top: 9999px;
+    z-index: -3
 }
 
 /* ==========================================================================
     IntroJS
    ========================================================================== */
 
-.tutbtn {
+.tutbtn,
+.tutbtn-show {
     border-radius: 7px;
     border: thin solid #f30;
     float: right;
@@ -1168,6 +1173,14 @@ label.trade-label-input {
     height: 30px;
     color: #fff;
     background-color: #ff5000;
+}
+
+.tutbtn-show {
+    float: none;
+    position: static;
+    display: inline;
+    margin: 0;
+    vertical-align: baseline;
 }
 
 /* ==========================================================================
@@ -1206,4 +1219,87 @@ label.trade-label-input {
     margin: 0px;
     border-radius: 0px;
     border-top: none;
+}
+
+/* ==========================================================================
+    Getting Started
+   ========================================================================== */
+
+.tutorial h3,
+.tutorial h4,
+.tutorial h5 {
+    color: #ff5000;
+    margin-bottom: 0;
+}
+
+.tutorial .text {
+    font-weight: 700;
+    line-height: 30px;
+}
+
+.tutorial ol {
+    margin-top: 35px;
+}
+
+.tutorial ol li {
+    line-height: 30px;
+    margin-left: 120px;
+}
+
+.tut-symbol {
+    padding: 5px;
+    text-align: center;
+    border: 3px #369 solid;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    float: left;
+    font-size: 35px;
+    color: #a7a7a7;
+}
+
+.tutorial ol div {
+    margin-bottom: 35px;
+}
+
+/* ==========================================================================
+    about
+   ========================================================================== */
+
+.maker-wrapper {
+    width: 300px;
+    float: left;
+}
+
+.maker {
+    width: 60%;
+    height: 60%;
+    padding: 15px;
+    background-color: rgba(200, 200, 200, 0.4);
+}
+
+.maker:hover {
+    border: thin solid #ff5000;
+    padding: 14px;
+}
+
+.maker-name {
+    text-align: center;
+    font-family: "Abel", "Droid Sans", sans-serif
+}
+
+.rotate {
+    font-size: 20px;
+    position: relative;
+    bottom: 20px;
+    background-color: #fff;
+    right: 7px;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin: 0px 0 0 -40px;
+    -moz-transform: scale(1) rotate(-35deg) translateX(20px) translateY(20px) skewX(0deg) skewY(0deg);
+    -webkit-transform: scale(1) rotate(-35deg) translateX(20px) translateY(20px) skewX(0deg) skewY(0deg);
+    -o-transform: scale(1) rotate(-35deg) translateX(20px) translateY(20px) skewX(0deg) skewY(0deg);
+    -ms-transform: scale(1) rotate(-35deg) translateX(20px) translateY(20px) skewX(0deg) skewY(0deg);
+    transform: scale(1) rotate(-35deg) translateX(20px) translateY(20px) skewX(0deg) skewY(0deg);
 }

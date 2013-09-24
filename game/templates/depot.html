@@ -162,7 +162,7 @@
 						<th>Market/Stop/Limit</th>
 						<th>Stop/Limit Marke</th>
 						<th>Anzahl</th>
-						<th>Trade</th>
+						<th>Löschen</th>
 					</tr>
 					<tr ng-repeat="order in delayedOrders">
 						<td class="depot-{{order.buysell}}" title="{{order.query.stockid}}">{{order.query.dquerydata.name}}</td>
@@ -173,7 +173,7 @@
 							<span ng-hide="order.query.dquerydata.xvalue">—</span>
 						</td>
 						<td>{{order.amount}}</td>
-						<td class="trade-td"><a ng-click="removeDelayedOrder(order.queryid)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF153;</a></td>
+						<td class="trade-td"><a ng-click="removeDelayedOrder(order.queryid)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF207;</a></td>
 					</tr>
 				</table>
 			</fieldset>

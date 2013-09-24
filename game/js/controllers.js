@@ -577,7 +577,7 @@ angular.module('tradity.controllers', []).
   controller('RankingCtrl', function($scope, socket) {
     $scope.rtype = 'general';
     $scope.startindex = 1;
-    $scope.endindex = 100;
+    $scope.endindex = 200;
     $scope.studentonly = false;
     $scope.fromschool = null;
     $scope.results = [];

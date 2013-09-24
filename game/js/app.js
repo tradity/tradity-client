@@ -66,7 +66,7 @@ angular.module('tradity', [
       templateUrl: 'templates/tos.html'
     }).
     when('/gettingstarted', {
-      templateUrl: 'templates/gettingStarted.html'
+      templateUrl: 'templates/gettingstarted.html'
     }).
     otherwise({
       redirectTo: '/'

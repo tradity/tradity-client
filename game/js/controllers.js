@@ -164,7 +164,6 @@ angular.module('tradity.controllers', []).
     $scope.pokeEvents = function() {
       socket.emit('fetch-events', {
         since: 0,
-        all: false,
         count: null
       });
     }

@@ -740,7 +740,7 @@ angular.module('tradity.controllers', []).
             var suggestions = [];
             for (var i in data.results) {
               data.results[i].getEntryName = 
-              data.results[i].getInputTextValue = function() { return this.leader ? 'Leader: ' + this.leadername : this.name; };
+              data.results[i].getInputTextValue = function() { return this.name; };
               data.results[i].getExtra = function() { return (parseInt(this.lastvalue / 100) / 100) + (this.exchange ? ' ' + this.exchange : ''); };
               suggestions.push(data.results[i]);
             }
@@ -750,7 +750,7 @@ angular.module('tradity.controllers', []).
       },
       submit: gotData = function(ac, data) {
         document.getElementById('paper').value =
-        $scope.stockname = data.leader ? 'Leader: ' + data.leadername : data.name;
+        $scope.stockname = data.name;
         $scope.stockid = data.leader ? null : data.stockid;
         $scope.leader = data.leader ? data.leader : null;
         $scope.cur = data;

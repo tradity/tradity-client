@@ -253,7 +253,7 @@ angular.module('tradity.controllers', []).
         case 'reg-success':
           var extra = '';
           if (/@freenet\.\w+$/.test($scope.email))
-            extra = '\nVORSICHT: Bei deinem E-Mail-Provider ist es schon häufiger zu Problemen mit der Anmeldung gekommen.\nSchicke bitte ggf. selbst eine E-Mail an tech@tradity.de';
+            extra = '\nBei deinem E-Mail-Provider ist es schon häufiger zu Problemen mit der Anmeldung gekommen.\nSchicke bitte ggf. selbst eine E-Mail an tech@tradity.de';
           alert('Registrierung erfolgreich' + extra);
           $location.path('/');
           break;

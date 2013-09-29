@@ -16,8 +16,10 @@ function SoTrade(socket) {
 		
 		// general listeners
 		var listeners = this.listeners[type] || [];
-		for (var i = 0; i < listeners.length; ++i) 
-			listeners[i](data);
+		for (var i = 0; i < listeners.length; ++i) {
+			if (listeners[i])
+				listeners[i](data);
+		}
 		
 		// specific listeners
 		var numericID = parseInt(rid[1]);
@@ -75,7 +77,7 @@ SoTrade.prototype.on = function(evname, cb, angularScope) {
 	this.socket.on(evname, cb);
 	if (angularScope) {
 		var this_ = this;
-		angularScope.$on('$destroy', function() { delete this_.listeners[index]; });
+		angularScope.$on('$destroy', function() { delete this_.listeners[evname][index]; });
 	}
 }
 
@@ -83,13 +85,13 @@ angular.module('tradity.services', []).
 	factory('socket', function ($rootScope) {
 		var socket = new SoTrade(io.connect('https://dev.tradity.de:443'));
 		return {
-			on: function (eventName, callback) {
+			on: function (eventName, callback, angularScope) {
 				socket.on(eventName, function () {
 					var args = arguments;
 					$rootScope.$apply(function () {
 						callback.apply(socket, args);
 					});
-				});
+				}, angularScope);
 			},
 			emit: function (eventName, data, callback) {
 				socket.emit(eventName, data, function () {

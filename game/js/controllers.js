@@ -578,8 +578,6 @@ angular.module('tradity.controllers', []).
   }).
   controller('RankingCtrl', function($scope, socket) {
     $scope.rtype = 'general';
-    $scope.startindex = 1;
-    $scope.endindex = 200;
     $scope.studentonly = false;
     $scope.fromschool = null;
     $scope.results = [];
@@ -587,8 +585,6 @@ angular.module('tradity.controllers', []).
     $scope.getRanking = function() {
       socket.emit('get-ranking', {
         rtype: $scope.rtype,
-        startindex: $scope.startindex,
-        endindex: $scope.endindex,
         studentonly: $scope.studentonly,
         fromschool: $scope.fromschool
       },

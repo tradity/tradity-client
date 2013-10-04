@@ -6,6 +6,12 @@ body {
     font-size: 1em;
     line-height: 1.4;
     background: #f0f0f0;
+    
+    /*
+    background-image: url('../img/bg.png');
+    background-repeat: no-repeat;
+    background-position: right bottom; 
+    */
 }
 
 ::-moz-selection {
@@ -245,6 +251,25 @@ div.fixed-name-container {
     url("type/batch/batch.svg#batch") format("svg");
 }
 
+@font-face {
+  font-family: 'Abel';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Abel'), local('Abel-Regular'), url(https://themes.googleusercontent.com/static/fonts/abel/v3/EAqh528fFdbUek8UOky4sA.woff) format('woff');
+}
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Droid Sans'), local('DroidSans'), url(https://themes.googleusercontent.com/static/fonts/droidsans/v3/s-BiyweUPV0v-yRb-cjciBsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Droid Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url(https://themes.googleusercontent.com/static/fonts/droidsans/v3/EFpQQyG9GqCrobXxL-KRMQFhaRv2pGgT5Kf0An0s4MM.woff) format('woff');
+}
+
 /* ==========================================================================
     User Styles - Main
    ========================================================================== */
@@ -266,7 +291,16 @@ h1, h2, h3, h4, h5, h6 {
     -moz-border-radius: 3px;
     border-radius: 3px;
     line-height: 1;
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.box span {
     display: inline-block;
+    margin-left: 30px;
+    margin-bottom: -20px;
+    width: 92%;
 }
 
 .alarm {
@@ -481,6 +515,10 @@ h1#tradity {
     text-align: right;
 }
 
+.depot-wert{
+    font-family: 'Abel', 'Droid Sans', sans-serif;
+}
+
 .nick {
     font-size: 20px;
     color: #369;
@@ -495,6 +533,7 @@ h1#tradity {
 }
 
 .profile-box {
+    font-family: 'Droid Sans', sans-serif;
     font-size: 11px;
     float: left;
     padding: 0 10px 0 0;
@@ -557,6 +596,7 @@ h1#tradity {
 
 .placement-number {
     font-size: 25px;
+    font-family: 'Abel', 'Droid Sans', sans-serif;
 }
 
 .facebook img:hover {
@@ -723,12 +763,12 @@ h1#tradity {
     -moz-border-radius-bottomleft: 6px;
     border-bottom-left-radius: 6px;
     text-indent: 0;
-    border: 1px solid #dcdcdc;
     display: inline-block;
     color: #222;
     font-size: 15px;
     font-weight: normal;
     font-style: normal;
+    font-family: "Droid Sans", sans-serif;
     height: 40px;
     line-height: 40px;
     margin: 12px 24px 0 0;
@@ -751,7 +791,7 @@ h1#tradity {
     background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
     background-color:#dfdfdf;
-    border-color: #999;
+    border-color: #111;
 }
 
 #options-sb:active,
@@ -956,6 +996,14 @@ label.trade-label-input {
   border: thin solid #a7a7a7;
 }
 
+.max-values {
+    padding-left: 10px;
+    vertical-align: baseline;
+    font-size: 13px;
+    font-family: "Abel", "Droid Sans", sans-serif;
+    color: #a7a7a7;
+}
+
 /* ==========================================================================
     angulars-classes
    ========================================================================== */
@@ -970,6 +1018,11 @@ label.trade-label-input {
 /* ==========================================================================
     depot
    ========================================================================== */
+
+.owned-trades tr:first-child th:nth-child(2),
+.owned-trades tr:first-child th:nth-child(4) {
+    background-color: #fff;
+}
 
 .one-item-list {
     display: inline-block;
@@ -1037,11 +1090,6 @@ label.trade-label-input {
     padding: 5px 10px 0px 10px;
 }
 
-.owned-trades tr:first-child th:nth-child(2),
-.owned-trades tr:first-child th:nth-child(4) {
-    background-color: #fff;
-}
-
 .transaction-history tr td:last-child,
 .transaction-history tr th:last-child,
 .owned-trades tr td:last-child,
@@ -1087,6 +1135,23 @@ label.trade-label-input {
     background-color: rgba(0, 150, 0, 0.2);    
 }
 
+.watchlist {
+    list-style-type: none;
+    padding: 0;
+}
+
+.watchlist .player {
+    padding: 0;
+    float: left;
+    font-size: 18px;
+    font-family: "Droid Sans", sans-serif;
+    color: #369;
+}
+
+.unwatch-icon {
+    cursor: pointer;
+    font-size: 15px;
+}
 /* ==========================================================================
     Rangliste
    ========================================================================== */
@@ -1137,6 +1202,18 @@ label.trade-label-input {
     background-color: rgba(200, 200, 200, 0.2);
 }
 
+.search {
+    margin-top: 20px;
+}
+
+.search input{
+    width: 260px;
+}
+
+.search-icon {
+    margin: 0 10px 0 0;
+}
+
 
 /* ==========================================================================
     faq
@@ -1168,7 +1245,8 @@ label.trade-label-input {
     float: right;
     z-index: 3;
     position: absolute;
-    margin-left: -220px; 
+    margin-left: -220px;
+    margin-top: 20px;
     width: 30px;
     height: 30px;
     color: #fff;
@@ -1218,7 +1296,6 @@ label.trade-label-input {
     float: left;
     margin: 0px;
     border-radius: 0px;
-    border-top: none;
 }
 
 /* ==========================================================================

@@ -1,19 +1,56 @@
 <div id="stats" class="main-content">
-	<table class="ranking">
-		<colgroup>
-		  	<col class="rankcol-1">
-		    <col class="rankcol-2">
-		    <col class="rankcol-3">
-		</colgroup>
-		<tr>
-			<th>Rang</th>
-			<th>Name</th>
-			<th>Gesamtvermögen</th>
-		</tr>
-		<tr ng-repeat="result in results | orderBy:'rank'">
-			<td>{{result.rank}}</td>
-			<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
-			<td>{{result.totalvalue / 10000 | currency}}</td>
-		</tr>
-	</table>
+	<script type="text/javascript">	
+		// JqueryUI 
+		$(function() {
+		    $( "#tabs" ).tabs();
+		});
+	</script>
+	<div class="search">
+		<span class="batch search-icon">&#xF097;</span>
+		<input class="options-input" id="search" placeholder="suche nach Nicknamen">
+	</div>
+	<div id="tabs">
+		<ul>
+		  <li><a href="#tabs-1">Gesamt</a></li>
+		  <li><a href="#tabs-2">Follower</a></li>
+		</ul>
+	  	<div id="tabs-1">
+			<table class="ranking">
+				<colgroup>
+				  	<col class="rankcol-1">
+				    <col class="rankcol-2">
+				    <col class="rankcol-3">
+				</colgroup>
+				<tr>
+					<th>Rang</th>
+					<th>Name</th>
+					<th>Gesamtvermögen</th>
+				</tr>
+				<tr ng-repeat="result in results | orderBy:'rank'">
+					<td>{{result.rank}}</td>
+					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
+					<td>{{result.totalvalue / 10000 | currency}}</td>
+				</tr>
+			</table>
+		</div>
+		<div id="tabs-2">
+			<table class="ranking">
+				<colgroup>
+				  	<col class="rankcol-1">
+				    <col class="rankcol-2">
+				    <col class="rankcol-3">
+				</colgroup>
+				<tr>
+					<th>Rang</th>
+					<th>Name</th>
+					<th>Followervermögen</th>
+				</tr>
+				<tr ng-repeat="">
+					<td></td>
+					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer"></a></td>
+					<td></td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </div>

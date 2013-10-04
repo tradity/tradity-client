@@ -1,86 +1,121 @@
 <button class="tutbtn" onclick="javascript:introJs().start()" ng-hide="!user.isSelf">?</button>
-<div id="profile" ng-hide="user.isSelf">
-    <div class="clearfix">
-        <h2 class="name"><a ng-href="#/user/{{user.name}}" style="cursor: pointer">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</a></h2>
-        <div class="depot">
-            <h2 class="title">Gesamtvermögen</h2>
-            <span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
-        </div>
-    </div>
-    <img id="profile-picture"  class="profile-box" src="{{user.profilepic}}" alt="Profilbild">
-    <div id="bio" class="profile-box">
-        <h3 class="title">Kurzbeschreibung: <br /></h3>
-        {{user.desc}}
-    </div>
-    <div id="placement" class="profile-box">
-        <h3 class="title">Platz: <br /></h3>
-        <span class="placement-number">{{user.rank}}</span>
-    </div>
-</div>
-<div class="main-content" data-step="1" data-position="left" data-intro="Alles, was du hier siehst, ist dein öffentliches Profil. Je nach deinen Einstellungen ist dein Klarname einsehbar.">
-    <div style="text-align: right; margin-top: -60px;" ng-hide="user.isSelf">
-      <button ng-click="getUserInfo()" class="click-button"><span class="batch">&#xF0B2; </span>Refresh</button>
-      <button ng-click="addToWatchlist()" class="click-button"><span class="batch">&#xF179; </span>zur Watchlist hinzufügen</button>
-      <form style="display:inline" action="#/trade/buy/__LEADER_{{user.uid}}__/0" method="get"><button class="click-button block-link"><span class="batch">&#xF0B8; </span>Folgen</button></form>
-    </div>
-	<fieldset class="options-field">
-		<legend>Vermögensentwicklung</legend>
-		<ul class="one-item-list">
-			<li>
-				Gesamt
-			</li>
-			<li>
-				{{((user.totalvalue / 10000) - 100000 ) / 1000 | number:2}}%
-			</li>
-		</ul>
-		<ul class="one-item-list">
-			<li>
-				Heute
-			</li>
-			<li>
-				{{(user.lastvalue / user.daystartvalue - 1) * 100 | number:2}}%
-			</li>
-		</ul>
-		<ul class="one-item-list">
-			<li>
-				Woche
-			</li>
-			<li>
-				{{(user.lastvalue / user.weekstartvalue - 1) * 100 | number:2}}%
-			</li>
-		</ul>
-	</fieldset>
-	<fieldset class="options-field">
-		<legend>Transaktionshistorie</legend>
-		<table class="transaction-history">
-		  <colgroup>
-		  	<col class="column-0">
-		    <col class="column-1">
-		    <col class="column-2">
-		    <col class="column-3">
-		    <col class="column-4-5">
-		    <col class="column-6-7">
-		  </colgroup>
 
-			<tr>
-				<th>Name</th>
-				<th>Datum</th>
-				<th>Bilanz</th>
-				<th>Anzahl</th>
-				<th>Preis</th>
-				<th>Transaktionskosten</th>
-			</tr>
-			<tr ng-repeat="order in orders">
-				<td class="{{order.ordertype}}" title="{{order.stocktextid}}"><a class="text-link" ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a></td>
-				<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
-				<td>{{(order.money * -1) / 10000 | currency}}</td>
-				<td>{{order.amount}}</td>
-				<td>{{order.price / 10000 | currency}}</td>
-				<td>{{order.fee / 10000 | currency}}</td>
-			</tr>
-		</table>
-	</fieldset>
-    <!-- Just an example yet -->
-    <!-- <canvas id="depotPerformanceChart" width="600" height="400"></canvas> -->
+<script type="text/javascript">	
+	// JqueryUI 
+	$(function() {
+	    $( "#tabs" ).tabs();
+	});
+</script>
+		<div class="main-content" data-step="1" data-position="left" data-intro="Alles, was du hier siehst, ist dein öffentliches Profil. Je nach deinen Einstellungen ist dein Klarname einsehbar.">
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Generelles</a></li>
+		<li><a href="#tabs-2">Transaktionshistorie</a></li>
+		<li><a href="#tabs-3">Pinnwand</a></li>
+	</ul>
+	<div id="tabs-1">
+		<div id="profile" ng-hide="user.isSelf">
+		    <div class="clearfix">
+		        <h2 class="name"><a ng-href="#/user/{{user.name}}" style="cursor: pointer">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</a></h2>
+		        <div class="depot">
+		            <h2 class="title">Gesamtvermögen</h2>
+		            <span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
+		        </div>
+		    </div>
+		    <img id="profile-picture"  class="profile-box" src="{{user.profilepic}}" alt="Profilbild">
+		    <div id="bio" class="profile-box">
+		        <h3 class="title">Kurzbeschreibung<br /></h3>
+		        {{user.desc}}
+		    </div>
+		    <div id="placement" class="profile-box">
+		        <h3 class="title">Platz<br /></h3>
+		        <span class="placement-number">{{user.rank}}</span>
+		    </div>
+		    <div class="profile-box" style="float: right; text-align: right; padding-right: 0">
+		        <h3 class="title">Provision<br /></h3>
+		        <span class="placement-number">1337%</span>
+		    </div>
+		</div>
+			<fieldset class="options-field">
+				<legend>Vermögensentwicklung</legend>
+				<ul class="one-item-list">
+					<li>
+						Gesamt
+					</li>
+					<li>
+						{{((user.totalvalue / 10000) - 100000 ) / 1000 | number:2}}%
+					</li>
+				</ul>
+				<ul class="one-item-list">
+					<li>
+						Heute
+					</li>
+					<li>
+						{{(user.lastvalue / user.daystartvalue - 1) * 100 | number:2}}%
+					</li>
+				</ul>
+				<ul class="one-item-list">
+					<li>
+						Woche
+					</li>
+					<li>
+						{{(user.lastvalue / user.weekstartvalue - 1) * 100 | number:2}}%
+					</li>
+				</ul>
+			</fieldset>
+			<div style="text-align: right;" ng-hide="user.isSelf">
+		      <button ng-click="getUserInfo()" class="click-button"><span class="batch">&#xF0B2; </span>Refresh</button>
+		      <button ng-click="addToWatchlist()" class="click-button"><span class="batch">&#xF179; </span>zur Watchlist hinzufügen</button>
+		      <form style="display:inline" action="#/trade/buy/__LEADER_{{user.uid}}__/0" method="get"><button class="click-button block-link"><span class="batch">&#xF0B8; </span>Folgen</button></form>
+		    </div>
+		</div>
+		<div id="tabs-2">
+			<fieldset class="options-field">
+				<legend>Transaktionshistorie</legend>
+				<table class="transaction-history">
+				  <colgroup>
+				  	<col class="column-0">
+				    <col class="column-1">
+				    <col class="column-2">
+				    <col class="column-3">
+				    <col class="column-4-5">
+				    <col class="column-6-7">
+				  </colgroup>
+
+					<tr>
+						<th>Name</th>
+						<th>Datum</th>
+						<th>Bilanz</th>
+						<th>Anzahl</th>
+						<th>Preis</th>
+						<th>Transaktionskosten</th>
+					</tr>
+					<tr ng-repeat="order in orders">
+						<td class="{{order.ordertype}}" title="{{order.stocktextid}}"><a class="text-link" ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a></td>
+						<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
+						<td>{{(order.money * -1) / 10000 | currency}}</td>
+						<td>{{order.amount}}</td>
+						<td>{{order.price / 10000 | currency}}</td>
+						<td>{{order.fee / 10000 | currency}}</td>
+					</tr>
+				</table>
+			</fieldset>
+		</div>
+		<div id="tabs-3" style="margin-top: 15px;">
+			<div ng-repeat="comment in comments">
+				<div class="commenter"><a href="#/user/{{comment.username}}" class="text-link">{{comment.username}}</a></div>
+				<div class="comment comment-somebody">
+					{{comment.comment}}
+					<span class="feed-time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{comment.vtime}}</span>
+				</div>
+			</div>
+			<form ng-submit="sendComment()">
+				<input type="submit" class="click-button comment-button" value="Kommentieren">
+				<textarea ng-model="comment" class="options-input comment-textarea" placeholder="Was sagst Du zu diesem Trader?"></textarea>
+			</form>
+		    <!-- Just an example yet -->
+		    <!-- <canvas id="depotPerformanceChart" width="600" height="400"></canvas> -->
+		</div>
+	</div>
 </div>
 

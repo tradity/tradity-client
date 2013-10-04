@@ -12,6 +12,7 @@
 	    <li data-step="2" data-position="left" data-intro="Ab hier beginnt dein Depot. Hier sind deine derzeit in Besitz befindlichen Wertpapiere"><a href="#tabs-2">Wertpapiere in Besitz</a></li>
 	    <li data-step="3" data-position="left" data-intro="Und hier welche, die es bald werden können. Diese warten entweder darauf, dass sich der jeweilige Handelsplatz öffnet oder ein Stop-/Limitwert erreicht wird."><a href="#tabs-3">Noch nicht ausgeführte Transaktionen</a></li>
 	    <li data-step="4" data-position="left" data-intro="Schau dir deine vergangenen Orders an und schwebe in deiner Trader-Vergangenheit."><a href="#tabs-4">Transaktionshistorie</a></li>
+	    <li data-step="5" data-position="left" data-intro="Alles was du auf deine Watchlist gesetzt hast, findest du hier"><a href="#tabs-5"><span class="batch">&#xF178;</span></a></li>
 	  </ul>
 	  	<div id="tabs-1">
 			<fieldset class="options-field">
@@ -207,6 +208,59 @@
 						<td>{{order.fee / 10000 | currency}}</td>
 					</tr>
 				</table>
+			</fieldset>
+		</div>
+		<div id="tabs-5">
+			<fieldset class="options-field">
+				<legend>Wertpapiere in deiner Watchlist</legend>
+				<table class="owned-trades">
+				  <colgroup>
+				    <col class="column-2">
+				    <col class="column-3">
+				    <col class="column-4-5" span="2">
+				    <col class="column-6-7" span="2">
+					<col class="column-8">
+				  </colgroup>
+					<tr>
+						<th></th>
+						<th></th>
+						<th colspan="2">Preis</th>
+						<th colspan="2" style="background-color: rgba(0, 0, 0, 0)">Performance</th>
+						<th></th>
+					</tr>
+					<tr>
+						<th>Name</th>
+						<th>Datum</th>
+						<th>Start</th>
+						<th>Aktuell</th>
+						<th>Gesamt</th>
+						<th>Gestern</th>
+						<th>Entfernen</th>
+					</tr>
+					<tr ng-repeat="">
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="trade-td"><a class="batch block-link trade">&#xF17A;</a></td>
+					</tr>
+				</table>
+			</fieldset>
+			<fieldset class="options-field">
+			<legend>Spieler in deiner Watchlist</legend>
+
+			<!-- Eigentlich ist der unwatch button blöd -.- aber naja -->
+
+			<ul class="watchlist">
+				<li class="player">
+					<a href="#" class="batch unwatch-icon" >&#xF17A;</a>
+					<a href="#" class="text-link"> heiner</a>,&nbsp;
+				</li>
+				<li class="player">
+					<a href="#" class="batch unwatch-icon">&#xF17A;</a>
+					<a href="#" class="text-link"> rainer</a>
+				</li>
+			</ul>
 			</fieldset>
 		</div>
 	</div>

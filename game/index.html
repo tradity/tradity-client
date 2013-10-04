@@ -7,12 +7,11 @@
         <meta name="description" content="Social Trading renewed"> <!-- edit -->
         <meta name="viewport" content="width=device-width">
 
-        <link href='https://fonts.googleapis.com/css?family=Abel|Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/ac.css">
         <link rel="stylesheet" href="css/introjs.css">
         <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.css">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
 
         <script type="text/javascript" src="js/vendor/jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
@@ -59,11 +58,11 @@
                     </div>
                     <img id="profile-picture" class="profile-box" ng-src="{{ownUser.profilepic}}" alt="Profilbild">
                     <div id="bio" class="profile-box">
-                        <h3 class="title">Kurzbeschreibung: <br /></h3>
+                        <h3 class="title">Kurzbeschreibung<br /></h3>
                         {{ownUser.desc}}
                     </div>
                     <div id="placement" class="profile-box">
-                        <h3 class="title">Rang: <br /></h3>
+                        <h3 class="title">Rang<br /></h3>
                         <span class="placement-number">{{ownUser.rank}}</span>
                     </div>
                     <ul id="buttons" class="profile-box">
@@ -105,7 +104,14 @@
                             <span class="dark nav-block-title">Einstellungen</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="#/faq"  accesskey="h" title="ALT+SHIFT+H">
+                            <span ng-class="{active:isActive('/faq')}" class="batch nav-block-symbol">&#xF0D4;</span>
+                            <span class="dark nav-block-title">Häufige Fragen</span>
+                        </a>
+                    </li>
                 </ul>
+
             </nav>
             <div ng-view></div>
             <footer id="footer">
@@ -124,8 +130,7 @@
                 </ul>
                 <a class="text-link footer-text" href="#/gettingstarted">Getting Started</a> 
                 <a class="text-link footer-text" href="#/about">Über uns</a> 
-                <a class="text-link footer-text" href="#/tos">Allgemeine Geschäftsbedingungen</a> 
-                <a class="text-link footer-text" href="#/faq">FAQ</a> 
+                <a class="text-link footer-text" href="#/tos">Allgemeine Geschäftsbedingungen</a>
                 <a class="text-link footer-text" href="#/imprint">Impressum</a> 
                 <span class="footer-text">tradity, 2013</span>
             </footer>

@@ -253,7 +253,7 @@ angular.module('tradity.controllers', []).
         srcusername: data.srcusername,
         orderid: data.orderid,
         tradername: tn,
-        tradername_genitive: tn ? ('xs'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’') : null,
+        tradername_genitive: 'xs'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’',
         time: data.eventtime
       });
     });
@@ -487,7 +487,7 @@ angular.module('tradity.controllers', []).
         ownDepotOrUser();
       }
       socket.emit('get-user-info', {
-        lookfor: $scope.ownUser.uid
+        lookfor: '$self'
       },
       function(data) {
         var orders = data.orders;
@@ -504,6 +504,7 @@ angular.module('tradity.controllers', []).
         $scope.orders = orders;
       });
     }, $scope);
+    
     socket.on('dquery-list', function(data) {
       $scope.delayedOrders = [];
       for (var i = 0; i < data.results.length; ++i) {

@@ -577,20 +577,29 @@ angular.module('tradity.controllers', []).
     */
   }).
   controller('RankingCtrl', function($scope, socket) {
-    $scope.rtype = 'general';
     $scope.studentonly = false;
     $scope.fromschool = null;
     $scope.results = [];
     
     $scope.getRanking = function() {
       socket.emit('get-ranking', {
-        rtype: $scope.rtype,
+        rtype: 'general',
         studentonly: $scope.studentonly,
         fromschool: $scope.fromschool
       },
       function(data) {
         if (data.code == 'get-ranking-success') {
           $scope.results = data.result;
+        }
+      });
+      socket.emit('get-ranking', {
+        rtype: 'following',
+        studentonly: $scope.studentonly,
+        fromschool: $scope.fromschool
+      },
+      function(data) {
+        if (data.code == 'get-ranking-success') {
+          $scope.resultsFollower = data.result;
         }
       });
     };

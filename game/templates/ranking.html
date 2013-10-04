@@ -43,12 +43,12 @@
 				<tr>
 					<th>Rang</th>
 					<th>Name</th>
-					<th>Followervermögen</th>
+					<th>Followerperformance</th>
 				</tr>
-				<tr ng-repeat="">
-					<td></td>
-					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer"></a></td>
-					<td></td>
+				<tr ng-repeat="result in resultsFollower | orderBy:'rank'">
+					<td>{{result.rank}}</td>
+					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
+					<td>{{result.totalfperf | number:2}}%</td>
 				</tr>
 			</table>
 		</div>

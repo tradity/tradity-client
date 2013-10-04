@@ -7,7 +7,7 @@
 	</script>
 	<div class="search">
 		<span class="batch search-icon">&#xF097;</span>
-		<input class="options-input" id="search" placeholder="suche nach Nicknamen">
+		<input ng-model="searchText" class="options-input" id="search" placeholder="Suchfilter">
 	</div>
 	<div id="tabs">
 		<ul>
@@ -26,7 +26,7 @@
 					<th>Name</th>
 					<th>Gesamtvermögen</th>
 				</tr>
-				<tr ng-repeat="result in results | orderBy:'rank'">
+				<tr ng-repeat="result in results | orderBy:'rank' | filter:searchText">
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
 					<td>{{result.totalvalue / 10000 | currency}}</td>
@@ -45,7 +45,7 @@
 					<th>Name</th>
 					<th>Followerperformance</th>
 				</tr>
-				<tr ng-repeat="result in resultsFollower | orderBy:'rank'">
+				<tr ng-repeat="result in resultsFollower | orderBy:'rank' | filter:searchText">
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
 					<td>{{result.totalfperf | number:2}}%</td>

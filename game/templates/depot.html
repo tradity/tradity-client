@@ -231,11 +231,13 @@
 						<th>Gestern</th>
 						<th>Entfernen</th>
 					</tr>
-					<tr ng-repeat="">
+					<tr ng-repeat="entry in watchlist">
+						<td>{{entry.stockname}}</td>
 						<td></td>
 						<td></td>
+						<td>{{entry.lastvalue / 10000 | currency}}</td>
 						<td></td>
-						<td></td>
+						<td>{{(entry.lastvalue - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}}%</td>
 						<td class="trade-td"><a class="batch block-link trade">&#xF17A;</a></td>
 					</tr>
 				</table>

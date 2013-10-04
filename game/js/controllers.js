@@ -534,6 +534,24 @@ angular.module('tradity.controllers', []).
         }
       });
     };
+    $scope.showWatchlist = function() {
+      socket.emit('watchlist-show', function(data) {
+        if (data.code == 'watchlist-show-success') {
+          $scope.watchlist = data.results;
+        }
+      });
+    };
+    $scope.removeFromWatchlist = function(userId) {
+      socket.emit('watchlist-remove', {
+        userid: userId
+      },
+      function(data) {
+        if (data.code == 'watchlist-remove-success') {
+          alert(userId + 'von der Watchlist entfernt');
+        }
+      });
+    };
+    $scope.showWatchlist();
   }).
   controller('ProfileCtrl', function($scope, $routeParams, socket) {
     $scope.getUserInfo = function() {
@@ -848,26 +866,6 @@ angular.module('tradity.controllers', []).
         }
       });
     }
-  }).
-  controller('WatchlistCtrl', function($scope, socket) {
-    $scope.showWatchlist = function() {
-      socket.emit('watchlist-show', function(data) {
-        if (data.code == 'watchlist-show-success') {
-          $scope.watchlist = data.results;
-        }
-      });
-    };
-    $scope.removeFromWatchlist = function(userId) {
-      socket.emit('watchlist-remove', {
-        userid: userId
-      },
-      function(data) {
-        if (data.code == 'watchlist-remove-success') {
-          alert(userId + 'von der Watchlist entfernt');
-        }
-      });
-    };
-    $scope.showWatchlist();
   }).
   controller('FeedCtrl', function($scope, socket) {
     $scope.displaymessages = [];

@@ -1,20 +1,14 @@
 <div id="stats" class="main-content">
-	<script type="text/javascript">	
-		// JqueryUI 
-		$(function() {
-		    $( "#tabs" ).tabs();
-		});
-	</script>
 	<div class="search">
 		<span class="batch search-icon">&#xF097;</span>
 		<input ng-model="searchText" class="options-input" id="search" placeholder="Suchfilter">
 	</div>
 	<div id="tabs">
 		<ul>
-		  <li><a href="#tabs-1">Gesamt</a></li>
-		  <li><a href="#tabs-2">Follower</a></li>
+		  <li><a href="#all">Gesamt</a></li>
+		  <li><a href="#follower">Follower</a></li>
 		</ul>
-	  	<div id="tabs-1">
+	  	<div id="all">
 			<table class="ranking">
 				<colgroup>
 				  	<col class="rankcol-1">
@@ -33,7 +27,7 @@
 				</tr>
 			</table>
 		</div>
-		<div id="tabs-2">
+		<div id="follower">
 			<table class="ranking">
 				<colgroup>
 				  	<col class="rankcol-1">

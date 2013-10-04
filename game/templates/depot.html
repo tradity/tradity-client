@@ -1,20 +1,14 @@
 <button class="tutbtn" onclick="javascript:introJs().start()">?</button>
 <div id="depot" class="main-content">
-	<script type="text/javascript">	
-		// JqueryUI 
-		$(function() {
-		    $( "#tabs" ).tabs();
-		});
-	</script>
 	<div id="tabs">
 	  <ul>
-	    <li data-step="1" data-position="left" data-intro="Hier siehst du deine absoluten Vermögenswerte. Dein Startgesamtwert liegt bei 100.000. Dieser Wert ist aufgeteilt in das was auf deinem Konto liegt, dieses Geld ist unverzinst und kann für den Wertpapierkauf benutzt werden und deinem Depot, der Wert deiner Wertpapiere. Deine Performance spiegelt deine Leistung prozentual wider. Hier in 3 verschiedenen Zeiträumen (Gesamt, Heute und der letzten Woche)"><a href="#tabs-1">Vermögensentwicklung</a></li>
-	    <li data-step="2" data-position="left" data-intro="Ab hier beginnt dein Depot. Hier sind deine derzeit in Besitz befindlichen Wertpapiere"><a href="#tabs-2">Wertpapiere in Besitz</a></li>
-	    <li data-step="3" data-position="left" data-intro="Und hier welche, die es bald werden können. Diese warten entweder darauf, dass sich der jeweilige Handelsplatz öffnet oder ein Stop-/Limitwert erreicht wird."><a href="#tabs-3">Noch nicht ausgeführte Transaktionen</a></li>
-	    <li data-step="4" data-position="left" data-intro="Schau dir deine vergangenen Orders an und schwebe in deiner Trader-Vergangenheit."><a href="#tabs-4">Transaktionshistorie</a></li>
-	    <li data-step="5" data-position="left" data-intro="Alles was du auf deine Watchlist gesetzt hast, findest du hier"><a href="#tabs-5"><span class="batch">&#xF178;</span></a></li>
+	    <li data-step="1" data-position="left" data-intro="Hier siehst du deine absoluten Vermögenswerte. Dein Startgesamtwert liegt bei 100.000. Dieser Wert ist aufgeteilt in das was auf deinem Konto liegt, dieses Geld ist unverzinst und kann für den Wertpapierkauf benutzt werden und deinem Depot, der Wert deiner Wertpapiere. Deine Performance spiegelt deine Leistung prozentual wider. Hier in 3 verschiedenen Zeiträumen (Gesamt, Heute und der letzten Woche)"><a href="#overview">Vermögensentwicklung</a></li>
+	    <li data-step="2" data-position="left" data-intro="Ab hier beginnt dein Depot. Hier sind deine derzeit in Besitz befindlichen Wertpapiere"><a href="#listing">Wertpapiere in Besitz</a></li>
+	    <li data-step="3" data-position="left" data-intro="Und hier welche, die es bald werden können. Diese warten entweder darauf, dass sich der jeweilige Handelsplatz öffnet oder ein Stop-/Limitwert erreicht wird."><a href="#opentransactions">Noch nicht ausgeführte Transaktionen</a></li>
+	    <li data-step="4" data-position="left" data-intro="Schau dir deine vergangenen Orders an und schwebe in deiner Trader-Vergangenheit."><a href="#history">Transaktionshistorie</a></li>
+	    <li data-step="5" data-position="left" data-intro="Alles was du auf deine Watchlist gesetzt hast, findest du hier"><a href="#watchlist"><span class="batch">&#xF178;</span></a></li>
 	  </ul>
-	  	<div id="tabs-1">
+	  	<div id="overview">
 			<fieldset class="options-field">
 				<legend>Vermögen</legend>
 				<ul class="one-item-list">
@@ -30,7 +24,7 @@
 						Konto
 					</li>
 					<li>
-						{{ownUser.balance / 10000 | currency}}
+						{{ownUser.freemoney / 10000 | currency}}
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -97,7 +91,7 @@
 				</ul>
 			</fieldset>
 		</div>
-		<div id="tabs-2">
+		<div id="listing">
 			<fieldset class="options-field">
 				<legend>Wertpapiere in Besitz</legend>
 				<table class="owned-trades">
@@ -146,7 +140,7 @@
 				</table>
 			</fieldset>
 		</div>
-		<div id="tabs-3">
+		<div id="opentransactions">
 			<fieldset class="options-field">
 				<legend>Noch nicht ausgeführte Transaktionen</legend>
 				<table class="transaction-history">
@@ -179,7 +173,7 @@
 				</table>
 			</fieldset>
 		</div>
-		<div id="tabs-4">
+		<div id="history">
 			<fieldset class="options-field">
 				<legend>Transaktionshistorie</legend>
 				<table class="transaction-history">
@@ -210,7 +204,7 @@
 				</table>
 			</fieldset>
 		</div>
-		<div id="tabs-5">
+		<div id="watchlist">
 			<fieldset class="options-field">
 				<legend>Wertpapiere in deiner Watchlist</legend>
 				<table class="owned-trades">

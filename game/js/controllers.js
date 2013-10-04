@@ -1,5 +1,18 @@
 'use strict';
 
+var tabbing = function(div, targeturl, def, $location, $scope) {
+  div.tabs();
+  $(div.children('ul').get(0)).find('a').each(function(i, e) {
+    if ($(e).attr('href').split('/').pop().replace(/#/g, '') == def)
+      div.tabs('option', {active: i});
+  });
+  div.tabs({activate: function(event, ui) {
+    if (!ui.newTab)
+      return;
+    $scope.$apply(function() { $location.path(targeturl.replace(/\?/g, ui.newTab.children('a').attr('href').replace(/#/g, ''))); });
+  }});
+};
+
 var useSchoolAC = function($scope, socket) {
   $scope.onLSResult = [];
   $scope.schoolList = [];
@@ -240,7 +253,7 @@ angular.module('tradity.controllers', []).
         srcusername: data.srcusername,
         orderid: data.orderid,
         tradername: tn,
-        tradername_genitive: 'xs'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’',
+        tradername_genitive: tn ? ('xs'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’') : null,
         time: data.eventtime
       });
     });
@@ -458,13 +471,14 @@ angular.module('tradity.controllers', []).
     });
     useSchoolAC($scope, socket);
   }).
-  controller('DepotCtrl', function($scope, socket) {
+  controller('DepotCtrl', function($scope, $routeParams, $location, socket) {    
+    tabbing($('#tabs'), '/depot/?', $routeParams.pageid, $location, $scope);
+    
     var ownDepotOrUser = function() {
       $scope.ownUser.depotvalue = 0;
       for (var i in $scope.results) {
         $scope.ownUser.depotvalue += parseInt($scope.results[i].total);
       }
-      $scope.ownUser.balance = $scope.ownUser.totalvalue - $scope.ownUser.depotvalue;
     }
     
     socket.on('list-own-depot', function(data) {
@@ -599,7 +613,8 @@ angular.module('tradity.controllers', []).
     var depotPerformanceChart = new Chart(ctx).Line(data);
     */
   }).
-  controller('RankingCtrl', function($scope, socket) {
+  controller('RankingCtrl', function($scope, $routeParams, $location, socket) {    
+    tabbing($('#tabs'), '/ranking/?', $routeParams.pageid, $location, $scope);
     $scope.studentonly = false;
     $scope.fromschool = null;
     $scope.results = [];

@@ -25,7 +25,15 @@ angular.module('tradity', [
       templateUrl: 'templates/depot.html',
       controller: 'DepotCtrl'
     }).
+    when('/depot/:pageid', {
+      templateUrl: 'templates/depot.html',
+      controller: 'DepotCtrl'
+    }).
     when('/ranking', {
+      templateUrl: 'templates/ranking.html',
+      controller: 'RankingCtrl'
+    }).
+    when('/ranking/:pageid', {
       templateUrl: 'templates/ranking.html',
       controller: 'RankingCtrl'
     }).

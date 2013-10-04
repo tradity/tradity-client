@@ -315,8 +315,8 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .hint {
-    border-color: #ace;
-    background-color: #269;
+    border-color: #2b3990;
+    background-color: rgba(43, 57, 144, 0.8);
 }
 
 .hint:before {
@@ -430,7 +430,7 @@ h1, h2, h3, h4, h5, h6 {
     -moz-border-radius: 5px;
     border-radius: 5px;
     border: thin solid #ccc;
-    color: #369;
+    color: #2b3990;
     -webkit-transition:color 0.3s ease-in;  
     -moz-transition:color 0.3s ease-in;  
     -o-transition:color 0.3s ease-in;  
@@ -445,7 +445,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .active {
-    color: #369;
+    color: #2b3990;
 }
 
 #nav ul li a:active,
@@ -454,8 +454,8 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    border: thin solid #369;
-    color: #369;
+    border: thin solid #2b3990;
+    color: #2b3990;
     outline: none;
 }
 
@@ -479,7 +479,7 @@ h1#tradity {
     box-shadow: 0px 0px 20px 20px #fff;
     -moz-box-shadow: 0px 0px 20px 20px #fff;
     background-color: #fff;
-    color: #369;
+    color: #2b3990;
     display: none;
     position: fixed;
     font-size: 35px;
@@ -498,6 +498,9 @@ h1#tradity {
     transition:color 0.3s ease-in;
 }
 
+.profile-link:hover {
+    background-color: rgba(200, 200, 200, 0.1);
+}
 
 .name, .depot {
     overflow: hidden;
@@ -521,7 +524,7 @@ h1#tradity {
 
 .nick {
     font-size: 20px;
-    color: #369;
+    color: #2b3990;
 }
 
 .title {
@@ -564,7 +567,7 @@ h1#tradity {
 
 #buttons li:hover,
 .trade:hover {
-    color: #369;
+    color: #2b3990;
     -webkit-transition:color 0.3s ease-in;  
     -moz-transition:color 0.3s ease-in;  
     -o-transition:color 0.3s ease-in;  
@@ -638,7 +641,7 @@ h1#tradity {
 }
 
 .text-link {
-    color: #369;
+    color: #2b3990;
 }
 
 .text-link:hover {
@@ -675,7 +678,7 @@ h1#tradity {
 }
 
 .feed-link {
-    color: #369;
+    color: #2b3990;
 }
 
 .feed-link:active {
@@ -864,12 +867,12 @@ h1#tradity {
 }
 
 .options-button input:checked + span {
-    background: -moz-linear-gradient(top,  rgba(51,102,153,0.8) 0%, rgba(19,136,198,0.8) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(51,102,153,0.8)), color-stop(100%,rgba(19,136,198,0.8)));
-    background: -webkit-linear-gradient(top,  rgba(51,102,153,0.8) 0%,rgba(19,136,198,0.8) 100%);
-    background: -o-linear-gradient(top,  rgba(51,102,153,0.8) 0%,rgba(19,136,198,0.8) 100%);
-    background: -ms-linear-gradient(top,  rgba(51,102,153,0.8) 0%,rgba(19,136,198,0.8) 100%);
-    background: linear-gradient(to bottom,  rgba(51,102,153,0.8) 0%,rgba(19,136,198,0.8) 100%);
+    background: -moz-linear-gradient(top,  rgba(51,102,153,0.8) 0%, #2b3990 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(51,102,153,0.8)), color-stop(100%,#2b3990));
+    background: -webkit-linear-gradient(top,  rgba(51,102,153,0.8) 0%,#2b3990 100%);
+    background: -o-linear-gradient(top,  rgba(51,102,153,0.8) 0%,#2b3990 100%);
+    background: -ms-linear-gradient(top,  rgba(51,102,153,0.8) 0%,#2b3990 100%);
+    background: linear-gradient(to bottom,  rgba(51,102,153,0.8) 0%,#2b3990 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc336699', endColorstr='#cc1388c6',GradientType=0 );
     color: #fff;
 }
@@ -1145,7 +1148,7 @@ label.trade-label-input {
     float: left;
     font-size: 18px;
     font-family: "Droid Sans", sans-serif;
-    color: #369;
+    color: #2b3990;
 }
 
 .unwatch-icon {
@@ -1179,7 +1182,7 @@ label.trade-label-input {
 }
 
 .ranking .rank-name a {
-    color: #369;
+    color: #2b3990;
     display: inline-block;
     height:100%;
     width:100%;
@@ -1332,7 +1335,7 @@ label.trade-label-input {
 .tut-symbol {
     padding: 5px;
     text-align: center;
-    border: 3px #369 solid;
+    border: 3px #2b3990 solid;
     border-radius: 10px;
     width: 50px;
     height: 50px;

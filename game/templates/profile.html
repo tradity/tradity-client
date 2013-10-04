@@ -16,7 +16,7 @@
 	<div id="tabs-1">
 		<div id="profile" ng-hide="user.isSelf">
 		    <div class="clearfix">
-		        <h2 class="name"><a ng-href="#/user/{{user.name}}" style="cursor: pointer">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</a></h2>
+		        <h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
 		        <div class="depot">
 		            <h2 class="title">Gesamtvermögen</h2>
 		            <span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>

@@ -545,6 +545,9 @@ angular.module('tradity.controllers', []).
           $scope.orders = orders;
           if (!$scope.user.profilepic)
             $scope.user.profilepic = $scope.serverConfig.defaultprofile;
+          $scope.comments = data.pinboard;
+          for (var i = 0; i < $scope.comments.length; ++i)
+            $scope.comments[i].vtime = vagueTime.get({to: $scope.comments[i].time, units: 's', lang: 'de'});
         }
       });
     };
@@ -557,6 +560,26 @@ angular.module('tradity.controllers', []).
           alert($scope.user.name + ' zur Watchlist hinzugefügt');
         } else if (data.code == 'watchlist-add-notfound') {
           alert('Benutzer nicht gefunden. Hier läuft etwas falsch.');
+        }
+      });
+    };
+    $scope.sendComment = function() {
+      socket.emit('comment', {
+        eventid: $scope.user.registerevent,
+        comment: $scope.comment
+      },
+      function(data) {
+        if (data.code == 'comment-notfound') {
+          alert('Benutzer nicht gefunden. Hier läuft etwas falsch.');
+        } else if (data.code == 'comment-success') {
+          var time = new Date();
+          $scope.comments.push({
+            comment: $scope.comment,
+            username: $scope.ownUser.name,
+            time: time.getTime() / 1000 - 1,
+            vtime: vagueTime.get({to: time.getTime() / 1000 - 1, units: 's', lang: 'de'})
+          });
+          $scope.comment = '';
         }
       });
     };
@@ -652,8 +675,8 @@ angular.module('tradity.controllers', []).
           });
           $scope.comment = '';
         }
-      })
-    }
+      });
+    };
     $scope.getTradeInfo();
   }).
   controller('TradeCtrl', function($scope, $routeParams, $location, socket) {

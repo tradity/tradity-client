@@ -137,7 +137,7 @@ angular.module('tradity.controllers', []).
       });
     };
     socket.on('response', function(data) {
-      if (data.code == 'not-logged-in') {
+      if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
         $scope.ownUser = null;
         $location.path('/login');
       }
@@ -486,24 +486,25 @@ angular.module('tradity.controllers', []).
         $scope.results = data.results;
         ownDepotOrUser();
       }
-      socket.emit('get-user-info', {
-        lookfor: '$self'
-      },
-      function(data) {
-        var orders = data.orders;
-        for (var i in orders) {
-          if (orders[i].money > 0) {
-            orders[i].ordertype = 'depot-buy';
-          } else if (orders[i].money < 0) {
-            orders[i].ordertype = 'depot-sell';
-          } else {
-            orders[i].ordertype = '';
-          }
-          orders[i].price = Math.abs(orders[i].money / orders[i].amount);
-        }
-        $scope.orders = orders;
-      });
     }, $scope);
+  
+    $scope.$on('user-update', function(data) {
+      var orders = data.orders;
+      if (!orders)
+        return;
+      
+      for (var i in orders) {
+        if (orders[i].money > 0) {
+          orders[i].ordertype = 'depot-buy';
+        } else if (orders[i].money < 0) {
+          orders[i].ordertype = 'depot-sell';
+        } else {
+          orders[i].ordertype = '';
+        }
+        orders[i].price = Math.abs(orders[i].money / orders[i].amount);
+      }
+      $scope.orders = orders;
+    });
     
     socket.on('dquery-list', function(data) {
       $scope.delayedOrders = [];
@@ -516,12 +517,13 @@ angular.module('tradity.controllers', []).
         }
       }
     }, $scope);
+    
     $scope.$on('user-update', ownDepotOrUser);
     
-    $scope.fetchSelf();
-    
+    socket.emit('get-user-info', { lookfor: '$self' });
     socket.emit('list-own-depot');
     socket.emit('dquery-list');
+    
     $scope.removeDelayedOrder = function(id) {
       socket.emit('dquery-remove', {
         queryid: id

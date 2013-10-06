@@ -46,7 +46,7 @@
         <div id="wrapper" class="clearfix" ng-controller="MainCtrl">
             <header id="header" class="clearfix">
                 <div id="logo"><a class="block-link" style="width: 150px; height: 150px;" href="#"></a></div><h1 id="tradity"><a href="#">tradity</a></h1>
-                <div id="profile" ng-show="ownUser">
+                <div id="profile-own" class="profile" ng-show="ownUser">
                     <div class="name-container clearfix">
                         <a ng-href="#/user/{{ownUser.name}}" style="cursor: pointer"  accesskey="p" title="Hier gehts zu deinem Profil" class="block-link profile-link">
                             <h2 class="name">{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>

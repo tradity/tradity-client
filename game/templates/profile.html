@@ -1,20 +1,13 @@
 <button class="tutbtn" onclick="javascript:introJs().start()" ng-hide="!user.isSelf">?</button>
-
-<script type="text/javascript">	
-	// JqueryUI 
-	$(function() {
-	    $( "#tabs" ).tabs();
-	});
-</script>
 		<div class="main-content" data-step="1" data-position="left" data-intro="Alles, was du hier siehst, ist dein öffentliches Profil. Je nach deinen Einstellungen ist dein Klarname einsehbar.">
 <div id="tabs">
 	<ul>
-		<li><a href="#tabs-1">Generelles</a></li>
-		<li><a href="#tabs-2">Transaktionshistorie</a></li>
-		<li><a href="#tabs-3">Pinnwand</a></li>
+		<li><a href="#overview">Generelles</a></li>
+		<li><a href="#history">Transaktionshistorie</a></li>
+		<li><a href="#pinboard">Pinnwand</a></li>
 	</ul>
-	<div id="tabs-1">
-		<div id="profile" ng-hide="user.isSelf">
+	<div id="overview">
+		<div id="profile-user" class="profile" ng-hide="user.isSelf">
 		    <div class="clearfix">
 		        <h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
 		        <div class="depot">
@@ -22,12 +15,12 @@
 		            <span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
 		        </div>
 		    </div>
-		    <img id="profile-picture"  class="profile-box" src="{{user.profilepic}}" alt="Profilbild">
-		    <div id="bio" class="profile-box">
+		    <img class="profile-picture profile-box" src="{{user.profilepic}}" alt="Profilbild">
+		    <div class="bio profile-box">
 		        <h3 class="title">Kurzbeschreibung<br /></h3>
 		        {{user.desc}}
 		    </div>
-		    <div id="placement" class="profile-box">
+		    <div class="placement profile-box">
 		        <h3 class="title">Platz<br /></h3>
 		        <span class="placement-number">{{user.rank}}</span>
 		    </div>
@@ -36,6 +29,7 @@
 		        <span class="placement-number">{{user.provision}}%</span>
 		    </div>
 		</div>
+		<div class="clearfix"></div> <!-- workaround? -->
 			<fieldset class="options-field">
 				<legend>Vermögensentwicklung</legend>
 				<ul class="one-item-list">
@@ -69,7 +63,7 @@
 		      <form style="display:inline" action="#/trade/buy/__LEADER_{{user.uid}}__/0" method="get"><button class="click-button block-link"><span class="batch">&#xF0B8; </span>Folgen</button></form>
 		    </div>
 		</div>
-		<div id="tabs-2">
+		<div id="history">
 			<fieldset class="options-field">
 				<legend>Transaktionshistorie</legend>
 				<table class="transaction-history">
@@ -100,12 +94,12 @@
 				</table>
 			</fieldset>
 		</div>
-		<div id="tabs-3" style="margin-top: 15px;">
+		<div id="pinboard" style="margin-top: 15px;">
 			<div ng-repeat="comment in comments">
 				<div class="commenter"><a href="#/user/{{comment.username}}" class="text-link">{{comment.username}}</a></div>
 				<div class="comment comment-somebody">
 					{{comment.comment}}
-					<span class="feed-time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{comment.vtime}}</span>
+					<span class="feed-time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
 				</div>
 			</div>
 			<form ng-submit="sendComment()">

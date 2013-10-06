@@ -120,6 +120,8 @@ angular.module('tradity.controllers', []).
   }).
   controller('MainCtrl', function($scope, $location, socket) {
     $scope.Math = Math;
+    $scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
+    
     $scope.ownUser = null;
     $scope.serverConfig = {};
 
@@ -556,7 +558,9 @@ angular.module('tradity.controllers', []).
     };
     $scope.showWatchlist();
   }).
-  controller('ProfileCtrl', function($scope, $routeParams, socket) {
+  controller('ProfileCtrl', function($scope, $routeParams, $location, socket) {
+    tabbing($('#tabs'), '/user/' + $routeParams.userId + '/?', $routeParams.pageid, $location, $scope);
+    
     $scope.getUserInfo = function() {
       socket.emit('get-user-info', {
         lookfor: $routeParams.userId
@@ -582,8 +586,6 @@ angular.module('tradity.controllers', []).
           if (!$scope.user.profilepic)
             $scope.user.profilepic = $scope.serverConfig.defaultprofile;
           $scope.comments = data.pinboard;
-          for (var i = 0; i < $scope.comments.length; ++i)
-            $scope.comments[i].vtime = vagueTime.get({to: $scope.comments[i].time, units: 's', lang: 'de'});
         }
       });
     };
@@ -612,8 +614,7 @@ angular.module('tradity.controllers', []).
           $scope.comments.push({
             comment: $scope.comment,
             username: $scope.ownUser.name,
-            time: time.getTime() / 1000 - 1,
-            vtime: vagueTime.get({to: time.getTime() / 1000 - 1, units: 's', lang: 'de'})
+            time: time.getTime() / 1000 - 1
           });
           $scope.comment = '';
         }
@@ -677,8 +678,6 @@ angular.module('tradity.controllers', []).
           $scope.trade = data.trade;
           $scope.trade.price = Math.abs($scope.trade.money / $scope.trade.amount);
           $scope.comments = data.comments;
-          for (var i = 0; i < $scope.comments.length; ++i)
-            $scope.comments[i].vtime = vagueTime.get({to: $scope.comments[i].time, units: 's', lang: 'de'});
           $scope.getUserInfo();
         }
       });
@@ -707,8 +706,7 @@ angular.module('tradity.controllers', []).
           $scope.comments.push({
             comment: $scope.comment,
             username: $scope.ownUser.name,
-            time: time.getTime() / 1000 - 1,
-            vtime: vagueTime.get({to: time.getTime() / 1000 - 1, units: 's', lang: 'de'})
+            time: time.getTime() / 1000 - 1
           });
           $scope.comment = '';
         }
@@ -875,9 +873,6 @@ angular.module('tradity.controllers', []).
     $scope.messageCount = 20;
     
     $scope.displayFeed = function() {
-      for (var i = 0; i < $scope.messages.length; ++i) 
-        $scope.messages[i].vtime = vagueTime.get({to: $scope.messages[i].time, units: 's', lang: 'de'});
-      
       $scope.displaymessages = $scope.messages.slice(0, parseInt($scope.messageCount));
     };
 

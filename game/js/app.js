@@ -57,6 +57,10 @@ angular.module('tradity', [
       templateUrl: 'templates/profile.html',
       controller: 'ProfileCtrl'
     }).
+    when('/user/:userId/:pageid', {
+      templateUrl: 'templates/profile.html',
+      controller: 'ProfileCtrl'
+    }).
     when('/faq', {
       templateUrl: 'templates/faq.html'
     }).

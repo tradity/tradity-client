@@ -367,7 +367,7 @@ h1, h2, h3, h4, h5, h6 {
     float: left;
 }
 
-#profile,
+.profile,
 #footer,
 .main-content {
     width: 750px;
@@ -391,7 +391,7 @@ h1, h2, h3, h4, h5, h6 {
     background-image: url('../img/tradity_symbol.png');
 }
 
-#profile {
+.profile {
     width: 750px;
     padding: 0px;
     margin: 5px 0 5px 0;
@@ -544,12 +544,12 @@ h1#tradity {
     height: 110px;
 }
 
-#profile-picture {
+.profile-picture {
     display: block;
     width: 100px;
 }
 
-#bio {
+.bio {
     width: 200px;
 }
 
@@ -588,7 +588,7 @@ h1#tradity {
     width: 32px;
 }
 
-#placement {
+.placement {
     width: 100px;
 }
 

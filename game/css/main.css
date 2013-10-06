@@ -2,6 +2,8 @@ html {
     overflow-y: scroll;
 }
 
+#tabs div { font-size: 1em; font-family: 'Droid Sans', sans-serif; } /* nc! */
+
 body {
     font-size: 1em;
     line-height: 1.4;

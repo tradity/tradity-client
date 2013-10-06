@@ -119,6 +119,7 @@ angular.module('tradity.controllers', []).
     });
   }).
   controller('MainCtrl', function($scope, $location, socket) {
+    $scope.Math = Math;
     $scope.ownUser = null;
     $scope.serverConfig = {};
 

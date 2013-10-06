@@ -7,8 +7,9 @@ function SoTrade(socket) {
 	this.ids = []; // numeric id -> callback for that id
 	this.id = 0;
 	
-	this.socket.on('response', (function(data) {
-				console.log(data); // remove for production
+	this.qCache = {};
+	this.responseHandler = (function(data) {
+				console.log('<', data); // remove for production
 		var rid = data['is-reply-to'].split('--');
 		var type = rid[0];
 		if (type == 'login')
@@ -26,10 +27,12 @@ function SoTrade(socket) {
 		var idcb = this.ids[numericID] || function() {};
 		idcb(data);
 		delete this.ids[numericID];
-	}).bind(this));
+	}).bind(this);
+	
+	this.socket.on('response', this.responseHandler);
 	
 	this.socket.on('push', (function(data) {
-				console.log(data); // remove for production
+				console.log('!', data); // remove for production
 		var type = data.type;
 		var listeners = this.listeners[type] || [];
 		for (var i = 0; i < listeners.length; ++i) 
@@ -49,13 +52,49 @@ SoTrade.prototype.emit = function(evname, data, cb) {
 	data.type = evname;
 	var id = ++this.id;
 	data.id = evname + '--' + id;
+	
 	if (this.getKey() && !data.key)
 		data.key = this.getKey();
+	
+	var now = (new Date()).getTime();
+	var cacheTime = data._cache * 1000;
+	if (cacheTime) {
+		var qcid_obj = $.extend(true, {}, data);
+		delete qcid_obj._cache;
+		delete qcid_obj.id;
+		var qcid = JSON.stringify(qcid_obj);
+		var entry = this.qCache[qcid];
+		if (entry && (now - entry._cache_rtime) < cacheTime) {
+			setTimeout((function() {
+				//console.log('hit', data, qcid);
+				this.responseHandler(entry);
+				if (cb)
+					cb(entry);
+			}).bind(this), 0);
+			return;
+		} 
+		
+		$.each(Object.keys(this.qCache), (function(i, k) { if (now > this.qCache[k]._cache_ptime) delete this.qCache[k]; }).bind(this));
+		
+		//console.log('miss', data, qcid, Object.keys(this.qCache).length);
+		delete this.qCache[qcid];
+		var oldCB = cb;
+		cb = (function(entry) {
+			//console.log('insert', entry, qcid);
+			
+			var now = new Date().getTime();
+			entry._cache_rtime = now;
+			entry._cache_ptime = now + cacheTime;
+			this.qCache[qcid] = entry;
+			oldCB(entry);
+		}).bind(this);
+	}
+	
 	if (cb)
 		this.ids[id] = cb;
 	this.socket.emit('query', data);
 				// only for debugging, remove for production
-				console.log(data);
+				console.log('>', data);
 }
 
 SoTrade.prototype.getKey = function() {

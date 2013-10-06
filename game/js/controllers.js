@@ -16,7 +16,7 @@ var tabbing = function(div, targeturl, def, $location, $scope) {
 var useSchoolAC = function($scope, socket) {
   $scope.onLSResult = [];
   $scope.schoolList = [];
-  socket.emit('list-schools', null, function(result) {
+  socket.on('list-schools', function(result) {
     $scope.schoolList = result.result;
     for (var i = 0; i < $scope.schoolList.length; ++i) {
       $scope.schoolList[i].getInputTextValue = 
@@ -25,7 +25,9 @@ var useSchoolAC = function($scope, socket) {
     }
     for (var i = 0; i < $scope.onLSResult.length; ++i)
       $scope.onLSResult[i]();
-  });
+  }, $scope);
+  
+  socket.emit('list-schools', {_cache: 20});
   
   $scope.acFetcher = {
     fetchAutoComplete: function(ac, s) {
@@ -187,7 +189,8 @@ angular.module('tradity.controllers', []).
     $scope.fetchSelf = function() {
       socket.emit('get-user-info', {
         lookfor: '$self',
-        nohistory: true
+        nohistory: true,
+        _cache: 20
       });
     }
     
@@ -501,6 +504,7 @@ angular.module('tradity.controllers', []).
       if (!orders)
         return;
       
+      orders.sort(function(a,b) { return b.buytime - a.buytime; });
       for (var i in orders) {
         if (orders[i].money > 0) {
           orders[i].ordertype = 'depot-buy';
@@ -528,9 +532,9 @@ angular.module('tradity.controllers', []).
     
     $scope.$on('user-update', ownDepotOrUser);
     
-    socket.emit('get-user-info', { lookfor: '$self' });
-    socket.emit('list-own-depot');
-    socket.emit('dquery-list');
+    socket.emit('get-user-info', { lookfor: '$self', _cache: 20 });
+    socket.emit('list-own-depot', { _cache: 20 });
+    socket.emit('dquery-list', { _cache: 20 });
     
     $scope.removeDelayedOrder = function(id) {
       socket.emit('dquery-remove', {
@@ -544,12 +548,14 @@ angular.module('tradity.controllers', []).
         }
       });
     };
+    socket.on('watchlist-show', function(data) {
+      if (data.code == 'watchlist-show-success') {
+        $scope.watchlist = data.results;
+      }
+    }, $scope);
+    
     $scope.showWatchlist = function() {
-      socket.emit('watchlist-show', function(data) {
-        if (data.code == 'watchlist-show-success') {
-          $scope.watchlist = data.results;
-        }
-      });
+      socket.emit('watchlist-show', { _cache: 20 });
     };
     $scope.removeFromWatchlist = function(userId) {
       socket.emit('watchlist-remove', {
@@ -558,6 +564,7 @@ angular.module('tradity.controllers', []).
       function(data) {
         if (data.code == 'watchlist-remove-success') {
           alert(userId + 'von der Watchlist entfernt');
+          $scope.showWatchlist();
         }
       });
     };
@@ -568,7 +575,8 @@ angular.module('tradity.controllers', []).
     
     $scope.getUserInfo = function() {
       socket.emit('get-user-info', {
-        lookfor: $routeParams.userId
+        lookfor: $routeParams.userId,
+        _cache: 20
       },
       function(data) {
         if (data.code == 'get-user-info-notfound') {
@@ -577,6 +585,7 @@ angular.module('tradity.controllers', []).
           $scope.user = data.result;
           $scope.values = data.values;
           var orders = data.orders;
+          orders.sort(function(a,b) { return b.buytime - a.buytime; });
           for (var i in orders) {
             if (orders[i].money > 0) {
               orders[i].ordertype = 'depot-buy';
@@ -590,6 +599,7 @@ angular.module('tradity.controllers', []).
           $scope.orders = orders;
           if (!$scope.user.profilepic)
             $scope.user.profilepic = $scope.serverConfig.defaultprofile;
+          data.pinboard.sort(function(a,b) { return b.time - a.time; });
           $scope.comments = data.pinboard;
         }
       });
@@ -651,7 +661,8 @@ angular.module('tradity.controllers', []).
       socket.emit('get-ranking', {
         rtype: 'general',
         studentonly: $scope.studentonly,
-        fromschool: $scope.fromschool
+        fromschool: $scope.fromschool,
+        _cache: 20
       },
       function(data) {
         if (data.code == 'get-ranking-success') {
@@ -661,7 +672,8 @@ angular.module('tradity.controllers', []).
       socket.emit('get-ranking', {
         rtype: 'following',
         studentonly: $scope.studentonly,
-        fromschool: $scope.fromschool
+        fromschool: $scope.fromschool,
+        _cache: 20
       },
       function(data) {
         if (data.code == 'get-ranking-success') {
@@ -674,7 +686,8 @@ angular.module('tradity.controllers', []).
   controller('TradeDetailsCtrl', function($scope, $routeParams, socket) {
     $scope.getTradeInfo = function() {
       socket.emit('get-trade-info', {
-        tradeid: $routeParams.tradeId
+        tradeid: $routeParams.tradeId,
+        _cache: 20
       },
       function(data) {
         if (data.code == 'get-trade-info-notfound') {
@@ -682,6 +695,7 @@ angular.module('tradity.controllers', []).
         } else if (data.code == 'get-trade-info-succes') {
           $scope.trade = data.trade;
           $scope.trade.price = Math.abs($scope.trade.money / $scope.trade.amount);
+          data.comments.sort(function(a,b) { return b.time - a.time; });
           $scope.comments = data.comments;
           $scope.getUserInfo();
         }
@@ -690,7 +704,8 @@ angular.module('tradity.controllers', []).
     $scope.getUserInfo = function() {
       socket.emit('get-user-info', {
         lookfor: $scope.trade.userid,
-        nohistory: true
+        nohistory: true,
+        _cache: 20
       },
       function(data) {
         $scope.user = data.result;

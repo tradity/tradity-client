@@ -1,5 +1,5 @@
 <div id="trade-details" class="main-content">
-	<div id="profile" ng-hide="user.isSelf">
+	<div id="profile-trade" class="profile" ng-hide="user.isSelf">
 	    <div class="clearfix">
 	    	<a ng-href="#/user/{{user.name}}" style="cursor: pointer" class="block-link profile-link">
 		        <h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
@@ -9,12 +9,12 @@
 		        </div>
 	        </a>
 	    </div>
-	    <img id="profile-picture"  class="profile-box" src="{{user.profilepic}}" alt="Profilbild">
-	    <div id="bio" class="profile-box">
+	    <img class="profile-picture profile-box" src="{{user.profilepic}}" alt="Profilbild">
+	    <div class="bio profile-box">
 	        <h3 class="title">Kurzbeschreibung<br /></h3>
 	        {{user.desc}}
 	    </div>
-	    <div id="placement" class="profile-box">
+	    <div class="placement profile-box">
 	        <h3 class="title">Platz<br /></h3>
 	        <span class="placement-number">{{user.rank}}</span>
 	    </div>

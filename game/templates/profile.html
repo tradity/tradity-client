@@ -43,7 +43,7 @@
 						Gesamt
 					</li>
 					<li>
-						{{((user.totalvalue / 10000) - 100000 ) / 1000 | number:2}}%
+						{{((user.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -51,7 +51,7 @@
 						Heute
 					</li>
 					<li>
-						{{(user.lastvalue / user.daystartvalue - 1) * 100 | number:2}}%
+						{{(user.totalvalue / user.daystarttotalvalue - 1) * 100 | number:2}} %
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -59,7 +59,7 @@
 						Woche
 					</li>
 					<li>
-						{{(user.lastvalue / user.weekstartvalue - 1) * 100 | number:2}}%
+						{{(user.totalvalue / user.weekstarttotalvalue - 1) * 100 | number:2}} %
 					</li>
 				</ul>
 			</fieldset>

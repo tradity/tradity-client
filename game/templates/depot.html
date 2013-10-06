@@ -238,7 +238,7 @@
 						<td>{{entry.lastvalue / 10000 | currency}}</td>
 						<td>{{(entry.lastvalue - entry.watchstartvalue) / entry.watchstartvalue * 100 | number:2}}%</td>
 						<td>{{(entry.lastvalue - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}}%</td>
-						<td class="trade-td"><a ng-click="removeFromWatchlist(entry.stockid)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF17A;</a></td>
+						<td class="trade-td"><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF17A;</a></td>
 					</tr>
 				</table>
 			</fieldset>

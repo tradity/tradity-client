@@ -554,17 +554,17 @@ angular.module('tradity.controllers', []).
       }
     }, $scope);
     
-    $scope.showWatchlist = function() {
-      socket.emit('watchlist-show', { _cache: 20 });
+    $scope.showWatchlist = function(nocache) {
+      socket.emit('watchlist-show', nocache ? null : { _cache: 20 });
     };
-    $scope.removeFromWatchlist = function(userId) {
+    $scope.removeFromWatchlist = function(entry) {
       socket.emit('watchlist-remove', {
-        userid: userId
+        stockid: entry.id
       },
       function(data) {
         if (data.code == 'watchlist-remove-success') {
-          alert(userId + 'von der Watchlist entfernt');
-          $scope.showWatchlist();
+          alert(entry.stockname + ' von der Watchlist entfernt');
+          $scope.showWatchlist(true);
         }
       });
     };

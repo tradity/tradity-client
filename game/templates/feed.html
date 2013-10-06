@@ -1,83 +1,5 @@
 <button class="tutbtn" onclick="javascript:introJs().start()" ng-hide="messages.length > 0">?</button>
 <div id="feed" class="main-content">
-    
-    <!-- 
-        Feedeinträge chronologisch
-        https://github.com/philbooth/vagueTime.js
-        vielleicht sowas um zeit darzustellen
-
-
-        Aktionen vor dir sind blau -> css-klasse feed-yourself
-        Die von andren sind orange -> css-klasse feed-somebody
-
-        Sollen watcher eigene Farbe bekommen?
-     -->
-
-    <!--
-    <div class="feed-item feed-somebody">
-        <div class="batch feed-entry-symbol">&#xf139;</div> 
-        <div class="feed-entry-content">
-            <a href="#depotVonDem" class="feed-link">Miro</a> hat einen deiner <a href="#deintrade" class="feed-link">Trades</a> kommentiert.
-            <span class="feed-time">10:05 &ndash; 03.08.12</span>
-        </div>
-    </div>
-    <div class="feed-item feed-somebody">
-        <div class="batch feed-entry-symbol">&#xF153;</div> 
-        <div class="feed-entry-content">
-            <a href="#depotVonDem" class="feed-link">Buffett</a> hat <a href="#seinTrade" class="feed-link">getradet</a>.
-            <span class="feed-time">17:24 &ndash; 31.07.12</span>
-        </div>
-    </div>
-    <div class="feed-item feed-yourself">
-        <div class="batch feed-entry-symbol">&#xF153;</div> 
-        <div class="feed-entry-content">
-            <a href="#depotVonDir" class="feed-link">Du</a> hast <a href="#deinTrade" class="feed-link">getradet</a>.
-            <span class="feed-time">14:07 &ndash; 30.07.12</span>
-        </div>
-    </div>
-    <div class="feed-item feed-somebody">
-        <div class="batch feed-entry-symbol">&#xF178;</div> 
-        <div class="feed-entry-content">
-            <a href="#depotVonDem" class="feed-link">Kiyosaki</a> hat dich auf seine Watchlist gesetzt.
-            <span class="feed-time">12:01 &ndash; 28.07.12</span>
-        </div>
-    </div>
-    <div class="feed-item feed-yourself">
-        <div class="batch feed-entry-symbol">&#xF178;</div> 
-        <div class="feed-entry-content">
-            <a href="#depotVonDir" class="feed-link">Du</a> hast <a href="#depotVonDem" class="feed-link">Buffett</a> auf deine Watchlist gesetzt.
-            <span class="feed-time">03:07 &ndash; 01.07.12</span>
-        </div>
-    </div>
-    <div class="feed-item feed-yourself">
-        <div class="batch feed-entry-symbol">&#xf139;</div> 
-        <div class="feed-entry-content">
-            <a href="#depotVonDir" class="feed-link">Du</a> hast einen <a href="#seinTrade" class="feed-link">Trade</a> von <a href="#depotVonDem" class="feed-link">Buffett</a> kommentiert.
-            <span class="feed-time">20:14 &ndash; 30.06.12</span>
-        </div>
-    </div>
-    <div class="feed-item feed-yourself">
-        <div class="batch feed-entry-symbol">&#xF0B8;</div> 
-        <div class="feed-entry-content">
-            <a href="#depotVonDir" class="feed-link">Du</a> folgst <a href="#deinFollowTrade" class="feed-link">Buffett</a>.
-            <span class="feed-time">23:01 &ndash; 28.06.12</span>
-        </div>
-    </div>
-    <div class="feed-item feed-somebody">
-        <div class="batch feed-entry-symbol">&#xF0B8;</div> 
-        <div class="feed-entry-content">
-            <a href="#depotVonDem" class="feed-link">Kiyosaki</a> folgt dir.
-            <span class="feed-time">17:39 &ndash; 25.06.12</span>
-        </div>
-    </div>
-    <div class="feed-item feed-somebody">
-        <div class="batch feed-entry-symbol">&#xF0B8;</div> 
-        <div class="feed-entry-content">
-            <a href="#depotVonDem" class="feed-link">Buffett</a> folgt <a href="#depotVonDem" class="feed-link">Kiyosaki</a>.
-            <span class="feed-time">{{message.eventtime | date}}</span>
-        </div>
-    </div>
-    -->
     <div class="tutorial" ng-hide="messages.length > 0">
     <h3>Willkommen bei Tradity!</h3>
     <h4>Getting Started</h4>
@@ -173,31 +95,59 @@
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
                 </div>
             </div>
-            <div ng-switch-when="comment">
+            <div ng-switch-when="comment-trade">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
                     <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/user/{{message.tradername}}" class="feed-link">{{message.tradername_genitive}}</a> Trade <a ng-href="#/trade/{{message.orderid}}" class="feed-link">kommentiert</a>.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
                 </div>
             </div>
-            <div ng-switch-when="comment-self">
+            <div ng-switch-when="comment-trade-self">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
                     Du hast <a ng-href="#/user/{{message.tradername}}" class="feed-link">{{message.tradername_genitive}}</a> Trade <a ng-href="#/trade/{{message.orderid}}" class="feed-link">kommentiert</a>.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
                 </div>
             </div>
-            <div ng-switch-when="comment-me">
+            <div ng-switch-when="comment-trade-me">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
                     <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat Deinen Trade <a ng-href="#/trade/{{message.orderid}}" class="feed-link">kommentiert</a>.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
                 </div>
             </div>
-            <div ng-switch-when="comment-self-me">
+            <div ng-switch-when="comment-trade-self-me">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
                     Du hast Deinen eigenen Trade <a ng-href="#/trade/{{message.orderid}}" class="feed-link">kommentiert</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="comment-pinboard">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat an <a ng-href="#/user/{{message.tradername}}" class="feed-link">{{message.tradername_genitive}}</a> Pinnwand <a ng-href="#/user/{{message.tradername}}/pinboard" class="feed-link">geschrieben</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="comment-pinboard-self">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    Du hast an <a ng-href="#/user/{{message.tradername}}" class="feed-link">{{message.tradername_genitive}}</a> Pinnwand <a ng-href="#/user/{{message.tradername}}/pinboard" class="feed-link">geschrieben</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="comment-pinboard-me">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat an Deine Pinnwand <a ng-href="#/user/{{message.tradername}}/pinboard" class="feed-link">geschrieben</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="comment-pinboard-self-me">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    Du hast an Deine eigene Pinnwand <a ng-href="#/user/{{message.tradername}}/pinboard" class="feed-link">geschrieben</a>.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
                 </div>
             </div>

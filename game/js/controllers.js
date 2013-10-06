@@ -242,6 +242,11 @@ angular.module('tradity.controllers', []).
     $scope.$on('comment', function(angEv, data) {
       var typePerson = 'somebody';
       var type = 'comment';
+      if (data.baseeventtype == 'trade') {
+        type += '-trade';
+      } else if (data.baseeventtype == 'user-register') {
+        type += '-pinboard';
+      }
       if (data.srcuser == $scope.ownUser.uid) {
         typePerson = 'yourself';
         type += '-self';

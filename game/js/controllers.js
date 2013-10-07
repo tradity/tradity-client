@@ -265,7 +265,7 @@ angular.module('tradity.controllers', []).
         srcusername: data.srcusername,
         orderid: data.orderid,
         tradername: tn,
-        tradername_genitive: 'xs'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’',
+        tradername_genitive: 'xsXS'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’',
         time: data.eventtime
       });
     });
@@ -487,6 +487,8 @@ angular.module('tradity.controllers', []).
     tabbing($('#tabs'), '/depot/?', $routeParams.pageid, $location, $scope);
     
     var ownDepotOrUser = function() {
+      if (!$scope.ownUser)
+        return;
       $scope.ownUser.depotvalue = 0;
       for (var i in $scope.results) {
         $scope.ownUser.depotvalue += parseInt($scope.results[i].total);
@@ -755,6 +757,8 @@ angular.module('tradity.controllers', []).
     $scope.buy = function() {
       if (!$scope.amount && !$scope.value)
         return;
+      if (!$scope.leader && !$scope.stockid)
+        return alert('Du musst ein Wertpapier auswählen!');
 	    var query = {
         amount: $scope.amount ? $scope.amount * $scope.sellbuy : null,
         stockid: $scope.stockid,
@@ -826,6 +830,8 @@ angular.module('tradity.controllers', []).
           if (data.code == 'stock-search-success') {
             var suggestions = [];
             for (var i in data.results) {
+              if (data.results[i].leader == $scope.ownUser.uid)
+                continue;
               data.results[i].getEntryName = 
               data.results[i].getInputTextValue = function() { return this.leader ? 'Leader: ' + this.leadername : this.name; };
               data.results[i].getExtra = function() { return (parseInt(this.lastvalue / 100) / 100) + (this.exchange ? ' ' + this.exchange : ''); };

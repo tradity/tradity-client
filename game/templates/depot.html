@@ -2,11 +2,11 @@
 <div id="depot" class="main-content">
 	<div id="tabs">
 	  <ul>
-	    <li data-step="1" data-position="left" data-intro="Hier siehst du deine absoluten Vermögenswerte. Dein Startgesamtwert liegt bei 100.000. Dieser Wert ist aufgeteilt in das was auf deinem Konto liegt, dieses Geld ist unverzinst und kann für den Wertpapierkauf benutzt werden und deinem Depot, der Wert deiner Wertpapiere. Deine Performance spiegelt deine Leistung prozentual wider. Hier in 3 verschiedenen Zeiträumen (Gesamt, Heute und der letzten Woche)"><a href="#overview">Vermögensentwicklung</a></li>
-	    <li data-step="2" data-position="left" data-intro="Ab hier beginnt dein Depot. Hier sind deine derzeit in Besitz befindlichen Wertpapiere"><a href="#listing">Wertpapiere in Besitz</a></li>
+	    <li data-step="1" data-position="left" data-intro="Hier siehst Du Deine absoluten Vermögenswerte. Dein Startgesamtwert liegt bei 100.000 €. Dieser Wert ist aufgeteilt in das, was auf Deinem Konto liegt, dieses Geld ist unverzinst und kann für den Wertpapierkauf benutzt werden, und Deinem Depot, der Wert deiner Wertpapiere. Deine Performance spiegelt deine Leistung prozentual wider. Hier in 3 verschiedenen Zeiträumen (Gesamt, Heute und der letzten Woche)"><a href="#overview">Vermögensentwicklung</a></li>
+	    <li data-step="2" data-position="left" data-intro="Ab hier beginnt Dein Depot. Hier sind Deine derzeit in Besitz befindlichen Wertpapiere"><a href="#listing">Wertpapiere in Besitz</a></li>
 	    <li data-step="3" data-position="left" data-intro="Und hier welche, die es bald werden können. Diese warten entweder darauf, dass sich der jeweilige Handelsplatz öffnet oder ein Stop-/Limitwert erreicht wird."><a href="#opentransactions">Noch nicht ausgeführte Transaktionen</a></li>
-	    <li data-step="4" data-position="left" data-intro="Schau dir deine vergangenen Orders an und schwebe in deiner Trader-Vergangenheit."><a href="#history">Transaktionshistorie</a></li>
-	    <li data-step="5" data-position="left" data-intro="Alles was du auf deine Watchlist gesetzt hast, findest du hier"><a href="#watchlist"><span class="batch">&#xF178;</span></a></li>
+	    <li data-step="4" data-position="left" data-intro="Schau Dir Deine vergangenen Orders an und schwebe in Deiner Trader-Vergangenheit."><a href="#history">Transaktionshistorie</a></li>
+	    <li data-step="5" data-position="left" data-intro="Alles was Du auf Deine Watchlist gesetzt hast, findest Du hier."><a href="#watchlist"><span class="batch">&#xF178;</span></a></li>
 	  </ul>
 	  	<div id="overview">
 			<fieldset class="options-field">
@@ -146,13 +146,13 @@
 						<td>
 							<span  ng-class="{pos: orderPerfAll > 0, neg: orderPerfAll < 0}">
 								{{( orderPerfAll = result.lastvalue * result.amount - result.buymoney)
-		                                / result.buymoney * 100 | number:2}} %
+		                                / result.buymoney * 100 | number:2}} %
 		                    </span>
 		                </td>
 						<td>
 							<span  ng-class="{pos: orderPerfYesterday > 0, neg: orderPerfYesterday < 0}">
 								{{( orderPerfYesterday = result.lastvalue - result.daystartvalue) /
-		                                result.daystartvalue * 100 | number:2}} %
+		                                result.daystartvalue * 100 | number:2}} %
 		                    </span>
 		                </td>
 						<td class="trade-td"><a ng-href="#/trade/sell/{{result.stockid}}/{{result.amount}}" class="batch block-link trade">&#xF153;</a></td>
@@ -264,12 +264,12 @@
 						<td>{{entry.lastvalue / 10000 | currency}}</td>
 						<td>
 							<span  ng-class="{pos: watchlistPerformAll > 0, neg: watchlistPerformAll < 0}">
-								{{ watchlistPerformAll = (entry.lastvalue - entry.watchstartvalue) / entry.watchstartvalue * 100 | number:2}} %
+								{{ watchlistPerformAll = (entry.lastvalue - entry.watchstartvalue) / entry.watchstartvalue * 100 | number:2}} %
 							</span>
 						</td>
 						<td>
 							<span ng-class="{pos: watchlistPerformYesterday > 0, neg: watchlistPerformYesterday < 0}">
-								{{ watchlistPerformYesterday = (entry.lastvalue - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}} %
+								{{ watchlistPerformYesterday = (entry.lastvalue - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}} %
 							</span>
 						</td>
 						<td class="trade-td"><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF17A;</a></td>

@@ -19,7 +19,7 @@
 					oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span> Kaufpreis</th><td ng-show="cur">{{cur.ask / 10000 | currency}}</td></tr>
 					<tr><th><span class="batch tooltip" data-info="(Auch Bid, Briefkurs oder Angebot) ist der höchste Preis, den ein Händler für eine Aktie bereit ist zu zahlen">&#xF0AD;</span> Verkaufspreis</th><td ng-show="cur">{{cur.bid / 10000 | currency}}</td></tr>
 					<tr><th>Wert</th><td ng-show="cur">{{cur.lastvalue / 10000 | currency}}</td></tr>
-					<tr ng-show="leader"><th>Provision</th><td ng-show="cur">{{cur.provision}} %</td></tr>
+					<tr ng-show="leader"><th>Provision</th><td ng-show="cur">{{cur.provision}} %</td></tr>
 					<tr ng-hide="leader"><th><span class="batch tooltip" data-info="Die Börse, an der diese Aktie gehandelt wird">&#xF0AD;</span> Exchange</th><td ng-show="cur">{{cur.exchange}}</td></tr>
 				</table>
 			</div>

@@ -149,12 +149,13 @@ angular.module('tradity.controllers', []).
     }, $scope);
     socket.on('self-info', function(data) {
       $scope.ownUser = data;
-      $scope.$broadcast('user-update');
+      $scope.$broadcast('user-update', data);
     }, $scope);
     socket.on('get-user-info', function(data) {
-      if (data.isSelf) {
-        $scope.ownUser = data;
-        $scope.$broadcast('user-update');
+      var r = data.result;
+      if (r.isSelf) {
+        $scope.ownUser = r;
+        $scope.$broadcast('user-update', r);
       }
     }, $scope);
     socket.on('get-config', function(data) {
@@ -499,7 +500,10 @@ angular.module('tradity.controllers', []).
       }
     }, $scope);
   
-    $scope.$on('user-update', function(data) {
+    socket.on('get-user-info', function(data) {
+      if (!data.result.isSelf)
+        return;
+      
       var orders = data.orders;
       if (!orders)
         return;
@@ -516,7 +520,7 @@ angular.module('tradity.controllers', []).
         orders[i].price = Math.abs(orders[i].money / orders[i].amount);
       }
       $scope.orders = orders;
-    });
+    }, $scope);
     
     socket.on('dquery-list', function(data) {
       $scope.delayedOrders = [];

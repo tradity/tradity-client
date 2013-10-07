@@ -766,7 +766,7 @@ angular.module('tradity.controllers', []).
         comment: $scope.comment,
         dquerydata: { /* will be returned in the dquery-exec event */
           xtype: $scope.xtype,
-          xvalue: $scope.xvalue,
+          xvalue: parseFloat($scope.xvalue.replace(',', '.')),
           name: $scope.stockname,
           ordertime: new Date().getTime()
         }

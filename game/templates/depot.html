@@ -268,8 +268,8 @@
 							</span>
 						</td>
 						<td>
-							<span ng-class="{pos: watchlistPerformYesterday > 0, neg: watchlistPerformAll < 0}">
-								{{ watchlistYesterday = (entry.lastvalue - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}} %
+							<span ng-class="{pos: watchlistPerformYesterday > 0, neg: watchlistPerformYesterday < 0}">
+								{{ watchlistPerformYesterday = (entry.lastvalue - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}} %
 							</span>
 						</td>
 						<td class="trade-td"><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF17A;</a></td>

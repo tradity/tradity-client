@@ -2,8 +2,6 @@ html {
     overflow-y: scroll;
 }
 
-#tabs div { font-size: 1em; font-family: 'Droid Sans', sans-serif; } /* nc! */
-
 body {
     font-size: 1em;
     line-height: 1.4;
@@ -1391,4 +1389,9 @@ label.trade-label-input {
     -o-transform: scale(1) rotate(-35deg) translateX(20px) translateY(20px) skewX(0deg) skewY(0deg);
     -ms-transform: scale(1) rotate(-35deg) translateX(20px) translateY(20px) skewX(0deg) skewY(0deg);
     transform: scale(1) rotate(-35deg) translateX(20px) translateY(20px) skewX(0deg) skewY(0deg);
+}
+
+#tabs div { 
+    font-size: 1em; 
+    font-family: 'Droid Sans', sans-serif;
 }

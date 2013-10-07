@@ -43,7 +43,9 @@
 						Gesamt
 					</li>
 					<li>
-						{{((ownUser.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
+						<span  ng-class="{pos: performanceAll > 0, neg:  performanceAll < 0}">
+							{{ performanceAll = ((ownUser.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
+						</span>
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -51,7 +53,9 @@
 						Heute
 					</li>
 					<li>
-						{{(ownUser.totalvalue / ownUser.daystarttotalvalue - 1) * 100 | number:2}} %
+						<span  ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
+							{{( performanceToday = ownUser.totalvalue / ownUser.daystarttotalvalue - 1) * 100 | number:2}} %
+						</span>
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -59,7 +63,9 @@
 						Woche
 					</li>
 					<li>
-						{{(ownUser.totalvalue / ownUser.weekstarttotalvalue - 1) * 100 | number:2}} %
+						<span  ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
+							{{ performanceWeek = (ownUser.totalvalue / ownUser.weekstarttotalvalue - 1) * 100 | number:2}} %
+						</span>
 					</li>
 				</ul>
 			</fieldset>
@@ -70,7 +76,9 @@
 						Gesamt
 					</li>
 					<li>
-						{{(ownUser.totalfperf-1) * 100 | number:2}} %
+						<span  ng-class="{pos: fperfAll > 0, neg: fperfAll < 0}">
+							{{ fperfAll = (ownUser.totalfperf-1) * 100 | number:2}} %
+						</span>
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -78,7 +86,9 @@
 						Heute
 					</li>
 					<li>
-						{{(ownUser.dayfperf-1) * 100 | number:2}} %
+						<span  ng-class="{pos: fperfToday > 0, neg: fperfToday < 0}">
+							{{ fperfToday = (ownUser.dayfperf-1) * 100 | number:2}} %
+						</span>
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -86,7 +96,9 @@
 						Woche
 					</li>
 					<li>
-						{{(ownUser.weekfperf-1) * 100 | number:2}} %
+						<span  ng-class="{pos: fperfWeek > 0, neg: fperfWeek < 0}">
+							{{ fperfWeek = (ownUser.weekfperf-1) * 100 | number:2}} %
+						</span>
 					</li>
 				</ul>
 			</fieldset>
@@ -131,10 +143,18 @@
 						<td>{{result.amount}}</td>
 						<td>{{result.buymoney / result.amount / 10000 | currency}}</td>
 						<td>{{result.lastvalue / 10000 | currency}}</td>
-						<td>{{(result.lastvalue * result.amount - result.buymoney)
-		                                / result.buymoney * 100 | number:2}}%</td>
-						<td>{{(result.lastvalue - result.daystartvalue) /
-		                                result.daystartvalue * 100 | number:2}}%</td>
+						<td>
+							<span  ng-class="{pos: orderPerfAll > 0, neg: orderPerfAll < 0}">
+								{{( orderPerfAll = result.lastvalue * result.amount - result.buymoney)
+		                                / result.buymoney * 100 | number:2}} %
+		                    </span>
+		                </td>
+						<td>
+							<span  ng-class="{pos: orderPerfYesterday > 0, neg: orderPerfYesterday < 0}">
+								{{( orderPerfYesterday = result.lastvalue - result.daystartvalue) /
+		                                result.daystartvalue * 100 | number:2}} %
+		                    </span>
+		                </td>
 						<td class="trade-td"><a ng-href="#/trade/sell/{{result.stockid}}/{{result.amount}}" class="batch block-link trade">&#xF153;</a></td>
 					</tr>
 				</table>
@@ -188,18 +208,22 @@
 					<tr>
 						<th>Name</th>
 						<th>Datum</th>
-						<th>Bilanz</th>
 						<th>Anzahl</th>
 						<th>Preis</th>
 						<th>Transaktionskosten</th>
+						<th>Bilanz</th>
 					</tr>
 					<tr ng-repeat="order in orders">
 						<td class="{{order.ordertype}}" title="{{order.stocktextid}}"><a class="text-link" ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a></td>
 						<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
-						<td>{{(order.money * -1) / 10000 | currency}}</td>
 						<td>{{order.amount}}</td>
 						<td>{{order.price / 10000 | currency}}</td>
 						<td>{{order.fee / 10000 | currency}}</td>
+						<td>
+							<span  ng-class="{pos: balance > 0, neg: balance < 0}">
+								{{ balance = (order.money * -1) / 10000 | currency}}
+							</span>
+						</td>
 					</tr>
 				</table>
 			</fieldset>
@@ -236,8 +260,16 @@
 						<td>{{entry.watchstarttime * 1000 | date:'d.M.yy HH:mm'}}</td>
 						<td>{{entry.watchstartvalue / 10000 | currency}}</td>
 						<td>{{entry.lastvalue / 10000 | currency}}</td>
-						<td>{{(entry.lastvalue - entry.watchstartvalue) / entry.watchstartvalue * 100 | number:2}}%</td>
-						<td>{{(entry.lastvalue - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}}%</td>
+						<td>
+							<span  ng-class="{pos: watchlistPerformAll > 0, neg: watchlistPerformAll < 0}">
+								{{ watchlistPerformAll = (entry.lastvalue - entry.watchstartvalue) / entry.watchstartvalue * 100 | number:2}} %
+							</span>
+						</td>
+						<td>
+							<span ng-class="{pos: watchlistPerformYesterday > 0, neg: watchlistPerformAll < 0}">
+								{{ watchlistYesterday = (entry.lastvalue - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}} %
+							</span>
+						</td>
 						<td class="trade-td"><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF17A;</a></td>
 					</tr>
 				</table>

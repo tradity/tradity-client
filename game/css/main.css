@@ -81,21 +81,29 @@ textarea {
    ========================================================================== */
 
 @media only screen and (min-width: 960px) {
+    div.fixed-name-container {
+        border-bottom: thin solid #a7a7a7;
+        padding: 15px 0px;
+        position: fixed;
+        top: 0px;
+        width: 750px;
+        background-color: #fff;
+        display: none;
+        z-index: 3;
+        margin: 0px;
+        filter:alpha(opacity=90);
+        -moz-opacity: 0.9;
+        opacity: 0.9;
+    }
 
-div.fixed-name-container {
-    border-bottom: thin solid #a7a7a7;
-    padding: 15px 0px;
-    position: fixed;
-    top: 0px;
-    width: 750px;
-    background-color: #fff;
-    display: none;
-    z-index: 3;
-    margin: 0px;
-    filter:alpha(opacity=90);
-    -moz-opacity: 0.9;
-    opacity: 0.9;
-}
+    #tradity:hover {
+        color: #dc6; 
+        filter: dropshadow(color=#3b3b3b, offx=1, offy=1);
+        -webkit-transition:color 0.3s ease-in;  
+        -moz-transition:color 0.3s ease-in;  
+        -o-transition:color 0.3s ease-in;  
+        transition:color 0.3s ease-in;
+    }
 }
 
 }
@@ -491,15 +499,6 @@ h1#tradity {
     z-index: 1;
 }
 
-#tradity:hover {
-    color: #dc6; 
-    filter: dropshadow(color=#3b3b3b, offx=1, offy=1);
-    -webkit-transition:color 0.3s ease-in;  
-    -moz-transition:color 0.3s ease-in;  
-    -o-transition:color 0.3s ease-in;  
-    transition:color 0.3s ease-in;
-}
-
 .profile-link:hover {
     background-color: rgba(200, 200, 200, 0.1);
 }
@@ -544,6 +543,8 @@ h1#tradity {
     padding: 0 10px 0 0;
     overflow: hidden;
     height: 110px;
+    max-width: 300px;
+    margin-right: 5px;
 }
 
 .profile-picture {

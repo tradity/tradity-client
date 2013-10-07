@@ -214,7 +214,9 @@
 						<th>Bilanz</th>
 					</tr>
 					<tr ng-repeat="order in orders">
-						<td class="{{order.ordertype}}" title="{{order.stocktextid}}"><a class="text-link" ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a></td>
+						<td class="{{order.ordertype}}" title="{{order.stocktextid}}">
+							<a class="text-link" ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a>
+						</td>
 						<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
 						<td>{{order.amount}}</td>
 						<td>{{order.price / 10000 | currency}}</td>

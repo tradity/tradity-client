@@ -37,7 +37,9 @@
 						Gesamt
 					</li>
 					<li>
-						{{((user.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
+						<span ng-class="{pos: performanceAll > 0, neg: performanceAll < 0}">
+						{{ performanceAll = ((user.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
+						</span>
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -45,7 +47,9 @@
 						Heute
 					</li>
 					<li>
-						{{(user.totalvalue / user.daystarttotalvalue - 1) * 100 | number:2}} %
+						<span ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
+							{{ performanceToday = (user.totalvalue / user.daystarttotalvalue - 1) * 100 | number:2}} %
+						</span>
 					</li>
 				</ul>
 				<ul class="one-item-list">
@@ -53,7 +57,9 @@
 						Woche
 					</li>
 					<li>
-						{{(user.totalvalue / user.weekstarttotalvalue - 1) * 100 | number:2}} %
+						<span ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
+							{{ performanceWeek = (user.totalvalue / user.weekstarttotalvalue - 1) * 100 | number:2}} %
+						</span>
 					</li>
 				</ul>
 			</fieldset>

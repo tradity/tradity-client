@@ -265,19 +265,19 @@ textarea {
   font-family: 'Abel';
   font-style: normal;
   font-weight: 400;
-  src: local('Abel'), local('Abel-Regular'), url(https://themes.googleusercontent.com/static/fonts/abel/v3/EAqh528fFdbUek8UOky4sA.woff) format('woff');
+  src: local('Abel'), local('Abel-Regular'), url("type/Abel/abel.woff") format('woff');
 }
 @font-face {
   font-family: 'Droid Sans';
   font-style: normal;
   font-weight: 400;
-  src: local('Droid Sans'), local('DroidSans'), url(https://themes.googleusercontent.com/static/fonts/droidsans/v3/s-BiyweUPV0v-yRb-cjciBsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+  src: local('Droid Sans'), local('DroidSans'), url("type/Droid_Sans/droidsans400.woff") format('woff');
 }
 @font-face {
   font-family: 'Droid Sans';
   font-style: normal;
   font-weight: 700;
-  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url(https://themes.googleusercontent.com/static/fonts/droidsans/v3/EFpQQyG9GqCrobXxL-KRMQFhaRv2pGgT5Kf0An0s4MM.woff) format('woff');
+  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url("type/Droid_Sans/droidsans700.woff") format('woff');
 }
 
 /* ==========================================================================

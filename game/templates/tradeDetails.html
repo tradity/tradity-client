@@ -45,7 +45,11 @@
 				<tr>
 					<td title="{{trade.stocktextid}}">{{trade.stockname}}</td>
 					<td>{{trade.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
-					<td>{{(trade.money * -1) / 10000 | currency}}</td>
+					<td>
+						<span  ng-class="{pos: balance > 0, neg: balance < 0}">
+							{{ balance = (trade.money * -1) / 10000 | currency}}
+						<span  ng-class="{pos: balance > 0, neg: balance < 0}">
+					</td>
 					<td>{{trade.amount}}</td>
 					<td>{{trade.price / 10000 | currency}}</td>
 					<td>{{trade.fee / 10000 | currency}}</td>

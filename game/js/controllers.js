@@ -255,7 +255,7 @@ angular.module('tradity.controllers', []).
         typePerson = 'yourself';
         type += '-self';
       }
-      if (data.userid == $scope.ownUser.uid) {
+      if (data.traderid == $scope.ownUser.uid) {
         type += '-me';
       }
       var tn = data.tradername;

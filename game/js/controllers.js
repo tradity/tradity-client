@@ -632,7 +632,7 @@ angular.module('tradity.controllers', []).
           alert('Benutzer nicht gefunden. Hier läuft etwas falsch.');
         } else if (data.code == 'comment-success') {
           var time = new Date();
-          $scope.comments.push({
+          $scope.comments.unshift({
             comment: $scope.comment,
             username: $scope.ownUser.name,
             time: time.getTime() / 1000 - 1

@@ -748,7 +748,7 @@ angular.module('tradity.controllers', []).
     $scope.leader = null;
     $scope.cur = null;
     $scope.xtype = 'market';
-    $scope.xvalue = null;
+    $scope.xvalue = '';
     $scope.comment = '';
     $scope.sellbuy = 1;
     $scope.fee = 0;

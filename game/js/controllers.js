@@ -760,7 +760,7 @@ angular.module('tradity.controllers', []).
       if (!$scope.leader && !$scope.stockid)
         return alert('Du musst ein Wertpapier auswählen!');
 	    var query = {
-        amount: $scope.amount ? $scope.amount * $scope.sellbuy : null,
+        amount: $scope.amount * $scope.sellbuy,
         stockid: $scope.stockid,
         leader: $scope.leader,
         comment: $scope.comment,
@@ -768,6 +768,8 @@ angular.module('tradity.controllers', []).
           xtype: $scope.xtype,
           xvalue: parseFloat($scope.xvalue.replace(',', '.')),
           name: $scope.stockname,
+          amount: $scope.amount * $scope.sellbuy,
+          delayedquery: true,
           ordertime: new Date().getTime()
         }
       };

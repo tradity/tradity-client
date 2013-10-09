@@ -25,6 +25,7 @@
         <script type="text/javascript" src="js/controllers.js"></script>
         <script type="text/javascript" src="js/intro.js"></script>
         <script type="text/javascript" src="js/vagueTime.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
         <!-- Piwik -->
         <script type="text/javascript">
           var _paq = _paq || [];
@@ -50,6 +51,10 @@
                     <div class="name-container clearfix">
                         <a ng-href="#/user/{{ownUser.name}}" style="cursor: pointer"  accesskey="p" title="Hier gehts zu deinem Profil" class="block-link profile-link">
                             <h2 class="name">{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>
+                            <div class="depot">
+                                <h2 class="title">Konto</h2>
+                                <span class="depot-wert">{{ownUser.totalvalue / 10000 | currency}}</span>
+                            </div>
                             <div class="depot">
                                 <h2 class="title">Gesamtvermögen</h2>
                                 <span class="depot-wert">{{ownUser.totalvalue / 10000 | currency}}</span>
@@ -138,7 +143,9 @@
                 <a class="text-link footer-text" href="#/imprint">Impressum</a> 
                 <span class="footer-text">tradity, 2013</span>
             </footer>
+            <div class="sponsors">
+
+            </div>
         </div>
-        <script type="text/javascript" src="js/main.js"></script>
     </body>
 </html>

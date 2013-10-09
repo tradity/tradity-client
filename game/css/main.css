@@ -509,12 +509,12 @@ h1#tradity {
 }
 
 .name {
-    width: 500px;
 }
 
 .depot{
-    width: 248px;
+    width: 100px;
     text-align: right;
+    float: right;
 }
 
 .depot-wert{
@@ -1394,4 +1394,23 @@ label.trade-label-input {
 #tabs div { 
     font-size: 1em; 
     font-family: 'Droid Sans', sans-serif;
+}
+
+/* ==========================================================================
+    sponsors
+   ========================================================================== */
+
+.sponsors {
+    clear: both;
+}
+
+.sponsor {
+    display: block;
+    float: left;
+    padding: 10px;
+    height: 110px;
+}
+
+.sponsor-img {
+    width: 140px;
 }

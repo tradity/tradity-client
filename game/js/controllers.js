@@ -164,7 +164,7 @@ angular.module('tradity.controllers', []).
         $scope.serverConfig[k] = cfg[k];
     });
     
-    var feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange'];
+    var feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange'];
     $scope.messages = [];
     $scope.eventIDs = {};
     
@@ -294,7 +294,25 @@ angular.module('tradity.controllers', []).
         typePerson: typePerson,
         srcusername: data.srcusername,
         oldprov: data.oldprov,
-        newprov: data.newprov
+        newprov: data.newprov,
+        time: data.eventtime
+      });
+    });
+    $scope.$on('user-namechange', function(angEv, data) {
+      var type = 'namechange';
+      if (data.srcuser == $scope.ownUser.uid) {
+        var typePerson = 'yourself';
+        type += '-self';
+      } else {
+        var typePerson = 'somebody';
+      }
+      $scope.messages.push({
+        type: type,
+        typePerson: typePerson,
+        srcusername: data.srcusername,
+        oldname: data.oldname,
+        newname: data.newname,
+        time: data.eventtime
       });
     });
   }).

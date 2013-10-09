@@ -196,14 +196,28 @@
             <div ng-switch-when="provchange">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
-                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat seine Provision von {{message.oldprov}} % auf {{message.newprov}} % verändert.
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat seine Provision von {{message.oldprov}} % auf {{message.newprov}} % verändert.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
                 </div>
             </div>
             <div ng-switch-when="provchange-self">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
-                    Du hast Deine Provision von {{message.oldprov}} % auf {{message.newprov}} % verändert.
+                    Du hast Deine Provision von {{message.oldprov}} % auf {{message.newprov}} % verändert.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="namechange">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat seinen Benutzernamen von „{{message.oldname}}“ auf „{{message.newname}}“ verändert.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="namechange-self">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    Du hast Deinen Benutzernamen von „{{message.oldname}}“ auf „{{message.newname}}“ verändert.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
                 </div>
             </div>

@@ -208,13 +208,16 @@
                 bottom: 10px;
                 right: 20px;
             }
-            .social-link {
+            .social-link:hover {
+                filter:alpha(opacity=100); 
+                -moz-opacity: 1; 
+                opacity: 1;
+
             }
-            .facebook:hover {
-                color: #3b5998;
-            }  
-            .twitter:hover {
-                color: #00acee;
+            .social-link {
+                filter:alpha(opacity=50); 
+                -moz-opacity: 0.50; 
+                opacity: 0.50;
             }
             .no-border {
                 border: none;
@@ -251,10 +254,11 @@ Social Trading macht aus dem Thema Traden, bei dem man häufig auf sich allein g
                     <span style="font-size: 30px"> | </span> 
                     <a href="game/#/login" title="Registrier dich jetzt zur Beta" class="text-link no-border" style="font-size: 30px;">Login</a>
                 </div>
-
+                <a class="social-link facebook no-border" style="position:absolute; bottom: 20px; left: 20px; font-size: 14px; text-decoration: none;" target="_blank" href="https://presse.tradity.de">Presse</a>
                 <div id="social-links">
-                    <a class="social-link facebook no-border" style="filter:alpha(opacity=50); -moz-opacity: 0.50; opacity: 0.50;" target="_blank" href="https://facebook.com/tradity.de"><img src="img/glyphicons/glyphicons_social_30_facebook.png"></a>
-                    <a class="social-link twitter no-border" style="filter:alpha(opacity=50); -moz-opacity: 0.50; opacity: 0.50;" target="_blank" href="https://twitter.com/TradityDe"><img src="img/glyphicons/glyphicons_social_31_twitter.png"></a>
+                    <a class="social-link facebook no-border" style="" target="_blank" href="https://facebook.com/tradity.de"><img src="img/glyphicons/glyphicons_social_30_facebook.png"></a>
+                    <a class="social-link twitter no-border" style="" target="_blank" href="https://twitter.com/TradityDe"><img src="img/glyphicons/glyphicons_social_31_twitter.png"></a>
+                    <a class="social-link twitter no-border" style="" target="_blank" href="http://blog.tradity.de"><img src="img/glyphicons/glyphicons_social_09_wordpress.png"></a>
                 </div>
         </div>
         <div id="partner">

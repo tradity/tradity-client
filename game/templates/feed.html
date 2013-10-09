@@ -9,7 +9,7 @@
         <button class="tutbtn-show">?</button>-Button links oder die <a href="#/faq" class="text-link" title="Häufig gestellte Fragen">FAQ</a> helfen Dir weiter.
     </div>
     <br>
-    <em>Links siehst Du die Navigation. Die verschiedenen Button werden Dir im folgenden erklärt.</em>
+    <em>Links siehst Du die Navigation. Die verschiedenen Buttons werden Dir im folgenden erklärt.</em>
     <ol>
         <div>
             <div class="tut-symbol batch">&#xF153;</div>
@@ -72,7 +72,7 @@
         auf Facebook eine Frage posten. <span style="color: #ff5000;">Viel Erfolg!</span>
     </div>
     </div>
-    <div data-step="1" data-position="left" data-intro="Hier findest Du die Aktivität von Dir und Leuten aus Deiner Watchlist.">
+    <div data-step="1" data-position="left" data-intro="Hier findest Du Deine Aktivitäten und die der Leute aus Deiner Watchlist.">
         <div ng-repeat="message in displaymessages" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type">
             <div ng-switch-when="watch-add">
                 <div class="batch feed-entry-symbol">&#xF178;</div>
@@ -190,6 +190,20 @@
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
                     <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an Dir <a ng-href="#/trade/{{message.targetid}}" class="feed-link">verkauft</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="provchange">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat seine Provision von {{message.oldprov}} % auf {{message.newprov}} % verändert.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="provchange-self">
+                <div class="batch feed-entry-symbol">&#xF153;</div>
+                <div class="feed-entry-content">
+                    Du hast Deine Provision von {{message.oldprov}} % auf {{message.newprov}} % verändert.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
                 </div>
             </div>

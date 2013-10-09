@@ -164,7 +164,7 @@ angular.module('tradity.controllers', []).
         $scope.serverConfig[k] = cfg[k];
     });
     
-    var feedEvents = ['trade', 'watch-add', 'comment'];
+    var feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange'];
     $scope.messages = [];
     $scope.eventIDs = {};
     
@@ -269,6 +269,34 @@ angular.module('tradity.controllers', []).
         time: data.eventtime
       });
     });
+    /*
+    $scope.$on('dquery-exec', function(angEv, data) {
+      if (data.result == 'stock-buy-success') {
+        $scope.messages.push({
+          type: 'dquery-exec',
+          orderid: data.orderid,
+          stockname: data.name,
+          amount: data.amount,
+          time: data.eventtime
+        });
+      }
+    });*/
+    $scope.$on('user-provchange', function(angEv, data) {
+      var type = 'provchange';
+      if (data.srcuser == $scope.ownUser.uid) {
+        var typePerson = 'yourself';
+        type += '-self';
+      } else {
+        var typePerson = 'somebody';
+      }
+      $scope.messages.push({
+        type: type,
+        typePerson: typePerson,
+        srcusername: data.srcusername,
+        oldprov: data.oldprov,
+        newprov: data.newprov
+      });
+    });
   }).
   controller('RegistrationCtrl', function($scope, $location, socket) {
     $scope.school = null;
@@ -278,7 +306,7 @@ angular.module('tradity.controllers', []).
         case 'reg-success':
           var extra = '';
           if (/@freenet\.\w+$/.test($scope.email))
-            extra = '\nBei deinem E-Mail-Provider ist es schon häufiger zu Problemen mit der Anmeldung gekommen.\nSchicke bitte ggf. selbst eine E-Mail an tech@tradity.de';
+            extra = '\nBei Deinem E-Mail-Provider ist es schon häufiger zu Problemen mit der Anmeldung gekommen.\nSchicke bitte ggf. selbst eine E-Mail an tech@tradity.de';
           alert('Registrierung erfolgreich' + extra);
           $location.path('/');
           break;

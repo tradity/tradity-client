@@ -845,7 +845,7 @@ angular.module('tradity.controllers', []).
         switch (data.code) {
           case 'dquery-success':
             alert('Der Trade wird ausgeführt, sobald die angegebenen Bedingungen erfüllt sind.');
-            $location.path('/depot');
+            $location.path('/depot/opentransactions');
             break;
           case 'stock-buy-success':
             alert('Trade erfolgreich');
@@ -862,6 +862,7 @@ angular.module('tradity.controllers', []).
             break;
           case 'stock-buy-autodelay-sxnotopen':
             alert('Der Trade wird ausgeführt, sobald der Handelsplatz öffnet');
+            $location.path('/depot/opentransactions');
             break;
           case 'stock-buy-stock-not-found':
             alert('Wertpapier existiert nicht');

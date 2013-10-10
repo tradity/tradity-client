@@ -105,7 +105,7 @@
 }
 .ui-tabs .ui-tabs-nav li a {
 	float: left;
-	padding: 5px 10px;
+	padding: 5px;
 	text-decoration: none;
 }
 .ui-tabs .ui-tabs-nav li.ui-tabs-active {

@@ -3,10 +3,9 @@
     <head>
         <meta charset="utf-8">
         <title>tradity</title>
-                <script src="/socket.io/socket.io.js"></script>
         <script src="//entless.org/js/jquery.js"></script>
         <script>
-
+        /*
                 var socket = io.connect('/');
                 socket.on('response', function (data) {
                         console.log(data);
@@ -27,6 +26,15 @@
             $("email-sb").prop('disabled', true);
             // email validation lasse ich mal
                 }
+        */
+
+            $(document).ready(function() {
+                $(".info-link").click(function() {
+                    var index = $(".info-link").index(this);
+                        $(".info").eq(index).siblings(".info").slideUp();
+                        $(".info").eq(index).slideToggle();
+                });    
+            });
         </script>
         <!-- Piwik -->
         <script type="text/javascript">
@@ -225,6 +233,7 @@
             .text-link {
                 color: #369;
                 text-decoration: none;
+                cursor: pointer;
             }
 
             .text-link:hover {
@@ -235,17 +244,50 @@
                 color: #000;
             }
 
+            .info {
+                display: none;
+                width: 500px;
+                padding: 30px 20px;
+                border: 1px solid #b3b3b3;
+                border-radius: 4px;
+                margin: 20px auto;
+                box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
+                background: #fff;
+            }
+            .info-link-box {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
         </style>
     </head>
     <body>
         <div class="container">
                     <h1><img src="img/tradityLogo.png" alt="Tradity"></h1>
                     <!--<p class="success">Dankeschön! Wir benachrichtigen dich, sobald Neuigkeiten verfügbar sind.</p>-->
-                    <p style="text-align: center;">Melde dich bei Tradity an und sei Teil des ersten Social Trading Börsenspiels Deutschlands.</p></br></br>
-<!--                     <p>Sei Teil des ersten <strong>Social Trading Börsenspiels</strong> der Welt und lerne eine <em>neue</em> Art des Tradens kennen!</p>
-                    <p style="font-size: 13px;">Börsenspiele bieten die Möglichkeit, Erfahrungen über das Thema Aktien zu sammeln, ohne dabei echtes Geld zu riskieren. Noch besser – wenn man ein Händchen für das Traden hat, kann man auch noch interessante Preise gewinnen. Was jedoch, wenn man dieses nicht hat? <br />
-Social Trading macht aus dem Thema Traden, bei dem man häufig auf sich allein gestellt ist, eine Community-Sache. Der Neuling kann jetzt einfach erfolgreichen Teilnehmern „folgen“ und die gleiche Performance wie diese erzielen, wofür dann auf Win-Win-Basis eine Provision gezahlt wird. </p>
-                    <p style="font-size: 13px;">Gib hier deine E-Mail-Adresse an, um über den Start des Wettbewerbs benachrichtigt zu werden.</p> -->
+                    <p style="text-align: center;">Melde dich bei Tradity an und sei Teil des ersten Social Trading Börsenspiels Deutschlands.</p>
+                    <div class="info-link-box">
+                        <span class="info-link text-link">Was wir bieten</span> |
+                        <span class="info-link text-link">Was andere sagen</span> |
+                        <span class="info-link text-link">Wir</span>
+                    </div>
+                    <div class="info-box">
+                        <div class="info">
+                            <p>Sei Teil des ersten <strong>Social Trading Börsenspiels</strong> der Welt und lerne eine <em>neue</em> Art des Tradens kennen!</p>
+                            <p style="font-size: 13px;">Börsenspiele bieten die Möglichkeit, Erfahrungen über das Thema Aktien zu sammeln, ohne dabei echtes Geld zu riskieren. Noch besser – wenn man ein Händchen für das Traden hat, kann man auch noch interessante Preise gewinnen. Was jedoch, wenn man dieses nicht hat? <br />
+                            Social Trading macht aus dem Thema Traden, bei dem man häufig auf sich allein gestellt ist, eine Community-Sache. Der Neuling kann jetzt einfach erfolgreichen Teilnehmern „folgen“ und die gleiche Performance wie diese erzielen, wofür dann auf Win-Win-Basis eine Provision gezahlt wird. </p>
+                        </div>
+                        <div class="info">
+                            <p>
+                                lorem ipsum dolor sed amit
+                            </p>
+                        </div>
+                        <div class="info">
+                            <p>
+                                lorem ipsum dolor sed amit hallo
+                            </p>
+                        </div>
+                    </div>
                 <div id="email" style="text-align: center;">
                 <div style="color: silver;">
                     Beta <br>

@@ -535,8 +535,8 @@ h1#tradity {
 }
 
 .profile-box {
-    font-family: 'Droid Sans', sans-serif;
-    font-size: 11px;
+    font-family: 'Droid Sans', sans-serif !important;
+    font-size: 11px !important; 
     float: left;
     padding: 0 10px 0 0;
     overflow: hidden;

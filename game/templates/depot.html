@@ -142,16 +142,16 @@
 						<td>{{result.total / 10000 | currency}}</td>
 						<td>{{result.amount}}</td>
 						<td>{{result.buymoney / result.amount / 10000 | currency}}</td>
-						<td>{{result.lastvalue / 10000 | currency}}</td>
+						<td>{{result.bid / 10000 | currency}}</td>
 						<td>
 							<span  ng-class="{pos: orderPerfAll > 0, neg: orderPerfAll < 0}">
-								{{( orderPerfAll = result.lastvalue * result.amount - result.buymoney)
+								{{( orderPerfAll = result.bid * result.amount - result.buymoney)
 		                                / result.buymoney * 100 | number:2}} %
 		                    </span>
 		                </td>
 						<td>
 							<span  ng-class="{pos: orderPerfYesterday > 0, neg: orderPerfYesterday < 0}">
-								{{( orderPerfYesterday = result.lastvalue - result.daystartvalue) /
+								{{( orderPerfYesterday = result.bid - result.daystartvalue) /
 		                                result.daystartvalue * 100 | number:2}} %
 		                    </span>
 		                </td>

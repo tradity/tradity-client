@@ -261,15 +261,15 @@
 						<td>{{entry.stockname}}</td>
 						<td>{{entry.watchstarttime * 1000 | date:'d.M.yy HH:mm'}}</td>
 						<td>{{entry.watchstartvalue / 10000 | currency}}</td>
-						<td>{{entry.lastvalue / 10000 | currency}}</td>
+						<td>{{entry.bid / 10000 | currency}}</td>
 						<td>
 							<span  ng-class="{pos: watchlistPerformAll > 0, neg: watchlistPerformAll < 0}">
-								{{ watchlistPerformAll = (entry.lastvalue - entry.watchstartvalue) / entry.watchstartvalue * 100 | number:2}} %
+								{{ watchlistPerformAll = (entry.bid - entry.watchstartvalue) / entry.watchstartvalue * 100 | number:2}} %
 							</span>
 						</td>
 						<td>
 							<span ng-class="{pos: watchlistPerformYesterday > 0, neg: watchlistPerformYesterday < 0}">
-								{{ watchlistPerformYesterday = (entry.lastvalue - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}} %
+								{{ watchlistPerformYesterday = (entry.bid - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}} %
 							</span>
 						</td>
 						<td class="trade-td"><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF17A;</a></td>

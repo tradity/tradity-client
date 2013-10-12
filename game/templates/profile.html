@@ -29,6 +29,15 @@
 		        <span class="placement-number">{{user.provision}}%</span>
 		    </div>
 		</div>
+		<div id="chart-wrap" style="clear:both">
+			<div id="chart" class="jqplot-target" style="position:relative;float:left;width:80%"></div>
+			<ul id="chart-control" style="float:right;width:10%">
+				<li ng-repeat="dm in drawModes">
+					<input type="radio" name="drawMode" ng-model="drawMode" value="{{$index}}" class="radio-fix" ng-click="draw($index)">
+					<span>{{dm.name}}</span>
+				</li>
+			</ul>
+		</div>
 		<div class="clearfix"></div> <!-- nc! workaround? -->
 			<fieldset class="options-field">
 				<legend>Vermögensentwicklung</legend>

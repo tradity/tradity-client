@@ -19,11 +19,13 @@
 					<th>Rang</th>
 					<th>Name</th>
 					<th>Gesamtvermögen</th>
+					<th>erh. Provision</th>
 				</tr>
 				<tr ng-repeat="result in results | orderBy:'rank' | filter:searchText">
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
 					<td>{{result.totalvalue / 10000 | currency}}</td>
+					<td>{{result.prov_recvd / 10000 | currency}}</td>
 				</tr>
 			</table>
 		</div>

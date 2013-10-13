@@ -102,6 +102,39 @@
 					</li>
 				</ul>
 			</fieldset>
+			<fieldset class="options-field">
+				<legend>als Leader</legend>
+				<ul class="one-item-list">
+					<li>
+						Anzahl Follower
+					</li>
+					<li>
+						<span>
+							{{ownUser.f_count}}
+						</span>
+					</li>
+				</ul>
+				<ul class="one-item-list">
+					<li>
+						verkaufte Wertpapiere
+					</li>
+					<li>
+						<span>
+							{{ownUser.f_amount}}
+						</span>
+					</li>
+				</ul>
+				<ul class="one-item-list">
+					<li>
+						erh. Provision
+					</li>
+					<li>
+						<span>
+							{{ownUser.prov_recvd / 10000|currency}}
+						</span>
+					</li>
+				</ul>
+			</fieldset>
 		</div>
 		<div id="listing">
 			<fieldset class="options-field">

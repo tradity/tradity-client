@@ -74,6 +74,39 @@
 					</li>
 				</ul>
 			</fieldset>
+			<fieldset class="options-field">
+				<legend>als Leader</legend>
+				<ul class="one-item-list">
+					<li>
+						Anzahl Follower
+					</li>
+					<li>
+						<span>
+							{{user.f_count}}
+						</span>
+					</li>
+				</ul>
+				<ul class="one-item-list">
+					<li>
+						verkaufte Wertpapiere
+					</li>
+					<li>
+						<span>
+							{{user.f_amount}}
+						</span>
+					</li>
+				</ul>
+				<ul class="one-item-list">
+					<li>
+						erh. Provision
+					</li>
+					<li>
+						<span>
+							{{user.prov_recvd / 10000|currency}}
+						</span>
+					</li>
+				</ul>
+			</fieldset>
 			<div style="text-align: right;" ng-hide="user.isSelf">
 		      <button ng-click="getUserInfo()" class="click-button"><span class="batch">&#xF0B2; </span>Refresh</button>
 		      <button ng-click="addToWatchlist()" class="click-button"><span class="batch">&#xF179; </span>zur Watchlist hinzufügen</button>

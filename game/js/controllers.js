@@ -386,7 +386,9 @@ angular.module('tradity.controllers', []).
       $scope.schoolname = document.getElementById('schoolname').value = data.result.schoolname;
       $scope.desc = data.result.desc;
       $scope.provision = data.result.provision;
-      $scope.address = data.result.address;
+      $scope.street = data.result.street;
+      $scope.zipcode = data.result.zipcode;
+      $scope.town = data.result.town;
       $scope.delayorderhist = data.result.delayorderhist;
       
       if (data.result.birthday !== null) {
@@ -492,7 +494,9 @@ angular.module('tradity.controllers', []).
         birthday: d,
         desc: $scope.desc,
         provision: $scope.provision,
-        address: $scope.address,
+        street: $scope.street,
+        zipcode: $scope.zipcode,
+        town: $scope.town,
         delayorderhist: $scope.delayorderhist
       },
       function(data) {

@@ -389,6 +389,8 @@ angular.module('tradity.controllers', []).
       $scope.street = data.result.street;
       $scope.zipcode = data.result.zipcode;
       $scope.town = data.result.town;
+      $scope.traderse = data.result.traderse;
+      $scope.tradersp = data.result.tradersp;
       $scope.delayorderhist = data.result.delayorderhist;
       
       if (data.result.birthday !== null) {
@@ -497,6 +499,8 @@ angular.module('tradity.controllers', []).
         street: $scope.street,
         zipcode: $scope.zipcode,
         town: $scope.town,
+        traderse: $scope.traderse,
+        tradersp: $scope.tradersp,
         delayorderhist: $scope.delayorderhist
       },
       function(data) {

@@ -903,7 +903,7 @@ h1#tradity {
     width: 373px;
 }
 
-.options-field > label{
+.options-field > label, .options-field-label {
     display: inline-block;
     width: 320px;
 }

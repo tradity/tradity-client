@@ -22,10 +22,10 @@
       <input type="checkbox" ng-model="tradersp" id="tradersp"><br>
       <label for="tradersp">TRADERS´ Magazin als E-Mail</label>
       <input type="checkbox" ng-model="traderse" id="traderse"><br>
-      <label for="wot">World-of-Trade-Eintrittskarten</label>
+      <label for="wot"><a href="https://www.wot-messe.de">World-of-Trade</a>-Eintrittskarten</label>
       <input type="checkbox" ng-model="wot" id="wot"><br>
       <div ng-show="tradersp||wot">
-            <label for="street">Adresse  <span class="batch tooltip" data-info="Die Adresse wird ausschließlich dafür verwendet, Dir gegebenenfalls einen Preis zu schicken.">&#xF0AD;</span></label>
+            <label class="options-field-label" for="street">Adresse <span class="batch tooltip" data-info="Wir verwenden deine Daten nicht für Werbezwecke; Wir nutzen deine Kontaktdaten lediglich, um dir Preise, die WOT-Karten oder das TRADERS´ Magazin zuzuschicken. Ausschließlich für diesen Zweck werden die Daten evtl. an diese Partner weitergegeben.">&#xF0AD;</span></label>
             <input type="text" ng-model="street" placeholder="Straße, Hausnr." id="street" class="options-input" style="width:180px">
             <input type="text" ng-model="zipcode" placeholder="PLZ" id="zipcode" class="options-input" style="width:60px">
             <input type="text" ng-model="town" placeholder="Stadt" id="town" class="options-input" style="width:100px">

@@ -674,7 +674,7 @@ angular.module('tradity.controllers', []).
         }
       });
     };
-    $scope.drawMode = 1;  
+    $scope.drawMode = 4;  
     $scope.drawModes = [
       {name: '24 h', days: 1,  marker: true},
       {name: '48 h', days: 2,  marker: true},

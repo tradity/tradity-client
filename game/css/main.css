@@ -933,6 +933,11 @@ h1#tradity {
 #birthdayy { width: 100px; }
 #birthdayd, #birthdaym, #birthdayy { display: inline; }
 
+.reg-required:after {
+    content: " *";
+    color:#a00;
+}
+
 /* ==========================================================================
      trade
    ========================================================================== */

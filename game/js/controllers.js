@@ -366,7 +366,13 @@ angular.module('tradity.controllers', []).
         email: $scope.email,
         gender: $scope.gender,
         school: $scope.schoolname ? ($scope.school ? $scope.school : $scope.schoolname) : null,
-        betakey: $scope.betakey
+        betakey: $scope.betakey,
+        street: $scope.street,
+        zipcode: $scope.zipcode,
+        town: $scope.town,
+        traderse: $scope.traderse,
+        tradersp: $scope.tradersp,
+        wot: $scope.wot
       });
     };
     useSchoolAC($scope, socket); 
@@ -391,6 +397,7 @@ angular.module('tradity.controllers', []).
       $scope.town = data.result.town;
       $scope.traderse = data.result.traderse;
       $scope.tradersp = data.result.tradersp;
+      $scope.wot = data.result.wot;
       $scope.delayorderhist = data.result.delayorderhist;
       
       if (data.result.birthday !== null) {
@@ -501,6 +508,7 @@ angular.module('tradity.controllers', []).
         town: $scope.town,
         traderse: $scope.traderse,
         tradersp: $scope.tradersp,
+        wot: $scope.wot,
         delayorderhist: $scope.delayorderhist
       },
       function(data) {

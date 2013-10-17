@@ -14,10 +14,10 @@
       <input type="text" ng-model="giv_name" placeholder="Vorname" id="giv_name" class="options-input"><br>
       <label class="reg-required" for="fam_name">Nachname</label>
       <input type="text" ng-model="fam_name" placeholder="Nachname" id="fam_name" class="options-input"><br>
-      <label for="realnamepublish">Soll dein Klarname veröffentlicht werden?</label>
+      <label for="realnamepublish">Soll dein echter Name veröffentlicht werden?</label>
       <input type="checkbox" ng-model="realnamepublish" id="realnamepublish"> Ja<br>
       <label for="schoolname">Institution / Schule</label>
-      <input type="text" ng-model="schoolname" placeholder="Schule" id="schoolname" class="options-input"><br>
+      <input type="text" ng-model="schoolname" placeholder="Schule, Universität oder Unternehmen" id="schoolname" class="options-input"><br>
       <label for="tradersp">TRADERS´ Magazin zugesandt bekommen</label>
       <input type="checkbox" ng-model="tradersp" id="tradersp"><br>
       <label for="tradersp">TRADERS´ Magazin als E-Mail</label>
@@ -33,6 +33,9 @@
       <label class="reg-required" for="agbread"><a href="#/tos">AGB</a> gelesen?</label>
       <input type="checkbox" ng-model="agbread" id="agbread" class="options-input"> Ja<br>
     </fieldset>
+    <div style="text-align: left">
+          <span style="color:#a00;font-size:85%">*</span>: Pflichtangabe
+    </div>
     <div style="text-align: right">
       <input type="submit" value="Registrieren" id="options-sb">
     </div>

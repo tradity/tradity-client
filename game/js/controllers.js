@@ -132,6 +132,7 @@ angular.module('tradity.controllers', []).
     };
     
     $scope.logout = function() {
+      $scope.eventIDs = {};
       $scope.messages = [];
       socket.emit('logout', function(data) {
         if (data.code == 'logout-success') {

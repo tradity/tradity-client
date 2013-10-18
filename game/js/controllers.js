@@ -154,7 +154,7 @@ angular.module('tradity.controllers', []).
     }, $scope);
     socket.on('get-user-info', function(data) {
       var r = data.result;
-      if (r.isSelf) {
+      if (r && r.isSelf) {
         $scope.ownUser = r;
         $scope.$broadcast('user-update', r);
       }
@@ -181,22 +181,24 @@ angular.module('tradity.controllers', []).
       }, $scope);
     }
     
-    $scope.pokeEvents = function() {
+    $scope.pokeEvents = function(cb) {
       socket.emit('fetch-events', {
         since: 0,
         count: null
-      });
+      }, cb);
     }
     
-    $scope.fetchSelf = function() {
+    $scope.fetchSelf = function(cb) {
       socket.emit('get-user-info', {
         lookfor: '$self',
         nohistory: true,
         _cache: 20
-      });
+      }, cb);
     }
     
-    $scope.pokeEvents();
+    $scope.fetchSelf(function() {
+      $scope.pokeEvents();
+    });
     socket.emit('get-config');
     
     /* events */

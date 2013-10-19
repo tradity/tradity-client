@@ -322,6 +322,12 @@ angular.module('tradity.controllers', []).
   controller('RegistrationCtrl', function($scope, $location, socket) {
     $scope.school = null;
     $scope.schoolname = document.getElementById('schoolname').value = '';
+    $scope.traderse = false;
+    $scope.tradersp = false;
+    $scope.wot = false;
+    $scope.zipcode = '';
+    $scope.town = '';
+    $scope.street = '';
     socket.on('register', function(data) {
       switch (data.code) {
         case 'reg-success':

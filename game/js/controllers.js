@@ -322,10 +322,10 @@ angular.module('tradity.controllers', []).
   controller('RegistrationCtrl', function($scope, $location, socket) {
     $scope.school = null;
     $scope.schoolname = document.getElementById('schoolname').value = '';
-    $scope.traderse = false;
-    $scope.tradersp = false;
-    $scope.traditye = false;
-    $scope.wot = false;
+    $scope.traderse = 0;
+    $scope.tradersp = 0;
+    $scope.traditye = 0;
+    $scope.wot = 0;
     $scope.zipcode = '';
     $scope.town = '';
     $scope.street = '';

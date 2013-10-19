@@ -324,6 +324,7 @@ angular.module('tradity.controllers', []).
     $scope.schoolname = document.getElementById('schoolname').value = '';
     $scope.traderse = false;
     $scope.tradersp = false;
+    $scope.traditye = false;
     $scope.wot = false;
     $scope.zipcode = '';
     $scope.town = '';
@@ -381,6 +382,7 @@ angular.module('tradity.controllers', []).
         town: $scope.town,
         traderse: $scope.traderse,
         tradersp: $scope.tradersp,
+        traditye: $scope.traditye,
         wot: $scope.wot
       });
     };
@@ -406,6 +408,7 @@ angular.module('tradity.controllers', []).
       $scope.town = data.result.town;
       $scope.traderse = data.result.traderse;
       $scope.tradersp = data.result.tradersp;
+      $scope.traditye = data.result.traditye;
       $scope.wot = data.result.wot;
       $scope.delayorderhist = data.result.delayorderhist;
       
@@ -517,6 +520,7 @@ angular.module('tradity.controllers', []).
         town: $scope.town,
         traderse: $scope.traderse,
         tradersp: $scope.tradersp,
+        traditye: $scope.traditye,
         wot: $scope.wot,
         delayorderhist: $scope.delayorderhist
       },

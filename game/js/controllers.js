@@ -406,10 +406,10 @@ angular.module('tradity.controllers', []).
       $scope.street = data.result.street;
       $scope.zipcode = data.result.zipcode;
       $scope.town = data.result.town;
-      $scope.traderse = data.result.traderse;
-      $scope.tradersp = data.result.tradersp;
-      $scope.traditye = data.result.traditye;
-      $scope.wot = data.result.wot;
+      $scope.traderse = data.result.traderse&&true;
+      $scope.tradersp = data.result.tradersp&&true;
+      $scope.traditye = data.result.traditye&&true;
+      $scope.wot = data.result.wot&&true;
       $scope.delayorderhist = data.result.delayorderhist;
       
       if (data.result.birthday !== null) {
@@ -518,10 +518,10 @@ angular.module('tradity.controllers', []).
         street: $scope.street,
         zipcode: $scope.zipcode,
         town: $scope.town,
-        traderse: $scope.traderse&&true,
-        tradersp: $scope.tradersp&&true,
-        traditye: $scope.traditye&&true,
-        wot: $scope.wot&&true,
+        traderse: $scope.traderse,
+        tradersp: $scope.tradersp,
+        traditye: $scope.traditye,
+        wot: $scope.wot,
         delayorderhist: $scope.delayorderhist
       },
       function(data) {

@@ -518,10 +518,10 @@ angular.module('tradity.controllers', []).
         street: $scope.street,
         zipcode: $scope.zipcode,
         town: $scope.town,
-        traderse: $scope.traderse,
-        tradersp: $scope.tradersp,
-        traditye: $scope.traditye,
-        wot: $scope.wot,
+        traderse: $scope.traderse&&true,
+        tradersp: $scope.tradersp&&true,
+        traditye: $scope.traditye&&true,
+        wot: $scope.wot&&true,
         delayorderhist: $scope.delayorderhist
       },
       function(data) {

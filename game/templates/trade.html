@@ -1,6 +1,7 @@
 <button class="tutbtn" onclick="introJs().start()">?</button>
 <div id="trade" class="main-content">
 <!--<div class="hint box"><span>Die Börse ist geschlossen. Order werden ausgeführt, sobald sie wieder öffnet. (Öffnungszeiten: 8.00 – 20.00)</span></div>-->
+	<a class="text-link" style="margin-right: 20px;" href="http://de.tradimo.com/lernen/aktienhandel/" title="Tradimo!">Wie genau funktioniert das mit dem Traden? Schaue es dir auf Tradimo an.</a>
 	<form ng-submit="buy()">
 		<fieldset class="options-field" style="position: relative;" data-step="1" data-position="left" data-intro="Suche hier nach einem Wertpapier, das Du handeln möchtest und bestätige dann Deine Auswahl.">
 				<legend>Wertpapiername</legend>
@@ -8,6 +9,25 @@
 				<input type="text" class="options-input"
                                 placeholder="Wertpapiername" id="paper" ng-model="stockname" />
 				<button ng-show="cur" ng-click="addToWatchlist()" class="click-button" style="margin: 0; line-height:30px; height: auto;"><span class="batch">&#xF179; </span></button>
+
+				<!-- Nur aufpoppen, falls Aktie in Besitz -->
+
+				<div class="trade-label-button">Willst du die ausgewählte Aktie kaufen oder verkaufen?</div>
+				<div class="options-button order-type">
+					<label for="buy"> 
+						<input type="radio" name="sellbuy" ng-model="sellbuy"
+	                                        value="1" id="buy" class="radio-fix"><span>Kaufen</span>
+					</label>
+				</div>
+				<div class="options-button order-type">
+					<label for="sell">
+						<input type="radio" name="sellbuy" ng-model="sellbuy"
+	                                        value="-1" id="sell" class="radio-fix"><span>Verkaufen</span>
+					</label>
+				</div>
+
+				<!-- AUFPOPPEN ENDE -->
+
 		</fieldset>
 		<fieldset class="options-field" data-step="2" data-position="left" data-intro="Gib die Anzahl des Wertpapiers oder den Wert an, den Du zu zahlen bereit bist. Die Anzahl der Aktien, die Du Dir damit leisten kannst, wird automatisch berechnet. Hier erfährst Du außerdem, welche Transaktionskosten du zahlen musst.">
 			<legend>Menge</legend>
@@ -42,11 +62,11 @@
 			
 		</fieldset>
 		<div style="clear: both" />
-		<fieldset class="options-field"  data-step="3" data-position="left" data-intro="Du kannst Deine Order auf verschiedene Arten aufgeben. Um mehr darüber zu erfahren, musst Du deine Maus nur über das kleine Etikett auf den Buttons halten. Falls Du Dich für Limit oder Stop entscheidest, musst Du den jeweiligen Stop- oder Limitwert angeben."> 
+		<fieldset class="options-field" id="order-type"  data-step="3" data-position="left" data-intro="Du kannst Deine Order auf verschiedene Arten aufgeben. Um mehr darüber zu erfahren, musst Du deine Maus nur über das kleine Etikett auf den Buttons halten. Falls Du Dich für Limit oder Stop entscheidest, musst Du den jeweiligen Stop- oder Limitwert angeben."> 
 			<legend>Ordertyp</legend>
 			<div class="trade-label-button">Welchen Ordertyp soll deine Transaktion haben?</div>
-			<div class="options-button order-type">
-				<label for="market">
+			<div class="options-button order-type" >
+				<label for="market" class="smaller-order-type">
 					<input type="radio" name="ordertype" ng-model="xtype"
                                         value="market" id="market" class="radio-fix" ng-click="isMarketOrder = true"><span>Market <span class="batch tooltip" data-info="Du kaufst zum „Ask“-Preis
 und verkaufst zum „Bid“-Preis">&#xF0AD;</span></span>
@@ -54,30 +74,16 @@ und verkaufst zum „Bid“-Preis">&#xF0AD;</span></span>
 				</label>
 			</div>
 			<div class="options-button order-type">
-				<label for="limit"> 
+				<label for="limit" class="smaller-order-type"> 
 					<input type="radio" name="ordertype" ng-model="xtype"
                                         value="limit" id="limit" class="radio-fix" ng-click="isMarketOrder = false"><span>Limit <span class="batch tooltip" data-info="Du kaufst nur dann, wenn der Wert unter den von Dir eingegebenen Limit-Wert fällt und verkaufst nur dann, wenn der Wert über den von Dir festgelegten Limit-Wert steigt">&#xF0AD;</span></span>
 				</label>
 			</div>
 			<div class="options-button order-type">
-				<label for="stop">
+				<label for="stop" class="smaller-order-type">
 					<input type="radio" name="ordertype" ng-model="xtype"
                                         value="stop" id="stop" class="radio-fix" ng-click="isMarketOrder = false"><span>Stop <span class="batch tooltip" data-info="Du kaufst erst dann, wenn der Wert über den von Dir festgelegten Stop-Wert steigt
 und verkaufst erst dann, wenn der Wert unter den von Dir festgelegten Stop-Wert fällt">&#xF0AD;</span></span>
-				</label>
-			</div>
-
-			<div class="trade-label-button">Willst du die ausgewählte Aktie kaufen oder verkaufen?</div> <!-- redundant? -->
-			<div class="options-button order-type">
-				<label for="buy"> 
-					<input type="radio" name="sellbuy" ng-model="sellbuy"
-                                        value="1" id="buy" class="radio-fix"><span>Kaufen</span>
-				</label>
-			</div>
-			<div class="options-button order-type">
-				<label for="sell">
-					<input type="radio" name="sellbuy" ng-model="sellbuy"
-                                        value="-1" id="sell" class="radio-fix"><span>Verkaufen</span>
 				</label>
 			</div>
 			<br>
@@ -88,8 +94,6 @@ und verkaufst erst dann, wenn der Wert unter den von Dir festgelegten Stop-Wert 
 			    <input type="text" ng-model="xvalue" placeholder="Stop-/Limitwert" id="limit-stop" autocomplete="off" class="options-input">
 			</div>
 	   	</fieldset>
-	   	<div style="text-align: right">
-	    	<a class="text-link" style="margin-right: 20px;" href="http://de.tradimo.com/lernen/aktienhandel/" title="Tradimo!">Wie genau funktioniert das mit dem Traden? Schaue es dir auf Tradimo an.</a><input type="submit" value="Order aufgeben" id="options-sb">
-	    </div>
+	    <input type="submit" value="Trade durchführen" class="click-button trade-button">
 	</form>
 </div>

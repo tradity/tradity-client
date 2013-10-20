@@ -750,6 +750,7 @@ h1#tradity {
     -moz-box-shadow: inset 0px 1px 0px 0px #fff;
     -webkit-box-shadow: inset 0px 1px 0px 0px #fff;
     box-shadow: inset 0px 1px 0px 0px #fff;
+    text-shadow: 1px 1px 0px #fff;
     background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
     background: -moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
     filter:progid: DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
@@ -779,7 +780,6 @@ h1#tradity {
     padding: 0 15px;
     text-decoration: none;
     text-align: center;
-    text-shadow: 1px 1px 0px #fff;
 }
 
 #search-button {
@@ -913,11 +913,11 @@ h1#tradity {
     width: auto;
 }
 
-#realnamepublish, #stayloggedin, #delayorderhist {
-    vertical-align: middle;
-    width: 20px;
-    height: 20px;
-    margin: 5px 0;
+#realnamepublish, #stayloggedin, #delayorderhist, .checkbox {
+    vertical-align: middle !important;
+    width: 20px !important;
+    height: 20px !important;
+    margin: 5px 0 !important;
 }
 
 #provision {
@@ -1011,6 +1011,37 @@ label.trade-label-input {
     font-size: 13px;
     font-family: "Abel", "Droid Sans", sans-serif;
     color: #a7a7a7;
+}
+
+#order-type {
+    width:480px;
+    float: left;
+}
+
+label.smaller-order-type {
+    width: 150px;
+}
+
+.trade-button {
+    float: right;
+    color: #fff;
+    margin: 25px 0 0 0;
+    width: 220px;
+    height: 115px;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f15a29), color-stop(1, #f17a29) );
+    background: -moz-linear-gradient( center top, #f15a29 5%, #f15a29 100% );
+    filter:progid: DXImageTransform.Microsoft.gradient(startColorstr='#f15a29', endColorstr='#f15a29');
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
+}  
+
+.trade-button:hover {
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f17a29), color-stop(1, #f15a29) );
+    background: -moz-linear-gradient( center top, #f17a29 5%, #f15a29 100% );
+    filter:progid: DXImageTransform.Microsoft.gradient(startColorstr='#f17a29', endColorstr='#f15a29');
+    border-color: #fff;
 }
 
 /* ==========================================================================

@@ -1,14 +1,8 @@
 <button class="tutbtn" onclick="javascript:introJs().start()" ng-hide="!user.isSelf">?</button>
 		<div class="main-content" data-step="1" data-position="left" data-intro="Alles, was du hier siehst, ist dein öffentliches Profil. Je nach deinen Einstellungen ist dein Klarname einsehbar.">
-<div id="tabs">
-	<ul>
-		<li><a href="#overview">Generelles</a></li>
-		<li><a href="#history">Transaktionshistorie</a></li>
-		<li><a href="#pinboard">Pinnwand</a></li>
-	</ul>
-	<div id="overview">
+		<div class="clearfix">
 		<div id="profile-user" class="profile" ng-hide="user.isSelf">
-		    <div class="clearfix">
+		    
 		        <h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
 		        <div class="depot">
 		            <h2 class="title">Gesamtvermögen</h2>
@@ -31,6 +25,13 @@
 			<span class="depot-wert">(+{{user.prov_recvd/10000|currency}})</span>
 		    </div>
 		</div>
+<div id="tabs">
+	<ul>
+		<li><a href="#overview">Generelles</a></li>
+		<li><a href="#history">Transaktionshistorie</a></li>
+		<li><a href="#pinboard">Pinnwand</a></li>
+	</ul>
+	<div id="overview">
 		<div id="chart-wrap" style="clear:both">
 			<div id="chart" class="jqplot-target" style="position:relative;float:left;width:80%"></div>
 			<ul id="chart-control" style="float:right;width:10%">

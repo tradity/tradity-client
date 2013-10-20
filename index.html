@@ -253,6 +253,7 @@
                 margin: 20px auto;
                 box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
                 background: #fff;
+                font-size: 16px;
             }
             .info-link-box {
                 text-align: center;
@@ -269,10 +270,58 @@
             
             .img-right img { 
                 float:right;
+                margin: 10px;
             }
             .img-right li {
                 clear:both;
                 margin: 5px 0;
+            }
+
+            .click-button {
+                -moz-box-shadow: inset 0px 1px 0px 0px #fff;
+                -webkit-box-shadow: inset 0px 1px 0px 0px #fff;
+                box-shadow: inset 0px 1px 0px 0px #fff;
+                text-shadow: 1px 1px 0px #fff;
+                background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+                background: -moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+                filter:progid: DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+                background-color: #ededed;
+                -webkit-border-top-left-radius: 6px;
+                -moz-border-radius-topleft: 6px;
+                border-top-left-radius: 6px;
+                -webkit-border-top-right-radius: 6px;
+                -moz-border-radius-topright: 6px;
+                border-top-right-radius: 6px;
+                -webkit-border-bottom-right-radius: 6px;
+                -moz-border-radius-bottomright: 6px;
+                border-bottom-right-radius: 6px;
+                -webkit-border-bottom-left-radius: 6px;
+                -moz-border-radius-bottomleft: 6px;
+                border-bottom-left-radius: 6px;
+                text-indent: 0;
+                display: inline-block;
+                color: #222;
+                font-size: 20px;
+                font-weight: normal;
+                font-style: normal;
+                font-family: "Droid Sans", sans-serif;
+                height: 40px;
+                line-height: 40px;
+                padding: 0 15px;
+                text-decoration: none;
+                text-align: center;
+                border-width: 1px;
+            }
+            .click-button:hover {
+                background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+                background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+                background-color:#dfdfdf;
+                border-color: #111;
+            }
+            .click-button:active {
+                position:relative;
+                top:1px
             }
         </style>
     </head>
@@ -290,19 +339,19 @@
                         <div class="info">
                             Sei Teil des ersten <strong>Social Trading Börsenspiels</strong> der Welt und lerne eine neue Art des Tradens kennen! Das Ziel ist es ab dem 21. Oktober Dein fiktives Startkapital über zwei Monate bis zum 13. 12. bestmöglich zu vermehren. Wie? Das ist vollkommen Dir überlassen.
 
-                            <h3>You will never walk alone – Social Trading</h3>
+                            <h4>You will never walk alone – Social Trading</h4>
                             <p>
                                 Tradity ist das erste Social Trading Börsenspiel der Welt. Du kannst deine Freunde auf Deine „Watchlist setzen“, um zu sehen was sie handeln, ihre Trades zu kommentieren und von ihnen etwas zu lernen.
                             </p>
-                            <h3>Investiere in die besten Trader auf Tradity</h3>
+                            <h4>Investiere in die besten Trader auf Tradity</h4>
                             <p>
                                 Du kannst den Toptradern auf Tradity folgen und, wie in Aktien, in diese investieren.
                             </p>
-                            <h3>Streiche Provisionen ein</h3>
+                            <h4>Streiche Provisionen ein</h4>
                             <p>
                                 Erhalte Geld, indem du andere erfolgreich in dein Depot investieren lässt.
                             </p>
-                            <h3>Realitätsnah Handeln – So wie im echten Leben</h3>
+                            <h4>Realitätsnah Handeln – So wie im echten Leben</h4>
                             <p>
                                 Mit den Live-Daten der Börse Frankfurt stellt Tradity den Alltag des Börsenlebens in Echtzeit dar.
                             </p>
@@ -324,30 +373,30 @@
                             </ul>
                         </div>
                         <div class="info">
-                            <ul class="img-right">
+                            <ul class="img-right no-bullets">
                                 <li>
                                     <img src="img/boerse.png" class="sponsor-logo" alt="Börse Frankfurt">
-                                    <a href="http://www.boerse-frankfurt.de/">Börse Frankfurt</a> – Die Börse Frankfurt stellt Realtime-Daten zur Verfügung.
+                                    <a href="http://www.boerse-frankfurt.de/" class="text-link">Börse Frankfurt</a> – Die Börse Frankfurt stellt Realtime-Daten zur Verfügung.
                                 </li>
                                 <li>
                                     <img src="img/tradimo.png" class="sponsor-logo" alt="Tradimo">
-                                    <a href="http://de.tradimo.com/trading-lernen/">Tradimo</a> – mit Know-How zur Vermittlung von Tradingkenntnissen unterstützt uns Tradimo als Hauptsponsor.
+                                    <a href="http://de.tradimo.com/trading-lernen/" class="text-link">Tradimo</a> – mit Know-How zur Vermittlung von Tradingkenntnissen unterstützt uns Tradimo als Hauptsponsor.
                                 </li>
                                 <li>
                                     <img src="img/traders.png" class="sponsor-logo" alt="TRADERS´">
-                                    <a href="https://www.traders-mag.com/">TRADERS´</a> – TRADERS´ unterstützt uns nicht nur als Hauptsponsor; auch eine Eintrittskarte zur WOT und eine kostenlose Ausgabe TRADERS´ wird für jeden Tradity-Nutzer zur Verfügung gestellt.
+                                    <a href="https://www.traders-mag.com/" class="text-link">TRADERS´</a> – TRADERS´ unterstützt uns nicht nur als Hauptsponsor; auch eine Eintrittskarte zur WOT und eine kostenlose Ausgabe TRADERS´ wird für jeden Tradity-Nutzer zur Verfügung gestellt.
                                 </li>
                                 <li>
                                     <img src="img/vr.png" class="sponsor-logo" alt="VR Bank Niebüll">
-                                    <a href="http://www.vrbankniebuell.de/privatkunden.html">VR Bank Niebüll</a> – Mit ausgiebigem Testing, mit weitreichender beratender Unterstützung sowie als Hauptsponsor unterstützt uns vor Ort die VR Bank Niebüll.
+                                    <a href="http://www.vrbankniebuell.de/privatkunden.html" class="text-link">VR Bank Niebüll</a> – Mit ausgiebigem Testing, mit weitreichender beratender Unterstützung sowie als Hauptsponsor unterstützt uns vor Ort die VR Bank Niebüll.
                                 </li>
                                 <li>
                                     <img src="img/logitech.png" class="sponsor-logo" alt="Logitech">
-                                    <a href="http://www.logitech.com/">Logitech</a> – coole Preise für junge Leute – das bietet Logitech den besten Teilnehmern von Tradity.
+                                    <a href="http://www.logitech.com/" class="text-link" >Logitech</a> – coole Preise für junge Leute – das bietet Logitech den besten Teilnehmern von Tradity.
                                 </li>
                                 <li>
                                     <img src="img/cicero.png" class="sponsor-logo" alt="Cicero">
-                                    <a href="http://www.cicero.de/">Cicero</a> – Cicero stellt vier Preise für erfolgreiche Trader zur Verfügung.
+                                    <a href="http://www.cicero.de/" class="text-link" >Cicero</a> – Cicero stellt vier Preise für erfolgreiche Trader zur Verfügung.
                                 </li>
                                 <li>April Stiftung – die finanzielle Bildung vorantreiben, auch ein Ziel der April Stiftung.</li>
                                 <li>Kling Stiftung – Bildung und Zukunft für Jugendliche verbessern; Themen, die Tradity und die Klingstiftung interessieren.</li>
@@ -355,14 +404,13 @@
                         </div>
                     </div>
                 <div id="email" style="text-align: center;">
-                <div style="color: silver;">
-                    Beta <br>
+                    <form action="game/#/register">
+                        <input type="submit" value="Registrieren" class="click-button" title="Registrier dich jetzt zur Beta">
+                    </form>
+                    oder
+                    <a href="game/#/login" title="Registrier dich jetzt zur Beta" class="text-link no-border" style="font-size: 18px;">Login</a>
                 </div>
-                    <a href="game/#/register" title="Registrier dich jetzt zur Beta" class="text-link no-border" style="font-size: 30px;">Registrieren</a> 
-                    <span style="font-size: 30px"> | </span> 
-                    <a href="game/#/login" title="Registrier dich jetzt zur Beta" class="text-link no-border" style="font-size: 30px;">Login</a>
-                </div>
-                <a class="social-link facebook no-border" style="position:absolute; bottom: 20px; left: 20px; font-size: 14px; text-decoration: none;" href="https://presse.tradity.de">Presse</a>
+                <a class="text-link" style="position:absolute; bottom: 20px; left: 20px; font-size: 14px;" href="https://presse.tradity.de">Presse</a>
                 <div id="social-links">
                     <a class="social-link facebook no-border" style="" target="_blank" href="https://facebook.com/tradity.de"><img src="img/glyphicons/glyphicons_social_30_facebook.png" alt="Facebook"></a>
                     <a class="social-link twitter no-border" style="" target="_blank" href="https://twitter.com/TradityDe"><img src="img/glyphicons/glyphicons_social_31_twitter.png" alt="Twitter"></a>
@@ -379,9 +427,6 @@
 
                      
         </div>-->
-        <div id="date" style="text-align: right;margin-right: 20px;">
-            <span class="little-silver">Voraussichtlicher Start: Oktober 2013</span>
-        </div>
         <div id="techcontact" style="text-align: right;margin-right: 20px;">
             <span class="little-silver">Technische Probleme? tech@tradity.de!</span>
         </div>

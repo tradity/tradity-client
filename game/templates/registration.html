@@ -19,13 +19,13 @@
       <label for="schoolname">Institution / Schule</label>
       <input type="text" ng-model="schoolname" placeholder="Schule, Universität oder Unternehmen" id="schoolname" class="options-input"><br>
       <label for="tradersp">TRADERS´ Magazin zugesandt bekommen</label>
-      <input type="checkbox" ng-model="tradersp" id="tradersp"><br>
+      <input type="checkbox" ng-model="tradersp" class="checkbox" id="tradersp"><br>
       <label for="tradersp">TRADERS´ Newsletter abonnieren</label>
-      <input type="checkbox" ng-model="traderse" id="traderse"><br>
+      <input type="checkbox" ng-model="traderse" class="checkbox" id="traderse"><br>
       <label for="tradersp">Newsletter von Tradity erhalten</label>
-      <input type="checkbox" ng-model="traditye" id="traditye"><br>
+      <input type="checkbox" ng-model="traditye" class="checkbox" id="traditye"><br>
       <label for="wot"><a href="https://www.wot-messe.de">World of Trading</a>-Eintrittskarten</label>
-      <input type="checkbox" ng-model="wot" id="wot"><br>
+      <input type="checkbox" ng-model="wot" class="checkbox" id="wot"><br>
       <div ng-show="tradersp||wot">
             <label class="options-field-label" for="street">Adresse <span class="batch tooltip" data-info="Wir verwenden deine Daten nicht für Werbezwecke; Wir nutzen deine Kontaktdaten lediglich, um dir Preise, die WOT-Karten oder das TRADERS´ Magazin zuzuschicken. Ausschließlich für diesen Zweck werden die Daten evtl. an diese Partner weitergegeben.">&#xF0AD;</span></label>
             <input type="text" ng-model="street" placeholder="Straße, Hausnr." id="street" class="options-input" style="width:180px">
@@ -33,7 +33,7 @@
             <input type="text" ng-model="town" placeholder="Stadt" id="town" class="options-input" style="width:100px">
       </div>
       <label class="reg-required" for="agbread"><a href="#/tos">AGB</a> gelesen?</label>
-      <input type="checkbox" ng-model="agbread" id="agbread" class="options-input"> Ja<br>
+      <input type="checkbox" ng-model="agbread" id="agbread" class="checkbox"> Ja<br>
     </fieldset>
     <div style="text-align: left">
           <span style="color:#a00;font-size:85%">*</span>: Pflichtangabe

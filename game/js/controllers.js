@@ -802,15 +802,11 @@ angular.module('tradity.controllers', []).
   }).
   controller('RankingCtrl', function($scope, $routeParams, $location, socket) {    
     tabbing($('#tabs'), '/ranking/?', $routeParams.pageid, $location, $scope);
-    $scope.studentonly = false;
-    $scope.fromschool = null;
     $scope.results = [];
     
     $scope.getRanking = function() {
       socket.emit('get-ranking', {
         rtype: 'general',
-        studentonly: $scope.studentonly,
-        fromschool: $scope.fromschool,
         _cache: 20
       },
       function(data) {
@@ -820,8 +816,6 @@ angular.module('tradity.controllers', []).
       });
       socket.emit('get-ranking', {
         rtype: 'following',
-        studentonly: $scope.studentonly,
-        fromschool: $scope.fromschool,
         _cache: 20
       },
       function(data) {

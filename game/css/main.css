@@ -389,7 +389,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .main-content {
-    min-height: 550px;
+    min-height: 750px;
     margin: 0;
 }
 
@@ -704,11 +704,10 @@ h1#tradity {
 .feed-time {
     font-size: 10px;
     color: #a7a7a7;
-    display: block;
     width: 100px;
-    float: right;
     text-align: right;
     margin: 5px 0 0 0;
+    vertical-align: middle;
 }
 
 .feed-item-hover{
@@ -1242,18 +1241,23 @@ label.smaller-order-type {
     background-color: rgba(200, 200, 200, 0.2);
 }
 
-.search {
-    margin-top: 20px;
-}
-
-.search input{
-    width: 260px;
+.search-li input{
+    margin: 0;
+    height: 13px;
+    font-family: "Abel", sans-serif;
 }
 
 .search-icon {
     margin: 0 10px 0 0;
+    color: #444;
 }
 
+div#tabs ul li.search-li {
+    float: right;
+    margin: 0;
+    padding: 0;
+
+}
 
 /* ==========================================================================
     faq
@@ -1449,4 +1453,25 @@ label.smaller-order-type {
 
 .sponsor-img {
     width: 140px;
+}
+
+/* ==========================================================================
+    chart (jqplot)
+   ========================================================================== */
+
+.chart-depot {
+    position: relative;
+    float: left;
+    width: 530px;
+}
+
+#chart-wrap {
+    clear: both;
+}
+
+#chart-wrap ul#chart-control {
+    float: right;
+    width: 160px;
+    list-style-type: none;
+    padding: 10px;
 }

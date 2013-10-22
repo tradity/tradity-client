@@ -1,30 +1,30 @@
 <button class="tutbtn" onclick="javascript:introJs().start()" ng-hide="!user.isSelf">?</button>
-		<div class="main-content" data-step="1" data-position="left" data-intro="Alles, was du hier siehst, ist dein öffentliches Profil. Je nach deinen Einstellungen ist dein Klarname einsehbar.">
-		<div class="clearfix">
-		<div id="profile-user" class="profile" ng-hide="user.isSelf">
-		    
-		        <h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
-		        <div class="depot">
-		            <h2 class="title">Gesamtvermögen</h2>
-		            <span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
-		        </div>
-		    </div>
-		    <img class="profile-picture profile-box" src="{{user.profilepic}}" alt="Profilbild">
-		    <div class="bio profile-box">
-		        <h3 class="title">Kurzbeschreibung<br /></h3>
-		        {{user.desc}}
-		    </div>
-		    <div class="placement profile-box">
-		        <h3 class="title">Platz<br /></h3>
-		        <span class="placement-number">{{user.rank}}</span>
-		    </div>
-		    <div class="profile-box" style="float: right; text-align: right; padding-right: 0">
-		        <h3 class="title">Provision<br /></h3>
-		        <span class="placement-number">{{user.provision}} %</span>
-			<br>
+<div class="main-content" data-step="1" data-position="left" data-intro="Alles, was du hier siehst, ist dein öffentliches Profil. Je nach deinen Einstellungen ist dein Klarname einsehbar.">
+	<div id="profile-user" class="profile" ng-hide="user.isSelf">
+	    <div class="clearfix">
+	        <h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
+	        <div class="depot">
+	            <h2 class="title">Gesamtvermögen</h2>
+	            <span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
+	        </div>
+	    </div>
+	    <img class="profile-picture profile-box" src="{{user.profilepic}}" alt="Profilbild">
+	    <div class="bio profile-box">
+	        <h3 class="title">Kurzbeschreibung<br /></h3>
+	        {{user.desc}}
+	    </div>
+	    <div class="placement profile-box">
+	        <h3 class="title">Platz<br /></h3>
+	        <span class="placement-number">{{user.rank}}</span>
+	    </div>
+	    <div class="profile-box" style="float: right; text-align: right; padding-right: 0">
+	        <h3 class="title">Provision<br /></h3>
+	        <span class="placement-number">{{user.provision}}%</span>
+	        <br>
 			<span class="depot-wert">(+{{user.prov_recvd/10000|currency}})</span>
-		    </div>
-		</div>
+	    </div>
+	</div>
+	<div class="clearfix"></div>
 <div id="tabs">
 	<ul>
 		<li><a href="#overview">Generelles</a></li>
@@ -32,16 +32,22 @@
 		<li><a href="#pinboard">Pinnwand</a></li>
 	</ul>
 	<div id="overview">
-		<div id="chart-wrap" style="clear:both">
-			<div id="chart" class="jqplot-target" style="position:relative;float:left;width:80%"></div>
-			<ul id="chart-control" style="float:right;width:10%">
-				<li ng-repeat="dm in drawModes">
-					<input type="radio" name="drawMode" ng-model="drawMode" value="{{$index}}" class="radio-fix" ng-click="draw($index)">
-					<span>{{dm.name}}</span>
-				</li>
-			</ul>
-		</div>
-		<div class="clearfix"></div> <!-- nc! workaround? -->
+		<fieldset class="options-field">
+			<legend>Performance</legend>
+			<div id="chart-wrap">
+				<div id="chart" class="jqplot-target chart-depot"></div>
+				<ul id="chart-control">
+					<li ng-repeat="dm in drawModes">
+						<div class="options-button">
+							<label for="radio-{{$index}}" class="smaller-order-type"> 
+								<input type="radio" name="drawMode" style="z-index: -3;" ng-model="drawMode" value="{{$index}}" id="radio-{{$index}}" ng-click="draw($index)">
+								<span>{{dm.name}}</span>
+							</label>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</fieldset>
 			<fieldset class="options-field">
 				<legend>Vermögensentwicklung</legend>
 				<ul class="one-item-list">

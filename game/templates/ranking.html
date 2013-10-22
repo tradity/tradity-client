@@ -1,19 +1,20 @@
 <div id="stats" class="main-content">
-	<div class="search">
-		<span class="batch search-icon">&#xF097;</span>
-		<input ng-model="searchText" class="options-input" id="search" placeholder="Suchfilter">
-	</div>
 	<div id="tabs">
 		<ul>
-		  <li><a href="#all">Gesamt</a></li>
-		  <li><a href="#follower">Follower</a></li>
+			<li><a href="#all">Gesamt</a></li>
+			<li><a href="#follower">Follower</a></li>
+			<li class="search-li">
+		  		<label for="search" class="batch search-icon">&#xF097;</span>
+				<input ng-model="searchText" class="options-input" id="search" placeholder="Suche">
+			</li>
 		</ul>
 	  	<div id="all">
 			<table class="ranking">
 				<colgroup>
-				  	<col class="rankcol-1">
-				    <col class="rankcol-2">
-				    <col class="rankcol-3">
+				  	<col class="rankcol-1" style="width: 10%">
+				    <col class="rankcol-2" style="width: 57%">
+				    <col class="rankcol-3" style="width: 18%">
+				    <col class="rankcol-4" style="width: 15%">
 				</colgroup>
 				<tr>
 					<th>Rang</th>
@@ -32,9 +33,9 @@
 		<div id="follower">
 			<table class="ranking">
 				<colgroup>
-				  	<col class="rankcol-1">
-				    <col class="rankcol-2">
-				    <col class="rankcol-3">
+				  	<col class="rankcol-1" style="width: 10%">
+				    <col class="rankcol-2" style="width: 65%">
+				    <col class="rankcol-3" style="width: 25%">
 				</colgroup>
 				<tr>
 					<th>Rang</th>

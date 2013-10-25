@@ -93,17 +93,10 @@ textarea {
         -moz-opacity: 0.9;
         opacity: 0.9;
     }
+        h1#tradity {
+        position: fixed;
 
-    #tradity:hover {
-        color: #dc6; 
-        filter: dropshadow(color=#3b3b3b, offx=1, offy=1);
-        -webkit-transition:color 0.3s ease-in;  
-        -moz-transition:color 0.3s ease-in;  
-        -o-transition:color 0.3s ease-in;  
-        transition:color 0.3s ease-in;
     }
-}
-
 }
 
 @media print,
@@ -482,21 +475,6 @@ h1, h2, h3, h4, h5, h6 {
     top: -20px;
 }
 
-h1#tradity {
-    -webkit-box-shadow: 50px 50px 20px 20px #fff;
-    box-shadow: 0px 0px 20px 20px #fff;
-    -moz-box-shadow: 0px 0px 20px 20px #fff;
-    background-color: #fff;
-    color: #2b3990;
-    display: none;
-    position: fixed;
-    font-size: 35px;
-    margin: 5px;
-    width:150px;
-    text-align: center;
-    z-index: 1;
-}
-
 .profile-link:hover {
     background-color: rgba(200, 200, 200, 0.1);
 }
@@ -506,6 +484,30 @@ h1#tradity {
     margin: 0 0 2px 0;
     padding: 0;
     float: left;
+}
+
+#tradity {
+    -webkit-box-shadow: 50px 50px 20px 20px #fff;
+    box-shadow: 0px 0px 20px 20px #fff;
+    -moz-box-shadow: 0px 0px 20px 20px #fff;
+    background-color: #fff;
+    color: #2b3990;
+    display: none;
+    font-size: 35px;
+    margin: 5px;
+    position: absolute;
+    width:150px;
+    text-align: center;
+    z-index: 1;
+}
+
+#tradity:hover {
+    color: #dc6; 
+    filter: dropshadow(color=#3b3b3b, offx=1, offy=1);
+    -webkit-transition:color 0.3s ease-in;  
+    -moz-transition:color 0.3s ease-in;  
+    -o-transition:color 0.3s ease-in;  
+    transition:color 0.3s ease-in;
 }
 
 .name {
@@ -785,6 +787,12 @@ h1#tradity {
     width: auto;
     margin: 0;
     height: 32px;
+}
+
+.traders-mag {
+    font-size: 11px; 
+    width: 370px; 
+    float: right;
 }
 
 #options-sb:hover,

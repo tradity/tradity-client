@@ -31,8 +31,14 @@
             $(document).ready(function() {
                 $(".info-link").click(function() {
                     var index = $(".info-link").index(this);
-                        $(".info").eq(index).siblings(".info").slideUp();
-                        $(".info").eq(index).slideToggle();
+                    if($(".info").is(":visible")){ 
+                        $(".info-link").html('weitere Informationen<img src="img/v.png" alt="">');
+                    }
+                    else{
+                        $(".info-link").html('weniger Informationen<img src="img/^.png" alt="">');
+                    }
+                    $(".info").eq(index).slideToggle();
+
                 });    
             });
         </script>
@@ -52,6 +58,27 @@
         </script>
         <!-- End Piwik Code -->
         <style>
+
+
+            @font-face {
+              font-family: 'Abel';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Abel'), local('Abel-Regular'), url("game/css/type/Abel/abel.woff") format('woff');
+            }
+            @font-face {
+              font-family: 'Droid Sans';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Droid Sans'), local('DroidSans'), url("game/css/type/Droid_Sans/droidsans400.woff") format('woff');
+            }
+            @font-face {
+              font-family: 'Droid Sans';
+              font-style: normal;
+              font-weight: 700;
+              src: local('Droid Sans Bold'), local('DroidSans-Bold'), url("game/css/type/Droid_Sans/droidsans700.woff") format('woff');
+            }
+
 
             ::-moz-selection {
                 background: #b3d4fc;
@@ -74,13 +101,13 @@
 
             html,
             input {
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                font-family: "Droid Sans", Helvetica, Arial, sans-serif;
             }
 
             body {
                 position: relative;
-                max-width: 700px;
-                _width: 700px;
+                max-width: 600px;
+                _width: 600px;
                 padding: 30px 20px 50px;
                 border: 1px solid #b3b3b3;
                 border-radius: 4px;
@@ -196,14 +223,14 @@
             #techcontact{
                 position: absolute;
                 right: 0px;
-                bottom: -45px;
+                bottom: -25px;
                 height: 30px;
                 width: 250px;
             }
             #teamcontact{
                 position: absolute;
                 right: 0px;
-                bottom: -60px;
+                bottom: -40px;
                 height: 30px;
                 width: 250px;
             }
@@ -247,17 +274,31 @@
             .info {
                 display: none;
                 width: 500px;
-                padding: 30px 20px;
-                border: 1px solid #b3b3b3;
-                border-radius: 4px;
-                margin: 20px auto;
-                box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
+                padding: 0px 20px;
+                margin: -80px auto 20px auto;
+                box-shadow: 0 20px 25px #a7a7a7, inset 0 1px 0 #fff;
                 background: #fff;
                 font-size: 16px;
+                overflow: hidden;
             }
+
+            .info div {
+                margin-top: 80px;
+            }
+
             .info-link-box {
                 text-align: center;
-                margin-bottom: 20px;
+            }
+            .info-link {
+                font-size: 12px;
+                vertical-align: top;
+            }
+
+            .info-link img{
+                vertical-align: top;
+                position: relative;
+                top: 5px;
+                margin-left: 5px;
             }
 
             .sponsor-logo {
@@ -304,7 +345,7 @@
                 font-size: 20px;
                 font-weight: normal;
                 font-style: normal;
-                font-family: "Droid Sans", sans-serif;
+                font-family: "Abel", sans-serif;
                 height: 40px;
                 line-height: 40px;
                 padding: 0 15px;
@@ -312,112 +353,154 @@
                 text-align: center;
                 border-width: 1px;
             }
+
+            .clearfix:before,
+            .clearfix:after {
+                content: " ";
+                display: table;
+            }
+
+            .clearfix:after {
+                clear: both;
+            }
+
+            .clearfix {
+                *zoom: 1;
+            }
+
             .click-button:hover {
+                cursor: pointer;
                 background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
                 background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
                 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
                 background-color:#dfdfdf;
-                border-color: #111;
+                border-color: #bbb;
             }
             .click-button:active {
                 position:relative;
                 top:1px
+            }
+            .desc{
+                text-align: center;
+                margin: 0;
+            }
+            h2 {
+                font-size: 15px;
+                text-align: left;
+            }
+            h3 {
+                font-size: 13px;
+                text-align: left;
+                padding: 0;
+                margin: 0;
+            }
+
+            h2 + p {
+                margin: 15px;
+                font-size: 12px;
+            }
+
+            .p1 {border-top-left-radius: 10px; border-top: thin solid rgba(65, 80, 191, 0.1); border-left: thin solid rgba(65, 80, 191, 0.5);}
+            .p2 {border-top-right-radius: 10px; border-top: thin solid rgba(65, 80, 191, 0.1); border-right: thin solid rgba(65, 80, 191, 0.5);}
+            .p3 {border-bottom-left-radius: 10px; border-bottom: thin solid rgba(65, 80, 191, 0.1); border-left: thin solid rgba(65, 80, 191, 0.5);}
+            .p4 {border-bottom-right-radius: 10px; border-bottom: thin solid rgba(65, 80, 191, 0.1); border-right: thin solid rgba(65, 80, 191, 0.5);}
+
+            .date {
+                color: #f15a29;
+                font-family: "Abel", "Droid Sans", Helvetica, Arial, sans-serif;
+            }
+            .date-container {
+                text-align: center;
+            }
+
+            .preise {
+                width: 500px;
+                margin: 15px 0px;
+            }
+
+            .prize {
+                width: 140px;
+                float: left;
+                font-family: "Droid Sans", sans-serif;
+                text-align: center;
+                font-size: 12px;
+                line-height: 12px;
+                vertical-align: center;
+                background: rgba(65, 80, 191, 0.1);
+                vertical-align: middle;
+                padding: 10px;
+                font-weight: 900;
+
+                height: 25px; /* u.U. anpassen bei Anderen Preisen Hook: BKTBOZZ */
+            }
+
+            .title {
+                font-family: "Abel", sans-serif;
+                background: white;
+                height: auto;
+                font-weight: 400;
+            }
+
+            .gesamt .title,
+            .woche .title,
+            .preisliste {
+                text-align: right;
+                padding-right: 10px;
+                width: 100px;
             }
         </style>
     </head>
     <body>
         <div class="container">
                     <h1><img src="img/tradityLogo.png" alt="Tradity"></h1>
-                    <!--<p class="success">Dankeschön! Wir benachrichtigen dich, sobald Neuigkeiten verfügbar sind.</p>-->
-                    <p style="text-align: center;">Melde dich bei Tradity an und sei Teil des ersten Social Trading Börsenspiels der Welt!</p>
+                    <p class="desc">Sei Teil des ersten Social Trading Börsenspiels der Welt!</p>
                     <div class="info-link-box">
-                        <span class="info-link text-link">Das Spiel</span> |
-                        <span class="info-link text-link">Preise</span> |
-                        <span class="info-link text-link">Partner</span>
+                        <span class="info-link text-link">weitere Informationen<img src="img/v.png" alt=""></span>
                     </div>
                     <div class="info-box">
                         <div class="info">
-                           
-                        Tradity ist das erste Börsenspiel, das Börse und soziales Netzwerken miteinander verbindet.
-
-
-                            <h4>Zeitplan</h4>
-                            <p>
-                                Beginn des Börsenspiels ist Montag, der 21.10.13; der letzte Spieltag ist Freitag, der 13.12.13,- man kann dem Börsenspiel jederzeit beitreten. Handelszeiten sind, da Echtzeitdaten der Börse Frankfurt benutzt werden, 8.00 Uhr bis 20.00 Uhr.
-                            </p>
-                            <h4>Spielablauf</h4>
-                            <p>
-                                Jeder Teilnehmer erhält 100.000€ virtuelles Startkapital, dass investieren kann. Man kann in Aktien und in andere Mitspieler investieren und damit auf deren Erfolg setzen (siehe FAQ unter dem Punkt "Folgen").
-                            </p>
-                            <h4>Sieger und Preise:</h4>
-                            <p>
-                                Gesamtsieger ist, wer am 13.12.13 um 20.00 Uhr das höchste Gesamtvermögen erwirtschaftet hat. Gesamtsieger im Followen ist, wer die beste Gesamtperformance durch followen (siehe FAQ "Folgen") erreicht hat.</br>
-                                Zusätzlich wird jede Woche der Teilnehmer mit der höchsten Wochengesamtrformance durch einen Preis ausgezeichnet. Außerdem gewinnt auch der wochenbeste Follower einen Preis (siehe FAQ "Folgen"). 
-                            </p>
-                            <h4>Tradity als "educational game":</h4>
-                            <p>
-                                Tradity eignet sich im besonderen Maße zur Anwendung als Erweiterung zum Wirtschaftsunterricht bzw. –Studium. Weitere Informationen dazu finden sich auf <a href="https://schule.tradity.de/"class="text-link">schule.tradity.de</a>
-                            </p>
+                           <div>
+                                <h2>Spielablauf</h2>
+                                <p>
+                                    Du erhälst 100.000€ virtuelles Startkapital, das in Aktien investiert werden kann. Die Daten dafür werden aus der <strong>Echtzeit-Datenbank der Frankfurter Börse</strong> ermittelt. Wessen Gesamtvermögen am <strong>13.12.13</strong> am höchsten ist, gewinnt!
+                                </p>
+                                <h2>Warum „<em>Social Trading</em> Börsenspiel“?</h2>
+                                <p>
+                                    Da Du bei Tradity nicht nur in Aktien sondern auch <strong>in Mitspieler investieren kann</strong>.<br>
+                                    Falls diese Gewinne erwirtschaften, steigt ihr Wert und du kannst sie <strong>teurer verkaufen</strong>.
+                                    Du musst dabei nur eine Provision an die Person zahlen, der du „<strong>folgst</strong>“.
+                                </p>
+                                <h2>Tradity in der Schule</h2>
+                                <p>
+                                    Tradity eignet sich im besonderen Maße zur Anwendung als Erweiterung zum Wirtschaftsunterricht bzw. –Studium. Mehr dazu finden sich auf <a href="https://schule.tradity.de/" class="text-link">schule.tradity.de</a>
+                                </p>
+                            </div>
                         </div>
-                        <div class="info">
-                            <p>
-                                Gibt es was zu gewinnen?
-                            </p>
-                            <ul>
-                                <li><strong>Jeder Teilnehmer</strong> erhält eine Ausgabe des TRADERS´ Magazin gratis ohne weitere Verpflichtungen bei Wunsch frei Haus geliefert.</li>
-                                <li><strong>Jeder Teilnehmer</strong> kann bei Wunsch kostenlos an der Anlegermesse „World of Trading“ teilnehmen.</li>
-                        
-                            <li>
-                                Für den Gesamtbesten gibt es am Ende eine Woche Trading-Urlaub am Mittelmeer zu gewinnen. Der beste Follower erhält am Ende ein iPad Mini 2.</li>
-
-                            <li>
-                                Diese Woche gibt es für den Wochengesamtbesten Logitech UE 4000 Kopfhörer, für den wochenbesten Follower ein Cicero Jahresabo zu gewinnen.</li>
-                            </ul>
-                            <p>
-                                Viel Erfolg!
-                            </p>
-<!--                             <ul class="no-bullets">
-                                <li><img src="img/logitech.png" class="sponsor-logo" alt="Logitech"></li>
-                                <li><img src="img/cicero.png" class="sponsor-logo" alt="Cicero"></li>
-                            </ul> -->
+                    </div>
+                    <div class="date-container">
+                        <span class="date">21.10.13 – 13.12.13</span>
+                    </div>
+                    <div class="preise clearfix">
+                        <div class="prize title preisliste">Preise</div>
+                        <div class="prize title">Vermögen</div>
+                        <div class="prize title">Bester Follower</div>
+                        <div class="gesamt">
+                            <div class="prize title">Gesamt</div>
+                            <div class="prize p1"><a href="http://www.apple.com/ipad-mini/" class="text-link">iPad Mini 2</a></div>
+                            <div class="prize p2">Trading-Urlaub am Mittelmeer</div>
                         </div>
-                        <div class="info">
-                            <ul class="img-right no-bullets">
-                                <li>
-                                    <img src="img/boerse.png" class="sponsor-logo" alt="Börse Frankfurt">
-                                    <a href="http://www.boerse-frankfurt.de/" class="text-link">Börse Frankfurt</a> – Die Börse Frankfurt stellt Realtime-Daten zur Verfügung.
-                                </li>
-                                <li>
-                                    <img src="img/tradimo.png" class="sponsor-logo" alt="Tradimo">
-                                    <a href="http://de.tradimo.com/trading-lernen/" class="text-link">Tradimo</a> – mit Know-How zur Vermittlung von Tradingkenntnissen unterstützt uns Tradimo als Hauptsponsor.
-                                </li>
-                                <li>
-                                    <img src="img/traders.png" class="sponsor-logo" alt="TRADERS´">
-                                    <a href="https://www.traders-mag.com/" class="text-link">TRADERS´</a> – TRADERS´ unterstützt uns nicht nur als Hauptsponsor; auch eine Eintrittskarte zur WOT und eine kostenlose Ausgabe TRADERS´ wird für jeden Tradity-Nutzer zur Verfügung gestellt.
-                                </li>
-                                <li>
-                                    <img src="img/vr.png" class="sponsor-logo" alt="VR Bank Niebüll">
-                                    <a href="http://www.vrbankniebuell.de/privatkunden.html" class="text-link">VR Bank Niebüll</a> – Mit ausgiebigem Testing, mit weitreichender beratender Unterstützung sowie als Hauptsponsor unterstützt uns vor Ort die VR Bank Niebüll.
-                                </li>
-                                <li>
-                                    <img src="img/logitech.png" class="sponsor-logo" alt="Logitech">
-                                    <a href="http://www.logitech.com/" class="text-link" >Logitech</a> – coole Preise für junge Leute – das bietet Logitech den besten Teilnehmern von Tradity.
-                                </li>
-                                <li>
-                                    <img src="img/cicero.png" class="sponsor-logo" alt="Cicero">
-                                    <a href="http://www.cicero.de/" class="text-link" >Cicero</a> – Cicero stellt vier Preise für erfolgreiche Trader zur Verfügung.
-                                </li>
-                                <li>April Stiftung – die finanzielle Bildung vorantreiben, auch ein Ziel der April Stiftung.</li>
-                                <li>Kling Stiftung – Bildung und Zukunft für Jugendliche verbessern; Themen, die Tradity und die Klingstiftung interessieren.</li>
-                            </ul>
+                        <div class="woche">
+                            <div class="prize title">Diese Woche</div>
+                            <div class="prize p3">Logitech <a href="http://ue.logitech.com/de-de/product/ue4000" class="text-link">UE 4000</a> Kopfhörer</div>
+                            <div class="prize p4"><a href="http://www.cicero.de/" class="text-link">Cicero</a> Jahresabo</div>   
                         </div>
                     </div>
                 <div id="email" style="text-align: center;">
                     <form action="game/#/register">
-                        <input type="submit" value="Registrieren" class="click-button" title="Registrier dich jetzt zur Beta">
+                        <input type="submit" value="Registrieren" class="click-button">
                     </form>
-                    oder
-                    <a href="game/#/login" title="Registrier dich jetzt zur Beta" class="text-link no-border" style="font-size: 18px;">Login</a>
+                    <span style="font-size: 14px;">oder</span>
+                    <a href="game/#/login" class="text-link no-border" style="font-size: 18px;">Login</a>
                 </div>
                 <a class="text-link" style="position:absolute; bottom: 20px; left: 20px; font-size: 14px;" href="https://presse.tradity.de">Presse</a>
                 <div id="social-links">
@@ -437,10 +520,10 @@
                      
         </div>-->
         <div id="techcontact" style="text-align: right;margin-right: 20px;">
-            <span class="little-silver">Technische Probleme? tech@tradity.de!</span>
+            <span class="little-silver">Technische Probleme? <a class="text-link" href="mailto:tech@tradity.de">tech@tradity.de</a></span>
         </div>
         <div id="teamcontact" style="text-align: right;margin-right: 20px;">
-            <span class="little-silver">Fragen? team@tradity.de!</span>
+            <span class="little-silver">Fragen? <a class="text-link" href="mailto:team@tradity.de">team@tradity.de</a></span>
         </div>
 
         <!--

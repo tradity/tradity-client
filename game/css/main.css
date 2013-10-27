@@ -325,6 +325,10 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'batch', sans-serif;
 }
 
+.hint a {
+    color: #F9AD94; /* halfway between tradity-orange and white */
+}
+
 .pos {
     color: green;
 }

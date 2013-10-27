@@ -901,6 +901,7 @@ angular.module('tradity.controllers', []).
         stockid: $scope.stockid,
         leader: $scope.leader,
         comment: $scope.comment,
+        retainUntilCode: 'stock-buy-success',
         dquerydata: { /* will be returned in the dquery-exec event */
           xtype: $scope.xtype,
           xvalue: parseFloat($scope.xvalue.replace(',', '.')),

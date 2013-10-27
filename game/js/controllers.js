@@ -810,18 +810,32 @@ angular.module('tradity.controllers', []).
         _cache: 20
       },
       function(data) {
-        if (data.code == 'get-ranking-success') {
+        if (data.code == 'get-ranking-success') 
           $scope.results = data.result;
-        }
       });
       socket.emit('get-ranking', {
         rtype: 'following',
         _cache: 20
       },
       function(data) {
-        if (data.code == 'get-ranking-success') {
+        if (data.code == 'get-ranking-success') 
           $scope.resultsFollower = data.result;
-        }
+      });
+      socket.emit('get-ranking', {
+        rtype: 'general-week',
+        _cache: 20
+      },
+      function(data) {
+        if (data.code == 'get-ranking-success') 
+          $scope.resultsWeek = data.result;
+      });
+      socket.emit('get-ranking', {
+        rtype: 'following-week',
+        _cache: 20
+      },
+      function(data) {
+        if (data.code == 'get-ranking-success') 
+          $scope.resultsFollowerWeek = data.result;
       });
     };
     $scope.getRanking();

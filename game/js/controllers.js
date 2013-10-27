@@ -956,6 +956,9 @@ angular.module('tradity.controllers', []).
             alert('Der Trade wird ausgeführt, sobald der Handelsplatz öffnet');
             $location.path('/depot/opentransactions');
             break;
+          case 'stock-buy-over-pieces-limit':
+            alert('Leider übersteigt dein Trade die handelbare Menge für dieses Wertpapier!');
+            break;
           case 'stock-buy-stock-not-found':
             alert('Wertpapier existiert nicht');
             break;

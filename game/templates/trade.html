@@ -41,6 +41,7 @@
 					<!-- <tr><th>Wert</th><td ng-show="cur">{{cur.lastvalue / 10000 | currency}}</td></tr> -->
 					<tr ng-show="leader"><th>Provision</th><td ng-show="cur">{{cur.provision}} %</td></tr>
 					<tr ng-hide="leader"><th>ISIN</th><td ng-show="cur">{{cur.stockid}}</td></tr>
+					<tr ng-hide="leader"><th>Handelbare Stückzahl</th><td ng-show="cur">{{cur.pieces}}</td></tr>
 				</table>
 			</div>
 			<div>

@@ -36,8 +36,8 @@
 					<tr ng-show="leader"><th>Name</th><td><a href="#/user/{{cur.leadername}}">{{stockname}}</a></td></tr>
 					<tr ng-hide="leader"><th>Name</th><td ng-show="cur">{{stockname}}</td></tr>
 					<tr><th><span class="batch tooltip" data-info="(Auch Ask, Geldkurs 
-					oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span> Kaufpreis</th><td ng-show="cur">{{cur.ask / 100 | currency}}</td></tr>
-					<tr><th><span class="batch tooltip" data-info="(Auch Bid, Briefkurs oder Angebot) ist der höchste Preis, den ein Händler für eine Aktie bereit ist zu zahlen">&#xF0AD;</span> Verkaufspreis</th><td ng-show="cur">{{cur.bid / 100 | currency}}</td></tr>
+					oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span> Kaufpreis</th><td ng-show="cur">{{cur.ask / 10000 | currency}}</td></tr>
+					<tr><th><span class="batch tooltip" data-info="(Auch Bid, Briefkurs oder Angebot) ist der höchste Preis, den ein Händler für eine Aktie bereit ist zu zahlen">&#xF0AD;</span> Verkaufspreis</th><td ng-show="cur">{{cur.bid / 10000 | currency}}</td></tr>
 					<!-- <tr><th>Wert</th><td ng-show="cur">{{cur.lastvalue / 10000 | currency}}</td></tr> -->
 					<tr ng-show="leader"><th>Provision</th><td ng-show="cur">{{cur.provision}} %</td></tr>
 					<tr ng-hide="leader"><th>ISIN</th><td ng-show="cur">{{cur.stockid}}</td></tr>

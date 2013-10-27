@@ -1,20 +1,22 @@
 <div id="stats" class="main-content">
+	<div class="hint box">
+Die Änderung in der Rangliste ist darauf zurückzuführen, dass Tradity nun auch <a class="text-link" href="#/faq#liqui">Liquidität</a> von Aktien simuliert, um das Handeln noch realitätsnaher zu gestalten. Dies wirkt sich vor allem auf sog. Penny Stocks (sehr schwankungsreiche Aktien im Cent-Bereich) aus. Die Kontostände wurden auf das Back-Up von Donnerstag Abend zurückgesetzt, um die neuen Umstände zu berücksichtigen.
+	</div>
+	<div class="search">
+		<span class="batch search-icon">&#xF097;</span>
+		<input ng-model="searchText" class="options-input" id="search" placeholder="Suchfilter">
+	</div>
 	<div id="tabs">
 		<ul>
-			<li><a href="#all">Gesamt</a></li>
-			<li><a href="#follower">Follower</a></li>
-			<li class="search-li">
-		  		<label for="search" class="batch search-icon">&#xF097;</span>
-				<input ng-model="searchText" class="options-input" id="search" placeholder="Suche">
-			</li>
+		  <li><a href="#all">Gesamt</a></li>
+		  <li><a href="#follower">Follower</a></li>
 		</ul>
 	  	<div id="all">
 			<table class="ranking">
 				<colgroup>
-				  	<col class="rankcol-1" style="width: 10%">
-				    <col class="rankcol-2" style="width: 57%">
-				    <col class="rankcol-3" style="width: 18%">
-				    <col class="rankcol-4" style="width: 15%">
+				  	<col class="rankcol-1">
+				    <col class="rankcol-2">
+				    <col class="rankcol-3">
 				</colgroup>
 				<tr>
 					<th>Rang</th>
@@ -33,9 +35,9 @@
 		<div id="follower">
 			<table class="ranking">
 				<colgroup>
-				  	<col class="rankcol-1" style="width: 10%">
-				    <col class="rankcol-2" style="width: 65%">
-				    <col class="rankcol-3" style="width: 25%">
+				  	<col class="rankcol-1">
+				    <col class="rankcol-2">
+				    <col class="rankcol-3">
 				</colgroup>
 				<tr>
 					<th>Rang</th>

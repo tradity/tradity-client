@@ -50,134 +50,124 @@
 
     </head>
     <body>
-        <div id="wrapper" class="clearfix" ng-controller="MainCtrl">
-            <header id="header" class="clearfix">
-                <div id="logo"><a class="block-link" style="width: 150px; height: 150px;" href="#"></a></div><h1 id="tradity"><a href="#">tradity</a></h1>
-                <div id="profile-own" class="profile" ng-show="ownUser">
-                    <div class="name-container clearfix">
-                        <a ng-href="#/user/{{ownUser.name}}" style="cursor: pointer"  accesskey="p" title="Hier gehts zu deinem Profil" class="block-link profile-link">
-                            <h2 class="name">{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>
-                            <div class="depot">
-                                <h2 class="title">Konto</h2>
-                                <span class="depot-wert">{{ownUser.freemoney / 10000 | currency}}</span>
-                            </div>
-                            <div class="depot">
-                                <h2 class="title">Gesamtvermögen</h2>
-                                <span class="depot-wert">{{ownUser.totalvalue / 10000 | currency}}</span>
-                            </div>
-                        </a>
+        <div id="wrapper-the-wrapper">
+            <div id="wrapper" class="clearfix" ng-controller="MainCtrl">
+                <header id="header" class="clearfix">
+                    <div id="logo"><a class="block-link" style="width: 150px; height: 150px;" href="#"></a></div><h1 id="tradity"><a href="#">tradity</a></h1>
+                    <div id="profile-own" class="profile" ng-show="ownUser">
+                        <div class="name-container clearfix">
+                            <a ng-href="#/user/{{ownUser.name}}" style="cursor: pointer"  accesskey="p" title="Hier gehts zu deinem Profil" class="block-link profile-link">
+                                <h2 class="name">{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>
+                                <div class="depot">
+                                    <h2 class="title">Konto</h2>
+                                    <span class="depot-wert">{{ownUser.freemoney / 10000 | currency}}</span>
+                                </div>
+                                <div class="depot">
+                                    <h2 class="title">Gesamtvermögen</h2>
+                                    <span class="depot-wert">{{ownUser.totalvalue / 10000 | currency}}</span>
+                                </div>
+                            </a>
+                        </div>
+                        <img id="profile-picture" class="profile-box" ng-src="{{ownUser.profilepic}}" alt="Profilbild">
+                        <div id="bio" class="profile-box">
+                            <h3 class="title">Kurzbeschreibung<br /></h3>
+                            {{ownUser.desc}}
+                        </div>
+                        <div id="placement" class="profile-box">
+                            <h3 class="title">Rang<br /></h3>
+                            <span class="placement-number">{{ownUser.rank}}</span>
+                        </div>
+                        <ul id="buttons" class="profile-box">
+                            <li>
+                                <a class="batch font-20" style="cursor: pointer" ng-click="logout()" title="Logout">&#xF02B;</a>
+                            </li>
+                        </ul>
                     </div>
-                    <img id="profile-picture" class="profile-box" ng-src="{{ownUser.profilepic}}" alt="Profilbild">
-                    <div id="bio" class="profile-box">
-                        <h3 class="title">Kurzbeschreibung<br /></h3>
-                        {{ownUser.desc}}
-                    </div>
-                    <div id="placement" class="profile-box">
-                        <h3 class="title">Rang<br /></h3>
-                        <span class="placement-number">{{ownUser.rank}}</span>
-                    </div>
-                    <ul id="buttons" class="profile-box">
+                </header>
+                <nav id="nav" ng-show="ownUser" data-step="100" data-position="right" data-intro="Finde mehr heraus indem du Dich durch die Navigation klickst.">
+                    <ul>
                         <li>
-                            <a class="batch font-20" style="cursor: pointer" ng-click="logout()" title="Logout">&#xF02B;</a>
+                            <a href="#/" accesskey="f" title="ALT+SHIFT+F">
+                                <span ng-class="{active:isActive('/')}" class="batch nav-block-symbol">&#xF003;</span>
+                                <span class="dark nav-block-title">Neuigkeiten</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#/depot" accesskey="d" title="ALT+SHIFT+D">
+                                <span ng-class="{active:isActive('/depot')}" class="batch nav-block-symbol">&#xF034;</span>
+                                <span class="dark nav-block-title">Mein Depot</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#/trade" accesskey="t" title="ALT+SHIFT+T">
+                                <span ng-class="{active:isActive('/trade')}" class="batch nav-block-symbol">&#xF153;</span>
+                                <span class="dark nav-block-title">Trade</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#/ranking" accesskey="r" title="ALT+SHIFT+R">
+                                <span ng-class="{active:isActive('/ranking')}" class="batch nav-block-symbol">&#xF160;</span>
+                                <span class="dark nav-block-title">Rangliste</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#/options"  accesskey="o" title="ALT+SHIFT+O">
+                                <span ng-class="{active:isActive('/options')}" class="batch nav-block-symbol">&#xF138;</span>
+                                <span class="dark nav-block-title">Einstellungen</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#/faq"  accesskey="h" title="ALT+SHIFT+H">
+                                <span ng-class="{active:isActive('/faq')}" class="batch nav-block-symbol">&#xF0D4;</span>
+                                <span class="dark nav-block-title">Häufige Fragen</span>
+                            </a>
                         </li>
                     </ul>
-                </div>
-            </header>
-            <nav id="nav" ng-show="ownUser" data-step="100" data-position="right" data-intro="Finde mehr heraus indem du Dich durch die Navigation klickst.">
-                <ul>
-                    <li>
-                        <a href="#/" accesskey="f" title="ALT+SHIFT+F">
-                            <span ng-class="{active:isActive('/')}" class="batch nav-block-symbol">&#xF003;</span>
-                            <span class="dark nav-block-title">Neuigkeiten</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/depot" accesskey="d" title="ALT+SHIFT+D">
-                            <span ng-class="{active:isActive('/depot')}" class="batch nav-block-symbol">&#xF034;</span>
-                            <span class="dark nav-block-title">Mein Depot</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/trade" accesskey="t" title="ALT+SHIFT+T">
-                            <span ng-class="{active:isActive('/trade')}" class="batch nav-block-symbol">&#xF153;</span>
-                            <span class="dark nav-block-title">Trade</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/ranking" accesskey="r" title="ALT+SHIFT+R">
-                            <span ng-class="{active:isActive('/ranking')}" class="batch nav-block-symbol">&#xF160;</span>
-                            <span class="dark nav-block-title">Rangliste</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/options"  accesskey="o" title="ALT+SHIFT+O">
-                            <span ng-class="{active:isActive('/options')}" class="batch nav-block-symbol">&#xF138;</span>
-                            <span class="dark nav-block-title">Einstellungen</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#/faq"  accesskey="h" title="ALT+SHIFT+H">
-                            <span ng-class="{active:isActive('/faq')}" class="batch nav-block-symbol">&#xF0D4;</span>
-                            <span class="dark nav-block-title">Häufige Fragen</span>
-                        </a>
-                    </li>
-                </ul>
 
-            </nav>
-            <div ng-view></div>
-            <footer id="footer">
-                <ul id="social-links" class="profile-box">
-                    <li>
-                        <a class="transparent-30 social-link twitter" target="_blank" href="https://twitter.com/tradityde"><img src="img/glyphicons/glyphicons_social_31_twitter.png" alt="Twitter"></a>
-                    </li>
-                    <li>
-                        <a class="transparent-30 social-link facebook" target="_blank" href="https://facebook.com/tradityde"><img src="img/glyphicons/glyphicons_social_30_facebook.png" alt="Facebook"></a>
-                    </li>
-                    <li>
-                        <a class="transparent-30 social-link google" target="_blank" href="http://blog.tradity.de"><img src="img/glyphicons/glyphicons_social_09_wordpress.png"></a>
-                    </li>
-                    <!--
-                    <li>
-                        <a class="transparent-30 social-link google" target="_blank" href="https://plus.google.com/105109199307218462131/"><img src="img/glyphicons/glyphicons_social_02_google_plus.png" alt="Google+"></a>
-                    </li>
-                    -->
-                </ul>
-                <a class="text-link footer-text" href="#/gettingstarted">Getting Started</a> 
-                <a class="text-link footer-text" href="https://presse.tradity.de">Presse</a>
-                <a class="text-link footer-text" href="#/about">Über uns</a> 
-                <a class="text-link footer-text" href="#/tos">Allgemeine Geschäftsbedingungen</a>
-                <a class="text-link footer-text" href="#/imprint">Impressum</a> 
-                <span class="footer-text">tradity, 2013</span>
-            </footer>
+                </nav>
+                <div ng-view></div>
+                <footer id="footer">
+                    <ul id="social-links" class="profile-box">
+                        <li>
+                            <a class="transparent-30 social-link twitter" target="_blank" href="https://twitter.com/tradityde"><img src="img/glyphicons/glyphicons_social_31_twitter.png" alt="Twitter"></a>
+                        </li>
+                        <li>
+                            <a class="transparent-30 social-link facebook" target="_blank" href="https://facebook.com/tradityde"><img src="img/glyphicons/glyphicons_social_30_facebook.png" alt="Facebook"></a>
+                        </li>
+                        <li>
+                            <a class="transparent-30 social-link google" target="_blank" href="http://blog.tradity.de"><img src="img/glyphicons/glyphicons_social_09_wordpress.png"></a>
+                        </li>
+                        <!--
+                        <li>
+                            <a class="transparent-30 social-link google" target="_blank" href="https://plus.google.com/105109199307218462131/"><img src="img/glyphicons/glyphicons_social_02_google_plus.png" alt="Google+"></a>
+                        </li>
+                        -->
+                    </ul>
+                    <a class="text-link footer-text" href="#/gettingstarted">Getting Started</a> 
+                    <a class="text-link footer-text" href="https://presse.tradity.de">Presse</a>
+                    <a class="text-link footer-text" href="#/about">Über uns</a> 
+                    <a class="text-link footer-text" href="#/tos">Allgemeine Geschäftsbedingungen</a>
+                    <a class="text-link footer-text" href="#/imprint">Impressum</a> 
+                    <span class="footer-text">tradity, 2013</span>
+                </footer>
+            </div>
             <div class="sponsors">
-                <a href="http://www.vrbankniebuell.de" title="VR Bank Niebüll" target="_blank" class="sponsor no-border">
-                    <img class="sponsor-img" src="img/vr.png" alt="VR Bank Niebüll">
-                </a>
- 
- 
-                <a href="http://traders-mag.com" title="Traders" target="_blank" class="sponsor no-border">
-                    <img class="sponsor-img" src="img/traders.png" alt="Traders">
-                </a>
- 
- 
-<!--                 <a href="http://cicero.de" title="Cicero" target="_blank" class="sponsor no-border">
-                    <img class="sponsor-img" src="img/cicero.png" alt="Cicero">
-                </a> -->
- 
- 
-<!--                 <a href="http://logitech.de" title="Logitech" target="_blank" class="sponsor no-border">
-                    <img class="sponsor-img" src="img/logitech.png" alt="Logitech">
-                </a> -->
- 
- 
-                <a href="http://tradimo.de" title="Tradimo" target="_blank" class="sponsor no-border">
-                    <img class="sponsor-img" src="img/tradimo.png" alt="Tradimo">
-                </a>
- 
- 
-                <a href="http://boerse-frankfurt.de/" title="Börse Frankfurt" target="_blank" class="sponsor no-border">
-                    <img class="sponsor-img" src="img/boerse.png" alt="Börse Frankfurt">
-                </a>
+                    <span class="title">Sponsoren:</span>
+                    <a href="http://www.vrbankniebuell.de" title="VR Bank Niebüll" target="_blank" class="sponsor no-border vr">
+                    </a>
+
+                    <a href="http://www.tradimo.de" title="Tradimo" target="_blank" class="sponsor no-border tradimo">
+                    </a>
+
+                    <a href="http://www.traders-mag.com" title="Traders Mag" target="_blank" class="sponsor no-border traders">
+                    </a>
+
+                    <a href="http://www.guidants.com/" title="Guidants" target="_blank" class="sponsor no-border guidants">
+                    </a>
+
+                    <a href="http://www.boerse-frankfurt.de/" title="Börse Frankfurt" target="_blank" class="sponsor no-border bf">
+                    </a>
+                </div>
             </div>
         </div>
     </body>

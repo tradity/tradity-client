@@ -98,6 +98,11 @@ textarea {
 
     }
 }
+@media only screen and (min-width: 1350px) {
+    #wrapper-the-wrapper .sponsors {
+        display: block;
+    }
+}
 
 @media print,
        (-o-min-device-pixel-ratio: 5/4),
@@ -355,12 +360,18 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'batch', sans-serif;
 }
 
+#wrapper-the-wrapper {
+    width: 1320px;
+    margin: 0 auto;  
+}
+
 #wrapper {
-    width: 960px;
+    width: 930px;
     padding: 0 20px;
     margin: 0 auto;
     box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
-    background-color: #fff
+    background-color: #fff;
+    float: left;
 }
 
 #header {
@@ -670,8 +681,13 @@ h1, h2, h3, h4, h5, h6 {
 .feed-item,
 .comment {
     padding: 5px 0 5px 5px;
-    border-left: 4px solid;
     border-bottom: 1px solid;
+    border-left: 4px solid;  
+}
+
+.feed-important-item {
+    border: 4px solid;
+    font-size: 12px;
 }
 
 .feed-yourself,
@@ -682,6 +698,10 @@ h1, h2, h3, h4, h5, h6 {
 .feed-somebody,
 .comment-somebody { /* hihi */
     border-color: rgba(220, 200, 100, 0.5);
+}
+
+.feed-important { /* hihi */
+    border-color: rgba(220, 100, 100, 0.5);,
 }
 
 .feed-link {
@@ -1453,18 +1473,54 @@ div#tabs ul li.search-li {
    ========================================================================== */
 
 .sponsors {
-    clear: both;
+    box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
+    background-color: #fff;
+    float: right;
+    width: 320px;
+    padding: 1px 10px 10px 10px;
+    display: none;
 }
 
 .sponsor {
     display: block;
     float: left;
-    padding: 10px;
-    height: 110px;
+    padding: 0px;
+    width: 300px;
+    background-repeat: no-repeat;
+    margin: 15px 0;
 }
 
-.sponsor-img {
-    width: 140px;
+.sponsor.vr {
+    height: 82px;
+    background: url('../img/logo_vr_sprite.png') 0 82px;
+}
+
+.sponsor.bf {
+    height: 87px;
+    background: url('../img/logo_bf_sprite.png') 0 87px;
+}
+
+.sponsor.tradimo {
+    height: 51px;
+    background: url('../img/logo_tradimo_sprite.png') 0 51px;
+}
+
+.sponsor.traders {
+    height: 88px;
+    background: url('../img/logo_traders_sprite.png') 0 88px;
+}
+
+.sponsor.guidants {
+    height: 39px;
+    background: url('../img/logo_guidants_sprite.png') 0 39px;
+}
+
+.sponsor:hover {
+    background-position: top;
+    -webkit-transition:background-position 0.3s ease-out;
+    -moz-transition:background-position 0.3s ease-out;
+    -o-transition:background-position 0.3s ease-out;
+    transition:background-position 0.3s ease-out;
 }
 
 /* ==========================================================================

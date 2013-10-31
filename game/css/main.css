@@ -102,6 +102,7 @@ textarea {
     #wrapper-the-wrapper .sponsors {
         display: block;
     }
+    div#wrapper-the-wrapper {width: 1350px;} 
 }
 
 @media print,
@@ -361,7 +362,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #wrapper-the-wrapper {
-    width: 1320px;
+    width: 930px;
     margin: 0 auto;  
 }
 

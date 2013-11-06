@@ -44,7 +44,7 @@
 					<!-- <tr><th>Wert</th><td ng-show="cur">{{cur.lastvalue / 10000 | currency}}</td></tr> -->
 					<tr ng-show="leader"><th>Provision</th><td ng-show="cur">{{cur.provision}} %</td></tr>
 					<tr ng-hide="leader"><th>ISIN</th><td ng-show="cur">{{cur.stockid}}</td></tr>
-					<tr ng-hide="leader"><th><span class="batch tooltip" data-info="Du kannst an einem Tag maximal die handelbare Stückzahl handeln. Hierdurch wird die sog.Liquidität simuliert - man nämlich nicht immer unendliche viele Aktien kaufen und verkaufen, sondern muss sich nach Angebot und Nachfrage richten.">&#xF0AD;</span>Handelbare Stückzahl</th><td ng-show="cur">{{cur.pieces}}</td></tr>
+					<tr ng-hide="leader"><th><span class="batch tooltip" data-info="Du kannst nur so viele Aktien kaufen, wie auch in der Realität an der Börse gehandelt wurden. Wurden an Tag X zum Beispiel nur 1000 Stück der Aktie gehandelt, die du kaufen oder verkaufen willst, kannst du an diesem Tag maximal je 1000 Stück kaufen und verkaufen. Achte vor allem bei sogennanten 'Pennystocks' auf die Liquidität, da diese oft sehr gering ist.">&#xF0AD;</span>Handelbare Stückzahl</th><td ng-show="cur">{{cur.pieces}}</td></tr>
 				</table>
 			</div>
 			<div>

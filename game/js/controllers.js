@@ -848,7 +848,7 @@ angular.module('tradity.controllers', []).
           avg.totalvalue += students[i].totalvalue;
         }
         
-        avg.count = n;
+        avg.count = students.length;
         avg.prov_recvd /= n;
         avg.totalvalue /= n;
         

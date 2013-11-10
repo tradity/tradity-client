@@ -862,7 +862,7 @@ angular.module('tradity.controllers', []).
       /* linearize intragroup results */
       $scope.intraGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
       for (var i = 0; i < $scope.intraGroupResults.length; ++i)
-        $scope.intraGroupResults[i].rank = i+1;
+        $scope.intraGroupResults[i].igrank = i+1;
     };
     
     $scope.getRanking = function() {

@@ -803,6 +803,67 @@ angular.module('tradity.controllers', []).
   controller('RankingCtrl', function($scope, $routeParams, $location, socket) {    
     tabbing($('#tabs'), '/ranking/?', $routeParams.pageid, $location, $scope);
     $scope.results = [];
+    $scope.resultsWeek = [];
+    $scope.resultsFollower = [];
+    $scope.resultsFollowerWeek = [];
+    $scope.intraGroupResults = [];
+    $scope.interGroupResults = [];
+    
+    $scope.$on('user-update', function() { $scope.computeGroupRanking(); });
+    
+    $scope.computeGroupRanking = function() {
+      $scope.intraGroupResults = [];
+      $scope.interGroupResults = [];
+      var schools = [];
+      
+      $.each($scope.results, function(i, e) {
+        if (e.school == null)
+          return;
+        
+        if (schools.indexOf(e.school) == -1 && e.hastraded)
+          schools.push(e.school);
+        
+        if ($scope.ownUser && e.school == $scope.ownUser.schoolid) 
+          $scope.intraGroupResults.push(e);
+      });
+      
+      // linearize intergroup results
+      $.each(schools, function(i, s) {
+        var students = [];
+        $.each($scope.results, function(i, e) {
+          if (e.school == s && e.hastraded)
+            students.push(e);
+        });
+    
+        students.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
+        
+        if (students.length == 0)
+          throw new Error('School ' + s + ' has no students');
+          
+        var avg = {prov_recvd: 0, totalvalue: 0, school: s, schoolname: students[0].schoolname};
+        var n = 0;
+        for (var i = 0; i < students.length && i < 3; ++i) {
+          ++n;
+          avg.prov_recvd += students[i].prov_recvd;
+          avg.totalvalue += students[i].totalvalue;
+        }
+        
+        avg.count = n;
+        avg.prov_recvd /= n;
+        avg.totalvalue /= n;
+        
+        $scope.interGroupResults.push(avg);
+      });
+      
+      $scope.interGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
+      for (var i = 0; i < $scope.interGroupResults.length; ++i)
+        $scope.interGroupResults[i].rank = i+1;
+      
+      /* linearize intragroup results */
+      $scope.intraGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
+      for (var i = 0; i < $scope.intraGroupResults.length; ++i)
+        $scope.intraGroupResults[i].rank = i+1;
+    };
     
     $scope.getRanking = function() {
       socket.emit('get-ranking', {
@@ -810,8 +871,10 @@ angular.module('tradity.controllers', []).
         _cache: 20
       },
       function(data) {
-        if (data.code == 'get-ranking-success') 
+        if (data.code == 'get-ranking-success') {
           $scope.results = data.result;
+          $scope.computeGroupRanking();
+        }
       });
       socket.emit('get-ranking', {
         rtype: 'following',

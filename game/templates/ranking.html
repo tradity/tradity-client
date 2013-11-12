@@ -31,7 +31,7 @@
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
 					<td>{{result.prov_recvd / 10000 | currency}}</td>
-					<td>{{((result.totalvalue - result.prov_recvd) / 10000) - 100000 | currency}} ({{(((result.totalvalue - result.prov_recvd) / 10000) - 100000) / 10 | number:2}} %)</td>
+					<td>{{((result.totalvalue - result.prov_recvd) / 10000) - 100000 | currency}} ({{(((result.totalvalue - result.prov_recvd) / 10000) - 100000) / 1000 | number:2}} %)</td>
 				</tr>
 			</table>
 		</div>

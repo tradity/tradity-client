@@ -855,12 +855,12 @@ angular.module('tradity.controllers', []).
         $scope.interGroupResults.push(avg);
       });
       
-      $scope.interGroupResults.sort(function(a, b) { return (b.totalvalue - b.prov_recvd) - (a.totalvalue - a.prov_recvd); });
+      $scope.interGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
       for (var i = 0; i < $scope.interGroupResults.length; ++i)
         $scope.interGroupResults[i].rank = i+1;
       
       /* linearize intragroup results */
-      $scope.intraGroupResults.sort(function(a, b) { return (b.totalvalue - b.prov_recvd) - (a.totalvalue - a.prov_recvd); });
+      $scope.intraGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
       for (var i = 0; i < $scope.intraGroupResults.length; ++i)
         $scope.intraGroupResults[i].igrank = i+1;
     };

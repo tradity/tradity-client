@@ -2,6 +2,7 @@
 	<div id="tabs">
 		<ul>
 			<li><a href="#all">Gesamt</a></li>
+			<li><a href="#all-withprov">Gesamt (mit Provision)</a></li>
 			<li><a href="#follower">Follower</a></li>
 			<li><a href="#all-week">Gesamt (Woche)</a></li>
 			<li><a href="#follower-week">Follower (Woche)</a></li>
@@ -24,9 +25,31 @@
 					<th>Rang</th>
 					<th>Name</th>
 					<th>erh. Provision</th>
-					<th>Gesamtvermögen</th>
+					<th>Reingewinn</th>
 				</tr>
 				<tr ng-repeat="result in results | orderBy:'rank' | filter:searchText">
+					<td>{{result.rank}}</td>
+					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
+					<td>{{result.prov_recvd / 10000 | currency}}</td>
+					<td>{{((result.totalvalue - result.prov_recvd) / 10000) - 100000 | currency}} ({{(((result.totalvalue - result.prov_recvd) / 10000) - 100000) / 10 | number:2}} %)</td>
+				</tr>
+			</table>
+		</div>
+	  	<div id="all-withprov">
+			<table class="ranking">
+				<colgroup>
+				  	<col class="rankcol-1" style="width: 10%">
+				    <col class="rankcol-2" style="width: 57%">
+				    <col class="rankcol-3" style="width: 18%">
+				    <col class="rankcol-4" style="width: 15%">
+				</colgroup>
+				<tr>
+					<th>Rang</th>
+					<th>Name</th>
+					<th>erh. Provision</th>
+					<th>Gesamtvermögen</th>
+				</tr>
+				<tr ng-repeat="result in resultsWithProvision | orderBy:'rank' | filter:searchText">
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
 					<td>{{result.prov_recvd / 10000 | currency}}</td>

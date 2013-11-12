@@ -855,12 +855,12 @@ angular.module('tradity.controllers', []).
         $scope.interGroupResults.push(avg);
       });
       
-      $scope.interGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
+      $scope.interGroupResults.sort(function(a, b) { return (b.totalvalue - b.prov_recvd) - (a.totalvalue - a.prov_recvd); });
       for (var i = 0; i < $scope.interGroupResults.length; ++i)
         $scope.interGroupResults[i].rank = i+1;
       
       /* linearize intragroup results */
-      $scope.intraGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
+      $scope.intraGroupResults.sort(function(a, b) { return (b.totalvalue - b.prov_recvd) - (a.totalvalue - a.prov_recvd); });
       for (var i = 0; i < $scope.intraGroupResults.length; ++i)
         $scope.intraGroupResults[i].igrank = i+1;
     };
@@ -875,6 +875,14 @@ angular.module('tradity.controllers', []).
           $scope.results = data.result;
           $scope.computeGroupRanking();
         }
+      });
+      socket.emit('get-ranking', {
+        rtype: 'general-wprov',
+        _cache: 20
+      },
+      function(data) {
+        if (data.code == 'get-ranking-success') 
+          $scope.resultsWithProvision = data.result;
       });
       socket.emit('get-ranking', {
         rtype: 'following',

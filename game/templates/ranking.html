@@ -90,7 +90,7 @@
 				<tr ng-repeat="result in resultsWeek | orderBy:'rank' | filter:searchText">
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
-					<td>{{(result.totalvalue / result.weekstarttotalvalue-1)*100 | number:2}} %</td>
+					<td>{{((result.totalvalue - result.prov_recvd) / (result.weekstarttotalvalue - result.weekstartprov_recvd) - 1)*100 | number:2}} %</td>
 				</tr>
 			</table>
 		</div>

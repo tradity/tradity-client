@@ -661,6 +661,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .text-link {
     color: #2b3990;
+    font-family: "Droid Sans", sans-serif;
 }
 
 .text-link:hover {
@@ -1357,6 +1358,7 @@ div#tabs ul li.search-li {
     float: left;
     font-family: "Abel", "Droid Sans", sans-serif;
     font-weight: 900;
+    height: 20px;
 }
 
 .comment-button {
@@ -1500,6 +1502,11 @@ div#tabs ul li.search-li {
 .sponsor.bf {
     height: 87px;
     background: url('../img/logo_bf_sprite.png') 0 87px;
+}
+
+.sponsor.bvh {
+    height: 204px;
+    background: url('../img/logo_bvh_sprite.png') 0 204px;
 }
 
 .sponsor.tradimo {

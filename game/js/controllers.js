@@ -999,7 +999,7 @@ angular.module('tradity.controllers', []).
       var qtype = 'stock-buy';
       if ($scope.xtype != 'market') {
         if ($scope.xvalue == null)
-          return alert('Bitte geben Sie den Stop-/Limitwert als Zahl an\n');
+          return alert('Bitte geben Sie den Stop-/Limitwert als Zahl an');
         var fieldname = ($scope.amount >= 0) ^ ($scope.sellbuy < 0) ? 'ask' : 'bid';
         var compar =  !(($scope.xtype == 'limit') ^ ($scope.amount >= 0) ^ ($scope.sellbuy < 0)) ? '<' : '>';
         

@@ -999,7 +999,7 @@ angular.module('tradity.controllers', []).
       var qtype = 'stock-buy';
       if ($scope.xtype != 'market') {
         if ($scope.xvalue == null)
-          return alert('Bitte geben Sie den Stop-/Limitwert als Zahl an\n(Nachkommastellen mit . getrennt, z. B. 4213.37 für 4213,37 €)');
+          return alert('Bitte geben Sie den Stop-/Limitwert als Zahl an\n');
         var fieldname = ($scope.amount >= 0) ^ ($scope.sellbuy < 0) ? 'ask' : 'bid';
         var compar =  !(($scope.xtype == 'limit') ^ ($scope.amount >= 0) ^ ($scope.sellbuy < 0)) ? '<' : '>';
         
@@ -1009,7 +1009,7 @@ angular.module('tradity.controllers', []).
           condition = 'stock::' + $scope.stockid + '::exchange-open > 0 ∧ ';
         else
           stockid = '__LEADER_' + $scope.leader + '__';
-        condition += 'stock::' + stockid + '::' + fieldname + ' ' + compar + ' ' + ($scope.xvalue * 10000);
+        condition += 'stock::' + stockid + '::' + fieldname + ' ' + compar + ' ' + (parseFloat($scope.xvalue.replace(',', '.')) * 10000);
         query.type = qtype;
         query = {
           condition: condition,

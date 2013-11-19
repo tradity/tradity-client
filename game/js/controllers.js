@@ -242,6 +242,7 @@ angular.module('tradity.controllers', []).
         stocktextid: data.stocktextid,
         stockname: data.stockname,
         time: data.eventtime,
+        leader: data.leader,
         amount: Math.abs(data.amount)
       });
     });

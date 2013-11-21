@@ -39,8 +39,8 @@
 					<tr ng-show="leader"><th>Name</th><td><a href="#/user/{{cur.leadername}}">{{stockname}}</a></td></tr>
 					<tr ng-hide="leader"><th>Name</th><td ng-show="cur">{{stockname}}</td></tr>
 					<tr><th><span class="batch tooltip" data-info="(Auch Ask, Geldkurs 
-					oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span> Kaufpreis</th><td ng-show="cur">{{cur.ask / 10000 | currency}}</td></tr>
-					<tr><th><span class="batch tooltip" data-info="(Auch Bid, Briefkurs oder Angebot) ist der höchste Preis, den ein Händler für eine Aktie bereit ist zu zahlen">&#xF0AD;</span> Verkaufspreis</th><td ng-show="cur">{{cur.bid / 10000 | currency}}</td></tr>
+					oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span> Kaufpreis</th><td ng-show="cur">{{cur.ask / 10000 | number:4}} €</td></tr>
+					<tr><th><span class="batch tooltip" data-info="(Auch Bid, Briefkurs oder Angebot) ist der höchste Preis, den ein Händler für eine Aktie bereit ist zu zahlen">&#xF0AD;</span> Verkaufspreis</th><td ng-show="cur">{{cur.bid / 10000 | number:4}} €</td></tr>
 					<!-- <tr><th>Wert</th><td ng-show="cur">{{cur.lastvalue / 10000 | currency}}</td></tr> -->
 					<tr ng-show="leader"><th>Provision</th><td ng-show="cur">{{cur.provision}} %</td></tr>
 					<tr ng-hide="leader"><th>ISIN</th><td ng-show="cur">{{cur.stockid}}</td></tr>
@@ -55,7 +55,7 @@
 			<div>
 				<label for="value" class="trade-label" style="margin-top: 10px; font-size: 13px;">Kauf-/Verkaufswert</label>
 				<input type="text" ng-model="value" ng-change="calcAmount();" placeholder="Kaufwert" id="value" autocomplete="off" class="options-input"><!--
-				--><span class="max-values" ng-show="cur">Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSinglePaperShare) / cur.ask) * cur.ask / 10000 | number:2}}</span>
+				--><span class="max-values" ng-show="cur">Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSinglePaperShare) / cur.ask) * cur.ask / 10000 | currency}}</span>
 			</div>
 			<!--<label class="trade-label">Kontostand<span class="batch tooltip" data-info="Kontostand vor Order +/- Kaufwert - Transaktionskosten = Kontostand nach Order"> &#xF0AD;</span></label>
 			1337 <span class="pos">350</span><span class="neg"> -{{fee | currency}}</span> = 1230 <br>-->

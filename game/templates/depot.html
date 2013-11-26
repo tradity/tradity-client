@@ -177,10 +177,10 @@
 							<span ng-hide="result.leader">{{result.stockname}}</span>
 						</td>
 						<td>{{result.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
-						<td>{{result.total / 10000 | number:4}} €</td>
+						<td>{{result.total / 10000 | number:3}} €</td>
 						<td>{{result.amount}}</td>
-						<td>{{result.buymoney / result.amount / 10000 | number:4}} €</td>
-						<td>{{result.bid / 10000 | number:4}} €</td>
+						<td>{{result.buymoney / result.amount / 10000 | number:3}} €</td>
+						<td>{{result.bid / 10000 | number:3}} €</td>
 						<td>
 							<span  ng-class="{pos: orderPerfAll > 0, neg: orderPerfAll < 0}">
 								{{( orderPerfAll = result.bid * result.amount - result.buymoney)
@@ -225,7 +225,7 @@
 						<td>{{order.query.dquerydata.ordertime | date:'d.M.yy HH:mm'}}</td>
 						<td>{{order.query.dquerydata.xtype}}</td>
 						<td>
-							<span ng-show="order.query.dquerydata.xvalue">{{order.query.dquerydata.xvalue | number:4}} €</span>
+							<span ng-show="order.query.dquerydata.xvalue">{{order.query.dquerydata.xvalue | number:3}} €</span>
 							<span ng-hide="order.query.dquerydata.xvalue">—</span>
 						</td>
 						<td>{{order.amount}}</td>
@@ -260,7 +260,7 @@
 						</td>
 						<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
 						<td>{{order.amount}}</td>
-						<td>{{order.price / 10000 | number:4}} €</td>
+						<td>{{order.price / 10000 | number:3}} €</td>
 						<td>{{order.fee / 10000 | currency}}</td>
 						<td>
 							<span  ng-class="{pos: balance > 0, neg: balance < 0}">
@@ -304,8 +304,8 @@
 							<span ng-hide="entry.leader">{{entry.stockname}}</span>
 						</td>
 						<td>{{entry.watchstarttime * 1000 | date:'d.M.yy HH:mm'}}</td>
-						<td>{{entry.watchstartvalue / 10000 | number:4}} €</td>
-						<td>{{entry.bid / 10000 | number:4}} €</td>
+						<td>{{entry.watchstartvalue / 10000 | number:3}} €</td>
+						<td>{{entry.bid / 10000 | number:3}} €</td>
 						<td>
 							<span  ng-class="{pos: watchlistPerformAll > 0, neg: watchlistPerformAll < 0}">
 								{{ watchlistPerformAll = (entry.bid - entry.watchstartvalue) / entry.watchstartvalue * 100 | number:2}} %

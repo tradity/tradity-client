@@ -1033,7 +1033,7 @@ angular.module('tradity.controllers', []).
             alert('Nicht genügend Geld zum Trade');
             break;
           case 'stock-buy-single-paper-share-exceed':
-            alert('Dein Vermögen darf höchstens zu 50% in ein einzelnes Wertpapier investiert sein!');
+            alert('Dein Vermögen darf höchstens zu 50 % in ein einzelnes Wertpapier investiert sein!');
             break;
           case 'stock-buy-not-enough-stocks':
             alert('Nicht genug Wertpapiere');

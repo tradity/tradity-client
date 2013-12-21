@@ -165,7 +165,7 @@ angular.module('tradity.controllers', []).
         $scope.serverConfig[k] = cfg[k];
     });
     
-    var feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange'];
+    var feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange', 'user-reset'];
     $scope.messages = [];
     $scope.eventIDs = {};
     
@@ -316,6 +316,21 @@ angular.module('tradity.controllers', []).
         srcusername: data.srcusername,
         oldname: data.oldname,
         newname: data.newname,
+        time: data.eventtime
+      });
+    });
+    $scope.$on('user-reset', function(angEv, data) {
+      var type = 'reset';
+      if (data.srcuser == $scope.ownUser.uid) {
+        var typePerson = 'yourself';
+        type += '-self';
+      } else {
+        var typePerson = 'somebody';
+      }
+      $scope.messages.push({
+        type: type,
+        typePerson: typePerson,
+        srcusername: data.srcusername,
         time: data.eventtime
       });
     });
@@ -548,8 +563,16 @@ angular.module('tradity.controllers', []).
           case 'invalid-provision':
             alert('Ungültige Provision');
         }
-      }
-    )};
+      });
+    };
+    
+    $scope.resetUser = function() {
+      socket.emit('user-reset', null, function(data) {
+        if (data.code == 'reset-user-success')
+          alert('Reset erfolgreich!');
+      });
+    };
+    
     socket.on('change-options', function(data) {
       if (data.code == 'reg-success') {
         alert('Optionen erfolgreich gespeichert');

@@ -567,7 +567,7 @@ angular.module('tradity.controllers', []).
     };
     
     $scope.resetUser = function() {
-      socket.emit('user-reset', null, function(data) {
+      socket.emit('reset-user', null, function(data) {
         if (data.code == 'reset-user-success')
           alert('Reset erfolgreich!');
       });

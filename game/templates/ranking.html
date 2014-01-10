@@ -12,8 +12,6 @@
 		  	<label for="search" class="batch search-icon">&#xF097;</span>
 	<input ng-model="searchText" class="options-input" id="search" placeholder="Suche">
 	  	<div id="all">
-	  		
-	  		
 			<table class="ranking">
 				<colgroup>
 				  	<col class="rankcol-1" style="width: 10%">
@@ -33,7 +31,7 @@
 			</table>
 
 			<ul class="pagination">
-	  			<li ng-repeat="a in getPages(resultsCount)"><a ng-class="activePage(a)" href="javascript:;" ng-click="setPage(a)">{{a+1}}</a></li>
+	  			<li ng-repeat="a in getPages(resultsCount)"><a ng-class="activePage(a)" href="" ng-click="setPage(a)">{{a+1}}</a></li>
 	  		</ul>
 		</div>
 	  	<div id="all-withprov">
@@ -61,7 +59,7 @@
 			</table>
 
 			<ul class="pagination">
-	  			<li ng-repeat="a in getPages(resultsWithProvisionCount)"><a ng-class="activePage(a)" href="javascript:;" ng-click="setPage(a)">{{a+1}}</a></li>
+	  			<li ng-repeat="a in getPages(resultsWithProvisionCount)"><a ng-class="activePage(a)" href="" ng-click="setPage(a)">{{a+1}}</a></li>
 	  		</ul>
 		</div>
 		<div id="follower">
@@ -87,7 +85,7 @@
 			</table>
 
 			<ul class="pagination">
-	  			<li ng-repeat="a in getPages(resultsFollowerCount)"><a ng-class="activePage(a)" href="javascript:;" ng-click="setPage(a)">{{a+1}}</a></li>
+	  			<li ng-repeat="a in getPages(resultsFollowerCount)"><a ng-class="activePage(a)" href="" ng-click="setPage(a)">{{a+1}}</a></li>
 	  		</ul>
 		</div>
 	  	<div id="all-week">
@@ -111,7 +109,7 @@
 			</table>
 
 			<ul class="pagination">
-	  			<li ng-repeat="a in getPages(resultsWeekCount)"><a ng-class="activePage(a)" href="javascript:;" ng-click="setPage(a)">{{a+1}}</a></li>
+	  			<li ng-repeat="a in getPages(resultsWeekCount)"><a ng-class="activePage(a)" href="" ng-click="setPage(a)">{{a+1}}</a></li>
 	  		</ul>
 		</div>
 		<div id="follower-week">
@@ -136,7 +134,7 @@
 				</tr>
 			</table>
 			<ul class="pagination">
-	  			<li ng-repeat="a in getPages(resultsFollowerWeekCount)"><a ng-class="activePage(a)" href="javascript:;" ng-click="setPage(a)">{{a+1}}</a></li>
+	  			<li ng-repeat="a in getPages(resultsFollowerWeekCount)"><a ng-class="activePage(a)" href="" ng-click="setPage(a)">{{a+1}}</a></li>
 	  		</ul>
 		</div>
 		<div id="intragroup">

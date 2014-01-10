@@ -852,9 +852,10 @@ angular.module('tradity.controllers', []).
     $scope.interGroupResultsCount = 0;
 
     $scope.getPages = function(n) {
-      if (n == 0) return [];
+      if (n == 0) 
+        return [];
       n = Math.ceil(n/$scope.resultsPerPage);
-      var pages = new Array();
+      var pages = [];
       for (var i=0;i < n;i++) pages[i] = i;
       return  pages;
     };
@@ -935,7 +936,8 @@ angular.module('tradity.controllers', []).
         _cache: 20
       },
       function(data) {
-        if (data.code != 'get-ranking-success') return false;
+        if (data.code != 'get-ranking-success') 
+          return false;
         $scope.results = data.result;
         $scope.resultsCount = data.count;
       });
@@ -945,7 +947,8 @@ angular.module('tradity.controllers', []).
         _cache: 20
       },
       function(data) {
-        if (data.code != 'get-ranking-success') return false;
+        if (data.code != 'get-ranking-success') 
+          return false;
         $scope.results = data.result;
         $scope.computeGroupRanking();
         $scope.resultsCount = data.count;
@@ -958,7 +961,8 @@ angular.module('tradity.controllers', []).
         _cache: 20
       },
       function(data) {
-        if (data.code != 'get-ranking-success') return false;
+        if (data.code != 'get-ranking-success') 
+          return false;
         $scope.resultsWithProvision = data.result;
         $scope.resultsWithProvisionCount = data.count;
 
@@ -971,7 +975,8 @@ angular.module('tradity.controllers', []).
         _cache: 20
       },
       function(data) {
-        if (data.code != 'get-ranking-success') return false;
+        if (data.code != 'get-ranking-success') 
+          return false;
         $scope.resultsFollower = data.result;
         $scope.resultsFollowerCount = data.count;
       });
@@ -983,7 +988,8 @@ angular.module('tradity.controllers', []).
         _cache: 20
       },
       function(data) {
-        if (data.code != 'get-ranking-success') return false;
+        if (data.code != 'get-ranking-success') 
+          return false;
         $scope.resultsWeek = data.result;
         $scope.resultsWeekCount = data.count;
       });
@@ -995,7 +1001,8 @@ angular.module('tradity.controllers', []).
         _cache: 20
       },
       function(data) {
-        if (data.code != 'get-ranking-success') return false;
+        if (data.code != 'get-ranking-success') 
+          return false;
         $scope.resultsFollowerWeek = data.result;
         $scope.resultsFollowerWeekCount = data.count;
       });

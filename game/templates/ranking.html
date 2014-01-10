@@ -12,6 +12,8 @@
 		  	<label for="search" class="batch search-icon">&#xF097;</span>
 	<input ng-model="searchText" class="options-input" id="search" placeholder="Suche">
 	  	<div id="all">
+	  		
+	  		
 			<table class="ranking">
 				<colgroup>
 				  	<col class="rankcol-1" style="width: 10%">
@@ -29,8 +31,14 @@
 					<td>{{((result.totalvalue - result.prov_recvd) / 10000) - 100000 | currency}} ({{(((result.totalvalue - result.prov_recvd) / 10000) - 100000) / 1000 | number:2}} %)</td>
 				</tr>
 			</table>
+
+			<ul class="pagination">
+	  			<li ng-repeat="a in getPages(resultsCount)"><a ng-class="activePage(a)" href="javascript:;" ng-click="setPage(a)">{{a+1}}</a></li>
+	  		</ul>
 		</div>
 	  	<div id="all-withprov">
+	  		
+	  		
 			<table class="ranking">
 				<colgroup>
 				  	<col class="rankcol-1" style="width: 10%">
@@ -51,8 +59,13 @@
 					<td>{{result.totalvalue / 10000 | currency}}</td>
 				</tr>
 			</table>
+
+			<ul class="pagination">
+	  			<li ng-repeat="a in getPages(resultsWithProvisionCount)"><a ng-class="activePage(a)" href="javascript:;" ng-click="setPage(a)">{{a+1}}</a></li>
+	  		</ul>
 		</div>
 		<div id="follower">
+	  		
 			<table class="ranking">
 				<colgroup>
 				  	<col class="rankcol-1" style="width: 10%">
@@ -72,8 +85,13 @@
 					<td>{{(result.totalfperfval)*100000 | number:2}}</td>
 				</tr>
 			</table>
+
+			<ul class="pagination">
+	  			<li ng-repeat="a in getPages(resultsFollowerCount)"><a ng-class="activePage(a)" href="javascript:;" ng-click="setPage(a)">{{a+1}}</a></li>
+	  		</ul>
 		</div>
 	  	<div id="all-week">
+	  		
 			<table class="ranking">
 				<colgroup>
 				  	<col class="rankcol-1" style="width: 10%">
@@ -91,6 +109,10 @@
 					<td>{{((result.totalvalue - result.prov_recvd) / (result.weekstarttotalvalue - result.weekstartprov_recvd) - 1)*100 | number:2}} %</td>
 				</tr>
 			</table>
+
+			<ul class="pagination">
+	  			<li ng-repeat="a in getPages(resultsWeekCount)"><a ng-class="activePage(a)" href="javascript:;" ng-click="setPage(a)">{{a+1}}</a></li>
+	  		</ul>
 		</div>
 		<div id="follower-week">
 			<table class="ranking">
@@ -113,6 +135,9 @@
 					<td>{{(result.weekfperfval)*100000 | number:2}}</td>
 				</tr>
 			</table>
+			<ul class="pagination">
+	  			<li ng-repeat="a in getPages(resultsFollowerWeekCount)"><a ng-class="activePage(a)" href="javascript:;" ng-click="setPage(a)">{{a+1}}</a></li>
+	  		</ul>
 		</div>
 		<div id="intragroup">
 			<table class="ranking">

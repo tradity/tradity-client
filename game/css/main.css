@@ -1294,6 +1294,36 @@ div#tabs ul li.search-li {
 
 }
 
+.pagination {
+    text-align: center;
+}
+
+.pagination, .pagination li {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+.pagination li {
+    display: inline-block;
+}
+
+.pagination a {
+    display: block;
+    padding: 3px 5px;
+    text-align: center;
+    margin-right: 5px;
+    box-shadow: inset 0px 1px 0px rgba(255,255,255, .8), 0px 1px 3px rgba(0,0,0, .1);
+    color: #717171;
+}
+
+.pagination a:hover, .pagination .active {
+    background:#616161; 
+    color:#fff;
+}
+
+
+
 /* ==========================================================================
     faq
    ========================================================================== */

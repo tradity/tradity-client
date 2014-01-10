@@ -826,12 +826,48 @@ angular.module('tradity.controllers', []).
   }).
   controller('RankingCtrl', function($scope, $routeParams, $location, socket) {    
     tabbing($('#tabs'), '/ranking/?', $routeParams.pageid, $location, $scope);
+
+    $scope.resultsPerPage = 2;
+    $scope.page = 0;
+
     $scope.results = [];
+    $scope.resultsCount = 0;
+
+    $scope.resultsWithProvision = [];
+    $scope.resultsWithProvisionCount = 0;
+
     $scope.resultsWeek = [];
+    $scope.resultsWeekCount = 0;
+
     $scope.resultsFollower = [];
+    $scope.resultsFollowerCount = 0;
+
     $scope.resultsFollowerWeek = [];
+    $scope.resultsFollowerCount = 0;
+
     $scope.intraGroupResults = [];
+    $scope.intraGroupResultsCount = 0;
+
     $scope.interGroupResults = [];
+    $scope.interGroupResultsCount = 0;
+
+    $scope.getPages = function(n) {
+      if (n == 0) return [];
+      n = Math.ceil(n/$scope.resultsPerPage);
+      var pages = new Array();
+      for (var i=0;i < n;i++) pages[i] = i;
+      return  pages;
+    };
+
+    $scope.setPage = function (page) {
+      $scope.page = page;
+      $scope.getRanking();
+    }
+
+    $scope.activePage = function(item) {
+      return item === $scope.page ? 'active' : undefined;
+    };
+
     
     $scope.$on('user-update', function() { $scope.computeGroupRanking(); });
     
@@ -890,48 +926,80 @@ angular.module('tradity.controllers', []).
     };
     
     $scope.getRanking = function() {
-      socket.emit('get-ranking', {
+      var page = $routeParams.pageid;
+
+      if ($routeParams.pageid == 'all' || !page) socket.emit('get-ranking', {
+        rtype: 'general',
+        startindex:$scope.page*$scope.resultsPerPage,
+        endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
+        _cache: 20
+      },
+      function(data) {
+        if (data.code != 'get-ranking-success') return false;
+        $scope.results = data.result;
+        $scope.resultsCount = data.count;
+      });
+
+      if (page == "intergroup") socket.emit('get-ranking', {
         rtype: 'general',
         _cache: 20
       },
       function(data) {
-        if (data.code == 'get-ranking-success') {
-          $scope.results = data.result;
-          $scope.computeGroupRanking();
-        }
+        if (data.code != 'get-ranking-success') return false;
+        $scope.results = data.result;
+        $scope.computeGroupRanking();
+        $scope.resultsCount = data.count;
       });
-      socket.emit('get-ranking', {
+
+      if (page == 'all-withprov') socket.emit('get-ranking', {
         rtype: 'general-wprov',
+        startindex:$scope.page*$scope.resultsPerPage,
+        endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
         _cache: 20
       },
       function(data) {
-        if (data.code == 'get-ranking-success') 
-          $scope.resultsWithProvision = data.result;
+        if (data.code != 'get-ranking-success') return false;
+        $scope.resultsWithProvision = data.result;
+        $scope.resultsWithProvisionCount = data.count;
+
       });
-      socket.emit('get-ranking', {
+
+      if (page == 'follower') socket.emit('get-ranking', {
         rtype: 'following',
+        startindex:$scope.page*$scope.resultsPerPage,
+        endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
         _cache: 20
       },
       function(data) {
-        if (data.code == 'get-ranking-success') 
-          $scope.resultsFollower = data.result;
+        if (data.code != 'get-ranking-success') return false;
+        $scope.resultsFollower = data.result;
+        $scope.resultsFollowerCount = data.count;
       });
-      socket.emit('get-ranking', {
+
+      if (page == 'all-week')  socket.emit('get-ranking', {
         rtype: 'general-week',
+        startindex:$scope.page*$scope.resultsPerPage,
+        endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
         _cache: 20
       },
       function(data) {
-        if (data.code == 'get-ranking-success') 
-          $scope.resultsWeek = data.result;
+        if (data.code != 'get-ranking-success') return false;
+        $scope.resultsWeek = data.result;
+        $scope.resultsWeekCount = data.count;
       });
-      socket.emit('get-ranking', {
+
+      if (page == 'follower-week')  socket.emit('get-ranking', {
         rtype: 'following-week',
+        startindex:$scope.page*$scope.resultsPerPage,
+        endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
         _cache: 20
       },
       function(data) {
-        if (data.code == 'get-ranking-success') 
-          $scope.resultsFollowerWeek = data.result;
+        if (data.code != 'get-ranking-success') return false;
+        $scope.resultsFollowerWeek = data.result;
+        $scope.resultsFollowerWeekCount = data.count;
       });
+
     };
     $scope.getRanking();
   }).

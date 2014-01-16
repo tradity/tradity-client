@@ -927,12 +927,13 @@ angular.module('tradity.controllers', []).
     };
     
     $scope.getRanking = function() {
-      var page = $routeParams.pageid;
+      var page = $scope.page = $routeParams.pageid;
 
       if ($routeParams.pageid == 'all' || !page) socket.emit('get-ranking', {
         rtype: 'general',
         startindex:$scope.page*$scope.resultsPerPage,
         endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
+        search:$scope.searchText,
         _cache: 20
       },
       function(data) {
@@ -958,6 +959,7 @@ angular.module('tradity.controllers', []).
         rtype: 'general-wprov',
         startindex:$scope.page*$scope.resultsPerPage,
         endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
+        search:$scope.searchText,
         _cache: 20
       },
       function(data) {
@@ -972,6 +974,7 @@ angular.module('tradity.controllers', []).
         rtype: 'following',
         startindex:$scope.page*$scope.resultsPerPage,
         endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
+        search:$scope.searchText,
         _cache: 20
       },
       function(data) {
@@ -985,6 +988,7 @@ angular.module('tradity.controllers', []).
         rtype: 'general-week',
         startindex:$scope.page*$scope.resultsPerPage,
         endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
+        search:$scope.searchText,
         _cache: 20
       },
       function(data) {
@@ -998,6 +1002,7 @@ angular.module('tradity.controllers', []).
         rtype: 'following-week',
         startindex:$scope.page*$scope.resultsPerPage,
         endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
+        search:$scope.searchText,
         _cache: 20
       },
       function(data) {

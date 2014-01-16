@@ -1287,6 +1287,21 @@ label.smaller-order-type {
     color: #444;
 }
 
+#search {
+    float: left;
+    margin-top: 0px;
+    width: 200px;
+
+}
+
+#ranking-search {
+    display: block;
+    height: 32px;
+    line-height: 32px;
+    margin-top: 10px;
+    margin-left: 220px;
+}
+
 div#tabs ul li.search-li {
     float: right;
     margin: 0;

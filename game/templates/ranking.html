@@ -9,8 +9,10 @@
 			<li ng-show="ownUser.schoolid"><a href="#intragroup">{{ownUser.schoolname}}</a></li>
 			<li><a href="#intergroup">Intergroup</a></li>
 		</ul>
-		  	<label for="search" class="batch search-icon">&#xF097;</span>
-	<input ng-model="searchText" class="options-input" id="search" placeholder="Suche">
+		<form ng-submit="getRanking()">
+			<input ng-model="searchText" class="options-input" id="search" placeholder="Suche"> <input type="submit" value="Suche" id="ranking-search" class="click-button">
+		</form>
+
 	  	<div id="all">
 			<table class="ranking">
 				<colgroup>
@@ -23,7 +25,7 @@
 					<th>Name</th>
 					<th>Reingewinn</th>
 				</tr>
-				<tr ng-repeat="result in results | orderBy:'rank' | filter:searchText">
+				<tr ng-repeat="result in results | orderBy:'rank' ">
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
 					<td>{{((result.totalvalue - result.prov_recvd) / 10000) - 100000 | currency}} ({{(((result.totalvalue - result.prov_recvd) / 10000) - 100000) / 1000 | number:2}} %)</td>
@@ -50,7 +52,7 @@
 					<th>erh. Provision</th>
 					<th>Gesamtvermögen</th>
 				</tr>
-				<tr ng-repeat="result in resultsWithProvision | orderBy:'rank' | filter:searchText">
+				<tr ng-repeat="result in resultsWithProvision | orderBy:'rank' ">
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
 					<td>{{result.prov_recvd / 10000 | currency}}</td>
@@ -76,7 +78,7 @@
 					<th>Followerperformance</th>
 					<th>Followerbewertung</th>
 				</tr>
-				<tr ng-repeat="result in resultsFollower | orderBy:'rank' | filter:searchText">
+				<tr ng-repeat="result in resultsFollower | orderBy:'rank' ">
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
 					<td>{{(result.totalfperf-1)*100 | number:2}}%</td>
@@ -101,7 +103,7 @@
 					<th>Name</th>
 					<th>Performance</th>
 				</tr>
-				<tr ng-repeat="result in resultsWeek | orderBy:'rank' | filter:searchText">
+				<tr ng-repeat="result in resultsWeek | orderBy:'rank' ">
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
 					<td>{{((result.totalvalue - result.prov_recvd) / (result.weekstarttotalvalue - result.weekstartprov_recvd) - 1)*100 | number:2}} %</td>
@@ -126,7 +128,7 @@
 					<th>Followerperformance</th>
 					<th>Followerbewertung</th>
 				</tr>
-				<tr ng-repeat="result in resultsFollowerWeek | orderBy:'rank' | filter:searchText">
+				<tr ng-repeat="result in resultsFollowerWeek | orderBy:'rank' ">
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
 					<td>{{(result.weekfperf-1)*100 | number:2}} %</td>
@@ -151,7 +153,7 @@
 					<th>erh. Provision</th>
 					<th>Gesamtvermögen</th>
 				</tr>
-				<tr ng-repeat="result in intraGroupResults | orderBy:'igrank' | filter:searchText">
+				<tr ng-repeat="result in intraGroupResults | orderBy:'igrank' ">
 					<td>{{result.igrank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
 					<td>{{result.prov_recvd / 10000 | currency}}</td>
@@ -175,7 +177,7 @@
 					<th>erh. Provision</th>
 					<th>Gesamtvermögen</th>
 				</tr>
-				<tr ng-repeat="result in interGroupResults | orderBy:'rank' | filter:searchText">
+				<tr ng-repeat="result in interGroupResults | orderBy:'rank' | filter: searchText ">
 					<td>{{result.rank}}</td>
 					<td>{{result.schoolname}}</td>
 					<td>{{result.count}}</td>

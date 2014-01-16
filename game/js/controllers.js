@@ -927,7 +927,7 @@ angular.module('tradity.controllers', []).
     };
     
     $scope.getRanking = function() {
-      var page = $scope.page = $routeParams.pageid;
+      var page = $routeParams.pageid;
 
       if ($routeParams.pageid == 'all' || !page) socket.emit('get-ranking', {
         rtype: 'general',

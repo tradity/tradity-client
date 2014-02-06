@@ -1,0 +1,456 @@
+/* ==========================================================================
+   HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+html,body {
+    width: 100%;
+    height: 100%;
+}
+
+#website {
+    background-image: url(../img/background.jpg);
+    background-position: center top;
+    background-repeat: no-repeat;
+    -webkit-filter: blur(10px);     
+    filter: blur(10px);   
+    height: 100%;
+}
+
+
+/* ==========================================================================
+   herounit
+   ========================================================================== */
+
+#hero-wrapper {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.4);
+}
+
+#herounit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -274px;
+    margin-left: -301px;
+    width: 600px;
+
+    background: #fff;
+    border: 1px solid;
+    border-color: #d6d7da #d5d8dd #c7c8ca;
+
+    -webkit-border-radius: 3px;
+    -webkit-box-shadow: 0 0 35px 0 rgba(20,20,20,0.2);
+    box-shadow: 0 0 35px 0 rgba(20,20,20,0.2);
+}
+
+#herounit .content {
+    padding: 10px;
+}
+
+#herounit .logo {
+
+    display: block;
+    width: 400px;
+    margin: 0px auto;
+    padding: 15px;
+    padding-top: 25px;
+}
+
+#herounit .slogan {
+    text-align: center;
+}
+
+#herounit .showcase {
+    text-align: left;
+}
+
+#herounit .row {
+    width: 33.32%;
+    display:block;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+    border-right: 1px solid #fff;
+}
+
+#herounit .row:last-child {
+    border-right: none;
+}
+
+#herounit .showcase .header .fa {
+    font-size: 40px;
+    background: #fff;
+    -webkit-border-radius: 80px;
+    border-radius: 80px;
+    padding: 15px;
+    -webkit-box-shadow:inset 0 0 8px 0 rgba(20,20,20,0.2);
+    box-shadow:inset 0 0 8px 0 rgba(20,20,20,0.2);
+    color: #333;
+    margin-bottom: 10px;
+    text-shadow: none;
+}
+#herounit .showcase .header {
+    text-align: center;
+    background: #ffaa3c; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffaa3c 17%, #ff9100 95%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(17%,#ffaa3c), color-stop(95%,#ff9100)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffaa3c 17%,#ff9100 95%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffaa3c 17%,#ff9100 95%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffaa3c 17%,#ff9100 95%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffaa3c 17%,#ff9100 95%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffaa3c', endColorstr='#ff9100',GradientType=0 ); /* IE6-9 */
+    padding: 15px;
+}
+
+#herounit .showcase .blue {
+    background: #0088CB; /* Old browsers */
+    background: -moz-linear-gradient(top,  #0088CB 17%, #0083CA 95%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(17%,#ffaa3c), color-stop(95%,#0083CA)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #0088CB 17%,#0083CA 95%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #0088CB 17%,#0083CA 95%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #0088CB 17%,#0083CA 95%); /* IE10+ */
+    background: linear-gradient(to bottom,  #0088CB 17%,#0083CA 95%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0088CB', endColorstr='#0083CA',GradientType=0 ); /* IE6-9 */
+
+}
+
+#herounit .showcase h2 {
+    color: #fff;
+    text-shadow: 1px 1px 0 #333;
+    padding: 0px;
+    margin: 0px;
+    font-weight: normal;
+}
+
+#herounit .showcase p {
+    margin: 0px;
+    font-size: 14px;
+}
+
+#herounit .actions {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+/* login form */
+
+#herounit .login-form {
+    display: none;
+    width: 300px;
+    margin: 0px auto;
+    margin-bottom: 30px;
+}
+
+#herounit .login-form input {
+    width: 100%;
+}
+
+#herounit .registerq {
+    color: #333;
+    margin-left: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#herounit .registerq {
+    color: #333;
+    margin-left: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* register form */
+
+#herounit .register-form {
+    display: none;
+    width: 400px;
+    margin: 0px auto;
+    margin-bottom: 10px;
+}
+
+#herounit #gtlogin {
+    color: #333;
+    margin-left: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#herounit #fbregister {
+    display: inline-block;
+    background-color: #4D68A1;
+    padding: 5px 10px;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px;
+
+}
+
+#herounit #fbregister .fa {
+    margin-right: 5px;
+}
+
+/* Buttons */
+
+#herounit .btn {
+    letter-spacing: 1px;
+    background: #0088CB; /* Old browsers */
+    background: -moz-linear-gradient(top,  #0088CB 17%, #0083CA 95%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(17%,#ffaa3c), color-stop(95%,#0083CA)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #0088CB 17%,#0083CA 95%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #0088CB 17%,#0083CA 95%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #0088CB 17%,#0083CA 95%); /* IE10+ */
+    background: linear-gradient(to bottom,  #0088CB 17%,#0083CA 95%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0088CB', endColorstr='#0083CA',GradientType=0 ); /* IE6-9 */
+    -moz-border-radius:28px;
+    -webkit-border-radius:28px;
+    border-radius:28px;
+    border:1px solid #29668f;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:arial;
+    font-size:17px;
+    padding:8px 15px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #3d768a;
+}
+
+
+#herounit .btn.btn-small {
+    padding:6px 10px;
+    font-size: 14px;
+}
+
+#herounit .btn:active {
+    position:relative;
+    top:1px;
+}
+
+#herounit .btn.login, #herounit .btn:hover {
+    background: transparent;
+    color:#3d768a;
+}
+
+
+/* fade out herounit */
+
+#hero-wrapper, #herounit{
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.hide-herounit #herounit {
+    -moz-transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    -o-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+    opacity: 0;
+}
+
+.hide-herounit #hero-wrapper { 
+    background-color: transparent;
+}
+
+.hide-herounit #website {
+    -webkit-filter: blur(0px);     
+    filter: blur(0px);  
+}
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 150%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

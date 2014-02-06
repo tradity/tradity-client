@@ -827,7 +827,7 @@ angular.module('tradity.controllers', []).
   controller('RankingCtrl', function($scope, $routeParams, $location, socket) {    
     tabbing($('#tabs'), '/ranking/?', $routeParams.pageid, $location, $scope);
 
-    $scope.resultsPerPage = 2;
+    $scope.resultsPerPage = 5;
     $scope.page = 0;
 
     $scope.results = [];

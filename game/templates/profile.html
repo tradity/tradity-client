@@ -19,9 +19,9 @@
 	    </div>
 	    <div class="profile-box" style="float: right; text-align: right; padding-right: 0">
 	        <h3 class="title">Provision<br /></h3>
-	        <span class="placement-number">{{user.provision}}%</span>
+	        <span class="placement-number">{{user.wprovision}} % / {{user.lprovision}} %</span>
 	        <br>
-			<span class="depot-wert">(+{{user.prov_recvd/10000|currency}})</span>
+			<span class="depot-wert">(+{{user.prov_sum/10000|currency}})</span>
 	    </div>
 	</div>
 	<div class="clearfix"></div>
@@ -109,7 +109,7 @@
 					</li>
 					<li>
 						<span>
-							{{user.prov_recvd / 10000|currency}}
+							{{user.prov_sum / 10000|currency}}
 						</span>
 					</li>
 				</ul>

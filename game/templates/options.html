@@ -3,8 +3,10 @@
   <form ng-submit="changeOptions()">
     <fieldset class="options-field">
       <legend>Geschäftliches</legend>
-      <label for="provision">Provision Deiner Follower (5 % – 30 %) <span class="batch tooltip" data-info="Wie viel Prozent der Gewinne Deiner Follower an Dich gehen (Achtung: Zu hohe Provision könnte viele Follower abschrecken und damit deine Gewinne minimieren!)">&#xF0AD;</span></label>
-      <input type="number" ng-model="provision" placeholder="%" id="provision" class="options-input" min="5" max="30" step="1"><br>
+      <label for="provision">Gewinnprovision Deiner Follower (5 % – 30 %) <span class="batch tooltip" data-info="Wie viel Prozent der Gewinne deiner Follower an dich gehen (Achtung: Zu hohe Provision könnte viele Follower abschrecken und damit deine Gewinne minimieren!)">&#xF0AD;</span></label>
+      <input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="options-input" min="5" max="30" step="1"><br>
+      <label for="provision">Verlustprovision Deiner Follower (0 % – 100 %) <span class="batch tooltip" data-info="Wie viel Prozent der Verluste deiner Follower von dir kompensiert werden (Achtung: Zu hohe Provision könnte dich viel Geld kosten!)">&#xF0AD;</span></label>
+      <input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="options-input" min="0" max="100" step="1"><br>
       <label for="delayorderhist">Verzögerung Deiner Orderhistorie <span class="batch tooltip" data-info="Wenn Du dieses Feld ankreuzt sehen Trader, die Dein Profil betrachten Deine Transaktionshistorie um zwei Tage verzögert.">&#xF0AD;</span></label>
       <input type="checkbox" ng-model="delayorderhist" id="delayorderhist"> Ja<br>
     </fieldset>

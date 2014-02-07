@@ -29,7 +29,7 @@
 				<tr ng-repeat="result in results | orderBy:'rank' ">
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
-					<td>{{((result.totalvalue - result.prov_recvd) / 10000) - 100000 | currency}} ({{(((result.totalvalue - result.prov_recvd) / 10000) - 100000) / 1000 | number:2}} %)</td>
+					<td>{{((result.totalvalue - result.prov_sum) / 10000) - 100000 | currency}} ({{(((result.totalvalue - result.prov_sum) / 10000) - 100000) / 1000 | number:2}} %)</td>
 				</tr>
 			</table>
 
@@ -56,7 +56,7 @@
 				<tr ng-repeat="result in resultsWithProvision | orderBy:'rank' ">
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
-					<td>{{result.prov_recvd / 10000 | currency}}</td>
+					<td>{{result.prov_sum / 10000 | currency}}</td>
 					<td>{{result.totalvalue / 10000 | currency}}</td>
 				</tr>
 			</table>
@@ -107,7 +107,7 @@
 				<tr ng-repeat="result in resultsWeek | orderBy:'rank' ">
 					<td>{{result.rank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
-					<td>{{((result.totalvalue - result.prov_recvd) / (result.weekstarttotalvalue - result.weekstartprov_recvd) - 1)*100 | number:2}} %</td>
+					<td>{{((result.totalvalue - result.prov_sum) / (result.weekstarttotalvalue - result.weekstartprov_sum) - 1)*100 | number:2}} %</td>
 				</tr>
 			</table>
 
@@ -157,7 +157,7 @@
 				<tr ng-repeat="result in intraGroupResults | orderBy:'igrank' ">
 					<td>{{result.igrank}}</td>
 					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
-					<td>{{result.prov_recvd / 10000 | currency}}</td>
+					<td>{{result.prov_sum / 10000 | currency}}</td>
 					<td>{{result.totalvalue / 10000 | currency}}</td>
 				</tr>
 			</table>
@@ -182,7 +182,7 @@
 					<td>{{result.rank}}</td>
 					<td>{{result.schoolname}}</td>
 					<td>{{result.count}}</td>
-					<td>{{result.prov_recvd / 10000 | currency}}</td>
+					<td>{{result.prov_sum / 10000 | currency}}</td>
 					<td>{{result.totalvalue / 10000 | currency}}</td>
 				</tr>
 			</table>

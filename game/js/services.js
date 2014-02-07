@@ -1,7 +1,7 @@
 'use strict';
 
 // socket.io wrapper object
-function SoTrade(socket) {
+function SoTradeConnection(socket) {
 	this.socket = socket;
 	this.listeners = {}; // listener name -> array of callbacks
 	this.ids = []; // numeric id -> callback for that id
@@ -40,7 +40,7 @@ function SoTrade(socket) {
 	}).bind(this));
 }
 
-SoTrade.prototype.emit = function(evname, data, cb) {
+SoTradeConnection.prototype.emit = function(evname, data, cb) {
 	if (typeof data == 'function') {
 		cb = data;
 		data = null;
@@ -97,7 +97,7 @@ SoTrade.prototype.emit = function(evname, data, cb) {
 				console.log('>', data);
 }
 
-SoTrade.prototype.getKey = function() {
+SoTradeConnection.prototype.getKey = function() {
 	var cookie = document.cookie.split(';');
 	for (var i = 0; i < cookie.length; ++i) {
 		var c = cookie[i].trim().split('=');
@@ -107,11 +107,11 @@ SoTrade.prototype.getKey = function() {
 	return null;
 }
 
-SoTrade.prototype.setKey = function(k) {
+SoTradeConnection.prototype.setKey = function(k) {
 	document.cookie = 'key=' + k + '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
 }
 
-SoTrade.prototype.on = function(evname, cb, angularScope) {
+SoTradeConnection.prototype.on = function(evname, cb, angularScope) {
 	var index = (this.listeners[evname] = (this.listeners[evname] || [])).push(cb) - 1;
 	this.socket.on(evname, cb);
 	if (angularScope) {
@@ -122,7 +122,7 @@ SoTrade.prototype.on = function(evname, cb, angularScope) {
 
 angular.module('tradity.services', []).
 	factory('socket', function ($rootScope) {
-		var socket = new SoTrade(io.connect('https://dev.tradity.de:443'));
+		var socket = new SoTradeConnection(io.connect('https://dev.tradity.de:443'));
 		return {
 			on: function (eventName, callback, angularScope) {
 				socket.on(eventName, function () {

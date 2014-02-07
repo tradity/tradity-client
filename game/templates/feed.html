@@ -211,14 +211,22 @@
             <div ng-switch-when="provchange">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
-                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat seine Provision von {{message.oldprov}} % auf {{message.newprov}} % verändert.
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat 
+                    <span ng-show="message.wprovchanged">seine Gewinnprovision von {{message.oldwprov}} % auf {{message.newprov}} %</span>
+                    <span ng-show="message.bothchanged">und</span>
+                    <span ng-show="message.lprovchanged">seine Verlustprovision von {{message.oldlprov}} % auf {{message.newlprov}} %</span>
+                    verändert.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
                 </div>
             </div>
             <div ng-switch-when="provchange-self">
                 <div class="batch feed-entry-symbol">&#xF153;</div>
                 <div class="feed-entry-content">
-                    Du hast Deine Provision von {{message.oldprov}} % auf {{message.newprov}} % verändert.
+                    Du hast 
+                    <span ng-show="message.wprovchanged">deine Gewinnprovision von {{message.oldwprov}} % auf {{message.newprov}} %</span>
+                    <span ng-show="message.bothchanged">und</span>
+                    <span ng-show="message.lprovchanged">deine Verlustprovision von {{message.oldlprov}} % auf {{message.newlprov}} %</span>
+                    verändert.
                     <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
                 </div>
             </div>

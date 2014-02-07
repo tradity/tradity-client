@@ -293,12 +293,24 @@ angular.module('tradity.controllers', []).
       } else {
         var typePerson = 'somebody';
       }
+      
+      // cleanup after legacy events
+      var oldwprov = data.oldwprov || data.oldprov;
+      var oldlprov = data.oldlprov || 0;
+      var newwprov = data.newwprov || data.newprov;
+      var newlprov = data.newlprov || 0;
+      
       $scope.messages.push({
         type: type,
         typePerson: typePerson,
         srcusername: data.srcusername,
-        oldprov: data.oldprov,
-        newprov: data.newprov,
+        oldwprov: oldwprov, 
+        oldlprov: oldlprov,
+        newwprov: newwprov,
+        newlprov: newlprov,
+        wprovchanged: oldwprov != newwprov,
+        lprovchanged: oldlprov != newlprov,
+        bothchanged: oldwprov != newwprov && oldlprov != newlprov,
         time: data.eventtime
       });
     });
@@ -349,8 +361,8 @@ angular.module('tradity.controllers', []).
       switch (data.code) {
         case 'reg-success':
           var extra = '';
-          if (/@freenet\.\w+$/.test($scope.email))
-            extra = '\nBei Deinem E-Mail-Provider ist es schon häufiger zu Problemen mit der Anmeldung gekommen.\nSchicke bitte ggf. selbst eine E-Mail an tech@tradity.de';
+          /*if (/@freenet\.\w+$/.test($scope.email))
+            extra = '\nBei Deinem E-Mail-Provider ist es schon häufiger zu Problemen mit der Anmeldung gekommen.\nSchicke bitte ggf. selbst eine E-Mail an tech@tradity.de';*/
           alert('Registrierung erfolgreich' + extra);
           $location.path('/');
           break;
@@ -418,7 +430,8 @@ angular.module('tradity.controllers', []).
       $scope.school = data.result.school;
       $scope.schoolname = document.getElementById('schoolname').value = data.result.schoolname;
       $scope.desc = data.result.desc;
-      $scope.provision = data.result.provision;
+      $scope.lprovision = data.result.lprovision;
+      $scope.wprovision = data.result.wprovision;
       $scope.street = data.result.street;
       $scope.zipcode = data.result.zipcode;
       $scope.town = data.result.town;
@@ -530,7 +543,8 @@ angular.module('tradity.controllers', []).
         school: $scope.schoolname ? ($scope.school ? $scope.school : $scope.schoolname) : null,
         birthday: d,
         desc: $scope.desc,
-        provision: $scope.provision,
+        lprovision: $scope.lprovision,
+        wprovision: $scope.wprovision,
         street: $scope.street,
         zipcode: $scope.zipcode,
         town: $scope.town,
@@ -901,16 +915,16 @@ angular.module('tradity.controllers', []).
         if (students.length == 0)
           throw new Error('School ' + s + ' has no students');
           
-        var avg = {prov_recvd: 0, totalvalue: 0, school: s, schoolname: students[0].schoolname};
+        var avg = {prov_sum: 0, totalvalue: 0, school: s, schoolname: students[0].schoolname};
         var n = 0;
         for (var i = 0; i < students.length && i < 3; ++i) {
           ++n;
-          avg.prov_recvd += students[i].prov_recvd;
+          avg.prov_sum += students[i].prov_sum;
           avg.totalvalue += students[i].totalvalue;
         }
         
         avg.count = students.length;
-        avg.prov_recvd /= n;
+        avg.prov_sum /= n;
         avg.totalvalue /= n;
         
         $scope.interGroupResults.push(avg);
@@ -1075,7 +1089,6 @@ angular.module('tradity.controllers', []).
     $scope.cur = null;
     $scope.xtype = 'market';
     $scope.xvalue = '';
-    $scope.comment = '';
     $scope.sellbuy = 1;
     $scope.fee = 0;
     $scope.isMarketOrder = true;
@@ -1089,7 +1102,6 @@ angular.module('tradity.controllers', []).
         amount: $scope.amount * $scope.sellbuy,
         stockid: $scope.stockid,
         leader: $scope.leader,
-        comment: $scope.comment,
         retainUntilCode: 'stock-buy-success',
         dquerydata: { /* will be returned in the dquery-exec event */
           xtype: $scope.xtype,

@@ -181,6 +181,7 @@ angular.module('tradity.controllers', []).
         // move first sticky notification to top
         for (var j = 0; j < $scope.messages.length; ++j) {
           var msg = $scope.messages[j];
+          console.log(j, msg.type, msg.content, msg.sticky);
           if (msg.type == 'mod-notification' && msg.sticky) {
             delete $scope.messages[j];
             $scope.messages.unshift(msg);

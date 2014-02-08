@@ -120,7 +120,7 @@ angular.module('tradity.controllers', []).
         $location.path('/');
     });
   }).
-  controller('MainCtrl', function($scope, $location, socket) {
+  controller('MainCtrl', function($scope, $location, $sce, socket) {
     $scope.Math = Math;
     $scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
     
@@ -165,7 +165,7 @@ angular.module('tradity.controllers', []).
         $scope.serverConfig[k] = cfg[k];
     });
     
-    var feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange', 'user-reset'];
+    var feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange', 'user-reset', 'mod-notification'];
     $scope.messages = [];
     $scope.eventIDs = {};
     
@@ -177,6 +177,17 @@ angular.module('tradity.controllers', []).
         $scope.eventIDs[id] = true;
         $scope.$broadcast(ev.type, ev);
         $scope.messages.sort(function(a, b) { return b.time - a.time; });
+        
+        // move first sticky notification to top
+        for (var j = 0; j < $scope.messages.length; ++j) {
+          var msg = $scope.message[j];
+          if (msg.type == 'mod-notification' && msg.sticky) {
+            delete $scope.messages[j];
+            $scope.messages.unshift(msg);
+            break;
+          }
+        }
+        
         $scope.$broadcast('messages-changed');
       }, $scope);
     }
@@ -344,6 +355,17 @@ angular.module('tradity.controllers', []).
         typePerson: typePerson,
         srcusername: data.srcusername,
         time: data.eventtime
+      });
+    });
+    $scope.$on('mod-notification', function(angEv, data) {
+      var type = 'mod-notification';
+      
+      $scope.messages.push({
+        type: type,
+        typePerson: 'important-item',
+        time: data.eventtime,
+        content: $sce.trustAsHtml(data.notifcontent),
+        sticky: data.notifsticky,
       });
     });
   }).
@@ -1242,6 +1264,33 @@ angular.module('tradity.controllers', []).
         }
       });
     }
+  }).
+  controller('AdminCtrl', function($scope, $routeParams, $location, socket) {    
+    tabbing($('#tabs'), '/admin/?', $routeParams.pageid, $location, $scope);
+    $scope.userlist = [];
+    $scope.content = '';
+    $scope.sticky = false;
+    $scope.ishtml = false;
+    
+    socket.on('list-all-users', function(data) {
+      if (data.code == 'list-all-users') 
+        $scope.userlist = data.results;
+    }, $scope);
+    
+    socket.emit('list-all-users');
+    
+    $scope.impersonateUser = function(user) {
+      alert('impersonateUser ' + JSON.stringify(user));
+    };
+    $scope.changeUserEMail = function(user) {
+      alert('changeUserEMail ' + JSON.stringify(user));
+    };
+    $scope.deleteUser = function(user) {
+      alert('deleteUser ' + JSON.stringify(user));
+    };
+    $scope.submitNotification = function() {
+      alert('deleteUser ' + JSON.stringify(user));
+    };
   }).
   controller('FeedCtrl', function($scope, socket) {
     $scope.displaymessages = [];

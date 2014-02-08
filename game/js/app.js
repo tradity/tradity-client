@@ -76,6 +76,14 @@ angular.module('tradity', [
     when('/gettingstarted', {
       templateUrl: 'templates/gettingstarted.html'
     }).
+    when('/admin', {
+      templateUrl: 'templates/admin.html',
+      controller: 'AdminCtrl'
+    }).
+    when('/admin/:pageid', {
+      templateUrl: 'templates/admin.html',
+      controller: 'AdminCtrl'
+    }).
     otherwise({
       redirectTo: '/'
     });

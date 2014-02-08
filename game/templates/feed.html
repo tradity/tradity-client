@@ -73,21 +73,14 @@
     </div>
     </div>
     <div data-step="1" data-position="left" data-intro="Hier findest Du Deine Aktivitäten und die der Leute aus Deiner Watchlist.">
-
-    <!-- THE NOTICES FROM THE TRADITY MASTERS -->
-
-<!--         <div class="feed-item feed-important-item feed-important">
-            <div>
+        <!-- ACTUAL FEED BEGIN -->
+        <div ng-repeat="message in displaymessages" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type">
+            <div ng-switch-when="mod-notification" class="feed-important-item" ng-show="{{message.content}}">
                 <div class="batch feed-entry-symbol">&#xF073;</div>
-                <div class="feed-entry-content">
-                    Die Änderung in der Rangliste ist darauf zurückzuführen, dass Tradity nun auch <a class="text-link" href="#/faq#liqui">Liquidität</a> von Aktien simuliert, um das Handeln noch realitätsnaher zu gestalten. Dies wirkt sich vor allem auf sog. Penny Stocks (sehr schwankungsreiche Aktien im Cent-Bereich) aus. Die Kontostände wurden auf das Back-Up von Donnerstag Abend zurückgesetzt, um die neuen Umstände zu berücksichtigen.
+                <div class="feed-entry-content" ng-bind-html="message.content">
+                    {{message.content}}
                 </div>
             </div>
-        </div>
-     -->
-    <!-- ACTUAL FEED BEGIN -->
-
-        <div ng-repeat="message in displaymessages" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type">
             <div ng-switch-when="watch-add">
                 <div class="batch feed-entry-symbol">&#xF178;</div>
                 <div class="feed-entry-content">

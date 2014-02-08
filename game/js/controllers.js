@@ -1288,8 +1288,9 @@ angular.module('tradity.controllers', []).
     }
   }).
   controller('AdminCtrl', function($scope, $routeParams, $location, socket) {    
-    tabbing($('#tabs'), '/admin/?', $routeParams.pageid, $location, $scope);
+    tabbing($('#tabs'), '/admin/?/' + ($routeParams.userId || ''), $routeParams.pageid, $location, $scope);
     $scope.userlist = [];
+    $scope.loginlist = [];
     $scope.content = '';
     $scope.sticky = false;
     $scope.ishtml = false;
@@ -1297,6 +1298,9 @@ angular.module('tradity.controllers', []).
     $scope.name = '';
     $scope.joinmaster = 0;
     $scope.joinsub = 0;
+    
+    $scope.inspectuid = $routeParams.userId || null;
+    $scope.loginlist = [];
     
     $scope.$emit('makeadmin');
     
@@ -1311,6 +1315,13 @@ angular.module('tradity.controllers', []).
     
     socket.emit('list-all-users');
     socket.emit('list-schools');
+    
+    if ($scope.inspectuid !== null) {
+      socket.emit('get-user-logins', {_cache: 60}, function(data) {
+        if (data.code == 'get-user-logins-success')
+          $scope.loginlist = data.results;
+      });
+    }
     
     $scope.impersonateUser = function(user) {
       socket.emit('impersonate-user', {

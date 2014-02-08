@@ -124,8 +124,11 @@ angular.module('tradity.controllers', []).
     $scope.Math = Math;
     $scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
     
+    $scope.isAdmin = false;
     $scope.ownUser = null;
     $scope.serverConfig = {};
+    
+    $scope.$on('makeadmin', function() { $scope.isAdmin = true; });
 
     $scope.isActive = function(route) {
         return route === $location.path(); 
@@ -181,7 +184,7 @@ angular.module('tradity.controllers', []).
         // move first sticky notification to top
         for (var j = 0; j < $scope.messages.length; ++j) {
           var msg = $scope.messages[j];
-          console.log(j, msg.type, msg.content, msg.sticky);
+          
           if (msg.type == 'mod-notification' && msg.sticky) {
             delete $scope.messages[j];
             $scope.messages.unshift(msg);
@@ -369,6 +372,22 @@ angular.module('tradity.controllers', []).
         sticky: data.notifsticky,
       });
     });
+    
+    $scope.editComment = function(comment) {
+      socket.emit('change-comment-text', {
+        commentid: comment.commentid,
+        comment: prompt('Neuer Kommentartext: (Leerlassen zum Beibehalten)') || comment.comment,
+        trustedhtml: false
+      }, function() { alert('Ok!'); });
+    };
+    
+    $scope.deleteComment = function(comment) {
+      socket.emit('change-comment-text', {
+        commentid: comment.commentid,
+        comment: '<em>Dieser Kommentar wurde durch die Moderatoren gelöscht.</em>',
+        trustedhtml: true
+      }, function() { alert('Ok!'); });
+    };
   }).
   controller('RegistrationCtrl', function($scope, $location, socket) {
     $scope.school = null;
@@ -839,6 +858,7 @@ angular.module('tradity.controllers', []).
           $scope.comments.unshift({
             comment: $scope.comment,
             username: $scope.ownUser.name,
+            trustedhtml: false,
             time: time.getTime() / 1000 - 1
           });
           $scope.comment = '';
@@ -1094,6 +1114,7 @@ angular.module('tradity.controllers', []).
           var time = new Date();
           $scope.comments.push({
             comment: $scope.comment,
+            trustedhtml: false,
             username: $scope.ownUser.name,
             time: time.getTime() / 1000 - 1
           });
@@ -1273,12 +1294,23 @@ angular.module('tradity.controllers', []).
     $scope.sticky = false;
     $scope.ishtml = false;
     
+    $scope.name = '';
+    $scope.joinmaster = 0;
+    $scope.joinsub = 0;
+    
+    $scope.$emit('makeadmin');
+    
     socket.on('list-all-users', function(data) {
       if (data.code == 'list-all-users-success') 
         $scope.userlist = data.results;
     }, $scope);
     
+    socket.on('list-schools', function(data) {
+      $scope.schoollist = data.result;
+    }, $scope);
+    
     socket.emit('list-all-users');
+    socket.emit('list-schools');
     
     $scope.impersonateUser = function(user) {
       socket.emit('impersonate-user', {
@@ -1311,6 +1343,7 @@ angular.module('tradity.controllers', []).
         uid: user.uid
       }, function(data) {
         alert('Ein User weniger… *schnief*');
+        socket.emit('list-all-users');
       });
     };
     
@@ -1326,6 +1359,76 @@ angular.module('tradity.controllers', []).
       }, function(data) {
         alert('Ok!');
       });
+    };
+    
+    $scope.renameSchool = function(school) {
+      var newname = prompt('Neuer Name für „' + school.name + '“');
+      if (!newname)
+        return;
+      
+      socket.emit('rename-school', {
+        schoolid: school.id,
+        schoolname: newname
+      }, function(data) {
+        if (data.code == 'rename-school-success')
+          alert('Ok!');
+        else
+          alert('Fehler: ' + data.code);
+        
+        socket.emit('list-schools');
+      });
+    };
+    
+    $scope.deleteSchool = function(school) {
+      if (!confirm('Wirklich Schule ' + school.id + ' („' + school.name + '“) löschen?'))
+        return;
+      
+      socket.emit('join-schools', {
+        masterschool: null,
+        subschool: school.id
+      }, function(data) {
+        if (data.code == 'join-schools-success')
+          alert('Ok!');
+        else
+          alert('Fehler: ' + data.code);
+        
+        socket.emit('list-schools');
+      });
+    };
+    
+    $scope.joinSchools = function() {
+      socket.emit('join-schools', {
+        masterschool: parseInt($scope.joinmaster),
+        subschool: parseInt($scope.joinsub)
+      }, function(data) {
+        if (data.code == 'join-schools-success')
+          alert('Ok!');
+        else
+          alert('Fehler: ' + data.code);
+        
+        socket.emit('list-schools');
+      });
+    };
+    
+    $scope.createSchool = function() {
+      socket.emit('create-school', {
+        schoolname: $scope.name
+      }, function(data) {
+        if (data.code == 'create-school-success')
+          alert('Ok!');
+        else
+          alert('Fehler: ' + data.code);
+        
+        socket.emit('list-schools');
+      });
+    };
+    
+    $scope.setJoinMaster = function(entry) {
+      $scope.joinmaster = entry.id;
+    };
+    
+    $scope.setJoinSub = function(entry) {
+      $scope.joinsub = entry.id;
     };
   }).
   controller('FeedCtrl', function($scope, socket) {

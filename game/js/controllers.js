@@ -1273,23 +1273,58 @@ angular.module('tradity.controllers', []).
     $scope.ishtml = false;
     
     socket.on('list-all-users', function(data) {
-      if (data.code == 'list-all-users') 
+      if (data.code == 'list-all-users-success') 
         $scope.userlist = data.results;
     }, $scope);
     
     socket.emit('list-all-users');
     
     $scope.impersonateUser = function(user) {
-      alert('impersonateUser ' + JSON.stringify(user));
+      socket.emit('impersonate-user', {
+        uid: user.uid
+      }, function(data) {
+        if (data.code == 'impersonate-user-success')
+          $location.path('/');
+        else
+          alert('Fehler: ' + data.code);
+      });
     };
+    
     $scope.changeUserEMail = function(user) {
-      alert('changeUserEMail ' + JSON.stringify(user));
+      var email = prompt('Geänderte E-Mail-Adresse: (leer lassen, um es bei „' + user.email + '“ zu belassen)') || user.email;
+      var emailverif = confirm('E-Mail-Adresse bestätigt?');
+      socket.emit('change-user-email', {
+        uid: user.uid,
+        email: email,
+        emailverif: emailverif
+      }, function(data) {
+        socket.emit('list-all-users');
+      });
     };
+    
     $scope.deleteUser = function(user) {
-      alert('deleteUser ' + JSON.stringify(user));
+      if (!confirm('Wirklich User ' + user.uid + ' („' + user.name + '“) löschen?'))
+        return;
+      
+      socket.emit('delete-user', {
+        uid: user.uid
+      }, function(data) {
+        alert('Ein User weniger… *schnief*');
+      });
     };
+    
+    $scope.maybeHTMLizeContent = function() {
+      return $scope.ishtml ? $scope.content : $scope.content
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/, '&gt;').replace(/'/, '&#039;').replace(/"/, '&quot;');
+    };
+    
     $scope.submitNotification = function() {
-      alert('deleteUser ' + JSON.stringify(user));
+      socket.emit('notify-all', {
+        sticky: $scope.sticky,
+        content: $scope.maybeHTMLizeContent()
+      }, function(data) {
+        alert('Ok!');
+      });
     };
   }).
   controller('FeedCtrl', function($scope, socket) {

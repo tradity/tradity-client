@@ -1305,8 +1305,24 @@ angular.module('tradity.controllers', []).
     $scope.$emit('makeadmin');
     
     socket.on('list-all-users', function(data) {
-      if (data.code == 'list-all-users-success') 
+      if (data.code == 'list-all-users-success') {
         $scope.userlist = data.results;
+        
+        $scope.usercount = 0;
+        $scope.loginusers = 0;
+        $scope.tradeusers = 0;
+        $scope.tickusers = 0;
+        $scope.verifusers = 0;
+        
+        for (var i = 0; i < $scope.userlist.length; ++i) {
+          var u = $scope.userlist[i];
+          ++$scope.usercount;
+          if (u.lastlogintime) ++$scope.loginusers;
+          if (u.tradecount >= 1) ++$scope.tradeusers;
+          if (u.ticks >= 50) ++$scope.tickusers;
+          if (u.emailverif) ++$scope.verifusers;
+        }
+      }
     }, $scope);
     
     socket.on('list-schools', function(data) {
@@ -1316,10 +1332,15 @@ angular.module('tradity.controllers', []).
     socket.emit('list-all-users');
     socket.emit('list-schools');
     
-    if ($scope.inspectuid !== null) {
-      socket.emit('get-user-logins', {_cache: 60}, function(data) {
-        if (data.code == 'get-user-logins-success')
+    if ($scope.inspectuid !== null && $scope.pageid == 'userdetails') {
+      socket.emit('get-user-logins', {_cache: 60, uid:$scope.inspectuid}, function(data) {
+        if (data.code == 'get-user-logins-success') {
+          $.each(data.results, function(i, e) {
+            e.pkhash = e.headers.cookie.match(/_pk_id\.\d\.\w+=(\w+)\./)[1];
+          });
+          
           $scope.loginlist = data.results;
+        }
       });
     }
     

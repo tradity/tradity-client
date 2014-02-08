@@ -120,7 +120,7 @@ angular.module('tradity.controllers', []).
         $location.path('/');
     });
   }).
-  controller('MainCtrl', function($scope, $location, $sce, socket) {
+  controller('MainCtrl', function($scope, $location, socket) {
     $scope.Math = Math;
     $scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
     
@@ -180,7 +180,7 @@ angular.module('tradity.controllers', []).
         
         // move first sticky notification to top
         for (var j = 0; j < $scope.messages.length; ++j) {
-          var msg = $scope.message[j];
+          var msg = $scope.messages[j];
           if (msg.type == 'mod-notification' && msg.sticky) {
             delete $scope.messages[j];
             $scope.messages.unshift(msg);
@@ -364,7 +364,7 @@ angular.module('tradity.controllers', []).
         type: type,
         typePerson: 'important-item',
         time: data.eventtime,
-        content: $sce.trustAsHtml(data.notifcontent),
+        content: data.notifcontent,
         sticky: data.notifsticky,
       });
     });

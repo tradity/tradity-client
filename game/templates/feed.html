@@ -77,7 +77,7 @@
         <div ng-repeat="message in displaymessages" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type">
             <div ng-switch-when="mod-notification" class="feed-important-item" ng-show="{{message.content}}">
                 <div class="batch feed-entry-symbol">&#xF073;</div>
-                <div class="feed-entry-content" ng-bind-html="message.content">
+                <div class="feed-entry-content" ng-bind-html-unsafe="message.content">
                     {{message.content}}
                 </div>
             </div>

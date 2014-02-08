@@ -2,7 +2,8 @@
 
 angular.module('tradity', [
   'tradity.controllers',
-  'tradity.services'
+  'tradity.services',
+  'ngSanitize'
 ]).config(['$routeProvider', function ($routeProvider, $locationProvider) {
   $routeProvider.
     when('/', {

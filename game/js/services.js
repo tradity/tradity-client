@@ -1,4 +1,29 @@
-'use strict';
+var enterDevMode = function(){};
+
+(function() {'use strict';
+
+var logmsg = false;
+var devmode = false;
+
+function datalog() {
+	if (!devmode) 
+		devmode = (document.cookie.indexOf('devmode') != -1);
+	
+	if (!devmode) {
+		if (!logmsg) {
+			console.log('For data debugging, please call enterDevMode() once.');
+			logmsg = true;
+		}
+		
+		return;
+	}
+	
+	console.log.apply(console, arguments);
+}
+
+enterDevMode = function() {
+	document.cookie = 'devmode=1;expires=Fri, 31 Dec 9999 23:59:59 GMT';
+}
 
 // socket.io wrapper object
 function SoTradeConnection(socket) {
@@ -9,7 +34,7 @@ function SoTradeConnection(socket) {
 	
 	this.qCache = {};
 	this.responseHandler = (function(data) {
-				console.log('<', data); // remove for production
+		datalog('<', data);
 		var rid = data['is-reply-to'].split('--');
 		var type = rid[0];
 		if (type == 'login')
@@ -32,7 +57,7 @@ function SoTradeConnection(socket) {
 	this.socket.on('response', this.responseHandler);
 	
 	this.socket.on('push', (function(data) {
-				console.log('!', data); // remove for production
+		datalog('!', data);
 		var type = data.type;
 		var listeners = this.listeners[type] || [];
 		for (var i = 0; i < listeners.length; ++i) 
@@ -93,8 +118,7 @@ SoTradeConnection.prototype.emit = function(evname, data, cb) {
 	if (cb)
 		this.ids[id] = cb;
 	this.socket.emit('query', data);
-				// only for debugging, remove for production
-				console.log('>', data);
+	datalog('>', data);
 }
 
 SoTradeConnection.prototype.getKey = function() {
@@ -144,3 +168,5 @@ angular.module('tradity.services', []).
 			}
 		};
 	});
+
+})();

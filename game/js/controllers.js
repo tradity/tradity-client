@@ -129,6 +129,19 @@ angular.module('tradity.controllers', []).
     $scope.serverConfig = {};
     
     $scope.$on('makeadmin', function() { $scope.isAdmin = true; });
+    
+    $scope.$on('user-update', function() {
+      if (!$scope.ownUser) {
+        $scope.isAdmin = false;
+        return;
+      }
+      
+      if ($scope.isAdmin)
+        return;
+      
+      if ($scope.ownUser.access.indexOf('*') != -1)
+        $scope.$emit('makeadmin');
+    });
 
     $scope.isActive = function(route) {
         return route === $location.path(); 
@@ -140,6 +153,7 @@ angular.module('tradity.controllers', []).
       socket.emit('logout', function(data) {
         if (data.code == 'logout-success') {
           $scope.ownUser = null;
+          $scope.isAdmin = false;
           $scope.$broadcast('user-update');
           $location.path('/login');
         }
@@ -781,7 +795,6 @@ angular.module('tradity.controllers', []).
         $scope.drawMode = newMode;
       
       var mode = $scope.drawModes[$scope.drawMode];
-      console.log(mode, $scope.drawMode);
       var now = new Date().getTime();
       var tmin = now, tmax = 0,vmin = 1/0,vmax=0;
       var data = $.map($.grep($scope.values, function(e) {
@@ -1299,6 +1312,7 @@ angular.module('tradity.controllers', []).
     $scope.joinmaster = 0;
     $scope.joinsub = 0;
     
+    $scope.pageid = $routeParams.pageid;
     $scope.inspectuid = $routeParams.userId || null;
     $scope.loginlist = [];
     
@@ -1340,6 +1354,17 @@ angular.module('tradity.controllers', []).
           });
           
           $scope.loginlist = data.results;
+        }
+      });
+      socket.emit('get-user-info', {
+        _cache: 60,
+        lookfor: $scope.inspectuid,
+        nohistory: true
+      }, function(data) {
+        if (data.code == 'get-user-info-success') {
+          $scope.inspectuser = data.result;
+        } else {
+          alert('Fehler: ' + data.code);
         }
       });
     }
@@ -1443,8 +1468,12 @@ angular.module('tradity.controllers', []).
     };
     
     $scope.createSchool = function() {
+      if (!$scope.path) 
+        $scope.path = $scope.name.replace(/[^\w_-]/g, '');
+      
       socket.emit('create-school', {
-        schoolname: $scope.name
+        schoolname: $scope.name,
+        schoolpath: $scope.path
       }, function(data) {
         if (data.code == 'create-school-success')
           alert('Ok!');

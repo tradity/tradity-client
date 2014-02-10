@@ -1,0 +1,86 @@
+<div id="schools" class="main-content">
+	<div id="tabs">
+	<ul>
+		<li><a href="#general">Allgemeine Informationen</a></li>
+		<li><a href="#intragroup">Benutzerrangliste</a></li>
+		<li><a href="#intergroup">Gruppenrangliste</a></li>
+	</ul>
+	<div id="general">
+		<h2>{{school.name}}</h2>
+		<div>Mitglieder: {{school.usercount}}</div>
+		<div class="school-descpage">{{school.descpage}}</div>
+		<h3>Administratoren</h3>
+		<ul class="groupadminlist">
+			<li ng-repeat="admin in school.admins"><a href="#/user/{{admin.adminname}}">{{admin.adminname}}</a></li>
+		</ul>
+		<h3>Beliebte Aktien</h3>
+		<ul class="popularstocks">
+			<li ng-repeat="stock in school.popularStocks">{{stock.stockname}}</li>
+		</ul>
+		<div id="pinboard" style="margin-top: 15px;">
+			<div ng-repeat="comment in school.comments">
+				<div class="commenter"><a href="#/user/{{comment.username}}" class="text-link">{{comment.username}}</a></div>
+				<div class="comment comment-somebody">
+					<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
+					<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
+					<span ng-show="isAdmin || selfIsSchoolAdmin">
+						<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>
+						<a ng-click="deleteComment(comment)" style="cursor: pointer">Löschen</a>
+					</span>
+					<span class="feed-time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
+				</div>
+			</div>
+			<form ng-submit="sendComment()" ng-show="selfIsSchoolMember">
+				<input type="submit" class="click-button comment-button" value="Kommentieren">
+				<textarea ng-model="comment" class="options-input comment-textarea" placeholder="Poste etwas in diesen Gruppenfeed!"></textarea>
+			</form>
+		</div>
+		<div id="intragroup">
+			<table class="ranking">
+				<colgroup>
+				  	<col class="rankcol-1" style="width: 10%">
+					<col class="rankcol-2" style="width: 57%">
+					<col class="rankcol-3" style="width: 18%">
+					<col class="rankcol-4" style="width: 15%">
+				</colgroup>
+				<tr>
+					<th>Rang</th>
+					<th>Name</th>
+					<th>erh. Provision</th>
+					<th>Gesamtvermögen</th>
+				</tr>
+				<tr ng-repeat="result in intraGroupResults | orderBy:'igrank' ">
+					<td>{{result.igrank}}</td>
+					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
+					<td>{{result.prov_sum / 10000 | currency}}</td>
+					<td>{{result.totalvalue / 10000 | currency}}</td>
+				</tr>
+			</table>
+		</div>
+		<div id="intergroup">
+			<table class="ranking">
+				<colgroup>
+				  	<col class="rankcol-1" style="width: 10%">
+					<col class="rankcol-2" style="width: 57%">
+					<col class="rankcol-3" style="width: 18%">
+					<col class="rankcol-3" style="width: 18%">
+					<col class="rankcol-4" style="width: 15%">
+				</colgroup>
+				<tr>
+					<th>Rang</th>
+					<th>Name</th>
+					<th>Spieler</th>
+					<th>erh. Provision</th>
+					<th>Gesamtvermögen</th>
+				</tr>
+				<tr ng-repeat="result in interGroupResults | orderBy:'rank' | filter: searchText ">
+					<td>{{result.rank}}</td>
+					<td>{{result.schoolname}}</td>
+					<td>{{result.count}}</td>
+					<td>{{result.prov_sum / 10000 | currency}}</td>
+					<td>{{result.totalvalue / 10000 | currency}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

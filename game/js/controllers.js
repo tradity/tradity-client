@@ -923,6 +923,24 @@ angular.module('tradity.controllers', []).
     var depotPerformanceChart = new Chart(ctx).Line(data);
     */
   }).
+  controller('SchoolDetailCtrl', function($scope, $routeParams, $location, socket) {
+    tabbing($('#tabs'), '/s/?/' + ($routeParams.schoolid || ''), $routeParams.pageid || 'general', $location, $scope);
+    $scope.school = {};
+    $scope.interGroupResults = [];
+    $scope.intraGroupResults = [];
+    $scope.results = [];
+    
+    socket.emit('get-school-info', {
+      lookfor: $routeParams.schoolid
+    }, function(data) {
+      if (data.code == 'get-school-info-success') {
+        $scope.school = data.result;
+        $scope.school.usercount = $scope.results.length;
+      }
+    });
+    
+    $scope.selfIsSchoolAdmin = false;
+  }).
   controller('RankingCtrl', function($scope, $routeParams, $location, socket) {    
     tabbing($('#tabs'), '/ranking/?', $routeParams.pageid, $location, $scope);
 

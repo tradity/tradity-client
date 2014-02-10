@@ -89,6 +89,14 @@ angular.module('tradity', [
       templateUrl: 'templates/admin.html',
       controller: 'AdminCtrl'
     }).
+    when('/s/:school', {
+      templateUrl: 'templates/school.html',
+      controller: 'SchoolDetailCtrl'
+    }).
+    when('/s/:pageid/:schoolid', {
+      templateUrl: 'templates/school.html',
+      controller: 'SchoolDetailCtrl'
+    }).
     otherwise({
       redirectTo: '/'
     });

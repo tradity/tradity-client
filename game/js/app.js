@@ -89,7 +89,7 @@ angular.module('tradity', [
       templateUrl: 'templates/admin.html',
       controller: 'AdminCtrl'
     }).
-    when('/s/:school', {
+    when('/s/:schoolid', {
       templateUrl: 'templates/school.html',
       controller: 'SchoolDetailCtrl'
     }).

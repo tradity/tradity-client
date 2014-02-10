@@ -50,6 +50,33 @@ var useSchoolAC = function($scope, socket) {
 };
 
 angular.module('tradity.controllers', []).
+  controller('HerounitCtrl', function($scope, $routeParams, $location, socket) {
+    var onResize = function () {
+      setTimeout(function() {
+            $('#herounit').css('margin-top', -($('#herounit').height()/2));
+      }, 50);
+    };
+
+    
+    $scope.actions = true;
+    $scope.loginForm = false;
+    $scope.registerForm = false;
+    
+    
+    $scope.showLogin = function () {
+      $scope.actions = false;
+      $scope.loginForm = true;
+      $scope.registerForm = false;
+      onResize();
+    };
+
+    $scope.showRegister = function () {
+      $scope.actions = false;
+      $scope.loginForm = false;
+      $scope.registerForm = true;
+      onResize();
+    };
+  }).
   controller('LoginCtrl', function($scope, $routeParams, $location, socket) {
     $scope.username = '';
     $scope.password = '';
@@ -99,6 +126,7 @@ angular.module('tradity.controllers', []).
         }
       });
     };
+
     socket.on('password-reset', function(data) {
       if (data.code == 'password-reset-success') {
         alert('Neues Passwort erfolgreich versandt');
@@ -119,6 +147,7 @@ angular.module('tradity.controllers', []).
       if (data.uid)
         $location.path('/');
     });
+
   }).
   controller('MainCtrl', function($scope, $location, socket) {
     $scope.Math = Math;
@@ -405,7 +434,7 @@ angular.module('tradity.controllers', []).
   }).
   controller('RegistrationCtrl', function($scope, $location, socket) {
     $scope.school = null;
-    $scope.schoolname = document.getElementById('schoolname').value = '';
+    //$scope.schoolname = document.getElementById('schoolname').value = '';
     $scope.traderse = 0;
     $scope.tradersp = 0;
     $scope.traditye = 0;
@@ -470,7 +499,7 @@ angular.module('tradity.controllers', []).
         wot: $scope.wot
       });
     };
-    useSchoolAC($scope, socket); 
+    //useSchoolAC($scope, socket); 
   }).
   controller('OptionsCtrl', function($scope, socket) {
     socket.emit('get-own-options', function(data) {

@@ -11,6 +11,8 @@
         <link rel="stylesheet" href="css/introjs.css">
         <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.css">
         <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/forms-min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="css/main.css">
 
         <script type="text/javascript" src="js/vendor/jquery-2.0.3.min.js"></script>
@@ -55,7 +57,7 @@
             <div id="wrapper" class="clearfix" ng-controller="MainCtrl">
                 <header id="header" class="clearfix">
                     <div id="logo"><a class="block-link" style="width: 150px; height: 150px;" href="#"></a></div><h1 id="tradity"><a href="#">tradity</a></h1>
-                    <div id="profile-own" class="profile" ng-show="ownUser">
+                    <div id="profile-own" class="profile">
                         <div class="name-container clearfix">
                             <a ng-href="#/user/{{ownUser.name}}" style="cursor: pointer"  accesskey="p" title="Hier gehts zu deinem Profil" class="block-link profile-link">
                                 <h2 class="name">{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>
@@ -85,7 +87,7 @@
                         </ul>
                     </div>
                 </header>
-                <nav id="nav" ng-show="ownUser" data-step="100" data-position="right" data-intro="Finde mehr heraus indem du Dich durch die Navigation klickst.">
+                <nav id="nav" data-step="100" data-position="right" data-intro="Finde mehr heraus indem du Dich durch die Navigation klickst.">
                     <ul>
                         <li>
                             <a href="#/" accesskey="f" title="ALT+SHIFT+F">

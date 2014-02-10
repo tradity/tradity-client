@@ -43,15 +43,15 @@ angular.module('tradity', [
       controller: 'OptionsCtrl'
     }).
     when('/login', {
-      templateUrl: 'templates/login.html',
-      controller: 'LoginCtrl'
+      templateUrl: 'templates/herounit.html',
+      controller: 'HerounitCtrl'
     }).
     when('/login/:emailVerifCode/:uid', {
       templateUrl: 'templates/login.html',
-      controller: 'LoginCtrl'
+      controller: 'HerounitCtrl'
     }).
     when('/register', {
-      templateUrl: 'templates/registration.html',
+      templateUrl: 'templates/herounit.html',
       controller: 'RegistrationCtrl'
     }).
     when('/user/:userId', {

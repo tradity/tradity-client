@@ -1,0 +1,102 @@
+<div id="hero-wrapper" ng-class="{{ownUser && 'hide-herounit' }}">
+            <div id="herounit"> 
+                <img src="img/logo.png" class="logo">      
+                <p class="slogan">Sei Teil des ersten <b>Social Trading Börsenspiels</b> der Welt</p>
+                <div class="actions" ng-show="actions">
+                    <a href="" id="login-btn" ng-click="showLogin()" class="btn login">Login</a> <a ng-click="showRegister()" id="register-btn" href="" class="btn">Registrieren</a>
+                </div>
+                <div class="login-form" ng-controller="LoginCtrl" ng-show="loginForm">
+                    <form class="pure-form" ng-submit="login()">
+                        <fieldset class="pure-group">
+                            <input type="text" class="pure-input" ng-model="username" placeholder="Benutzername">
+                            <input type="password" class="pure-input" ng-model="password" placeholder="Passwort">
+                        </fieldset>
+
+                        <button type="submit" id="options-sb" class="btn btn-small">Login</button> <a class="registerq" ng-click="showRegister()" href="">Noch nicht registriert ?</a>
+                    </form>
+                </div>
+                <div class="register-form" ng-controller="RegistrationCtrl" ng-show="registerForm">
+                    <a href="" id="fbregister"><i class="fa fa-facebook"></i> Mit Facebook registrieren</a>
+                    <form class="pure-form pure-form-aligned" ng-submit="register()">
+                        <fieldset>
+                            <div class="pure-control-group">
+                                <label for="name">Benutzername</label>
+                                <input id="name" ng-model="name" type="text" placeholder="Benutzername">
+                            </div>
+
+                            <div class="pure-control-group">
+                                <label for="password">Passwort</label>
+                                <input id="password" ng-model="password" type="password" placeholder="Password">
+                            </div>
+
+                            <div class="pure-control-group">
+                                <label for="password-repeat">Passwort wiederholen</label>
+                                <input id="password-repeat" ng-model="password_check" type="password" placeholder="Password">
+                            </div>
+
+                            <div class="pure-control-group">
+                                <label for="email">Email Addresse</label>
+                                <input id="email" ng-model="email" type="email" placeholder="Email Addresse">
+                            </div>
+
+                            <div class="pure-control-group">
+                                <label for="realnamepublish" class="pure-checkbox">Soll der echte Name veröffentlicht werden ?</label>
+                                <input id="realnamepublish" ng-model="realnamepublish" type="checkbox"> Ja
+                            </div>
+
+                            <div class="pure-control-group">
+                                <label for="school">Institution / Schule</label>
+                                <input id="school" ng-model="schoolname" type="text" placeholder="Schule, Universität oder Unternehmen">
+                            </div>
+
+                            <div class="pure-control-group">
+                                <label for="traditye" class="pure-checkbox">Newsletter von Tradity erhalten ?</label>
+                                <input id="traditye" ng-model="traditye" type="checkbox"> Ja
+                            </div>
+                        <!-- mhh mal gucken nicht so schön ...
+                            <div class="pure-control-group">
+                                <label for="facebookid" class="pure-checkbox">Facebook ID</label>
+                                <input id="facebookid" ng-model="facebookid" disabled="disabled" type="text">
+                            </div>
+                            
+                            <div class="pure-control-group">
+                                <label for="cb"><small><i>Finde und werde gefunden von deinen Facebook Freunden</i></small></label>
+                            </div>
+                        -->
+
+                            <div class="pure-controls">
+                                <label for="cb" class="pure-checkbox">
+                                    <input id="cb" ng-model="agbread" type="checkbox"> Ich habe die AGB gelsen
+                                </label>
+                            </div>
+
+                        </fieldset>
+                        <button type="submit" class="btn btn-small">Registrieren</button><a href="" ng-click="showLogin()" id="gtlogin">Ich hab bereits ein Benutzer !</a>
+                    </form>
+                </div>
+                <div class="showcase" ng-hide="registerForm || loginForm">
+                    <div class="row">
+                        <div class="header social">
+                            <i class="fa fa-users"></i><br>
+                            <h2>be Social</h2>
+                        </div>
+                        <p class="content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+                    </div>
+                    <div class="row">
+                        <div class="header education blue">
+                            <i class="fa fa-book"></i><br>
+                            <h2>Bildung</h2>
+                        </div>
+                        <p class="content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+                    </div>
+                    <div class="row">
+                        <div class="header social">
+                            <i class="fa fa-comments"></i><br>
+                            <h2>Blabla</h2>
+                        </div>
+                        <p class="content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>

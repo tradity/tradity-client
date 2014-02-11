@@ -324,7 +324,10 @@ angular.module('tradity.controllers', []).
         type += '-trade';
       } else if (data.baseeventtype == 'user-register') {
         type += '-pinboard';
+      } else if (data.baseeventtype == 'school-create') {
+        type += '-schoolpinboard';
       }
+      
       if (data.srcuser == $scope.ownUser.uid) {
         typePerson = 'yourself';
         type += '-self';
@@ -332,7 +335,7 @@ angular.module('tradity.controllers', []).
       if (data.traderid == $scope.ownUser.uid) {
         type += '-me';
       }
-      var tn = data.tradername;
+      var tn = data.tradername || data.schoolname;
       $scope.messages.push({
         type: type,
         typePerson: typePerson,
@@ -442,6 +445,28 @@ angular.module('tradity.controllers', []).
         comment: '<em>Dieser Kommentar wurde durch die Moderatoren gelöscht.</em>',
         trustedhtml: true
       }, function() { alert('Ok!'); });
+    };
+    $scope.createSendCommentFn = function($scope, getEventId, notfounderrmsg) {
+      return function() {
+        socket.emit('comment', {
+          eventid: getEventId($scope),
+          comment: $scope.comment
+        },
+        function(data) {
+          if (data.code == 'comment-notfound') {
+            alert((notfounderrmsg || 'Event nicht gefunden.') + '\nHier läuft etwas falsch.');
+          } else if (data.code == 'comment-success') {
+            var time = new Date();
+            $scope.comments.unshift({
+              comment: $scope.comment,
+              trustedhtml: false,
+              username: $scope.ownUser.name,
+              time: time.getTime() / 1000 - 1
+            });
+            $scope.comment = '';
+          }
+        });
+      };
     };
   }).
   controller('RegistrationCtrl', function($scope, $location, socket) {
@@ -899,26 +924,7 @@ angular.module('tradity.controllers', []).
         }
       });
     };
-    $scope.sendComment = function() {
-      socket.emit('comment', {
-        eventid: $scope.user.registerevent,
-        comment: $scope.comment
-      },
-      function(data) {
-        if (data.code == 'comment-notfound') {
-          alert('Benutzer nicht gefunden. Hier läuft etwas falsch.');
-        } else if (data.code == 'comment-success') {
-          var time = new Date();
-          $scope.comments.unshift({
-            comment: $scope.comment,
-            username: $scope.ownUser.name,
-            trustedhtml: false,
-            time: time.getTime() / 1000 - 1
-          });
-          $scope.comment = '';
-        }
-      });
-    };
+    $scope.sendComment = $scope.createSendCommentFn($scope, function() { return $scope.user.registerevent; }, 'User nicht gefunden.');
     $scope.getUserInfo();
     /*
     var data = {
@@ -939,6 +945,7 @@ angular.module('tradity.controllers', []).
     $scope.school = {};
     $scope.selfIsSchoolAdmin = false;
     $scope.selfIsSchoolMember = false;
+    $scope.comments = [];
     
     if ($routeParams.schoolid) {
       socket.emit('get-school-info', {
@@ -946,13 +953,18 @@ angular.module('tradity.controllers', []).
       }, function(data) {
         if (data.code == 'get-school-info-success') {
           $scope.school = data.result;
+          $scope.comments = $scope.school.comments;
           $scope.updateSchoolDataFromRanking();
         }
       });
       
       tabbing($('#tabs'), '/s/?/' + ($routeParams.schoolid || ''), $routeParams.pageid || 'general', $location, $scope);
+      
+      $scope.sendComment = $scope.createSendCommentFn($scope, function() { return $scope.school.eventid; }, 'Gruppe nicht gefunden.');
     } else {
       tabbing($('#tabs'), '/ranking/?', $routeParams.pageid, $location, $scope);
+      
+      $scope.sendComment = function() {};
     }
 
     $scope.resultsPerPage = 5;
@@ -1011,7 +1023,7 @@ angular.module('tradity.controllers', []).
         if (schools.indexOf(e.school) == -1 && e.hastraded)
           schools.push(e.school);
         
-        if ($scope.ownUser && e.school == $scope.ownUser.schoolid) 
+        if (($scope.ownUser && e.school == $scope.ownUser.schoolid) || $scope.school)
           $scope.intraGroupResults.push(e);
       });
       
@@ -1055,7 +1067,7 @@ angular.module('tradity.controllers', []).
       $scope.updateSchoolDataFromRanking();
     };
     
-    $scope.updateSchoolDataFromRanking = function() {
+    $scope.updateSchoolDataFromRanking = function() {      
       $scope.school.usercount = $scope.results.length;
       
       $.each($scope.results, function(i, e) {
@@ -1093,6 +1105,7 @@ angular.module('tradity.controllers', []).
             $scope.updateSchoolDataFromRanking();
           });
           break;
+        case 'intragroup':
         case 'intergroup':
           socket.emit('get-ranking', {
             rtype: 'general',
@@ -1103,8 +1116,8 @@ angular.module('tradity.controllers', []).
             if (data.code != 'get-ranking-success') 
               return false;
             $scope.results = data.result;
-            $scope.computeGroupRanking();
             $scope.resultsCount = data.count;
+            $scope.computeGroupRanking();
           });
           break;
         case 'all-withprov':
@@ -1201,26 +1214,7 @@ angular.module('tradity.controllers', []).
             $scope.user.profilepic = $scope.serverConfig.defaultprofile;
       });
     };
-    $scope.sendComment = function() {
-      socket.emit('comment', {
-        eventid: $scope.trade.eventid,
-        comment: $scope.comment
-      },
-      function(data) {
-        if (data.code == 'comment-notfound') {
-          alert('Trade nicht gefunden. Hier läuft etwas falsch.');
-        } else if (data.code == 'comment-success') {
-          var time = new Date();
-          $scope.comments.push({
-            comment: $scope.comment,
-            trustedhtml: false,
-            username: $scope.ownUser.name,
-            time: time.getTime() / 1000 - 1
-          });
-          $scope.comment = '';
-        }
-      });
-    };
+    $scope.sendComment = $scope.createSendCommentFn($scope, function() { return $scope.trade.eventid; }, 'Trade nicht gefunden.');
     $scope.getTradeInfo();
   }).
   controller('TradeCtrl', function($scope, $routeParams, $location, socket) {

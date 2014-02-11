@@ -50,13 +50,17 @@ var useSchoolAC = function($scope, socket) {
 };
 
 angular.module('tradity.controllers', []).
-  controller('HerounitCtrl', function($scope, $routeParams, $location, socket) {
+  controller('HerounitCtrl', function($scope, $routeParams, $location, socket, $window) {
     var onResize = function () {
       setTimeout(function() {
             $('#herounit').css('margin-top', -($('#herounit').height()/2));
       }, 50);
     };
 
+    $window.document.getElementsByTagName('html')[0].className = 'herounitFix';
+    $scope.$on("$destroy", function(){
+        $window.document.getElementsByTagName('html')[0].className = '';
+    });
     
     $scope.actions = true;
     $scope.loginForm = false;
@@ -76,11 +80,18 @@ angular.module('tradity.controllers', []).
       $scope.registerForm = true;
       onResize();
     };
+
+    $scope.showInfo1 = function () {
+      $("#hero-wrapper").animate({scrollTop:$('#hero-wrapper').outerHeight()*2}, '1600', 'swing', function() { 
+         
+      })
+    }
   }).
   controller('LoginCtrl', function($scope, $routeParams, $location, socket) {
     $scope.username = '';
     $scope.password = '';
     $scope.stayloggedin = false;
+
     if ($routeParams.emailVerifCode && $routeParams.uid) {
       socket.emit('emailverif', {
         key: $routeParams.emailVerifCode,
@@ -156,6 +167,7 @@ angular.module('tradity.controllers', []).
     $scope.isAdmin = false;
     $scope.ownUser = null;
     $scope.serverConfig = {};
+
     
     $scope.$on('makeadmin', function() { $scope.isAdmin = true; });
     

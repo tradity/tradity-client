@@ -1726,6 +1726,10 @@ div#tabs ul li.search-li {
 
 /* login form */
 
+#herounit #login-btn {
+    margin-top:5px;
+}
+
 #herounit .login-form {
     width: 300px;
     margin: 0px auto;

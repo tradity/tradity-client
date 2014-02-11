@@ -91,11 +91,11 @@ angular.module('tradity', [
     }).
     when('/s/:schoolid', {
       templateUrl: 'templates/school.html',
-      controller: 'SchoolDetailCtrl'
+      controller: 'RankingCtrl'
     }).
     when('/s/:pageid/:schoolid', {
       templateUrl: 'templates/school.html',
-      controller: 'SchoolDetailCtrl'
+      controller: 'RankingCtrl'
     }).
     otherwise({
       redirectTo: '/'

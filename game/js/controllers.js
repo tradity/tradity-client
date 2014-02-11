@@ -923,26 +923,25 @@ angular.module('tradity.controllers', []).
     var depotPerformanceChart = new Chart(ctx).Line(data);
     */
   }).
-  controller('SchoolDetailCtrl', function($scope, $routeParams, $location, socket) {
-    tabbing($('#tabs'), '/s/?/' + ($routeParams.schoolid || ''), $routeParams.pageid || 'general', $location, $scope);
+  controller('RankingCtrl', function($scope, $routeParams, $location, socket) { 
     $scope.school = {};
-    $scope.interGroupResults = [];
-    $scope.intraGroupResults = [];
-    $scope.results = [];
-    
-    socket.emit('get-school-info', {
-      lookfor: $routeParams.schoolid
-    }, function(data) {
-      if (data.code == 'get-school-info-success') {
-        $scope.school = data.result;
-        $scope.school.usercount = $scope.results.length;
-      }
-    });
-    
     $scope.selfIsSchoolAdmin = false;
-  }).
-  controller('RankingCtrl', function($scope, $routeParams, $location, socket) {    
-    tabbing($('#tabs'), '/ranking/?', $routeParams.pageid, $location, $scope);
+    $scope.selfIsSchoolMember = false;
+    
+    if ($routeParams.schoolid) {
+      socket.emit('get-school-info', {
+        lookfor: $routeParams.schoolid
+      }, function(data) {
+        if (data.code == 'get-school-info-success') {
+          $scope.school = data.result;
+          $scope.updateSchoolDataFromRanking();
+        }
+      });
+      
+      tabbing($('#tabs'), '/s/?/' + ($routeParams.schoolid || ''), $routeParams.pageid || 'general', $location, $scope);
+    } else {
+      tabbing($('#tabs'), '/ranking/?', $routeParams.pageid, $location, $scope);
+    }
 
     $scope.resultsPerPage = 5;
     $scope.page = 0;
@@ -986,7 +985,6 @@ angular.module('tradity.controllers', []).
       return item === $scope.page ? 'active' : undefined;
     };
 
-    
     $scope.$on('user-update', function() { $scope.computeGroupRanking(); });
     
     $scope.computeGroupRanking = function() {
@@ -1041,94 +1039,123 @@ angular.module('tradity.controllers', []).
       $scope.intraGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
       for (var i = 0; i < $scope.intraGroupResults.length; ++i)
         $scope.intraGroupResults[i].igrank = i+1;
+        
+      $scope.updateSchoolDataFromRanking();
+    };
+    
+    $scope.updateSchoolDataFromRanking = function() {
+      $scope.school.usercount = $scope.results.length;
+      
+      $.each($scope.results, function(i, e) {
+        if (e.uid == $scope.ownUser.uid)
+          $scope.selfIsSchoolMember = true;
+      });
+      
+      if ($scope.school.admins) {
+        $.each($scope.school.admins, function(i, e) {
+          if (e.uid == $scope.ownUser.uid)
+            $scope.selfIsSchoolAdmin = true;
+        });
+      }
     };
     
     $scope.getRanking = function() {
       var page = $routeParams.pageid;
 
-      if ($routeParams.pageid == 'all' || !page) socket.emit('get-ranking', {
-        rtype: 'general',
-        startindex:$scope.page*$scope.resultsPerPage,
-        endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
-        search:$scope.searchText,
-        _cache: 20
-      },
-      function(data) {
-        if (data.code != 'get-ranking-success') 
-          return false;
-        $scope.results = data.result;
-        $scope.resultsCount = data.count;
-      });
-
-      if (page == "intergroup") socket.emit('get-ranking', {
-        rtype: 'general',
-        _cache: 20
-      },
-      function(data) {
-        if (data.code != 'get-ranking-success') 
-          return false;
-        $scope.results = data.result;
-        $scope.computeGroupRanking();
-        $scope.resultsCount = data.count;
-      });
-
-      if (page == 'all-withprov') socket.emit('get-ranking', {
-        rtype: 'general-wprov',
-        startindex:$scope.page*$scope.resultsPerPage,
-        endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
-        search:$scope.searchText,
-        _cache: 20
-      },
-      function(data) {
-        if (data.code != 'get-ranking-success') 
-          return false;
-        $scope.resultsWithProvision = data.result;
-        $scope.resultsWithProvisionCount = data.count;
-
-      });
-
-      if (page == 'follower') socket.emit('get-ranking', {
-        rtype: 'following',
-        startindex:$scope.page*$scope.resultsPerPage,
-        endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
-        search:$scope.searchText,
-        _cache: 20
-      },
-      function(data) {
-        if (data.code != 'get-ranking-success') 
-          return false;
-        $scope.resultsFollower = data.result;
-        $scope.resultsFollowerCount = data.count;
-      });
-
-      if (page == 'all-week')  socket.emit('get-ranking', {
-        rtype: 'general-week',
-        startindex:$scope.page*$scope.resultsPerPage,
-        endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
-        search:$scope.searchText,
-        _cache: 20
-      },
-      function(data) {
-        if (data.code != 'get-ranking-success') 
-          return false;
-        $scope.resultsWeek = data.result;
-        $scope.resultsWeekCount = data.count;
-      });
-
-      if (page == 'follower-week')  socket.emit('get-ranking', {
-        rtype: 'following-week',
-        startindex:$scope.page*$scope.resultsPerPage,
-        endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
-        search:$scope.searchText,
-        _cache: 20
-      },
-      function(data) {
-        if (data.code != 'get-ranking-success') 
-          return false;
-        $scope.resultsFollowerWeek = data.result;
-        $scope.resultsFollowerWeekCount = data.count;
-      });
-
+      switch (page) {
+        case 'all':
+        default:
+          socket.emit('get-ranking', {
+            rtype: 'general',
+            startindex:$scope.page*$scope.resultsPerPage,
+            endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
+            search:$scope.searchText,
+            schoolid:$routeParams.schoolid,
+            _cache: 20
+          },
+          function(data) {
+            if (data.code != 'get-ranking-success') 
+              return false;
+            $scope.results = data.result;
+            $scope.resultsCount = data.count;
+            $scope.updateSchoolDataFromRanking();
+          });
+          break;
+        case 'intergroup':
+          socket.emit('get-ranking', {
+            rtype: 'general',
+            schoolid: $routeParams.schoolid,
+            _cache: 20
+          },
+          function(data) {
+            if (data.code != 'get-ranking-success') 
+              return false;
+            $scope.results = data.result;
+            $scope.computeGroupRanking();
+            $scope.resultsCount = data.count;
+          });
+          break;
+        case 'all-withprov':
+          socket.emit('get-ranking', {
+            rtype: 'general-wprov',
+            startindex:$scope.page*$scope.resultsPerPage,
+            endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
+            search:$scope.searchText,
+            _cache: 20
+          },
+          function(data) {
+            if (data.code != 'get-ranking-success') 
+              return false;
+            $scope.resultsWithProvision = data.result;
+            $scope.resultsWithProvisionCount = data.count;
+          });
+          break;
+        case 'follower':
+          socket.emit('get-ranking', {
+            rtype: 'following',
+            startindex:$scope.page*$scope.resultsPerPage,
+            endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
+            search:$scope.searchText,
+            _cache: 20
+          },
+          function(data) {
+            if (data.code != 'get-ranking-success') 
+              return false;
+            $scope.resultsFollower = data.result;
+            $scope.resultsFollowerCount = data.count;
+          });
+          break;
+        case 'all-week':
+          socket.emit('get-ranking', {
+            rtype: 'general-week',
+            startindex:$scope.page*$scope.resultsPerPage,
+            endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
+            search:$scope.searchText,
+            _cache: 20
+          },
+          function(data) {
+            if (data.code != 'get-ranking-success') 
+              return false;
+            $scope.resultsWeek = data.result;
+            $scope.resultsWeekCount = data.count;
+          });
+          break;
+        case 'follower-week':
+          socket.emit('get-ranking', {
+            rtype: 'following-week',
+            startindex:$scope.page*$scope.resultsPerPage,
+            endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
+            search:$scope.searchText,
+            _cache: 20
+          },
+          function(data) {
+            if (data.code != 'get-ranking-success') 
+              return false;
+            $scope.resultsFollowerWeek = data.result;
+            $scope.resultsFollowerWeekCount = data.count;
+          });
+          break;
+      }
     };
     $scope.getRanking();
   }).

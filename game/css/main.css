@@ -1867,6 +1867,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#438ebb', end
 
 .hide-herounit { 
     background-color: transparent;
+    display: none;
 }
 
 /* footer */

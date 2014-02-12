@@ -961,6 +961,56 @@ angular.module('tradity.controllers', []).
       tabbing($('#tabs'), '/s/?/' + ($routeParams.schoolid || ''), $routeParams.pageid || 'general', $location, $scope);
       
       $scope.sendComment = $scope.createSendCommentFn($scope, function() { return $scope.school.eventid; }, 'Gruppe nicht gefunden.');
+    
+      $scope.deleteCommentSA = function(comment) {
+        socket.emit('school-delete-comment', {
+          schoolid: $routeParams.schoolid,
+          commentid: comment.commentid
+        }, function() { alert('Ok!'); });
+      };
+      
+      $scope.kickUser = function(user) {
+        if (!confirm('Wirklich User „' + user.name + '“ aus der Gruppe „' + user.schoolname + '“ löschen?'))
+          return;
+        
+        socket.emit('school-kick-user', {
+          schoolid: user.school,
+          uid: user.uid
+        }, function() {
+          $scope.getRanking();
+          alert('Ok!');
+        });
+      };
+      
+      $scope.promoteUserToAdmin = function(user) {
+        if (!confirm('Wirklich User „' + user.name + '“ zum Admin der Gruppe „' + $scope.school.name + '“ machen?'))
+          return;
+        
+        socket.emit('school-change-member-status', {
+          schoolid: $scope.school.id,
+          uid: user.uid,
+          status: 'admin'
+        }, function() {
+          $scope.getRanking();
+          alert('Ok!');
+        });
+      };
+      
+      $scope.createSchool = function() {
+        var n = prompt('Gruppenname:').trim();
+        if (!n)
+          return;
+        
+        socket.emit('create-school', {
+          schoolname: n,
+          schoolpath: $scope.school.path + '/' + n.replace(/[^\w_-]/g, '-').replace(/-+/g, '-'),
+        }, function(data) {
+          if (data.code == 'create-school-success')
+            alert('Ok!');
+          else
+            alert('Fehler: ' + data.code);
+        });
+      };
     } else {
       tabbing($('#tabs'), '/ranking/?', $routeParams.pageid, $location, $scope);
       
@@ -1020,8 +1070,8 @@ angular.module('tradity.controllers', []).
         if (e.school == null)
           return;
         
-        if (schools.indexOf(e.school) == -1 && e.hastraded)
-          schools.push(e.school);
+        if (schools.indexOf(e.schoolpath) == -1 && e.hastraded)
+          schools.push(e.schoolpath);
         
         if (($scope.ownUser && e.school == $scope.ownUser.schoolid) || $scope.school)
           $scope.intraGroupResults.push(e);
@@ -1031,7 +1081,7 @@ angular.module('tradity.controllers', []).
       $.each(schools, function(i, s) {
         var students = [];
         $.each($scope.results, function(i, e) {
-          if (e.school == s && e.hastraded)
+          if ((e.schoolpath == s || e.schoolpath.substr(0, s.length + 1) == s + '/') && e.hastraded)
             students.push(e);
         });
     
@@ -1042,7 +1092,7 @@ angular.module('tradity.controllers', []).
           
         var avg = {prov_sum: 0, totalvalue: 0, school: s, schoolname: students[0].schoolname};
         var n = 0;
-        for (var i = 0; i < students.length && i < 3; ++i) {
+        for (var i = 0; i < students.length && i < 5; ++i) {
           ++n;
           avg.prov_sum += students[i].prov_sum;
           avg.totalvalue += students[i].totalvalue;
@@ -1067,7 +1117,7 @@ angular.module('tradity.controllers', []).
       $scope.updateSchoolDataFromRanking();
     };
     
-    $scope.updateSchoolDataFromRanking = function() {      
+    $scope.updateSchoolDataFromRanking = function() {
       $scope.school.usercount = $scope.results.length;
       
       $.each($scope.results, function(i, e) {
@@ -1548,12 +1598,8 @@ angular.module('tradity.controllers', []).
     };
     
     $scope.createSchool = function() {
-      if (!$scope.path) 
-        $scope.path = $scope.name.replace(/[^\w_-]/g, '');
-      
       socket.emit('create-school', {
         schoolname: $scope.name,
-        schoolpath: $scope.path
       }, function(data) {
         if (data.code == 'create-school-success')
           alert('Ok!');

@@ -9,10 +9,19 @@
 		<h2>{{school.name}}</h2>
 		<div>Mitglieder: {{school.usercount}}</div>
 		<div class="school-descpage">{{school.descpage}}</div>
-		<h3>Administratoren</h3>
-		<ul class="groupadminlist">
-			<li ng-repeat="admin in school.admins"><a href="#/user/{{admin.adminname}}">{{admin.adminname}}</a></li>
-		</ul>
+		<div ng-show="school.admins.length > 0">
+			<h3>Administratoren</h3>
+			<ul class="groupadminlist">
+				<li ng-repeat="admin in school.admins"><a href="#/user/{{admin.adminname}}">{{admin.adminname}}</a></li>
+			</ul>
+		</div>
+		<div ng-show="school.subgroups.length > 0 || isAdmin || selfIsSchoolAdmin">
+			<h3>Untergruppen</h3>
+			<ul class="subschoollist">
+				<li ng-repeat="subschool in school.subschools"><a href="#/s/{{subschool.path}}">{{subschool.name}}</a></li>
+				<li ng-show="isAdmin || selfIsSchoolAdmin"><a ng-click="createSchool()">Neue Untergruppe anlegen</a></li>
+			</ul>
+		</div>
 		<h3>Beliebte Aktien</h3>
 		<ul class="popularstocks">
 			<li ng-repeat="stock in school.popularStocks">{{stock.stockname}}</li>
@@ -23,14 +32,17 @@
 				<div class="comment comment-somebody">
 					<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
 					<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
-					<span ng-show="isAdmin || selfIsSchoolAdmin">
+					<span ng-show="isAdmin">
 						<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>
 						<a ng-click="deleteComment(comment)" style="cursor: pointer">Löschen</a>
+					</span>
+					<span ng-show="selfIsSchoolAdmin">
+						<a ng-click="deleteCommentSA(comment)" style="cursor: pointer">Löschen</a>
 					</span>
 					<span class="feed-time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
 				</div>
 			</div>
-			<form ng-submit="sendComment()" ng-show="selfIsSchoolMember">
+			<form ng-submit="sendComment()" ng-show="selfIsSchoolMember || selfIsSchoolAdmin || isAdmin">
 				<input type="submit" class="click-button comment-button" value="Kommentieren">
 				<textarea ng-model="comment" class="options-input comment-textarea" placeholder="Poste etwas in diesen Gruppenfeed!"></textarea>
 			</form>
@@ -52,7 +64,11 @@
 			</tr>
 			<tr ng-repeat="result in intraGroupResults | orderBy:'igrank' ">
 				<td>{{result.igrank}}</td>
-				<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
+				<td class="rank-name">
+					<a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a>
+					<a ng-click="kickUser(result)">X</a>
+					<a ng-click="promoteUserToAdmin(result)">Admin</a>
+				</td>
 				<td>{{result.prov_sum / 10000 | currency}}</td>
 				<td>{{result.totalvalue / 10000 | currency}}</td>
 			</tr>

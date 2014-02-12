@@ -1771,7 +1771,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#438ebb', end
 /* register form */
 
 #herounit .register-form {
-    width: 400px;
+    width: 330px;
     margin: 0px auto;
     margin-bottom: 10px;
 }

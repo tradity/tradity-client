@@ -82,7 +82,7 @@ angular.module('tradity.controllers', []).
     };
 
     $scope.showInfo1 = function () {
-      $("#hero-wrapper").animate({scrollTop:$('#hero-wrapper').outerHeight()*2}, '1600', 'swing', function() { 
+      $("#hero-wrapper").animate({scrollTop:$('#hero-wrapper').outerHeight()}, 1700, 'easeOutExpo', function() { 
          
       })
     }

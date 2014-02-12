@@ -1634,6 +1634,7 @@ div#tabs ul li.search-li {
     padding: 10px;
 }
 
+
 #herounit .logo {
 
     display: block;
@@ -1658,6 +1659,7 @@ div#tabs ul li.search-li {
     margin: 0px;
     padding: 0px;
     overflow: hidden;
+    cursor: pointer;
 
     -moz-box-sizing: border-box; 
     -webkit-box-sizing: border-box; 
@@ -1721,7 +1723,16 @@ div#tabs ul li.search-li {
 
 #herounit .actions {
     text-align: center;
-    padding-bottom: 15px;
+    padding: 20px 0px 30px 0px;
+}
+
+#herounit .login {
+    display: block;
+    margin-top: 5px;
+}
+
+#herounit .login a {
+    color:blue;
 }
 
 /* login form */
@@ -1779,10 +1790,11 @@ div#tabs ul li.search-li {
     margin-right: 5px;
 }
 
-.herounitFix {
+.herounitFix, .herounitFix body {
     overflow:hidden;
     width: 100%;
     height: 100%;
+    position: absolute;
 }
 
 /* Buttons */
@@ -1797,9 +1809,9 @@ div#tabs ul li.search-li {
     background: -ms-linear-gradient(top,  #0088CB 17%,#0083CA 95%); /* IE10+ */
     background: linear-gradient(to bottom,  #0088CB 17%,#0083CA 95%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0088CB', endColorstr='#0083CA',GradientType=0 ); /* IE6-9 */
-    -moz-border-radius:28px;
-    -webkit-border-radius:28px;
-    border-radius:28px;
+    -moz-border-radius:7px;
+    -webkit-border-radius:7px;
+    border-radius:7px;
     border:1px solid #29668f;
     display:inline-block;
     cursor:pointer;
@@ -1811,6 +1823,9 @@ div#tabs ul li.search-li {
     text-shadow:0px 1px 0px #3d768a;
 }
 
+#herounit .btn.register {
+    width: 150px;
+}
 
 #herounit .btn.btn-small {
     padding:6px 10px;
@@ -1856,12 +1871,13 @@ div#tabs ul li.search-li {
 #infounit {
     height: 100%;
     width: 100%;
-    margin-top: 100%;
     background-color:#ecf0f1;
     padding: 150px 0px;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
+    -webkit-box-shadow:inset 0 5px 5px 0 rgba(40,40,40,0.2);
+    box-shadow:inset 0 5px 5px 0 rgba(40,40,40,0.2);
 }
 
 #infounit .info-item {
@@ -1879,4 +1895,9 @@ div#tabs ul li.search-li {
 
 #infounit .content {
     font-size: 13px;
+}
+
+.herounit-spacer {
+    width: 100%;
+    height: 100%;
 }

@@ -7370,12 +7370,12 @@ function $RouteProvider(){
       //   regex only once and then reuse it
 
       // Escape regexp special characters.
-      when = '^' + when.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&") + '$';
+      when = '^' + when.replace(/[-\/\\^$+?.()|[\]{}]/g, "\\$&") + '$';
       var regex = '',
           params = [],
           dst = {};
 
-      var re = /:(\w+)/g,
+      var re = /:(\w+)(\*)?/g,
           paramMatch,
           lastMatchedIndex = 0;
 
@@ -7383,7 +7383,7 @@ function $RouteProvider(){
         // Find each :param in `when` and replace it with a capturing group.
         // Append all other sections of when unchanged.
         regex += when.slice(lastMatchedIndex, paramMatch.index);
-        regex += '([^\\/]*)';
+        regex += (paramMatch[2] == '*') ? '(.*)' : '([^\\/]*)';
         params.push(paramMatch[1]);
         lastMatchedIndex = re.lastIndex;
       }

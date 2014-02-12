@@ -93,7 +93,7 @@ angular.module('tradity', [
       templateUrl: 'templates/school.html',
       controller: 'RankingCtrl'
     }).
-    when('/s/:pageid/:schoolid', {
+    when('/s/:pageid/:schoolid*', {
       templateUrl: 'templates/school.html',
       controller: 'RankingCtrl'
     }).

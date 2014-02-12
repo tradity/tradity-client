@@ -18,7 +18,7 @@
 		<div ng-show="school.subgroups.length > 0 || isAdmin || selfIsSchoolAdmin">
 			<h3>Untergruppen</h3>
 			<ul class="subschoollist">
-				<li ng-repeat="subschool in school.subschools"><a href="#/s/{{subschool.path}}">{{subschool.name}}</a></li>
+				<li ng-repeat="subschool in school.subschools"><a href="#/s/general{{subschool.path}}">{{subschool.name}}</a></li>
 				<li ng-show="isAdmin || selfIsSchoolAdmin"><a ng-click="createSchool()">Neue Untergruppe anlegen</a></li>
 			</ul>
 		</div>
@@ -92,7 +92,7 @@
 			</tr>
 			<tr ng-repeat="result in interGroupResults | orderBy:'rank' | filter: searchText ">
 				<td>{{result.rank}}</td>
-				<td>{{result.schoolname}}</td>
+				<td><a href="#/s/general{{result.schoolpath}}">{{result.schoolname}}</a></td>
 				<td>{{result.count}}</td>
 				<td>{{result.prov_sum / 10000 | currency}}</td>
 				<td>{{result.totalvalue / 10000 | currency}}</td>

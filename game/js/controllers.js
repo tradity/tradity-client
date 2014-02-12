@@ -946,14 +946,21 @@ angular.module('tradity.controllers', []).
     $scope.selfIsSchoolAdmin = false;
     $scope.selfIsSchoolMember = false;
     $scope.comments = [];
+    $scope.schoolid = null;
     
     if ($routeParams.schoolid) {
+      if (parseInt($routeParams.schoolid) == $routeParams.schoolid)
+        $scope.schoolid = $routeParams.schoolid;
+      else
+        $scope.schoolid = '/' + $routeParams.schoolid;
+      
       socket.emit('get-school-info', {
-        lookfor: $routeParams.schoolid
+        lookfor: $scope.schoolid
       }, function(data) {
         if (data.code == 'get-school-info-success') {
           $scope.school = data.result;
           $scope.comments = $scope.school.comments;
+          $scope.schoolid = $scope.school.id;
           $scope.updateSchoolDataFromRanking();
         }
       });
@@ -964,7 +971,7 @@ angular.module('tradity.controllers', []).
     
       $scope.deleteCommentSA = function(comment) {
         socket.emit('school-delete-comment', {
-          schoolid: $routeParams.schoolid,
+          schoolid: $scope.schoolid,
           commentid: comment.commentid
         }, function() { alert('Ok!'); });
       };
@@ -987,7 +994,7 @@ angular.module('tradity.controllers', []).
           return;
         
         socket.emit('school-change-member-status', {
-          schoolid: $scope.school.id,
+          schoolid: $scope.schoolid,
           uid: user.uid,
           status: 'admin'
         }, function() {
@@ -1081,7 +1088,7 @@ angular.module('tradity.controllers', []).
       $.each(schools, function(i, s) {
         var students = [];
         $.each($scope.results, function(i, e) {
-          if ((e.schoolpath == s || e.schoolpath.substr(0, s.length + 1) == s + '/') && e.hastraded)
+          if (e.schoolpath && (e.schoolpath == s || e.schoolpath.substr(0, s.length + 1) == s + '/') && e.hastraded)
             students.push(e);
         });
     
@@ -1090,7 +1097,7 @@ angular.module('tradity.controllers', []).
         if (students.length == 0)
           throw new Error('School ' + s + ' has no students');
           
-        var avg = {prov_sum: 0, totalvalue: 0, school: s, schoolname: students[0].schoolname};
+        var avg = {prov_sum: 0, totalvalue: 0, school: s, schoolname: students[0].schoolname, schoolpath: students[0].schoolpath};
         var n = 0;
         for (var i = 0; i < students.length && i < 5; ++i) {
           ++n;
@@ -1137,6 +1144,7 @@ angular.module('tradity.controllers', []).
       var page = $routeParams.pageid;
 
       switch (page) {
+        case 'general':
         case 'all':
         default:
           socket.emit('get-ranking', {
@@ -1144,7 +1152,7 @@ angular.module('tradity.controllers', []).
             startindex:$scope.page*$scope.resultsPerPage,
             endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
             search:$scope.searchText,
-            schoolid:$routeParams.schoolid,
+            schoolid:$scope.schoolid,
             _cache: 20
           },
           function(data) {

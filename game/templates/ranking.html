@@ -180,7 +180,7 @@
 				</tr>
 				<tr ng-repeat="result in interGroupResults | orderBy:'rank' | filter: searchText ">
 					<td>{{result.rank}}</td>
-					<td>{{result.schoolname}}</td>
+					<td><a href="#/s/general{{result.schoolpath}}">{{result.schoolname}}</a></td>
 					<td>{{result.count}}</td>
 					<td>{{result.prov_sum / 10000 | currency}}</td>
 					<td>{{result.totalvalue / 10000 | currency}}</td>

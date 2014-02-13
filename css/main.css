@@ -1949,6 +1949,8 @@ div#tabs ul li.search-li {
 
     -webkit-box-shadow: 0 0 10px 0 rgba(20,20,20,0.4);
     box-shadow: 0 0 10px 0 rgba(20,20,20,0.4);
+
+    text-align: block;
 }
 
 .infounit.team .team-item.left .content {

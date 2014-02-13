@@ -1900,6 +1900,7 @@ div#tabs ul li.search-li {
     font-size: 14px;
     color: #fff;
     text-shadow: 1px 1px 0 #444;
+    text-align: justify;
 }
 
 .herounit-spacer {
@@ -1950,7 +1951,6 @@ div#tabs ul li.search-li {
     -webkit-box-shadow: 0 0 10px 0 rgba(20,20,20,0.4);
     box-shadow: 0 0 10px 0 rgba(20,20,20,0.4);
 
-    text-align: block;
 }
 
 .infounit.team .team-item.left .content {

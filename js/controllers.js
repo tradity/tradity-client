@@ -1025,7 +1025,7 @@ angular.module('tradity.controllers', []).
       $scope.sendComment = function() {};
     }
 
-    $scope.resultsPerPage = 5;
+    $scope.resultsPerPage = 15;
     $scope.page = 0;
 
     $scope.results = [];

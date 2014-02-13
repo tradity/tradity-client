@@ -72,9 +72,11 @@
         auf Facebook eine Frage posten. <span style="color: #ff5000;">Viel Erfolg!</span>
     </div>
     </div>
+    
     <div data-step="1" data-position="left" data-intro="Hier findest Du Deine Aktivitäten und die der Leute aus Deiner Watchlist.">
         <!-- ACTUAL FEED BEGIN -->
-        <div ng-repeat="message in displaymessages" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type" ng-show="message.type != 'mod-notification' || message.content.length > 0">
+        <div ng-repeat="message in displaymessages" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type" ng-show="message.type == 'mod-notification' || message">
+            
             <div ng-switch-when="mod-notification">
                 <div class="batch feed-entry-symbol">&#xF073;</div>
                 <div class="feed-entry-content" ng-bind-html-unsafe="message.content">

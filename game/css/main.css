@@ -2020,9 +2020,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#438ebb', end
 }
 
 .infounit.team .team-item h2 {
-    margin-top: 0px;
+    margin: 0px;
 }
 
 .infounit.team .team-item h2, .infounit.team .team-item p {
-    margin-left: 20px;
+    margin: 0px;
+}
+
+.infounit.team .team-item .content {
+    background: #fff;
+    color: #000;
+    text-shadow:none;
+
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+
+    padding: 5px;
+    margin-left: 15px;
 }

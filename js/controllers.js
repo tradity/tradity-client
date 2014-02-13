@@ -82,11 +82,11 @@ angular.module('tradity.controllers', []).
       onResize();
     };
 
-    $scope.showInfo1 = function () {
-      $("#hero-wrapper").animate({scrollTop:$('#hero-wrapper').outerHeight()}, 1700, 'easeOutExpo', function() { 
-         
-      })
+    $scope.goto = function (id) {
+      $("#hero-wrapper").animate({scrollTop:$('#'+id).offset().top}, 1700, 'easeOutExpo')
     }
+
+
   }).
   controller('LoginCtrl', function($scope, $routeParams, $location, socket) {
     $scope.username = '';

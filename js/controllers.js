@@ -57,12 +57,13 @@ angular.module('tradity.controllers', []).
             $('[ng-model="username"]').focus();
       }, 50);
     };
-
-    $window.document.getElementsByTagName('html')[0].className = 'herounitFix';
-    $scope.$on("$destroy", function(){
+    $scope.$watch('ownUser', function() {
+      if ($scope.ownUser == null) 
+        $window.document.getElementsByTagName('html')[0].className = 'herounitFix';
+      else
         $window.document.getElementsByTagName('html')[0].className = '';
     });
-    
+
     $scope.actions = true;
     $scope.loginForm = false;
     $scope.registerForm = false;

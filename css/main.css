@@ -74,43 +74,6 @@ textarea {
     padding: 0.2em 0;
 }
 
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
-
-@media only screen and (min-width: 960px) {
-    div.fixed-name-container {
-        border-bottom: thin solid #a7a7a7;
-        padding: 15px 0px;
-        position: fixed;
-        top: 0px;
-        width: 750px;
-        background-color: #fff;
-        display: none;
-        z-index: 3;
-        margin: 0px;
-        filter:alpha(opacity=90);
-        -moz-opacity: 0.9;
-        opacity: 0.9;
-    }
-        h1#tradity {
-        position: fixed;
-
-    }
-}
-@media only screen and (min-width: 1350px) {
-    #wrapper-the-wrapper .sponsors {
-        display: block;
-    }
-    div#wrapper-the-wrapper {width: 1350px;} 
-}
-
-@media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-
-}
 
 /* ==========================================================================
    Helper classes
@@ -372,7 +335,6 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto;
     box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
     background-color: #fff;
-    float: left;
 }
 
 #header {
@@ -1940,7 +1902,7 @@ div#tabs ul li.search-li {
 
 .herounit-spacer {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 }
 
 .infounit.blue .content {
@@ -2007,4 +1969,108 @@ div#tabs ul li.search-li {
 
 .infounit.team .team-row {
     margin-bottom:60px; 
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 960px) {
+
+    div.fixed-name-container {
+        border-bottom: thin solid #a7a7a7;
+        padding: 15px 0px;
+        position: fixed;
+        top: 0px;
+        width: 750px;
+        background-color: #fff;
+        display: none;
+        z-index: 3;
+        margin: 0px;
+        filter:alpha(opacity=90);
+        -moz-opacity: 0.9;
+        opacity: 0.9;
+    }
+    
+    h1#tradity {
+        position: fixed;
+
+    }
+}
+
+@media only screen and (min-width:321px) and (max-width:768px) { /* tablet */
+
+    .herounitFix #wrapper {
+        display: none;
+    }
+
+    #wrapper {
+        box-shadow: none;
+    }
+
+    body {
+        background: #fff;
+    }
+}
+
+@media (max-width: 660px) { 
+
+    #herounit {
+        width: 100%;
+        margin-left: 0px;
+        left: 0px;
+        border:none;
+    }
+
+    #herounit .logo {
+        width: 100%;
+        -moz-box-sizing: border-box; 
+        -webkit-box-sizing: border-box; 
+        box-sizing: border-box;
+    }
+
+    .infounit .info-item {
+        width: 100%;
+        margin: 0px;
+    }
+
+    .herounitFix #wrapper {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) { /* mobile */
+    #herounit .row {
+        width: 100%;
+        border-right:none;
+    }
+
+    #herounit {
+        margin: 0px!important;
+        top: 0px;
+        left: 0px;
+        height: auto;
+        position: relative;
+    }
+    #herounit .footer {
+        display: none;
+    }
+    .infounit.team .team-item.left .content, .infounit.team .team-item .content {
+        margin-right: 0px;
+    }
+
+    .infounit.team .team-item .pure-g{
+        margin-bottom: 20px;
+    }
+
+    .herounitFix #wrapper {
+        display: none;
+    }
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
 }

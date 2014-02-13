@@ -745,7 +745,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ==========================================================================
     options / register / trade
-   ========================================================================== 
+   ========================================================================== */
 
 .options-input,
 #options-sb,
@@ -1653,9 +1653,7 @@ div#tabs ul li.search-li {
 }
 
 #herounit .row {
-    width: 33.32%;
-    display:block;
-    float: left;
+
     margin: 0px;
     padding: 0px;
     overflow: hidden;
@@ -1667,7 +1665,7 @@ div#tabs ul li.search-li {
     border-right: 1px solid #fff;
 }
 
-#herounit .row:last-child {
+#herounit .row.last {
     border-right: none;
 }
 
@@ -2004,7 +2002,27 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#438ebb', end
     color: #000;
     text-shadow: none;
     -webkit-box-shadow: 0 0 5px 0 rgba(20,20,20,0.3);
-box-shadow: 0 0 5px 0 rgba(20,20,20,0.3);
--webkit-border-radius: 1px 2px 3px;
-border-radius: 1px 2px 3px;
+    box-shadow: 0 0 5px 0 rgba(20,20,20,0.3);
+    -webkit-border-radius: 1px 2px 3px;
+    border-radius: 1px 2px 3px;
+}
+
+/* das team */
+
+.infounit.team {
+    padding: 20px;
+}
+
+.infounit.team .team-item img {
+    -webkit-border-radius: 150px;
+    border-radius: 150px;
+    width: 100%;
+}
+
+.infounit.team .team-item h2 {
+    margin-top: 0px;
+}
+
+.infounit.team .team-item h2, .infounit.team .team-item p {
+    margin-left: 20px;
 }

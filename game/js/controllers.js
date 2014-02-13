@@ -54,6 +54,7 @@ angular.module('tradity.controllers', []).
     var onResize = function () {
       setTimeout(function() {
             $('#herounit').css('margin-top', -($('#herounit').height()/2));
+            $('[ng-model="username"]').focus();
       }, 50);
     };
 

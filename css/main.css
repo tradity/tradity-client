@@ -1913,6 +1913,15 @@ div#tabs ul li.search-li {
     padding: 20px;
 }
 
+.infounit.team .meta {
+    margin-top: 15px;
+    padding: 0px 10px;
+}
+
+.infounit.team .team-item .pure-u-4-5 {
+    margin-top: 20px;
+}
+
 .infounit.team .team-item img {
     -webkit-border-radius: 150px;
     border-radius: 150px;

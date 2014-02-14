@@ -42,17 +42,9 @@ angular.module('tradity', [
       templateUrl: 'templates/options.html',
       controller: 'OptionsCtrl'
     }).
-    when('/login', {
-      templateUrl: 'templates/herounit.html',
-      controller: 'HerounitCtrl'
-    }).
     when('/login/:emailVerifCode/:uid', {
       templateUrl: 'templates/login.html',
       controller: 'HerounitCtrl'
-    }).
-    when('/register', {
-      templateUrl: 'templates/herounit.html',
-      controller: 'RegistrationCtrl'
     }).
     when('/user/:userId', {
       templateUrl: 'templates/profile.html',

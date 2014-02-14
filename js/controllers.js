@@ -198,14 +198,14 @@ angular.module('tradity.controllers', []).
           $scope.ownUser = null;
           $scope.isAdmin = false;
           $scope.$broadcast('user-update');
-          $location.path('/login');
+          $location.path('/');
         }
       });
     };
     socket.on('response', function(data) {
       if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
         $scope.ownUser = null;
-        $location.path('/login');
+        $location.path('/');
       }
     }, $scope);
     socket.on('self-info', function(data) {

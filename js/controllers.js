@@ -1197,7 +1197,7 @@ angular.module('tradity.controllers', []).
         case 'intergroup':
           socket.emit('get-ranking', {
             rtype: 'general',
-            schoolid: $routeParams.schoolid,
+            schoolid: $scope.schoolid,
             _cache: 20
           },
           function(data) {

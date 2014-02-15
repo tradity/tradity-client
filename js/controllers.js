@@ -950,6 +950,7 @@ angular.module('tradity.controllers', []).
     $scope.pendingMembers = [];
     $scope.comments = [];
     $scope.schoolid = null;
+    $scope.descpage = '';
     $scope.editingDescpage = false;
     
     if ($routeParams.schoolid) {
@@ -964,6 +965,7 @@ angular.module('tradity.controllers', []).
         if (data.code == 'get-school-info-success') {
           $scope.school = data.result;
           $scope.comments = $scope.school.comments;
+          $scope.descpage = $scope.school.descpage;
           $scope.schoolid = $scope.school.id;
           $scope.computeGroupRanking();
         }

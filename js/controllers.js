@@ -157,8 +157,7 @@ angular.module('tradity.controllers', []).
       });
     };
     socket.emit('ping', function(data) {
-      if (data.uid)
-        $location.path('/');
+      
     });
 
   }).

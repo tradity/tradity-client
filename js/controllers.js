@@ -1156,7 +1156,7 @@ angular.module('tradity.controllers', []).
       for (var i = 0; i < $scope.intraGroupResults.length; ++i)
         $scope.intraGroupResults[i].igrank = i+1;
         
-      $scope.school.usercount = $scope.results.length;
+      $scope.school.usercount = $scope.results.length - $scope.pendingMembers.length;
       
       $.each($scope.results, function(i, e) {
         if (e.uid == $scope.ownUser.uid)

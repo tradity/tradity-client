@@ -9,6 +9,14 @@
 		<h2>{{school.name}}</h2>
 		<div>Mitglieder: {{school.usercount}}</div>
 		<div class="school-descpage">{{school.descpage}}</div>
+		<div ng-show="isAdmin || selfIsSchoolAdmin">
+			<a ng-click="enterDescpageEdit()">(Bearbeiten)</a>
+			<form ng-submit="changeDescription()">
+				<textarea ng-show="editingDescpage" ng-model="descpage" id="descpage" class="options-input"></textarea>
+				
+				<input type="submit" value="Speichern" />
+			</form>
+		</div>
 		<div ng-show="school.admins.length > 0">
 			<h3>Administratoren</h3>
 			<ul class="groupadminlist">
@@ -20,6 +28,11 @@
 			<ul class="subschoollist">
 				<li ng-repeat="subschool in school.subschools"><a href="#/s/general{{subschool.path}}">{{subschool.name}}</a></li>
 				<li ng-show="isAdmin || selfIsSchoolAdmin"><a ng-click="createSchool()">Neue Untergruppe anlegen</a></li>
+			</ul>
+		</div>
+		<div ng-show="isAdmin || selfIsSchoolAdmin">
+			<ul class="pendinguserslist">
+				<li ng-repeat="user in pendingMembers"><a href="#/user/{{user.name}}">{{user.name}}</a> (<a ng-click="verifyMember(user)">user</a></li>
 			</ul>
 		</div>
 		<h3>Beliebte Aktien</h3>

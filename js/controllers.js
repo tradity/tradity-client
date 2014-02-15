@@ -947,8 +947,10 @@ angular.module('tradity.controllers', []).
     $scope.school = {};
     $scope.selfIsSchoolAdmin = false;
     $scope.selfIsSchoolMember = false;
+    $scope.pendingMembers = [];
     $scope.comments = [];
     $scope.schoolid = null;
+    $scope.editingDescpage = false;
     
     if ($routeParams.schoolid) {
       if (parseInt($routeParams.schoolid) == $routeParams.schoolid)
@@ -963,7 +965,7 @@ angular.module('tradity.controllers', []).
           $scope.school = data.result;
           $scope.comments = $scope.school.comments;
           $scope.schoolid = $scope.school.id;
-          $scope.updateSchoolDataFromRanking();
+          $scope.computeGroupRanking();
         }
       });
       
@@ -999,6 +1001,30 @@ angular.module('tradity.controllers', []).
           schoolid: $scope.schoolid,
           uid: user.uid,
           status: 'admin'
+        }, function() {
+          $scope.getRanking();
+          alert('Ok!');
+        });
+      };
+      
+      $scope.enterDescpageEdit = function() {
+        $scope.editingDescpage = true;
+      };
+      
+      $scope.changeDescription = function() {
+        socket.emit('school-change-description', {
+          schoolid: $scope.schoolid,
+          descpage: $scope.descpage
+        }, function() {
+          alert('Ok!');
+        });
+      };
+      
+      $scope.verifyMember = function(user) {
+        socket.emit('school-change-member-status', {
+          schoolid: $scope.schoolid,
+          uid: user.uid,
+          status: 'member'
         }, function() {
           $scope.getRanking();
           alert('Ok!');
@@ -1090,8 +1116,11 @@ angular.module('tradity.controllers', []).
       $.each(schools, function(i, s) {
         var students = [];
         $.each($scope.results, function(i, e) {
-          if (e.schoolpath && (e.schoolpath == s || e.schoolpath.substr(0, s.length + 1) == s + '/') && e.hastraded)
+          if (e.schoolpath && (e.schoolpath == s || e.schoolpath.substr(0, s.length + 1) == s + '/') && e.hastraded && !e.pending)
             students.push(e);
+            
+          if ($scope.school && e.schoolpath == $scope.school.path && e.pending) 
+            $scope.pendingMembers.push(e);
         });
     
         students.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
@@ -1107,11 +1136,13 @@ angular.module('tradity.controllers', []).
           avg.totalvalue += students[i].totalvalue;
         }
         
-        avg.count = students.length;
-        avg.prov_sum /= n;
-        avg.totalvalue /= n;
-        
-        $scope.interGroupResults.push(avg);
+        if (n > 0) {
+          avg.count = students.length;
+          avg.prov_sum /= n;
+          avg.totalvalue /= n;
+          
+          $scope.interGroupResults.push(avg);
+        }
       });
       
       $scope.interGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
@@ -1123,10 +1154,6 @@ angular.module('tradity.controllers', []).
       for (var i = 0; i < $scope.intraGroupResults.length; ++i)
         $scope.intraGroupResults[i].igrank = i+1;
         
-      $scope.updateSchoolDataFromRanking();
-    };
-    
-    $scope.updateSchoolDataFromRanking = function() {
       $scope.school.usercount = $scope.results.length;
       
       $.each($scope.results, function(i, e) {
@@ -1146,13 +1173,12 @@ angular.module('tradity.controllers', []).
       var page = $routeParams.pageid;
 
       switch (page) {
-        case 'general':
         case 'all':
         default:
           socket.emit('get-ranking', {
             rtype: 'general',
-            startindex:$scope.page*$scope.resultsPerPage,
-            endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
+            startindex:$scope.page * $scope.resultsPerPage,
+            endindex:$scope.page * $scope.resultsPerPage + $scope.resultsPerPage,
             search:$scope.searchText,
             schoolid:$scope.schoolid,
             _cache: 20
@@ -1162,9 +1188,9 @@ angular.module('tradity.controllers', []).
               return false;
             $scope.results = data.result;
             $scope.resultsCount = data.count;
-            $scope.updateSchoolDataFromRanking();
           });
           break;
+        case 'general':
         case 'intragroup':
         case 'intergroup':
           socket.emit('get-ranking', {

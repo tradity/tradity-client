@@ -87,7 +87,6 @@ angular.module('tradity.controllers', []).
       $("#hero-wrapper").animate({scrollTop:$('#'+id).offset().top}, 1700, 'easeOutExpo')
     }
 
-
   }).
   controller('LoginCtrl', function($scope, $routeParams, $location, socket) {
     $scope.username = '';
@@ -159,7 +158,6 @@ angular.module('tradity.controllers', []).
     socket.emit('ping', function(data) {
       
     });
-
   }).
   controller('MainCtrl', function($scope, $location, socket) {
     $scope.Math = Math;
@@ -1053,46 +1051,18 @@ angular.module('tradity.controllers', []).
       $scope.sendComment = function() {};
     }
 
-    $scope.resultsPerPage = 15;
-    $scope.page = 0;
-
     $scope.results = [];
-    $scope.resultsCount = 0;
-
-    $scope.resultsWithProvision = [];
-    $scope.resultsWithProvisionCount = 0;
-
     $scope.resultsWeek = [];
-    $scope.resultsWeekCount = 0;
-
     $scope.resultsFollower = [];
-    $scope.resultsFollowerCount = 0;
-
     $scope.resultsFollowerWeek = [];
-    $scope.resultsFollowerCount = 0;
-
     $scope.intraGroupResults = [];
-    $scope.intraGroupResultsCount = 0;
-
     $scope.interGroupResults = [];
-    $scope.interGroupResultsCount = 0;
 
-    $scope.getPages = function(n) {
-      if (n == 0) 
-        return [];
-      n = Math.ceil(n/$scope.resultsPerPage);
-      var pages = [];
-      for (var i=0;i < n;i++) pages[i] = i;
-      return  pages;
-    };
+    $scope.searchText = '';
+    $scope.totalDisplayed = 20;
 
-    $scope.setPage = function (page) {
-      $scope.page = page;
-      $scope.getRanking();
-    }
-
-    $scope.activePage = function(item) {
-      return item === $scope.page ? 'active' : undefined;
+    $scope.loadMore = function() {
+      $scope.totalDisplayed += 10;
     };
 
     $scope.$on('user-update', function() { $scope.computeGroupRanking(); });
@@ -1178,8 +1148,6 @@ angular.module('tradity.controllers', []).
         default:
           socket.emit('get-ranking', {
             rtype: 'general',
-            startindex:$scope.page * $scope.resultsPerPage,
-            endindex:$scope.page * $scope.resultsPerPage + $scope.resultsPerPage,
             search:$scope.searchText,
             schoolid:$scope.schoolid,
             _cache: 20
@@ -1210,8 +1178,6 @@ angular.module('tradity.controllers', []).
         case 'all-withprov':
           socket.emit('get-ranking', {
             rtype: 'general-wprov',
-            startindex:$scope.page*$scope.resultsPerPage,
-            endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
             search:$scope.searchText,
             _cache: 20
           },
@@ -1225,8 +1191,6 @@ angular.module('tradity.controllers', []).
         case 'follower':
           socket.emit('get-ranking', {
             rtype: 'following',
-            startindex:$scope.page*$scope.resultsPerPage,
-            endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
             search:$scope.searchText,
             _cache: 20
           },
@@ -1240,8 +1204,6 @@ angular.module('tradity.controllers', []).
         case 'all-week':
           socket.emit('get-ranking', {
             rtype: 'general-week',
-            startindex:$scope.page*$scope.resultsPerPage,
-            endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
             search:$scope.searchText,
             _cache: 20
           },
@@ -1255,8 +1217,6 @@ angular.module('tradity.controllers', []).
         case 'follower-week':
           socket.emit('get-ranking', {
             rtype: 'following-week',
-            startindex:$scope.page*$scope.resultsPerPage,
-            endindex:$scope.page*$scope.resultsPerPage+$scope.resultsPerPage,
             search:$scope.searchText,
             _cache: 20
           },

@@ -1,9 +1,12 @@
 'use strict';
 
 angular.module('tradity', [
+  'ngRoute',
   'tradity.controllers',
   'tradity.services',
-  'ngSanitize'
+  'ngSanitize',
+  'pasvaz.bindonce',
+  'infinite-scroll'
 ]).config(['$routeProvider', function ($routeProvider, $locationProvider) {
   $routeProvider.
     when('/', {

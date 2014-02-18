@@ -159,7 +159,7 @@ angular.module('tradity.controllers', []).
       
     });
   }).
-  controller('MainCtrl', function($scope, $location, socket) {
+  controller('MainCtrl', function($sce, $scope, $location, socket) {
     $scope.Math = Math;
     $scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
     
@@ -425,7 +425,7 @@ angular.module('tradity.controllers', []).
         type: type,
         typePerson: 'important-item',
         time: data.eventtime,
-        content: data.notifcontent,
+        content: $sce.trustAsHtml(data.notifcontent),
         sticky: data.notifsticky,
       });
     });

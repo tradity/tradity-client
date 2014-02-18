@@ -79,7 +79,7 @@
             
             <div ng-switch-when="mod-notification">
                 <div class="batch feed-entry-symbol">&#xF073;</div>
-                <div class="feed-entry-content" ng-bind-html-unsafe="message.content">
+                <div class="feed-entry-content" ng-bind-html="message.content">
                     {{message.content}}
                 </div>
             </div>

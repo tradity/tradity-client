@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>tradity</title>
-        <meta name="description" content="Social Trading renewed"> <!-- edit -->
+        <meta name="description" content="Beim Börsenspiel Tradity bist Du gefragt Dein virtuelles Startkapital möglichst vielversprechend in Wertpapiere zu investieren."> <!-- edit -->
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="css/ac.css">
@@ -68,14 +68,10 @@
                         <a ng-click="showRegister()" id="register-btn" href="" class="btn register">Registrieren</a></br>
                         <span class="login">oder <a href="" id="login-btn" ng-click="showLogin()">Anmelden</a> </span>
                     </div>
-                    <div class="login-form" ng-controller="LoginCtrl" ng-show="loginForm">
-                        <ng-include src="'templates/login.html'"/>
-                    </div>
-                    <div class="register-form" ng-controller="RegistrationCtrl" ng-show="registerForm">
-                        <!--<a href="" id="fbregister"><i class="fa fa-facebook"></i> Mit Facebook registrieren</a>-->
-                        <ng-include src="'templates/registration.html'"/>
-                    </div>
-
+                    
+                    <ng-include src="'templates/login.html'"></ng-include>
+                    <ng-include src="'templates/registration.html'"></ng-include>
+                    
                     <div class="showcase pure-g" ng-hide="registerForm || loginForm">
                         <div class="row pure-u-1-3" ng-click="goto('info1')">
                             <div class="header social">

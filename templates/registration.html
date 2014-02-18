@@ -1,23 +1,31 @@
-<div id="registration" class="main-content">
-  <form ng-submit="register()">
-    <fieldset class="options-field"> 
-      <legend>Registrierung</legend>
-      <label class="reg-required" for="name">Benutzername</label>
-      <input type="text" ng-model="name" placeholder="Benutzername" id="name" class="options-input"><br>
-      <label class="reg-required" for="password">Passwort</label>
-      <input type="password" ng-model="password" placeholder="Passwort" id="password" class="options-input"><br>
-      <label class="reg-required" for="password_check">Wiederhole dein Passwort</label>
-      <input type="password" ng-model="password_check" placeholder="Passwort" id="password" class="options-input"><br>
-      <label class="reg-required" for="email">E-Mail</label>
-      <input type="email" ng-model="email" placeholder="E-Mail" id="email" class="options-input"><br>
-      <label class="reg-required" for="agbread"><a href="#/tos">AGB</a> gelesen?</label>
-      <input type="checkbox" ng-model="agbread" id="agbread" class="checkbox"> Ja<br>
+<form class="pure-form pure-form-aligned" ng-submit="register()">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="name">Benutzername</label>
+            <input id="name" ng-model="name" type="text" placeholder="Benutzername">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="password">Passwort</label>
+            <input id="password" ng-model="password" type="password" placeholder="Passwort">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="password-repeat">Passwort wiederholen</label>
+            <input id="password-repeat" ng-model="password_check" type="password" placeholder="Passwort">
+        </div>
+
+        <div class="pure-control-group">
+            <label for="email">Email-Addresse</label>
+            <input id="email" ng-model="email" type="email" placeholder="Email Addresse">
+        </div>
+
+        <div class="pure-controls">
+            <label for="cb" class="pure-checkbox">
+                <input id="cb" ng-model="agbread" type="checkbox"> Ich habe die AGB gelesen und akzeptiert.
+            </label>
+        </div>
+
     </fieldset>
-    <div style="text-align: left">
-          <span style="color:#a00;font-size:85%">*</span>: Pflichtangabe
-    </div>
-    <div style="text-align: right">
-      <input type="submit" value="Registrieren" id="options-sb">
-    </div>
-  </form>
-</div>
+    <button type="submit" class="btn btn-small">Registrieren</button><a href="" ng-click="showLogin()" id="gtlogin">Ich bin bereits registriert!</a>
+</form>

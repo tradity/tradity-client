@@ -1,18 +1,9 @@
-<div class="main-content">
-  <form ng-submit="login()">
-    <fieldset class="options-field"> 
-      <legend>Login</legend>
-      <label for="name">Benutzername</label>
-      <input type="text" ng-model="username" placeholder="Benutzername" id="name" class="options-input" autofocus ><br>
-      <label for="password">Passwort</label>
-      <input type="password" ng-model="password" placeholder="Passwort" id="password" class="options-input"><br>
-      <label for="stayloggedin" id="stayloggedin-right">Eingeloggt bleiben?</label>
-      <input type="checkbox" ng-model="stayloggedin" id="stayloggedin"><br>
+<form class="pure-form" ng-submit="login()">
+    <fieldset class="pure-group">
+        <input type="text" class="pure-input" ng-model="username" placeholder="Benutzername">
+        <input type="password" class="pure-input" ng-model="password" placeholder="Passwort">
     </fieldset>
-   	<div style="text-align: right">
-    	<a class="text-link" style="margin-right: 20px;" href="#/register" title="Noch nicht registriert?">Noch nicht registriert?</a><!--
-      --><a class="text-link" ng-click="passwordReset();" style="cursor: pointer; margin-right: 20px;">Passwort vergessen?</a><!--
-      --><input type="submit" value="Login" id="options-sb">
-    </div>
-  </form>  
-</div>
+    <input type="checkbox" ng-model="stayloggedin" id="stayloggedin" style="display:inline-block;margin-bottom:5px;"> Eingeloggt bleiben?<br><br>
+
+    <button type="submit" class="btn btn-small">Login</button> <a class="registerq" ng-click="showRegister()" href="">Noch nicht registriert?</a>
+</form>

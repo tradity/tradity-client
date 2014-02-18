@@ -69,49 +69,11 @@
                         <span class="login">oder <a href="" id="login-btn" ng-click="showLogin()">Anmelden</a> </span>
                     </div>
                     <div class="login-form" ng-controller="LoginCtrl" ng-show="loginForm">
-                        <form class="pure-form" ng-submit="login()">
-                            <fieldset class="pure-group">
-                                <input type="text" class="pure-input" ng-model="username" placeholder="Benutzername">
-                                <input type="password" class="pure-input" ng-model="password" placeholder="Passwort">
-                            </fieldset>
-                            <input type="checkbox" ng-model="stayloggedin" id="stayloggedin" style="display:inline-block;margin-bottom:5px;"> Eingeloggt bleiben?<br><br>
-
-                            <button type="submit" class="btn btn-small">Login</button> <a class="registerq" ng-click="showRegister()" href="">Noch nicht registriert?</a>
-                        </form>
+                        <ng-include src="'templates/login.html'"/>
                     </div>
                     <div class="register-form" ng-controller="RegistrationCtrl" ng-show="registerForm">
                         <!--<a href="" id="fbregister"><i class="fa fa-facebook"></i> Mit Facebook registrieren</a>-->
-                        <form class="pure-form pure-form-aligned" ng-submit="register()">
-                            <fieldset>
-                                <div class="pure-control-group">
-                                    <label for="name">Benutzername</label>
-                                    <input id="name" ng-model="name" type="text" placeholder="Benutzername">
-                                </div>
-
-                                <div class="pure-control-group">
-                                    <label for="password">Passwort</label>
-                                    <input id="password" ng-model="password" type="password" placeholder="Passwort">
-                                </div>
-
-                                <div class="pure-control-group">
-                                    <label for="password-repeat">Passwort wiederholen</label>
-                                    <input id="password-repeat" ng-model="password_check" type="password" placeholder="Passwort">
-                                </div>
-
-                                <div class="pure-control-group">
-                                    <label for="email">Email-Addresse</label>
-                                    <input id="email" ng-model="email" type="email" placeholder="Email Addresse">
-                                </div>
-
-                                <div class="pure-controls">
-                                    <label for="cb" class="pure-checkbox">
-                                        <input id="cb" ng-model="agbread" type="checkbox"> Ich habe die AGB gelesen und akzeptiert.
-                                    </label>
-                                </div>
-
-                            </fieldset>
-                            <button type="submit" class="btn btn-small">Registrieren</button><a href="" ng-click="showLogin()" id="gtlogin">Ich bin bereits registriert!</a>
-                        </form>
+                        <ng-include src="'templates/registration.html'"/>
                     </div>
 
                     <div class="showcase pure-g" ng-hide="registerForm || loginForm">
@@ -135,7 +97,7 @@
                         </div>
                     </div>
                     <div class="clearfix"></div>
-                    <div class="footer">
+                    <footer class="footer">
                         <div class="footer-right">
                             <img  src="img/android.png"><br>
                             Kontakt: <a class="text-link" href="mailto:team@tradity.de">team@tradity.de</a><br>
@@ -153,7 +115,7 @@
                             <a class="footer-link" href="legal.html"><i class="fa fa-gavel"></i> Impressumg/AGB</a>
 
                         </div>
-                    </div>
+                    </footer>
                 </div>
 
             </div>

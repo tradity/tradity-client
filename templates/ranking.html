@@ -159,7 +159,7 @@
 				</tr>
 				<tr ng-repeat="result in interGroupResults | limitTo:totalDisplayed">
 					<td>{{result.rank}}</td>
-					<td>{{result.schoolname}}</td>
+					<td><a href="#/s{{result.schoolpath}}">{{result.schoolname}}</a></td>
 					<td>{{result.count}}</td>
 					<td>{{result.prov_recvd / 10000 | currency}}</td>
 					<td>{{result.totalvalue / 10000 | currency}}</td>

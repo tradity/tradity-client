@@ -101,16 +101,16 @@ angular.module('tradity.controllers', []).
       function(data) {
         switch (data.code) {
           case 'email-verify-success':
-            alert('Emailadresse erfolgreich bestätigt');
+            notification('Emailadresse erfolgreich bestätigt',true);
             break;
           case 'email-verify-already-verified':
-            alert('Emailadresse bereits bestätigt');
+            notification('Emailadresse bereits bestätigt');
             break;
           case 'email-verify-other-already-verified':
-            alert('Jemand anderes hat diese Emailadresse bereits bestätigt');
+            notification('Jemand anderes hat diese Emailadresse bereits bestätigt');
             break;
           case 'email-verify-failure':
-            alert('Fehler beim Bestätigen der Emailadresse');
+            notification('Fehler beim Bestätigen der Emailadresse');
         }
       });
     }
@@ -128,26 +128,26 @@ angular.module('tradity.controllers', []).
             $location.path('/');
             break;
           case 'login-badname':
-            alert('Benutzer existiert nicht');
+            notification('Benutzer existiert nicht');
             break;
           case 'login-wrongpw':
-            alert('Falsches Passwort');
+            notification('Falsches Passwort');
             break;
           case 'login-email-not-verified':
-            alert('Emailadresse noch nicht bestätigt');
+            notification('Emailadresse noch nicht bestätigt');
         }
       });
     };
 
     socket.on('password-reset', function(data) {
       if (data.code == 'password-reset-success') {
-        alert('Neues Passwort erfolgreich versandt');
+        notification('Neues Passwort erfolgreich versandt',true);
       } else if (data.code == 'password-reset-failed') {
-        alert('Das neue Passwort konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
+        notification('Das neue Passwort konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
       } else if (data.code == 'password-reset-notfound') {
-        alert('Benutzer existiert nicht');
+        notification('Benutzer existiert nicht');
       } else if (data.code == 'password-reset-sending') {
-        alert('Neues Passwort wird versandt');
+        notification('Neues Passwort wird versandt');
       }
     });
     $scope.passwordReset = function() {

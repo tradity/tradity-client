@@ -214,30 +214,30 @@ textarea {
 
 @font-face {
   font-family: "batch";
-  src: url("../fonts/type/batch/batch.eot");
+  src: url("../fonts/batch/batch.eot");
   src: local("☺"),
-    url("../fonts/type/batch/batch.woff") format("woff"),
-    url("../fonts/type/batch/batch.otf") format("opentype"),
-    url("../fonts/type/batch/batch.svg#batch") format("svg");
+    url("../fonts/batch/batch.woff") format("woff"),
+    url("../fonts/batch/batch.otf") format("opentype"),
+    url("../fonts/batch/batch.svg#batch") format("svg");
 }
 
 @font-face {
   font-family: 'Abel';
   font-style: normal;
   font-weight: 400;
-  src: local('Abel'), local('Abel-Regular'), url("../fonts/type/Abel/abel.woff") format('woff');
+  src: local('Abel'), local('Abel-Regular'), url("../fonts/Abel/abel.woff") format('woff');
 }
 @font-face {
   font-family: 'Droid Sans';
   font-style: normal;
   font-weight: 400;
-  src: local('Droid Sans'), local('DroidSans'), url("../fonts/type/Droid_Sans/droidsans400.woff") format('woff');
+  src: local('Droid Sans'), local('DroidSans'), url("../fonts/Droid_Sans/droidsans400.woff") format('woff');
 }
 @font-face {
   font-family: 'Droid Sans';
   font-style: normal;
   font-weight: 700;
-  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url("../fonts/type/Droid_Sans/droidsans700.woff") format('woff');
+  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url("../fonts/Droid_Sans/droidsans700.woff") format('woff');
 }
 
 /* ==========================================================================

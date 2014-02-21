@@ -13,8 +13,7 @@ function logoTransition() {
 			logoText.slideDown(300);
 			nameContainer.addClass("fixed-name-container");
 			nameContainer.slideDown(300);
-		}
-		else {
+		} else {
 			logoText.slideUp(100);
 			nameContainer.removeClass("fixed-name-container");	
 		}
@@ -27,18 +26,21 @@ var initNotifications = function() {
 };
 
 var notification = function (text,icon) { // icon == true -> success
-	var klassen;
+	var classes;
 	
-	if (!icon) icon = 'fa-exclamation-triangle';
+	if (!icon)
+		icon = 'fa-exclamation-triangle';
+	
 	if (icon == true) {
-		klassen = 'success';
+		classes = 'success';
 		icon = 'fa-check';
 	}
-	var notificationItem = $('<div class="notification-item '+klassen+'"><i class="fa '+icon+'"></i> '+text+'</div>');
+	
+	var notificationItem = $('<div class="notification-item ' + classes + '"><span class="fa ' + icon + '"></span> ' + text + '</div>');
 	notificationItem.hide();
 	$('#notifications').prepend(notificationItem);
-	notificationItem.fadeIn( 500 );
-	setTimeout(function(){
-		notificationItem .hide();
-	},3000);
+	notificationItem.fadeIn(500);
+	setTimeout(function() {
+		notificationItem.hide();
+	}, 3000);
 }

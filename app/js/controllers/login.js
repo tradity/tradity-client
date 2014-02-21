@@ -34,8 +34,9 @@ angular.module('tradity').
       function(data) {        
         switch (data.code) {
           case 'login-success':
-            $scope.fetchSelf();
-            $scope.pokeEvents();
+            $scope.fetchSelf(function() {
+              $scope.pokeEvents();
+            });
             $location.path('/');
             break;
           case 'login-badname':

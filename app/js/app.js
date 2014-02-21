@@ -2,8 +2,6 @@
 
 angular.module('tradity', [
   'ngRoute',
-  'tradity.controllers',
-  'tradity.services',
   'pasvaz.bindonce',
   'infinite-scroll'
 ]).config(['$routeProvider', function ($routeProvider, $locationProvider) {

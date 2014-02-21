@@ -144,7 +144,7 @@ SoTradeConnection.prototype.on = function(evname, cb, angularScope) {
 	}
 }
 
-angular.module('tradity.services', []).
+angular.module('tradity').
 	factory('socket', function ($rootScope) {
 		var socket = new SoTradeConnection(io.connect('https://dev.tradity.de:443'));
 		return {

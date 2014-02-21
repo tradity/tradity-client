@@ -20,6 +20,13 @@
 
         <!-- build:js({.tmp,app}) js/scripts.js -->
         <script type="text/javascript" src="js/vendor/jquery-2.0.3.min.js"></script>
+        <script type="text/javascript" src="js/vendor/angular.min.js"></script>
+        <script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+        <script type="text/javascript" src="js/vendor/angular-locale_de.js"></script>
+        <script type="text/javascript" src="js/bindonce.min.js"></script>
+        <script type="text/javascript" src="js/ng-infinite-scroll.min.js"></script>
+        <script type="text/javascript" src="js/intro.js"></script>
+        <script type="text/javascript" src="js/vagueTime.min.js"></script>
         <script type="text/javascript" src="js/jquery-ui-1.10.3.custom.min.js"></script>
         <script type="text/javascript" src="js/jquery.jqplot.min.js"></script>
         <script type="text/javascript" src="js/jqplot.highlighter.min.js"></script>
@@ -29,35 +36,24 @@
         <script type="text/javascript" src="js/jqplot.canvasAxisTickRenderer.min.js"></script>
         <script type="text/javascript" src="js/jqplot.canvasTextRenderer.min.js"></script>
         <script type="text/javascript" src="js/ac.js"></script>
-        <script type="text/javascript" src="js/vendor/angular.min.js"></script>
-        <script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
-        <script type="text/javascript" src="js/vendor/angular-locale_de.js"></script>
-        <script type="text/javascript" src="js/bindonce.min.js"></script>
-        <script type="text/javascript" src="js/ng-infinite-scroll.min.js"></script>
+
         <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/services.js"></script>
-        <script type="text/javascript" src="js/controllers.js"></script>
-        <script type="text/javascript" src="js/intro.js"></script>
-        <script type="text/javascript" src="js/vagueTime.min.js"></script>
+        <script type="text/javascript" src="js/controllers/main.js"></script>
+        <script type="text/javascript" src="js/controllers/herounit.js"></script>
+        <script type="text/javascript" src="js/controllers/login.js"></script>
+        <script type="text/javascript" src="js/controllers/registration.js"></script>
+        <script type="text/javascript" src="js/controllers/options.js"></script>
+        <script type="text/javascript" src="js/controllers/depot.js"></script>
+        <script type="text/javascript" src="js/controllers/profile.js"></script>
+        <script type="text/javascript" src="js/controllers/ranking.js"></script>
+        <script type="text/javascript" src="js/controllers/tradeDetails.js"></script>
+        <script type="text/javascript" src="js/controllers/trade.js"></script>
+        <script type="text/javascript" src="js/controllers/admin.js"></script>
+        <script type="text/javascript" src="js/controllers/feed.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <!-- endbuild -->
         <script type="text/javascript" src="https://dev.tradity.de/socket.io/socket.io.js"></script>
-        <!-- Piwik -->
-        <script type="text/javascript">
-          var _paq = _paq || [];
-          _paq.push(["trackPageView"]);
-          _paq.push(["enableLinkTracking"]);
-
-          (function() {
-            var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.entless.org/";
-            _paq.push(["setTrackerUrl", u+"piwik.php"]);
-            _paq.push(["setSiteId", "3"]);
-            var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-            g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
-          })();
-        </script>
-        <!-- End Piwik Code -->
-
     </head>
     <body ng-controller="MainCtrl">
         <div ng-controller="HerounitCtrl">
@@ -115,7 +111,6 @@
                             </div>
                         </footer>
                     </div>
-
                 </div>
                 <div class="infounit first" id="info1">
                     <div class="info-item">
@@ -125,9 +120,10 @@
                         </div>
                         <div class="content">
                             <p>
-                            Beim Börsenspiel Tradity bist Du gefragt Dein virtuelles Startkapital von 100.000 Euro möglichst vielversprechend in Wertpapiere zu investieren. Dabei stehen Dir sämtliche handelbaren Wertpapiere der Börse Frankfurt zur Verfügung – und das in Echzeit! </p><p>
-                            Dein Ziel? Die besten Aktien für eine nachhaltige Entwicklung auszuwählen und zu handeln. So bekommst Du die Möglichkeit, ohne Risiko erste Erfahrungen mit dem Thema Finanzen und Börse zu machen und außerdem einen von vielen attraktiven Preisen zu gewinnen. </p><p>
-                            Sei dabei, wenn Tradity im Mai 2014 in die zweite Staffel geht!</p>
+                                Beim Börsenspiel Tradity bist Du gefragt Dein virtuelles Startkapital von 100.000 Euro möglichst vielversprechend in Wertpapiere zu investieren. Dabei stehen Dir sämtliche handelbaren Wertpapiere der Börse Frankfurt zur Verfügung – und das in Echzeit! </p><p>
+                                Dein Ziel? Die besten Aktien für eine nachhaltige Entwicklung auszuwählen und zu handeln. So bekommst Du die Möglichkeit, ohne Risiko erste Erfahrungen mit dem Thema Finanzen und Börse zu machen und außerdem einen von vielen attraktiven Preisen zu gewinnen. </p><p>
+                                Sei dabei, wenn Tradity im Mai 2014 in die zweite Staffel geht!
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -139,10 +135,9 @@
                         </div>
                         <div class="content">
                             <p>
-                            Tradity ist kein gewöhnliches Börsenspiel. Interaktiver Austausch, integrierter Feed und transparente Ranglisten ermöglichen es Dir, Dich direkt mit Deinen Freunden zu vergleichen, die besten Trader zu finden und von Ihnen und der Community zu lernen. </p><p>
-                            Darüber hinaus kannst Du Dein Kapital nicht nur in erfolgsträchtige Wertpapiere investieren, sondern ebenso auch in fähige Teilnehmer. Dabei vertraust Du anderen Teilnehmern Deiner Wahl (sogenannten Leadern) einen beliebigen Teil Deines Vermögens an, von dessen Gewinnen im Erfolgsfall ein Teil an Deinen Leader abfällt – aber nur von Deinen Gewinnen. Im Verlustfall geht Ihr beide leer aus. </p><p>
-                            Du willst selber Leader werden und das Kapital anderer Trader verwalten? Dann zeige der Community Deine Fähigkeiten! 
-
+                                Tradity ist kein gewöhnliches Börsenspiel. Interaktiver Austausch, integrierter Feed und transparente Ranglisten ermöglichen es Dir, Dich direkt mit Deinen Freunden zu vergleichen, die besten Trader zu finden und von Ihnen und der Community zu lernen. </p><p>
+                                Darüber hinaus kannst Du Dein Kapital nicht nur in erfolgsträchtige Wertpapiere investieren, sondern ebenso auch in fähige Teilnehmer. Dabei vertraust Du anderen Teilnehmern Deiner Wahl (sogenannten Leadern) einen beliebigen Teil Deines Vermögens an, von dessen Gewinnen im Erfolgsfall ein Teil an Deinen Leader abfällt – aber nur von Deinen Gewinnen. Im Verlustfall geht Ihr beide leer aus. </p><p>
+                                Du willst selber Leader werden und das Kapital anderer Trader verwalten? Dann zeige der Community Deine Fähigkeiten!
                             </p>
                         </div>
                     </div>
@@ -155,10 +150,10 @@
                         </div>
                         <div class="content">
                             <p>
-                            Das Ziel Traditys ist es, Schülern und Studenten grundlegende Zusammenhänge der Finanzmärkte und Wirtschaft aufzuzeigen und sie in Ihrer Eigenständigkeit zu fördern, Entscheidungen hinsichtlich Ihrer zukünftigen Anlagemöglichkeiten zu fällen. </p><p>
-                            Tradity strebt daher danach, den Teilnehmern umfangreiche und nachhaltigkeitsorientieren Ansätze in der Bildung zu bieten. Dazu gehört vor allem ein börsenspielbegleitendes und mit renommierten Börsenexperten erstelltes Lernangebot, welches verschiedene Ausrichtungsmöglichkeiten für den Wirtschafts- und Politikunterricht an Schulen bietet. </p><p>
-                            Ebenso möchten wir über vertiefte Kooperation mit Schulen und regionalen Institutionen eine Brücke zwischen dem Börsenspiel und der Schule schaffen, welche finanzielle Bildung in Schulen verstärkt thematisiert.
-    </p>
+                                Das Ziel Traditys ist es, Schülern und Studenten grundlegende Zusammenhänge der Finanzmärkte und Wirtschaft aufzuzeigen und sie in Ihrer Eigenständigkeit zu fördern, Entscheidungen hinsichtlich Ihrer zukünftigen Anlagemöglichkeiten zu fällen. </p><p>
+                                Tradity strebt daher danach, den Teilnehmern umfangreiche und nachhaltigkeitsorientieren Ansätze in der Bildung zu bieten. Dazu gehört vor allem ein börsenspielbegleitendes und mit renommierten Börsenexperten erstelltes Lernangebot, welches verschiedene Ausrichtungsmöglichkeiten für den Wirtschafts- und Politikunterricht an Schulen bietet. </p><p>
+                                Ebenso möchten wir über vertiefte Kooperation mit Schulen und regionalen Institutionen eine Brücke zwischen dem Börsenspiel und der Schule schaffen, welche finanzielle Bildung in Schulen verstärkt thematisiert.
+                            </p>
                         </div>
                     </div>
                 </div>

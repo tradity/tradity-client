@@ -653,6 +653,24 @@ angular.module('tradity.controllers', []).
         }        
       }        
       
+      var school;
+      if (!$scope.schoolname && $scope.school) {
+        school = null;
+      } else {
+        var foundSNameInList = null;
+        for (var i = 0; i < $scope.schoolList.length; ++i) {
+          if ($scope.schoolList[i].name == $scope.schoolname) {
+            foundSNameInList = $scope.schoolList[i].id;
+            break;
+          }
+        }
+        
+        if (foundSNameInList)
+          school = foundSNameInList;
+        else
+          school = $scope.schoolname;
+      }
+      
       socket.emit('change-options', {
         name: $scope.name,
         giv_name: $scope.giv_name,

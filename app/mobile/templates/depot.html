@@ -1,0 +1,369 @@
+<div id="depot" class="main-content">
+	<div id="tabs">
+	  <ul>
+	    <li><a href="#overview">Vermögensentwicklung</a></li>
+	    <li><a href="#listing">Wertpapiere in Besitz</a></li>
+	    <li><a href="#opentransactions">Noch nicht ausgeführte Transaktionen</a></li>
+	    <li><a href="#history">Transaktionshistorie</a></li>
+	    <li><a href="#watchlist"><i class="fa fa-eye"></i></a></li>
+	  </ul>
+	</br>
+	  <a class="text-link content-box info-box" href="http://de.tradimo.com/lernen/aktienhandel/aktienportfolio-erstellen/" title="Tradimo!">Wie könntest du dein Depot zusammenstellen? Schaue es dir auf Tradimo an!</a>
+	  	<div id="overview">
+	  		<div class="pure-g-r">
+	  			<div class="pure-u-1-2 first">
+					<div class="content-box options-field">
+						<h2>Vermögen</h2>
+	  					<div class="pure-g">
+							<ul class="one-item-list pure-u-1-3">
+								<li>
+									Gesamt
+								</li>
+								<li>
+									{{ownUser.totalvalue / 10000| currency}}
+								</li>
+							</ul>
+							<ul class="one-item-list pure-u-1-3">
+								<li>
+									Konto
+								</li>
+								<li>
+									{{ownUser.freemoney / 10000 | currency}}
+								</li>
+							</ul>
+							<ul class="one-item-list pure-u-1-3">
+								<li>
+									Depot
+								</li>
+								<li>
+									{{ownUser.depotvalue / 10000 | currency}}
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+	  			<div class="pure-u-1-2">
+					<div class="content-box options-field">
+						<h2>Vermögensentwicklung</h2>
+						<div class="pure-g">
+							<ul class="one-item-list pure-u-1-3">
+								<li>
+									Gesamt
+								</li>
+								<li>
+									<span  ng-class="{pos: performanceAll > 0, neg:  performanceAll < 0}">
+										{{ performanceAll = ((ownUser.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
+									</span>
+								</li>
+							</ul>
+							<ul class="one-item-list pure-u-1-3">
+								<li>
+									Heute
+								</li>
+								<li>
+									<span  ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
+										{{( performanceToday = ownUser.totalvalue / ownUser.daystarttotalvalue - 1) * 100 | number:2}} %
+									</span>
+								</li>
+							</ul>
+							<ul class="one-item-list pure-u-1-3">
+								<li>
+									Woche
+								</li>
+								<li>
+									<span  ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
+										{{ performanceWeek = (ownUser.totalvalue / ownUser.weekstarttotalvalue - 1) * 100 | number:2}} %
+									</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pure-g-r">
+	  			<div class="pure-u-1-2">
+					<div class="content-box options-field">
+						<h2>Followerbewertung</h2>
+			  			<div class="pure-g">
+			  				<div class="pure-u-1-3">
+								<ul class="one-item-list">
+									<li>
+										Gesamt
+									</li>
+									<li>
+										<span  ng-class="{pos: fperfAll > 0, neg: fperfAll < 0}">
+											{{ fperfAll = (ownUser.totalfperf-1) * 100 | number:2}} %
+										</span>
+									</li>
+								</ul>
+							</div>
+			  				<div class="pure-u-1-3">
+								<ul class="one-item-list">
+									<li>
+										Heute
+									</li>
+									<li>
+										<span  ng-class="{pos: fperfToday > 0, neg: fperfToday < 0}">
+											{{ fperfToday = (ownUser.dayfperf-1) * 100 | number:2}} %
+										</span>
+									</li>
+								</ul>
+							</div>
+			  				<div class="pure-u-1-3">
+								<ul class="one-item-list">
+									<li>
+										Woche
+									</li>
+									<li>
+										<span  ng-class="{pos: fperfWeek > 0, neg: fperfWeek < 0}">
+											{{ fperfWeek = (ownUser.weekfperf-1) * 100 | number:2}} %
+										</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+	  			<div class="pure-u-1-2">
+					<div class="content-box options-field">
+						<h2>als Leader</h2>
+						<div class="pure-g">
+			  				<div class="pure-u-1-3">
+								<ul class="one-item-list">
+									<li>
+										Anzahl Follower
+									</li>
+									<li>
+										<span>
+											{{ownUser.f_count}}
+										</span>
+									</li>
+								</ul>
+							</div>
+			  				<div class="pure-u-1-3">
+								<ul class="one-item-list">
+									<li>
+										verkaufte Wertpapiere
+									</li>
+									<li>
+										<span>
+											{{ownUser.f_amount}}
+										</span>
+									</li>
+								</ul>
+							</div>
+			  				<div class="pure-u-1-3">
+								<ul class="one-item-list">
+									<li>
+										erh. Provision
+									</li>
+									<li>
+										<span>
+											{{ownUser.wprov_sum / 10000|currency}} / {{ownUser.lprov_sum / 10000|currency}}
+										</span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="listing">
+			<div class="content-box options-field">
+				<h2>Wertpapiere in Besitz</h2>
+				<table class="owned-trades">
+				  <colgroup>
+				  	<col class="column-0">
+				    <col class="column-1">
+				    <col class="column-2">
+				    <col class="column-3">
+				    <col class="column-4-5" span="2">
+				    <col class="column-6-7" span="2">
+					<col class="column-8">
+				  </colgroup>
+					<tr>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th colspan="2">Preis</th>
+						<th colspan="2">Performance</th>
+						<th></th>
+					</tr>
+					<tr>
+						<th>Name</th>
+						<th>Datum</th>
+						<th>Wert</th>
+						<th>Anzahl</th>
+						<th>Einkauf</th>
+						<th>Aktuell</th>
+						<th>Gesamt</th>
+						<th>Heute</th>
+						<th>Trade</th>
+					</tr>
+					<tr ng-repeat="result in results">
+						<td>
+							<span ng-show="result.leader"><a href="#/user/{{result.leadername}}">{{result.stockname}}</a></span>
+							<span ng-hide="result.leader">{{result.stockname}}</span>
+						</td>
+						<td>{{result.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
+						<td>{{result.total / 10000 | number:3}} €</td>
+						<td>{{result.amount}}</td>
+						<td>{{result.buymoney / result.amount / 10000 | number:3}} €</td>
+						<td>{{result.bid / 10000 | number:3}} €</td>
+						<td>
+							<span  ng-class="{pos: orderPerfAll > 0, neg: orderPerfAll < 0}">
+								{{( orderPerfAll = result.bid * result.amount - result.buymoney)
+		                                / result.buymoney * 100 | number:2}} %
+		                    </span>
+		                </td>
+						<td>
+							<span  ng-class="{pos: orderPerfYesterday > 0, neg: orderPerfYesterday < 0}">
+								{{( orderPerfYesterday = result.bid - result.daystartvalue) /
+		                                result.daystartvalue * 100 | number:2}} %
+		                    </span>
+		                </td>
+						<td class="trade-td"><a ng-href="#/trade/sell/{{result.stockid}}/{{result.amount}}" class="batch block-link trade">&#xF153;</a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="opentransactions">
+			<div class="content-box options-field">
+				<h2>Noch nicht ausgeführte Transaktionen</h2>
+				<table class="transaction-history">
+				  <colgroup>
+				  	<col class="column-0">
+				    <col class="column-1">
+				    <col class="column-2">
+				    <col class="column-3">
+				    <col class="column-4">
+				  </colgroup>
+					<tr>
+						<th>Name</th>
+						<th>Datum</th>
+						<th>Market/Stop/Limit</th>
+						<th>Stop/Limit Marke</th>
+						<th>Anzahl</th>
+						<th>Löschen</th>
+					</tr>
+					<tr ng-repeat="order in delayedOrders">
+						<td class="depot-{{order.buysell}}" title="{{order.query.stockid}}">
+							<span ng-show="order.query.leader"><a href="#/user/{{order.query.leader}}">{{order.query.dquerydata.name}}</a></span>
+							<span ng-hide="order.query.leader">{{order.query.dquerydata.name}}</span>
+						</td>
+						<td>{{order.query.dquerydata.ordertime | date:'d.M.yy HH:mm'}}</td>
+						<td>{{order.query.dquerydata.xtype}}</td>
+						<td>
+							<span ng-show="order.query.dquerydata.xvalue">{{order.query.dquerydata.xvalue | number:3}} €</span>
+							<span ng-hide="order.query.dquerydata.xvalue">—</span>
+						</td>
+						<td>{{order.amount}}</td>
+						<td class="trade-td"><a ng-click="removeDelayedOrder(order.queryid)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF153;</a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="history">
+			<div class="content-box options-field">
+				<h2>Transaktionshistorie</h2>
+				<table class="transaction-history">
+				  <colgroup>
+				  	<col class="column-0">
+				    <col class="column-1">
+				    <col class="column-2">
+				    <col class="column-3">
+				    <col class="column-4-5">
+				    <col class="column-6-7">
+				  </colgroup>
+					<tr>
+						<th>Name</th>
+						<th>Datum</th>
+						<th>Anzahl</th>
+						<th>Preis</th>
+						<th>Transaktionskosten</th>
+						<th>Bilanz</th>
+					</tr>
+					<tr ng-repeat="order in orders">
+						<td class="{{order.ordertype}}" title="{{order.stocktextid}}">
+							<a class="text-link" ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a>
+						</td>
+						<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
+						<td>{{order.amount}}</td>
+						<td>{{order.price / 10000 | number:3}} €</td>
+						<td>{{order.fee / 10000 | currency}}</td>
+						<td>
+							<span  ng-class="{pos: balance > 0, neg: balance < 0}">
+								{{ balance = (order.money * -1) / 10000 | currency}}
+							</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="watchlist">
+			<div class="content-box options-field">
+				<h2>Leader und Wertpapiere in Deiner Watchlist</h2>
+				<table class="owned-trades">
+				  <colgroup>
+				    <col class="column-2">
+				    <col class="column-3">
+				    <col class="column-4-5" span="2">
+				    <col class="column-6-7" span="2">
+					<col class="column-8">
+				  </colgroup>
+					<tr>
+						<th></th>
+						<th></th>
+						<th colspan="2">Preis</th>
+						<th colspan="2" style="background-color: rgba(0, 0, 0, 0)">Performance</th>
+						<th></th>
+					</tr>
+					<tr>
+						<th>Name</th>
+						<th>Datum</th>
+						<th>Start</th>
+						<th>Aktuell</th>
+						<th>Gesamt</th>
+						<th>Heute</th>
+						<th>Entfernen</th>
+					</tr>
+					<tr ng-repeat="entry in watchlist">
+						<td>
+							<span ng-show="entry.leader"><a href="#/user/{{entry.username}}">{{entry.stockname}}</a></span>
+							<span ng-hide="entry.leader">{{entry.stockname}}</span>
+						</td>
+						<td>{{entry.watchstarttime * 1000 | date:'d.M.yy HH:mm'}}</td>
+						<td>{{entry.watchstartvalue / 10000 | number:3}} €</td>
+						<td>{{entry.bid / 10000 | number:3}} €</td>
+						<td>
+							<span  ng-class="{pos: watchlistPerformAll > 0, neg: watchlistPerformAll < 0}">
+								{{ watchlistPerformAll = (entry.bid - entry.watchstartvalue) / entry.watchstartvalue * 100 | number:2}} %
+							</span>
+						</td>
+						<td>
+							<span ng-class="{pos: watchlistPerformYesterday > 0, neg: watchlistPerformYesterday < 0}">
+								{{ watchlistPerformYesterday = (entry.bid - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}} %
+							</span>
+						</td>
+						<td class="trade-td"><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF17A;</a></td>
+					</tr>
+				</table>
+			</div>
+			<!--<div class="content-box options-field">
+			<h2>Spieler in Deiner Watchlist</h2>
+			<ul class="watchlist">
+				<li class="player">
+					<a href="#" class="batch unwatch-icon" >&#xF17A;</a>
+					<a href="#" class="text-link"> heiner</a>,&nbsp;
+				</li>
+				<li class="player">
+					<a href="#" class="batch unwatch-icon">&#xF17A;</a>
+					<a href="#" class="text-link"> rainer</a>
+				</li>
+			</ul>
+			</div>-->
+		</div>
+	</div>
+</div>

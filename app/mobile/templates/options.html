@@ -1,0 +1,56 @@
+<div id="options" class="main-content">
+  <div class="hint box">Vergiss nicht, Deine Einstellungen zu speichern!</div>
+  <form ng-submit="changeOptions()">
+    <fieldset class="options-field">
+      <legend>Geschäftliches</legend>
+      <label for="provision">Gewinnprovision Deiner Follower (5 % – 30 %) <span class="batch tooltip" data-info="Wie viel Prozent der Gewinne deiner Follower an dich gehen (Achtung: Zu hohe Provision könnte viele Follower abschrecken und damit deine Gewinne minimieren!)">&#xF0AD;</span></label>
+      <input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="options-input" min="5" max="30" step="1"><br>
+      <label for="provision">Verlustprovision Deiner Follower (0 % – 100 %) <span class="batch tooltip" data-info="Wie viel Prozent der Verluste deiner Follower von dir kompensiert werden (Achtung: Zu hohe Provision könnte dich viel Geld kosten!)">&#xF0AD;</span></label>
+      <input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="options-input" min="0" max="100" step="1"><br>
+      <label for="delayorderhist">Verzögerung Deiner Orderhistorie <span class="batch tooltip" data-info="Wenn Du dieses Feld ankreuzt sehen Trader, die Dein Profil betrachten Deine Transaktionshistorie um zwei Tage verzögert.">&#xF0AD;</span></label>
+      <input type="checkbox" ng-model="delayorderhist" id="delayorderhist"> Ja<br>
+    </fieldset>
+    <fieldset class="options-field"> 
+      <legend>Account</legend>
+      <label for="name">Benutzername</label>
+      <input type="text" ng-model="name" placeholder="Benutzername" id="name" class="options-input"><br>
+      <label for="password">Passwort</label>
+      <input type="password" ng-model="password" placeholder="Passwort" id="password" class="options-input"><br>
+      <label for="password_check">Wiederhole Dein Passwort</label>
+      <input type="password" ng-model="password_check" placeholder="Passwort" id="password" class="options-input"><br>
+      <label for="email">E-Mail</label>
+      <input type="email" ng-model="email" placeholder="E-Mail" id="email" class="options-input"><br>
+    </fieldset>
+    <fieldset class="options-field"> 
+      <legend>Privates</legend>  
+      <label for="giv_name">Vorname</label>
+      <input type="text" ng-model="giv_name" placeholder="Vorname" id="giv_name" class="options-input"><br>
+      <label for="fam_name">Nachname</label>
+      <input type="text" ng-model="fam_name" placeholder="Nachname" id="fam_name" class="options-input"><br>
+      <label for="realnamepublish">Soll Dein Klarname veröffentlicht werden?</label>
+      <input type="checkbox" ng-model="realnamepublish" id="realnamepublish"> Ja<br>
+      <label for="schoolname">Institution / Schule (optional)</label>
+      <input type="text" ng-model="schoolname" placeholder="Schule" id="schoolname" class="options-input"><br>
+      <label for="birthday">Geburtsdatum</label>
+      <input type="number" ng-model="birthdayd" placeholder="Tag" id="birthdayd" class="options-input">
+      <input type="number" ng-model="birthdaym" placeholder="Monat" id="birthdaym" class="options-input">
+      <input type="number" ng-model="birthdayy" placeholder="Jahr" id="birthdayy" class="options-input">
+      <label for="desc">Kurzbeschreibung <span class="batch tooltip" data-info="Erzähl uns von Dir und Deiner Strategie! Es könnte andere Teilnehmer überzeugen, in Dich zu investieren.">&#xF0AD;</span></label>
+      <textarea ng-model="desc" id="desc" placeholder="Erzähl uns was Dich ausmacht" class="options-input"></textarea><br>
+      <label for="street">Adresse <span class="batch tooltip" data-info="Wir verwenden deine Daten nicht für Werbezwecke; Wir nutzen deine Kontaktdaten lediglich, um dir Preise, die WOT-Karten oder das TRADERS´ Magazin zuzuschicken. Ausschließlich für diesen Zweck werden die Daten evtl. an diese Partner weitergegeben.">&#xF0AD;</span></label>
+      <input type="text" ng-model="street" placeholder="Straße, Hausnr." id="street" class="options-input" style="width:180px">
+      <input type="text" ng-model="zipcode" placeholder="PLZ" id="zipcode" class="options-input" style="width:60px">
+      <input type="text" ng-model="town" placeholder="Stadt" id="town" class="options-input" style="width:100px"><br>
+      <!--<label for="tradersp">TRADERS´ Magazin zugesandt bekommen</label>
+      <input type="checkbox" ng-model="tradersp" id="tradersp" class="checkbox"> <div class="traders-mag"> Ja, ich möchte eine Ausgabe des TRADERS´ Magazin <strong>gratis ohne weitere Verpflichtungen</strong> frei Haus geliefert bekommen. </div><br>
+      <label for="traderse">TRADERS´ Newsletter abonnieren</label>
+      <input type="checkbox" ng-model="traderse" id="traderse" class="checkbox"><div class="traders-mag">Ja, ich möchte den TRADERS' Newsletter erhalten</div><br>-->
+      <label for="profileimage">Profilbild hochladen <span class="batch tooltip" data-info="Du kannst Bilder der Typen JPEG, PNG und GIF mit einer maximalen Größe von 2 MB hochladen.">&#xF0AD;</span></label>
+      <input type="file" id="profileimage" class="options-input" accept="image/png,image/jpeg,image/gif"><br>
+    </fieldset>
+    <div style="text-align: right">
+      <input type="submit" value="Speichern" id="options-sb">
+      <input type="button" ng-click="resetUser();" value="Benutzer zurücksetzen" id="options-reset">
+    </div>
+  </form>
+</div>

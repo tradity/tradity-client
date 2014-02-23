@@ -1,0 +1,472 @@
+/* ==========================================================================
+   HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ==========================================================================
+   Author's custom styles General
+   ========================================================================== */
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: Arial;
+    padding: 0px;
+    margin: 0px;
+    background-color: #eee;
+    margin-bottom: 45px;
+}
+
+h1,h2,h3 {
+    margin: 0px;
+}
+
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+
+nav#navigation {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 50px;
+
+    background-color:#0E446A;
+}
+
+nav#navigation .nav-item a{
+    display: block;
+
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+
+    padding: 7px;
+}
+
+nav#navigation .nav-item .fa{
+    display: block;
+    font-size: 20px;
+}
+
+
+nav#navigation .nav-item.active a{
+    background-color: #FF6E38;
+}
+
+/* ==========================================================================
+   Content - global
+   ========================================================================== */
+
+#content {
+    overflow-x:hidden;
+}
+
+#content h3 {
+    color: #333;
+    font-family: Quicksand;
+    font-weight: normal;
+    margin: 15px 5px;
+    margin-bottom: 0px;
+    padding: 5px;
+}
+
+#content h1 {
+    color: #333;
+    font-family: Quicksand;
+    font-weight: normal;
+    margin: 5px 5px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* text */
+
+#content .text {
+    
+}
+
+#content .text h1,#content .text h2,#content .text h3{
+    background-color: #FF6E38;
+    color: #fff;
+    font-weight: normal;
+    padding: 5px;
+    letter-spacing: 1px;
+}
+
+#content .text h1,#content .tab-unit h1 { font-size: 150%; }
+
+#content .text h2,#content .tab-unit h1 { font-size: 125%; }
+
+#content .text h3,#content .tab-unit h1 { font-size: 100%;}
+
+#content .text p,#content .tab-unit p {
+    padding: 5px; 
+    margin: 0px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+#content .text .content {
+    margin: 5px;
+    background: #fff;
+    border: 1px solid;
+    border-color: #d6d7da #d5d8dd #c7c8ca;
+    -webkit-border-radius: 3px;
+}
+
+
+
+/* link */
+
+#content .hero-link {
+    display: block;
+    padding: 10px 5px;
+    background-color: #0E446A;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#content .hero-link.red {
+    background-color: #e74c3c;
+}
+
+/* tabs */
+
+#content .tab-unit {
+    background-color:#fff;
+    color: #333; 
+    font-size: 14px;
+    min-height: 100%;
+}
+
+#content .tab-unit h1,#content .tab-unit h2,#content .tab-unit h3 {
+    padding: 5px;
+}
+
+#content .tab-unit .tabs {
+    background-color: #0E446A;
+}
+
+#content .tab-unit .tabs .tab {
+    display: inline-block;
+    padding: 10px 5px;
+    color: #fff;
+    margin: 0px;
+} 
+
+#content .tab-unit .tabs .tab.active {
+    background-color: #fff;
+    color: #333;
+}
+
+/* ==========================================================================
+   user
+   ========================================================================== */
+
+#content .user-unit {
+
+}
+
+#content .user-unit .user-pic-wrapper {
+    margin: 40px;
+    margin-bottom: 0px;
+}
+
+#content .user-unit .user-pic {
+    display: block;
+    width:100%; 
+    -webkit-border-radius: 200px;
+    border-radius: 200px;
+    -webkit-box-shadow: 0 0 10px 0 rgba(20,20,20,0.3);
+    box-shadow: 0 0 10px 0 rgba(20,20,20,0.3);
+}
+
+#content .user-unit .user-name {
+    font-weight: normal;
+    font-size: 35px;
+    padding: 10px;
+    text-align: center;
+    font-family: Quicksand;
+}
+
+#content .user-unit .hero-link {
+    margin-top: 5px;
+}
+
+
+#content .user-stats .item {
+    margin-right: 2px;
+    margin-left: 2px;
+    background-color: #0E446A;
+    color: #fff;
+    text-align: center;
+    padding:3px;
+}
+
+#content .user-stats .item.first {
+    margin-left: 4px;
+}
+
+#content .user-stats .item.last {
+    margin-right: 4px;
+}
+
+#content .user-stats .item .name {
+    font-size: 13px;
+}
+
+#content .user-stats .item.minus {
+    background-color: #e74c3c;
+}
+
+#content .user-stats .item.plus {
+    background-color: #2ecc71;
+}
+
+#content .user-stats > div {
+    height: 100%;
+}
+
+/* ==========================================================================
+   Ranking
+   ========================================================================== */
+
+
+#content .ranking tr {
+    height: 40px;
+}
+
+#content .ranking tr:nth-child(2n) {
+    background-color: rgba(255,110,56,0.3);
+}
+
+#content .ranking tr td:first-child {
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   Dasboard
+   ========================================================================== */
+
+#content .dash-unit .messages {
+    padding: 5px;
+}
+
+#content .dash-unit .message {
+
+    margin-bottom: 5px;
+}
+
+#content .dash-unit .message .content, #content .dash-unit .message .fa {
+    padding: 10px;
+    color: #fff;
+}
+
+#content .dash-unit .message .icon {
+    float: left;
+    padding-top: 5px;
+    height: 37px;
+    width: 42px;
+    text-align: center;
+    background-color: #FF6E38;
+}
+
+#content .dash-unit .message .image {
+    float: left;
+    overflow: hidden;
+    width: 42px;
+    height: 42px;
+}
+
+#content .dash-unit .message .image img {
+    width: 100%;
+}
+
+
+#content .dash-unit .message .content {
+    margin-left: 47px;
+    min-height: 22px;
+    background: #0E446A;
+}
+
+#content .logo-unit {
+    padding: 20px;
+}
+
+#content .logo-unit img {
+    width: 100%;
+}
+
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+
+}
+
+
+@media (max-width: 480px) { /* mobile */
+
+
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+

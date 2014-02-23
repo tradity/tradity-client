@@ -1,0 +1,185 @@
+<button class="tutbtn" onclick="javascript:introJs().start()" ng-hide="messages.length > 0">?</button>
+<div id="feed" class="main-content">
+    <div data-step="1" data-position="left" data-intro="Hier findest Du Deine Aktivitäten und die der Leute aus Deiner Watchlist.">
+        <!-- ACTUAL FEED BEGIN -->
+        <div ng-repeat="message in displaymessages track by $index" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type" ng-show="message.type == 'mod-notification' || message">
+            
+            <div ng-switch-when="mod-notification">
+                <i class="fa fa-exclamation-triangle"></i>
+                <div class="feed-entry-content" ng-bind-html-unsafe="message.content">
+                    {{message.content}}
+                </div>
+            </div>
+            <div ng-switch-when="watch-add">
+                <i class="fa fa-users"></i>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/user/{{message.targetname}}" class="feed-link">{{message.targetname}}</a> auf seine Watchlist gesetzt.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="watch-add-self">
+                <i class="fa fa-users"></i>
+                <div class="feed-entry-content">
+                    Du hast <a ng-href="#/user/{{message.targetname}}" class="feed-link">{{message.targetname}}</a> auf Deine Watchlist gesetzt.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="watch-add-me">
+                <i class="fa fa-users"></i>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat Dich auf seine Watchlist gesetzt.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="comment-trade">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/user/{{message.tradername}}" class="feed-link">{{message.tradername_genitive}}</a> Trade <a ng-href="#/trade/{{message.orderid}}" class="feed-link">kommentiert</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="comment-trade-self">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    Du hast <a ng-href="#/user/{{message.tradername}}" class="feed-link">{{message.tradername_genitive}}</a> Trade <a ng-href="#/trade/{{message.orderid}}" class="feed-link">kommentiert</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="comment-trade-me">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat Deinen Trade <a ng-href="#/trade/{{message.orderid}}" class="feed-link">kommentiert</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="comment-trade-self-me">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    Du hast Deinen eigenen Trade <a ng-href="#/trade/{{message.orderid}}" class="feed-link">kommentiert</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="comment-pinboard">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat an <a ng-href="#/user/{{message.tradername}}" class="feed-link">{{message.tradername_genitive}}</a> Pinnwand <a ng-href="#/user/{{message.tradername}}/pinboard" class="feed-link">geschrieben</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="comment-pinboard-self">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    Du hast an <a ng-href="#/user/{{message.tradername}}" class="feed-link">{{message.tradername_genitive}}</a> Pinnwand <a ng-href="#/user/{{message.tradername}}/pinboard" class="feed-link">geschrieben</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="comment-pinboard-me">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat an Deine Pinnwand <a ng-href="#/user/{{message.tradername}}/pinboard" class="feed-link">geschrieben</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="comment-pinboard-self-me">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    Du hast an Deine eigene Pinnwand <a ng-href="#/user/{{message.tradername}}/pinboard" class="feed-link">geschrieben</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="trade-buy">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an 
+						<span ng-show="message.leader"><a href="#/user/{{message.leader}}">{{message.stockname}}</a></span> <span ng-hide="message.leader">{{message.stockname}}</span> <a ng-href="#/trade/{{message.targetid}}" class="feed-link">gekauft</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="trade-sell">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an <span ng-show="message.leader"><a href="#/user/{{message.leader}}">{{message.stockname}}</a></span> <span ng-hide="message.leader">{{message.stockname}}</span> <a ng-href="#/trade/{{message.targetid}}" class="feed-link">verkauft</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="trade-buy-self">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    Du hast {{message.amount}} Anteile an <span ng-show="message.leader"><a href="#/user/{{message.leader}}">{{message.stockname}}</a></span> <span ng-hide="message.leader">{{message.stockname}}</span> <a ng-href="#/trade/{{message.targetid}}" class="feed-link">gekauft</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="trade-sell-self">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    Du hast {{message.amount}} Anteile an <span ng-show="message.leader"><a href="#/user/{{message.leader}}">{{message.stockname}}</a></span> <span ng-hide="message.leader">{{message.stockname}}</span> <a ng-href="#/trade/{{message.targetid}}" class="feed-link">verkauft</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="trade-buy-me">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an Dir <a ng-href="#/trade/{{message.targetid}}" class="feed-link">gekauft</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="trade-sell-me">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an Dir <a ng-href="#/trade/{{message.targetid}}" class="feed-link">verkauft</a>.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="provchange">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat 
+                    <span ng-show="message.wprovchanged">seine Gewinnprovision von {{message.oldwprov}} % auf {{message.newwprov}} %</span>
+                    <span ng-show="message.bothchanged">und</span>
+                    <span ng-show="message.lprovchanged">seine Verlustprovision von {{message.oldlprov}} % auf {{message.newlprov}} %</span>
+                    verändert.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="provchange-self">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    Du hast 
+                    <span ng-show="message.wprovchanged">deine Gewinnprovision von {{message.oldwprov}} % auf {{message.newwprov}} %</span>
+                    <span ng-show="message.bothchanged">und</span>
+                    <span ng-show="message.lprovchanged">deine Verlustprovision von {{message.oldlprov}} % auf {{message.newlprov}} %</span>
+                    verändert.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="namechange">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat seinen Benutzernamen von „{{message.oldname}}“ auf „{{message.newname}}“ verändert.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="namechange-self">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    Du hast Deinen Benutzernamen von „{{message.oldname}}“ auf „{{message.newname}}“ verändert.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="reset">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat seinen Account zurückgesetzt.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+            <div ng-switch-when="reset-self">
+                <i class="fa fa-bell"></i>
+                <div class="feed-entry-content">
+                    Du hast deinen Account zurückgesetzt.
+                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

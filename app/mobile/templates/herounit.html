@@ -1,0 +1,157 @@
+<!--<div id="hero-wrapper" ng-class="{{ownUser && 'hide-herounit' }}">
+            <div class="herounit-spacer">
+                <div id="herounit"> 
+                    <img src="img/logo.png" class="logo">      
+                    <p class="slogan">Sei Teil des ersten <b>Social Trading Börsenspiels</b> der Welt</p>
+                    <div class="actions" ng-show="actions">
+                        <a ng-click="showRegister()" id="register-btn" href="" class="btn register">Registrieren</a></br>
+                        <span class="login">oder <a href="" id="login-btn" ng-click="showLogin()">Anmelden</a> </span>
+                    </div>
+                    <div class="login-form" ng-controller="LoginCtrl" ng-show="loginForm">
+                        <form class="pure-form" ng-submit="login()">
+                            <fieldset class="pure-group">
+                                <input type="text" class="pure-input" ng-model="username" placeholder="Benutzername">
+                                <input type="password" class="pure-input" ng-model="password" placeholder="Passwort">
+                            </fieldset>
+
+                            <button type="submit" id="options-sb" class="btn btn-small">Login</button> <a class="registerq" ng-click="showRegister()" href="">Noch nicht registriert ?</a>
+                        </form>
+                    </div>
+                    <div class="register-form" ng-controller="RegistrationCtrl" ng-show="registerForm">
+                        <a href="" id="fbregister"><i class="fa fa-facebook"></i> Mit Facebook registrieren</a>
+                        <form class="pure-form pure-form-aligned" ng-submit="register()">
+                            <fieldset>
+                                <div class="pure-control-group">
+                                    <label for="name">Benutzername</label>
+                                    <input id="name" ng-model="name" type="text" placeholder="Benutzername">
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="password">Passwort</label>
+                                    <input id="password" ng-model="password" type="password" placeholder="Password">
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="password-repeat">Passwort wiederholen</label>
+                                    <input id="password-repeat" ng-model="password_check" type="password" placeholder="Password">
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="email">Email Addresse</label>
+                                    <input id="email" ng-model="email" type="email" placeholder="Email Addresse">
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="realnamepublish" class="pure-checkbox">Soll der echte Name veröffentlicht werden ?</label>
+                                    <input id="realnamepublish" ng-model="realnamepublish" type="checkbox"> Ja
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="school">Institution / Schule</label>
+                                    <input id="school" ng-model="schoolname" type="text" placeholder="Schule, Universität oder Unternehmen">
+                                </div>
+
+                                <div class="pure-control-group">
+                                    <label for="traditye" class="pure-checkbox">Newsletter von Tradity erhalten ?</label>
+                                    <input id="traditye" ng-model="traditye" type="checkbox"> Ja
+                                </div>
+                                <div class="pure-control-group">
+                                    <label for="facebookid" class="pure-checkbox">Facebook ID</label>
+                                    <input id="facebookid" ng-model="facebookid" disabled="disabled" type="text">
+                                </div>
+                                
+                                <div class="pure-control-group">
+                                    <label for="cb"><small><i>Finde und werde gefunden von deinen Facebook Freunden</i></small></label>
+                                </div>
+                           
+                                <div class="pure-controls">
+                                    <label for="cb" class="pure-checkbox">
+                                        <input id="cb" ng-model="agbread" type="checkbox"> Ich habe die AGB gelsen
+                                    </label>
+                                </div>
+
+                            </fieldset>
+                            <button type="submit" class="btn btn-small">Registrieren</button><a href="" ng-click="showLogin()" id="gtlogin">Ich hab bereits ein Benutzer !</a>
+                        </form>
+                    </div>
+                    <div class="showcase" ng-hide="registerForm || loginForm">
+                        <div class="row" ng-click="showInfo1()">
+                            <div class="header social">
+                                <i class="fa fa-users"></i><br>
+                                <h2>be Social</h2>
+                            </div>
+                        </div>
+                        <div class="row" ng-click="showInfo2()">
+                            <div class="header education blue">
+                                <i class="fa fa-book"></i><br>
+                                <h2>Bildung</h2>
+                            </div>
+                        </div>
+                        <div class="row" ng-click="showInfo3()">
+                            <div class="header social">
+                                <i class="fa fa-comments"></i><br>
+                                <h2>Blabla</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="footer">
+                        <div class="footer-right">
+                            Technische Probleme ? <a class="text-link" href="mailto:tech@tradity.de">tech@tradity.de</a><br>
+                            Probleme ? <a class="text-link" href="mailto:team@tradity.de">team@tradity.de</a>
+                        </div>
+                        <div class="left-footer">
+                            <div class="social-links">
+                                <a href="https://facebook.com/tradity.de" target="_blank" title="Facebook Seite"><i class="fa fa-facebook-square"></i></a>
+                                <a href="https://twitter.com/TradityDe" target="_blank" title="Folge uns auf Twitter !"><i class="fa fa-twitter-square"></i></a>
+                                <a href="http://blog.tradity.de/" target="_blank" title="Lies unseren Blog"><i class="fa fa-pencil-square"></i></a>
+                            </div>
+                            <a class="presse" href="https://presse.tradity.de/"><i class="fa fa-quote-left"></i> Presse</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="infounit">
+                <div class="info-item">
+                    <div class="header social">
+                        <i class="fa fa-users"></i><br>
+                        <h2>be Social</h2>
+                    </div>
+                    <div class="content">
+                        <p>
+                        Freilebende Gummibärchen gibt es nicht. Man kauft sie in Packungen an der Kinokasse. Dieser Kauf ist der Beginn einer fast erotischen und sehr ambivalenten Beziehung Gummibärchen-Mensch. Zuerst genießt man. Dieser Genuß umfaßt alle Sinne. Man wühlt in den Gummibärchen, man fühlt sie. Gummibärchen haben eine Konsistenz wie weichgekochter Radiergummi. Die Tastempfindung geht auch ins Sexuelle. Das bedeutet nicht unbedingt, daß das Verhältnis zum Gummibärchen ein geschlechtliches wäre, denn prinzipiell sind diese geschlechtsneutral. Nun sind Gummibärchen weder wabbelig noch zäh; sie stehen genau an der Grenze. Auch das macht sie spannend. Gummibärchen sind auf eine aufreizende Art weich. Und da sie weich sind, kann man sie auch ziehen.
+                        </p><p>
+
+                        Ich mache das sehr gerne. Ich sitze im dunklen Kino und ziehe meine Gummibärchen in die Länge, ganz ganz langsam. Man will sie nicht kaputtmachen, und dann siegt doch die Neugier, wieviel Zug so ein Bärchen aushält. (Vorstellbar sind u.a. Gummibärchen-Expander für Kinder und Genesende). Forscherdrang und gleichzeitig das Böse im Menschen erreichen den Climax, wenn sich die Mitte des gezerrten Bärchens von Millionen Mikrorissen weiß färbt und gleich darauf das zweigeteilte Stück auf die Finger zurückschnappt. Man hat ein Gefühl der Macht über das hilflose, nette Gummibärchen. Und wie man damit umgeht: Mensch erkenne dich selbst! Jetzt ist es so, daß Gummibärchen ja nicht gleich Gummibärchen ist.
+                        </p><p>
+
+
+                        Ich bevorzuge das klassische Gummibärchen, künstlich gefärbt und aromatisiert. Mag sein, daß es eine Sentimentalität ist. Jedenfalls halte ich nichts von neuartigen Alternativ-Gummibärchen ohne Farbstoff (»Mütter, mit viel Vitamin C«), und auch unter den konventionellen tummeln sich schwarze Schafe: die schwarzen Lakritz-Bärchen. Wenn ich mit Xao im Kino bin, red ich ihm so lange ein, daß das die besten sind, bis er sie alle ißt. Sie schmecken scheußlich und fühlen sich scheußlich an. Dagegen das schöne, herkömmliche Gummibärchen: allein wie es neonhaft vom Leinwandleuchten illuminiert, aber ganz ohne die Kühle der Reklameröhren! Die nächste prickelnde Unternehmung ist das Kauen des Gummibärchens.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="infounit blue">
+                <div class="info-item">
+                    <div class="header social">
+                        <i class="fa fa-book"></i><br>
+                        <h2>Bildung</h2>
+                    </div>
+                    <div class="content">
+                        <p>
+                        Freilebende Gummibärchen gibt es nicht. Man kauft sie in Packungen an der Kinokasse. Dieser Kauf ist der Beginn einer fast erotischen und sehr ambivalenten Beziehung Gummibärchen-Mensch. Zuerst genießt man. Dieser Genuß umfaßt alle Sinne. Man wühlt in den Gummibärchen, man fühlt sie. Gummibärchen haben eine Konsistenz wie weichgekochter Radiergummi. Die Tastempfindung geht auch ins Sexuelle. Das bedeutet nicht unbedingt, daß das Verhältnis zum Gummibärchen ein geschlechtliches wäre, denn prinzipiell sind diese geschlechtsneutral. Nun sind Gummibärchen weder wabbelig noch zäh; sie stehen genau an der Grenze. Auch das macht sie spannend. Gummibärchen sind auf eine aufreizende Art weich. Und da sie weich sind, kann man sie auch ziehen.
+                        </p><p>
+
+                        Ich mache das sehr gerne. Ich sitze im dunklen Kino und ziehe meine Gummibärchen in die Länge, ganz ganz langsam. Man will sie nicht kaputtmachen, und dann siegt doch die Neugier, wieviel Zug so ein Bärchen aushält. (Vorstellbar sind u.a. Gummibärchen-Expander für Kinder und Genesende). Forscherdrang und gleichzeitig das Böse im Menschen erreichen den Climax, wenn sich die Mitte des gezerrten Bärchens von Millionen Mikrorissen weiß färbt und gleich darauf das zweigeteilte Stück auf die Finger zurückschnappt. Man hat ein Gefühl der Macht über das hilflose, nette Gummibärchen. Und wie man damit umgeht: Mensch erkenne dich selbst! Jetzt ist es so, daß Gummibärchen ja nicht gleich Gummibärchen ist.
+                        </p><p>
+
+
+                        Ich bevorzuge das klassische Gummibärchen, künstlich gefärbt und aromatisiert. Mag sein, daß es eine Sentimentalität ist. Jedenfalls halte ich nichts von neuartigen Alternativ-Gummibärchen ohne Farbstoff (»Mütter, mit viel Vitamin C«), und auch unter den konventionellen tummeln sich schwarze Schafe: die schwarzen Lakritz-Bärchen. Wenn ich mit Xao im Kino bin, red ich ihm so lange ein, daß das die besten sind, bis er sie alle ißt. Sie schmecken scheußlich und fühlen sich scheußlich an. Dagegen das schöne, herkömmliche Gummibärchen: allein wie es neonhaft vom Leinwandleuchten illuminiert, aber ganz ohne die Kühle der Reklameröhren! Die nächste prickelnde Unternehmung ist das Kauen des Gummibärchens.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>-->

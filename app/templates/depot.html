@@ -1,147 +1,129 @@
-<button class="tutbtn" onclick="javascript:introJs().start()">?</button>
 <div id="depot" class="main-content">
 	<div id="tabs">
 	  <ul>
-	    <li data-step="1" data-position="left" data-intro="Hier siehst Du Deine absoluten Vermögenswerte. Dein Startgesamtwert liegt bei 100.000 €. Dieser Wert ist aufgeteilt in das, was auf Deinem Konto liegt, dieses Geld ist unverzinst und kann für den Wertpapierkauf benutzt werden, und Deinem Depot, der Wert deiner Wertpapiere. Deine Performance spiegelt deine Leistung prozentual wider. Hier in 3 verschiedenen Zeiträumen (Gesamt, Heute und der letzten Woche)"><a href="#overview">Vermögensentwicklung</a></li>
-	    <li data-step="2" data-position="left" data-intro="Ab hier beginnt Dein Depot. Hier sind Deine derzeit in Besitz befindlichen Wertpapiere"><a href="#listing">Wertpapiere in Besitz</a></li>
-	    <li data-step="3" data-position="left" data-intro="Und hier welche, die es bald werden können. Diese warten entweder darauf, dass sich der jeweilige Handelsplatz öffnet oder ein Stop-/Limitwert erreicht wird."><a href="#opentransactions">Noch nicht ausgeführte Transaktionen</a></li>
-	    <li data-step="4" data-position="left" data-intro="Schau Dir Deine vergangenen Orders an und schwebe in Deiner Trader-Vergangenheit."><a href="#history">Transaktionshistorie</a></li>
-	    <li data-step="5" data-position="left" data-intro="Alles was Du auf Deine Watchlist gesetzt hast, findest Du hier."><a href="#watchlist"><span class="batch">&#xF178;</span></a></li>
+	    <li><a href="#overview">Vermögensentwicklung</a></li>
+	    <li><a href="#listing">Wertpapiere in Besitz</a></li>
+	    <li><a href="#opentransactions">Austehende Transaktionen</a></li>
+	    <li><a href="#history">Transaktionshistorie</a></li>
+	    <li><a href="#watchlist"><span class="batch">&#xF178;</span></a></li>
 	  </ul>
 	</br>
-<!-- 	  <a class="text-link" href="http://de.tradimo.com/lernen/aktienhandel/aktienportfolio-erstellen/" title="Tradimo!">Wie könntest du dein Depot zusammenstellen? Schaue es dir auf Tradimo an!</a> -->
+
 	  	<div id="overview">
-			<fieldset class="options-field">
-				<legend>Vermögen</legend>
-				<ul class="one-item-list">
-					<li>
-						Gesamt
-					</li>
-					<li>
+
+			<h2>Vermögen</h2>
+			
+			<div class="pure-g info-grid">
+
+				<div class="pure-u-1-3">
+					<div class="item">
+						<b>Gesamt</b></br>
 						{{ownUser.totalvalue / 10000| currency}}
-					</li>
-				</ul>
-				<ul class="one-item-list">
-					<li>
-						Konto
-					</li>
-					<li>
+					</div>
+				</div>
+
+				<div class="pure-u-1-3">
+					<div class="item">
+						<b>Konto</b></br>
 						{{ownUser.freemoney / 10000 | currency}}
-					</li>
-				</ul>
-				<ul class="one-item-list">
-					<li>
-						Depot
-					</li>
-					<li>
+					</div>
+				</div>
+
+				<div class="pure-u-1-3">
+					<div class="item">
+						<b>Depot</b></br>
 						{{ownUser.depotvalue / 10000 | currency}}
-					</li>
-				</ul>
-			</fieldset>
-			<fieldset class="options-field">
-				<legend>Vermögensentwicklung</legend>
-				<ul class="one-item-list">
-					<li>
-						Gesamt
-					</li>
-					<li>
-						<span  ng-class="{pos: performanceAll > 0, neg:  performanceAll < 0}">
-							{{ performanceAll = ((ownUser.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
-						</span>
-					</li>
-				</ul>
-				<ul class="one-item-list">
-					<li>
-						Heute
-					</li>
-					<li>
-						<span  ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
-							{{( performanceToday = ownUser.totalvalue / ownUser.daystarttotalvalue - 1) * 100 | number:2}} %
-						</span>
-					</li>
-				</ul>
-				<ul class="one-item-list">
-					<li>
-						Woche
-					</li>
-					<li>
-						<span  ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
-							{{ performanceWeek = (ownUser.totalvalue / ownUser.weekstarttotalvalue - 1) * 100 | number:2}} %
-						</span>
-					</li>
-				</ul>
-			</fieldset>
-			<fieldset class="options-field">
-				<legend>Followerbewertung</legend>
-				<ul class="one-item-list">
-					<li>
-						Gesamt
-					</li>
-					<li>
-						<span  ng-class="{pos: fperfAll > 0, neg: fperfAll < 0}">
-							{{ fperfAll = (ownUser.totalfperf-1) * 100 | number:2}} %
-						</span>
-					</li>
-				</ul>
-				<ul class="one-item-list">
-					<li>
-						Heute
-					</li>
-					<li>
-						<span  ng-class="{pos: fperfToday > 0, neg: fperfToday < 0}">
-							{{ fperfToday = (ownUser.dayfperf-1) * 100 | number:2}} %
-						</span>
-					</li>
-				</ul>
-				<ul class="one-item-list">
-					<li>
-						Woche
-					</li>
-					<li>
-						<span  ng-class="{pos: fperfWeek > 0, neg: fperfWeek < 0}">
-							{{ fperfWeek = (ownUser.weekfperf-1) * 100 | number:2}} %
-						</span>
-					</li>
-				</ul>
-			</fieldset>
-			<fieldset class="options-field">
-				<legend>als Leader</legend>
-				<ul class="one-item-list">
-					<li>
-						Anzahl Follower
-					</li>
-					<li>
-						<span>
-							{{ownUser.f_count}}
-						</span>
-					</li>
-				</ul>
-				<ul class="one-item-list">
-					<li>
-						verkaufte Wertpapiere
-					</li>
-					<li>
-						<span>
-							{{ownUser.f_amount}}
-						</span>
-					</li>
-				</ul>
-				<ul class="one-item-list">
-					<li>
-						erh. Provision
-					</li>
-					<li>
-						<span>
-							{{ownUser.wprov_sum / 10000|currency}} / {{ownUser.lprov_sum / 10000|currency}}
-						</span>
-					</li>
-				</ul>
-			</fieldset>
+					</div>
+				</div>
+
+			</div>
+
+			<h2>Vermögensentwicklung</h2>
+
+			<div class="pure-g info-grid">
+
+				<div class="pure-u-1-3">
+					<div class="item" ng-class="{pos: performanceAll > 0, neg:  performanceAll < 0}">
+						<b>Gesamt</b></br>
+						{{ performanceAll = ((ownUser.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
+					</div>
+				</div>
+
+				<div class="pure-u-1-3">
+					<div class="item" ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
+						<b>Heute</b></br>
+						{{( performanceToday = ownUser.totalvalue / ownUser.daystarttotalvalue - 1) * 100 | number:2}} %
+					</div>
+				</div>
+
+				<div class="pure-u-1-3">
+					<div class="item" ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
+						<b>Woche</b></br>
+						{{ performanceWeek = (ownUser.totalvalue / ownUser.weekstarttotalvalue - 1) * 100 | number:2}} %
+					</div>
+				</div>
+
+			</div>
+
+			<h2>Followerbewertung</h2>
+
+			<div class="pure-g info-grid">
+
+				<div class="pure-u-1-3">
+					<div class="item" ng-class="{pos: fperfAll > 0, neg: fperfAll < 0}">
+						<b>Gesamt</b></br>
+						{{ fperfAll = (ownUser.totalfperf-1) * 100 | number:2}} %
+					</div>
+				</div>
+
+				<div class="pure-u-1-3">
+					<div class="item" ng-class="{pos: fperfToday > 0, neg: fperfToday < 0}">
+						<b>Heute</b></br>
+						{{ fperfToday = (ownUser.dayfperf-1) * 100 | number:2}} %
+					</div>
+				</div>
+
+				<div class="pure-u-1-3">
+					<div class="item" ng-class="{pos: fperfWeek > 0, neg: fperfWeek < 0}">
+						<b>Woche</b></br>
+						{{ fperfWeek = (ownUser.weekfperf-1) * 100 | number:2}} %
+					</div>
+				</div>
+
+			</div>
+
+			<h2>als Leader</h2>
+
+			<div class="pure-g info-grid">
+
+				<div class="pure-u-1-3">
+					<div class="item">
+						<b>Gesamt</b></br>
+						{{ownUser.f_count}}
+					</div>
+				</div>
+
+				<div class="pure-u-1-3">
+					<div class="item">
+						<b>Heute</b></br>
+						{{ownUser.f_amount}}
+					</div>
+				</div>
+
+				<div class="pure-u-1-3">
+					<div class="item">
+						<b>Woche</b></br>
+						{{ownUser.wprov_sum / 10000|currency}} / {{ownUser.lprov_sum / 10000|currency}}
+					</div>
+				</div>
+
+			</div>
 		</div>
+
 		<div id="listing">
-			<fieldset class="options-field">
-				<legend>Wertpapiere in Besitz</legend>
-				<table class="owned-trades">
+			<div class="options-field">
+				<h2>Wertpapiere in Besitz</h2>
+				<table class="owned-trades table table-bordered">
 				  <colgroup>
 				  	<col class="column-0">
 				    <col class="column-1">
@@ -196,12 +178,12 @@
 						<td class="trade-td"><a ng-href="#/trade/sell/{{result.stockid}}/{{result.amount}}" class="batch block-link trade">&#xF153;</a></td>
 					</tr>
 				</table>
-			</fieldset>
+			</div>
 		</div>
 		<div id="opentransactions">
-			<fieldset class="options-field">
-				<legend>Noch nicht ausgeführte Transaktionen</legend>
-				<table class="transaction-history">
+			<div class="options-field">
+				<h2>Noch nicht ausgeführte Transaktionen</h2>
+				<table class="transaction-history table table-bordered">
 				  <colgroup>
 				  	<col class="column-0">
 				    <col class="column-1">
@@ -232,12 +214,12 @@
 						<td class="trade-td"><a ng-click="removeDelayedOrder(order.queryid)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF153;</a></td>
 					</tr>
 				</table>
-			</fieldset>
+			</div>
 		</div>
 		<div id="history">
-			<fieldset class="options-field">
-				<legend>Transaktionshistorie</legend>
-				<table class="transaction-history">
+			<div class="options-field">
+				<h2>Transaktionshistorie</h2>
+				<table class="transaction-history table table-bordered">
 				  <colgroup>
 				  	<col class="column-0">
 				    <col class="column-1">
@@ -269,12 +251,12 @@
 						</td>
 					</tr>
 				</table>
-			</fieldset>
+			</div>
 		</div>
 		<div id="watchlist">
-			<fieldset class="options-field">
-				<legend>Leader und Wertpapiere in Deiner Watchlist</legend>
-				<table class="owned-trades">
+			<div class="options-field">
+				<h2>Leader und Wertpapiere in Deiner Watchlist</h2>
+				<table class="owned-trades table table-bordered">
 				  <colgroup>
 				    <col class="column-2">
 				    <col class="column-3">
@@ -319,9 +301,9 @@
 						<td class="trade-td"><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF17A;</a></td>
 					</tr>
 				</table>
-			</fieldset>
-			<!--<fieldset class="options-field">
-			<legend>Spieler in Deiner Watchlist</legend>
+			</div>
+			<!--<div class="options-field">
+			<h2>Spieler in Deiner Watchlist</h2>
 			<ul class="watchlist">
 				<li class="player">
 					<a href="#" class="batch unwatch-icon" >&#xF17A;</a>
@@ -332,7 +314,7 @@
 					<a href="#" class="text-link"> rainer</a>
 				</li>
 			</ul>
-			</fieldset>-->
+			</div>-->
 		</div>
 	</div>
 </div>

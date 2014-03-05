@@ -1,4 +1,4 @@
-<div id="stats" class="main-content" infinite-scroll="loadMore()" infinite-scroll-distance="2">
+<div id="stats" class="main-content ranking" infinite-scroll="loadMore()" infinite-scroll-distance="2">
 	<div id="tabs">
 		<ul>
 			<li><a href="#all">Gesamt</a></li>
@@ -9,12 +9,16 @@
 			<li ng-show="ownUser.schoolid"><a href="#intragroup">{{ownUser.schoolname}}</a></li>
 			<li><a href="#intergroup">Intergroup</a></li>
 		</ul>
-		  <form ng-submit="getRanking()">
-			<input ng-model="searchText" class="options-input" id="search" placeholder="Suche"><input type="submit" value="Suche" id="ranking-search" class="click-button">
+
+
+		<form class="pure-form" ng-submit="getRanking()">
+			<input type="text" ng-model="searchText" placeholder="Suche" class="pure-input">
+			<button type="submit" class="btn btn-primary btn-sm">Search</button>
 		</form>
+
 		<div class="clearfix"></div>
 	  	<div id="all">
-			<table class="ranking">
+			<table class="ranking table table-bordered">
 				<colgroup>
 				  	<col class="rankcol-1" style="width: 10%">
 				    <col class="rankcol-2" style="width: 57%">
@@ -36,7 +40,7 @@
 			</table>
 		</div>
 	  	<div id="all-withprov">
-			<table class="ranking">
+			<table class="ranking table table-bordered">
 				<colgroup>
 				  	<col class="rankcol-1" style="width: 10%">
 				    <col class="rankcol-2" style="width: 57%">
@@ -58,7 +62,7 @@
 			</table>
 		</div>
 		<div id="follower">
-			<table class="ranking">
+			<table class="ranking table table-bordered">
 				<colgroup>
 				  	<col class="rankcol-1" style="width: 10%">
 				    <col class="rankcol-2" style="width: 65%">
@@ -79,7 +83,7 @@
 			</table>
 		</div>
 	  	<div id="all-week">
-			<table class="ranking">
+			<table class="ranking table table-bordered">
 				<colgroup>
 				  	<col class="rankcol-1" style="width: 10%">
 				    <col class="rankcol-2" style="width: 65%">
@@ -98,7 +102,7 @@
 			</table>
 		</div>
 		<div id="follower-week">
-			<table class="ranking">
+			<table class="ranking table table-bordered">
 				<colgroup>
 				  	<col class="rankcol-1" style="width: 10%">
 				    <col class="rankcol-2" style="width: 57%">
@@ -120,7 +124,7 @@
 			</table>
 		</div>
 		<div id="intragroup">
-			<table class="ranking">
+			<table class="ranking table table-bordered">
 				<colgroup>
 				  	<col class="rankcol-1" style="width: 10%">
 				    <col class="rankcol-2" style="width: 57%">
@@ -142,7 +146,7 @@
 			</table>
 		</div>
 		<div id="intergroup">
-			<table class="ranking">
+			<table class="ranking table table-bordered">
 				<colgroup>
 				  	<col class="rankcol-1" style="width: 10%">
 				    <col class="rankcol-2" style="width: 57%">

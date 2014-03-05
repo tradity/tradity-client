@@ -1,142 +1,3 @@
-html {
-    overflow-y: scroll;
-}
-
-body {
-    font-size: 1em;
-    line-height: 1.4;
-    background: #f0f0f0;
-    
-    /*
-    background-image: url('../img/bg.png');
-    background-repeat: no-repeat;
-    background-position: right bottom; 
-    */
-}
-
-::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
-}
-
-.no-border {
-    border: none;
-}
-
-a {
-  text-decoration: inherit;
-  font-style: inherit;
-  color: inherit;
-}
-
-a:active {
-  outline: none;
-}
-
-a:focus{border: none; outline: none;}
-
-:focus {
-  -moz-outline-style: none;
-}
-
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #a7a7a7;
-    margin: 1em 0;
-    padding: 0;
-}
-
-img {
-    vertical-align: middle;
-}
-
-fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
-}
-
-textarea {
-    resize: vertical;
-}
-
-.chromeframe {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
-
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-.ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    *text-indent: -9999px;
-}
-
-.ir:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 150%;
-}
-
-.hidden {
-    display: none !important;
-    visibility: hidden;
-}
-
-.visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
-}
-
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
-}
-
-.invisible {
-    visibility: hidden;
-}
-
-.clearfix:before,
-.clearfix:after {
-    content: " ";
-    display: table;
-}
-
-.clearfix:after {
-    clear: both;
-}
-
-.clearfix {
-    *zoom: 1;
-}
-
 /* ==========================================================================
    Print styles
    ========================================================================== */
@@ -212,1299 +73,279 @@ textarea {
     @font-faces
    ========================================================================== */
 
-@font-face {
-  font-family: "batch";
-  src: url("../fonts/batch/batch.eot");
-  src: local("☺"),
-    url("../fonts/batch/batch.woff") format("woff"),
-    url("../fonts/batch/batch.otf") format("opentype"),
-    url("../fonts/batch/batch.svg#batch") format("svg");
-}
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
 
-@font-face {
-  font-family: 'Abel';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Abel'), local('Abel-Regular'), url("../fonts/Abel/abel.woff") format('woff');
-}
-@font-face {
-  font-family: 'Droid Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Droid Sans'), local('DroidSans'), url("../fonts/Droid_Sans/droidsans400.woff") format('woff');
-}
-@font-face {
-  font-family: 'Droid Sans';
-  font-style: normal;
-  font-weight: 700;
-  src: local('Droid Sans Bold'), local('DroidSans-Bold'), url("../fonts/Droid_Sans/droidsans700.woff") format('woff');
-}
 
 /* ==========================================================================
     User Styles - Main
    ========================================================================== */
 
+body,html {
+    height: 100%;
+}
+
 body {
-    font-family: 'Droid Sans', sans-serif;
+    font-family: Arial;
+    background: #f0f0f0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Droid Sans', sans-serif;
 }
 
-.box {
-    border: thin solid #fff; 
-    color: #fff;
-    font-family: "Abel", "Droid Sans", sans-serif;
+.wrapper {
+    width: 960px;
+    margin: 0px auto;
+    background: #fff;
+    padding-top: 50px;
+    
+    min-height: 100%;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+
+    border: 1px solid rgba(20,20,20,0.3);
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.main-content {
     padding: 10px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    line-height: 1;
-    display: block;
-    margin-top: 20px;
+}
+
+.main-content h2 {
+    margin: 15px 0px;
+    font-weight: normal;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.info-grid .item {
     text-align: center;
+    padding: 5px;
+    margin: 0px 5px;
 }
 
-.box span {
-    display: inline-block;
-    margin-left: 30px;
-    margin-bottom: -20px;
-    width: 92%;
+.info-grid .item.neg {
+    background-color: #e74c3c;
+    color: #fff;
 }
 
-.alarm {
-    border-color: #a13547;
-    background-color: #bf414c;
-}
-
-.alarm:before {
-     content: "\F15A  ";
-    font-family: 'batch', sans-serif;
+.info-grid .item.pos {
+    background-color: #2ecc71;
+    color: #fff;
 }
 
 
-.hint {
-    border-color: #2b3990;
-    background-color: rgba(43, 57, 144, 0.8);
+
+/* ==========================================================================
+    Header
+   ========================================================================== */
+
+header#header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    border-bottom: 1px solid rgba(20,20,20,0.3);
+
+    font-size: 1em;
+    line-height: 1.4;
+    z-index: 9999;
 }
 
-.hint:before {
-    content: "\F132  ";
-    font-family: 'batch', sans-serif;
-}
-
-.hint a {
-    color: #F9AD94; /* halfway between tradity-orange and white */
-}
-
-.pos {
-    color: green;
-}
-
-.pos:before {
-    content: "+";
-}
-
-.neg {
-    color: red;
-}
-
-.correct {
-    border-color: #5ec962;
-    background-color: #36a350;
-}
-
-.correct:before {
-    content: "\F0CA  ";
-    font-family: 'batch', sans-serif;
-}
-
-.batch {
-    font-family: 'batch', sans-serif;
-}
-
-#wrapper-the-wrapper {
-    width: 930px;
-    margin: 0 auto;  
-}
-
-#wrapper {
-    width: 930px;
-    padding: 0 20px;
-    margin: 0 auto;
-    box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
-    background-color: #fff;
-}
-
-#header {
-    position: relative;
-}
-
-#nav, #logo {
-    margin: 5px;
-    float: left;
-}
-
-.profile,
-#footer,
-.main-content {
-    width: 750px;
-    margin: 5px 0 0 0;
-    float: right;
-}
-
-#nav {
-    width: 150px;
-    min-height: 600px;
-}
-
-.main-content {
-    min-height: 750px;
-    margin: 0;
+header#header .inner {
+    width: 960px;
+    margin: 0px auto;
+    height: 50px;
 }
 
 #logo {
-    width: 150px;
-    height: 150px;
-    background-image: url('../img/tradity_symbol.png');
-}
-
-.profile {
-    width: 750px;
-    padding: 0px;
-    margin: 5px 0 5px 0;
-}
-
-#footer {
-    border-top: thin solid #a7a7a7;
-    clear: both;
-    text-align: right;
-    padding: 0 10px;
-    margin: 30px 0 0 0;
-}
-
-#nav ul {
-    font-family: 'Abel', 'Droid Sans', sans-serif;
-    padding-left: 0px;
-    text-align: center;
-    list-style: none;
-    list-style-image: none;
-}
-
-#nav ul li {
-    margin: 0 0 5px 0;
-}
-
-#nav ul li a{
-    width: 148px;
-    padding: 1px;
-    display: block;
-    color: #a7a7a7;
-    overflow: hidden;}
-
-#nav ul li a:hover {
-    padding: 0;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border: thin solid #ccc;
-    color: #2b3990;
-    -webkit-transition:color 0.3s ease-in;  
-    -moz-transition:color 0.3s ease-in;  
-    -o-transition:color 0.3s ease-in;  
-    transition:color 0.3s ease-in;
-    background: -moz-linear-gradient(top,  rgba(102,102,102,0.1) 0%, rgba(255,255,255,0) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(102,102,102,0.1)), color-stop(100%,rgba(255,255,255,0)));
-    background: -webkit-linear-gradient(top,  rgba(102,102,102,0.1) 0%,rgba(255,255,255,0) 100%);
-    background: -o-linear-gradient(top,  rgba(102,102,102,0.1) 0%,rgba(255,255,255,0) 100%);
-    background: -ms-linear-gradient(top,  rgba(102,102,102,0.1) 0%,rgba(255,255,255,0) 100%);
-    background: linear-gradient(to bottom,  rgba(102,102,102,0.1) 0%,rgba(255,255,255,0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a666666', endColorstr='#00ffffff',GradientType=0 );
-}
-
-.active {
-    color: #2b3990;
-}
-
-#nav ul li a:active,
-#nav ul li a:focus{
-    padding: 0;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    border: thin solid #2b3990;
-    color: #2b3990;
-    outline: none;
-}
-
-.nav-block-symbol {
-    margin: 10px 0 0 0;
-    display: block;
-    font-size: 30px;
-    height: 75px;
-    position: relative;
-    bottom: -8px;
-}
-
-.nav-block-title {
-    display: block;
-    position: relative;
-    top: -20px;
-}
-
-.profile-link:hover {
-    background-color: rgba(200, 200, 200, 0.1);
-}
-
-.name, .depot {
-    overflow: hidden;
-    margin: 0 0 2px 0;
-    padding: 0;
     float: left;
-}
-
-#tradity {
-    -webkit-box-shadow: 50px 50px 20px 20px #fff;
-    box-shadow: 0px 0px 20px 20px #fff;
-    -moz-box-shadow: 0px 0px 20px 20px #fff;
-    background-color: #fff;
-    color: #2b3990;
-    display: none;
-    font-size: 35px;
-    margin: 5px;
-    position: absolute;
-    width:150px;
-    text-align: center;
-    z-index: 1;
-}
-
-#tradity:hover {
-    color: #dc6; 
-    filter: dropshadow(color=#3b3b3b, offx=1, offy=1);
-    -webkit-transition:color 0.3s ease-in;  
-    -moz-transition:color 0.3s ease-in;  
-    -o-transition:color 0.3s ease-in;  
-    transition:color 0.3s ease-in;
-}
-
-.name {
-}
-
-.depot{
-    width: 100px;
-    text-align: right;
-    float: right;
-}
-
-.depot-wert{
-    font-family: 'Abel', 'Droid Sans', sans-serif;
-}
-
-.nick {
-    font-size: 20px;
-    color: #2b3990;
-}
-
-.title {
-    font-family: 'Abel', 'Droid Sans', sans-serif;
-    font-size: 11px;
-    letter-spacing: 1px;
-    margin: 0;
-    color: #aaa;
-}
-
-.profile-box {
-    font-family: 'Droid Sans', sans-serif !important;
-    font-size: 11px !important; 
-    float: left;
-    padding: 0 10px 0 0;
-    overflow: hidden;
-    height: 110px;
-    max-width: 300px;
-    margin-right: 5px;
-}
-
-.profile-picture {
-    display: block;
-    width: 100px;
-}
-
-.bio {
-    width: 200px;
-}
-
-#buttons {
-    margin: 0 10px 0 0;
-    float: right;
-    list-style-type: none;
-    padding: 0;
-}
-
-#buttons li {
-    margin: 10px 0 0 0;
-    color: #a7a7a7;
-}
-
-#buttons li:hover,
-.trade:hover {
-    color: #2b3990;
-    -webkit-transition:color 0.3s ease-in;  
-    -moz-transition:color 0.3s ease-in;  
-    -o-transition:color 0.3s ease-in;  
-    transition:color 0.3s ease-in;
-}
-
-#social-links {
-    margin: 5px 10px 0 0;
-    float: left;
-    list-style-type: none;
-    padding: 0;
-}
-
-#social-links li {
-    display: block;
-    float:left;
-    height: 32px;
-    width: 32px;
-}
-
-.placement {
-    width: 100px;
-}
-
-.block-link {
-    display: block;
-    overflow: hidden;
-}
-
-.placement-number {
-    font-size: 25px;
-    font-family: 'Abel', 'Droid Sans', sans-serif;
-}
-
-.facebook img:hover {
-    background-color: #3b5998;
-}
-
-.google img:hover {
-    background-color: #cd3d2a;
-}
-
-.twitter img:hover {
-    background-color: #00acee;
-}
-
-.footer-text {
-    color: #aaa;
-    font-size: 12px;
-    margin-left: 20px;
-}
-
-.dark {
-    color : #444;
-}
-
-.font-20 {
-    font-size: 20px;
-}
-
-.transparent-30 {
-    filter:alpha(opacity=30);
-    -moz-opacity: 0.3;
-    opacity: 0.3;
-}
-
-.transparent-30:hover {
-    filter:alpha(opacity=80);
-    -moz-opacity: 0.8;
-    opacity: 0.8;
-}
-
-.text-link {
-    color: #2b3990;
-    font-family: "Droid Sans", sans-serif;
-}
-
-.text-link:hover {
-    text-decoration: underline;
-}
-
-.text-link:active {
-    color: #000;
-}
-
-
-/* ==========================================================================
-    Feed
-   ========================================================================== */
-#feed {
-    margin: 20px 0 0 0;
-}
-
-.feed-item,
-.comment {
-    padding: 5px 0 5px 5px;
-    border-bottom: 1px solid;
-    border-left: 4px solid;  
-    min-height: 16px;
-}
-
-.feed-important-item {
-    border: 4px solid;
-    font-size: 12px;
-}
-
-.feed-yourself,
-.comment-yourself { /* hihi */
-    border-color: rgba(50, 100, 150, 0.5);
-}
-
-.feed-somebody,
-.comment-somebody { /* hihi */
-    border-color: rgba(220, 200, 100, 0.5);
-}
-
-.feed-important, .feed-important-item { /* hihi */
-    border-color: rgba(220, 100, 100, 0.5);
-    border-top-width: 1px;
-}
-
-.feed-important:first-child, .feed-important-item:first-child { /* hihi */
-    border-color: rgba(220, 100, 100, 0.5);
-    border-top-width: 4px;
-}
-
-.feed-link {
-    color: #2b3990;
-}
-
-.feed-link:active {
-    color: #000;
-}
-
-.feed-link:hover {
-    text-decoration: underline;   
-}
-
-.feed-entry-symbol {
-    font-size: 14px;
-    margin: 0 0 0 5px;
-    float: left;
-    color: #444;
-}
-
-.feed-entry-content {
-    margin: 0 0 0 28px;
-}
-
-.feed-time {
-    font-size: 10px;
-    color: #a7a7a7;
-    width: 100px;
-    text-align: right;
-    margin: 5px 0 0 0;
-    vertical-align: middle;
-    white-space: nowrap;
-}
-
-.feed-item-hover{
-    border-left-style: dotted;
-}
-
-/* ==========================================================================
-    options / register / trade
-   ========================================================================== */
-
-.options-input,
-#options-sb,
-#search-button,
-.click-button {
-    border: 1px solid #a7a7a7;
-    font-size: 16px;
-    line-height: normal;
-    border-radius: 3px;
-}
-
-.options-input {
-    width: 220px;
-    height: 20px;
     padding: 5px;
-    margin: 5px 0 5px 0;
-    box-shadow: inset 0 1px 1px #ccc;
-}
-
-.options-input:hover,
-.options-input:focus {
-    border-color: #105cb6;
-    outline: 0;
-    color: #222;
-}
-
-#options-sb,
-#search-button,
-.click-button {
-    -moz-box-shadow: inset 0px 1px 0px 0px #fff;
-    -webkit-box-shadow: inset 0px 1px 0px 0px #fff;
-    box-shadow: inset 0px 1px 0px 0px #fff;
-    text-shadow: 1px 1px 0px #fff;
-    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
-    background: -moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
-    filter:progid: DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
-    background-color: #ededed;
-    -webkit-border-top-left-radius: 6px;
-    -moz-border-radius-topleft: 6px;
-    border-top-left-radius: 6px;
-    -webkit-border-top-right-radius: 6px;
-    -moz-border-radius-topright: 6px;
-    border-top-right-radius: 6px;
-    -webkit-border-bottom-right-radius: 6px;
-    -moz-border-radius-bottomright: 6px;
-    border-bottom-right-radius: 6px;
-    -webkit-border-bottom-left-radius: 6px;
-    -moz-border-radius-bottomleft: 6px;
-    border-bottom-left-radius: 6px;
-    text-indent: 0;
-    display: inline-block;
-    color: #222;
-    font-size: 15px;
-    font-weight: normal;
-    font-style: normal;
-    font-family: "Droid Sans", sans-serif;
     height: 40px;
-    line-height: 40px;
-    margin: 12px 24px 0 0;
-    padding: 0 15px;
-    text-decoration: none;
-    text-align: center;
 }
 
-#search-button {
-    width: auto;
-    margin: 0;
-    height: 32px;
-}
-
-.traders-mag {
-    font-size: 11px; 
-    width: 370px; 
-    float: right;
-}
-
-#options-sb:hover,
-#search-button:hover,
-.click-button:hover {
-    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
-    background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
-    background-color:#dfdfdf;
-    border-color: #111;
-}
-
-#options-sb:active,
-#search-button:active,
-.click-button:active {
-    position:relative;
-    top:1px
-}
-
-
-.options-button {
-    margin: 5px 7px 5px 0;
-    background-color: #ddd;
-    border: 1px solid #ccc;
-    overflow: auto;
-    float: left;
-    -moz-box-shadow: inset 0px 1px 0px 0px #fff;
-    -webkit-box-shadow: inset 0px 1px 0px 0px #fff;
-    box-shadow: inset 0px 1px 0px 0px #fff;
-    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
-    background: -moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
-    filter:progid: DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
-    background-color: #ededed;
-    -webkit-border-top-left-radius: 6px;
-    -moz-border-radius-topleft: 6px;
-    border-top-left-radius: 6px;
-    -webkit-border-top-right-radius: 6px;
-    -moz-border-radius-topright: 6px;
-    border-top-right-radius: 6px;
-    -webkit-border-bottom-right-radius: 6px;
-    -moz-border-radius-bottomright: 6px;
-    border-bottom-right-radius: 6px;
-    -webkit-border-bottom-left-radius: 6px;
-    -moz-border-radius-bottomleft: 6px;
-    border-bottom-left-radius: 6px;
-    text-indent: 0;
-}
-
-.options-button label {
-    float: left;
-    width: 230px;
-}
-
-.options-button label span {
-    text-align: center;
-    padding: 5px 0px;
-    display: block;
-    cursor: pointer;
-}
-
-.options-button label .tooltip,
-.tooltip {
-    display: inline;
-    font-weight: 400;
-    font-size: 12px;
-}
-
-.tooltip:hover {
-    display: inline;
-    color: #ff8f27;
-    font-weight: 400;
-    cursor: pointer;
-    text-align: left;
-}
-
-.options-button label input {
-    position: absolute;
-    top: -20px;
-}
-
-.options-button input:checked + span {
-    background: -moz-linear-gradient(top,  rgba(51,102,153,0.8) 0%, #2b3990 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(51,102,153,0.8)), color-stop(100%,#2b3990));
-    background: -webkit-linear-gradient(top,  rgba(51,102,153,0.8) 0%,#2b3990 100%);
-    background: -o-linear-gradient(top,  rgba(51,102,153,0.8) 0%,#2b3990 100%);
-    background: -ms-linear-gradient(top,  rgba(51,102,153,0.8) 0%,#2b3990 100%);
-    background: linear-gradient(to bottom,  rgba(51,102,153,0.8) 0%,#2b3990 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc336699', endColorstr='#cc1388c6',GradientType=0 );
-    color: #fff;
-}
-
-.options-button:hover {
-    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
-    background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
-    background-color:#dfdfdf;
-    border-color: #999;
-}
-
-.options-field {
-    background-color: #fff;
-    border: thin solid #a7a7a7;
-    padding: 5px 15px 15px 15px;
-}
-
-.options-field legend {
-    padding: 15px;
-    font-family: "Abel", "Droid Sans", sans-serif;
-}
-
-.options-field input,
-.options-field textarea {
-    vertical-align: middle;
-    width: 373px;
-}
-
-.options-field > label, .options-field-label {
-    display: inline-block;
-    width: 320px;
-}
-#stayloggedin-right {
-    font-family: "Abel", sans-serif;
-    margin-left: 330px;
-    width: auto;
-}
-
-#realnamepublish, #stayloggedin, #delayorderhist, .checkbox {
-    vertical-align: middle !important;
-    width: 20px !important;
-    height: 20px !important;
-    margin: 5px 0 !important;
-}
-
-#provision {
-    width: 40px;
-}
-
-#desc{
-    height: 100px;
-}
-
-#birthdayd { width: 60px; }
-#birthdaym { width: 60px; }
-#birthdayy { width: 100px; }
-#birthdayd, #birthdaym, #birthdayy { display: inline; }
-
-.reg-required:after {
-    content: " *";
-    color:#a00;
-}
-
-/* ==========================================================================
-     trade
-   ========================================================================== */
-
-#limit-stop, #amount, #value {
-    width: 135px;
-}
-
-.trade-label {
-    font-family: "Abel", "Droid Sans", sans-serif;
-    color: #a7a7a7;
-}
-
-label.trade-label,
-.trade-label {
-    display: inline-block;
-    color: #000;
-    width: 100px;
-    font-family: "Abel", "Droid Sans", sans-serif;
-    color: #333;
- }
-
-.trade-label-button{
-    margin: 0 0 0 0;
-    font-family: "Abel", "Droid Sans", sans-serif;
-    display: block;
-}
-
-label.trade-label-input {
-    width: auto;
-    color: #000;
-    margin: 0 20px 0 0;
- }
-
-#paper {
-    width: 313px;
- }
-
-.paper-preview th {
-    font-family: "Abel", sans-serif;
-    text-align: right;
-}
-.paper-preview td {
-    padding: 3px 10px;
-}
-
-.paper-preview-box {
-    float:right;
-    margin: 0 0 0 0;
-}
-
-/* hover infos */
-
- .tooltip[data-info]:hover:after {
-  content:  attr(data-info);
-  padding: 6px;
-  color: #333;
-  width: 200px;
-  background-color: #fff;
-  position: absolute;
-  z-index: 3;
-  -moz-border-radius: 3px; 
-  -webkit-border-radius: 3px;  
-  border-radius: 3px;  
-  border: thin solid #a7a7a7;
-}
-
-.max-values {
-    padding-left: 10px;
-    vertical-align: baseline;
-    font-size: 13px;
-    font-family: "Abel", "Droid Sans", sans-serif;
-    color: #a7a7a7;
-}
-
-#order-type {
-    width:480px;
-    float: left;
-}
-
-label.smaller-order-type {
-    width: 150px;
-}
-
-.trade-button {
-    float: right;
-    color: #fff;
-    margin: 25px 0 0 0;
-    width: 220px;
-    height: 115px;
-    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f15a29), color-stop(1, #f17a29) );
-    background: -moz-linear-gradient( center top, #f15a29 5%, #f15a29 100% );
-    filter:progid: DXImageTransform.Microsoft.gradient(startColorstr='#f15a29', endColorstr='#f15a29');
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    text-shadow: none;
-}  
-
-.trade-button:hover {
-    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f17a29), color-stop(1, #f15a29) );
-    background: -moz-linear-gradient( center top, #f17a29 5%, #f15a29 100% );
-    filter:progid: DXImageTransform.Microsoft.gradient(startColorstr='#f17a29', endColorstr='#f15a29');
-    border-color: #fff;
-}
-
-/* ==========================================================================
-    angulars-classes
-   ========================================================================== */
-
-.ng-valid {
-    outline-color: #0f0;
-}
-.ng-invalid {
-    outline-color: #f00;
-}
-
-/* ==========================================================================
-    depot
-   ========================================================================== */
-
-.owned-trades tr:first-child th:nth-child(2),
-.owned-trades tr:first-child th:nth-child(4) {
-    background-color: #fff;
-}
-
-.one-item-list {
-    display: inline-block;
-    list-style: none;
-    padding: 0;
-    width: 200px;
-    margin: 0 15px;
-    text-align: center;
-}
-
-.one-item-list li {
-    font-family: "Abel", "Droid Sans", sans-serif;
-    color : #444;
-    margin: 0 0 15px 0;
-}
-
-.one-item-list li + li {
-    font-family: "Droid Sans", sans-serif;
-    color: #000;
-}
-
-.owned-trades,
-.transaction-history,
-.ranking {
-    font-family: "Droid Sans", sans-serif;
-    width: 748px;  /* 100% leider kein maxwert */
-    text-align: left;
-}
-
-.owned-trades,
-.transaction-history {
-    font-size: 14px;
-}
-
-.owned-trades,
-.transaction-history {
-    margin: -15px;
-}
-
-.owned-trades th,
-.transaction-history th {
-    font-family: "Abel", "Droid Sans", sans-serif;
-    color: #222;
-}
-
-.owned-trades tr + tr + tr:hover,
-.transaction-history tr + tr:hover,
-.ranking tr + tr:hover{
-    background-color: rgba(0, 0, 0, 0.1);    
-}
-
-.owned-trades td,
-.owned-trades th,
-.transaction-history td,
-.transaction-history th,
-.ranking td,
-.ranking th {
+#logo img {
     height: 100%;
-    padding: 8px;
-    vertical-align: middle;
 }
 
-.owned-trades tr:first-child th
-.transaction-history tr:first-child th {
-    padding: 5px 10px 0px 10px;
+header#header h2 {
+    margin: 0px;
+    font-size: 1em;
+    line-height: 1.4;
 }
 
-.transaction-history tr td:last-child,
-.transaction-history tr th:last-child,
-.owned-trades tr td:last-child,
-.owned-trades tr th:last-child {
-    text-align: center;
+header#header .inline {
+    padding: 7px;
+    height: 36px;
 }
 
-.trade-td {
-    color: #444;
-    padding: 0;
+header#header .pull-right {
+    height: 50px;
 }
 
-.owned-trades tr:first-child {
-    text-align: center;
-}
-
-.owned-trades .trade-td a {
-    display: inline-block;
-    padding: 20px 0;
-    height:100%;
-    width:100%;
-}
-
-.column-1,
-.column-3,
-.depot-follower  {
-    background-color: rgba(200, 200, 200, 0.3);
-}
-
-.column-4-5 {
-    background-color: rgba(50, 100, 150, 0.3);
-}
-
-.column-6-7 {
-    background-color: rgba(255, 143, 39, 0.3)
-}
-
-.depot-sell {
-    background-color: rgba(150, 0, 0, 0.2);
-}
-
-.depot-buy {
-    background-color: rgba(0, 150, 0, 0.2);    
-}
-
-.watchlist {
-    list-style-type: none;
-    padding: 0;
-}
-
-.watchlist .player {
-    padding: 0;
+header#header .name {
     float: left;
-    font-size: 18px;
-    font-family: "Droid Sans", sans-serif;
-    color: #2b3990;
+    height: 28px;
+    padding: 11px;
 }
 
-.unwatch-icon {
-    cursor: pointer;
-    font-size: 15px;
+header#header .name h2 {
+    font-size: 20px;
+    font-weight: normal;
 }
+
+
+
 /* ==========================================================================
-    Rangliste
+   Navigation
    ========================================================================== */
 
-.rankcol-1 {
+nav#nav {
 
 }
 
-.rankcol-2 {
-
+nav#nav ul, nav#nav li  {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
 }
 
-.rankcol-3 {
-
+nav#nav li:first-child a {
+    margin-top: 20px;
 }
 
-.ranking tr td:first-child,
-.ranking tr th:first-child {
+
+nav#nav a {
+    display: block;
+    width: 100%;
     text-align: center;
-    font-weight: 900;
+    font-size: 15px;
+    margin: 50px 0px;
+    color: #444;
+
 }
 
-.ranking tr th {
-    font-family: "Abel", sans-serif;
-}
-
-.ranking .rank-name a {
-    color: #2b3990;
-    display: inline-block;
-    height:100%;
-    width:100%;
-}
-
-.ranking .rank-name a:hover {
-    text-decoration: underline;
-}
-
-.ranking .rank-name a:active {
-    text-decoration: none;
-}
-
-.ranking tr td:last-child,
-.ranking tr th:last-child {
-    text-align: right;
-}
-
-.ranking tr:nth-child(even) {
-    background-color: rgba(200, 200, 200, 0.2);
-}
-
-.search-li input{
-    margin: 0;
-    height: 13px;
-    font-family: "Abel", sans-serif;
-}
-
-.search-icon {
-    margin: 0 10px 0 0;
+nav#nav a .fa {
+    font-size: 40px;
+    display: block;
     color: #444;
 }
 
-#search {
+nav#nav a:hover, nav#nav a.active, nav#nav a.active .fa, nav#nav a:hover .fa {
+    color: #2b3990;
+}
+
+/* ==========================================================================
+   Feed
+   ========================================================================== */
+
+
+.feed-item {
+    margin-bottom: 5px;
+    clear: left;
+    min-height: 40px;
+    background: rgb(253,253,253);
+}
+
+.feed-item .feed-entry-symbol {
     float: left;
-    margin-top: 0px;
-    width: 200px;
-
-}
-
-#ranking-search {
-    display: block;
-    height: 32px;
-    line-height: 32px;
-    margin-top: 10px;
-    margin-left: 220px;
-}
-
-div#tabs ul li.search-li {
-    float: right;
-    margin: 0;
-    padding: 0;
-
-}
-
-.pagination {
+    padding: 10px;
+    background-color: #34495e;
+    color: #fff;
+    font-size: 15px;
+    height: 20px;
+    width: 20px;
     text-align: center;
 }
 
-.pagination, .pagination li {
+.feed-item .feed-entry-content {
+    padding: 10px;
+    padding-left: 50px;
+}
+
+.feed-item.feed-important-item .feed-entry-symbol {
+    background-color: #e74c3c;
+}
+
+
+/* ==========================================================================
+   Tabbing
+   ========================================================================== */
+
+#tabs ul.ui-tabs-nav {
+    height: 40px;
+    border:1px solid #E5E5E5;
+    height: 37px;
+}
+
+#tabs ul.ui-tabs-nav, #tabs li {
     margin: 0px;
     padding: 0px;
     list-style-type: none;
-}
-
-.pagination li {
-    display: inline-block;
-}
-
-.pagination a {
-    display: block;
-    padding: 3px 5px;
-    text-align: center;
-    margin-right: 5px;
-    box-shadow: inset 0px 1px 0px rgba(255,255,255, .8), 0px 1px 3px rgba(0,0,0, .1);
-    color: #717171;
-}
-
-.pagination a:hover, .pagination .active {
-    background:#616161; 
-    color:#fff;
-}
-
-
-
-/* ==========================================================================
-    faq
-   ========================================================================== */
-
-.faq h4 {
-    margin: 15px 0 0 0;
-}
-
-.anchor{
-   display:block;
-   height:100px;
-   margin-top:-100px;
-   visibility:hidden;
-}
-
-.radio-fix {
-    z-index: -3
-}
-
-/* ==========================================================================
-    IntroJS
-   ========================================================================== */
-
-.tutbtn,
-.tutbtn-show {
-    border-radius: 7px;
-    border: thin solid #f30;
-    float: right;
-    z-index: 3;
-    position: absolute;
-    margin-left: -220px;
-    margin-top: 20px;
-    width: 30px;
-    height: 30px;
-    color: #fff;
-    background-color: #ff5000;
-}
-
-.tutbtn-show {
-    float: none;
-    position: static;
-    display: inline;
-    margin: 0;
-    vertical-align: baseline;
-}
-
-/* ==========================================================================
-    tradeDetails
-   ========================================================================== */
-
-.comment {
-    float: left;
-    width: 580px;
-}
-
-.commenter {
-    text-align: right;
-    width: 150px;
-    overflow: hidden;
     font-size: 15px;
-    margin: 5px;
-    float: left;
-    font-family: "Abel", "Droid Sans", sans-serif;
-    font-weight: 900;
-    height: 20px;
 }
 
-.comment-button {
-    line-height: 0px;
-    height: 32px;
-    width: 150px;
+#tabs ul.ui-tabs-nav li {
     float: left;
-    margin: 2px 14px 0 0;
 }
 
-.comment-textarea {
-    margin: 0 0 0 0;
-    width: 574px;
-    height: 24px;
-    float: left;
-    margin: 0px;
-    border-radius: 0px;
+#tabs ul.ui-tabs-nav a {
+    display: block;
+    padding: 8px 10px;
+    border-right:1px solid #E5E5E5;
+}
+
+#tabs ul.ui-tabs-nav li:last-child a {
+    
+}
+
+#tabs ul.ui-tabs-nav .ui-state-active a,#tabs ul.ui-tabs-nav a:hover  {
+    background: #E5E5E5;
+    color: #000;
 }
 
 /* ==========================================================================
-    Getting Started
+   Profile
    ========================================================================== */
 
-.tutorial h3,
-.tutorial h4,
-.tutorial h5 {
-    color: #ff5000;
-    margin-bottom: 0;
-}
-
-.tutorial {
-    background-image: url('../img/bg.png');
+#profile-picture {
+    background-image:url(../img/Zeichnung.svg);
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: 40px 100px; 
 }
 
-.tutorial .text {
-    font-weight: 700;
-    line-height: 30px;
-}
-
-.tutorial ol {
-    margin-top: 35px;
-}
-
-.tutorial ol li {
-    line-height: 30px;
-    margin-left: 120px;
-}
-
-.tut-symbol {
-    padding: 5px;
+.profile .user-info {
     text-align: center;
-    border: 3px #2b3990 solid;
-    border-radius: 10px;
-    width: 50px;
-    height: 50px;
-    float: left;
-    font-size: 35px;
-    color: #a7a7a7;
 }
 
-.tutorial ol div {
-    margin-bottom: 35px;
+.profile .user-info img {
+    border-radius: 150px;
+}
+
+.profile .user-stats h3 {
+    margin: 5px 0px;
 }
 
 /* ==========================================================================
-    about
+   Ranking
    ========================================================================== */
 
-.maker-wrapper {
-    width: 300px;
-    float: left;
+.ranking .pure-form {
+    margin: 15px 0px;
 }
 
-.maker {
-    width: 60%;
-    height: 60%;
-    padding: 15px;
-    background-color: rgba(200, 200, 200, 0.4);
+.ranking .pure-form input {
+    height: 30px;
 }
 
-.maker:hover {
-    border: thin solid #ff5000;
-    padding: 14px;
+#options .pure-g {
+    letter-spacing: 1px;
 }
 
-.maker-name {
-    text-align: center;
-    font-family: "Abel", "Droid Sans", sans-serif
-}
-
-.rotate {
-    font-size: 20px;
-    position: relative;
-    bottom: 20px;
-    background-color: #fff;
-    right: 7px;
-    letter-spacing: 2px;
-    display: inline-block;
-    margin: 0px 0 0 -40px;
-    -moz-transform: scale(1) rotate(-35deg) translateX(20px) translateY(20px) skewX(0deg) skewY(0deg);
-    -webkit-transform: scale(1) rotate(-35deg) translateX(20px) translateY(20px) skewX(0deg) skewY(0deg);
-    -o-transform: scale(1) rotate(-35deg) translateX(20px) translateY(20px) skewX(0deg) skewY(0deg);
-    -ms-transform: scale(1) rotate(-35deg) translateX(20px) translateY(20px) skewX(0deg) skewY(0deg);
-    transform: scale(1) rotate(-35deg) translateX(20px) translateY(20px) skewX(0deg) skewY(0deg);
-}
-
-#tabs div { 
-    font-size: 1em; 
-    font-family: 'Droid Sans', sans-serif;
-}
-
-
-/* ==========================================================================
-    chart (jqplot)
-   ========================================================================== */
-
-.chart-depot {
-    position: relative;
-    float: left;
-    width: 530px;
-}
-
-#chart-wrap {
-    clear: both;
-}
-
-#chart-wrap ul#chart-control {
-    float: right;
-    width: 160px;
-    list-style-type: none;
-    padding: 10px;
+#trade .info {
+    padding-left: 15px;
 }
 
 /* ==========================================================================
@@ -1516,7 +357,7 @@ div#tabs ul li.search-li {
     position: absolute;
     top: 0px;
     left: 0px;
-    z-index: 1000;
+    z-index: 999999;
     width: 100%;
     height: 100%;
     background: rgba(255,255,255,0.8);
@@ -1973,6 +814,17 @@ div#tabs ul li.search-li {
 
 #notifications .notification-item.success {
     background: #2ecc71;
+}
+
+/* ==========================================================================
+    angulars-classes
+   ========================================================================== */
+
+.ng-valid {
+    outline-color: #0f0;
+}
+.ng-invalid {
+    outline-color: #f00;
 }
 
 /* ==========================================================================

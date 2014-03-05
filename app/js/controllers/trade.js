@@ -11,6 +11,16 @@ angular.module('tradity').
     $scope.sellbuy = 1;
     $scope.fee = 0;
     $scope.isMarketOrder = true;
+    $scope.page = 0;
+    $scope.results = [];
+
+    $scope.next = function() {
+      $scope.page++;
+    }
+
+      $scope.back = function() {
+      $scope.page--;
+    }
 
     $scope.buy = function() {
       if (!$scope.amount && !$scope.value)
@@ -101,6 +111,7 @@ angular.module('tradity').
               data.results[i].getExtra = function() { return (parseInt(this.lastvalue / 100) / 100) + (this.exchange ? ' ' + this.exchange : ''); };
               suggestions.push(data.results[i]);
             }
+            $scope.results = suggestions;
             ac.putData(suggestions, s);
           }
         });

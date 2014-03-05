@@ -1,30 +1,32 @@
-<button class="tutbtn" onclick="javascript:introJs().start()" ng-hide="!user.isSelf">?</button>
-<div class="main-content" data-step="1" data-position="left" data-intro="Alles, was du hier siehst, ist dein öffentliches Profil. Je nach deinen Einstellungen ist dein Klarname einsehbar.">
-	<div id="profile-user" class="profile" ng-hide="user.isSelf">
-	    <div class="clearfix">
-	        <h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
-	        <div class="depot">
-	            <h2 class="title">Gesamtvermögen</h2>
-	            <span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
-	        </div>
-	    </div>
-	    <img class="profile-picture profile-box" src="{{user.profilepic}}" alt="Profilbild">
-	    <div class="bio profile-box">
-	        <h3 class="title">Kurzbeschreibung<br /></h3>
-	        {{user.desc}}
-	    </div>
-	    <div class="placement profile-box">
-	        <h3 class="title">Platz<br /></h3>
-	        <span class="placement-number">{{user.rank}}</span>
-	    </div>
-	    <div class="profile-box" style="float: right; text-align: right; padding-right: 0">
-	        <h3 class="title">Provision<br /></h3>
-	        <span class="placement-number">{{user.wprovision}} % / {{user.lprovision}} %</span>
-	        <br>
-			<span class="depot-wert">(+{{user.prov_sum/10000|currency}})</span>
-	    </div>
+
+<div class="main-content">
+	<div id="profile-user" class="profile">
+		<div class="user-info">
+			<img id="profile-picture" class="profile-picture profile-box" src="{{user.profilepic}}" height="150px">
+			<h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
+		</div>
+		<div class="pure-g user-stats">
+			<div class="pure-u-1-6">
+				<h3 class="title">Platz</h3>
+	        	<span class="placement-number">{{user.rank}}</span>
+			</div>
+			<div class="pure-u-1-6">
+				<h3 class="title">Vermögen</h3>
+	        	<span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
+			</div>
+			<div class="pure-u-1-6">
+				<h3 class="title">Provision</h3>
+		        <span class="placement-number">{{user.wprovision}} % / {{user.lprovision}} %</span>
+		        <br>
+				<span class="depot-wert">(+{{user.prov_sum/10000|currency}})</span>
+			</div>
+			<div class="pure-u-1-2">
+				<h3 class="title">Kurzbeschreibung</h3>
+	        	<p>{{user.desc}}</p>
+			</div>
+		</div>
 	</div>
-	<div class="clearfix"></div>
+	</br>
 <div id="tabs">
 	<ul>
 		<li><a href="#overview">Generelles</a></li>
@@ -32,8 +34,8 @@
 		<li><a href="#pinboard">Pinnwand</a></li>
 	</ul>
 	<div id="overview">
-		<fieldset class="options-field">
-			<legend>Performance</legend>
+		<div class="options-field">
+			<h2>Performance</h2>
 			<div id="chart-wrap">
 				<div id="chart" class="jqplot-target chart-depot"></div>
 				<ul id="chart-control">
@@ -47,73 +49,62 @@
 					</li>
 				</ul>
 			</div>
-		</fieldset>
-			<fieldset class="options-field">
-				<legend>Vermögensentwicklung</legend>
-				<ul class="one-item-list">
-					<li>
-						Gesamt
-					</li>
-					<li>
-						<span ng-class="{pos: performanceAll > 0, neg: performanceAll < 0}">
+		</div>
+
+			<h2>Vermögensentwicklung</h2>
+
+			<div class="pure-g info-grid">
+
+				<div class="pure-u-1-3">
+					<div class="item" ng-class="{pos: performanceAll > 0, neg:  performanceAll < 0}">
+						<b>Gesamt</b></br>
 						{{ performanceAll = ((user.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
-						</span>
-					</li>
-				</ul>
-				<ul class="one-item-list">
-					<li>
-						Heute
-					</li>
-					<li>
-						<span ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
-							{{ performanceToday = (user.totalvalue / user.daystarttotalvalue - 1) * 100 | number:2}} %
-						</span>
-					</li>
-				</ul>
-				<ul class="one-item-list">
-					<li>
-						Woche
-					</li>
-					<li>
-						<span ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
-							{{ performanceWeek = (user.totalvalue / user.weekstarttotalvalue - 1) * 100 | number:2}} %
-						</span>
-					</li>
-				</ul>
-			</fieldset>
-			<fieldset class="options-field">
-				<legend>als Leader</legend>
-				<ul class="one-item-list">
-					<li>
-						Anzahl Follower
-					</li>
-					<li>
-						<span>
-							{{user.f_count}}
-						</span>
-					</li>
-				</ul>
-				<ul class="one-item-list">
-					<li>
-						verkaufte Wertpapiere
-					</li>
-					<li>
-						<span>
-							{{user.f_amount}}
-						</span>
-					</li>
-				</ul>
-				<ul class="one-item-list">
-					<li>
-						erh. Provision
-					</li>
-					<li>
-						<span>
-							{{user.prov_sum / 10000|currency}}
-						</span>
-					</li>
-				</ul>
-			</fieldset>
+					</div>
+				</div>
+
+				<div class="pure-u-1-3">
+					<div class="item" ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
+						<b>Heute</b></br>
+						{{( performanceToday = user.totalvalue / user.daystarttotalvalue - 1) * 100 | number:2}} %
+					</div>
+				</div>
+
+				<div class="pure-u-1-3">
+					<div class="item" ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
+						<b>Woche</b></br>
+						{{ performanceWeek = (user.totalvalue / user.weekstarttotalvalue - 1) * 100 | number:2}} %
+					</div>
+				</div>
+
+			</div>
+
+			<h2>als Leader</h2>
+
+			<div class="pure-g info-grid">
+
+				<div class="pure-u-1-3">
+					<div class="item">
+						<b>Gesamt</b></br>
+						{{user.f_count}}
+					</div>
+				</div>
+
+				<div class="pure-u-1-3">
+					<div class="item">
+						<b>Heute</b></br>
+						{{user.f_amount}}
+					</div>
+				</div>
+
+				<div class="pure-u-1-3">
+					<div class="item">
+						<b>erh. Provision</b></br>
+						{{user.prov_sum / 10000|currency}}
+					</div>
+				</div>
+
+			</div>
+
 			<div style="text-align: right;" ng-hide="user.isSelf">
 		      <button ng-click="getUserInfo()" class="click-button"><span class="batch">&#xF0B2; </span>Refresh</button>
 		      <button ng-click="addToWatchlist()" class="click-button"><span class="batch">&#xF179; </span>zur Watchlist hinzufügen</button>
@@ -121,9 +112,9 @@
 		    </div>
 		</div>
 		<div id="history">
-			<fieldset class="options-field">
-				<legend>Transaktionshistorie</legend>
-				<table class="transaction-history">
+			<div class="options-field">
+				<h2>Transaktionshistorie</h2>
+				<table class="transaction-history table table-bordered">
 				  <colgroup>
 				  	<col class="column-0">
 				    <col class="column-1">
@@ -153,7 +144,7 @@
 						</td>
 					</tr>
 				</table>
-			</fieldset>
+			</div>
 		</div>
 		<div id="pinboard" style="margin-top: 15px;">
 			<div ng-repeat="comment in comments">

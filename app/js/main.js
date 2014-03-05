@@ -6,6 +6,7 @@ $(document).ready(function() {
 });
 
 // Scrolling Header effects (logo + profile)
+/*
 function logoTransition() {
 	$(document).scroll(function() {
 		var logoText = $("#tradity");
@@ -21,7 +22,7 @@ function logoTransition() {
 		}
 	});
 }
-
+*/
 var initNotifications = function() {
 	var notificationContainer = $('<div id="notifications"></div>');
 	$('body').append(notificationContainer);

@@ -6,15 +6,16 @@
         <title>tradity</title>
         <meta name="description" content="Beim Börsenspiel Tradity bist Du gefragt Dein virtuelles Startkapital möglichst vielversprechend in Wertpapiere zu investieren."> <!-- edit -->
         <meta name="viewport" content="width=device-width">
+        <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 
         <!-- build:css({.tmp,app}) css/main.css -->
         <link rel="stylesheet" href="css/ac.css">
         <link rel="stylesheet" href="css/introjs.css">
-        <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.css">
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/forms-min.css">
         <link rel="stylesheet" href="css/grids-min.css">
         <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/main.css">
         <!-- endbuild -->
 
@@ -229,10 +230,10 @@
                                 <h2>Barne Jürgensen</h2>
                                 <div class="content">
                                     <p>
-                                        Student, 21
+                                        Schüler, 18
                                     </p>
                                     <p>
-                                        Frontend Engineering
+                                        Frontend Engineering/Design
                                     </p>
                                     <p>
                                         tech@tradity.de
@@ -259,82 +260,86 @@
                 </div>
             </div>
         </div>
-            <div id="wrapper" class="clearfix">
-                <header id="header" class="clearfix">
-                    <div id="logo"><a class="block-link" style="width: 150px; height: 150px;" href="#"></a></div><h1 id="tradity"><a href="#">tradity</a></h1>
-                    <div id="profile-own" class="profile">
-                        <div class="name-container clearfix">
-                            <a ng-href="#/user/{{ownUser.name}}" style="cursor: pointer"  accesskey="p" title="Hier gehts zu deinem Profil" class="block-link profile-link">
-                                <h2 class="name">{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>
-                                <div class="depot">
-                                    <h2 class="title">Konto</h2>
-                                    <span class="depot-wert">{{ownUser.freemoney / 10000 | currency}}</span>
-                                </div>
-                                <div class="depot">
-                                    <h2 class="title">Gesamtvermögen</h2>
-                                    <span class="depot-wert">{{ownUser.totalvalue / 10000 | currency}}</span>
-                                </div>
-                            </a>
+            <div class="wrapper">
+                <header id="header">
+                    <div class="inner">
+                        <div class="pull-right">
+                                <a ng-href="#/user/{{ownUser.name}}" class="name"  accesskey="p" title="Hier gehts zu deinem Profil" class="block-link profile-link">
+                                    <h2>{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>
+                                </a>
+                                <img id="profile-picture" class="inline" height="50px" ng-src="{{ownUser.profilepic}}" alt="Profilbild">
+                            
                         </div>
-                        <img id="profile-picture" class="profile-box" ng-src="{{ownUser.profilepic}}" alt="Profilbild">
-                        <div id="bio" class="profile-box">
-                            <h3 class="title">Kurzbeschreibung<br /></h3>
-                            {{ownUser.desc}}
+                        <div id="logo"><img src="img/tradity_symbol.png"></div>
+                        <div class="inline">
+                            <h2 class="title">Konto</h2>
+                            <span class="depot-wert">{{ownUser.freemoney / 10000 | currency}}</span>
                         </div>
-                        <div id="placement" class="profile-box">
-                            <h3 class="title">Rang<br /></h3>
+
+                        <div class="inline">
+                            <h2 class="title">Gesamtvermögen</h2>
+                            <span class="depot-wert">{{ownUser.totalvalue / 10000 | currency}}</span>
+                        </div>
+
+                        <div class="inline">
+                            <h2>Rang</h2>
                             <span class="placement-number">{{ownUser.rank}}</span>
                         </div>
-                        <ul id="buttons" class="profile-box">
-                            <li>
-                                <a class="batch font-20" style="cursor: pointer" ng-click="logout()" title="Logout">&#xF02B;</a>
-                            </li>
-                        </ul>
+
+                        <!--a class="batch font-20" style="cursor: pointer" ng-click="logout()" title="Logout">&#xF02B;</a-->
+                        
                     </div>
                 </header>
-                <nav id="nav" data-step="100" data-position="right" data-intro="Finde mehr heraus indem du Dich durch die Navigation klickst.">
-                    <ul>
-                        <li>
-                            <a href="#/" accesskey="f" title="ALT+SHIFT+F">
-                                <span ng-class="{active:isActive('/')}" class="batch nav-block-symbol">&#xF003;</span>
-                                <span class="dark nav-block-title">Neuigkeiten</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#/depot" accesskey="d" title="ALT+SHIFT+D">
-                                <span ng-class="{active:isActive('/depot')}" class="batch nav-block-symbol">&#xF034;</span>
-                                <span class="dark nav-block-title">Mein Depot</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#/trade" accesskey="t" title="ALT+SHIFT+T">
-                                <span ng-class="{active:isActive('/trade')}" class="batch nav-block-symbol">&#xF153;</span>
-                                <span class="dark nav-block-title">Trade</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#/ranking" accesskey="r" title="ALT+SHIFT+R">
-                                <span ng-class="{active:isActive('/ranking')}" class="batch nav-block-symbol">&#xF160;</span>
-                                <span class="dark nav-block-title">Rangliste</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#/options"  accesskey="o" title="ALT+SHIFT+O">
-                                <span ng-class="{active:isActive('/options')}" class="batch nav-block-symbol">&#xF138;</span>
-                                <span class="dark nav-block-title">Einstellungen</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#/faq"  accesskey="h" title="ALT+SHIFT+H">
-                                <span ng-class="{active:isActive('/faq')}" class="batch nav-block-symbol">&#xF0D4;</span>
-                                <span class="dark nav-block-title">Häufige Fragen</span>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="pure-g">
+                    <div class="pure-u-1-5">
+                        
+                        <nav id="nav" data-step="100" data-position="right" data-intro="Finde mehr heraus indem du Dich durch die Navigation klickst.">
+                            <ul>
+                                <li>
+                                    <a href="#/" accesskey="f" title="ALT+SHIFT+F" ng-class="{active:isActive('/')}">
+                                        <i class="fa fa-inbox"></i> 
+                                        <span class="dark nav-block-title">Neuigkeiten</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/depot" accesskey="d" title="ALT+SHIFT+D"  ng-class="{active:isActive('/depot')}">
+                                        <i class="fa fa-bar-chart-o"></i>
+                                        <span class="dark nav-block-title">Mein Depot</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/trade" accesskey="t" title="ALT+SHIFT+T" ng-class="{active:isActive('/trade')}">
+                                        <i class="fa fa-eur" ></i>
+                                        <span class="dark nav-block-title">Trade</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/ranking" accesskey="r" title="ALT+SHIFT+R" ng-class="{active:isActive('/ranking')}">
+                                        <i class="fa fa-flag"></i> 
+                                        <span class="dark nav-block-title">Rangliste</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/options"  accesskey="o" title="ALT+SHIFT+O" ng-class="{active:isActive('/options')}">
+                                        <i class="fa fa-wrench"></i>
+                                        <span class="dark nav-block-title">Einstellungen</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#/faq"  accesskey="h" title="ALT+SHIFT+H" ng-class="{active:isActive('/faq')}">
+                                        <i class="fa fa-question"></i>
+                                        <span class="dark nav-block-title">Häufige Fragen</span>
+                                    </a>
+                                </li>
+                            </ul>
 
-                </nav>
-                <div ng-view></div>
-                <footer id="footer">
+                        </nav>
+                    </div>
+                    <div class="pure-u-4-5">
+                        <div ng-view></div>
+                    </div>
+                </div>
+                <!--footer id="footer">
                     <ul id="social-links" class="profile-box">
                         <li>
                             <a class="transparent-30 social-link twitter" target="_blank" href="https://twitter.com/tradityde"><img src="img/glyphicons/glyphicons_social_31_twitter.png" alt="Twitter"></a>
@@ -350,7 +355,7 @@
                     <a class="text-link footer-text" href="legal.html">Allgemeine Geschäftsbedingungen</a>
                     <a class="text-link footer-text" href="legal.html">Impressum</a> 
                     <span class="footer-text">tradity, 2014</span>
-                </footer>
+                </footer-->
             </div>
         </div>
     </body>

@@ -21,8 +21,8 @@
 
         <!-- build:js({.tmp,app}) js/scripts.js -->
         <script type="text/javascript" src="js/vendor/jquery-2.0.3.min.js"></script>
-        <script type="text/javascript" src="js/vendor/angular.min.js"></script>
-        <script type="text/javascript" src="js/vendor/angular-route.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
         <script type="text/javascript" src="js/vendor/angular-locale_de.js"></script>
         <script type="text/javascript" src="js/bindonce.min.js"></script>
         <script type="text/javascript" src="js/ng-infinite-scroll.min.js"></script>
@@ -55,7 +55,7 @@
         <script type="text/javascript" src="js/directives/profile.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <!-- endbuild -->
-        <script type="text/javascript" src="https://dev.tradity.de/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="bower_components/socket.io-client/dist/socket.io.js"></script>
     </head>
     <body ng-controller="MainCtrl">
         <div ng-controller="HerounitCtrl">

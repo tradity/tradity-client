@@ -42,31 +42,9 @@
         font-family: 'Quicksand', sans-serif;
     }
 
-    .info-grid .item {
-        text-align: center;
-        padding: 5px;
-        margin: 0px 5px;
+    .mobile-bar {
+        display: none;
     }
-
-    .info-grid .item b {
-        display: block;
-    }
-
-    .info-grid .item.neg {
-        background-color: #e74c3c;
-        color: #fff;
-    }
-
-    .info-grid .item.pos {
-        background-color: #2ecc71;
-        color: #fff;
-    }
-
-
-
-
-
-
 
     /* ==========================================================================
        Navigation

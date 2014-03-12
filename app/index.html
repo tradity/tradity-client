@@ -276,18 +276,19 @@
                                 <img id="profile-picture" class="inline" height="50px" ng-src="{{ownUser.profilepic}}" alt="Profilbild">
                             
                         </div>
+                        <a href="" class="mobile-bar" id="togglemenu"><i class="fa fa-bars"></i></a>
                         <div id="logo"><img src="img/tradity_symbol.png"></div>
-                        <div class="inline">
+                        <div class="inline mobile-hide">
                             <h2 class="title">Konto</h2>
                             <span class="depot-wert">{{ownUser.freemoney / 10000 | currency}}</span>
                         </div>
 
-                        <div class="inline">
+                        <div class="inline mobile-hide">
                             <h2 class="title">Gesamtvermögen</h2>
                             <span class="depot-wert">{{ownUser.totalvalue / 10000 | currency}}</span>
                         </div>
 
-                        <div class="inline">
+                        <div class="inline mobile-hide">
                             <h2>Rang</h2>
                             <span class="placement-number">{{ownUser.rank}}</span>
                         </div>
@@ -341,7 +342,7 @@
 
                         </nav>
                     </div>
-                    <div class="pure-u-4-5">
+                    <div class="pure-u-4-5 content-wrapper">
                         <div ng-view></div>
                     </div>
                 </div>

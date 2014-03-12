@@ -2,6 +2,7 @@
 
 $(document).ready(function() {
 	initNotifications();
+  $('#togglemenu').click(togglemenu)
 });
 
 // Scrolling Header effects (logo + profile)
@@ -46,6 +47,11 @@ var notification = function (text,icon) { // icon == true -> success
 		notificationItem.hide();
 	}, 3000);
 }
+
+var togglemenu = function() {
+  $('body').toggleClass('menuShow');
+}
+
 
 var tabbing = function(div, targeturl, def, $location, $scope) {
   div.tabs();

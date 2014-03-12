@@ -1,245 +1,248 @@
-/* ==========================================================================
-   General
-   ========================================================================== */
+@media all and (max-width:480px) {
 
-body {
+    /* ==========================================================================
+       General
+       ========================================================================== */
 
+    body {
+
+    }
+
+    #hero-wrapper {
+        display: none;
+    }
+
+    /* ==========================================================================
+       Header
+       ========================================================================== */
+    #header .user-info {
+        display: none;
+    }
+
+    #header #logo {
+        display: none;
+    }
+
+    /*
+
+
+    body {
+        padding-bottom: 50px;
+    }
+
+
+
+
+
+
+
+    nav#navigation {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 50px;
+
+        background-color:#0E446A;
+    }
+
+    nav#navigation .nav-item a{
+        display: block;
+
+        text-align: center;
+        color: #fff;
+        font-size: 14px;
+
+        padding: 7px;
+    }
+
+    nav#navigation .nav-item .fa{
+        display: block;
+        font-size: 20px;
+    }
+
+
+    nav#navigation .nav-item.active a{
+        background-color: #FF6E38;
+    }
+
+
+
+
+
+    #content {
+        overflow-x:hidden;
+    }
+
+    #content h2 {
+        color: #333;
+        font-family: Quicksand;
+        font-weight: normal;
+        margin: 5px;
+        margin-bottom: 0px;
+        padding: 5px;
+    }
+
+    #content h1 {
+        color: #333;
+        font-family: Quicksand;
+        font-weight: normal;
+        margin: 5px 5px;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .info-grid .item {
+        text-align: center;
+        padding: 5px;
+        margin: 0px 5px;
+    }
+
+    .info-grid .item b {
+        display: block;
+    }
+
+    .info-grid .item.neg {
+        background-color: #e74c3c;
+        color: #fff;
+    }
+
+    .info-grid .item.pos {
+        background-color: #2ecc71;
+        color: #fff;
+    }
+
+    table.table {
+        font-size: 12px;
+    }
+
+
+
+
+
+    #tabs ul.ui-tabs-nav {
+        border:1px solid #E5E5E5;
+    }
+
+    #tabs ul.ui-tabs-nav, #tabs li {
+        margin: 0px;
+        padding: 0px;
+        list-style-type: none;
+        font-size: 15px;
+    }
+
+    #tabs ul.ui-tabs-nav li {
+        display: block;
+    }
+
+    #tabs ul.ui-tabs-nav a {
+        display: block;
+        padding: 8px 10px;
+        text-align: center;
+    }
+
+    #tabs ul.ui-tabs-nav li:last-child a {
+        
+    }
+
+    #tabs ul.ui-tabs-nav .ui-state-active a,#tabs ul.ui-tabs-nav a:hover  {
+        background: #E5E5E5;
+        color: #000;
+    }
+
+
+
+    .feed-item {
+        margin: 5px;
+        margin-bottom: 0px;
+        clear: left;
+        min-height: 40px;
+        color:#fff;
+    }
+
+    .feed-item a {
+        color: #fff;
+    }
+
+    .feed-item .feed-entry-symbol {
+        float: left;
+        padding-top: 5px;
+        height: 37px;
+        width: 42px;
+        text-align: center;
+    }
+
+    .feed-item .feed-entry-symbol .fa {
+
+        padding: 10px;
+        color: #fff;
+    }
+
+    .feed-item .feed-entry-content {
+        margin-left: 47px;
+        min-height: 22px;
+        background: #0E446A;
+        padding: 10px;
+    }
+
+    .feed-item.feed-important-item .feed-entry-symbol {
+        background-color: #e74c3c;
+    }
+
+
+
+
+
+    #content .dash-unit .messages {
+        padding: 5px;
+    }
+
+    #content .dash-unit .message {
+
+        margin-bottom: 5px;
+    }
+
+    #content .dash-unit .message .content, #content .dash-unit .message .fa {
+        padding: 10px;
+        color: #fff;
+    }
+
+    #content .dash-unit .message .icon {
+        float: left;
+        padding-top: 5px;
+        height: 37px;
+        width: 42px;
+        text-align: center;
+        background-color: #FF6E38;
+    }
+
+    #content .dash-unit .message .image {
+        float: left;
+        overflow: hidden;
+        width: 42px;
+        height: 42px;
+    }
+
+    #content .dash-unit .message .image img {
+        width: 100%;
+    }
+
+
+    #content .dash-unit .message .content {
+        margin-left: 47px;
+        min-height: 22px;
+        background: #0E446A;
+    }
+
+    #content .logo-unit {
+        padding: 20px;
+    }
+
+    #content .logo-unit img {
+        width: 100%;
+    }
+
+
+
+    */
 }
-
-#hero-wrapper {
-    display: none;
-}
-
-/* ==========================================================================
-   Header
-   ========================================================================== */
-#header .user-info {
-    display: none;
-}
-
-#header #logo {
-    display: none;
-}
-
-/*
-
-
-body {
-    padding-bottom: 50px;
-}
-
-
-
-
-
-
-
-nav#navigation {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    height: 50px;
-
-    background-color:#0E446A;
-}
-
-nav#navigation .nav-item a{
-    display: block;
-
-    text-align: center;
-    color: #fff;
-    font-size: 14px;
-
-    padding: 7px;
-}
-
-nav#navigation .nav-item .fa{
-    display: block;
-    font-size: 20px;
-}
-
-
-nav#navigation .nav-item.active a{
-    background-color: #FF6E38;
-}
-
-
-
-
-
-#content {
-    overflow-x:hidden;
-}
-
-#content h2 {
-    color: #333;
-    font-family: Quicksand;
-    font-weight: normal;
-    margin: 5px;
-    margin-bottom: 0px;
-    padding: 5px;
-}
-
-#content h1 {
-    color: #333;
-    font-family: Quicksand;
-    font-weight: normal;
-    margin: 5px 5px;
-    padding: 5px;
-    text-align: center;
-}
-
-.info-grid .item {
-    text-align: center;
-    padding: 5px;
-    margin: 0px 5px;
-}
-
-.info-grid .item b {
-    display: block;
-}
-
-.info-grid .item.neg {
-    background-color: #e74c3c;
-    color: #fff;
-}
-
-.info-grid .item.pos {
-    background-color: #2ecc71;
-    color: #fff;
-}
-
-table.table {
-    font-size: 12px;
-}
-
-
-
-
-
-#tabs ul.ui-tabs-nav {
-    border:1px solid #E5E5E5;
-}
-
-#tabs ul.ui-tabs-nav, #tabs li {
-    margin: 0px;
-    padding: 0px;
-    list-style-type: none;
-    font-size: 15px;
-}
-
-#tabs ul.ui-tabs-nav li {
-    display: block;
-}
-
-#tabs ul.ui-tabs-nav a {
-    display: block;
-    padding: 8px 10px;
-    text-align: center;
-}
-
-#tabs ul.ui-tabs-nav li:last-child a {
-    
-}
-
-#tabs ul.ui-tabs-nav .ui-state-active a,#tabs ul.ui-tabs-nav a:hover  {
-    background: #E5E5E5;
-    color: #000;
-}
-
-
-
-.feed-item {
-    margin: 5px;
-    margin-bottom: 0px;
-    clear: left;
-    min-height: 40px;
-    color:#fff;
-}
-
-.feed-item a {
-    color: #fff;
-}
-
-.feed-item .feed-entry-symbol {
-    float: left;
-    padding-top: 5px;
-    height: 37px;
-    width: 42px;
-    text-align: center;
-}
-
-.feed-item .feed-entry-symbol .fa {
-
-    padding: 10px;
-    color: #fff;
-}
-
-.feed-item .feed-entry-content {
-    margin-left: 47px;
-    min-height: 22px;
-    background: #0E446A;
-    padding: 10px;
-}
-
-.feed-item.feed-important-item .feed-entry-symbol {
-    background-color: #e74c3c;
-}
-
-
-
-
-
-#content .dash-unit .messages {
-    padding: 5px;
-}
-
-#content .dash-unit .message {
-
-    margin-bottom: 5px;
-}
-
-#content .dash-unit .message .content, #content .dash-unit .message .fa {
-    padding: 10px;
-    color: #fff;
-}
-
-#content .dash-unit .message .icon {
-    float: left;
-    padding-top: 5px;
-    height: 37px;
-    width: 42px;
-    text-align: center;
-    background-color: #FF6E38;
-}
-
-#content .dash-unit .message .image {
-    float: left;
-    overflow: hidden;
-    width: 42px;
-    height: 42px;
-}
-
-#content .dash-unit .message .image img {
-    width: 100%;
-}
-
-
-#content .dash-unit .message .content {
-    margin-left: 47px;
-    min-height: 22px;
-    background: #0E446A;
-}
-
-#content .logo-unit {
-    padding: 20px;
-}
-
-#content .logo-unit img {
-    width: 100%;
-}
-
-
-
-*/

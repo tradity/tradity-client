@@ -46,6 +46,10 @@ angular.module('tradity', [
       templateUrl: 'templates/login.html',
       controller: 'HerounitCtrl'
     }).
+    when('/join/:inviteCode', {
+      templateUrl: 'templates/register.html',
+      controller: 'HerounitCtrl'
+    }).
     when('/user/:userId', {
       templateUrl: 'templates/profile.html',
       controller: 'ProfileCtrl'

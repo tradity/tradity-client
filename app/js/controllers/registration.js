@@ -1,5 +1,5 @@
 angular.module('tradity').
-  controller('RegistrationCtrl', function($scope, $location, socket) {
+  controller('RegistrationCtrl', function($scope, $routeParams, $location, socket) {
     $scope.school = null;
     //$scope.schoolname = document.getElementById('schoolname').value = '';
     $scope.traderse = 0;
@@ -9,6 +9,7 @@ angular.module('tradity').
     $scope.zipcode = '';
     $scope.town = '';
     $scope.street = '';
+    $scope.invitekey = $routeParams.inviteCode;
     socket.on('register', function(data) {
       switch (data.code) {
         case 'reg-success':
@@ -63,7 +64,8 @@ angular.module('tradity').
         traderse: $scope.traderse,
         tradersp: $scope.tradersp,
         traditye: $scope.traditye,
-        wot: $scope.wot
+        wot: $scope.wot,
+        invitekey: $scope.invitekey
       });
     };
     //useSchoolAC($scope, socket); 

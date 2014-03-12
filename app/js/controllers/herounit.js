@@ -15,7 +15,7 @@ angular.module('tradity').
 
     $scope.actions = true;
     $scope.loginForm = false;
-    $scope.registerForm = false;
+    $scope.registerForm = $routeParams.inviteCode ? true : false;
     
     
     $scope.showLogin = function () {

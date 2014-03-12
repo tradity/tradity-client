@@ -22,6 +22,7 @@ angular.module('tradity').
             break;
           case 'email-verify-failure':
             notification('Fehler beim Bestätigen der Emailadresse');
+            break;
         }
       });
     }
@@ -47,6 +48,7 @@ angular.module('tradity').
             break;
           case 'login-email-not-verified':
             notification('Emailadresse noch nicht bestätigt');
+            break;
         }
       });
     };

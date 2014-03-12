@@ -27,6 +27,10 @@
        Header
        ========================================================================== */
 
+    header#header .inner {
+        width: 100%;
+    }
+
     #header .user-info, #header #logo, .mobile-hide {
         display: none;
     }
@@ -37,6 +41,21 @@
         float: left;
         padding: 7px;
         padding-top: 9px;
+    }
+
+    header#header .cog {
+        font-size: 25px;
+        display: block;
+        padding: 7px;
+        padding-top: 9px;
+    }
+
+    header#header .dropdown-menu {
+        left: inherit;
+        margin-left: -1px;
+        margin-top: -2px;
+        left: 0px;
+        width: 100%;
     }
 
 
@@ -51,6 +70,7 @@
         margin-left: -100%;
         width: 100%;
         height: 100%;
+        z-index: 1000;
 
         background-color:#0E446A;
         color: #fff;
@@ -95,7 +115,57 @@
         margin-left: 0px;
     }
 
+    .menuShow {
+        overflow: hidden;
+    }
 
+
+    .main-content {
+        -webkit-transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -ms-transition: all 0.2s ease-in-out;
+        -o-transition: all 0.2s ease-in-out;
+        transition: all 0.2s ease-in-out;
+    }
+
+    .menuShow .main-content {
+        -moz-transform: scale(0.8);
+        -webkit-transform: scale(0.8);
+        -o-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        transform: scale(0.8);
+        opacity: 0.8;
+    }
+
+    /* ==========================================================================
+       Feed
+       ========================================================================== */
+
+
+    .feed-item {
+        margin-bottom: 5px;
+        clear: left;
+        min-height: 40px;
+    }
+
+    .feed-item .feed-entry-symbol {
+        float: left;
+        padding: 10px;
+        background-color: #34495e;
+        color: #fff;
+        font-size: 15px;
+        height: 20px;
+        width: 20px;
+        text-align: center;
+    }
+
+    .feed-item .feed-entry-content {
+        padding-left: 50px;
+    }
+
+    .feed-item.feed-important-item .feed-entry-symbol {
+        background-color: #e74c3c;
+    }
 
 
     /*

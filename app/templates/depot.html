@@ -17,21 +17,21 @@
 
 				<div class="pure-u-1-3">
 					<div class="item">
-						<b>Gesamt</b></br>
+						<b>Gesamt</b>
 						{{ownUser.totalvalue / 10000| currency}}
 					</div>
 				</div>
 
 				<div class="pure-u-1-3">
 					<div class="item">
-						<b>Konto</b></br>
+						<b>Konto</b>
 						{{ownUser.freemoney / 10000 | currency}}
 					</div>
 				</div>
 
 				<div class="pure-u-1-3">
 					<div class="item">
-						<b>Depot</b></br>
+						<b>Depot</b>
 						{{ownUser.depotvalue / 10000 | currency}}
 					</div>
 				</div>
@@ -44,21 +44,21 @@
 
 				<div class="pure-u-1-3">
 					<div class="item" ng-class="{pos: performanceAll > 0, neg:  performanceAll < 0}">
-						<b>Gesamt</b></br>
+						<b>Gesamt</b>
 						{{ performanceAll = ((ownUser.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
 					</div>
 				</div>
 
 				<div class="pure-u-1-3">
 					<div class="item" ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
-						<b>Heute</b></br>
+						<b>Heute</b>
 						{{( performanceToday = ownUser.totalvalue / ownUser.daystarttotalvalue - 1) * 100 | number:2}} %
 					</div>
 				</div>
 
 				<div class="pure-u-1-3">
 					<div class="item" ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
-						<b>Woche</b></br>
+						<b>Woche</b>
 						{{ performanceWeek = (ownUser.totalvalue / ownUser.weekstarttotalvalue - 1) * 100 | number:2}} %
 					</div>
 				</div>
@@ -71,21 +71,21 @@
 
 				<div class="pure-u-1-3">
 					<div class="item" ng-class="{pos: fperfAll > 0, neg: fperfAll < 0}">
-						<b>Gesamt</b></br>
+						<b>Gesamt</b>
 						{{ fperfAll = (ownUser.totalfperf-1) * 100 | number:2}} %
 					</div>
 				</div>
 
 				<div class="pure-u-1-3">
 					<div class="item" ng-class="{pos: fperfToday > 0, neg: fperfToday < 0}">
-						<b>Heute</b></br>
+						<b>Heute</b>
 						{{ fperfToday = (ownUser.dayfperf-1) * 100 | number:2}} %
 					</div>
 				</div>
 
 				<div class="pure-u-1-3">
 					<div class="item" ng-class="{pos: fperfWeek > 0, neg: fperfWeek < 0}">
-						<b>Woche</b></br>
+						<b>Woche</b>
 						{{ fperfWeek = (ownUser.weekfperf-1) * 100 | number:2}} %
 					</div>
 				</div>
@@ -98,21 +98,21 @@
 
 				<div class="pure-u-1-3">
 					<div class="item">
-						<b>Gesamt</b></br>
+						<b>Gesamt</b>
 						{{ownUser.f_count}}
 					</div>
 				</div>
 
 				<div class="pure-u-1-3">
 					<div class="item">
-						<b>Heute</b></br>
+						<b>Heute</b>
 						{{ownUser.f_amount}}
 					</div>
 				</div>
 
 				<div class="pure-u-1-3">
 					<div class="item">
-						<b>Woche</b></br>
+						<b>Woche</b>
 						{{ownUser.wprov_sum / 10000|currency}} / {{ownUser.lprov_sum / 10000|currency}}
 					</div>
 				</div>

@@ -2,7 +2,42 @@ body {
     font-family: Arial;
 }
 
+.inline {
+    display: inline-block;
+}
 
+body {
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+}
+
+dt {
+  float: left;
+  clear: left;
+  width: 100px;
+  text-align: right;
+  font-weight: bold;
+}
+
+dt:after {
+  content: ":";
+}
+dd {
+  margin: 0 0 0 110px;
+  padding: 0 0 0.5em 0;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+.main-content h2 {
+    margin: 15px 0px;
+    font-weight: normal;
+    font-family: 'Quicksand', sans-serif;
+}
 
 /* ==========================================================================
     Header
@@ -49,10 +84,6 @@ header#header .inline {
     height: 36px;
 }
 
-header#header .pull-right {
-    height: 50px;
-}
-
 header#header .name {
     float: left;
     height: 28px;
@@ -64,6 +95,17 @@ header#header .name h2 {
     font-weight: normal;
 }
 
+header#header .cog {
+    font-size: 17px;
+    display: block;
+    height: 22px;
+    padding: 14px 0px;
+}
+
+header#header .dropdown-menu {
+    left: inherit;
+    margin-left: -67px
+}
 
 /* ==========================================================================
     Notifications

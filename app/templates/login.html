@@ -1,11 +1,21 @@
 <div class="login-form" ng-controller="LoginCtrl" ng-show="loginForm">
-  <form class="pure-form" ng-submit="login()">
+  <form class="pure-form pure-form-stacked" ng-submit="login()">
     <fieldset class="pure-group">
-    <input type="text" class="pure-input" ng-model="username" placeholder="Benutzername">
-    <input type="password" class="pure-input" ng-model="password" placeholder="Passwort">
+    <input type="text" class="pure-input pure-input-1" ng-model="username" placeholder="Benutzername">
+    <input type="password" class="pure-input pure-input-1" ng-model="password" placeholder="Passwort">
     </fieldset>
-    <input type="checkbox" ng-model="stayloggedin" id="stayloggedin" style="display:inline-block;margin-bottom:5px;"> Eingeloggt bleiben?<br><br>
 
-    <button type="submit" class="btn btn-small">Login</button> <a class="registerq" ng-click="showRegister()" href="">Noch nicht registriert?</a>
+	<label for="remember" class="pure-checkbox">
+	    <input id="remember" ng-model="stayloggedin" type="checkbox"> Eingeloggt bleiben ?
+	</label>
+	<br>
+    <div class="pull-right">
+    	<small>
+    	<a class="text-link" ng-click="passwordReset();" style="cursor: pointer; margin-right: 20px;">Passwort vergessen?</a><br>
+    	<a class="registerq" ng-click="showRegister()" href="">Noch nicht registriert?</a>
+    	</small>
+    </div>
+    <button type="submit" class="btn btn-primary btn-sm">Login</button> 
+
   </form>
 </div>

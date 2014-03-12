@@ -65,7 +65,7 @@
                         <img src="img/logo.png" class="logo">      
                         <p class="slogan">Sei Teil des ersten <b>Social Trading Börsenspiels</b> der Welt</p>
                         <div class="actions" ng-show="actions">
-                            <a ng-click="showRegister()" id="register-btn" href="" class="btn register">Registrieren</a></br>
+                            <a ng-click="showRegister()" id="register-btn" href="" class="btn btn-primary register">Registrieren</a></br>
                             <span class="login">oder <a href="" id="login-btn" ng-click="showLogin()">Anmelden</a> </span>
                         </div>
                         
@@ -263,7 +263,7 @@
             <div class="wrapper">
                 <header id="header">
                     <div class="inner">
-                        <div class="pull-right">
+                        <div class="pull-right user-info">
                                 <a ng-href="#/user/{{ownUser.name}}" class="name"  accesskey="p" title="Hier gehts zu deinem Profil" class="block-link profile-link">
                                     <h2>{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>
                                 </a>

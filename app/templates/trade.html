@@ -1,62 +1,54 @@
-<button class="tutbtn" onclick="introJs().start()">?</button>
+
 <div id="trade" class="main-content">
-<!--<div class="hint box"><span>Die Börse ist geschlossen. Order werden ausgeführt, sobald sie wieder öffnet. (Öffnungszeiten: 8.00 – 20.00)</span></div>-->
-<!-- 	<a class="text-link" href="http://de.tradimo.com/lernen/aktienhandel/" title="Tradimo!">Wie genau funktioniert das mit dem Traden? Schaue es dir auf Tradimo an.</a> -->
-	<form ng-submit="buy()">
-		<fieldset class="options-field" style="position: relative;" data-step="1" data-position="left" data-intro="Suche hier nach einem Wertpapier, das Du handeln möchtest und bestätige dann Deine Auswahl.">
-				<legend>Wertpapiername</legend>
-				<label for="paper" class="trade-label">Name</label>
-				<input type="text" class="options-input"
-                                placeholder="Wertpapiername" id="paper" ng-model="stockname" />
-				<button ng-show="cur" ng-click="addToWatchlist()" class="click-button" style="margin: 0; line-height:30px; height: auto;"><span class="batch">&#xF179; </span></button>
 
-				<!-- Nur aufpoppen, falls Aktie in Besitz -->
+	<form ng-submit="buy()" class="pure-form pure-form-stacked">
+		<h2>Wertpapier</h2>
+		<div class="pure-g-r">
+			<div class="pure-u-1-2">
+					<label for="paper" class="trade-label">Name</label>
+					<input type="text" class="options-input mobile-full"
+	                                placeholder="Wertpapiername" id="paper" ng-model="stockname" />
+					<!--button ng-show="cur" ng-click="addToWatchlist()" class="click-button" style="margin: 0; line-height:30px; height: auto;"><span class="batch">&#xF179; </span></button-->
 
-				<div class="trade-label-button">Willst du die ausgewählte Aktie kaufen oder verkaufen?</div>
-				<div class="options-button order-type">
-					<label for="buy"> 
-						<input type="radio" name="sellbuy" ng-model="sellbuy"
-	                                        value="1" id="buy" class="radio-fix"><span>Kaufen</span>
-					</label>
-				</div>
-				<div class="options-button order-type">
-					<label for="sell">
-						<input type="radio" name="sellbuy" ng-model="sellbuy"
-	                                        value="-1" id="sell" class="radio-fix"><span>Verkaufen</span>
-					</label>
-				</div>
-
-				<!-- AUFPOPPEN ENDE -->
-
-		</fieldset>
-			</br>
-<!-- 	<a class="text-link" href="http://go.guidants.com/de#c/so_funktionierts" title="Guidants!">Hier bei Guidants findest du ein Liste der handelbaren Aktien und gleichzeitig ein Analyse-Tool.</a> -->
-</br>
-		<fieldset class="options-field" data-step="2" data-position="left" data-intro="Gib die Anzahl des Wertpapiers oder den Wert an, den Du zu zahlen bereit bist. Die Anzahl der Aktien, die Du Dir damit leisten kannst, wird automatisch berechnet. Hier erfährst Du außerdem, welche Transaktionskosten du zahlen musst.">
-			<legend>Menge</legend>
-			<div class="options-field paper-preview-box" ng-show="cur"> 
-				<table class="paper-preview">
-					<tr ng-show="leader"><th>Name</th><td><a href="#/user/{{cur.leadername}}">{{stockname}}</a></td></tr>
-					<tr ng-hide="leader"><th>Name</th><td ng-show="cur">{{stockname}}</td></tr>
-					<tr><th><span class="batch tooltip" data-info="(Auch Ask, Geldkurs oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span>
-						Kaufpreis</th><td ng-show="cur">{{cur.ask / 10000 | number:3}} €</td></tr>
-					<tr><th><span class="batch tooltip" data-info="(Auch Bid, Briefkurs oder Angebot) ist der höchste Preis, den ein Händler für eine Aktie bereit ist zu zahlen">&#xF0AD;</span>
-						Verkaufspreis</th><td ng-show="cur">{{cur.bid / 10000 | number:3}} €</td></tr>
-					<!-- <tr><th>Wert</th><td ng-show="cur">{{cur.lastvalue / 10000 | currency}}</td></tr> -->
-					<tr ng-show="leader"><th>Gewinnprovision</th><td ng-show="cur">{{cur.wprovision}} %</td></tr>
-					<tr ng-show="leader"><th>Verlustprovision</th><td ng-show="cur">{{cur.lprovision}} %</td></tr>
-					<tr ng-hide="leader"><th>ISIN</th><td ng-show="cur">{{cur.stockid}}</td></tr>
-					<tr ng-hide="leader"><th><span class="batch tooltip" data-info="Du kannst nur so viele Aktien kaufen, wie auch in der Realität an der Börse gehandelt wurden. Wurden an Tag X zum Beispiel nur 1000 Stück der Aktie gehandelt, die du kaufen oder verkaufen willst, kannst du an diesem Tag maximal je 1000 Stück kaufen und verkaufen. Achte vor allem bei sogennanten 'Pennystocks' auf die Liquidität, da diese oft sehr gering ist.">&#xF0AD;</span>Handelbare Stückzahl</th><td ng-show="cur">{{cur.pieces}}</td></tr>
-				</table>
 			</div>
+			<div class="pure-u-1-2">
+				<div class="options-field paper-preview-box" ng-show="cur"> 
+					<table class="paper-preview">
+						<tr ng-show="leader"><th>Name</th><td><a href="#/user/{{cur.leadername}}">{{stockname}}</a></td></tr>
+						<tr ng-hide="leader"><th>Name</th><td ng-show="cur">{{stockname}}</td></tr>
+						<tr><th><span class="batch tooltip" data-info="(Auch Ask, Geldkurs oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span>
+							Kaufpreis</th><td ng-show="cur">{{cur.ask / 10000 | number:3}} €</td></tr>
+						<tr><th><span class="batch tooltip" data-info="(Auch Bid, Briefkurs oder Angebot) ist der höchste Preis, den ein Händler für eine Aktie bereit ist zu zahlen">&#xF0AD;</span>
+							Verkaufspreis</th><td ng-show="cur">{{cur.bid / 10000 | number:3}} €</td></tr>
+						<!-- <tr><th>Wert</th><td ng-show="cur">{{cur.lastvalue / 10000 | currency}}</td></tr> -->
+						<tr ng-show="leader"><th>Gewinnprovision</th><td ng-show="cur">{{cur.wprovision}} %</td></tr>
+						<tr ng-show="leader"><th>Verlustprovision</th><td ng-show="cur">{{cur.lprovision}} %</td></tr>
+						<tr ng-hide="leader"><th>ISIN</th><td ng-show="cur">{{cur.stockid}}</td></tr>
+						<tr ng-hide="leader"><th><span class="batch tooltip" data-info="Du kannst nur so viele Aktien kaufen, wie auch in der Realität an der Börse gehandelt wurden. Wurden an Tag X zum Beispiel nur 1000 Stück der Aktie gehandelt, die du kaufen oder verkaufen willst, kannst du an diesem Tag maximal je 1000 Stück kaufen und verkaufen. Achte vor allem bei sogennanten 'Pennystocks' auf die Liquidität, da diese oft sehr gering ist.">&#xF0AD;</span>Handelbare Stückzahl</th><td ng-show="cur">{{cur.pieces}}</td></tr>
+					</table>
+				</div>				
+			</div>
+		</div>
+		<div ng-show="cur">
+			<hr class="only-mobile"/>
+			<div class="trade-label-button">Willst du die ausgewählte Aktie kaufen oder verkaufen?</div>
+			<div class="btn-group">
+		        <button type="button" class="btn btn-primary" ng-model="sellbuy" btn-radio="'1'">Kaufen</button>
+		        <button type="button" class="btn btn-primary" ng-model="sellbuy" btn-radio="'-1'">Verkaufen</button>
+		    </div>
+		</div>
+
+		<div class="">
+			<h2>Menge</h2>
+
 			<div>
 				<label for="amount" class="trade-label">Anzahl</label>
-				<input type="number" ng-model="amount" ng-change="calcValue();" placeholder="Anzahl" id="amount" autocomplete="off" class="options-input"><!--
+				<input type="number" ng-model="amount" ng-change="calcValue();" placeholder="Anzahl" id="amount" autocomplete="off" class="options-input mobile-full"><!--
 				--><span class="max-values" ng-show="cur && sellbuy > 0">Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSinglePaperShare) / cur.ask)}}</span>
 			</div>
 			<div>
 				<label for="value" class="trade-label" style="margin-top: 10px; font-size: 13px;">Kauf-/Verkaufswert</label>
-				<input type="text" ng-model="value" ng-change="calcAmount();" placeholder="Kaufwert" id="value" autocomplete="off" class="options-input"><!--
+				<input type="text" ng-model="value" ng-change="calcAmount();" placeholder="Kaufwert" id="value" autocomplete="off" class="options-input mobile-full"><!--
 				--><span class="max-values" ng-show="cur && sellbuy > 0">Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSinglePaperShare) / cur.ask) * cur.ask / 10000 | currency}}</span>
 			</div>
 			<!--<label class="trade-label">Kontostand<span class="batch tooltip" data-info="Kontostand vor Order +/- Kaufwert - Transaktionskosten = Kontostand nach Order"> &#xF0AD;</span></label>
@@ -65,41 +57,32 @@
 				Transaktionskosten:
 			</div>
 			{{fee | currency}}
-			
-		</fieldset>
-		<div style="clear: both" />
-		<fieldset class="options-field" id="order-type"  data-step="3" data-position="left" data-intro="Du kannst Deine Order auf verschiedene Arten aufgeben. Um mehr darüber zu erfahren, musst Du deine Maus nur über das kleine Etikett auf den Buttons halten. Falls Du Dich für Limit oder Stop entscheidest, musst Du den jeweiligen Stop- oder Limitwert angeben."> 
-			<legend>Ordertyp</legend>
-			<div class="trade-label-button">Welchen Ordertyp soll deine Transaktion haben?</div>
-			<div class="options-button order-type" >
-				<label for="market" class="smaller-order-type">
-					<input type="radio" name="ordertype" ng-model="xtype"
-                                        value="market" id="market" class="radio-fix" ng-click="isMarketOrder = true"><span>Market <span class="batch tooltip" data-info="Du kaufst zum „Ask“-Preis
-und verkaufst zum „Bid“-Preis">&#xF0AD;</span></span>
+		
+		</div>
 
-				</label>
-			</div>
-			<div class="options-button order-type">
-				<label for="limit" class="smaller-order-type"> 
-					<input type="radio" name="ordertype" ng-model="xtype"
-                                        value="limit" id="limit" class="radio-fix" ng-click="isMarketOrder = false"><span>Limit <span class="batch tooltip" data-info="Du kaufst nur dann, wenn der Wert unter den von Dir eingegebenen Limit-Wert fällt und verkaufst nur dann, wenn der Wert über den von Dir festgelegten Limit-Wert steigt">&#xF0AD;</span></span>
-				</label>
-			</div>
-			<div class="options-button order-type">
-				<label for="stop" class="smaller-order-type">
-					<input type="radio" name="ordertype" ng-model="xtype"
-                                        value="stop" id="stop" class="radio-fix" ng-click="isMarketOrder = false"><span>Stop <span class="batch tooltip" data-info="Du kaufst erst dann, wenn der Wert über den von Dir festgelegten Stop-Wert steigt
-und verkaufst erst dann, wenn der Wert unter den von Dir festgelegten Stop-Wert fällt">&#xF0AD;</span></span>
-				</label>
-			</div>
-			<br>
-			<br>
-			<div ng-hide="isMarketOrder">
-				<div class="trade-label-button">Stop-/Limitwert</div>
-				<label style="font-family: Abel;" class="trade" for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label>
-			    <input type="text" ng-model="xvalue" placeholder="Stop-/Limitwert" id="limit-stop" autocomplete="off" class="options-input">
-			</div>
-	   	</fieldset>
-	    <input type="submit" value="Trade durchführen" class="click-button trade-button">
+		<div class="options-field" id="order-type"> 
+			<h2>Ordertyp</h2>
+			<div class="pure-g-r">
+				<div class="pure-u-1-2">
+					<div class="trade-label-button">Welchen Ordertyp soll deine Transaktion haben?</div>
+
+					<div class="btn-group">
+				        <button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'market'">Market</button>
+				        <button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'limit'">Limit</button>
+				        <button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'stop'">Stop</button>
+				    </div>
+				</div>
+				<div class="pure-u-1-2">
+					<div ng-hide="xtype == 'market'">
+						<div class="trade-label-button">Stop-/Limitwert</div>
+						<label style="font-family: Abel;" class="trade" for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label>
+					    <input type="text" ng-model="xvalue" placeholder="Stop-/Limitwert" id="limit-stop" autocomplete="off" class="options-input">
+					</div>
+				</div>
+
+
+	   	</div>
+
+	    <input type="submit" value="Trade durchführen" class="click-button trade-button btn btn-primary pull-right mobile-full">
 	</form>
 </div>

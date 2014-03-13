@@ -33,7 +33,7 @@
         padding: 10px;
     }
 
-    .mobile-bar {
+    .mobile-only {
         display: none;
     }
 
@@ -154,6 +154,12 @@
         background-image:url(../img/Zeichnung.svg);
         background-size: cover;
         background-repeat: no-repeat;
+    }
+
+    #header #profile-picture {
+        float: right;
+        margin-right: -10px;
+        margin-top: -11px;
     }
 
     .profile .user-info {

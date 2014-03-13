@@ -307,7 +307,5 @@ angular.module('tradity').
         });
       };
     };
-    $scope.$on('$routeChangeSuccess', function(scope, next, current){
-       $('body').removeClass('menuShow');
-    });
+    
   });

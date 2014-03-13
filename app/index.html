@@ -271,28 +271,30 @@
             <div class="wrapper">
                 <header id="header">
                     <div class="inner">
+                        
                         <div class="pull-right user-info">
                                 <a ng-href="#/user/{{ownUser.name}}" class="name" accesskey="p" title="Hier gehts zu deinem Profil" class="block-link profile-link">
-                                    <h2>{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>
+                                    <img style="float:right" id="profile-picture" class="inline" height="50px" ng-src="{{ownUser.profilepic}}" alt="Profilbild">
+                                    <h2 style="float:right">{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>
+                                    
                                 </a>
-                                <img id="profile-picture" class="inline" height="50px" ng-src="{{ownUser.profilepic}}" alt="Profilbild">
-                            
-                        </div>
-                        <div class="pull-right">
-                            <div>
-                                <a href="" class="pull-right inline cog dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                                    <li role="presentation" class="divider"></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-                                </ul>
-                            </div>
                         </div>
 
                         
-                        <a href="" class="mobile-bar" id="togglemenu"><i class="fa fa-bars"></i></a>
+
+                        
+                        <a href="" class="mobile-bar mobile-only" id="togglemenu"><i class="fa fa-bars"></i></a>
+                        <div class="pull-right mobile-only">
+                            <a href="" class="pull-right inline cog dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                                <li><a><b>{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</b></a></li>
+                                <li><a ng-href="#/user/{{ownUser.name}}">Mein Profil</a></li>
+                                <li><a href="#/options">Einstellungen</a></li>
+                                <li class="divider"></li>
+                                <li><a ng-click="logout()" href="">Abmelden</a></li>
+                            </ul>
+                        </div>
+
                         <div id="logo"><img src="img/tradity_symbol.png"></div>
                         <div class="inline mobile-hide">
                             <h2 class="title">Konto</h2>

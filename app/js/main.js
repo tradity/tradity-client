@@ -3,6 +3,7 @@
 $(document).ready(function() {
 	initNotifications();
   $('#togglemenu').click(togglemenu)
+  $('nav a').click(hidemenu);
 });
 
 var initNotifications = function() {
@@ -32,6 +33,10 @@ var notification = function (text,icon) { // icon == true -> success
 
 var togglemenu = function() {
   $('body').toggleClass('menuShow');
+}
+
+var hidemenu = function() {
+  $('body').removeClass('menuShow');
 }
 
 

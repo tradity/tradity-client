@@ -18,6 +18,29 @@
 
     }
 
+    .mobile-full {
+        width: 100%;
+        float: none;
+    }
+
+    /* ==========================================================================
+       Bootstrapoptimization
+       ========================================================================== */
+
+    .btn-group {
+        width: 100%;
+        text-align: center;
+        background-color: rgb(66, 139, 202);
+    }
+
+   .btn-group > .btn {
+        display: inline-block;
+        float: none;
+    }
+
+    .btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {
+        margin-left: -5px;
+    }
 
     /* ==========================================================================
        Header
@@ -166,20 +189,25 @@
        Herounit
        ========================================================================== */
 
-    #herounit .row {
-        width: 100%;
-        border-right:none;
-    }
-
     #herounit {
         margin: 0px!important;
         top: 0px;
         left: 0px;
-        height: auto;
-        position: relative;
+        min-height: 100%;
+        position: absolute;
     }
     #herounit .footer {
         display: none;
+    }
+
+    #herounit .showcase {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+
+    #herounit .showcase h2 {
+        font-size: 14px;
     }
    
 
@@ -188,6 +216,14 @@
     }
 
     /* das team */
+    .infounit.team > .content {
+        width: 100%;
+    }
+
+    .infounit .content {
+        padding: 5px;
+    }
+
     .infounit.team .team-item {
         width: 100%;
         display: block;
@@ -197,4 +233,13 @@
         -webkit-box-sizing: border-box; 
         box-sizing: border-box;
     }
+
+    /* ==========================================================================
+       Trade Page
+       ========================================================================== */
+
+    .trade-button {
+        margin-top: 5px;
+    }
+
 }

@@ -3,9 +3,6 @@
 $(document).ready(function() {
 	initNotifications();
   $('#togglemenu').click(togglemenu)
-  $('#nav a').click(function() {
-    //$('body').removeClass('menuShow');
-  });
 });
 
 var initNotifications = function() {

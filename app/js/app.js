@@ -97,4 +97,6 @@ angular.module('tradity', [
     otherwise({
       redirectTo: '/'
     });
+
+    
 }]);

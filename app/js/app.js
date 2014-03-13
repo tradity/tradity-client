@@ -2,9 +2,9 @@
 
 angular.module('tradity', [
   'ngRoute',
+  'ui.bootstrap',
   'pasvaz.bindonce',
-  'infinite-scroll',
-  'ui.bootstrap'
+  'infinite-scroll'
 ]).config(['$routeProvider', function ($routeProvider, $locationProvider) {
   $routeProvider.
     when('/', {

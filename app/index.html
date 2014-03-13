@@ -29,7 +29,7 @@
         <script type="text/javascript" src="js/vendor/jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="bower_components/angular/angular.js"></script>
         <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
-        <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script type="text/javascript" src="js/vendor/angular-locale_de.js"></script>
         <script type="text/javascript" src="js/bindonce.min.js"></script>
         <script type="text/javascript" src="js/ng-infinite-scroll.min.js"></script>
@@ -44,6 +44,7 @@
         <script type="text/javascript" src="js/jqplot.canvasAxisTickRenderer.min.js"></script>
         <script type="text/javascript" src="js/jqplot.canvasTextRenderer.min.js"></script>
         <script type="text/javascript" src="js/ac.js"></script>
+        <script type="text/javascript" src="bower_components/socket.io-client/dist/socket.io.js"></script>
 
         <script type="text/javascript" src="js/app.js"></script>
         <script type="text/javascript" src="js/services.js"></script>
@@ -62,7 +63,6 @@
         <script type="text/javascript" src="js/directives/profile.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <!-- endbuild -->
-        <script type="text/javascript" src="bower_components/socket.io-client/dist/socket.io.js"></script>
     </head>
     <body ng-controller="MainCtrl">
 
@@ -272,7 +272,7 @@
                 <header id="header">
                     <div class="inner">
                         <div class="pull-right user-info">
-                                <a ng-href="#/user/{{ownUser.name}}" class="name"  accesskey="p" title="Hier gehts zu deinem Profil" class="block-link profile-link">
+                                <a ng-href="#/user/{{ownUser.name}}" class="name" accesskey="p" title="Hier gehts zu deinem Profil" class="block-link profile-link">
                                     <h2>{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>
                                 </a>
                                 <img id="profile-picture" class="inline" height="50px" ng-src="{{ownUser.profilepic}}" alt="Profilbild">
@@ -316,18 +316,17 @@
                     </div>
                 </header>
                 <div class="pure-g">
-                    <div class="pure-u-1-5">
-                        
+                    <div class="pure-u-1-5">                        
                         <nav id="nav" data-step="100" data-position="right" data-intro="Finde mehr heraus indem du Dich durch die Navigation klickst.">
                             <ul>
                                 <li>
-                                    <a href="#/" accesskey="f" title="ALT+SHIFT+F" ng-class="{active:isActive('/')}">
-                                        <i class="fa fa-inbox"></i> 
+                                    <a href="#/" accesskey="f" ng-class="{active:isActive('/')}">
+                                        <i class="fa fa-inbox"></i>
                                         <span class="dark nav-block-title">Neuigkeiten</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#/depot" accesskey="d" title="ALT+SHIFT+D"  ng-class="{active:isActive('/depot')}">
+                                    <a href="#/depot" accesskey="d" title="ALT+SHIFT+D" ng-class="{active:isActive('/depot')}">
                                         <i class="fa fa-bar-chart-o"></i>
                                         <span class="dark nav-block-title">Mein Depot</span>
                                     </a>

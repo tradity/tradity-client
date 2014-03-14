@@ -45,7 +45,7 @@ angular.module('tradity', [
       templateUrl: 'templates/trade.html',
       controller: 'TradeCtrl'
     }).
-    state('tradesell', {
+    state('tradesellbuy', {
       url: '/trade/:sellbuy/:stockId/:amount',
       templateUrl: 'templates/trade.html',
       controller: 'TradeCtrl'
@@ -78,18 +78,6 @@ angular.module('tradity', [
     state('faq', {
       url: '/faq',
       templateUrl: 'templates/faq.html'
-    }).
-    state('imprint', {
-      url: '/imprint',
-      templateUrl: 'templates/imprint.html'
-    }).
-    state('about', {
-      url: '/about',
-      templateUrl: 'templates/about.html'
-    }).
-    state('tos', {
-      url: '/tos',
-      templateUrl: 'templates/tos.html'
     }).
     state('gettingstarted', {
       url: '/gettingstarted',

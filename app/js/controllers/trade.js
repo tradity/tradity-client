@@ -1,5 +1,5 @@
 angular.module('tradity').
-  controller('TradeCtrl', function($scope, $routeParams, $location, socket) {
+  controller('TradeCtrl', function($scope, $stateParams, $location, socket) {
     $scope.amount = null;
     $scope.value = null;
     $scope.stockid = null;
@@ -150,13 +150,13 @@ angular.module('tradity').
       $scope.fee = Math.max(Math.abs($scope.serverConfig['transaction-fee-perc'] * parseFloat($scope.value.replace(',', '.'))), $scope.serverConfig['transaction-fee-min'] / 10000);
     };
 
-    if ($routeParams.sellbuy) {
-      if ($routeParams.sellbuy == 'sell') {
+    if ($stateParams.sellbuy) {
+      if ($stateParams.sellbuy == 'sell') {
         $scope.sellbuy = -1;
-      } else if ($routeParams.sellbuy == 'buy') {
+      } else if ($stateParams.sellbuy == 'buy') {
         $scope.sellbuy = 1;
       }
-      $scope.stockid = $routeParams.stockId;
+      $scope.stockid = $stateParams.stockId;
       socket.emit('stock-search', {
         name: $scope.stockid
       }, function(data) {
@@ -167,7 +167,7 @@ angular.module('tradity').
 	          break;
             }
           }
-          $scope.amount = parseInt($routeParams.amount);
+          $scope.amount = parseInt($stateParams.amount);
           $scope.calcValue();
         }
       });

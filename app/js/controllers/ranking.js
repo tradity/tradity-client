@@ -1,5 +1,5 @@
 angular.module('tradity').
-  controller('RankingCtrl', function($scope, $routeParams, $location, socket) { 
+  controller('RankingCtrl', function($scope, $stateParams, $location, socket) { 
     $scope.school = {};
     $scope.selfIsSchoolAdmin = false;
     $scope.selfIsSchoolMember = false;
@@ -9,11 +9,11 @@ angular.module('tradity').
     $scope.descpage = '';
     $scope.editingDescpage = false;
     
-    if ($routeParams.schoolid) {
-      if (parseInt($routeParams.schoolid) == $routeParams.schoolid)
-        $scope.schoolid = $routeParams.schoolid;
+    if ($stateParams.schoolid) {
+      if (parseInt($stateParams.schoolid) == $stateParams.schoolid)
+        $scope.schoolid = $stateParams.schoolid;
       else
-        $scope.schoolid = '/' + $routeParams.schoolid;
+        $scope.schoolid = '/' + $stateParams.schoolid;
       
       socket.emit('get-school-info', {
         lookfor: $scope.schoolid
@@ -27,7 +27,7 @@ angular.module('tradity').
         }
       });
       
-      tabbing($('#tabs'), '/s/?/' + ($routeParams.schoolid || ''), $routeParams.pageid || 'general', $location, $scope);
+      tabbing($('#tabs'), '/s/?/' + ($stateParams.schoolid || ''), $stateParams.pageid || 'general', $location, $scope);
       
       $scope.sendComment = $scope.createSendCommentFn($scope, function() { return $scope.school.eventid; }, 'Gruppe nicht gefunden.');
     
@@ -105,7 +105,7 @@ angular.module('tradity').
         });
       };
     } else {
-      tabbing($('#tabs'), '/ranking/?', $routeParams.pageid, $location, $scope);
+      tabbing($('#tabs'), '/ranking/?', $stateParams.pageid, $location, $scope);
       
       $scope.sendComment = function() {};
     }
@@ -200,7 +200,7 @@ angular.module('tradity').
     };
     
     $scope.getRanking = function() {
-      var page = $routeParams.pageid;
+      var page = $stateParams.pageid;
 
       switch (page) {
         case 'all':

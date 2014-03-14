@@ -1,5 +1,5 @@
 angular.module('tradity').
-  controller('HerounitCtrl', function($scope, $routeParams, $location, socket, $window) {
+  controller('HerounitCtrl', function($scope, $stateParams, $location, socket, $window) {
     var onResize = function () {
       setTimeout(function() {
             $('#herounit').css('margin-top', -($('#herounit').height()/2));
@@ -15,7 +15,7 @@ angular.module('tradity').
 
     $scope.actions = true;
     $scope.loginForm = false;
-    $scope.registerForm = $routeParams.inviteCode ? true : false;
+    $scope.registerForm = $stateParams.inviteCode ? true : false;
     
     
     $scope.showLogin = function () {

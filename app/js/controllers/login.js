@@ -1,13 +1,13 @@
 angular.module('tradity').
-  controller('LoginCtrl', function($scope, $routeParams, $location, socket) {
+  controller('LoginCtrl', function($scope, $stateParams, $location, socket) {
     $scope.username = '';
     $scope.password = '';
     $scope.stayloggedin = false;
 
-    if ($routeParams.emailVerifCode && $routeParams.uid) {
+    if ($stateParams.emailVerifCode && $stateParams.uid) {
       socket.emit('emailverif', {
-        key: $routeParams.emailVerifCode,
-        uid: $routeParams.uid
+        key: $stateParams.emailVerifCode,
+        uid: $stateParams.uid
       },
       function(data) {
         switch (data.code) {

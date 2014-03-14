@@ -1,8 +1,8 @@
 angular.module('tradity').
-  controller('TradeDetailsCtrl', function($scope, $routeParams, socket) {
+  controller('TradeDetailsCtrl', function($scope, $stateParams, socket) {
     $scope.getTradeInfo = function() {
       socket.emit('get-trade-info', {
-        tradeid: $routeParams.tradeId,
+        tradeid: $stateParams.tradeId,
         _cache: 20
       },
       function(data) {

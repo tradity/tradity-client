@@ -1,10 +1,10 @@
 angular.module('tradity').
-  controller('ProfileCtrl', function($scope, $routeParams, $location, socket) {
-    tabbing($('#tabs'), '/user/' + $routeParams.userId + '/?', $routeParams.pageid, $location, $scope);
+  controller('ProfileCtrl', function($scope, $stateParams, $location, socket) {
+    tabbing($('#tabs'), '/user/' + $stateParams.userId + '/?', $stateParams.pageid, $location, $scope);
     
     $scope.getUserInfo = function() {
       socket.emit('get-user-info', {
-        lookfor: $routeParams.userId,
+        lookfor: $stateParams.userId,
         _cache: 20
       },
       function(data) {

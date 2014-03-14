@@ -1,6 +1,6 @@
 angular.module('tradity').
-  controller('DepotCtrl', function($scope, $routeParams, $location, socket) {    
-    tabbing($('#tabs'), '/depot/?', $routeParams.pageid, $location, $scope);
+  controller('DepotCtrl', function($scope, $stateParams, $location, socket) {    
+    tabbing($('#tabs'), '/depot/?', $stateParams.pageid, $location, $scope);
     
     var ownDepotOrUser = function() {
       if (!$scope.ownUser)

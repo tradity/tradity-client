@@ -28,7 +28,7 @@
         <!-- build:js({.tmp,app}) js/scripts.js -->
         <script type="text/javascript" src="js/vendor/jquery-2.0.3.min.js"></script>
         <script type="text/javascript" src="bower_components/angular/angular.js"></script>
-        <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+        <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script type="text/javascript" src="js/vendor/angular-locale_de.js"></script>
         <script type="text/javascript" src="js/bindonce.min.js"></script>
@@ -52,14 +52,14 @@
         <script type="text/javascript" src="js/controllers/herounit.js"></script>
         <script type="text/javascript" src="js/controllers/login.js"></script>
         <script type="text/javascript" src="js/controllers/registration.js"></script>
+        <script type="text/javascript" src="js/controllers/feed.js"></script>
         <script type="text/javascript" src="js/controllers/options.js"></script>
         <script type="text/javascript" src="js/controllers/depot.js"></script>
+        <script type="text/javascript" src="js/controllers/trade.js"></script>
         <script type="text/javascript" src="js/controllers/profile.js"></script>
         <script type="text/javascript" src="js/controllers/ranking.js"></script>
         <script type="text/javascript" src="js/controllers/tradeDetails.js"></script>
-        <script type="text/javascript" src="js/controllers/trade.js"></script>
         <script type="text/javascript" src="js/controllers/admin.js"></script>
-        <script type="text/javascript" src="js/controllers/feed.js"></script>
         <script type="text/javascript" src="js/directives/profile.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <!-- endbuild -->
@@ -322,7 +322,7 @@
                         <nav id="nav" data-step="100" data-position="right" data-intro="Finde mehr heraus indem du Dich durch die Navigation klickst.">
                             <ul>
                                 <li>
-                                    <a href="#/" accesskey="f" ng-class="{active:isActive('/')}">
+                                    <a ui-sref="feed" accesskey="f" ng-class="{active:isActive('/')}">
                                         <i class="fa fa-inbox"></i>
                                         <span class="dark nav-block-title">Neuigkeiten</span>
                                     </a>
@@ -346,7 +346,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#/options"  accesskey="o" title="ALT+SHIFT+O" ng-class="{active:isActive('/options')}">
+                                    <a ui-sref="options" accesskey="o" title="ALT+SHIFT+O" ng-class="{active:isActive('/options')}">
                                         <i class="fa fa-wrench"></i>
                                         <span class="dark nav-block-title">Einstellungen</span>
                                     </a>
@@ -362,7 +362,7 @@
                         </nav>
                     </div>
                     <div class="pure-u-4-5 content-wrapper">
-                        <div ng-view></div>
+                        <div ui-view></div>
                     </div>
                 </div>
                 <!--footer id="footer">

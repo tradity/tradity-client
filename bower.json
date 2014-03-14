@@ -7,13 +7,12 @@
     "angular-bootstrap": "~0.10.0",
     "bootstrap": "3.1.1",
     "fontawesome": "4.0.3",
-    "socket.io-client": "0.9.16"
+    "socket.io-client": "0.9.16",
+    "Chart.js": "",
+    "angular-intro.js": ""
   },
   "devDependencies": {
     "angular-mocks": "1.2.14",
     "angular-scenario": "1.2.14"
-  },
-  "resolutions": {
-    "angular": "1.2.14"
   }
 }

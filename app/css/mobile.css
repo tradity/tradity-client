@@ -185,6 +185,25 @@
         background-color: #e74c3c;
     }
 
+    .ui-tabs-nav, .ui-tabs-nav li {
+        margin: 0px;
+        padding: 0px;
+        list-style-type: none;
+    }
+
+    .ui-tabs-nav a {
+        display: block;
+        color: #ffffff;
+        background-color: #3276b1;
+        border-color: #285e8e;
+        margin-bottom:5px; 
+        padding: 5px 10px;
+        font-size: 15px;
+        line-height: 1.5;
+        text-align: center;
+    }
+
+
     /* ==========================================================================
        Herounit
        ========================================================================== */

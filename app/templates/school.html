@@ -1,116 +1,144 @@
 <div id="schools" class="main-content">
+	<div class="school-hero" style="background-image:url(http://placekitten.com/g/747/300);">
+		<div class="config"><a href=""><i class="fa fa-cloud-upload"></i></a></div>
+		<h1>{{school.name}}</h1>
+		<span class="short-info">Mitglieder: {{school.usercount}}</span>
+	</div>
 	<div id="tabs">
-	<ul>
-		<li><a href="#general">Allgemeine Informationen</a></li>
-		<li><a href="#intragroup">Benutzerrangliste</a></li>
-		<li><a href="#intergroup">Gruppenrangliste</a></li>
-	</ul>
-	<div id="general">
-		<h2>{{school.name}}</h2>
-		<div>Mitglieder: {{school.usercount}}</div>
-		<div class="school-descpage">{{descpage}}</div>
-		<div ng-show="isAdmin || selfIsSchoolAdmin">
-			<a ng-click="enterDescpageEdit()">(Bearbeiten)</a>
-			<form ng-submit="changeDescription()">
-				<textarea ng-show="editingDescpage" ng-model="descpage" id="descpage" class="options-input"></textarea>
-				
-				<input type="submit" value="Speichern" />
-			</form>
-		</div>
-		<div ng-show="school.admins.length > 0">
-			<h3>Administratoren</h3>
-			<ul class="groupadminlist">
-				<li ng-repeat="admin in school.admins"><a href="#/user/{{admin.adminname}}">{{admin.adminname}}</a></li>
-			</ul>
-		</div>
-		<div ng-show="school.subgroups.length > 0 || isAdmin || selfIsSchoolAdmin">
-			<h3>Untergruppen</h3>
-			<ul class="subschoollist">
-				<li ng-repeat="subschool in school.subschools"><a href="#/s/general{{subschool.path}}">{{subschool.name}}</a></li>
-				<li ng-show="isAdmin || selfIsSchoolAdmin"><a ng-click="createSchool()">Neue Untergruppe anlegen</a></li>
-			</ul>
-		</div>
-		<div ng-show="isAdmin || selfIsSchoolAdmin">
-			<h3>Nicht bestätigte User</h3>
-			<ul class="pendinguserslist">
-				<li ng-repeat="user in pendingMembers"><a href="#/user/{{user.name}}">{{user.name}}</a> (<a ng-click="verifyMember(user)">bestätigen</a>)</li>
-			</ul>
-		</div>
-		<h3>Beliebte Aktien</h3>
-		<ul class="popularstocks">
-			<li ng-repeat="stock in school.popularStocks">{{stock.stockname}}</li>
+		<ul>
+			<li><a href="#general">Pinnwand</a></li>
+			<li><a href="#intragroup">Benutzerrangliste</a></li>
+			<li><a href="#intergroup">Gruppenrangliste</a></li>
 		</ul>
-		<div id="pinboard" style="margin-top: 15px;">
-			<div ng-repeat="comment in school.comments">
-				<div class="commenter"><a href="#/user/{{comment.username}}" class="text-link">{{comment.username}}</a></div>
-				<div class="comment comment-somebody">
-					<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
-					<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
-					<span ng-show="isAdmin">
-						<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>
-						<a ng-click="deleteComment(comment)" style="cursor: pointer">Löschen</a>
-					</span>
-					<span ng-show="selfIsSchoolAdmin">
-						<a ng-click="deleteCommentSA(comment)" style="cursor: pointer">Löschen</a>
-					</span>
-					<span class="feed-time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
+		<div class="pure-g-r">
+			<div class="pure-u-2-3 conti">
+				<div id="general" class="inner">
+					<div id="pinboard">
+						<form ng-submit="sendComment()" ng-show="selfIsSchoolMember || selfIsSchoolAdmin || isAdmin" class="pure-form comment-form">
+							<textarea ng-model="comment" class="options-input comment-textarea pure-input-1" placeholder="Poste etwas in diesen Gruppenfeed!"></textarea>
+							<input type="submit" class="click-button comment-button btn pull-right" value="Kommentieren">
+						</form>
+
+						<div ng-repeat="comment in school.comments" class="feed-item feed">
+							<div class="feed-entry-symbol"><i class="fa fa-bullhorn"></i></div>
+			                <div class="feed-entry-content">
+			                	<div class="feed-head">
+			                		<a href="#/user/{{comment.username}}" class="text-link username">{{comment.username}}</a>
+			                		<span ng-show="isAdmin" class="actions">
+										<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>
+										<a ng-click="deleteComment(comment)" style="cursor: pointer">Löschen</a>
+									</span>
+									<span ng-show="selfIsSchoolAdmin">
+										<a ng-click="deleteCommentSA(comment)" style="cursor: pointer">Löschen</a>
+									</span>
+			                	</div>
+			                    <span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
+								<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
+								<div class="feed-footer">
+									<span class="feed-time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
+								</div>
+			                </div>
+						</div>
+					</div>
+				</div>
+				<div id="intragroup" class="inner">
+					<table class="ranking">
+						<colgroup>
+							<col class="rankcol-1" style="width: 10%">
+							<col class="rankcol-2" style="width: 57%">
+							<col class="rankcol-3" style="width: 18%">
+							<col class="rankcol-4" style="width: 15%">
+						</colgroup>
+						<tr>
+							<th>Rang</th>
+							<th>Name</th>
+							<th>erh. Provision</th>
+							<th>Gesamtvermögen</th>
+						</tr>
+						<tr ng-repeat="result in intraGroupResults | orderBy:'igrank' ">
+							<td>{{result.igrank}}</td>
+							<td class="rank-name">
+								<a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a>
+								<a ng-click="kickUser(result)">X</a>
+								<a ng-click="promoteUserToAdmin(result)">Admin</a>
+							</td>
+							<td>{{result.prov_sum / 10000 | currency}}</td>
+							<td>{{result.totalvalue / 10000 | currency}}</td>
+						</tr>
+					</table>
+				</div>
+				<div id="intergroup" class="inner">
+					<table class="ranking">
+						<colgroup>
+							<col class="rankcol-1" style="width: 10%">
+							<col class="rankcol-2" style="width: 57%">
+							<col class="rankcol-3" style="width: 18%">
+							<col class="rankcol-3" style="width: 18%">
+							<col class="rankcol-4" style="width: 15%">
+						</colgroup>
+						<tr>
+							<th>Rang</th>
+							<th>Name</th>
+							<th>Spieler</th>
+							<th>erh. Provision</th>
+							<th>Gesamtvermögen</th>
+						</tr>
+						<tr ng-repeat="result in interGroupResults | orderBy:'rank' | filter: searchText ">
+							<td>{{result.rank}}</td>
+							<td><a href="#/s/general{{result.schoolpath}}">{{result.schoolname}}</a></td>
+							<td>{{result.count}}</td>
+							<td>{{result.prov_sum / 10000 | currency}}</td>
+							<td>{{result.totalvalue / 10000 | currency}}</td>
+						</tr>
+					</table>
 				</div>
 			</div>
-			<form ng-submit="sendComment()" ng-show="selfIsSchoolMember || selfIsSchoolAdmin || isAdmin">
-				<input type="submit" class="click-button comment-button" value="Kommentieren">
-				<textarea ng-model="comment" class="options-input comment-textarea" placeholder="Poste etwas in diesen Gruppenfeed!"></textarea>
-			</form>
-		</div>
-	</div>
-	<div id="intragroup">
-		<table class="ranking">
-			<colgroup>
-				<col class="rankcol-1" style="width: 10%">
-				<col class="rankcol-2" style="width: 57%">
-				<col class="rankcol-3" style="width: 18%">
-				<col class="rankcol-4" style="width: 15%">
-			</colgroup>
-			<tr>
-				<th>Rang</th>
-				<th>Name</th>
-				<th>erh. Provision</th>
-				<th>Gesamtvermögen</th>
-			</tr>
-			<tr ng-repeat="result in intraGroupResults | orderBy:'igrank' ">
-				<td>{{result.igrank}}</td>
-				<td class="rank-name">
-					<a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a>
-					<a ng-click="kickUser(result)">X</a>
-					<a ng-click="promoteUserToAdmin(result)">Admin</a>
-				</td>
-				<td>{{result.prov_sum / 10000 | currency}}</td>
-				<td>{{result.totalvalue / 10000 | currency}}</td>
-			</tr>
-		</table>
-	</div>
-	<div id="intergroup">
-		<table class="ranking">
-			<colgroup>
-				<col class="rankcol-1" style="width: 10%">
-				<col class="rankcol-2" style="width: 57%">
-				<col class="rankcol-3" style="width: 18%">
-				<col class="rankcol-3" style="width: 18%">
-				<col class="rankcol-4" style="width: 15%">
-			</colgroup>
-			<tr>
-				<th>Rang</th>
-				<th>Name</th>
-				<th>Spieler</th>
-				<th>erh. Provision</th>
-				<th>Gesamtvermögen</th>
-			</tr>
-			<tr ng-repeat="result in interGroupResults | orderBy:'rank' | filter: searchText ">
-				<td>{{result.rank}}</td>
-				<td><a href="#/s/general{{result.schoolpath}}">{{result.schoolname}}</a></td>
-				<td>{{result.count}}</td>
-				<td>{{result.prov_sum / 10000 | currency}}</td>
-				<td>{{result.totalvalue / 10000 | currency}}</td>
-			</tr>
-		</table>
+			<div class="pure-u-1-3 widgets">
+				<div class="widget schoolInfo">
+					<h3>Info</h3>
+					<div class="inner">
+						<div class="school-descpage">{{descpage}}</div>
+						<a ng-show="isAdmin || selfIsSchoolAdmin" ng-click="enterDescpageEdit()"><i class="fa fa-pencil-square-o"></i></a>
+						<form ng-submit="changeDescription()" ng-show="editingDescpage">
+							<textarea  ng-model="descpage" id="descpage" class="options-input"></textarea>
+							<input type="submit" value="Speichern" />
+						</form>
+					</div>				
+				</div>
+				<div class="widget">
+					<h3>Beliebte Aktien</h3>
+					<div class="inner">
+						<ul class="popularstocks">
+							<li ng-repeat="stock in school.popularStocks">{{stock.stockname}}</li>
+						</ul>
+					</div>
+				</div>
+				<div class="widget" ng-show="school.admins.length > 0">
+					<h3>Administratoren</h3>
+					<div class="inner">
+						<ul class="groupadminlist">
+							<li ng-repeat="admin in school.admins"><a href="#/user/{{admin.adminname}}">{{admin.adminname}}</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="widget" ng-show="school.subgroups.length > 0 || isAdmin || selfIsSchoolAdmin">
+					<h3>Untergruppen</h3>
+					<div class="inner">
+						<ul class="subschoollist">
+							<li ng-repeat="subschool in school.subschools"><a href="#/s/general{{subschool.path}}">{{subschool.name}}</a></li>
+						</ul>
+						<a ng-show="isAdmin || selfIsSchoolAdmin" ng-click="createSchool()">Neue Untergruppe anlegen</a>
+					</div>
+				</div>
+				<div class="widget" ng-show="isAdmin || selfIsSchoolAdmin">
+					<h3>Nicht bestätigte User</h3>
+					<div class="inner">
+						<ul class="pendinguserslist">
+							<li ng-repeat="user in pendingMembers"><a href="#/user/{{user.name}}">{{user.name}}</a> (<a ng-click="verifyMember(user)">bestätigen</a>)</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>	
 	</div>
 </div>

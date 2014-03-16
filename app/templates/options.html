@@ -24,71 +24,84 @@
       </div>
 
       <div class="pure-u-1-2">
-        <h2>Geschäftliches</h2>
-        <label for="provision">Gewinnprovision Deiner Follower (5 % – 30 %)</label>
-        <input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="options-input" min="5" max="30" step="1">
+        <div class="padding-left">
+          <h2>Geschäftliches</h2>
+          <label for="provision">Gewinnprovision Deiner Follower (5 % – 30 %)</label>
+          <input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="options-input" min="5" max="30" step="1">
 
-        <label for="provision">Verlustprovision Deiner Follower (0 % – 100 %)</label>
-        <input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="options-input" min="0" max="100" step="1">
+          <label for="provision">Verlustprovision Deiner Follower (0 % – 100 %)</label>
+          <input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="options-input" min="0" max="100" step="1">
 
-        <label for="delayorderhist">Verzögerung Deiner Orderhistorie </label>
-        <input type="checkbox" ng-model="delayorderhist" id="delayorderhist"> Ja
+          <label for="delayorderhist">Verzögerung Deiner Orderhistorie </label>
+          <input type="checkbox" ng-model="delayorderhist" id="delayorderhist"> Ja
+        </div>
       </div>
     </div>
-
+    <hr class="desktop-only"/>
 
     <div class="options-field"> 
-      <h2>Privates</h2>  
       <div class="pure-g">
-        <div class="pure-u-1-4">
-          <label for="giv_name">Vorname</label>
-          <input type="text" ng-model="giv_name" placeholder="Vorname" id="giv_name" class="options-input">
-
-          <label for="fam_name">Nachname</label>
-          <input type="text" ng-model="fam_name" placeholder="Nachname" id="fam_name" class="options-input">          
-        </div>
-        <div class="pure-u-1-4">
-
-          <label for="schoolname">Institution / Schule (optional)</label>
-          <input type="text" ng-model="schoolname" placeholder="Schule" id="schoolname" class="options-input">
-
-
-          <label for="realnamepublish">Soll Dein Klarname <br>veröffentlicht werden?</label>
-          <input type="checkbox" ng-model="realnamepublish" id="realnamepublish"> Ja<br>
-
-          
-        </div>
-        <div class="pure-u-1-4">
-          <label for="street">Adresse</label>
-          <input type="text" ng-model="street" placeholder="Straße, Hausnr." id="street" class="options-input options-input" style="width:90%;">
-          <input type="text" ng-model="zipcode" placeholder="PLZ" id="zipcode" class="options-input options-input" style="width:90%;">
-          <input type="text" ng-model="town" placeholder="Stadt" id="town" class="options-input" style="width:90%;"><br>
-        </div>
-        <div class="pure-u-1-4">
-          <label for="birthday">Geburtsdatum</label>
+        <div class="pure-u-1-2">
+          <h2>Privates</h2>  
           <div class="pure-g">
-            <div class="pure-u-1-3"> 
-              <input type="number" ng-model="birthdayd" placeholder="Tag" id="birthdayd" class="options-input pure-input-1">
+            <div class="pure-u-1-2">
+              <label for="giv_name">Vorname</label>
+              <input type="text" ng-model="giv_name" placeholder="Vorname" id="giv_name" class="options-input">
+
+              <label for="fam_name">Nachname</label>
+              <input type="text" ng-model="fam_name" placeholder="Nachname" id="fam_name" class="options-input">          
             </div>
-            <div class="pure-u-1-3"> 
-              <input type="number" ng-model="birthdaym" placeholder="Monat" id="birthdaym" class="options-input pure-input-1">
-            </div>
-            <div class="pure-u-1-3">         
-              <input type="number" ng-model="birthdayy" placeholder="Jahr" id="birthdayy" class="options-input pure-input-1">
+            <div class="pure-u-1-2">
+
+              <label for="schoolname">Institution / Schule (optional)</label>
+              <input type="text" ng-model="schoolname" placeholder="Schule" id="schoolname" class="options-input">
+
+
+              <label for="realnamepublish">Soll Dein Klarname <br>veröffentlicht werden?</label>
+              <input type="checkbox" ng-model="realnamepublish" id="realnamepublish"> Ja<br>
+              
             </div>
           </div>
-          <label for="desc">Kurzbeschreibung</label>
-          <textarea ng-model="desc" id="desc" placeholder="Erzähl uns was Dich ausmacht" class="options-input pure-input-1"></textarea>
+          <div class="pure-g">
+            <div class="pure-u-1-2">
+              <label for="street">Adresse</label>
+              <input type="text" ng-model="street" placeholder="Straße, Hausnr." id="street" class="options-input options-input" style="width:90%;">
+              <input type="text" ng-model="zipcode" placeholder="PLZ" id="zipcode" class="options-input options-input" style="width:90%;">
+              <input type="text" ng-model="town" placeholder="Stadt" id="town" class="options-input" style="width:90%;"><br>
+            </div>
+            <div class="pure-u-1-2">
+              <label for="birthday">Geburtsdatum</label>
+              <div class="pure-g">
+                <div class="pure-u-1-3"> 
+                  <input type="number" ng-model="birthdayd" placeholder="Tag" id="birthdayd" class="options-input pure-input-1">
+                </div>
+                <div class="pure-u-1-3"> 
+                  <input type="number" ng-model="birthdaym" placeholder="Monat" id="birthdaym" class="options-input pure-input-1">
+                </div>
+                <div class="pure-u-1-3">         
+                  <input type="number" ng-model="birthdayy" placeholder="Jahr" id="birthdayy" class="options-input pure-input-1">
+                </div>
+              </div>
+              <label for="desc">Kurzbeschreibung</label>
+              <textarea ng-model="desc" id="desc" placeholder="Erzähl uns was Dich ausmacht" class="options-input pure-input-1"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="padding-left">
+            <h2>Profilbild</h2>
+            <img id="profile-picture" class="inline" width="200px" ng-src="{{ownUser.profilepic}}" alt="">
+            <label for="profileimage">Profilbild hochladen </label>
+            <input type="file" id="profileimage" class="options-input" accept="image/png,image/jpeg,image/gif">
+          </div>
         </div>
       </div>
       
-      <img id="profile-picture" class="inline" width="200px" ng-src="{{ownUser.profilepic}}" alt="">
-      <label for="profileimage">Profilbild hochladen </label>
-      <input type="file" id="profileimage" class="options-input" accept="image/png,image/jpeg,image/gif"><br>
     </div>
+    <hr class="desktop-only"/>
     <div style="text-align: right">
-      <input type="submit" value="Speichern" id="options-sb">
-      <input type="button" ng-click="resetUser();" value="Benutzer zurücksetzen" id="options-reset">
+      <input type="submit" value="Speichern" id="options-sb" class="btn btn-primary">
+      <input type="button" ng-click="resetUser();" value="Benutzer zurücksetzen" id="options-reset" class="btn btn-primary">
     </div>
   </form>
 </div>

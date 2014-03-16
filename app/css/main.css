@@ -33,10 +33,14 @@ a {
   color: #333;
 }
 
-.main-content h2 {
+.main-content h2, .main-content h1, .main-content h3 {
     margin: 15px 0px;
     font-weight: normal;
     font-family: 'Quicksand', sans-serif;
+}
+
+.padding-left {
+    padding-left: 10px;
 }
 
 /* ==========================================================================
@@ -638,6 +642,10 @@ header#header .dropdown-menu {
     }
 }
 
+/* ==========================================================================
+   Walkthrough
+   ========================================================================== */
+
 
 #walkthrough {
     position: fixed;
@@ -689,4 +697,99 @@ header#header .dropdown-menu {
 
     background-color: rgba(46,204,113,0);
     border-radius: 0px;
+}
+
+/* ==========================================================================
+   PGrouppage
+   ========================================================================== */
+
+
+
+.school-hero {
+    height: 200px;
+    background-size: cover;
+    text-align: center;
+}
+
+.school-hero h1 {
+    color: #333;
+    margin: 68px 10px;
+    padding:3px 10px;
+    font-size: 40px;
+    margin-bottom: 5px;
+    display: inline-block;
+    background-color: rgba(255,255,255,0.8);
+}
+
+.school-hero .config a{
+    display: none;
+    background: rgba(255,255,255,0.8);
+    position: absolute;
+    margin: 5px;
+    padding: 3px 6px;
+}
+
+.school-hero:hover .config a{
+    display: block;
+}
+
+.school-hero .short-info {
+    color: #fff;
+    text-shadow:1px 1px #333;
+    display: block;
+}
+
+.widget {
+    margin-bottom: 15px;
+}
+
+.widget .inner {
+    padding: 5px 7px;
+}
+
+.widget h3 {
+    background-color: rgba(255, 109, 56, 0.83);
+    color: #fff;
+    padding: 5px 7px;
+    margin: 0px;
+}
+
+.widget li, .widget ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+#schools .comment-textarea {
+    border-radius: 0px;
+}
+
+#schools .comment-form {
+    padding-bottom: 40px;
+}
+
+#schools .feed-item .feed-entry-content {
+    padding-top: 0px;
+}
+
+#schools .feed-head, #schools .feed-head a,#schools .feed-footer  {
+    font-size: 13px;
+    color:#333;
+    font-weight: normal;
+}
+
+#schools .feed-head .username {
+    font-weight: bold;
+}
+
+#schools .feed-footer {
+    color: #444,
+}
+
+#schools .feed-item .actions {
+    display: none;
+}
+
+#schools .feed-item:hover .actions{
+    display: inline;
 }

@@ -29,7 +29,7 @@ angular.module('tradity').
     ]
 
     $scope.step = 0;
-    $scope.show = true;
+    $scope.show = false;
     $scope.pp;
 
     $scope.initStep = function() {
@@ -76,6 +76,6 @@ angular.module('tradity').
       }
     }
 
-    $scope.initStep();
+    if ($scope.show) $scope.initStep();
   });
 

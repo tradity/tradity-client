@@ -25,6 +25,7 @@
 						<tr ng-show="leader"><th>Verlustprovision</th><td ng-show="cur">{{cur.lprovision}} %</td></tr>
 						<tr ng-hide="leader"><th>ISIN</th><td ng-show="cur">{{cur.stockid}}</td></tr>
 						<tr ng-hide="leader"><th><span class="batch tooltip" data-info="Du kannst nur so viele Aktien kaufen, wie auch in der Realität an der Börse gehandelt wurden. Wurden an Tag X zum Beispiel nur 1000 Stück der Aktie gehandelt, die du kaufen oder verkaufen willst, kannst du an diesem Tag maximal je 1000 Stück kaufen und verkaufen. Achte vor allem bei sogennanten 'Pennystocks' auf die Liquidität, da diese oft sehr gering ist.">&#xF0AD;</span>Handelbare Stückzahl</th><td ng-show="cur">{{cur.pieces}}</td></tr>
+						<tr ng-hide="leader"><th>Aktieninformationen</th><td ng-show="cur"><a target="_blank" ng-href="http://ariva.de/{{cur.stockid}}">http://ariva.de/{{cur.stockid}}</a></td></tr>
 					</table>
 				</div>				
 			</div>

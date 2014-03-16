@@ -83,7 +83,7 @@
        ========================================================================== */
 
     nav#nav {
-        position: absolute;
+        position: fixed;
         left: 0px;
         top: 0px;
         margin-left: -100%;

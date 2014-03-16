@@ -11,8 +11,8 @@
 		</ul>
 
 
-		<form class="pure-form" ng-submit="getRanking()">
-			<input type="text" ng-model="searchText" placeholder="Suche" class="pure-input">
+		<form class="pure-form" ng-submit="getRanking()" id="rankingSearch">
+			<input type="text" ng-model="searchText" placeholder="Suche" class="pure-input" >
 			<button type="submit" class="btn btn-primary btn-sm">Search</button>
 		</form>
 
@@ -31,7 +31,7 @@
 				</tr>
 				<tr bindonce ng-repeat="result in results | limitTo:totalDisplayed">
 					<td bo-text="result.rank"></td>
-					<td class="rank-name"><a bo-href="'#/user/' + result.name" style="cursor: pointer" bo-text="result.name"></a></td>
+					<td class="rank-name"><a id="user-name-{{result.name}}" bo-href="'#/user/' + result.name" style="cursor: pointer" bo-text="result.name"></a></td>
 					<td>
 						<span bo-text="((result.totalvalue - result.prov_recvd) / 10000) - 100000 | currency"></span>
 						<span>(</span><span bo-text="(((result.totalvalue - result.prov_recvd) / 10000) - 100000) / 1000 | number:2"></span><span> %)</span>
@@ -41,7 +41,7 @@
 		</div>
 	  	<div id="all-withprov">
 			<table class="ranking table table-bordered">
-				<colgroup>
+				<colgroup> 
 				  	<col class="rankcol-1" style="width: 10%">
 				    <col class="rankcol-2" style="width: 57%">
 				    <col class="rankcol-3" style="width: 18%">

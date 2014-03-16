@@ -637,3 +637,56 @@ header#header .dropdown-menu {
         display: none;
     }
 }
+
+
+#walkthrough {
+    position: fixed;
+    bottom: 30px;
+    width: 500px;
+    left:50%;
+    margin-left: -250px;
+    background-color: #3276b1;
+    padding: 15px;
+    color:#fff;
+    text-shadow:1px 1px #333;
+    -webkit-box-shadow: 0 0 20px 0 rgba(20,20,20,0.7);
+    box-shadow: 0 0 20px 0 rgba(20,20,20,0.7);
+} 
+
+#walkthrough h2 {
+    margin: 0px;
+}
+
+#walkthrough p {
+    font-size: 16px;
+    margin: 5px 0px;
+}
+
+
+.pointPointArrow{
+    width:16px;
+    height:16px;
+    background:url('../img/arrow.png') no-repeat;
+    position:absolute;
+    display:none;
+    z-index: 100000;
+    top:0;
+    left:0;
+ }
+
+#rankingSearch {
+    display: inline-block;
+}
+
+@keyframes blink { 
+   50% { 
+        background-color: rgba(46,204,113,0.3);
+    } 
+}
+.blink{ /*or other element you want*/
+    animation: blink 2s infinite alternate;
+
+
+    background-color: rgba(46,204,113,0);
+    border-radius: 0px;
+}

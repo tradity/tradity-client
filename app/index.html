@@ -18,8 +18,8 @@
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/main.css">
 
-        <link rel="stylesheet" href="css/desktop.css">
         <link rel="stylesheet" href="css/mobile.css">
+        <link rel="stylesheet" href="css/desktop.css">
 
 
         
@@ -42,6 +42,8 @@
         <script type="text/javascript" src="js/jqplot.dateAxisRenderer.min.js"></script>
         <script type="text/javascript" src="js/jqplot.canvasAxisTickRenderer.min.js"></script>
         <script type="text/javascript" src="js/jqplot.canvasTextRenderer.min.js"></script>
+        <script type="text/javascript" src="js/transform.js"></script>
+        <script type="text/javascript" src="js/jquery.pointpoint.js"></script>
         <script type="text/javascript" src="js/ac.js"></script>
         <script type="text/javascript" src="bower_components/socket.io-client/dist/socket.io.js"></script>
 
@@ -59,12 +61,13 @@
         <script type="text/javascript" src="js/controllers/ranking.js"></script>
         <script type="text/javascript" src="js/controllers/tradeDetails.js"></script>
         <script type="text/javascript" src="js/controllers/admin.js"></script>
+        <script type="text/javascript" src="js/controllers/walkthrough.js"></script>
         <script type="text/javascript" src="js/directives/profile.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <!-- endbuild -->
     </head>
     <body ng-controller="MainCtrl">
-
+        <ng-include src="'templates/walkthrough.html'"></ng-include>
         <div ng-controller="HerounitCtrl">
             <div id="hero-wrapper" ng-class="{'hide-herounit':ownUser}">
                 <div class="herounit-spacer">
@@ -332,7 +335,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#/ranking" accesskey="r" title="ALT+SHIFT+R" ng-class="{active:isActive('/ranking')}">
+                                    <a href="#/ranking" id="rangliste" accesskey="r" title="ALT+SHIFT+R" ng-class="{active:isActive('/ranking')}">
                                         <i class="fa fa-flag"></i> 
                                         <span class="dark nav-block-title">Rangliste</span>
                                     </a>

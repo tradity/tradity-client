@@ -98,13 +98,13 @@ angular.module('tradity', [
       templateUrl: 'templates/admin.html',
       controller: 'AdminCtrl'
     }).
-    state('group', {
-      url: '/s/:schoolid',
+    state('grouptabs', {
+      url: '/s/:pageid/*schoolid',
       templateUrl: 'templates/school.html',
       controller: 'RankingCtrl'
     }).
-    state('grouptabs', {
-      url: '/s/:pageid/:schoolid*',
+    state('group', {
+      url: '/s/*schoolid',
       templateUrl: 'templates/school.html',
       controller: 'RankingCtrl'
     });

@@ -144,7 +144,10 @@ angular.module('tradity').
       $scope.totalDisplayed += 10;
     };
 
-    $scope.$on('user-update', function() { $scope.computeGroupRanking(); });
+    $scope.$on('user-update', function() {
+      $scope.computeGroupRanking(); 
+      $scope.selfIsSchoolMember = $scope.selfIsSchoolMember && $scope.ownUser.schools.length > 0;
+    }); 
     
     $scope.computeGroupRanking = function() {
       $scope.intraGroupResults = [];

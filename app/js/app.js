@@ -20,6 +20,10 @@ angular.module('tradity', [
       templateUrl: 'templates/register.html',
       controller: 'HerounitCtrl'
     }).
+    state('schoolregister', {
+      url: '/register/s/:schoolid',
+      controller: 'HerounitCtrl'
+    }).
     state('feed', {
       url: '/',
       templateUrl: 'templates/feed.html',

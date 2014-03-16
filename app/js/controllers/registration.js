@@ -1,6 +1,6 @@
 angular.module('tradity').
   controller('RegistrationCtrl', function($scope, $stateParams, $location, socket) {
-    $scope.school = null;
+    $scope.school = $stateParams.schoolid;
     //$scope.schoolname = document.getElementById('schoolname').value = '';
     $scope.traderse = 0;
     $scope.tradersp = 0;
@@ -56,7 +56,7 @@ angular.module('tradity').
         password: $scope.password,
         email: $scope.email,
         gender: $scope.gender,
-        school: $scope.schoolname ? ($scope.school ? $scope.school : $scope.schoolname) : null,
+        school: $scope.school,
         betakey: $scope.betakey,
         street: $scope.street,
         zipcode: $scope.zipcode,

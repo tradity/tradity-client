@@ -31,7 +31,22 @@ angular.module('tradity').
       
 
       $scope.enterTeam = function () {
+        socket.emit('get-own-options', function(data) {
+          data.result.school = $scope.schoolid;
+          $scope.selfIsSchoolMember = true;
+          socket.emit('change-options',data.result);
+        });
+      };
 
+      $scope.leaveTeam = function () {
+        if (confirm("Willst du wirklich die Gruppe verlassen ?")) {
+          socket.emit('get-own-options', function(data) {
+            data.result.school = null;
+            socket.emit('change-options',data.result);
+            $scope.selfIsSchoolMember = false;
+            notification("Gruppe verlassen");
+          });          
+        }
       };
 
       $scope.sendComment = $scope.createSendCommentFn($scope, function() { return $scope.school.eventid; }, 'Gruppe nicht gefunden.');

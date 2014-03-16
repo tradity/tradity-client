@@ -161,7 +161,7 @@ angular.module('tradity').
         if (schools.indexOf(e.schoolpath) == -1 && e.hastraded)
           schools.push(e.schoolpath);
         
-        if (($scope.ownUser && e.school == $scope.ownUser.schoolid) || $scope.school)
+        if ((($scope.ownUser && e.school == $scope.ownUser.schoolid) || $scope.school) && !e.pending)
           $scope.intraGroupResults.push(e);
       });
       
@@ -172,7 +172,7 @@ angular.module('tradity').
           if (e.schoolpath && (e.schoolpath == s || e.schoolpath.substr(0, s.length + 1) == s + '/') && e.hastraded && !e.pending)
             students.push(e);
             
-          if ($scope.school && e.schoolpath == $scope.school.path && e.pending) 
+          if ($scope.school && e.schoolpath == $scope.school.path && e.pending)
             $scope.pendingMembers.push(e);
         });
     

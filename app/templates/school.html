@@ -42,7 +42,7 @@
 					</div>
 				</div>
 				<div id="intragroup" class="inner">
-					<table class="ranking">
+					<table class="ranking table table-bordered">
 						<colgroup>
 							<col class="rankcol-1" style="width: 10%">
 							<col class="rankcol-2" style="width: 57%">
@@ -59,8 +59,10 @@
 							<td>{{result.igrank}}</td>
 							<td class="rank-name">
 								<a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a>
-								<a ng-click="kickUser(result)">X</a>
-								<a ng-click="promoteUserToAdmin(result)">Admin</a>
+								<span ng-show="isAdmin" class="pull-right">
+									<a ng-click="kickUser(result)"><i class="fa fa-minus-circle"></i></a>
+									<a ng-click="promoteUserToAdmin(result)">Befördern</a>
+								</span>
 							</td>
 							<td>{{result.prov_sum / 10000 | currency}}</td>
 							<td>{{result.totalvalue / 10000 | currency}}</td>
@@ -68,7 +70,7 @@
 					</table>
 				</div>
 				<div id="intergroup" class="inner">
-					<table class="ranking">
+					<table class="ranking table table-bordered">
 						<colgroup>
 							<col class="rankcol-1" style="width: 10%">
 							<col class="rankcol-2" style="width: 57%">
@@ -94,6 +96,9 @@
 				</div>
 			</div>
 			<div class="pure-u-1-3 widgets">
+				<div class="widget">
+					<button ng-click="enterTeam" type="button" href="" class="btn btn-primary btn-block">Team Beitreten</button>
+				</div>
 				<div class="widget schoolInfo">
 					<h3>Info</h3>
 					<div class="inner">

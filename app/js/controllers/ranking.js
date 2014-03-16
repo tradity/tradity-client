@@ -29,6 +29,11 @@ angular.module('tradity').
       
       tabbing($('#tabs'), '/s/?/' + ($stateParams.schoolid || ''), $stateParams.pageid || 'general', $location, $scope);
       
+
+      $scope.enterTeam = function () {
+
+      };
+
       $scope.sendComment = $scope.createSendCommentFn($scope, function() { return $scope.school.eventid; }, 'Gruppe nicht gefunden.');
     
       $scope.deleteCommentSA = function(comment) {

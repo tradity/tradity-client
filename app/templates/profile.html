@@ -108,7 +108,8 @@
 			<div style="text-align: right;" ng-hide="user.isSelf">
 		      <button ng-click="getUserInfo()" class="click-button"><span class="batch">&#xF0B2; </span>Refresh</button>
 		      <button ng-click="addToWatchlist()" class="click-button"><span class="batch">&#xF179; </span>zur Watchlist hinzufügen</button>
-		      <form style="display:inline" action="#/trade/buy/__LEADER_{{user.uid}}__/0" method="get"><button class="click-button block-link"><span class="batch">&#xF0B8; </span>Folgen</button></form>
+		      <!-- Make this a button -->
+		      <a ng-href="#/trade/buy/__LEADER_{{user.uid}}__/0">Folgen</a>
 		    </div>
 		</div>
 		<div id="history">

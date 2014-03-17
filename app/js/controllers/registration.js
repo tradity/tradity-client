@@ -14,10 +14,7 @@ angular.module('tradity').
       switch (data.code) {
         case 'reg-success':
           alert('Registrierung erfolgreich');
-          $scope.fetchSelf(function() {
-            $scope.pokeEvents();
-          });
-          $location.path('/');
+          showLogin();
           break;
         case 'reg-email-failed':
           alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');

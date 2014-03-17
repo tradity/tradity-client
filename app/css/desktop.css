@@ -151,9 +151,6 @@
        ========================================================================== */
 
     #profile-picture {
-        background-image:url(../img/Zeichnung.svg);
-        background-size: cover;
-        background-repeat: no-repeat;
     }
 
     #header #profile-picture {

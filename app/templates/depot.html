@@ -3,9 +3,8 @@
 	  <ul>
 	    <li><a href="#overview">Vermögensentwicklung</a></li>
 	    <li><a href="#listing">Wertpapiere in Besitz</a></li>
-	    <li><a href="#opentransactions">Austehende Transaktionen</a></li>
-	    <li><a href="#history">Transaktionshistorie</a></li>
-	    <li><a href="#watchlist"><span class="batch">&#xF178;</span></a></li>
+	    <li><a href="#opentransactions">Transaktionen</a></li>
+	    <li><a href="#watchlist"><i class="fa fa-eye"></i></a></li>
 	  </ul>
 	</br>
 
@@ -190,7 +189,7 @@
 		                                result.daystartvalue * 100 | number:2}} %
 		                    </span>
 		                </td>
-						<td class="trade-td"><a ng-href="#/trade/sell/{{result.stockid}}/{{result.amount}}" class="batch block-link trade">&#xF153;</a></td>
+						<td class="trade-td text-center"><a ng-href="#/trade/sell/{{result.stockid}}/{{result.amount}}" class="batch block-link trade"><i class="fa fa-bar-chart-o"></i></a></td>
 					</tr>
 				</table>
 			</div>
@@ -226,12 +225,10 @@
 							<span ng-hide="order.query.dquerydata.xvalue">—</span>
 						</td>
 						<td>{{order.amount}}</td>
-						<td class="trade-td"><a ng-click="removeDelayedOrder(order.queryid)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF153;</a></td>
+						<td class="trade-td"><a ng-click="removeDelayedOrder(order.queryid)" class="batch block-link trade" title="Löschen" style="cursor: pointer"><i class="fa fa-eye"></i></a></td>
 					</tr>
 				</table>
 			</div>
-		</div>
-		<div id="history">
 			<div class="options-field">
 				<h2>Transaktionshistorie</h2>
 				<table class="transaction-history table table-bordered">
@@ -268,6 +265,9 @@
 				</table>
 			</div>
 		</div>
+		<div id="history">
+			
+		</div>
 		<div id="watchlist">
 			<div class="options-field">
 				<h2>Leader und Wertpapiere in Deiner Watchlist</h2>
@@ -293,7 +293,7 @@
 						<th>Aktuell</th>
 						<th>Gesamt</th>
 						<th>Heute</th>
-						<th>Entfernen</th>
+						<th></th>
 					</tr>
 					<tr ng-repeat="entry in watchlist">
 						<td>
@@ -313,7 +313,7 @@
 								{{ watchlistPerformYesterday = (entry.bid - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}} %
 							</span>
 						</td>
-						<td class="trade-td"><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Löschen" style="cursor: pointer">&#xF17A;</a></td>
+						<td class="trade-td text-center"><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Löschen" style="cursor: pointer"><i class="fa fa-minus-circle"></i> </a></td>
 					</tr>
 				</table>
 			</div>

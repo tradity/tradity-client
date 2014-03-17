@@ -35,7 +35,6 @@ angular.module('tradity').
       $scope.enterTeam = function () {
         socket.emit('get-own-options', function(data) {
           data.result.school = $scope.schoolid;
-          $scope.selfIsSchoolMember = true;
           socket.emit('change-options',data.result);
         });
       };
@@ -45,7 +44,6 @@ angular.module('tradity').
           socket.emit('get-own-options', function(data) {
             data.result.school = null;
             socket.emit('change-options',data.result);
-            $scope.selfIsSchoolMember = false;
             notification("Gruppe verlassen");
           });          
         }

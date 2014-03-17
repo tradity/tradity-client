@@ -6,9 +6,10 @@
         <title>tradity</title>
         <meta name="description" content="Beim Börsenspiel Tradity bist Du gefragt Dein virtuelles Startkapital möglichst vielversprechend in Wertpapiere zu investieren."> <!-- edit -->
         <meta name="viewport" content="width=device-width">
-        <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
-
+        
         <!-- build:css({.tmp,app}) css/main.css -->
+        <link rel="stylesheet" href="css/quicksand.css">
+
         <link rel="stylesheet" href="css/ac.css">
         <link rel="stylesheet" href="css/introjs.css">
         <link rel="stylesheet" href="css/normalize.css">
@@ -43,7 +44,6 @@
         <script type="text/javascript" src="js/jqplot.canvasAxisTickRenderer.min.js"></script>
         <script type="text/javascript" src="js/jqplot.canvasTextRenderer.min.js"></script>
         <script type="text/javascript" src="js/jquery.pointpoint.js"></script>
-        <script type="text/javascript" src="js/transform.js"></script>
         <script type="text/javascript" src="js/ac.js"></script>
         <script type="text/javascript" src="bower_components/socket.io-client/dist/socket.io.js"></script>
 
@@ -274,7 +274,7 @@
                 <header id="header">
                     <div class="inner">                        
                         <div class="pull-right user-info">
-                                <a ng-href="#/user/{{ownUser.name}}" class="name" accesskey="p" title="Hier gehts zu deinem Profil" class="block-link profile-link">
+                                <a ng-href="#/user/{{ownUser.name}}" class="name block-link profile-link" accesskey="p" title="Hier gehts zu deinem Profil">
                                     <img style="float:right" id="profile-picture" class="inline" height="50px" ng-src="{{ownUser.profilepic}}" alt="Profilbild">
                                     <h2 style="float:right">{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>                                    
                                 </a>

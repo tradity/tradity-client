@@ -777,7 +777,7 @@ header#header .dropdown-menu {
 }
 
 #schools .feed-head, #schools .feed-head a,#schools .feed-footer  {
-    font-size: 13px;
+    font-size: 12px;
     color:#333;
     font-weight: normal;
 }
@@ -786,8 +786,8 @@ header#header .dropdown-menu {
     font-weight: bold;
 }
 
-#schools .feed-footer {
-    color: #444,
+#schools .feed-time {
+    color: rgb(128, 128, 128);,
 }
 
 #schools .feed-item .actions {

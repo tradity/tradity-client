@@ -23,6 +23,8 @@ angular.module('tradity').
           $scope.comments = $scope.school.comments;
           $scope.descpage = $scope.school.descpage;
           $scope.schoolid = $scope.school.id;
+          if (!$scope.school.banner)
+            $scope.school.banner = $scope.serverConfig.defaultschoolbanner;
           $scope.computeGroupRanking();
         }
       });

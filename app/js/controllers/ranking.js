@@ -90,6 +90,27 @@ angular.module('tradity').
       };
       
       $scope.changeDescription = function() {
+        var bannerFile = document.getElementById('bannerupload').files[0];
+        if (piFile) {
+          fileemit(socket, bannerFile, 'school-publish-banner', {
+            base64: true,
+            schoolid: $scope.schoolid
+          }, function(code) {
+            switch (code) {
+              case 'publish-success':
+                alert('Profilbild erfolgreich hochgeladen!');
+                break;
+              case 'publish-quota-exceed':
+                alert('Die Profilbilddatei ist leider zu groß (höchstens 3 MB)');
+                break;
+              case 'publish-inacceptable-role':
+              case 'publish-inacceptable-mime':
+                alert('Es gab beim Hochladen Deines Profilbilds leider technische Schwierigkeiten.\nWende dich bitte an tech@tradity.de');
+                break;
+            }
+          });
+        }
+        
         socket.emit('school-change-description', {
           schoolid: $scope.schoolid,
           descpage: $scope.descpage

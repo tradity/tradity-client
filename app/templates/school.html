@@ -1,6 +1,6 @@
 <div id="schools" class="main-content">
 	<div class="school-hero" style="background-image:url(http://placekitten.com/g/747/300);">
-		<div class="config"><a href=""><i class="fa fa-cloud-upload"></i></a></div>
+		<div class="config"><a href=""><i ng-click="enterDescpageEdit()" class="fa fa-cloud-upload"></i></a></div>
 		<h1>{{school.name}}</h1>
 		<span class="short-info">Mitglieder: {{school.usercount}}</span>
 	</div>
@@ -111,6 +111,10 @@
 						<a ng-show="isAdmin || selfIsSchoolAdmin" ng-click="enterDescpageEdit()"><i class="fa fa-pencil-square-o"></i></a>
 						<form ng-submit="changeDescription()" ng-show="editingDescpage">
 							<textarea  ng-model="descpage" id="descpage" class="options-input"></textarea>
+							
+							<label for="bannerupload">Gruppenbild hochladen</label>
+							<input type="file" id="bannerupload" class="options-input" accept="image/png,image/jpeg,image/gif">
+							
 							<input type="submit" value="Speichern" />
 						</form>
 					</div>				

@@ -39,81 +39,24 @@ angular.module('tradity').
       
       var piFile = document.getElementById('profileimage').files[0];
       if (piFile) {
-        var filename = piFile.name;
-        var mime = null;
-        if (/\.jpe?g$/.test(filename)) mime = 'image/jpeg';
-        if (/\.png$/.test(filename))   mime = 'image/png';
-        if (/\.gif$/.test(filename))   mime = 'image/gif';
-        
-        if (!mime) {
-          alert('Dein Profilbild musst du als JPEG, PNG oder GIF hochladen');
-        } else {
-          var reader = new FileReader();
-          
-          reader.onload = function() {
-            var buf = reader.result;
-            if (!buf)
-              return alert('Konnte Profilbild nicht laden');
-            if (reader.result.length > $scope.serverConfig.fsdb.userquota)
-              return alert('Die Profilbilddatei ist leider zu groß (höchstens 2 MB)');
-            
-            var bytes = new Uint8Array(buf);
-            
-            var uint6ToB64 = function (nUint6) {
-              return nUint6 < 26 ?
-                  nUint6 + 65
-                : nUint6 < 52 ?
-                  nUint6 + 71
-                : nUint6 < 62 ?
-                  nUint6 - 4
-                : nUint6 === 62 ?
-                  43
-                : nUint6 === 63 ?
-                  47
-                :
-                  65;
-            }
-
-            var base64EncArr = function (aBytes) {
-              var nMod3, sB64Enc = "";
-              for (var nLen = aBytes.length, nUint24 = 0, nIdx = 0; nIdx < nLen; nIdx++) {
-                nMod3 = nIdx % 3;
-                nUint24 |= aBytes[nIdx] << (16 >>> nMod3 & 24);
-                if (nMod3 === 2 || aBytes.length - nIdx === 1) {
-                  sB64Enc += String.fromCharCode(uint6ToB64(nUint24 >>> 18 & 63), uint6ToB64(nUint24 >>> 12 & 63), uint6ToB64(nUint24 >>> 6 & 63), uint6ToB64(nUint24 & 63));
-                  nUint24 = 0;
-                }
-              }
-              return sB64Enc.replace(/A(?=A$|$)/g, "=");
-            }
-            
-            var encoded = base64EncArr(bytes);
-            
-            socket.emit('publish', {
-              base64: true,
-              content: encoded,
-              role: 'profile.image',
-              mime: mime,
-              name: filename
-            }, function(data) {
-              switch (data.code) {
-                case 'publish-success':
-                  alert('Profilbild erfolgreich hochgeladen!');
-                  break;
-                case 'publish-quota-exceed':
-                  alert('Die Profilbilddatei ist leider zu groß (höchstens 2 MB)');
-                  break;
-                case 'publish-inacceptable-role':
-                case 'publish-inacceptable-mime':
-                  alert('Es gab beim Hochladen Deines Profilbilds leider technische Schwierigkeiten.\nWende dich bitte an tech@tradity.de');
-                  break;
-              }
-            });
-          };
-          
-          reader.readAsArrayBuffer(piFile);
-        }        
-      }        
+        fileemit(socket, piFile, 'publish', {
+          base64: true,
+          role: 'profile.image',
+        }, function(code) {
+          switch (code) {
+            case 'publish-success':
+              alert('Profilbild erfolgreich hochgeladen!');
+              break;
+            case 'publish-quota-exceed':
+              alert('Die Profilbilddatei ist leider zu groß (höchstens 3 MB)');
+              break;
+            case 'publish-inacceptable-role':
+            case 'publish-inacceptable-mime':
+              alert('Es gab beim Hochladen Deines Profilbilds leider technische Schwierigkeiten.\nWende dich bitte an tech@tradity.de');
+              break;
+          }
+        });
+      }
       
       var school;
       if (!$scope.schoolname && $scope.school) {

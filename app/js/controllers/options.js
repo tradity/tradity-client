@@ -42,7 +42,7 @@ angular.module('tradity').
         fileemit(socket, piFile, 'publish', {
           base64: true,
           role: 'profile.image',
-        }, function(code) {
+        }, $scope.serverConfig, function(code) {
           switch (code) {
             case 'publish-success':
               alert('Profilbild erfolgreich hochgeladen!');

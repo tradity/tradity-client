@@ -89,8 +89,8 @@ var useSchoolAC = function($scope, socket) {
   $scope.ac = new AC('schoolname', $scope.acFetcher, false, 1, 1, null, true);
 };
 
-var fileemit = function(socket, input, evtype, template, callback) {
-  var filename = piFile.name;
+var fileemit = function(socket, input, evtype, template, serverconfig, callback) {
+  var filename = input.name;
   var mime = null;
   if (/\.jpe?g$/.test(filename)) mime = 'image/jpeg';
   if (/\.png$/.test(filename))   mime = 'image/png';
@@ -106,8 +106,8 @@ var fileemit = function(socket, input, evtype, template, callback) {
     var buf = reader.result;
     if (!buf)
       return alert('Konnte Profilbild nicht laden');
-    if (reader.result.length > $scope.serverConfig.fsdb.userquota)
-      return alert('Die Profilbilddatei ist leider zu groß (höchstens 2 MB)');
+    if (serverconfig && reader.result.length > serverconfig.fsdb.userquota)
+      return alert('Die Profilbilddatei ist leider zu groß (höchstens 3 MB)');
     
     var bytes = new Uint8Array(buf);
     
@@ -150,5 +150,5 @@ var fileemit = function(socket, input, evtype, template, callback) {
     });
   };
   
-  reader.readAsArrayBuffer(piFile);
+  reader.readAsArrayBuffer(input);
 };

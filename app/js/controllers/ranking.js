@@ -90,12 +90,14 @@ angular.module('tradity').
       };
       
       $scope.changeDescription = function() {
+        return alert($scope.schoolid);
+        
         var bannerFile = document.getElementById('bannerupload').files[0];
-        if (piFile) {
+        if (bannerFile) {
           fileemit(socket, bannerFile, 'school-publish-banner', {
             base64: true,
             schoolid: $scope.schoolid
-          }, function(code) {
+          }, $scope.serverConfig, function(code) {
             switch (code) {
               case 'publish-success':
                 alert('Profilbild erfolgreich hochgeladen!');

@@ -168,8 +168,16 @@ angular.module('tradity').
     };
 
     $scope.$on('user-update', function() {
-      $scope.computeGroupRanking(); 
-      $scope.selfIsSchoolMember = $scope.selfIsSchoolMember && $scope.ownUser.schools.length > 0;
+      $scope.computeGroupRanking();
+      
+      $scope.selfIsSchoolMember = false;
+      console.log($scope.schoolid, $scope.ownUser.schools);
+      for (var i = 0; i < $scope.ownUser.schools.length; ++i) {
+        if ($scope.ownUser.schools[i].id == $scope.schoolid) {
+          $scope.selfIsSchoolMember = true;
+          break;
+        }
+      }
     }); 
     
     $scope.computeGroupRanking = function() {
@@ -191,6 +199,8 @@ angular.module('tradity').
       // linearize intergroup results
       $.each(schools, function(i, s) {
         var students = [];
+        $scope.pendingMembers = [];
+        
         $.each($scope.results, function(i, e) {
           if (e.schoolpath && (e.schoolpath == s || e.schoolpath.substr(0, s.length + 1) == s + '/') && e.hastraded && !e.pending)
             students.push(e);
@@ -262,6 +272,7 @@ angular.module('tradity').
               return false;
             $scope.results = data.result;
             $scope.resultsCount = data.count;
+            $scope.computeGroupRanking();
           });
           break;
         case 'general':

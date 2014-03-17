@@ -90,8 +90,6 @@ angular.module('tradity').
       };
       
       $scope.changeDescription = function() {
-        return alert($scope.schoolid);
-        
         var bannerFile = document.getElementById('bannerupload').files[0];
         if (bannerFile) {
           fileemit(socket, bannerFile, 'school-publish-banner', {

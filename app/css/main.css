@@ -789,7 +789,7 @@ header#header .fa-item {
 }
 
 .feed-item .feed-entry-content {
-    padding-top: 0px;
+    
 }
 
 .feed-head, .feed-head a, .feed-footer  {
@@ -799,7 +799,13 @@ header#header .fa-item {
 }
 
 .feed-head {
+    position: relative;
     margin-top:-10px;
+}
+
+#feed .feed-head {
+    margin: 0px;
+    top: -10px;
 }
 
 .feed-head .username {

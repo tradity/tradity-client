@@ -182,7 +182,8 @@ angular.module('tradity').
         orderid: data.orderid,
         tradername: tn,
         tradername_genitive: 'xsXS'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’',
-        time: data.eventtime
+        time: data.eventtime,
+        schoolpath: data.schoolpath
       });
     });
     /*

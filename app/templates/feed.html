@@ -22,7 +22,7 @@
                     <div class="feed-head">
                         <span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
                     </div>
-                    Du hast in die Gruppe {{message.tradername}} geschrieben. 
+                    Du hast in die Gruppe <a href="#/s{{message.schoolpath}}">{{message.tradername}}</a> geschrieben. 
                 </div>
             </div>
             <div ng-switch-when="comment-schoolpinboard">
@@ -31,7 +31,7 @@
                     <div class="feed-head">
                         <span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
                     </div>
-                    {{message.srcusername}} hat in die Gruppe {{message.tradername}} geschrieben.
+                    <a href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat in die Gruppe <a href="#/s{{message.schoolpath}}">{{message.tradername}}</a> geschrieben.
                 </div>
             </div>
             <div ng-switch-when="mod-notification">

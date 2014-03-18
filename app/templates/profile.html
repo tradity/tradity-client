@@ -4,7 +4,15 @@
 		<div class="user-info">
 			<img id="profile-picture" class="profile-picture profile-box" src="{{user.profilepic}}" height="150px">
 			<h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
+			<div ng-hide="user.isSelf">
+				<div class="btn-group">
+			      <a ng-click="getUserInfo()" class="btn btn-sm btn-default"><i class="fa fa-refresh"></i></a>
+			      <a ng-click="addToWatchlist()" class="btn btn-sm btn-default"><i class="fa fa-eye"></i> Watchen</a>
+			      <a class="btn btn-success btn-sm" ng-href="#/trade/buy/__LEADER_{{user.uid}}__/0">Folgen</a>
+			    </div>
+		    </div>
 		</div>
+		<hr/>
 		<div class="pure-g user-stats">
 			<div class="pure-u-1-6">
 				<h3 class="title">Platz</h3>
@@ -38,16 +46,15 @@
 			<h2>Performance</h2>
 			<div id="chart-wrap">
 				<div id="chart" class="jqplot-target chart-depot"></div>
-				<ul id="chart-control">
-					<li ng-repeat="dm in drawModes">
-						<div class="options-button">
-							<label for="radio-{{$index}}" class="smaller-order-type"> 
-								<input type="radio" name="drawMode" style="z-index: -3;" ng-model="drawMode" value="{{$index}}" id="radio-{{$index}}" ng-click="draw($index)">
-								<span>{{dm.name}}</span>
-							</label>
-						</div>
-					</li>
-				</ul>
+				<div class="container-center padding-top">
+					<div class="btn-group">
+				        <button type="button" class="btn btn-primary" ng-model="drawMode" btn-radio="0">24 h</button>
+				        <button type="button" class="btn btn-primary" ng-model="drawMode" btn-radio="1">48 h</button>
+				        <button type="button" class="btn btn-primary" ng-model="drawMode" btn-radio="2">7 d</button>
+				        <button type="button" class="btn btn-primary" ng-model="drawMode" btn-radio="3">14 d</button>
+				        <button type="button" class="btn btn-primary" ng-model="drawMode" btn-radio="4">seit Beginn</button>
+				    </div>
+				</div>
 			</div>
 		</div>
 
@@ -105,12 +112,7 @@
 
 			</div>
 
-			<div style="text-align: right;" ng-hide="user.isSelf">
-		      <button ng-click="getUserInfo()" class="click-button"><span class="batch">&#xF0B2; </span>Refresh</button>
-		      <button ng-click="addToWatchlist()" class="click-button"><span class="batch">&#xF179; </span>zur Watchlist hinzufügen</button>
-		      
-		      <a class="btn btn-primary" ng-href="#/trade/buy/__LEADER_{{user.uid}}__/0">Folgen</a>
-		    </div>
+			
 		</div>
 		<div id="history">
 			<div class="options-field">
@@ -153,7 +155,6 @@
 				<textarea ng-model="comment" class="options-input comment-textarea pure-input-1" placeholder="Was sagst Du zu diesem Trader?"></textarea>
 				<input type="submit" class="click-button comment-button btn pull-right" value="Kommentieren">
 			</form>
-
 			<div ng-repeat="comment in comments | orderBy:'time'" class="feed-item feed">
 				<div class="feed-entry-symbol"><i class="fa fa-bullhorn"></i></div>
                 <div class="feed-entry-content">
@@ -170,7 +171,6 @@
                 	</div>
                     <span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
 					<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
-		
                 </div>
 			</div>
 		</div>

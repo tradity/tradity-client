@@ -43,6 +43,11 @@ angular.module('tradity').
       {name: '14 d', days: 14, marker: false},
       {name: 'seit Beginn', days: 1/0, marker: false}
     ];
+
+    $scope.$watch('drawMode', function() {
+      $scope.draw($scope.drawMode);
+    });
+
     $scope.curPlot = null;
     $scope.draw = function(newMode) {    
       if (newMode != null)

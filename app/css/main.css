@@ -39,13 +39,15 @@ a {
     font-family: 'Quicksand', sans-serif;
 }
 
-.padding-left {
-    padding-left: 10px;
-}
+.padding-left { padding-left: 10px; }
+.padding-top { padding-top: 10px; }
 
-.text-center {
-    text-align: center;
-}
+.text-center { text-align: center; }
+
+.container-center { text-align: center; }
+.container-center > *{display: inline-block; }
+
+
 
 /* ==========================================================================
     Header

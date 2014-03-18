@@ -19,7 +19,7 @@
 							<input type="submit" class="click-button comment-button btn pull-right" value="Kommentieren">
 						</form>
 
-						<div ng-repeat="comment in school.comments" class="feed-item feed">
+						<div ng-repeat="comment in school.comments | orderBy:'time'" class="feed-item feed">
 							<div class="feed-entry-symbol"><i class="fa fa-bullhorn"></i></div>
 			                <div class="feed-entry-content">
 			                	<div class="feed-head">

@@ -148,7 +148,7 @@
 			</div>
 		</div>
 		<div id="pinboard" style="margin-top: 15px;">
-			<div ng-repeat="comment in comments">
+			<div ng-repeat="comment in comments | orderBy:'time'">
 				<div class="commenter"><a href="#/user/{{comment.username}}" class="text-link">{{comment.username}}</a></div>
 				<div class="comment comment-somebody">
 					<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>

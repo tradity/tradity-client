@@ -169,7 +169,6 @@ angular.module('tradity').
       $scope.computeGroupRanking();
       
       $scope.selfIsSchoolMember = false;
-      console.log($scope.schoolid, $scope.ownUser.schools);
       for (var i = 0; i < $scope.ownUser.schools.length; ++i) {
         if ($scope.ownUser.schools[i].id == $scope.schoolid) {
           $scope.selfIsSchoolMember = true;
@@ -247,7 +246,7 @@ angular.module('tradity').
       
       if ($scope.school.admins) {
         $.each($scope.school.admins, function(i, e) {
-          if (e.uid == $scope.ownUser.uid)
+          if (e.adminid == $scope.ownUser.uid)
             $scope.selfIsSchoolAdmin = true;
         });
       }

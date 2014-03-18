@@ -257,7 +257,7 @@
 							<td>{{order.amount}}</td>
 							<td>{{order.price / 10000 | number:3}} €</td>
 							<td>{{order.fee / 10000 | currency}}</td>
-							<tdng-class="{pos: balance > 0, neg: balance < 0}">
+							<td ng-class="{pos: balance > 0, neg: balance < 0}">
 								{{ balance = (order.money * -1) / 10000 | currency}}
 							</td>
 						</tr>

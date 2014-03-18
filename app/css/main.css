@@ -823,3 +823,7 @@ header#header .fa-item {
 .feed-item:hover .actions{
     display: inline;
 }
+
+.feed-entry-symbol {
+    background-size: cover;
+}

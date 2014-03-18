@@ -827,3 +827,14 @@ header#header .fa-item {
 .feed-entry-symbol {
     background-size: cover;
 }
+
+.feed-entry-symbol.no-image {
+    background-image: url(../img/profile.svg)!important;
+    background-color: #fff;
+}
+
+#header #profile-picture {
+    background-image: url(../img/profile.svg);
+    background-size: cover;
+    margin-top: -11px;
+}

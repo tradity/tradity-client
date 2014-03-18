@@ -20,7 +20,7 @@
 						</form>
 
 						<div ng-repeat="comment in school.comments | orderBy:'time'" class="feed-item feed">
-							<div class="feed-entry-symbol" style="background-image:url({{comment.profilepic}})"><i ng-hide="comment.profilepic" class="fa fa-bullhorn"></i></div>
+							<div class="feed-entry-symbol" style="background-image:url({{comment.profilepic}})" ng-class="{'no-image': !comment.profilepic }"><i ng-hide="comment.profilepic" class="fa fa-bullhorn"></i></div>
 			                <div class="feed-entry-content">
 			                	<div class="feed-head">
 			                		<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>

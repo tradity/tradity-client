@@ -159,15 +159,20 @@ header#header .fa-item {
         display: block;
     }
 
-    .info-grid .item.neg {
+    .pos {
+        background-color: #2ecc71;
+        color: #fff;
+    }
+
+    .neg {
         background-color: #e74c3c;
         color: #fff;
     }
 
-    .info-grid .item.pos {
-        background-color: #2ecc71;
-        color: #fff;
-    }
+
+
+
+
 
 /* ==========================================================================
    Print styles

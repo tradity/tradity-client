@@ -140,10 +140,8 @@
 						<td>{{order.amount}}</td>
 						<td>{{order.price / 10000 | currency}}</td>
 						<td>{{order.fee / 10000 | currency}}</td>
-						<td>
-							<span ng-class="{pos: balance > 0, neg: balance < 0}">
-								{{balance = (order.money * -1) / 10000 | currency}}
-							</span>
+						<td ng-class="{pos: balance > 0, neg: balance < 0}">
+							{{balance = (order.money * -1) / 10000 | currency}}
 						</td>
 					</tr>
 				</table>

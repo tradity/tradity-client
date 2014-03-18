@@ -131,8 +131,11 @@ angular.module('tradity').
       };
       
       $scope.createSchool = function() {
-        var n = prompt('Gruppenname:').trim();
+        var n = prompt('Gruppenname:');
         if (!n)
+          return;
+        n = n.trim();
+        if (!n.length)
           return;
         
         socket.emit('create-school', {

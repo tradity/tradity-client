@@ -844,3 +844,7 @@ header#header .fa-item {
     background-size: cover;
     margin-top: -11px;
 }
+
+#footer {
+    padding: 10px;
+}

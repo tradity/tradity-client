@@ -108,8 +108,8 @@
 			<div style="text-align: right;" ng-hide="user.isSelf">
 		      <button ng-click="getUserInfo()" class="click-button"><span class="batch">&#xF0B2; </span>Refresh</button>
 		      <button ng-click="addToWatchlist()" class="click-button"><span class="batch">&#xF179; </span>zur Watchlist hinzufügen</button>
-		      <!-- Make this a button -->
-		      <a ng-href="#/trade/buy/__LEADER_{{user.uid}}__/0">Folgen</a>
+		      
+		      <a class="btn btn-primary" ng-href="#/trade/buy/__LEADER_{{user.uid}}__/0">Folgen</a>
 		    </div>
 		</div>
 		<div id="history">
@@ -147,23 +147,32 @@
 				</table>
 			</div>
 		</div>
-		<div id="pinboard" style="margin-top: 15px;">
-			<div ng-repeat="comment in comments | orderBy:'time'">
-				<div class="commenter"><a href="#/user/{{comment.username}}" class="text-link">{{comment.username}}</a></div>
-				<div class="comment comment-somebody">
-					<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
-					<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
-					<span ng-show="isAdmin">
-						<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>
-						<a ng-click="deleteComment(comment)" style="cursor: pointer">Löschen</a>
-					</span>
-					<span class="feed-time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
-				</div>
-			</div>
-			<form ng-submit="sendComment()">
-				<input type="submit" class="click-button comment-button" value="Kommentieren">
-				<textarea ng-model="comment" class="options-input comment-textarea" placeholder="Was sagst Du zu diesem Trader?"></textarea>
+		<div id="pinboard">
+			<h2>Pinnwand</h2>
+			<form ng-submit="sendComment()" class="pure-form comment-form">
+				<textarea ng-model="comment" class="options-input comment-textarea pure-input-1" placeholder="Was sagst Du zu diesem Trader?"></textarea>
+				<input type="submit" class="click-button comment-button btn pull-right" value="Kommentieren">
 			</form>
+
+			<div ng-repeat="comment in comments | orderBy:'time'" class="feed-item feed">
+				<div class="feed-entry-symbol"><i class="fa fa-bullhorn"></i></div>
+                <div class="feed-entry-content">
+                	<div class="feed-head">
+                		<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
+                		<a href="#/user/{{comment.username}}" class="text-link username">{{comment.username}}</a>
+                		<span ng-show="isAdmin" class="actions">
+							<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>
+							<a ng-click="deleteComment(comment)" style="cursor: pointer">Löschen</a>
+						</span>
+						<span ng-show="selfIsSchoolAdmin">
+							<a ng-click="deleteCommentSA(comment)" style="cursor: pointer">Löschen</a>
+						</span>
+                	</div>
+                    <span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
+					<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
+		
+                </div>
+			</div>
 		</div>
 	</div>
 </div>

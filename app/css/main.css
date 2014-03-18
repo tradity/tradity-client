@@ -93,14 +93,8 @@ header#header .inline {
 }
 
 header#header .name {
-    float: left;
     height: 28px;
     padding: 11px;
-}
-
-header#header .name h2 {
-    font-size: 20px;
-    font-weight: normal;
 }
 
 header#header .cog {
@@ -113,6 +107,12 @@ header#header .cog {
 header#header .dropdown-menu {
     left: inherit;
     margin-left: -67px
+}
+
+header#header .fa-item {
+    display: inline-block;
+    font-size: 17px;
+    padding:14px;
 }
 
 /* ==========================================================================
@@ -707,8 +707,6 @@ header#header .dropdown-menu {
    PGrouppage
    ========================================================================== */
 
-
-
 .school-hero {
     height: 200px;
     background-size: cover;
@@ -764,36 +762,56 @@ header#header .dropdown-menu {
     list-style-type: none;
 }
 
+.widget ol {
+    padding-left: 20px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+
+.widget ol li {
+    list-style-type: inherit!important;
+}
+
 #schools .comment-textarea {
     border-radius: 0px;
 }
 
-#schools .comment-form {
+
+
+/* ==========================================================================
+   Feed
+   ========================================================================== */
+
+.comment-form {
     padding-bottom: 40px;
 }
 
-#schools .feed-item .feed-entry-content {
+.feed-item .feed-entry-content {
     padding-top: 0px;
 }
 
-#schools .feed-head, #schools .feed-head a,#schools .feed-footer  {
+.feed-head, .feed-head a, .feed-footer  {
     font-size: 12px;
     color:#333;
     font-weight: normal;
 }
 
-#schools .feed-head .username {
+.feed-head {
+    margin-top:-10px;
+}
+
+.feed-head .username {
     font-weight: bold;
 }
 
-#schools .feed-time {
+.feed-time {
     color: rgb(128, 128, 128);
 }
 
-#schools .feed-item .actions {
+.feed-item .actions {
     display: none;
 }
 
-#schools .feed-item:hover .actions{
+.feed-item:hover .actions{
     display: inline;
 }

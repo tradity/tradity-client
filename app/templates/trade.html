@@ -6,14 +6,14 @@
 		<div class="pure-g-r">
 			<div class="pure-u-1-2">
 					<label for="paper" class="trade-label">Name</label>
-					<input type="text" class="options-input mobile-full"
+					<input type="text" class="options-input mobile-full pure-input-1"
 	                                placeholder="Wertpapiername" id="paper" ng-model="stockname" />
 					<!--button ng-show="cur" ng-click="addToWatchlist()" class="click-button" style="margin: 0; line-height:30px; height: auto;"><span class="batch">&#xF179; </span></button-->
 
 			</div>
 			<div class="pure-u-1-2">
-				<div class="options-field paper-preview-box" ng-show="cur"> 
-					<table class="paper-preview">
+				<div class="options-field paper-preview-box padding-left" ng-show="cur"> 
+					<table class="paper-preview f">
 						<tr ng-show="leader"><th>Name</th><td><a href="#/user/{{cur.leadername}}">{{stockname}}</a></td></tr>
 						<tr ng-hide="leader"><th>Name</th><td ng-show="cur">{{stockname}}</td></tr>
 						<tr><th><span class="batch tooltip" data-info="(Auch Ask, Geldkurs oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span>
@@ -73,7 +73,7 @@
 				        <button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'stop'">Stop</button>
 				    </div>
 				</div>
-				<div class="pure-u-1-2">
+				<div class="pure-u-1-2"> 
 					<div ng-hide="xtype == 'market'">
 						<label class="trade" for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label>
 					    <input type="text" ng-model="xvalue" placeholder="Stop-/Limitwert" id="limit-stop" autocomplete="off" class="options-input mobile-full">

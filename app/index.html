@@ -272,15 +272,13 @@
         </div>
             <div class="wrapper">
                 <header id="header">
-                    <div class="inner">                        
-                        <div class="pull-right user-info">
-                                <a ng-href="#/user/{{ownUser.name}}" class="name block-link profile-link" accesskey="p" title="Hier gehts zu deinem Profil">
-                                    <img style="float:right" id="profile-picture" class="inline" height="50px" ng-src="{{ownUser.profilepic}}" alt="Profilbild">
-                                    <h2 style="float:right">{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</h2>                                    
-                                </a>
-                        </div>
-                        
+                    <div class="inner">                      
+                        <a ng-href="#/user/{{ownUser.name}}" class="name block-link profile-link pull-right" accesskey="p" title="Hier gehts zu deinem Profil">
+                            <img style="float:right" id="profile-picture" class="inline" height="50px" ng-src="{{ownUser.profilepic}}" alt="Profilbild">                    
+                        </a>
+                        <a class="pull-right fa-item" href="" ng-click="logout()"><i class="fa fa-sign-out"></i></a>
                         <a href="" class="mobile-bar mobile-only" id="togglemenu"><i class="fa fa-bars"></i></a>
+
                         <div class="pull-right mobile-only">
                             <a href="" class="pull-right inline cog dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">

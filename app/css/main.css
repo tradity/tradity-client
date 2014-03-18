@@ -829,8 +829,8 @@ header#header .fa-item {
 }
 
 .feed-entry-symbol.no-image {
-    background-image: url(../img/profile.svg)!important;
-    background-color: #fff;
+    /*background-image: url(../img/profile.svg)!important;
+    background-color: #fff;*/
 }
 
 #header #profile-picture {

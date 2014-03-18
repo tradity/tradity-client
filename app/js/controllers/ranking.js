@@ -181,6 +181,7 @@ angular.module('tradity').
     }); 
     
     $scope.computeGroupRanking = function() {
+      
       $scope.intraGroupResults = [];
       $scope.interGroupResults = [];
       var schools = [];

@@ -3,12 +3,17 @@
 
 	<form ng-submit="buy()" class="pure-form pure-form-stacked">
 		<h2>Wertpapier</h2>
-		<div class="pure-g-r">
+		<div class="pure-g-r chose-paper">
 			<div class="pure-u-1-2">
 					<label for="paper" class="trade-label">Name</label>
 					<input type="text" class="options-input mobile-full pure-input-1"
 	                                placeholder="Wertpapiername" id="paper" ng-model="stockname" />
 					<!--button ng-show="cur" ng-click="addToWatchlist()" class="click-button" style="margin: 0; line-height:30px; height: auto;"><span class="batch">&#xF179; </span></button-->
+					<h3>Top Wertpapiere</h2>
+					<ol>
+						<li>Google</li>
+						<li>Barneos</li>
+					</ol>
 
 			</div>
 			<div class="pure-u-1-2">
@@ -30,59 +35,59 @@
 				</div>				
 			</div>
 		</div>
-		<div ng-show="cur">
-			<hr class="only-mobile"/>
-			<div class="trade-label-button">Willst du die ausgewählte Aktie kaufen oder verkaufen?</div>
-			<div class="btn-group">
-		        <button type="button" class="btn btn-primary" ng-model="sellbuy" btn-radio="'1'">Kaufen</button>
-		        <button type="button" class="btn btn-primary" ng-model="sellbuy" btn-radio="'-1'">Verkaufen</button>
-		    </div>
-		</div>
 
-		<div class="">
-			<h2>Menge</h2>
+		<div class="pure-g-r" ng-show="cur">
+			<hr/>
+			<div class="pure-u-1-2">
+				<h2>Menge</h2>
 
-			<div>
-				<label for="amount" class="trade-label">Anzahl</label>
-				<input type="number" ng-model="amount" ng-change="calcValue();" placeholder="Anzahl" id="amount" autocomplete="off" class="options-input mobile-full"><!--
-				--><span class="max-values" ng-show="cur && sellbuy > 0">Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSinglePaperShare) / cur.ask)}}</span>
-			</div>
-			<div>
-				<label for="value" class="trade-label" style="margin-top: 10px; font-size: 13px;">Kauf-/Verkaufswert</label>
-				<input type="text" ng-model="value" ng-change="calcAmount();" placeholder="Kaufwert" id="value" autocomplete="off" class="options-input mobile-full"><!--
-				--><span class="max-values" ng-show="cur && sellbuy > 0">Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSinglePaperShare) / cur.ask) * cur.ask / 10000 | currency}}</span>
-			</div>
-			<!--<label class="trade-label">Kontostand<span class="batch tooltip" data-info="Kontostand vor Order +/- Kaufwert - Transaktionskosten = Kontostand nach Order"> &#xF0AD;</span></label>
-			1337 <span class="pos">350</span><span class="neg"> -{{fee | currency}}</span> = 1230 <br>-->
-			<div style="margin-top: 10px; font-size: 12px;" class="trade-label">
-				Transaktionskosten:
-			</div>
-			{{fee | currency}}
-		
-		</div>
-
-		<div class="options-field" id="order-type"> 
-			<h2>Ordertyp</h2>
-			<div class="pure-g-r">
-				<div class="pure-u-1-2">
-					<div class="trade-label-button">Welchen Ordertyp soll deine Transaktion haben?</div>
-
-					<div class="btn-group">
-				        <button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'market'">Market</button>
-				        <button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'limit'">Limit</button>
-				        <button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'stop'">Stop</button>
-				    </div>
+				<div>
+					<label for="amount" class="trade-label">Anzahl</label>
+					<input type="number" ng-model="amount" ng-change="calcValue();" placeholder="Anzahl" id="amount" autocomplete="off" class="options-input pure-input-1"><!--
+					--><span class="max-values" ng-show="cur && sellbuy > 0">Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSinglePaperShare) / cur.ask)}}</span>
 				</div>
-				<div class="pure-u-1-2"> 
-					<div ng-hide="xtype == 'market'">
-						<label class="trade" for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label>
-					    <input type="text" ng-model="xvalue" placeholder="Stop-/Limitwert" id="limit-stop" autocomplete="off" class="options-input mobile-full">
+				<div>
+					<label for="value" class="trade-label" style="margin-top: 10px; font-size: 13px;">Kauf-/Verkaufswert</label>
+					<input type="text" ng-model="value" ng-change="calcAmount();" placeholder="Kaufwert" id="value" autocomplete="off" class="options-input pure-input-1"><!--
+					--><span class="max-values" ng-show="cur && sellbuy > 0">Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSinglePaperShare) / cur.ask) * cur.ask / 10000 | currency}}</span>
+				</div>
+				<!--<label class="trade-label">Kontostand<span class="batch tooltip" data-info="Kontostand vor Order +/- Kaufwert - Transaktionskosten = Kontostand nach Order"> &#xF0AD;</span></label>
+				1337 <span class="pos">350</span><span class="neg"> -{{fee | currency}}</span> = 1230 <br>-->
+				<div style="margin-top: 10px; font-size: 12px;" class="trade-label">
+					Transaktionskosten:
+				</div>
+				{{fee | currency}}
+			</div>
+
+			<div class="pure-u-1-2">
+				<div class="padding-left">
+					<div>
+						<h2>Aktie</h2>
+						<div class="trade-label-button">Willst du die ausgewählte Aktie kaufen oder verkaufen?</div>
+						<div class="btn-group">
+					        <button type="button" class="btn btn-primary" ng-model="sellbuy" btn-radio="'1'">Kaufen</button>
+					        <button type="button" class="btn btn-danger" ng-model="sellbuy" btn-radio="'-1'">Verkaufen</button>
+					    </div>
 					</div>
+					<div class="options-field" id="order-type"> 
+						<h2>Ordertyp</h2>
+						<div class="trade-label-button">Welchen Ordertyp soll deine Transaktion haben?</div>
+
+						<div class="btn-group">
+					        <button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'market'">Market</button>
+					        <button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'limit'">Limit</button>
+					        <button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'stop'">Stop</button>
+					    </div>
+						<div ng-hide="xtype == 'market'">
+							<label class="trade" for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label>
+						    <input type="text" ng-model="xvalue" placeholder="Stop-/Limitwert" id="limit-stop" autocomplete="off" class="options-input mobile-full">
+						</div>
+				   	</div>
 				</div>
+			</div>
+		</div>
 
-
-	   	</div>
-
+		<hr class="desktop-only"/>
 	    <input type="submit" value="Trade durchführen" class="click-button trade-button btn btn-primary pull-right mobile-full">
 	</form>
 </div>

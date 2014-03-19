@@ -47,12 +47,20 @@ angular.module('tradity').
     }, $scope);
     socket.on('self-info', function(data) {
       $scope.ownUser = data;
+      
+      if ($scope.ownUser.schools.length > 0)
+        $scope.ownUser.bottomLevelSchool = $scope.ownUser.schools[$scope.ownUser.schools.length-1];
+      
       $scope.$broadcast('user-update', data);
     }, $scope);
     socket.on('get-user-info', function(data) {
       var r = data.result;
       if (r && r.isSelf) {
         $scope.ownUser = r;
+        
+        if ($scope.ownUser.schools.length > 0)
+          $scope.ownUser.bottomLevelSchool = $scope.ownUser.schools[$scope.ownUser.schools.length-1];
+          
         $scope.$broadcast('user-update', r);
       }
     }, $scope);

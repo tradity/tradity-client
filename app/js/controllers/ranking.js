@@ -26,10 +26,15 @@ angular.module('tradity').
           if (!$scope.school.banner)
             $scope.school.banner = $scope.serverConfig.defaultschoolbanner;
           $scope.computeGroupRanking();
+          
+          $.each($scope.comments, function(i, e) {
+            if (e.trustedhtml)
+              e.comment = $sce.trustAsHtml(e.comment);
+          });
         }
       });
       
-      tabbing($('#tabs'), '/s/?/' + ($stateParams.schoolid || ''), $stateParams.pageid || 'general', $location, $scope);
+      tabbing($('#tabs'), '/s/p|?/' + ($stateParams.schoolid || ''), $stateParams.pageid || 'general', $location, $scope);
       
 
       $scope.enterTeam = function () {

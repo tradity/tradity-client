@@ -1,6 +1,8 @@
 angular.module('tradity').
-  controller('ProfileCtrl', function($scope, $stateParams, $location, socket) {
+  controller('ProfileCtrl', function($scope, $sce, $stateParams, $location, socket) {
     tabbing($('#tabs'), '/user/' + $stateParams.userId + '/?', $stateParams.pageid, $location, $scope);
+    $scope.values = [];
+    $scope.user = null;
     
     $scope.getUserInfo = function() {
       socket.emit('get-user-info', {
@@ -30,6 +32,10 @@ angular.module('tradity').
             $scope.user.profilepic = $scope.serverConfig.defaultprofile;
           data.pinboard.sort(function(a,b) { return b.time - a.time; });
           $scope.comments = data.pinboard;
+          $.each($scope.comments, function(i, e) {
+            if (e.trustedhtml)
+              e.comment = $sce.trustAsHtml(e.comment);
+          });
           
           $scope.draw();
         }
@@ -52,10 +58,11 @@ angular.module('tradity').
     $scope.draw = function(newMode) {    
       if (newMode != null)
         $scope.drawMode = newMode;
-      
+              
       var mode = $scope.drawModes[$scope.drawMode];
       var now = new Date().getTime();
       var tmin = now, tmax = 0,vmin = 1/0,vmax=0;
+      
       var data = $.map($.grep($scope.values, function(e) {
         return now/1000 - e.time < 86400 * mode.days;
       }), function(e) {
@@ -65,6 +72,10 @@ angular.module('tradity').
         if (e.value/10000 > vmax) vmax = e.value/10000;
         return [[e.time*1000, e.value/10000]];
       });
+      
+      if (!data || data.length == 0)
+        return;
+      
       if ($scope.curPlot) $scope.curPlot.destroy();
       $scope.curPlot = $.jqplot('chart', [data], {
         title: 'Performance ' + mode.name,

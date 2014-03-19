@@ -46,10 +46,10 @@
                             <span class="dark nav-block-title">Neuigkeiten</span>
                         </a>
                     </li>
-                    <li ng-show="ownUser.schools[0]">
-                        <a href="#/s{{ownUser.schools[0].path}}" accesskey="d" title="ALT+SHIFT+D" ng-class="{active:isActive('#/s'+ownUser.schools[0].path)}">
+                    <li ng-show="ownUser.bottomLevelSchool">
+                        <a href="#/s{{ownUser.bottomLevelSchool.path}}" accesskey="d" title="ALT+SHIFT+D" ng-class="{active:isActive('#/s'+ownUser.bottomLevelSchool.path)}">
                             <i class="fa fa-users"></i>
-                            <span class="dark nav-block-title">{{ownUser.schools[0].name}}</span>
+                            <span class="dark nav-block-title">{{ownUser.bottomLevelSchool.name}}</span>
                         </a>
                     </li>
                     <li>

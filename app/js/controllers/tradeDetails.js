@@ -13,6 +13,12 @@ angular.module('tradity').
           $scope.trade.price = Math.abs($scope.trade.money / $scope.trade.amount);
           data.comments.sort(function(a,b) { return b.time - a.time; });
           $scope.comments = data.comments;
+          
+          $.each($scope.comments, function(i, e) {
+            if (e.trustedhtml)
+              e.comment = $sce.trustAsHtml(e.comment);
+          });
+          
           $scope.getUserInfo();
         }
       });

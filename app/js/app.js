@@ -120,7 +120,7 @@ angular.module('tradity', [
       controller: 'AdminCtrl'
     }).
     state('game.grouptabs', {
-      url: '/s/:pageid/*schoolid',
+      url: '/s/p|:pageid/*schoolid',
       templateUrl: 'templates/school.html',
       controller: 'RankingCtrl'
     }).

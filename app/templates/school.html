@@ -105,6 +105,9 @@
 					<button ng-show="selfIsSchoolMember" ng-click="leaveTeam()" type="button" href="" class="btn btn-danger btn-block"><i class="fa fa-sign-out"></i></button>
 
 				</div>
+				<div class="widget" ng-show="school.parentPath">
+					<a href="#/s{{school.parentPath}}">zur Übergruppe</a>
+				</div>
 				<div class="widget schoolInfo">
 					<h3>Info</h3>
 					<div class="inner">

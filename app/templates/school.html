@@ -127,7 +127,7 @@
 					<h3>Beliebte Aktien</h3>
 					<div class="inner">
 						<ol class="popularstocks">
-							<li ng-repeat="stock in school.popularStocks">{{stock.stockname}}</li>
+							<li ng-repeat="stock in school.popularStocks"><a href="#/trade/buy/{{stock.stockid}}/0">{{stock.stockname}}</a></li>
 						</ol>
 					</div>
 				</div>

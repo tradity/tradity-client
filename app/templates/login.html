@@ -1,4 +1,4 @@
-<div class="login-form" ng-controller="LoginCtrl" ng-show="loginForm">
+<div class="login-form">
   <form class="pure-form pure-form-stacked" ng-submit="login()">
     <fieldset class="pure-group">
     <input type="text" class="pure-input pure-input-1" ng-model="username" placeholder="Benutzername">
@@ -12,7 +12,7 @@
     <div class="pull-right">
     	<small>
     	<a class="text-link" ng-click="passwordReset();" style="cursor: pointer; margin-right: 20px;">Passwort vergessen?</a><br>
-    	<a class="registerq" ng-click="showRegister()" href="">Noch nicht registriert?</a>
+    	<a class="registerq" ui-sref="index.register">Noch nicht registriert?</a>
     	</small>
     </div>
     <button type="submit" class="btn btn-primary btn-sm">Login</button> 

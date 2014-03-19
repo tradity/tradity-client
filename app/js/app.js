@@ -8,106 +8,123 @@ angular.module('tradity', [
 ]).config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/');
   $stateProvider.
-    // create routes for login and register
-    state('loginverif', {
-      url: '/login/:emailVerifCode/:uid',
-      templateUrl: 'templates/login.html',
+    state('index', {
+      url: '/',
+      templateUrl: 'templates/index.html',
       controller: 'HerounitCtrl'
+    }).
+    state('index.login', {
+      url: 'login',
+      templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl'
+    }).
+    state('index.loginverif', {
+      url: 'login/:emailVerifCode/:uid',
+      templateUrl: 'templates/login.html',
+      controller: 'LoginCtrl'
+    }).
+    state('index.register', {
+      url: 'register',
+      templateUrl: 'templates/registration.html',
+      controller: 'RegistrationCtrl'
     }).
     //change to register/:inviteCode
-    state('invite', {
-      url: '/join/:inviteCode',
+    state('index.invite', {
+      url: 'join/:inviteCode',
       templateUrl: 'templates/register.html',
-      controller: 'HerounitCtrl'
+      controller: 'RegistrationCtrl'
     }).
-    state('schoolregister', {
-      url: '/register/s/:schoolid',
-      controller: 'HerounitCtrl'
+    state('index.schoolregister', {
+      url: 'register/s/:schoolid',
+      controller: 'RegistrationCtrl'
     }).
-    state('feed', {
-      url: '/',
+    state('game', {
+      templateUrl: 'templates/game.html'
+    }).
+    state('game.feed', {
+      url: '/feed',
       templateUrl: 'templates/feed.html',
       controller: 'FeedCtrl'
     }).
-    state('options', {
+    state('game.options', {
       url: '/options',
       templateUrl: 'templates/options.html',
       controller: 'OptionsCtrl'
     }).
-    state('depot', {
+    state('game.depot', {
       url: '/depot',
       templateUrl: 'templates/depot.html',
       controller: 'DepotCtrl'
     }).
-    state('depottabs', {
+    state('game.depottabs', {
       url: '/depot/:pageid',
       templateUrl: 'templates/depot.html',
       controller: 'DepotCtrl'
     }).
-    state('trade', {
+    state('game.trade', {
       url: '/trade',
       templateUrl: 'templates/trade.html',
       controller: 'TradeCtrl'
     }).
-    state('tradesellbuy', {
+    state('game.tradesellbuy', {
       url: '/trade/:sellbuy/:stockId/:amount',
       templateUrl: 'templates/trade.html',
       controller: 'TradeCtrl'
     }).
-    state('tradeDetails', {
+    state('game.tradeDetails', {
       url: '/trade/:tradeId',
       templateUrl: 'templates/tradeDetails.html',
       controller: 'TradeDetailsCtrl'
     }).
-    state('ranking', {
+    state('game.ranking', {
       url: '/ranking',
       templateUrl: 'templates/ranking.html',
       controller: 'RankingCtrl'
     }).
-    state('rankingtabs', {
+    state('game.rankingtabs', {
       url: '/ranking/:pageid',
       templateUrl: 'templates/ranking.html',
       controller: 'RankingCtrl'
     }).
-    state('profile', {
+    state('game.profile', {
       url: '/user/:userId',
       templateUrl: 'templates/profile.html',
       controller: 'ProfileCtrl'
     }).
-    state('profiletabs', {
+    state('game.profiletabs', {
       url: '/user/:userId/:pageid',
       templateUrl: 'templates/profile.html',
       controller: 'ProfileCtrl'
     }).
-    state('faq', {
+    state('game.faq', {
       url: '/faq',
       templateUrl: 'templates/faq.html'
     }).
-    state('gettingstarted', {
+    state('game.gettingstarted', {
       url: '/gettingstarted',
       templateUrl: 'templates/gettingstarted.html'
     }).
-    state('admin', {
+    state('game.admin', {
       url: '/admin',
       templateUrl: 'templates/admin.html',
       controller: 'AdminCtrl'
     }).
-    state('admintabs', {
+    state('game.admintabs', {
       url: '/admin/:pageid',
       templateUrl: 'templates/admin.html',
       controller: 'AdminCtrl'
     }).
-    state('adminuserid', {
+    state('game.adminuserid', {
       url: '/admin/:pageid/:userId',
       templateUrl: 'templates/admin.html',
       controller: 'AdminCtrl'
     }).
-    state('grouptabs', {
+    state('game.grouptabs', {
       url: '/s/:pageid/*schoolid',
       templateUrl: 'templates/school.html',
       controller: 'RankingCtrl'
     }).
-    state('group', {
+    state('game.group', {
       url: '/s/*schoolid',
       templateUrl: 'templates/school.html',
       controller: 'RankingCtrl'

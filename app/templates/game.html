@@ -1,0 +1,92 @@
+<div class="wrapper">
+    <header id="header">
+        <div class="inner">                      
+            <a ng-href="#/user/{{ownUser.name}}" class="name block-link profile-link pull-right" style="padding-right:0px;" accesskey="p" title="Hier gehts zu deinem Profil">
+                <img style="float:right" id="profile-picture" height="50px" ng-src="{{ownUser.profilepic}}" alt="">                    
+            </a>
+            <a class="pull-right fa-item" href="" ng-click="logout()"><i class="fa fa-sign-out"></i></a>
+            <a href="" class="mobile-bar mobile-only" id="togglemenu"><i class="fa fa-bars"></i></a>
+
+            <div class="pull-right mobile-only">
+                <a href="" class="pull-right inline cog dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li><a><b>{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</b></a></li>
+                    <li><a ng-href="#/user/{{ownUser.name}}">Mein Profil</a></li>
+                    <li><a href="#/options">Einstellungen</a></li>
+                    <li class="divider"></li>
+                    <li><a ng-click="logout()" href="">Abmelden</a></li>
+                </ul>
+            </div>
+
+            <div id="logo"><img src="img/tradity_symbol.png"></div>
+            <div class="inline mobile-hide">
+                <h2 class="title">Konto</h2>
+                <span class="depot-wert">{{ownUser.freemoney / 10000 | currency}}</span>
+            </div>
+
+            <div class="inline mobile-hide">
+                <h2 class="title">Gesamtvermögen</h2>
+                <span class="depot-wert">{{ownUser.totalvalue / 10000 | currency}}</span>
+            </div>
+
+            <div class="inline mobile-hide">
+                <h2>Rang</h2>
+                <span class="placement-number">{{ownUser.rank}}</span>
+            </div>
+            
+        </div>
+    </header>
+    <div class="pure-g">
+        <div class="pure-u-1-5">                        
+            <nav id="nav" data-step="100" data-position="right" data-intro="Finde mehr heraus indem du Dich durch die Navigation klickst.">
+                <ul>
+                    <li>
+                        <a ui-sref=".feed" accesskey="f" ng-class="{active:isActive('/')}">
+                            <i class="fa fa-inbox"></i>
+                            <span class="dark nav-block-title">Neuigkeiten</span>
+                        </a>
+                    </li>
+                    <li ng-show="ownUser.schools[0]">
+                        <a href="#/s{{ownUser.schools[0].path}}" accesskey="d" title="ALT+SHIFT+D" ng-class="{active:isActive('#/s'+ownUser.schools[0].path)}">
+                            <i class="fa fa-users"></i>
+                            <span class="dark nav-block-title">{{ownUser.schools[0].name}}</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref=".depot" accesskey="d" title="ALT+SHIFT+D" ng-class="{active:isActive('/depot')}">
+                            <i class="fa fa-bar-chart-o"></i>
+                            <span class="dark nav-block-title">Mein Depot</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref=".trade" accesskey="t" title="ALT+SHIFT+T" ng-class="{active:isActive('/trade')}">
+                            <i class="fa fa-eur" ></i>
+                            <span class="dark nav-block-title">Trade</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref=".ranking" id="rangliste" accesskey="r" title="ALT+SHIFT+R" ng-class="{active:isActive('/ranking')}">
+                            <i class="fa fa-flag"></i> 
+                            <span class="dark nav-block-title">Rangliste</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref=".options" accesskey="o" title="ALT+SHIFT+O" ng-class="{active:isActive('/options')}">
+                            <i class="fa fa-wrench"></i>
+                            <span class="dark nav-block-title">Einstellungen</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a ui-sref=".faq"  accesskey="h" title="ALT+SHIFT+H" ng-class="{active:isActive('/faq')}">
+                            <i class="fa fa-question"></i>
+                            <span class="dark nav-block-title">Häufige Fragen</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="pure-u-4-5 content-wrapper">
+            <div ui-view></div>
+        </div>
+    </div>
+</div>

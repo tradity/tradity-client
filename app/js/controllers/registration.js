@@ -1,7 +1,6 @@
 angular.module('tradity').
-  controller('RegistrationCtrl', function($scope, $stateParams, $location, socket) {
+  controller('RegistrationCtrl', function($scope, $stateParams, $state, socket) {
     $scope.school = $stateParams.schoolid;
-    //$scope.schoolname = document.getElementById('schoolname').value = '';
     $scope.traderse = 0;
     $scope.tradersp = 0;
     $scope.traditye = 0;
@@ -14,7 +13,7 @@ angular.module('tradity').
       switch (data.code) {
         case 'reg-success':
           alert('Registrierung erfolgreich');
-          showLogin();
+          $state.go('index.login');
           break;
         case 'reg-email-failed':
           alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
@@ -65,5 +64,4 @@ angular.module('tradity').
         invitekey: $scope.invitekey
       });
     };
-    //useSchoolAC($scope, socket); 
   });

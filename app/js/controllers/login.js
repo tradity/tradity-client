@@ -1,5 +1,5 @@
 angular.module('tradity').
-  controller('LoginCtrl', function($scope, $stateParams, $location, socket) {
+  controller('LoginCtrl', function($scope, $stateParams, $state, socket) {
     $scope.username = '';
     $scope.password = '';
     $scope.stayloggedin = false;
@@ -38,7 +38,7 @@ angular.module('tradity').
             $scope.fetchSelf(function() {
               $scope.pokeEvents();
             });
-            $location.path('/');
+            $state.go('game.feed');
             break;
           case 'login-badname':
             notification('Benutzer existiert nicht');

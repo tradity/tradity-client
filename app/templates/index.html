@@ -1,0 +1,200 @@
+<div ng-controller="HerounitCtrl">
+    <div id="hero-wrapper" ng-class="{'hide-herounit':ownUser}">
+        <div class="herounit-spacer">
+            <div id="herounit"> 
+                <img src="img/logo.png" class="logo">      
+                <p class="slogan">Sei Teil des ersten <b>Social Trading Börsenspiels</b> der Welt</p>
+                
+                <div ui-view>
+                    <div class="actions">
+                        <a ui-sref="index.register" id="register-btn" class="btn btn-primary register">Registrieren</a></br>
+                        <span class="login">oder <a ui-sref="index.login" id="login-btn">Anmelden</a> </span>
+                    </div>
+                </div>
+                
+                <div class="showcase pure-g" ng-hide="('index.register' | isState) || ('index.login' | isState)">
+                    <div class="row pure-u-1-3" ng-click="goto('info1')">
+                        <div class="header social">
+                            <i class="fa fa-bar-chart-o"></i><br>
+                            <h2>Börsenspiel</h2>
+                        </div>
+                    </div>
+                    <div class="row pure-u-1-3" ng-click="goto('info2')">
+                        <div class="header education blue">
+                            <i class="fa fa-users"></i><br>
+                            <h2>Social</h2>
+                        </div>
+                    </div>
+                    <div class="row pure-u-1-3 last" ng-click="goto('info3')">
+                        <div class="header social">
+                            <i class="fa fa-book"></i><br>
+                            <h2>Learning</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <footer class="footer">
+                    <div class="footer-right">
+                        <img  src="img/android.png"><br>
+                        Kontakt: <a class="text-link" href="mailto:team@tradity.de">team@tradity.de</a><br>
+                        bei technischen Fragen: <a class="text-link" href="mailto:tech@tradity.de">tech@tradity.de</a>                                
+                    </div>
+                    <div class="left-footer">
+                        <div class="social-links">
+                            <a href="https://facebook.com/tradity.de" target="_blank" title="Facebook Seite"><i class="fa fa-facebook-square"></i></a>
+                            <a href="https://twitter.com/TradityDe" target="_blank" title="Folge uns auf Twitter !"><i class="fa fa-twitter-square"></i></a>
+                            <!-- <a href="http://blog.tradity.de/" target="_blank" title="Lies unseren Blog"><i class="fa fa-pencil-square"></i></a> -->
+                        </div>
+                        <!-- <a class="footer-link" href="https://presse.tradity.de/"><i class="fa fa-quote-left"></i> Presse</a> -->
+                        <a class="footer-link" ng-click="goto('teampage')" href=""><i class="fa fa-rocket"></i> Das Team</a>
+                        <a class="footer-link" href="legal.html"><i class="fa fa-gavel"></i> Impressum/AGB</a>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <div class="infounit first" id="info1">
+            <div class="info-item">
+                <div class="header social">
+                    <i class="fa fa-bar-chart-o"></i><br>
+                    <h2>Das Börsenspiel</h2>
+                </div>
+                <div class="content">
+                    <p>
+                        Beim Börsenspiel Tradity bist Du gefragt Dein virtuelles Startkapital von 100.000 Euro möglichst vielversprechend in Wertpapiere zu investieren. Dabei stehen Dir sämtliche handelbaren Wertpapiere der Börse Frankfurt zur Verfügung – und das in Echzeit! </p><p>
+                        Dein Ziel? Die besten Aktien für eine nachhaltige Entwicklung auszuwählen und zu handeln. So bekommst Du die Möglichkeit, ohne Risiko erste Erfahrungen mit dem Thema Finanzen und Börse zu machen und außerdem einen von vielen attraktiven Preisen zu gewinnen. </p><p>
+                        Sei dabei, wenn Tradity im Mai 2014 in die zweite Staffel geht!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="infounit blue" id="info2">
+            <div class="info-item">
+                <div class="header social">
+                    <i class="fa fa-users"></i><br>
+                    <h2>Social</h2>
+                </div>
+                <div class="content">
+                    <p>
+                        Tradity ist kein gewöhnliches Börsenspiel. Interaktiver Austausch, integrierter Feed und transparente Ranglisten ermöglichen es Dir, Dich direkt mit Deinen Freunden zu vergleichen, die besten Trader zu finden und von ihnen und der Community zu lernen. </p><p>
+                        Darüber hinaus kannst Du Dein Kapital nicht nur in erfolgsträchtige Wertpapiere investieren, sondern ebenso auch in fähige Teilnehmer. Dabei vertraust Du anderen Teilnehmern Deiner Wahl (sogenannten Leadern) einen beliebigen Teil Deines Vermögens an, von dessen Gewinnen im Erfolgsfall ein Teil an Deinen Leader abfällt – aber nur von Deinen Gewinnen. Im Verlustfall geht Ihr beide leer aus. </p><p>
+                        Du willst selber Leader werden und das Kapital anderer Trader verwalten? Dann zeige der Community Deine Fähigkeiten!
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="infounit" id="info3">
+            <div class="info-item">
+                <div class="header">
+                    <i class="fa fa-book"></i><br>
+                    <h2>Learning</h2>
+                </div>
+                <div class="content">
+                    <p>
+                        Das Ziel Traditys ist es, Schülern und Studenten grundlegende Zusammenhänge der Finanzmärkte und Wirtschaft aufzuzeigen und sie in ihrer Eigenständigkeit zu fördern, Entscheidungen hinsichtlich Ihrer zukünftigen Anlagemöglichkeiten zu fällen. </p><p>
+                        Tradity strebt daher danach, den Teilnehmern umfangreiche und nachhaltigkeitsorientierte Ansätze in der Bildung zu bieten. Dazu gehört vor allem ein börsenspielbegleitendes und mit renommierten Börsenexperten erstelltes Lernangebot, welches verschiedene Ausrichtungsmöglichkeiten für den Wirtschafts- und Politikunterricht an Schulen bietet. </p><p>
+                        Ebenso möchten wir über vertiefte Kooperation mit Schulen und anderen regionalen Institutionen eine Brücke zwischen dem Börsenspiel und der Schule schaffen, welche finanzielle Bildung in Schulen verstärkt thematisiert.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="infounit team blue" id="teampage">
+                <div class="header">
+                    <i class="fa fa-rocket"></i><br>
+                    <h2>Das Team</h2>
+                </div>
+                <div class="content">
+                    <div class="team-item">
+                        <img class="team-pic" src="img/team/bakhai.jpg">
+                        <h2>Ba Khai Tran</h2>
+                        <div class="content">
+                            <p>
+                                Schüler, 19
+                            </p>
+                            <p>
+                                Parnter und Sponsoren
+                            </p>
+                            <p>
+                                bakhai.tran@tradity.de
+                            </p>
+                        </div>
+                    </div>
+                    <div class="team-item">
+                        <img class="team-pic" src="img/team/moritz.jpg">
+                        <h2>Moritz Funk</h2>
+                        <div class="content">
+                            <p>
+                                Schüler, 18
+                            </p>
+                            <p>
+                                Schulkooperationen
+                            </p>
+                            <p>
+                                moritz.funk@tradity.de
+                            </p>      
+                        </div>
+                    </div>
+                    <div class="team-item">
+                        <img class="team-pic" src="img/team/noah.jpg">
+                        <h2>Noah Leonavicius</h2>
+                        <div class="content">
+                            <p>
+                                Schüler, 19
+                            </p>
+                            <p>
+                               Marketing 
+                            </p>
+                            <p>
+                                noah.leonavicius@tradity.de
+                            </p>  
+                        </div>
+                    </div>
+                    <div class="team-item">
+                        <img class="team-pic" src="img/team/nico.jpg">
+                        <h2>Nico Haesler</h2>
+                        <div class="content">
+                            <p>
+                                Student, 21
+                            </p>
+                            <p>
+                                Frontend Engineering
+                            </p>
+                            <p>
+                                tech@tradity.de
+                            </p>  
+                        </div>
+                    </div>
+                    <div class="team-item">
+                        <img class="team-pic" src="img/team/barne.jpg">
+                        <h2>Barne Jürgensen</h2>
+                        <div class="content">
+                            <p>
+                                Schüler, 18
+                            </p>
+                            <p>
+                                Frontend Engineering/Design
+                            </p>
+                            <p>
+                                tech@tradity.de
+                            </p>  
+                        </div>
+                    </div>
+                    <div class="team-item">
+                        <img class="team-pic" src="img/team/hauke.jpg">
+                        <h2>Hauke Henningsen</h2>
+                        <div class="content">
+                            <p>
+                                Student, 21
+                            </p>
+                            <p>
+                                Backend Engineering
+                            </p>
+                            <p>
+                                tech@tradity.de
+                            </p>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

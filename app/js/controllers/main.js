@@ -1,5 +1,5 @@
 angular.module('tradity').
-  controller('MainCtrl', function($sce, $scope, $location, socket) {
+  controller('MainCtrl', function($sce, $scope, $location, $state, socket) {
     $scope.Math = Math;
     $scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
     
@@ -35,14 +35,14 @@ angular.module('tradity').
           $scope.ownUser = null;
           $scope.isAdmin = false;
           $scope.$broadcast('user-update');
-          $location.path('/');
+          $state.go('index');
         }
       });
     };
     socket.on('response', function(data) {
       if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
         $scope.ownUser = null;
-        $location.path('/');
+        if ($state.includes('game')) $state.go('index.login');
       }
     }, $scope);
     socket.on('self-info', function(data) {

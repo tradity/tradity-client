@@ -186,79 +186,81 @@ angular.module('tradity').
     }); 
     
     $scope.computeGroupRanking = function() {
-      
-      $scope.intraGroupResults = [];
-      $scope.interGroupResults = [];
-      var schools = [];
-      
-      $.each($scope.results, function(i, e) {
-        if (e.school == null)
-          return;
+      socket.emit('list-schools', { 
+        _cache: 60,
+        parentPath: $scope.school ? $scope.school.path : null
+      }, function(schoollist) {
+        var schools = schoollist.result || [];
         
-        if (schools.indexOf(e.schoolpath) == -1 && e.hastraded)
-          schools.push(e.schoolpath);
-        
-        if ((($scope.ownUser && e.school == $scope.ownUser.schoolid) || $scope.school) && !e.pending)
-          $scope.intraGroupResults.push(e);
-      });
-      
-      // linearize intergroup results
-      $.each(schools, function(i, s) {
-        var students = [];
-        $scope.pendingMembers = [];
+        $scope.intraGroupResults = [];
+        $scope.interGroupResults = [];
         
         $.each($scope.results, function(i, e) {
-          if (e.schoolpath && (e.schoolpath == s || e.schoolpath.substr(0, s.length + 1) == s + '/') && e.hastraded && !e.pending)
-            students.push(e);
+          if (e.school == null)
+            return;
+          
+          if ((($scope.ownUser && e.school == $scope.ownUser.schoolid) || $scope.school) && !e.pending)
+            $scope.intraGroupResults.push(e);
+        });
+        
+        // linearize intergroup results
+        $.each(schools, function(i, s) {
+          var students = [];
+          $scope.pendingMembers = [];
+          
+          $.each($scope.results, function(i, e) {
+            if (e.schoolpath && (e.schoolpath == s.path || e.schoolpath.substr(0, s.path.length + 1) == s.path + '/') && e.hastraded && !e.pending)
+              students.push(e);
+              
+            if ($scope.school && e.schoolpath == $scope.school.path && e.pending)
+              $scope.pendingMembers.push(e);
+          });
+      
+          students.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
+          
+          if (students.length == 0)
+            return;
             
-          if ($scope.school && e.schoolpath == $scope.school.path && e.pending)
-            $scope.pendingMembers.push(e);
+          var avg = {prov_sum: 0, totalvalue: 0, school: s.id, schoolname: s.name, schoolpath: s.path};
+          var n = 0;
+          for (var i = 0; i < students.length && i < 5; ++i) {
+            ++n;
+            avg.prov_sum += students[i].prov_sum;
+            avg.totalvalue += students[i].totalvalue;
+          }
+          
+          if (n > 0) {
+            avg.count = students.length;
+            avg.prov_sum /= n;
+            avg.totalvalue /= n;
+            
+            $scope.interGroupResults.push(avg);
+          }
         });
-    
-        students.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
         
-        if (students.length == 0)
-          throw new Error('School ' + s + ' has no students');
-          
-        var avg = {prov_sum: 0, totalvalue: 0, school: s, schoolname: students[0].schoolname, schoolpath: students[0].schoolpath};
-        var n = 0;
-        for (var i = 0; i < students.length && i < 5; ++i) {
-          ++n;
-          avg.prov_sum += students[i].prov_sum;
-          avg.totalvalue += students[i].totalvalue;
-        }
+        $scope.interGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
+        for (var i = 0; i < $scope.interGroupResults.length; ++i)
+          $scope.interGroupResults[i].rank = i+1;
         
-        if (n > 0) {
-          avg.count = students.length;
-          avg.prov_sum /= n;
-          avg.totalvalue /= n;
+        /* linearize intragroup results */
+        $scope.intraGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
+        for (var i = 0; i < $scope.intraGroupResults.length; ++i)
+          $scope.intraGroupResults[i].igrank = i+1;
           
-          $scope.interGroupResults.push(avg);
+        $scope.school.usercount = $scope.results.length - $scope.pendingMembers.length;
+        
+        $.each($scope.results, function(i, e) {
+          if (e.uid == $scope.ownUser.uid)
+            $scope.selfIsSchoolMember = true;
+        });
+        
+        if ($scope.school.admins) {
+          $.each($scope.school.admins, function(i, e) {
+            if (e.adminid == $scope.ownUser.uid)
+              $scope.selfIsSchoolAdmin = true;
+          });
         }
       });
-      
-      $scope.interGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
-      for (var i = 0; i < $scope.interGroupResults.length; ++i)
-        $scope.interGroupResults[i].rank = i+1;
-      
-      /* linearize intragroup results */
-      $scope.intraGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
-      for (var i = 0; i < $scope.intraGroupResults.length; ++i)
-        $scope.intraGroupResults[i].igrank = i+1;
-        
-      $scope.school.usercount = $scope.results.length - $scope.pendingMembers.length;
-      
-      $.each($scope.results, function(i, e) {
-        if (e.uid == $scope.ownUser.uid)
-          $scope.selfIsSchoolMember = true;
-      });
-      
-      if ($scope.school.admins) {
-        $.each($scope.school.admins, function(i, e) {
-          if (e.adminid == $scope.ownUser.uid)
-            $scope.selfIsSchoolAdmin = true;
-        });
-      }
     };
     
     $scope.getRanking = function() {

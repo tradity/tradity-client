@@ -8,7 +8,7 @@
 		<ul>
 			<li><a href="#general">Pinnwand</a></li>
 			<li><a href="#intragroup">Benutzerrangliste</a></li>
-			<li><a href="#intergroup">Gruppenrangliste</a></li>
+			<li><a href="#intergroup" ng-show="interGroupResults.length > 1">Gruppenrangliste</a></li>
 		</ul>
 		<div class="pure-g-r">
 			<div class="pure-u-2-3 conti">
@@ -89,7 +89,7 @@
 							</tr>
 							<tr ng-repeat="result in interGroupResults | orderBy:'rank' | filter: searchText ">
 								<td>{{result.rank}}</td>
-								<td><a href="#/s/general{{result.schoolpath}}">{{result.schoolname}}</a></td>
+								<td><a href="#/s{{result.schoolpath}}">{{result.schoolname}}</a></td>
 								<td>{{result.count}}</td>
 								<td>{{result.prov_sum / 10000 | currency}}</td>
 								<td>{{result.totalvalue / 10000 | currency}}</td>

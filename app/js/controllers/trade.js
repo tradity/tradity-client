@@ -13,6 +13,7 @@ angular.module('tradity').
     $scope.isMarketOrder = true;
     $scope.page = 0;
     $scope.results = [];
+    $scope.popularStocks = [];
 
     $scope.next = function() {
       $scope.page++;
@@ -172,4 +173,8 @@ angular.module('tradity').
         }
       });
     }
+    
+    socket.emit('list-popular-stocks', {_cache: 1800}, function(data) {
+      $scope.popularStocks = data.result;
+    });
   });

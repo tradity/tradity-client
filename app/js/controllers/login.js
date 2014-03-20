@@ -11,8 +11,12 @@ angular.module('tradity').
       },
       function(data) {
         switch (data.code) {
-          case 'email-verify-success':
-            notification('Emailadresse erfolgreich bestätigt',true);
+          case 'login-success':
+            notification('Emailadresse erfolgreich bestätigt', true);
+            $scope.fetchSelf(function() {
+              $scope.pokeEvents();
+            });
+            $state.go('game.feed');
             break;
           case 'email-verify-already-verified':
             notification('Emailadresse bereits bestätigt');

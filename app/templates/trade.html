@@ -5,15 +5,14 @@
 		<h2>Wertpapier</h2>
 		<div class="pure-g-r chose-paper">
 			<div class="pure-u-1-2">
-					<label for="paper" class="trade-label">Name</label>
-					<input type="text" class="options-input mobile-full pure-input-1"
-	                                placeholder="Wertpapiername" id="paper" ng-model="stockname" />
-					<!--button ng-show="cur" ng-click="addToWatchlist()" class="click-button" style="margin: 0; line-height:30px; height: auto;"><span class="batch">&#xF179; </span></button-->
-					<h3>Top Wertpapiere</h2>
-					<ol>
-						<li>Google</li>
-						<li>Barneos</li>
-					</ol>
+				<label for="paper" class="trade-label">Name</label>
+				<input type="text" class="options-input mobile-full pure-input-1"
+				placeholder="Wertpapiername" id="paper" ng-model="stockname" />
+				<!--button ng-show="cur" ng-click="addToWatchlist()" class="click-button" style="margin: 0; line-height:30px; height: auto;"><span class="batch">&#xF179; </span></button-->
+				<h3>Top Wertpapiere</h2>
+				<ol class="popularstocks">
+					<li ng-repeat="stock in popularStocks"><a href="#/trade/buy/{{stock.stockid}}/0">{{stock.stockname}}</a></li>
+				</ol>
 
 			</div>
 			<div class="pure-u-1-2">

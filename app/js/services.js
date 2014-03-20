@@ -29,7 +29,7 @@ enterDevMode = function() {
 function SoTradeConnection(socket) {
 	this.socket = socket;
 	this.listeners = {}; // listener name -> array of callbacks
-	this.ids = []; // numeric id -> callback for that id
+	this.ids = []; // numeric id -> {cb: callback for that id, prefill: object}
 	this.id = 0;
 	
 	this.qCache = {};
@@ -49,8 +49,21 @@ function SoTradeConnection(socket) {
 		
 		// specific listeners
 		var numericID = parseInt(rid[1]);
-		var idcb = this.ids[numericID] || function() {};
-		idcb(data);
+		var waitentry = this.ids[numericID];
+		if (waitentry) {
+			for (var i in waitentry.prefill) 
+				if (typeof data[i] == 'undefined')
+					data[i] = waitentry.prefill[i];
+			
+			data._t_crecv = new Date().getTime();
+			data._dt_cdelta   = data._t_crecv - data._t_csend;
+			data._dt_inqueue  = data._t_srecv - data._t_csend;
+			data._dt_sdelta   = data._t_ssend - data._t_srecv;
+			data._dt_outqueue = data._t_crecv - data._t_ssend;
+			
+			waitentry.cb(data);
+		}
+		
 		delete this.ids[numericID];
 	}).bind(this);
 	
@@ -116,7 +129,7 @@ SoTradeConnection.prototype.emit = function(evname, data, cb) {
 	}
 	
 	if (cb)
-		this.ids[id] = cb;
+		this.ids[id] = {cb: cb, prefill: { _t_csend: new Date().getTime()}};
 	this.socket.emit('query', data);
 	datalog('>', data);
 }

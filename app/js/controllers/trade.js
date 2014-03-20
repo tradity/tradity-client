@@ -175,6 +175,6 @@ angular.module('tradity').
     }
     
     socket.emit('list-popular-stocks', {_cache: 1800}, function(data) {
-      $scope.popularStocks = data.result;
+      $scope.popularStocks = data.results;
     });
   });

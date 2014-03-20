@@ -123,40 +123,34 @@
         min-height: 175px;
     }
 
-
-
     /* ==========================================================================
        Tabbing
        ========================================================================== */
 
-    #tabs ul.ui-tabs-nav {
+    #tabs ul {
         height: 40px;
         border:1px solid #E5E5E5;
         height: 37px;
     }
 
-    #tabs ul.ui-tabs-nav, #tabs li {
+    #tabs ul, #tabs li {
         margin: 0px;
         padding: 0px;
         list-style-type: none;
         font-size: 15px;
     }
 
-    #tabs ul.ui-tabs-nav li {
+    #tabs ul li {
         float: left;
     }
 
-    #tabs ul.ui-tabs-nav a {
+    #tabs ul a {
         display: block;
         padding: 8px 10px;
         border-right:1px solid #E5E5E5;
     }
 
-    #tabs ul.ui-tabs-nav li:last-child a {
-        
-    }
-
-    #tabs ul.ui-tabs-nav .ui-state-active a,#tabs ul.ui-tabs-nav a:hover  {
+    #tabs ul a.active, #tabs ul a:hover  {
         background: #E5E5E5;
         color: #000;
     }
@@ -164,9 +158,6 @@
     /* ==========================================================================
        Profile
        ========================================================================== */
-
-    #profile-picture {
-    }
 
     #header #profile-picture {
         float: right;

@@ -6,7 +6,10 @@ angular.module('tradity', [
   'pasvaz.bindonce',
   'infinite-scroll'
 ]).config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.
+  // redirect abstract states to child
+  when('/depot', '/depot/overview').
+  otherwise('/');
   $stateProvider.
     state('index', {
       url: '/',
@@ -39,6 +42,7 @@ angular.module('tradity', [
       controller: 'RegistrationCtrl'
     }).
     state('game', {
+      abstract: true,
       templateUrl: 'templates/game.html'
     }).
     state('game.feed', {
@@ -52,14 +56,26 @@ angular.module('tradity', [
       controller: 'OptionsCtrl'
     }).
     state('game.depot', {
+      abstract: true,
       url: '/depot',
       templateUrl: 'templates/depot.html',
       controller: 'DepotCtrl'
     }).
-    state('game.depottabs', {
-      url: '/depot/:pageid',
-      templateUrl: 'templates/depot.html',
-      controller: 'DepotCtrl'
+    state('game.depot.overview', {
+      url: '/overview',
+      templateUrl: 'templates/depot.overview.html'
+    }).
+    state('game.depot.listing', {
+      url: '/listing',
+      templateUrl: 'templates/depot.listing.html'
+    }).
+    state('game.depot.transactions', {
+      url: '/transactions',
+      templateUrl: 'templates/depot.transactions.html'
+    }).
+    state('game.depot.watchlist', {
+      url: '/watchlist',
+      templateUrl: 'templates/depot.watchlist.html'
     }).
     state('game.trade', {
       url: '/trade',
@@ -91,10 +107,18 @@ angular.module('tradity', [
       templateUrl: 'templates/profile.html',
       controller: 'ProfileCtrl'
     }).
-    state('game.profiletabs', {
-      url: '/user/:userId/:pageid',
-      templateUrl: 'templates/profile.html',
-      controller: 'ProfileCtrl'
+    state('game.profile.overview', {
+      url: '/overview',
+      templateUrl: 'templates/profile.overview.html',
+      controller: 'ProfileOverviewCtrl'
+    }).
+    state('game.profile.history', {
+      url: '/history',
+      templateUrl: 'templates/profile.history.html'
+    }).
+    state('game.profile.pinboard', {
+      url: '/pinboard',
+      templateUrl: 'templates/profile.pinboard.html'
     }).
     state('game.faq', {
       url: '/faq',

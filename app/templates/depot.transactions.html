@@ -1,0 +1,73 @@
+<div id="transactions">
+	<div class="options-field">
+		<h2>Noch nicht ausgeführte Transaktionen</h2>
+		<div class="table-wrapper">
+			<table class="transaction-history table table-bordered">
+			  <colgroup>
+			  	<col class="column-0">
+			    <col class="column-1">
+			    <col class="column-2">
+			    <col class="column-3">
+			    <col class="column-4">
+			  </colgroup>
+				<tr>
+					<th>Name</th>
+					<th>Datum</th>
+					<th>Market/Stop/Limit</th>
+					<th>Stop/Limit Marke</th>
+					<th>Anzahl</th>
+					<th>Löschen</th>
+				</tr>
+				<tr ng-repeat="order in delayedOrders">
+					<td class="depot-{{order.buysell}}" title="{{order.query.stockid}}">
+						<span ng-show="order.query.leader"><a href="#/user/{{order.query.leader}}">{{order.query.dquerydata.name}}</a></span>
+						<span ng-hide="order.query.leader">{{order.query.dquerydata.name}}</span>
+					</td>
+					<td>{{order.query.dquerydata.ordertime | date:'d.M.yy HH:mm'}}</td>
+					<td>{{order.query.dquerydata.xtype}}</td>
+					<td>
+						<span ng-show="order.query.dquerydata.xvalue">{{order.query.dquerydata.xvalue | number:3}} €</span>
+						<span ng-hide="order.query.dquerydata.xvalue">—</span>
+					</td>
+					<td>{{order.amount}}</td>
+					<td class="trade-td"><a ng-click="removeDelayedOrder(order.queryid)" class="batch block-link trade" title="Löschen" style="cursor: pointer"><i class="fa fa-eye"></i></a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="options-field">
+		<h2>Transaktionshistorie</h2>
+		<div class="table-wrapper">
+			<table class="transaction-history table table-bordered">
+			  <colgroup>
+			  	<col class="column-0">
+			    <col class="column-1">
+			    <col class="column-2">
+			    <col class="column-3">
+			    <col class="column-4-5">
+			    <col class="column-6-7">
+			  </colgroup>
+				<tr>
+					<th>Name</th>
+					<th>Datum</th>
+					<th>Anzahl</th>
+					<th>Preis</th>
+					<th>Transaktionskosten</th>
+					<th>Bilanz</th>
+				</tr>
+				<tr ng-repeat="order in orders">
+					<td class="{{order.ordertype}}" title="{{order.stocktextid}}">
+						<a class="text-link" ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a>
+					</td>
+					<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
+					<td>{{order.amount}}</td>
+					<td>{{order.price / 10000 | number:3}} €</td>
+					<td>{{order.fee / 10000 | currency}}</td>
+					<td ng-class="{pos: balance > 0, neg: balance < 0}">
+						{{ balance = (order.money * -1) / 10000 | currency}}
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

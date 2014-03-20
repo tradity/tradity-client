@@ -1,0 +1,58 @@
+<div id="listing">
+	<div class="options-field">
+		<h2>Wertpapiere in Besitz</h2>
+		<div class="table-wrapper">
+			<table class="owned-trades table table-bordered">
+			  <colgroup>
+			  	<col class="column-0">
+			    <col class="column-1">
+			    <col class="column-2">
+			    <col class="column-3">
+			    <col class="column-4-5" span="2">
+			    <col class="column-6-7" span="2">
+				<col class="column-8">
+			  </colgroup>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th colspan="2">Preis</th>
+					<th colspan="2">Performance</th>
+					<th></th>
+				</tr>
+				<tr>
+					<th>Name</th>
+					<th>Datum</th>
+					<th>Wert</th>
+					<th>Anzahl</th>
+					<th>Einkauf</th>
+					<th>Aktuell</th>
+					<th>Gesamt</th>
+					<th>Heute</th>
+					<th>Trade</th>
+				</tr>
+				<tr ng-repeat="result in results">
+					<td>
+						<span ng-show="result.leader"><a href="#/user/{{result.leadername}}">{{result.stockname}}</a></span>
+						<span ng-hide="result.leader">{{result.stockname}}</span>
+					</td>
+					<td>{{result.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
+					<td>{{result.total / 10000 | number:3}} €</td>
+					<td>{{result.amount}}</td>
+					<td>{{result.buymoney / result.amount / 10000 | number:3}} €</td>
+					<td>{{result.bid / 10000 | number:3}} €</td>
+					<td ng-class="{pos: orderPerfAll > 0, neg: orderPerfAll < 0}">
+							{{( orderPerfAll = result.bid * result.amount - result.buymoney)
+	                                / result.buymoney * 100 | number:2}} %
+	                </td>
+					<td ng-class="{pos: orderPerfYesterday > 0, neg: orderPerfYesterday < 0}">
+							{{( orderPerfYesterday = result.bid - result.daystartvalue) /
+	                                result.daystartvalue * 100 | number:2}} %
+	                </td>
+					<td class="trade-td text-center"><a ng-href="#/trade/sell/{{result.stockid}}/{{result.amount}}" class="batch block-link trade"><i class="fa fa-bar-chart-o"></i></a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

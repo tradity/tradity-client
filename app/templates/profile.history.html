@@ -1,0 +1,33 @@
+<div id="history">
+	<div class="options-field">
+		<h2>Transaktionshistorie</h2>
+		<table class="transaction-history table table-bordered">
+			<colgroup>
+				<col class="column-0">
+				<col class="column-1">
+				<col class="column-2">
+				<col class="column-3">
+				<col class="column-4-5">
+				<col class="column-6-7">
+			</colgroup>
+			<tr>
+				<th>Name</th>
+				<th>Datum</th>
+				<th>Anzahl</th>
+				<th>Preis</th>
+				<th>Transaktionskosten</th>
+				<th>Bilanz</th>
+			</tr>
+			<tr ng-repeat="order in orders">
+				<td class="{{order.ordertype}}" title="{{order.stocktextid}}"><a class="text-link" ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a></td>
+				<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
+				<td>{{order.amount}}</td>
+				<td>{{order.price / 10000 | currency}}</td>
+				<td>{{order.fee / 10000 | currency}}</td>
+				<td ng-class="{pos: balance > 0, neg: balance < 0}">
+					{{balance = (order.money * -1) / 10000 | currency}}
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>

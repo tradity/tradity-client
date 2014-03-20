@@ -1,0 +1,48 @@
+<div id="watchlist">
+	<div class="options-field">
+		<h2>Leader und Wertpapiere in Deiner Watchlist</h2>
+		<div class="table-wrapper">
+			<table class="owned-trades table table-bordered">
+			  <colgroup>
+			    <col class="column-2">
+			    <col class="column-3">
+			    <col class="column-4-5" span="2">
+			    <col class="column-6-7" span="2">
+				<col class="column-8">
+			  </colgroup>
+				<tr>
+					<th></th>
+					<th></th>
+					<th colspan="2">Preis</th>
+					<th colspan="2" style="background-color: rgba(0, 0, 0, 0)">Performance</th>
+					<th></th>
+				</tr>
+				<tr>
+					<th>Name</th>
+					<th>Datum</th>
+					<th>Start</th>
+					<th>Aktuell</th>
+					<th>Gesamt</th>
+					<th>Heute</th>
+					<th></th>
+				</tr>
+				<tr ng-repeat="entry in watchlist">
+					<td>
+						<span ng-show="entry.leader"><a href="#/user/{{entry.username}}">{{entry.stockname}}</a></span>
+						<span ng-hide="entry.leader">{{entry.stockname}}</span>
+					</td>
+					<td>{{entry.watchstarttime * 1000 | date:'d.M.yy HH:mm'}}</td>
+					<td>{{entry.watchstartvalue / 10000 | number:3}} €</td>
+					<td>{{entry.bid / 10000 | number:3}} €</td>
+					<td ng-class="{pos: watchlistPerformAll > 0, neg: watchlistPerformAll < 0}">
+						{{ watchlistPerformAll = (entry.bid - entry.watchstartvalue) / entry.watchstartvalue * 100 | number:2}} %
+					</td>
+					<td ng-class="{pos: watchlistPerformYesterday > 0, neg: watchlistPerformYesterday < 0}">
+						{{ watchlistPerformYesterday = (entry.bid - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}} %
+					</td>
+					<td class="trade-td text-center"><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Löschen" style="cursor: pointer"><i class="fa fa-minus-circle"></i> </a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

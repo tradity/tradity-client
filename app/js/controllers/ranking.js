@@ -8,6 +8,7 @@ angular.module('tradity').
     $scope.schoolid = null;
     $scope.descpage = '';
     $scope.editingDescpage = false;
+    $scope.uploadField = false;
     
     if ($stateParams.schoolid) {
       if (parseInt($stateParams.schoolid) == $stateParams.schoolid)
@@ -92,6 +93,10 @@ angular.module('tradity').
       
       $scope.enterDescpageEdit = function() {
         $scope.editingDescpage = true;
+      };
+
+      $scope.enterPictureUpload = function() {
+        $scope.uploadField = true;
       };
       
       $scope.changeDescription = function() {

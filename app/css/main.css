@@ -551,7 +551,6 @@ header#header .fa-item {
     padding: 10px 0px;
 }
 
-
 .infounit.team .team-item .content {
     padding: 0px 10px;
     text-align: center;
@@ -645,6 +644,17 @@ header#header .fa-item {
     display: block;
 }
 
+.school-hero .upload-field {
+    position: absolute;
+    margin: 5px;
+    background: rgba(255,255,255,0.8);
+    text-align: left;
+}
+
+#schools #bannerupload {
+    padding-bottom: 5px;
+}
+
 .school-hero .short-info {
     color: #fff;
     text-shadow:1px 1px #333;
@@ -685,6 +695,10 @@ header#header .fa-item {
 #schools .comment-textarea {
     border-radius: 0px;
     resize: none;
+}
+
+#schools .main-comment {
+    margin-bottom: 50px;
 }
 
 

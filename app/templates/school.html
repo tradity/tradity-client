@@ -1,6 +1,14 @@
 <div id="schools" class="main-content">
 	<div class="school-hero" style="background-image:url({{school.banner}});">
-		<div class="config"><a href=""><i ng-click="enterDescpageEdit()" class="fa fa-cloud-upload"></i></a></div>
+		<div class="config" ng-hide="uploadField">
+			<a href="" ng-click="enterPictureUpload()"><i class="fa fa-cloud-upload"></i></a>
+		</div>
+		<div class="upload-field" ng-show="uploadField">
+			<form class="pure-form pure-form-stacked" ng-submit="changeDescription()">		
+				<input type="file" id="bannerupload" class="options-input" accept="image/png,image/jpeg,image/gif"><br/>
+				<input type="submit" value="Speichern" class="btn btn-sm btn-success"/>
+			</form>
+		</div>
 		<h1>{{school.name}}</h1>
 		<span class="short-info">Mitglieder: {{school.usercount}}</span>
 	</div>
@@ -14,9 +22,9 @@
 			<div class="pure-u-2-3 conti">
 				<div id="general" class="inner">
 					<div id="pinboard">
-						<form ng-submit="sendComment()" ng-show="selfIsSchoolMember || selfIsSchoolAdmin || isAdmin" class="pure-form comment-form">
+						<form class="pure-form pure-form-stacked main-comment" ng-submit="sendComment()" ng-show="selfIsSchoolMember || selfIsSchoolAdmin || isAdmin" class="pure-form comment-form">
 							<textarea ui-keypress="{13:'sendComment()'}" ng-model="comment" class="options-input comment-textarea pure-input-1" placeholder="Poste etwas in diesen Gruppenfeed!"></textarea>
-							<input type="submit" class="click-button comment-button btn pull-right" value="Kommentieren">
+							<input type="submit" class="click-button comment-button btn btn-default pull-right" value="Kommentieren">
 						</form>
 
 						<div ng-repeat="comment in school.comments | orderBy:'-time'" class="feed-item feed">
@@ -113,13 +121,9 @@
 					<div class="inner">
 						<div class="school-descpage">{{descpage}}</div>
 						<a ng-show="isAdmin || selfIsSchoolAdmin" ng-click="enterDescpageEdit()"><i class="fa fa-pencil-square-o"></i></a>
-						<form ng-submit="changeDescription()" ng-show="editingDescpage">
-							<textarea  ng-model="descpage" id="descpage" class="options-input"></textarea>
-							
-							<label for="bannerupload">Gruppenbild hochladen</label>
-							<input type="file" id="bannerupload" class="options-input" accept="image/png,image/jpeg,image/gif">
-							
-							<input type="submit" value="Speichern" />
+						<form ng-submit="changeDescription()" ng-show="editingDescpage" class="pure-form pure-form-stacked">
+							<textarea  ng-model="descpage" id="descpage" class="options-input pure-input-1"></textarea>
+							<input type="submit" value="Speichern" class="btn btn-primary"/>
 						</form>
 					</div>				
 				</div>

@@ -53,12 +53,6 @@ header#header {
     z-index: 9999;
 }
 
-header#header .inner {
-    width: 960px;
-    margin: 0px auto;
-    height: 50px;
-}
-
 #logo {
     float: left;
     padding: 5px;
@@ -222,46 +216,8 @@ header#header .fa-item {
    ========================================================================== */
 
 
-#hero-wrapper {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 999999;
-    width: 100%;
-    height: 100%;
-    background: rgba(255,255,255,0.8);
-    overflow-y:scroll;
-}
-
-#herounit {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -274px;
-    margin-left: -301px;
-    width: 600px;
-
-    background: #fff;
-    border: 1px solid;
-    border-color: #d6d7da #d5d8dd #c7c8ca;
-
-    -webkit-border-radius: 3px;
-    -webkit-box-shadow: 0 0 35px 0 rgba(20,20,20,0.2);
-    box-shadow: 0 0 35px 0 rgba(20,20,20,0.2);
-}
-
 #herounit .content {
     padding: 10px;
-}
-
-
-#herounit .logo {
-
-    display: block;
-    width: 400px;
-    margin: 0px auto;
-    padding: 15px;
-    padding-top: 25px;
 }
 
 #herounit .slogan {
@@ -386,11 +342,7 @@ header#header .fa-item {
 
 /* footer */
 
-#herounit .footer {
-    position: absolute;
-    padding: 5px 0px;
-    width: 600px;
-}
+
 
 #herounit .footer .social-links {
     display: block;
@@ -421,8 +373,6 @@ header#header .fa-item {
 }
 
 #herounit .footer .footer-right {
-    float: right;
-    text-align: right;
     padding-top: 7px;
     opacity: 0.8;
     font-size: 12px;
@@ -471,11 +421,6 @@ header#header .fa-item {
     background: -ms-radial-gradient(center, ellipse cover,  #438ebb 0%,#408dbb 13%,#1b80ba 72%,#1b80ba 100%); /* IE10+ */
     background: radial-gradient(ellipse at center,  #438ebb 0%,#408dbb 13%,#1b80ba 72%,#1b80ba 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#438ebb', endColorstr='#1b80ba',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
-
-.infounit .info-item {
-    width: 600px;
-    margin: auto;
 }
 
 .infounit .header {
@@ -703,6 +648,35 @@ header#header .fa-item {
    Feed
    ========================================================================== */
 
+.feed-item {
+    margin-bottom: 5px;
+    clear: left;
+    min-height: 40px;
+}
+
+#header #profile-picture {
+    background-image: url(../img/profile.svg);
+    background-size: cover;
+    margin-top: -11px;
+}
+
+
+.feed-item .feed-entry-symbol {
+    float: left;
+    padding: 10px;
+    background-color: #34495e;
+    color: #fff;
+    font-size: 15px;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+}
+
+.feed-item .feed-entry-content {
+    padding: 10px;
+    padding-left: 50px;
+}
+
 .comment-form {
     padding-bottom: 40px;
 }
@@ -735,17 +709,19 @@ header#header .fa-item {
     display: none;
 }
 
-.feed-item:hover .actions{
-    display: inline;
-}
-
 .feed-entry-symbol {
     background-size: cover;
+}    
+
+
+/* ==========================================================================
+   Profile
+   ========================================================================== */
+
+.profile .user-info {
+    text-align: center;
 }
 
-#header #profile-picture {
-    background-image: url(../img/profile.svg);
-    background-size: cover;
-    margin-top: -11px;
+.profile .user-info img {
+    border-radius: 150px;
 }
-

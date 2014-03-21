@@ -1,4 +1,4 @@
-@media all and (max-width:480px) {
+@media all and (max-width:480px){
 
     /* ==========================================================================
        General
@@ -220,31 +220,12 @@
        Herounit
        ========================================================================== */
 
-    #herounit {
-        margin: 0px!important;
-        top: 0px;
-        left: 0px;
-        min-height: 100%;
-        position: absolute;
-    }
-    #herounit .footer {
-        display: none;
-    }
-
-    #herounit .showcase {
-        position: absolute;
-        bottom: 0px;
-        width: 100%;
-    }
-
-    #herounit .showcase h2 {
-        font-size: 14px;
-    }
-   
-
-    .herounitFix #wrapper {
-        display: none;
-    }
+    #herounit .logo {
+        display: block;
+        width: 80%;
+        margin: 0px auto;
+        padding-top: 25px;
+    }   
 
     /* das team */
     .infounit.team > .content {
@@ -265,12 +246,35 @@
         box-sizing: border-box;
     }
 
+    .left-footer {
+        padding-bottom: 10px;
+    }
+
     /* ==========================================================================
-       Trade Page
-       ========================================================================== */
+        Trade Page
+    ========================================================================== */
 
     .trade-button {
         margin-top: 5px;
     }
 
+    .chose-paper {
+        overflow: hidden;
+    }
+
+    /* ==========================================================================
+        School Page
+    ========================================================================== */
+
+    .school-hero h1 {
+        margin: 0px;
+    }
+
+    /* ==========================================================================
+       Profile
+    ========================================================================== */
+
+    .user-info .btn-group {
+        background-color: transparent;
+    }
 }

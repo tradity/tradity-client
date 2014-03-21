@@ -1,7 +1,7 @@
 <div class="main-content">
 	<div id="profile-user" class="profile">
 		<div class="user-info">
-			<img id="profile-picture" class="profile-picture profile-box" src="{{user.profilepic}}" height="150px">
+			<img id="profile-picture" class="profile-picture profile-box" ng-show="user.profilepic" src="{{user.profilepic}}" height="150px">
 			<h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
 			<div ng-hide="user.isSelf">
 				<div class="btn-group">
@@ -12,7 +12,7 @@
 			</div>
 		</div>
 		<hr/>
-		<div class="pure-g user-stats">
+		<div class="pure-g user-stats desktop-only">
 			<div class="pure-u-1-6">
 				<h3 class="title">Platz</h3>
 				<span class="placement-number">{{user.rank}}</span>
@@ -31,6 +31,26 @@
 				<h3 class="title">Kurzbeschreibung</h3>
 				<p>{{user.desc}}</p>
 			</div>
+		</div>
+		<div class="pure-g user-stats mobile-only">
+			<div class="pure-u-1-5">
+				<h3 class="title">Platz</h3>
+				<span class="placement-number">{{user.rank}}</span>
+			</div>
+			<div class="pure-u-2-5">
+				<h3 class="title">Vermögen</h3>
+				<span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
+			</div>
+			<div class="pure-u-2-5">
+				<h3 class="title">Provision</h3>
+				<span class="placement-number">{{user.wprovision}} % / {{user.lprovision}} %</span>
+				<br>
+				<span class="depot-wert">(+{{user.prov_sum/10000|currency}})</span>
+			</div>
+		</div>
+		<div class="mobile-only">
+			<h3 class="title">Kurzbeschreibung</h3>
+			<p>{{user.desc}}</p>
 		</div>
 	</div>
 	</br>

@@ -1,23 +1,23 @@
 <div id="pinboard">
 	<h2>Pinnwand</h2>
-	<form ng-submit="sendComment()" class="pure-form comment-form">
+	<form ng-submit="sendComment()" class="pure-form pure-form-stacked main-comment comment-form">
 		<textarea ng-model="comment" class="options-input comment-textarea pure-input-1" placeholder="Was sagst Du zu diesem Trader?"></textarea>
-		<input type="submit" class="click-button comment-button btn pull-right" value="Kommentieren">
+		<input type="submit" class="click-button comment-button btn btn-default pull-right" value="Kommentieren">
 	</form>
-	<div ng-repeat="comment in comments | orderBy:'time'" class="feed-item feed">
+	<div ng-repeat="comment in comments | orderBy:'-time'" class="feed-item feed">
 		<div class="feed-entry-symbol"><i class="fa fa-bullhorn"></i></div>
-	<div class="feed-entry-content">
-		<div class="feed-head">
-			<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
-			<a href="#/user/{{comment.username}}" class="text-link username">{{comment.username}}</a>
-			<span ng-show="isAdmin" class="actions">
-						<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>
-						<a ng-click="deleteComment(comment)" style="cursor: pointer">Löschen</a>
-					</span>
-					<span ng-show="selfIsSchoolAdmin">
-						<a ng-click="deleteCommentSA(comment)" style="cursor: pointer">Löschen</a>
-					</span>
-		</div>
+		<div class="feed-entry-content">
+			<div class="feed-head">
+				<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
+				<a href="#/user/{{comment.username}}" class="text-link username">{{comment.username}}</a>
+				<span ng-show="isAdmin" class="actions">
+					<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>
+					<a ng-click="deleteComment(comment)" style="cursor: pointer">Löschen</a>
+				</span>
+				<span ng-show="selfIsSchoolAdmin">
+					<a ng-click="deleteCommentSA(comment)" style="cursor: pointer">Löschen</a>
+				</span>
+			</div>
 			<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
 			<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
 		</div>

@@ -1,75 +1,59 @@
 <div id="trade-details" class="main-content">
-	<div id="profile-trade" class="profile" ng-hide="user.isSelf">
-	    <div class="clearfix">
-	    	<a ng-href="#/user/{{user.name}}" style="cursor: pointer" class="block-link profile-link">
-		        <h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
-		        <div class="depot">
-		            <h2 class="title">Gesamtvermögen</h2>
-		            <span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
-		        </div>
-	        </a>
-	    </div>
-	    <img class="profile-picture profile-box" src="{{user.profilepic}}" alt="Profilbild">
-	    <div class="bio profile-box">
-	        <h3 class="title">Kurzbeschreibung<br /></h3>
-	        {{user.desc}}
-	    </div>
-	    <div class="placement profile-box">
-	        <h3 class="title">Platz<br /></h3>
-	        <span class="placement-number">{{user.rank}}</span>
-	    </div>
-    	<div class="profile-box" style="float: right; text-align: right; padding-right: 0">
-	        <h3 class="title">Provision<br /></h3>
-	        <span class="placement-number">{{user.wprovision}} % / {{user.lprovision}} %</span>
-	    </div>
-	</div>
-		<fieldset class="options-field">
-			<legend>Trade-Details</legend>
-			<table class="transaction-history">
-			  <colgroup>
-			  	<col class="column-0">
-			    <col class="column-1">
-			    <col class="column-2">
-			    <col class="column-3">
-			    <col class="column-4-5">
-			    <col class="column-6-7">
-			  </colgroup>
-				<tr>
-					<th>Name</th>
-					<th>Datum</th>
-					<th>Bilanz</th>
-					<th>Anzahl</th>
-					<th>Preis</th>
-					<th>Transaktionskosten</th>
-				</tr>
-				<tr>
-					<td title="{{trade.stocktextid}}">{{trade.stockname}}</td>
-					<td>{{trade.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
-					<td>
-						<span  ng-class="{pos: balance > 0, neg: balance < 0}">
+
+		<div class="options-field">
+			<h2>Trade-Details</h2>
+			<div class="table-wrapper">
+				<table class="transaction-history table table-bordered">
+				  <colgroup>
+				  	<col class="column-0">
+				    <col class="column-1">
+				    <col class="column-2">
+				    <col class="column-3">
+				    <col class="column-4-5">
+				    <col class="column-6-7">
+				  </colgroup>
+					<tr>
+						<th>Name</th>
+						<th>Datum</th>
+						<th>Bilanz</th>
+						<th>Anzahl</th>
+						<th>Preis</th>
+						<th>Transaktionskosten</th>
+					</tr>
+					<tr>
+						<td title="{{trade.stocktextid}}">{{trade.stockname}}</td>
+						<td>{{trade.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
+						<td ng-class="{pos: balance > 0, neg: balance < 0}">
 							{{ balance = (trade.money * -1) / 10000 | currency}}
-						<span  ng-class="{pos: balance > 0, neg: balance < 0}">
-					</td>
-					<td>{{trade.amount}}</td>
-					<td>{{trade.price / 10000 | number:3}} €</td>
-					<td>{{trade.fee / 10000 | currency}}</td>
-				</tr>
-			</table>
-		</fieldset>
-		<div ng-repeat="comment in comments | orderBy:'time'">
-			<div class="commenter"><a href="#/user/{{comment.username}}" class="text-link">{{comment.username}}</a></div>
-			<div class="comment comment-somebody">
-				<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
-				<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
-				<span ng-show="isAdmin">
-					<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>
-					<a ng-click="deleteComment(comment)" style="cursor: pointer">Löschen</a>
-				</span>
-				<span class="feed-time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
+						</td>
+						<td>{{trade.amount}}</td>
+						<td>{{trade.price / 10000 | number:3}} €</td>
+						<td>{{trade.fee / 10000 | currency}}</td>
+					</tr>
+				</table>
 			</div>
 		</div>
-		<form ng-submit="sendComment()">
-			<input type="submit" class="click-button comment-button" value="Kommentieren">
-			<textarea ng-model="comment" class="options-input comment-textarea" placeholder="Was sagst Du zu diesem Trade?"></textarea>
+
+		<form ng-submit="sendComment()" class="pure-form pure-form-stacked main-comment comment-form">
+			<textarea ng-model="comment" ui-keypress="{13:'sendComment()'}" class="options-input comment-textarea pure-input-1" placeholder="Was sagst Du zu diesem Trade?"></textarea>
+			<input type="submit" class="click-button comment-button btn btn-default pull-right" value="Kommentieren">
 		</form>
+		<div ng-repeat="comment in comments | orderBy:'-time'" class="feed-item feed">
+			<div class="feed-entry-symbol"><i class="fa fa-bullhorn"></i></div>
+			<div class="feed-entry-content">
+				<div class="feed-head">
+					<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
+					<a href="#/user/{{comment.username}}" class="text-link username">{{comment.username}}</a>
+					<span ng-show="isAdmin" class="actions">
+						<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>
+						<a ng-click="deleteComment(comment)" style="cursor: pointer">Löschen</a>
+					</span>
+					<span ng-show="selfIsSchoolAdmin">
+						<a ng-click="deleteCommentSA(comment)" style="cursor: pointer">Löschen</a>
+					</span>
+				</div>
+				<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
+				<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
+			</div>
+		</div>		
 </div>

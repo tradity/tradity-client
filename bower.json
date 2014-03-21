@@ -9,7 +9,8 @@
     "fontawesome": "4.0.3",
     "socket.io-client": "0.9.16",
     "Chart.js": "",
-    "angular-intro.js": ""
+    "angular-intro.js": "",
+    "angular-ui-utils": "bower-keypress"
   },
   "devDependencies": {
     "angular-mocks": "1.2.14",

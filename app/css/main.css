@@ -1,31 +1,8 @@
 body {
     font-family: Arial;
-}
-
-.inline {
-    display: inline-block;
-}
-
-body {
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
-}
-
-dt {
-  float: left;
-  clear: left;
-  width: 100px;
-  text-align: right;
-  font-weight: bold;
-}
-
-dt:after {
-  content: ":";
-}
-dd {
-  margin: 0 0 0 110px;
-  padding: 0 0 0.5em 0;
 }
 
 a {
@@ -47,7 +24,19 @@ a {
 .container-center { text-align: center; }
 .container-center > *{display: inline-block; }
 
+.pos {
+    background-color: #2ecc71;
+    color: #fff;
+}
 
+.neg {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.inline {
+    display: inline-block;
+}
 
 /* ==========================================================================
     Header
@@ -120,6 +109,7 @@ header#header .fa-item {
 /* ==========================================================================
     Notifications
    ========================================================================== */
+
 #notifications {
     position: absolute;
     top: 0px;
@@ -148,7 +138,6 @@ header#header .fa-item {
    info grid
    ========================================================================== */
 
-
     .info-grid .item {
         text-align: center;
         padding: 5px;
@@ -158,21 +147,6 @@ header#header .fa-item {
     .info-grid .item b {
         display: block;
     }
-
-    .pos {
-        background-color: #2ecc71;
-        color: #fff;
-    }
-
-    .neg {
-        background-color: #e74c3c;
-        color: #fff;
-    }
-
-
-
-
-
 
 /* ==========================================================================
    Print styles
@@ -302,7 +276,6 @@ header#header .fa-item {
 }
 
 #herounit .row {
-
     margin: 0px;
     padding: 0px;
     overflow: hidden;
@@ -410,46 +383,8 @@ header#header .fa-item {
     font-size: 14px;
 }
 
-#herounit #fbregister {
-    display: inline-block;
-    background-color: #4D68A1;
-    padding: 5px 10px;
-    color: #fff;
-    text-decoration: none;
-    margin-bottom: 10px;
-
-}
-
 #herounit #fbregister .fa {
     margin-right: 5px;
-}
-
-
-
-
-
-/* fade out herounit */
-
-#hero-wrapper, #herounit{
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    -ms-transition: all 0.2s ease-in-out;
-    -o-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-}
-
-.hide-herounit #herounit {
-    -moz-transform: scale(0.5);
-    -webkit-transform: scale(0.5);
-    -o-transform: scale(0.5);
-    -ms-transform: scale(0.5);
-    transform: scale(0.5);
-    opacity: 0;
-}
-
-.hide-herounit { 
-    background-color: transparent;
-    display: none;
 }
 
 /* footer */
@@ -622,31 +557,6 @@ header#header .fa-item {
     text-align: center;
 }
 
-@media (max-width: 660px) { 
-
-    #herounit {
-        width: 100%;
-        margin-left: 0px;
-        left: 0px;
-        border:none;
-    }
-
-    #herounit .logo {
-        width: 100%;
-        -moz-box-sizing: border-box; 
-        -webkit-box-sizing: border-box; 
-        box-sizing: border-box;
-    }
-
-    .infounit .info-item {
-        width: 100%;
-        margin: 0px;
-    }
-
-    .herounitFix #wrapper {
-        display: none;
-    }
-}
 
 /* ==========================================================================
    Walkthrough
@@ -676,7 +586,6 @@ header#header .fa-item {
     margin: 5px 0px;
 }
 
-
 .pointPointArrow{
     width:16px;
     height:16px;
@@ -699,8 +608,6 @@ header#header .fa-item {
 }
 .blink{ /*or other element you want*/
     animation: blink 2s infinite alternate;
-
-
     background-color: rgba(46,204,113,0);
     border-radius: 0px;
 }
@@ -777,8 +684,8 @@ header#header .fa-item {
 
 #schools .comment-textarea {
     border-radius: 0px;
+    resize: none;
 }
-
 
 
 /* ==========================================================================
@@ -787,10 +694,6 @@ header#header .fa-item {
 
 .comment-form {
     padding-bottom: 40px;
-}
-
-.feed-item .feed-entry-content {
-    
 }
 
 .feed-head, .feed-head a, .feed-footer  {
@@ -829,17 +732,9 @@ header#header .fa-item {
     background-size: cover;
 }
 
-.feed-entry-symbol.no-image {
-    /*background-image: url(../img/profile.svg)!important;
-    background-color: #fff;*/
-}
-
 #header #profile-picture {
     background-image: url(../img/profile.svg);
     background-size: cover;
     margin-top: -11px;
 }
 
-#footer {
-    padding: 10px;
-}

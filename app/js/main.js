@@ -2,8 +2,6 @@
 
 $(document).ready(function() {
 	initNotifications();
-  $('#togglemenu').click(togglemenu)
-  $('nav a').click(hidemenu);
 });
 
 var initNotifications = function() {
@@ -30,15 +28,6 @@ var notification = function (text,icon) { // icon == true -> success
 		notificationItem.hide();
 	}, 3000);
 }
-
-var togglemenu = function() {
-  $('body').toggleClass('menuShow');
-}
-
-var hidemenu = function() {
-  $('body').removeClass('menuShow');
-}
-
 
 var tabbing = function(div, targeturl, def, $location, $scope) {
   div.tabs();

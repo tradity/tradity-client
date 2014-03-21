@@ -7,6 +7,12 @@ angular.module('tradity').
     $scope.ownUser = null;
     $scope.serverConfig = {};
 
+    $scope.toggleMenu = function() {
+      $('body').toggleClass('menuShow');
+      $('nav a').click(function () {
+        $('body').removeClass('menuShow');
+      });
+    };
     
     $scope.$on('makeadmin', function() { $scope.isAdmin = true; });
     

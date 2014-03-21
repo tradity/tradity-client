@@ -15,7 +15,7 @@
 				<div id="general" class="inner">
 					<div id="pinboard">
 						<form ng-submit="sendComment()" ng-show="selfIsSchoolMember || selfIsSchoolAdmin || isAdmin" class="pure-form comment-form">
-							<textarea ng-model="comment" class="options-input comment-textarea pure-input-1" placeholder="Poste etwas in diesen Gruppenfeed!"></textarea>
+							<textarea ui-keypress="{13:'sendComment()'}" ng-model="comment" class="options-input comment-textarea pure-input-1" placeholder="Poste etwas in diesen Gruppenfeed!"></textarea>
 							<input type="submit" class="click-button comment-button btn pull-right" value="Kommentieren">
 						</form>
 

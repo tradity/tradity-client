@@ -5,7 +5,7 @@
                 <img style="float:right" id="profile-picture" height="50px" ng-src="{{ownUser.profilepic}}" alt="">                    
             </a>
             <a class="pull-right fa-item" href="" ng-click="logout()"><i class="fa fa-sign-out"></i></a>
-            <a href="" class="mobile-bar mobile-only" id="togglemenu"><i class="fa fa-bars"></i></a>
+            <a href="" class="mobile-bar mobile-only" id="togglemenu" ng-click="toggleMenu()"><i class="fa fa-bars"></i></a>
 
             <div class="pull-right mobile-only">
                 <a href="" class="pull-right inline cog dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
@@ -38,7 +38,7 @@
     </header>
     <div class="pure-g">
         <div class="pure-u-1-5">                        
-            <nav id="nav" data-step="100" data-position="right" data-intro="Finde mehr heraus indem du Dich durch die Navigation klickst.">
+            <nav id="nav">
                 <ul>
                     <li>
                         <a ui-sref=".feed" accesskey="f" ng-class="{active: ('game.feed' | isState)}">

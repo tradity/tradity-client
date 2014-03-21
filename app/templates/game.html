@@ -41,7 +41,7 @@
             <nav id="nav" data-step="100" data-position="right" data-intro="Finde mehr heraus indem du Dich durch die Navigation klickst.">
                 <ul>
                     <li>
-                        <a ui-sref=".feed" accesskey="f" ng-class="{active:isActive('/')}">
+                        <a ui-sref=".feed" accesskey="f" ng-class="{active: ('game.feed' | isState)}">
                             <i class="fa fa-inbox"></i>
                             <span class="dark nav-block-title">Neuigkeiten</span>
                         </a>
@@ -53,13 +53,13 @@
                         </a>
                     </li>
                     <li>
-                        <a ui-sref=".depot.overview" accesskey="d" title="ALT+SHIFT+D" ng-class="{active:isActive('/depot')}">
+                        <a ui-sref=".depot.overview" accesskey="d" title="ALT+SHIFT+D" ng-class="{active: ('*.depot.*' | includedByState)}">
                             <i class="fa fa-bar-chart-o"></i>
                             <span class="dark nav-block-title">Mein Depot</span>
                         </a>
                     </li>
                     <li>
-                        <a ui-sref=".trade" accesskey="t" title="ALT+SHIFT+T" ng-class="{active:isActive('/trade')}">
+                        <a ui-sref=".trade" accesskey="t" title="ALT+SHIFT+T" ng-class="{active: ('game.trade' | isState)}">
                             <i class="fa fa-eur" ></i>
                             <span class="dark nav-block-title">Trade</span>
                         </a>

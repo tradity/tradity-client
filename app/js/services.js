@@ -158,8 +158,8 @@ SoTradeConnection.prototype.on = function(evname, cb, angularScope) {
 }
 
 angular.module('tradity').
-	factory('socket', function ($rootScope) {
-		var socket = new SoTradeConnection(io.connect('https://dev.tradity.de:443'));
+	factory('socket', function ($rootScope, API_HOST) {
+		var socket = new SoTradeConnection(io.connect('https://' + API_HOST + ':443'));
 		return {
 			on: function (eventName, callback, angularScope) {
 				socket.on(eventName, function () {

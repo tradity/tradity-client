@@ -1,6 +1,6 @@
 <div id="schools" class="main-content">
 	<div class="school-hero" style="background-image:url({{school.banner}});">
-		<div class="config" ng-hide="uploadField">
+		<div class="config" ng-hide="uploadField" ng-show="selfIsSchoolAdmin">
 			<a href="" ng-click="enterPictureUpload()"><i class="fa fa-cloud-upload"></i></a>
 		</div>
 		<div class="upload-field" ng-show="uploadField">

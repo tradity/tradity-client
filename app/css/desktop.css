@@ -33,11 +33,15 @@
 
     .main-content {
         padding: 10px;
+        padding-bottom: 50px;
     }
 
     .mobile-only {
         display: none;
     }
+
+    .padding-left { padding-left: 10px; }
+    .padding-top { padding-top: 10px; }
 
 
     /* ==========================================================================

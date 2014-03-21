@@ -180,6 +180,10 @@ SoTradeModel = function(connection) {
 };
 
 // model.ownUser.group.name
-SoTradeModel.prototype.
+Object.defineProperty(SoTradeModel.prototype, 'model', {
+	get: function() {
+		
+	}
+});
 
 })();

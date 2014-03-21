@@ -1,2 +1,2 @@
 angular.module('tradity')
-	.constant('API_HOST', 'dev.tradity.de');
+	.constant('API_HOST', 'tradity.de');

@@ -10,8 +10,9 @@ angular.module('tradity').
     $scope.editingDescpage = false;
     $scope.uploadField = false;
 
-    // in case a group get's called without /pinboard
-    if ($state.includes('*.group')) $state.go('.pinboard');
+    // in case a group gets called without /pinboard
+    if ($state.includes('*.group'))
+      $state.go('.pinboard');
 
     if (parseInt($stateParams.schoolid) == $stateParams.schoolid)
       $scope.schoolid = $stateParams.schoolid;

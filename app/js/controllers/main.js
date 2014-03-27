@@ -48,7 +48,8 @@ angular.module('tradity').
     socket.on('response', function(data) {
       if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
         $scope.ownUser = null;
-        if ($state.includes('game')) $state.go('index.login');
+        if ($state.includes('game'))
+          $state.go('index.login');
       }
     }, $scope);
     socket.on('self-info', function(data) {
@@ -304,7 +305,8 @@ angular.module('tradity').
       return function() {
         socket.emit('comment', {
           eventid: getEventId($scope),
-          comment: $scope.comment
+          comment: $scope.comment,
+          ishtml: $scope.ishtml
         },
         function(data) {
           if (data.code == 'comment-notfound') {
@@ -313,12 +315,14 @@ angular.module('tradity').
             var time = new Date();
             $scope.comments.unshift({
               comment: $scope.comment,
-              ishtml: $scope.ishtml,
-              trustedhtml: false,
+              trustedhtml: $scope.ishtml,
               username: $scope.ownUser.name,
               time: time.getTime() / 1000 - 1
             });
             $scope.comment = '';
+          } else if (data.code == 'format-error') {
+            console.log($scope);
+            alert('Sorry, etwas ging hier schief.');
           }
         });
       };

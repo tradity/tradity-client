@@ -1,21 +1,23 @@
 <div id="follower">
-	<table class="ranking table table-bordered">
-		<colgroup>
-			<col class="rankcol-1" style="width: 10%">
-			<col class="rankcol-2" style="width: 65%">
-			<col class="rankcol-3" style="width: 25%">
-		</colgroup>
-		<tr>
-			<th>Rang</th>
-			<th>Name</th>
-			<th>Followerperformance</th>
-			<th>Followerbewertung</th>
-		</tr>
-		<tr ng-repeat="result in resultsFollower | filter: searchText | limitTo:totalDisplayed">
-			<td>{{result.rank}}</td>
-			<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
-			<td>{{(result.totalfperf-1)*100 | number:2}}%</td>
-			<td>{{(result.totalfperfval)*100000 | number:2}}</td>
-		</tr>
-	</table>
+	<div class="table-wrapper">
+		<table class="ranking table table-bordered">
+			<colgroup>
+				<col class="rankcol-1" style="width: 10%">
+				<col class="rankcol-2" style="width: 65%">
+				<col class="rankcol-3" style="width: 25%">
+			</colgroup>
+			<tr>
+				<th>Rang</th>
+				<th>Name</th>
+				<th>Followerperformance</th>
+				<th>Followerbewertung</th>
+			</tr>
+			<tr ng-repeat="result in resultsFollower | filter: searchText | limitTo:totalDisplayed">
+				<td>{{result.rank}}</td>
+				<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
+				<td>{{(result.totalfperf-1)*100 | number:2}}%</td>
+				<td>{{(result.totalfperfval)*100000 | number:2}}</td>
+			</tr>
+		</table>
+	</div>
 </div>

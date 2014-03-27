@@ -1,22 +1,24 @@
 <div id="intragroup">
-	<table class="ranking table table-bordered">
-		<colgroup>
-			<col class="rankcol-1" style="width: 10%">
-			<col class="rankcol-2" style="width: 57%">
-			<col class="rankcol-3" style="width: 18%">
-			<col class="rankcol-4" style="width: 15%">
-		</colgroup>
-		<tr>
-			<th>Rang</th>
-			<th>Name</th>
-			<th>erh. Provision</th>
-			<th>Gesamtvermögen</th>
-		</tr>
-		<tr ng-repeat="result in intraGroupResults | filter: searchText | limitTo:totalDisplayed">
-			<td>{{result.igrank}}</td>
-			<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
-			<td>{{result.prov_recvd / 10000 | currency}}</td>
-			<td>{{result.totalvalue / 10000 | currency}}</td>
-		</tr>
-	</table>
+	<div class="table-wrapper">
+		<table class="ranking table table-bordered">
+			<colgroup>
+				<col class="rankcol-1" style="width: 10%">
+				<col class="rankcol-2" style="width: 57%">
+				<col class="rankcol-3" style="width: 18%">
+				<col class="rankcol-4" style="width: 15%">
+			</colgroup>
+			<tr>
+				<th>Rang</th>
+				<th>Name</th>
+				<th>erh. Provision</th>
+				<th>Gesamtvermögen</th>
+			</tr>
+			<tr ng-repeat="result in intraGroupResults | filter: searchText | limitTo:totalDisplayed">
+				<td>{{result.igrank}}</td>
+				<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
+				<td>{{result.prov_recvd / 10000 | currency}}</td>
+				<td>{{result.totalvalue / 10000 | currency}}</td>
+			</tr>
+		</table>
+	</div>
 </div>

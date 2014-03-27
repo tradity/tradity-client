@@ -11,6 +11,7 @@ angular.module('tradity', [
   // redirect abstract states to child
   when('/depot', '/depot/overview').
   when('/ranking', '/ranking/all').
+  when('/admin', '/admin/userlist').
   otherwise('/');
   $stateProvider.
     state('index', {
@@ -41,6 +42,7 @@ angular.module('tradity', [
     }).
     state('index.schoolregister', {
       url: 'register/s/:schoolid',
+      templateUrl: 'templates/registration.html',
       controller: 'RegistrationCtrl'
     }).
     state('game', {
@@ -95,6 +97,7 @@ angular.module('tradity', [
       controller: 'TradeDetailsCtrl'
     }).
     state('game.ranking', {
+      abstract: true,
       url: '/ranking',
       templateUrl: 'templates/ranking.html',
       controller: 'RankingCtrl'
@@ -161,19 +164,30 @@ angular.module('tradity', [
       templateUrl: 'templates/gettingstarted.html'
     }).
     state('game.admin', {
+      abstract: true,
       url: '/admin',
       templateUrl: 'templates/admin.html',
       controller: 'AdminCtrl'
     }).
-    state('game.admintabs', {
-      url: '/admin/:pageid',
-      templateUrl: 'templates/admin.html',
-      controller: 'AdminCtrl'
+    state('game.admin.userlist', {
+      url: '/userlist',
+      templateUrl: 'templates/admin.userlist.html'
     }).
-    state('game.adminuserid', {
-      url: '/admin/:pageid/:userId',
-      templateUrl: 'templates/admin.html',
-      controller: 'AdminCtrl'
+    state('game.admin.notifications', {
+      url: '/notifications',
+      templateUrl: 'templates/admin.notifications.html'
+    }).
+    state('game.admin.schools', {
+      url: '/schools',
+      templateUrl: 'templates/admin.schools.html'
+    }).
+    state('game.admin.monitoring', {
+      url: '/monitoring',
+      templateUrl: 'templates/admin.monitoring.html'
+    }).
+    state('game.admin.userdetails', {
+      url: '/userdetails/:uid',
+      templateUrl: 'templates/admin.html'
     }).
     state('game.group', {
       url: '/s/:schoolid',

@@ -15,8 +15,8 @@
 				<td bo-text="result.rank"></td>
 				<td class="rank-name"><a id="user-name-{{result.name}}" bo-href="'#/user/' + result.name" style="cursor: pointer" bo-text="result.name"></a></td>
 				<td>
-					<span bo-text="((result.totalvalue - result.prov_recvd) / 10000) - 100000 | currency"></span>
-					<span>(</span><span bo-text="(((result.totalvalue - result.prov_recvd) / 10000) - 100000) / 1000 | number:2"></span><span> %)</span>
+					<span bo-text="((result.totalvalue - result.prov_sum) / 10000) - 100000 | currency"></span>
+					<span>(</span><span bo-text="(((result.totalvalue - result.prov_sum) / 10000) - 100000) / 1000 | number:2"></span><span> %)</span>
 				</td>
 			</tr>
 		</table>

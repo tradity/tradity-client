@@ -16,7 +16,7 @@
 			<tr ng-repeat="result in intraGroupResults | filter: searchText | limitTo:totalDisplayed">
 				<td>{{result.igrank}}</td>
 				<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
-				<td>{{result.prov_recvd / 10000 | currency}}</td>
+				<td>{{result.prov_sum / 10000 | currency}}</td>
 				<td>{{result.totalvalue / 10000 | currency}}</td>
 			</tr>
 		</table>

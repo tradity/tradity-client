@@ -232,10 +232,6 @@
         width: 100%;
     }
 
-    .infounit .content {
-        padding: 5px;
-    }
-
     .infounit.team .team-item {
         width: 100%;
         display: block;
@@ -277,4 +273,9 @@
     .user-info .btn-group {
         background-color: transparent;
     }
+
+#herounit .showcase .header h2 {
+    font-size: 15px;
+}
+
 }

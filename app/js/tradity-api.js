@@ -153,6 +153,10 @@ SoTradeConnection.prototype.emit = function(evname, data, cb) {
 };
 
 SoTradeConnection.prototype.getKey = function() {
+	var s = localStorage || window.localStorage;
+	if (s && s['sotradekey'])
+		return s['sotradekey'];
+	
 	var cookie = document.cookie.split(';');
 	for (var i = 0; i < cookie.length; ++i) {
 		var c = cookie[i].trim().split('=');
@@ -164,6 +168,10 @@ SoTradeConnection.prototype.getKey = function() {
 
 SoTradeConnection.prototype.setKey = function(k) {
 	document.cookie = 'key=' + k + '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+	
+	var s = localStorage || window.localStorage;
+	if (s)
+		s['sotradekey'] = k;
 };
 
 SoTradeConnection.prototype.on = function(evname, cb, angularScope) {

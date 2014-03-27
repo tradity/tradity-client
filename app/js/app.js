@@ -36,7 +36,7 @@ angular.module('tradity', [
     //change to register/:inviteCode
     state('index.invite', {
       url: 'join/:inviteCode',
-      templateUrl: 'templates/register.html',
+      templateUrl: 'templates/registration.html',
       controller: 'RegistrationCtrl'
     }).
     state('index.schoolregister', {

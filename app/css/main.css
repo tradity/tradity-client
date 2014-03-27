@@ -10,6 +10,14 @@ a {
   color: #333;
 }
 
+#feed a, .subschoollist a, .table a:hover {
+    color: #00008F;
+}
+
+.table .fa {
+    color:#333;
+}
+
 .main-content h2, .main-content h1, .main-content h3 {
     margin: 15px 0px;
     font-weight: normal;

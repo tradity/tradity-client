@@ -17,7 +17,7 @@ angular.module('tradity').
     };
     $scope.sendComment = function() {
       socket.emit('comment', {
-        eventid: $scope.$parent.trade.registerevent || $scope.$parent.user.registerevent || $scope.$parent.school.registerevent,
+        eventid: $scope.$parent.trade.eventid || $scope.$parent.user.registerevent || $scope.$parent.school.registerevent,
         comment: $scope.comment,
         ishtml: $scope.ishtml
       },

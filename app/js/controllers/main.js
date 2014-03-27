@@ -313,6 +313,7 @@ angular.module('tradity').
             var time = new Date();
             $scope.comments.unshift({
               comment: $scope.comment,
+              ishtml: $scope.ishtml,
               trustedhtml: false,
               username: $scope.ownUser.name,
               time: time.getTime() / 1000 - 1

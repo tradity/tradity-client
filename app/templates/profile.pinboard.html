@@ -2,6 +2,9 @@
 	<h2>Pinnwand</h2>
 	<form ng-submit="sendComment()" class="pure-form pure-form-stacked main-comment comment-form">
 		<textarea ui-keypress="{13:'sendComment()'}" ng-model="comment" class="options-input comment-textarea pure-input-1" placeholder="Was sagst Du zu diesem Trader?"></textarea>
+		<div ng-show="isAdmin">
+			<label for="ishtml">HTML</label><input type="checkbox" ng-model="ishtml" id="ishtml">
+		</div>
 		<input type="submit" class="click-button comment-button btn btn-default pull-right" value="Kommentieren">
 	</form>
 	<div ng-repeat="comment in comments | orderBy:'-time'" class="feed-item feed">

@@ -36,6 +36,9 @@
 
 		<form ng-submit="sendComment()" class="pure-form pure-form-stacked main-comment comment-form">
 			<textarea ng-model="comment" ui-keypress="{13:'sendComment()'}" class="options-input comment-textarea pure-input-1" placeholder="Was sagst Du zu diesem Trade?"></textarea>
+			<div ng-show="isAdmin">
+				<label for="ishtml">HTML</label><input type="checkbox" ng-model="ishtml" id="ishtml">
+			</div>
 			<input type="submit" class="click-button comment-button btn btn-default pull-right" value="Kommentieren">
 		</form>
 		<div ng-repeat="comment in comments | orderBy:'-time'" class="feed-item feed">

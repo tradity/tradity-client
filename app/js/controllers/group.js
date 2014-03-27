@@ -1,5 +1,5 @@
 angular.module('tradity').
-  controller('GroupCtrl', function($scope, $sce, $stateParams, socket) {
+  controller('GroupCtrl', function($scope, $sce, $state, $stateParams, socket) {
   	$scope.school = {};
     $scope.selfIsSchoolAdmin = false;
     $scope.selfIsSchoolMember = false;
@@ -9,6 +9,9 @@ angular.module('tradity').
     $scope.descpage = '';
     $scope.editingDescpage = false;
     $scope.uploadField = false;
+
+    // in case a group get's called without /pinboard
+    if ($state.includes('*.group')) $state.go('.pinboard');
 
     if (parseInt($stateParams.schoolid) == $stateParams.schoolid)
       $scope.schoolid = $stateParams.schoolid;

@@ -10,6 +10,7 @@ angular.module('tradity', [
   $urlRouterProvider.
   // redirect abstract states to child
   when('/depot', '/depot/overview').
+  when('/ranking', '/ranking/all').
   otherwise('/');
   $stateProvider.
     state('index', {

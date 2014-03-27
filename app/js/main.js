@@ -135,7 +135,7 @@ var fileemit = function(socket, input, evtype, template, serverconfig, callback)
     template.name = template.name || filename;
     
     socket.emit(evtype, template, function(data) {
-      cb(data.code);
+      callback(data.code);
     });
   };
   

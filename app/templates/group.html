@@ -1,0 +1,82 @@
+<div id="schools" class="main-content">
+	<div class="school-hero" style="background-image:url({{school.banner}});">
+		<div class="config" ng-hide="uploadField" ng-show="selfIsSchoolAdmin">
+			<a href="" ng-click="enterPictureUpload()"><i class="fa fa-cloud-upload"></i></a>
+		</div>
+		<div class="upload-field" ng-show="uploadField">
+			<form class="pure-form pure-form-stacked" ng-submit="changeDescription()">		
+				<input type="file" id="bannerupload" class="options-input" accept="image/png,image/jpeg,image/gif"><br/>
+				<input type="submit" value="Speichern" class="btn btn-sm btn-success"/>
+			</form>
+		</div>
+		<h1>{{school.name}}</h1>
+		<span class="short-info">Mitglieder: {{school.usercount}}</span>
+	</div>
+	<div id="tabs">
+		<ul>
+			<li><a ui-sref=".pinboard">Pinnwand</a></li>
+			<li><a ui-sref=".intragroup">Eure Rangliste</a></li>
+			<li><a ui-sref=".intergroup" ng-show="interGroupResults.length > 1">Gruppenrangliste</a></li>
+		</ul>
+		<div class="pure-g-r">
+			<div class="pure-u-2-3 conti">
+				<div ui-view></div>
+			</div>
+			<div class="pure-u-1-3 widgets">
+				<div class="widget">
+					<button ng-hide="selfIsSchoolMember" ng-click="enterTeam()" type="button" href="" class="btn btn-primary btn-block">Team beitreten</button>
+
+					<button ng-show="selfIsSchoolMember" ng-click="leaveTeam()" type="button" href="" class="btn btn-danger btn-block"><i class="fa fa-sign-out"></i></button>
+
+				</div>
+				<div class="widget" ng-show="school.parentPath">
+					<a href="#/s{{school.parentPath}}">zur Übergruppe</a>
+				</div>
+				<div class="widget schoolInfo">
+					<h3>Info</h3>
+					<div class="inner">
+						<div class="school-descpage">{{descpage}}</div>
+						<a ng-show="isAdmin || selfIsSchoolAdmin" ng-click="enterDescpageEdit()"><i class="fa fa-pencil-square-o"></i></a>
+						<form ng-submit="changeDescription()" ng-show="editingDescpage" class="pure-form pure-form-stacked">
+							<textarea  ng-model="descpage" id="descpage" class="options-input pure-input-1"></textarea>
+							<input type="submit" value="Speichern" class="btn btn-primary"/>
+						</form>
+					</div>				
+				</div>
+				<div class="widget">
+					<h3>Beliebte Aktien</h3>
+					<div class="inner">
+						<ol class="popularstocks">
+							<li ng-repeat="stock in school.popularStocks"><a href="#/trade/buy/{{stock.stockid}}/0">{{stock.stockname}}</a></li>
+						</ol>
+					</div>
+				</div>
+				<div class="widget" ng-show="school.admins.length > 0">
+					<h3>Administratoren</h3>
+					<div class="inner">
+						<ul class="groupadminlist">
+							<li ng-repeat="admin in school.admins"><a href="#/user/{{admin.adminname}}">{{admin.adminname}}</a></li>
+						</ul>
+					</div>
+				</div>
+ 				<div class="widget" ng-show="school.subgroups.length > 0 || isAdmin || selfIsSchoolAdmin">
+					<h3>Untergruppen</h3>
+					<div class="inner">
+						<ul class="subschoollist">
+							<li ng-repeat="subschool in school.subschools"><a href="#/s/general{{subschool.path}}">{{subschool.name}}</a></li>
+						</ul>
+						<a ng-show="isAdmin || selfIsSchoolAdmin" ng-click="createSchool()">Neue Untergruppe anlegen</a>
+					</div>
+				</div>
+				<div class="widget" ng-show="isAdmin || selfIsSchoolAdmin">
+					<h3>Nicht bestätigte User</h3>
+					<div class="inner">
+						<ul class="pendinguserslist">
+							<li ng-repeat="user in pendingMembers"><a href="#/user/{{user.name}}">{{user.name}}</a> (<a ng-click="verifyMember(user)">bestätigen</a>)</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>

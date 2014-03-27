@@ -1,0 +1,22 @@
+<div id="all">
+	<table class="ranking table table-bordered">
+		<colgroup>
+			<col class="rankcol-1" style="width: 10%">
+			<col class="rankcol-2" style="width: 57%">
+			<col class="rankcol-3" style="width: 33%">
+		</colgroup>
+		<tr>
+			<th>Rang</th>
+			<th>Name</th>
+			<th>Reingewinn</th>
+		</tr>
+		<tr bindonce ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed">
+			<td bo-text="result.rank"></td>
+			<td class="rank-name"><a id="user-name-{{result.name}}" bo-href="'#/user/' + result.name" style="cursor: pointer" bo-text="result.name"></a></td>
+			<td>
+				<span bo-text="((result.totalvalue - result.prov_recvd) / 10000) - 100000 | currency"></span>
+				<span>(</span><span bo-text="(((result.totalvalue - result.prov_recvd) / 10000) - 100000) / 1000 | number:2"></span><span> %)</span>
+			</td>
+		</tr>
+	</table>
+</div>

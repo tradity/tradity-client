@@ -98,10 +98,40 @@ angular.module('tradity', [
       templateUrl: 'templates/ranking.html',
       controller: 'RankingCtrl'
     }).
-    state('game.rankingtabs', {
-      url: '/ranking/:pageid',
-      templateUrl: 'templates/ranking.html',
-      controller: 'RankingCtrl'
+    state('game.ranking.all', {
+      url: '/all',
+      templateUrl: 'templates/ranking.all.html',
+      controller: 'RankingAllCtrl'
+    }).
+    state('game.ranking.all-withprov', {
+      url: '/all-withprov',
+      templateUrl: 'templates/ranking.all-withprov.html',
+      controller: 'RankingAllWithProvCtrl'
+    }).
+    state('game.ranking.all-week', {
+      url: '/all-week',
+      templateUrl: 'templates/ranking.all-week.html',
+      controller: 'RankingAllWeekCtrl'
+    }).
+    state('game.ranking.follower', {
+      url: '/follower',
+      templateUrl: 'templates/ranking.follower.html',
+      controller: 'RankingFollowerCtrl'
+    }).
+    state('game.ranking.follower-week', {
+      url: '/follower-week',
+      templateUrl: 'templates/ranking.follower-week.html',
+      controller: 'RankingFollowerWeekCtrl'
+    }).
+    state('game.ranking.intergroup', {
+      url: '/intergroup',
+      templateUrl: 'templates/ranking.intergroup.html',
+      controller: 'RankingGroupCtrl'
+    }).
+    state('game.ranking.intragroup', {
+      url: '/intragroup',
+      templateUrl: 'templates/ranking.intragroup.html',
+      controller: 'RankingGroupCtrl'
     }).
     state('game.profile', {
       url: '/user/:userId',
@@ -144,14 +174,23 @@ angular.module('tradity', [
       templateUrl: 'templates/admin.html',
       controller: 'AdminCtrl'
     }).
-    state('game.grouptabs', {
-      url: '/s/p|:pageid/*schoolid',
-      templateUrl: 'templates/school.html',
-      controller: 'RankingCtrl'
-    }).
     state('game.group', {
-      url: '/s/*schoolid',
-      templateUrl: 'templates/school.html',
-      controller: 'RankingCtrl'
+      url: '/s/:schoolid',
+      templateUrl: 'templates/group.html',
+      controller: 'GroupCtrl'
+    }).
+    state('game.group.pinboard', {
+      url: '/pinboard',
+      templateUrl: 'templates/group.pinboard.html'
+    }).
+    state('game.group.intragroup', {
+      url: '/intragroup',
+      templateUrl: 'templates/group.intragroup.html',
+      controller: 'RankingGroupCtrl'
+    }).
+    state('game.group.intergroup', {
+      url: '/intergroup',
+      templateUrl: 'templates/group.intergroup.html',
+      controller: 'RankingGroupCtrl'
     });
 });

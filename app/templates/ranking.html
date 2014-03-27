@@ -1,176 +1,22 @@
 <div id="stats" class="main-content ranking" infinite-scroll="loadMore()" infinite-scroll-distance="2">
 	<div id="tabs">
 		<ul>
-			<li><a href="#all">Reingewinn</a></li>
-			<li><a href="#all-withprov">Leader</a></li>
-			<li><a href="#follower">Follower</a></li>
-			<li><a href="#all-week">Reingewinn (Woche)</a></li>
-			<li><a href="#follower-week">Follower (Woche)</a></li>
-			<li ng-show="ownUser.schoolid"><a href="#intragroup">{{ownUser.schoolname}}</a></li>
-			<li><a href="#intergroup">Gruppen</a></li>
+			<li><a ui-sref=".all">Reingewinn</a></li>
+			<li><a ui-sref=".all-withprov">Leader</a></li>
+			<li><a ui-sref=".follower">Follower</a></li>
+			<li><a ui-sref=".all-week">Reingewinn (Woche)</a></li>
+			<li><a ui-sref=".follower-week">Follower (Woche)</a></li>
+			<li ng-show="ownUser.schoolid"><a ui-sref=".intragroup">{{ownUser.schoolname}}</a></li>
+			<li><a ui-sref=".intergroup">Gruppen</a></li>
 		</ul>
 
-
-		<form class="pure-form" ng-submit="getRanking()" id="rankingSearch">
-			<input type="text" ng-model="searchText" style="display:inline-block" placeholder="Suche" class="pure-input" >
+		<form class="pure-form" id="rankingSearch">
+			<input type="text" ng-model="searchText" style="display:inline-block" placeholder="Suche" class="pure-input">
 			<button type="submit" style="margin-top: 0px;" class="btn btn-primary btn-sm">Search</button>
 		</form>
 
 		<div class="clearfix"></div>
 
-		
-	  	<div id="all">
-			<table class="ranking table table-bordered">
-				<colgroup>
-				  	<col class="rankcol-1" style="width: 10%">
-				    <col class="rankcol-2" style="width: 57%">
-				    <col class="rankcol-3" style="width: 33%">
-				</colgroup>
-				<tr>
-					<th>Rang</th>
-					<th>Name</th>
-					<th>Reingewinn</th>
-				</tr>
-				<tr bindonce ng-repeat="result in results | limitTo:totalDisplayed">
-					<td bo-text="result.rank"></td>
-					<td class="rank-name"><a id="user-name-{{result.name}}" bo-href="'#/user/' + result.name" style="cursor: pointer" bo-text="result.name"></a></td>
-					<td>
-						<span bo-text="((result.totalvalue - result.prov_recvd) / 10000) - 100000 | currency"></span>
-						<span>(</span><span bo-text="(((result.totalvalue - result.prov_recvd) / 10000) - 100000) / 1000 | number:2"></span><span> %)</span>
-					</td>
-				</tr>
-			</table>
-		</div>
-	  	<div id="all-withprov">
-			<table class="ranking table table-bordered">
-				<colgroup> 
-				  	<col class="rankcol-1" style="width: 10%">
-				    <col class="rankcol-2" style="width: 57%">
-				    <col class="rankcol-3" style="width: 18%">
-				    <col class="rankcol-4" style="width: 15%">
-				</colgroup>
-				<tr>
-					<th>Rang</th>
-					<th>Name</th>
-					<th>erh. Provision</th>
-					<th>Gesamtvermögen</th>
-				</tr>
-				<tr ng-repeat="result in resultsWithProvision | limitTo:totalDisplayed">
-					<td>{{result.rank}}</td>
-					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer" tradity-profile>{{result.name}}</a></td>
-					<td>{{result.prov_recvd / 10000 | currency}}</td>
-					<td>{{result.totalvalue / 10000 | currency}}</td>
-				</tr>
-			</table>
-		</div>
-		<div id="follower">
-			<table class="ranking table table-bordered">
-				<colgroup>
-				  	<col class="rankcol-1" style="width: 10%">
-				    <col class="rankcol-2" style="width: 65%">
-				    <col class="rankcol-3" style="width: 25%">
-				</colgroup>
-				<tr>
-					<th>Rang</th>
-					<th>Name</th>
-					<th>Followerperformance</th>
-					<th>Followerbewertung</th>
-				</tr>
-				<tr ng-repeat="result in resultsFollower | limitTo:totalDisplayed">
-					<td>{{result.rank}}</td>
-					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
-					<td>{{(result.totalfperf-1)*100 | number:2}}%</td>
-					<td>{{(result.totalfperfval)*100000 | number:2}}</td>
-				</tr>
-			</table>
-		</div>
-	  	<div id="all-week">
-			<table class="ranking table table-bordered">
-				<colgroup>
-				  	<col class="rankcol-1" style="width: 10%">
-				    <col class="rankcol-2" style="width: 65%">
-				    <col class="rankcol-3" style="width: 25%">
-				</colgroup>
-				<tr>
-					<th>Rang</th>
-					<th>Name</th>
-					<th>Performance</th>
-				</tr>
-				<tr ng-repeat="result in resultsWeek | limitTo:totalDisplayed">
-					<td>{{result.rank}}</td>
-					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
-					<td>{{((result.totalvalue - result.prov_recvd) / (result.weekstarttotalvalue - result.weekstartprov_recvd) - 1)*100 | number:2}} %</td>
-				</tr>
-			</table>
-		</div>
-		<div id="follower-week">
-			<table class="ranking table table-bordered">
-				<colgroup>
-				  	<col class="rankcol-1" style="width: 10%">
-				    <col class="rankcol-2" style="width: 57%">
-				    <col class="rankcol-3" style="width: 18%">
-				    <col class="rankcol-4" style="width: 15%">
-				</colgroup>
-				<tr>
-					<th>Rang</th>
-					<th>Name</th>
-					<th>Followerperformance</th>
-					<th>Followerbewertung</th>
-				</tr>
-				<tr ng-repeat="result in resultsFollowerWeek | limitTo:totalDisplayed">
-					<td>{{result.rank}}</td>
-					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
-					<td>{{(result.weekfperf-1)*100 | number:2}} %</td>
-					<td>{{(result.weekfperfval)*100000 | number:2}}</td>
-				</tr>
-			</table>
-		</div>
-		<div id="intragroup">
-			<table class="ranking table table-bordered">
-				<colgroup>
-				  	<col class="rankcol-1" style="width: 10%">
-				    <col class="rankcol-2" style="width: 57%">
-				    <col class="rankcol-3" style="width: 18%">
-				    <col class="rankcol-4" style="width: 15%">
-				</colgroup>
-				<tr>
-					<th>Rang</th>
-					<th>Name</th>
-					<th>erh. Provision</th>
-					<th>Gesamtvermögen</th>
-				</tr>
-				<tr ng-repeat="result in intraGroupResults | limitTo:totalDisplayed">
-					<td>{{result.igrank}}</td>
-					<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
-					<td>{{result.prov_recvd / 10000 | currency}}</td>
-					<td>{{result.totalvalue / 10000 | currency}}</td>
-				</tr>
-			</table>
-		</div>
-		<div id="intergroup">
-			<table class="ranking table table-bordered">
-				<colgroup>
-				  	<col class="rankcol-1" style="width: 10%">
-				    <col class="rankcol-2" style="width: 57%">
-				    <col class="rankcol-3" style="width: 18%">
-				    <col class="rankcol-3" style="width: 18%">
-				    <col class="rankcol-4" style="width: 15%">
-				</colgroup>
-				<tr>
-					<th>Rang</th>
-					<th>Name</th>
-					<th>Spieler</th>
-					<th>erh. Provision</th>
-					<th>Gesamtvermögen</th>
-				</tr>
-				<tr ng-repeat="result in interGroupResults | limitTo:totalDisplayed">
-					<td>{{result.rank}}</td>
-					<td><a href="#/s{{result.schoolpath}}">{{result.schoolname}}</a></td>
-					<td>{{result.count}}</td>
-					<td>{{result.prov_recvd / 10000 | currency}}</td>
-					<td>{{result.totalvalue / 10000 | currency}}</td>
-				</tr>
-			</table>
-		</div>
+		<div ui-view></div>
 	</div>
 </div>

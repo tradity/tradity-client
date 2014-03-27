@@ -32,8 +32,7 @@
             <div class="inline mobile-hide">
                 <h2>Rang</h2>
                 <span class="placement-number">{{ownUser.rank}}</span>
-            </div>
-            
+            </div>            
         </div>
     </header>
     <div class="pure-g">
@@ -65,19 +64,19 @@
                         </a>
                     </li>
                     <li>
-                        <a ui-sref=".ranking" id="rangliste" accesskey="r" title="ALT+SHIFT+R" ng-class="{active:isActive('/ranking')}">
+                        <a ui-sref=".ranking" id="rangliste" accesskey="r" title="ALT+SHIFT+R" ng-class="{active: ('*.ranking.*' | includedByState)}">
                             <i class="fa fa-flag"></i> 
                             <span class="dark nav-block-title">Rangliste</span>
                         </a>
                     </li>
                     <li>
-                        <a ui-sref=".options" accesskey="o" title="ALT+SHIFT+O" ng-class="{active:isActive('/options')}">
+                        <a ui-sref=".options" accesskey="o" title="ALT+SHIFT+O" ng-class="{active: ('game.options' | isState)}">
                             <i class="fa fa-wrench"></i>
                             <span class="dark nav-block-title">Einstellungen</span>
                         </a>
                     </li>
                     <li>
-                        <a ui-sref=".faq"  accesskey="h" title="ALT+SHIFT+H" ng-class="{active:isActive('/faq')}">
+                        <a ui-sref=".faq"  accesskey="h" title="ALT+SHIFT+H" ng-class="{active: ('game.faq' | isState)}">
                             <i class="fa fa-question"></i>
                             <span class="dark nav-block-title">Häufige Fragen</span>
                         </a>

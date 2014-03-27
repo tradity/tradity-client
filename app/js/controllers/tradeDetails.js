@@ -35,6 +35,5 @@ angular.module('tradity').
             $scope.user.profilepic = $scope.serverConfig.defaultprofile;
       });
     };
-    $scope.sendComment = $scope.createSendCommentFn($scope, function() { return $scope.trade.eventid; }, 'Trade nicht gefunden.');
     $scope.getTradeInfo();
   });

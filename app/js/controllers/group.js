@@ -55,8 +55,6 @@ angular.module('tradity').
       }
     };
 
-    $scope.sendComment = $scope.createSendCommentFn($scope, function() { return $scope.school.eventid; }, 'Gruppe nicht gefunden.');
-
     $scope.deleteCommentSA = function(comment) {
       socket.emit('school-delete-comment', {
         schoolid: $scope.schoolid,

@@ -1,39 +1,38 @@
 <div id="trade-details" class="main-content">
-
-		<div class="options-field">
-			<h2>Trade-Details</h2>
-			<div class="table-wrapper">
-				<table class="transaction-history table table-bordered">
-				  <colgroup>
-				  	<col class="column-0">
-				    <col class="column-1">
-				    <col class="column-2">
-				    <col class="column-3">
-				    <col class="column-4-5">
-				    <col class="column-6-7">
-				  </colgroup>
-					<tr>
-						<th>Name</th>
-						<th>Datum</th>
-						<th>Bilanz</th>
-						<th>Anzahl</th>
-						<th>Preis</th>
-						<th>Transaktionskosten</th>
-					</tr>
-					<tr>
-						<td title="{{trade.stocktextid}}">{{trade.stockname}}</td>
-						<td>{{trade.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
-						<td ng-class="{pos: balance > 0, neg: balance < 0}">
-							{{ balance = (trade.money * -1) / 10000 | currency}}
-						</td>
-						<td>{{trade.amount}}</td>
-						<td>{{trade.price / 10000 | number:3}} €</td>
-						<td>{{trade.fee / 10000 | currency}}</td>
-					</tr>
-				</table>
-			</div>
+	<div class="options-field">
+		<h2>Trade-Details</h2>
+		<div class="table-wrapper">
+			<table class="transaction-history table table-bordered">
+			  <colgroup>
+			  	<col class="column-0">
+			    <col class="column-1">
+			    <col class="column-2">
+			    <col class="column-3">
+			    <col class="column-4-5">
+			    <col class="column-6-7">
+			  </colgroup>
+				<tr>
+					<th>Name</th>
+					<th>Datum</th>
+					<th>Bilanz</th>
+					<th>Anzahl</th>
+					<th>Preis</th>
+					<th>Transaktionskosten</th>
+				</tr>
+				<tr>
+					<td title="{{trade.stocktextid}}">{{trade.stockname}}</td>
+					<td>{{trade.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
+					<td ng-class="{pos: balance > 0, neg: balance < 0}">
+						{{ balance = (trade.money * -1) / 10000 | currency}}
+					</td>
+					<td>{{trade.amount}}</td>
+					<td>{{trade.price / 10000 | number:3}} €</td>
+					<td>{{trade.fee / 10000 | currency}}</td>
+				</tr>
+			</table>
 		</div>
-
+	</div>
+	<div ng-controller="CommentCtrl">
 		<form ng-submit="sendComment()" class="pure-form pure-form-stacked main-comment comment-form">
 			<textarea ng-model="comment" ui-keypress="{13:'sendComment()'}" class="options-input comment-textarea pure-input-1" placeholder="Was sagst Du zu diesem Trade?"></textarea>
 			<div ng-show="isAdmin">
@@ -58,5 +57,6 @@
 				<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
 				<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
 			</div>
-		</div>		
+		</div>
+	</div>
 </div>

@@ -153,7 +153,8 @@ angular.module('tradity', [
     }).
     state('game.profile.pinboard', {
       url: '/pinboard',
-      templateUrl: 'templates/profile.pinboard.html'
+      templateUrl: 'templates/profile.pinboard.html',
+      controller: 'CommentCtrl'
     }).
     state('game.faq', {
       url: '/faq',
@@ -196,7 +197,8 @@ angular.module('tradity', [
     }).
     state('game.group.pinboard', {
       url: '/pinboard',
-      templateUrl: 'templates/group.pinboard.html'
+      templateUrl: 'templates/group.pinboard.html',
+      controller: 'CommentCtrl'
     }).
     state('game.group.intragroup', {
       url: '/intragroup',

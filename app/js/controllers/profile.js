@@ -50,7 +50,6 @@ angular.module('tradity').
         }
       });
     };
-    $scope.sendComment = $scope.createSendCommentFn($scope, function() { return $scope.user.registerevent; }, 'User nicht gefunden.');
     $scope.getUserInfo();
     // in case a profile gets called without /overview
     if ($state.includes('*.profile'))

@@ -4,7 +4,6 @@ angular.module('tradity', [
   'ui.router',
   'ui.bootstrap',
   'ui.keypress',
-  'pasvaz.bindonce',
   'infinite-scroll'
 ]).config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.

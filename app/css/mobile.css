@@ -24,7 +24,7 @@
     }
 
     .desktop-only {
-        display: none;
+        display: none!important;
     }
 
     .table-wrapper {
@@ -242,8 +242,20 @@
         box-sizing: border-box;
     }
 
+    #herounit .login-form {
+        width: inherit;
+    }
+
+    #herounit {
+        padding: 5px;
+    }
+
     .left-footer {
         padding-bottom: 10px;
+    }
+
+    #hero-wrapper .infounit, #hero-wrapper .showcase{
+        display: none;
     }
 
     /* ==========================================================================
@@ -274,8 +286,8 @@
         background-color: transparent;
     }
 
-#herounit .showcase .header h2 {
-    font-size: 15px;
-}
+    #herounit .showcase .header h2 {
+        font-size: 15px;
+    }
 
 }

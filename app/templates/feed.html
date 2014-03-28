@@ -12,7 +12,7 @@
         </div>
         </div>
     
-    <div data-step="1" data-position="left" data-intro="Hier findest Du Deine Aktivitäten und die der Leute aus Deiner Watchlist.">
+    <div>
         <!-- ACTUAL FEED BEGIN -->
         <div ng-repeat="message in displaymessages track by $index" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type" ng-show="message.type == 'mod-notification' || message">
             

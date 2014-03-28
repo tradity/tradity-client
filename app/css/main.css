@@ -61,48 +61,40 @@ header#header {
     z-index: 9999;
 }
 
-#logo {
-    float: left;
-    padding: 5px;
-    height: 40px;
-}
-
-#logo img {
-    height: 100%;
-}
-
-header#header h2 {
+header#header .icon-bar, header#header .icon-bar li {
     margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+header#header .icon-bar > li {
+    float: left;
+    display: block;
+    height: 50px;
+}
+
+header#header .icon-bar > li > *, header#header .icon-bar > li > * img {
+    display: block;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+header#header .icon-bar > li >  a.icon, header#header .icon-bar li > div > a.icon {
+    font-size: 19px;
+    padding: 13px;
+    display: block;
+}
+
+header#header .text h2 {
+    margin: 0;
     font-size: 1em;
     line-height: 1.4;
 }
 
-header#header .inline {
-    padding: 7px;
-    height: 36px;
-}
-
-header#header .name {
-    height: 28px;
-    padding: 11px;
-}
-
-header#header .cog {
-    font-size: 17px;
-    display: block;
-    height: 22px;
-    padding: 14px 0px;
-}
-
-header#header .dropdown-menu {
-    left: inherit;
-    margin-left: -67px
-}
-
-header#header .fa-item {
-    display: inline-block;
-    font-size: 17px;
-    padding:14px;
+header#header .text > div {
+    padding: 6px;
+    height: auto;
 }
 
 /* ==========================================================================
@@ -137,87 +129,15 @@ header#header .fa-item {
    info grid
    ========================================================================== */
 
-    .info-grid .item {
-        text-align: center;
-        padding: 5px;
-        margin: 0px 5px;
-    }
-
-    .info-grid .item b {
-        display: block;
-    }
-
-/* ==========================================================================
-   Print styles
-   ========================================================================== */
-
-@media print {
-    * {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    /*
-     * Don't show links for images, or javascript/internal links
-     */
-
-    .ir a:after,
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-        content: "";
-    }
-
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    thead {
-        display: table-header-group; /* h5bp.com/t */
-    }
-
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
-
-    img {
-        max-width: 100% !important;
-    }
-
-    @page {
-        margin: 0.5cm;
-    }
-
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+.info-grid .item {
+    text-align: center;
+    padding: 5px;
+    margin: 0px 5px;
 }
 
+.info-grid .item b {
+    display: block;
+}
 
 /* ==========================================================================
    herounit
@@ -232,75 +152,6 @@ header#header .fa-item {
     text-align: center;
 }
 
-#herounit .showcase {
-    text-align: left;
-}
-
-#herounit .row {
-    margin: 0px;
-    padding: 0px;
-    overflow: hidden;
-    cursor: pointer;
-
-    -moz-box-sizing: border-box; 
-    -webkit-box-sizing: border-box; 
-    box-sizing: border-box;
-    border-right: 1px solid #fff;
-}
-
-#herounit .row.last {
-    border-right: none;
-}
-
-#herounit .showcase .header .fa {
-    font-size: 40px;
-    background: #fff;
-    -webkit-border-radius: 80px;
-    border-radius: 80px;
-    padding: 15px;
-    -webkit-box-shadow:inset 0 0 8px 0 rgba(20,20,20,0.2);
-    box-shadow:inset 0 0 8px 0 rgba(20,20,20,0.2);
-    color: #333;
-    margin-bottom: 10px;
-    text-shadow: none;
-}
-
-#herounit .showcase .header {
-    text-align: center;
-    background: #ff7b4b; /* Old browsers */
-    background: -moz-linear-gradient(top,  #ff7b4b 8%, #ff6d38 73%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(8%,#ff7b4b), color-stop(73%,#ff6d38)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #ff7b4b 8%,#ff6d38 73%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #ff7b4b 8%,#ff6d38 73%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #ff7b4b 8%,#ff6d38 73%); /* IE10+ */
-    background: linear-gradient(to bottom,  #ff7b4b 8%,#ff6d38 73%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7b4b', endColorstr='#ff6d38',GradientType=0 ); /* IE6-9 */
-    padding: 15px;
-}
-
-#herounit .showcase .blue {
-    background: #438ebb; /* Old browsers */
-    background: -moz-linear-gradient(top,  #438ebb 8%, #1b80ba 73%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(8%,#438ebb), color-stop(73%,#1b80ba)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #438ebb 8%,#1b80ba 73%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #438ebb 8%,#1b80ba 73%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #438ebb 8%,#1b80ba 73%); /* IE10+ */
-    background: linear-gradient(to bottom,  #438ebb 8%,#1b80ba 73%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#438ebb', endColorstr='#1b80ba',GradientType=0 ); /* IE6-9 */
-}
-
-#herounit .showcase h2 {
-    color: #fff;
-    text-shadow: 1px 1px 0 #333;
-    padding: 0px;
-    margin: 0px;
-    font-weight: normal;
-}
-
-#herounit .showcase p {
-    margin: 0px;
-    font-size: 14px;
-}
 
 #herounit .actions {
     text-align: center;
@@ -389,123 +240,6 @@ header#header .fa-item {
 #herounit .footer .footer-right:hover {
     opacity: 1;
 }
-
-
-/* info unit */
-
-.infounit {
-    min-height: 100%;
-    width: 100%;
-    background-color:#ecf0f1;
-    padding: 50px 0px;
-    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-    box-sizing: border-box;         /* Opera/IE 8+ */
-
-
-    background: #ff7b4b; /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover,  #ff7b4b 8%, #ff6d38 73%); /* FF3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(8%,#ff7b4b), color-stop(73%,#ff6d38)); /* Chrome,Safari4+ */
-    background: -webkit-radial-gradient(center, ellipse cover,  #ff7b4b 8%,#ff6d38 73%); /* Chrome10+,Safari5.1+ */
-    background: -o-radial-gradient(center, ellipse cover,  #ff7b4b 8%,#ff6d38 73%); /* Opera 12+ */
-    background: -ms-radial-gradient(center, ellipse cover,  #ff7b4b 8%,#ff6d38 73%); /* IE10+ */
-    background: radial-gradient(ellipse at center,  #ff7b4b 8%,#ff6d38 73%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff7b4b', endColorstr='#ff6d38',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-}
-
-.infounit.first {
-    box-sizing: border-box;         /* Opera/IE 8+ */
-    -webkit-box-shadow:inset 0 5px 5px 0 rgba(40,40,40,0.2);
-    box-shadow:inset 0 5px 5px 0 rgba(40,40,40,0.2);
-}
-
-.infounit.blue {
-    background: #438ebb; /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover,  #438ebb 0%, #408dbb 13%, #1b80ba 72%, #1b80ba 100%); /* FF3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#438ebb), color-stop(13%,#408dbb), color-stop(72%,#1b80ba), color-stop(100%,#1b80ba)); /* Chrome,Safari4+ */
-    background: -webkit-radial-gradient(center, ellipse cover,  #438ebb 0%,#408dbb 13%,#1b80ba 72%,#1b80ba 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-radial-gradient(center, ellipse cover,  #438ebb 0%,#408dbb 13%,#1b80ba 72%,#1b80ba 100%); /* Opera 12+ */
-    background: -ms-radial-gradient(center, ellipse cover,  #438ebb 0%,#408dbb 13%,#1b80ba 72%,#1b80ba 100%); /* IE10+ */
-    background: radial-gradient(ellipse at center,  #438ebb 0%,#408dbb 13%,#1b80ba 72%,#1b80ba 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#438ebb', endColorstr='#1b80ba',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
-
-.infounit .header {
-    text-align: center;
-    color: #fff;
-}
-
-.infounit .header .fa {
-    font-size: 70px;
-    background: #fff;
-    -webkit-border-radius: 80px;
-    border-radius: 80px;
-    padding: 25px;
-    -webkit-box-shadow:inset 0 0 8px 0 rgba(20,20,20,0.4);
-    box-shadow:inset 0 0 8px 0 rgba(20,20,20,0.4);
-    color: #333;
-    margin-bottom: 10px;
-    text-shadow: none;
-}
-
-.infounit .header h2 {
-    margin-top: 0px;
-    text-shadow: 1px 1px 0 #333;
-    margin-bottom: 50px;
-}
-
-.infounit .content {
-    font-size: 14px;
-    color: #fff;
-    text-shadow: 1px 1px 0 #444;
-    text-align: justify;
-}
-
-.herounit-spacer {
-    width: 100%;
-    min-height: 100%;
-}
-
-/* das team */
-
-.infounit.team > .content{
-    text-align: center;
-    width: 900px;
-    margin: auto;
-    margin-top: 50px;
-}
-
-.infounit.team .team-item {
-    display: inline-block;
-    width: 200px;
-    margin-bottom: 70px;
-    margin-right: 35px;
-    margin-left: 35px;
-}
-
-.infounit.team img.team-pic {
-    -webkit-border-radius: 250px;
-    border-radius: 250px;
-    width: 100%;
-    -webkit-box-shadow: 0 0 10px 0 rgba(20,20,20,0.4);
-    box-shadow: 0 0 10px 0 rgba(20,20,20,0.4);
-}
-
-.infounit.team h2, .infounit.team  p {
-    margin: 0px;
-}
-
-.infounit.team h2 {
-    text-align: center;
-    padding: 10px 0px;
-}
-
-.infounit.team .team-item .content {
-    padding: 0px 10px;
-    text-align: center;
-}
-
 
 /* ==========================================================================
    Walkthrough
@@ -660,12 +394,6 @@ header#header .fa-item {
     margin-bottom: 5px;
     clear: left;
     min-height: 40px;
-}
-
-#header #profile-picture {
-    background-image: url(../img/profile.svg);
-    background-size: cover;
-    margin-top: -11px;
 }
 
 

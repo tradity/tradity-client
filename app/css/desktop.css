@@ -179,30 +179,30 @@
        Tabbing
        ========================================================================== */
 
-    #tabs ul {
+    #tabs > ul {
         height: 40px;
         border:1px solid #E5E5E5;
         height: 37px;
     }
 
-    #tabs ul, #tabs li {
+    #tabs > ul, #tabs > ul li {
         margin: 0px;
         padding: 0px;
         list-style-type: none;
         font-size: 15px;
     }
 
-    #tabs ul li {
+    #tabs > ul li {
         float: left;
     }
 
-    #tabs ul a {
+    #tabs > ul a {
         display: block;
         padding: 8px 10px;
         border-right:1px solid #E5E5E5;
     }
 
-    #tabs ul a.active, #tabs ul a:hover  {
+    #tabs > ul a.active, #tabs > ul a:hover  {
         background: #E5E5E5;
         color: #000;
     }

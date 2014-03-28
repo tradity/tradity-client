@@ -10,8 +10,8 @@ a {
   color: #333;
 }
 
-#feed a, .subschoollist a, .table a:hover {
-    color: #00008F;
+#feed a, .subschoollist a, .table a:hover, .widget a {
+    color: #010172;
 }
 
 .table .fa {

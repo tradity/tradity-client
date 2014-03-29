@@ -60,7 +60,7 @@ SoTradeConnection.prototype.invokeListeners = function(data, listener) {
 SoTradeConnection.prototype.responseHandler = function(data) {
 	var rid = data['is-reply-to'].split('--');
 	var type = rid[0];
-	if ((type == 'login' || data.code == 'login-success' || type == 'register' || data.code.test(/^reg-/)) && data.key)
+	if ((type == 'login' || data.code == 'login-success' || type == 'register' || (data.code && data.code.match(/^reg-/))) && data.key)
 		this.setKey(data.key);
 		
 	var numericID = parseInt(rid[1]);

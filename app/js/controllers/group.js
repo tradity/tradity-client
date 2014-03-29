@@ -29,7 +29,6 @@ angular.module('tradity').
         $scope.schoolid = $scope.school.id;
         if (!$scope.school.banner)
           $scope.school.banner = $scope.serverConfig.defaultschoolbanner;
-        //$scope.computeGroupRanking();
         
         $.each($scope.comments, function(i, e) {
           if (e.trustedhtml)

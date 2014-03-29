@@ -1,5 +1,5 @@
 angular.module('tradity').
-  controller('WalkthrougCtrl', function($scope, $timeout, $location, socket, $rootScope) {    
+  controller('WalkthroughCtrl', function($scope, $timeout, $location, socket, $rootScope) {    
     $scope.steps = [
       {
         name: "Willkommen",

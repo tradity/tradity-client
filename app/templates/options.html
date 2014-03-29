@@ -109,15 +109,6 @@
     </div>
     
   </form>
-  <form ng-submit="createInviteLink()" class="pure-form pure-form-stacked">
-    <div>
-      <h2>User einladen</h2>
-      Per E-Mail:
-      <textarea ng-model="inviteemails" id="inviteemails" placeholder="Füge hier E-Mail-Adressen ein, an die Du Einladungen verschicken willst" class="options-input pure-input-1"></textarea>
-      <input type="submit" value="Einladen" id="options-sb">
-      <br />
-      oder benutze diesen Link:
-      <span id="invitelink" class="options-input pure-input-1"><a href="{{invitelink}}">{{invitelink || '…'}}</a></span>
-    </div>
-  </form>
+  <h2>User einladen</h2>
+  <ng-include src="'templates/inviteform.html'"></ng-include>
 </div>

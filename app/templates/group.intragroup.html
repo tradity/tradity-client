@@ -13,8 +13,8 @@
 				<th>erh. Provision</th>
 				<th>Gesamtvermögen</th>
 			</tr>
-			<tr ng-repeat="result in intraGroupResults | orderBy:'igrank' ">
-				<td>{{result.igrank}}</td>
+			<tr ng-repeat="result in results | orderBy:'rank' ">
+				<td>{{result.rank}}</td>
 				<td class="rank-name">
 					<a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a>
 					<span ng-show="isAdmin" class="pull-right">

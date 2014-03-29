@@ -15,7 +15,7 @@
 				<th>erh. Provision</th>
 				<th>Gesamtvermögen</th>
 			</tr>
-			<tr ng-repeat="result in interGroupResults | filter: searchText | limitTo:totalDisplayed">
+			<tr ng-repeat="result in results | orderBy:'rank' | filter: searchText | limitTo:totalDisplayed">
 				<td>{{result.rank}}</td>
 				<td><a href="#/s{{result.schoolpath}}">{{result.schoolname}}</a></td>
 				<td>{{result.count}}</td>

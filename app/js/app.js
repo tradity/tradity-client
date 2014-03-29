@@ -131,11 +131,6 @@ angular.module('tradity', [
       templateUrl: 'templates/ranking.intergroup.html',
       controller: 'RankingGroupCtrl'
     }).
-    state('game.ranking.intragroup', {
-      url: '/intragroup',
-      templateUrl: 'templates/ranking.intragroup.html',
-      controller: 'RankingGroupCtrl'
-    }).
     state('game.profile', {
       url: '/user/:userId',
       templateUrl: 'templates/profile.html',
@@ -202,7 +197,22 @@ angular.module('tradity', [
     state('game.group.intragroup', {
       url: '/intragroup',
       templateUrl: 'templates/group.intragroup.html',
-      controller: 'RankingGroupCtrl'
+      controller: 'RankingAllCtrl'
+    }).
+    state('game.group.intragroup-follower', {
+      url: '/intragroup',
+      templateUrl: 'templates/group.intragroup.html',
+      controller: 'RankingFollowerCtrl'
+    }).
+    state('game.group.intragroup-week', {
+      url: '/intragroup',
+      templateUrl: 'templates/group.intragroup.html',
+      controller: 'RankingAllWeekCtrl'
+    }).
+    state('game.group.intragroup-follower-week', {
+      url: '/intragroup',
+      templateUrl: 'templates/group.intragroup.html',
+      controller: 'RankingFollowerWeekCtrl'
     }).
     state('game.group.intergroup', {
       url: '/intergroup',

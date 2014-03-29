@@ -2,7 +2,6 @@ angular.module('tradity').
   controller('RankingGroupCtrl', function($scope, $stateParams, $location, socket) {
   	$scope.results = [];
   	$scope.school = {};
-  	$scope.intraGroupResults = [];
     $scope.interGroupResults = [];
 
   	$scope.$on('user-update', function() {
@@ -24,16 +23,7 @@ angular.module('tradity').
       }, function(schoollist) {
         var schools = schoollist.result || [];
         
-        $scope.intraGroupResults = [];
         $scope.interGroupResults = [];
-        
-        $.each($scope.results, function(i, e) {
-          if (e.school == null)
-            return;
-          
-          if ((($scope.ownUser && e.school == $scope.ownUser.schoolid) || $scope.school) && !e.pending)
-            $scope.intraGroupResults.push(e);
-        });
         
         // linearize intergroup results
         $.each(schools, function(i, s) {
@@ -74,11 +64,6 @@ angular.module('tradity').
         for (var i = 0; i < $scope.interGroupResults.length; ++i)
           $scope.interGroupResults[i].rank = i+1;
         
-        /* linearize intragroup results */
-        $scope.intraGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
-        for (var i = 0; i < $scope.intraGroupResults.length; ++i)
-          $scope.intraGroupResults[i].igrank = i+1;
-          
         $scope.school.usercount = $scope.results.length - $scope.pendingMembers.length;
         
         $.each($scope.results, function(i, e) {

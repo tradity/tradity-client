@@ -83,7 +83,7 @@ SoTradeConnection.prototype.responseHandler = function(data) {
 	
 	datalog('<', data);
 	
-	this.invokeListeners(data, waitentry.cb);
+	this.invokeListeners(data, waitentry ? waitentry.cb : null);
 	
 	delete this.ids[numericID];
 };

@@ -1,5 +1,5 @@
 angular.module('tradity').
-  controller('TradeCtrl', function($scope, $stateParams, $location, socket) {
+  controller('TradeCtrl', function($scope, $stateParams, $state, $location, socket) {
     $scope.amount = null;
     $scope.value = null;
     $scope.stockid = null;
@@ -68,11 +68,11 @@ angular.module('tradity').
         switch (data.code) {
           case 'dquery-success':
             alert('Der Trade wird ausgeführt, sobald die angegebenen Bedingungen erfüllt sind.');
-            $location.path('/depot/opentransactions');
+            $state.gi('game.depot.opentransactions');
             break;
           case 'stock-buy-success':
             alert('Trade erfolgreich');
-            $location.path('/depot');
+            $state.go('game.depot');
             break;
           case 'stock-buy-out-of-money':
             alert('Nicht genügend Geld zum Trade');
@@ -85,7 +85,7 @@ angular.module('tradity').
             break;
           case 'stock-buy-autodelay-sxnotopen':
             alert('Der Trade wird ausgeführt, sobald der Handelsplatz öffnet');
-            $location.path('/depot/opentransactions');
+            $state.go('game.depot.transactions');
             break;
           case 'stock-buy-over-pieces-limit':
             alert('Leider übersteigt dein Trade die handelbare Menge für dieses Wertpapier!');

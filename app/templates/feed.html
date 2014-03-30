@@ -241,8 +241,10 @@
             <div ng-switch-when="reset">
                 <div class=" feed-entry-symbol"></div>
                 <div class="feed-entry-content">
+                    <div class="feed-head">
+                        <span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+                    </div>
                     <a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat seinen Account zurückgesetzt.
-                    <span class="feed-time" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
                 </div>
             </div>
             <div ng-switch-when="reset-self">

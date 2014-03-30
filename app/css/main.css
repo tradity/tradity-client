@@ -102,7 +102,7 @@ header#header .text > div {
    ========================================================================== */
 
 #notifications {
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 50%;
     width: 250px;

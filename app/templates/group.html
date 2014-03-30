@@ -15,11 +15,11 @@
 	<div id="tabs">
 		<ul>
 			<li><a ui-sref=".pinboard">Pinnwand</a></li>
-			<li><a ui-sref=".intragroup">Rangliste</a></li>
-			<li><a ui-sref=".intragroup-follower">Followerrangliste</a></li>
-			<li><a ui-sref=".intragroup-follower-week">Followerrangliste (Woche)</a></li>
-			<li><a ui-sref=".intragroup-week">Wochenrangliste</a></li>
-			<li><a ui-sref=".intergroup" ng-show="interGroupResults.length > 1">Gruppenrangliste</a></li>
+			<li ng-show="school.config.rankingTabs.indexOf('all') >= 0"><a ui-sref=".intragroup">Rangliste</a></li>
+			<li ng-show="school.config.rankingTabs.indexOf('follower') >= 0"><a ui-sref=".intragroup-follower">Followerrangliste</a></li>
+			<li ng-show="school.config.rankingTabs.indexOf('follower-week') >= 0"><a ui-sref=".intragroup-follower-week">Followerrangliste (Woche)</a></li>
+			<li ng-show="school.config.rankingTabs.indexOf('all-week') >= 0"><a ui-sref=".intragroup-week">Wochenrangliste</a></li>
+			<li ng-show="school.config.rankingTabs.indexOf('intergroup') >= 0 && interGroupResults.length > 1"><a ui-sref=".intergroup">Gruppenrangliste</a></li>
 		</ul>
 		<div class="pure-g-r">
 			<div class="pure-u-2-3 conti">

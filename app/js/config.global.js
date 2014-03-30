@@ -1,2 +1,2 @@
 angular.module('tradity')
-	.constant('API_HOST', 'tradity.de');
+	.constant('API_HOST', 'https://tradity.de:443');

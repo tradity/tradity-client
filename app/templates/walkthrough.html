@@ -1,6 +1,12 @@
-<div id="walkthrough" ng-controller="WalkthroughCtrl" ng-show="show">
-	<div class="content">
-		<h2>{{name}}</h2>
-		<p>{{description}}</p>
+<div ng-controller="WalkthroughCtrl" ng-show="show">
+	<div id="walkthrough">
+		<div class="content">
+			<h2>{{name}}</h2>
+			<p>{{description}}</p>
+		</div>
+	</div>
+
+	<div class="WalkProgress">
+		<progressbar value='(step / steps.length) * 100'></progressbar>
 	</div>
 </div>

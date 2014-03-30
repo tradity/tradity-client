@@ -248,6 +248,7 @@ header#header .text > div {
 
 #walkthrough {
     position: fixed;
+    z-index: 999999999999;
     bottom: 30px;
     width: 500px;
     left:50%;
@@ -256,8 +257,7 @@ header#header .text > div {
     padding: 15px;
     color:#fff;
     text-shadow:1px 1px #333;
-    -webkit-box-shadow: 0 0 20px 0 rgba(20,20,20,0.7);
-    box-shadow: 0 0 20px 0 rgba(20,20,20,0.7);
+    border: 5px solid #fff;
 } 
 
 #walkthrough h2 {
@@ -267,6 +267,15 @@ header#header .text > div {
 #walkthrough p {
     font-size: 16px;
     margin: 5px 0px;
+}
+
+.WalkProgress {
+    position: fixed;
+    z-index: 999999999999;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 5px;
 }
 
 .pointPointArrow{

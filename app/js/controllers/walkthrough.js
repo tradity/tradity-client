@@ -1,41 +1,53 @@
 angular.module('tradity').
-  controller('WalkthroughCtrl', function($scope, $timeout, $location, socket, $rootScope) {    
+  controller('WalkthroughCtrl', function($scope, $timeout, $location, $state, socket, $rootScope) {    
     $scope.steps = [
       {
         name: "Willkommen",
         description: "Um den tollsten Menschen der Welt zu Watchen ! Klicke auf die Rangliste !",
         condition:{
-          type:'route',
+          type:'state',
           element:'#rangliste',
-          path:'#/ranking'
+          state:'game.ranking.all'
         }
       },
       {
         name: "Toll",
         description: "Du hast es fast Geschaft noch ein Schritt zur Weltherschaft ! Suche einfacheruser",
         condition:{
-          type:'submit',
-          element:'#rankingSearch'
+          type:'keyup',
+          value:'einfacheruser',
+          element:'#rankingSearch input'
         }
       },
       {
         name: "jaaaa :)",
         description: "Klicke jetzt auf mich ! :D",
         condition:{
-          type:'click',
-          element:'#user-name-einfacheruser',
+          type:'state',
+          state:'game.profile.overview',
+          key:'userId',
+          value:'einfacheruser'
         }
       }
     ]
 
     $scope.step = 0;
-    $scope.show = false;
+    $scope.show = true;
     $scope.pp;
 
-    $scope.initStep = function() {
-      var thisStep = $scope.steps[$scope.step];
+    var thisStep = $scope.steps[$scope.step];
 
-      var rm = function() {
+
+    var nextStep = function() {
+      $scope.step++;
+      if ($scope.step != $scope.steps.length) $scope.initStep();
+      else {
+        $scope.show = false;
+        reset();
+      }
+    }
+
+    var reset = function() {
         if ($scope.step != 0) {
           if ($scope.steps[$scope.step-1].condition.cb) $scope.steps[$scope.step-1].condition.cb();
           $($scope.steps[$scope.step-1].condition.element).unbind().removeClass('blink');
@@ -46,33 +58,34 @@ angular.module('tradity').
         $scope.description = thisStep.description;
         $scope.pp = $(thisStep.condition.element).pointPoint().addClass('blink');   
 
-      }
+    }
 
-      rm();
 
-      var nextStep = function() {
-        $scope.step++;
-        if ($scope.step != $scope.steps.length) $scope.initStep();
-        else {
-          $scope.show = false;
-          rm();
-        }
-      }
-        
-      
-      if (thisStep.condition.type == 'click' || thisStep.condition.type == 'submit') {
-        $(thisStep.condition.element).bind($scope.steps[$scope.step].condition.type,function() {
-          $timeout(nextStep,500);
-        })
-      } else if (thisStep.condition.type == 'route') {
-        thisStep.condition.cb = $rootScope.$on("$locationChangeSuccess", function(event, next, current) { 
+    $scope.initStep = function() {
+      thisStep = $scope.steps[$scope.step];
+      reset();
 
-          var parser = document.createElement('a');
-          parser.href = next;
+      switch (thisStep.condition.type) {
+        case "state":
+          thisStep.condition.cb = $rootScope.$on("$viewContentLoaded", function(event) { 
+            console.log($state)
+            if (thisStep.condition.key && thisStep.condition.value) {
+              if ($state.params[thisStep.condition.key] == thisStep.condition.value) nextStep();
+            }
+            else if ($state.current.name == thisStep.condition.state)
+              nextStep();
 
-          if (parser.hash == thisStep.condition.path)
-            $timeout(nextStep,100);
-        });        
+          });
+          break;
+        default:
+          $(thisStep.condition.element).bind($scope.steps[$scope.step].condition.type,function() {
+            if (thisStep.condition.value) {
+              if (thisStep.condition.value == $(thisStep.condition.element).val())
+                $timeout(nextStep(),500);
+            }
+            else $timeout(nextStep,500);
+          })
+        break;
       }
     }
 

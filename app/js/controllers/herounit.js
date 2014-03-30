@@ -1,5 +1,6 @@
 angular.module('tradity').
-  controller('HerounitCtrl', function($scope, $stateParams, $state, socket, $window) {
+  controller('HerounitCtrl', function($scope, $rootScope, $stateParams, $state, socket, $window) {
+
     var onResize = function () {
       setTimeout(function() {
             $('#herounit').css('margin-top', -($('#herounit').height()/2));
@@ -11,7 +12,9 @@ angular.module('tradity').
     }
 
     socket.on('get-user-info', function(data) {
-      console.log(data)
+      if(data.code != 'not-logged-in') {
+        window.location = '#/feed';
+      }
     }, $scope)
 
     socket.emit('get-user-info', { lookfor: '$self', _cache: 20 });

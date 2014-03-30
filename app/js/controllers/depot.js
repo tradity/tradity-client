@@ -1,6 +1,5 @@
 angular.module('tradity').
   controller('DepotCtrl', function($scope, socket) {    
-    $scope.delayedOrders = [];
     var ownDepotOrUser = function() {
       if (!$scope.ownUser)
         return;

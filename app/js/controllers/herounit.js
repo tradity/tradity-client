@@ -9,4 +9,11 @@ angular.module('tradity').
     $scope.goto = function (id) {
       $("#hero-wrapper").animate({scrollTop:$('#'+id).offset().top}, 1700)
     }
+
+    socket.on('get-user-info', function(data) {
+      console.log(data)
+    }, $scope)
+
+    socket.emit('get-user-info', { lookfor: '$self', _cache: 20 });
+
   });

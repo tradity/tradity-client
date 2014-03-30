@@ -68,12 +68,10 @@ angular.module('tradity').
         notification('Neues Passwort wird versandt');
       }
     });
+    
     $scope.passwordReset = function() {
       socket.emit('password-reset', {
         name: $scope.username
       });
     };
-    socket.emit('ping', function(data) {
-      
-    });
   });

@@ -60,6 +60,7 @@ angular.module('tradity').
       
       $scope.$broadcast('user-update', data);
     }, $scope);
+    
     socket.on('get-user-info', function(data) {
       var r = data.result;
       if (r && r.isSelf) {
@@ -71,6 +72,7 @@ angular.module('tradity').
         $scope.$broadcast('user-update', r);
       }
     }, $scope);
+    
     socket.on('get-config', function(data) {
       var cfg = data.config;
       for (var k in cfg)

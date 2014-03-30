@@ -12,11 +12,9 @@ angular.module('tradity').
     }
 
     socket.on('get-user-info', function(data) {
-      if(data.code != 'not-logged-in') {
-        window.location = '#/feed';
-      }
-    }, $scope)
+      if (data.code != 'not-logged-in')
+        $state.go('game.feed');
+    }, $scope);
 
-    socket.emit('get-user-info', { lookfor: '$self', _cache: 20 });
-
-  });
+    $scope.fetchSelf();
+});

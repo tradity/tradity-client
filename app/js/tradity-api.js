@@ -63,6 +63,8 @@ SoTradeConnection.prototype.responseHandler = function(data) {
 	if ((type == 'login' || data.code == 'login-success' || type == 'register' || (data.code && data.code.match(/^reg-/))) && data.key)
 		this.setKey(data.key);
 		
+	data.type = type;
+		
 	var numericID = parseInt(rid[1]);
 	var waitentry = this.ids[numericID];
 	

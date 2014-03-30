@@ -332,6 +332,36 @@
         color: #2b3990;
     }
 
+    nav#nav .menu-item .subMenu {
+        display: none;
+        position: absolute;
+        background: #fff;
+        padding: 5px;
+        margin: 0px;
+        margin-left: 150px;
+        margin-top: -20px;
+
+        -webkit-box-shadow: 3px 0 3px 0 rgba(20,20,20,0.1);
+        box-shadow: 3px 0 3px 0 rgba(20,20,20,0.1);
+
+    }
+
+    nav#nav .menu-item .subMenu a{
+        margin: 0px;
+        padding: 7px;
+    }
+
+
+    nav#nav .menu-item:hover .subMenu {
+        display: block;
+    }
+
+    nav#nav .menu-item .subMenu a:hover{
+        
+
+    }
+
+
      /* ==========================================================================
         Header
        ========================================================================== */

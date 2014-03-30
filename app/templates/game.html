@@ -62,10 +62,17 @@
                             <span class="dark nav-block-title">Neuigkeiten</span>
                         </a>
                     </li>
-                    <li ng-show="ownUser.bottomLevelSchool">
+                    <li ng-show="ownUser.bottomLevelSchool"  class="menu-item">
+                        <ul class="subMenu">
+                            <li><a href="">Andere Schule</a></li>
+                            <li><a href="">Andere Schule</a></li>
+                            <li><a href="">Andere Schule</a></li>
+                            <li><a href="">Andere Schule</a></li>
+                        </ul>
                         <a href="#/s{{ownUser.bottomLevelSchool.path}}/pinboard" accesskey="g" title="ALT+SHIFT+G" ng-class="{active:isActive('#/s'+ownUser.bottomLevelSchool.path)}">
                             <i class="fa fa-users"></i>
                             <span class="dark nav-block-title">{{ownUser.bottomLevelSchool.name}}</span>
+                            
                         </a>
                     </li>
                     <li>

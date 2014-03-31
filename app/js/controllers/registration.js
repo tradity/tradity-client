@@ -9,6 +9,18 @@ angular.module('tradity').
     $scope.town = '';
     $scope.street = '';
     $scope.invitekey = $stateParams.inviteCode;
+    
+    if ($scope.invitekey) {
+      socket.emit('get-invitekey-info', {
+        invitekey: $scope.invitekey
+      }, function(data) {
+        if (data.code == 'get-invitekey-info-success') {
+          $scope.email = data.result.email;
+          $scope.school = data.result.schoolid;
+        }
+      });
+    }
+    
     socket.on('register', function(data) {
       switch (data.code) {
         case 'reg-success':

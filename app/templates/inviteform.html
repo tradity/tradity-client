@@ -2,9 +2,10 @@
 	<div>
 		Per E-Mail:
 		<textarea ng-model="inviteemails" id="inviteemails" placeholder="Füge hier E-Mail-Adressen ein, an die Du Einladungen verschicken willst" class="options-input pure-input-1"></textarea>
-		<input type="submit" value="Einladen" id="options-sb">
+		<input type="submit" value="Einladen" class="btn btn-sm btn-default">
 		<br />
 		oder benutze diesen Link:
 		<span id="invitelink" class="options-input pure-input-1"><a href="{{invitelink}}">{{invitelink || '…'}}</a></span>
+		<i>(Rechtsklick Link kopieren)</i>
 	</div>
 </form>

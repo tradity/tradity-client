@@ -10,7 +10,7 @@ a {
   color: #333;
 }
 
-#feed a, .subschoollist a, .table a:hover, .widget a {
+#feed a, .subschoollist a, .table a:hover, .widget , #faq a {
     color: #010172;
 }
 
@@ -41,6 +41,10 @@ a {
 
 .inline {
     display: inline-block;
+}
+
+ul.styled li {
+    list-style-type: square;
 }
 
 /* ==========================================================================
@@ -472,3 +476,8 @@ header#header .text > div {
 }
 
 
+#invitelink {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}

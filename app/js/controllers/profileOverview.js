@@ -61,6 +61,15 @@ angular.module('tradity').
             }
           }
         },
+
+
+        grid:{
+          background:'#fff',
+          borderColor:'#F3F3F3',
+          gridLineColor:'#F3F3F3',
+          borderWidth:1,
+          shadow:false,
+        },
         highlighter: {
           show: true,
           sizeAdjust: 2
@@ -74,7 +83,8 @@ angular.module('tradity').
         series: [
           {
             showMarker: mode.marker,
-            markerOptions: { style: 'circle', size: 2 }
+            markerOptions: { style: 'circle', size: 2 },
+            shadow:false
           }
         ]
       });

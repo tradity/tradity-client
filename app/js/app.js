@@ -185,17 +185,15 @@ angular.module('tradity', [
       templateUrl: 'templates/admin.html'
     }).
     state('game.group', {
-      url: '/s/:schoolid',
+      url: '/s/*schoolid',
       templateUrl: 'templates/group.html',
       controller: 'GroupCtrl'
     }).
     state('game.group.pinboard', {
-      url: '/pinboard',
       templateUrl: 'templates/group.pinboard.html',
       controller: 'CommentCtrl'
     }).
     state('game.group.intragroup', {
-      url: '/intragroup',
       templateUrl: 'templates/group.intragroup.html',
       controller: 'RankingAllCtrl'
     }).
@@ -215,7 +213,6 @@ angular.module('tradity', [
       controller: 'RankingFollowerWeekCtrl'
     }).
     state('game.group.intergroup', {
-      url: '/intergroup',
       templateUrl: 'templates/group.intergroup.html',
       controller: 'RankingGroupCtrl'
     });

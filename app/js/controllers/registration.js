@@ -24,7 +24,10 @@ angular.module('tradity').
     socket.on('register', function(data) {
       switch (data.code) {
         case 'reg-success':
-          alert('Registrierung erfolgreich');
+          notification('Registrierung erfolgreich', true);
+          $scope.fetchSelf(function() {
+            $scope.pokeEvents();
+          });
           $state.go('game.feed');
           break;
         case 'reg-email-failed':

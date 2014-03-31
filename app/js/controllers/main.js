@@ -9,10 +9,12 @@ angular.module('tradity').
 
     $scope.toggleMenu = function() {
       $('body').toggleClass('menuShow');
-      $('nav a').click(function () {
-        $('body').removeClass('menuShow');
-      });
+
     };
+
+    $scope.$on('$locationChangeSuccess', function(next, current) { 
+      $('body').removeClass('menuShow');
+    });
     
     $scope.$on('makeadmin', function() { $scope.isAdmin = true; });
     

@@ -314,7 +314,6 @@
 
     nav#nav a {
         display: block;
-        width: 100%;
         text-align: center;
         font-size: 15px;
         margin: 50px 0px;
@@ -336,7 +335,6 @@
         display: none;
         position: absolute;
         background: #fff;
-        padding: 5px;
         margin: 0px;
         margin-left: 150px;
         margin-top: -20px;
@@ -348,7 +346,9 @@
 
     nav#nav .menu-item .subMenu a{
         margin: 0px;
-        padding: 7px;
+        padding: 12px;
+        display: block;
+        min-width: 100px;
     }
 
 
@@ -357,8 +357,8 @@
     }
 
     nav#nav .menu-item .subMenu a:hover{
-        
-
+        color: #fff;
+        background: #ccc;
     }
 
 

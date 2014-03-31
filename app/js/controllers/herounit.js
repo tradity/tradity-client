@@ -7,6 +7,7 @@ angular.module('tradity').
             $('[ng-model="username"]').focus();
       }, 50);
     };
+
     $scope.goto = function (id) {
       $("#hero-wrapper").animate({scrollTop:$('#'+id).offset().top}, 1700)
     }

@@ -102,13 +102,15 @@
         background-color:#0E446A;
         color: #fff;
         overflow: auto;
-
+/* Speeed issues :(
         -webkit-transition: all 0.2s ease-in-out;
         -moz-transition: all 0.2s ease-in-out;
         -ms-transition: all 0.2s ease-in-out;
         -o-transition: all 0.2s ease-in-out;
         transition: all 0.2s ease-in-out;
+*/
     }
+
 
     nav#nav ul, nav#nav li {
         margin:0px;
@@ -146,7 +148,7 @@
         overflow: hidden;
     }
 
-
+/*
     .main-content {
         -webkit-transition: all 0.2s ease-in-out;
         -moz-transition: all 0.2s ease-in-out;
@@ -164,6 +166,7 @@
         opacity: 0.8;
     }
 
+*/
     /* ==========================================================================
        Feed
        ========================================================================== */

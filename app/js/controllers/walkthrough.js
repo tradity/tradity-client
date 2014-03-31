@@ -32,7 +32,7 @@ angular.module('tradity').
     ]
 
     $scope.step = 0;
-    $scope.show = true;
+    $scope.show = false;
     $scope.pp;
 
     var thisStep = $scope.steps[$scope.step];

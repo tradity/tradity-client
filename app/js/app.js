@@ -198,17 +198,14 @@ angular.module('tradity', [
       controller: 'RankingAllCtrl'
     }).
     state('game.group.intragroup-follower', {
-      url: '/intragroup',
       templateUrl: 'templates/group.intragroup.html',
       controller: 'RankingFollowerCtrl'
     }).
     state('game.group.intragroup-week', {
-      url: '/intragroup',
       templateUrl: 'templates/group.intragroup.html',
       controller: 'RankingAllWeekCtrl'
     }).
     state('game.group.intragroup-follower-week', {
-      url: '/intragroup',
       templateUrl: 'templates/group.intragroup.html',
       controller: 'RankingFollowerWeekCtrl'
     }).

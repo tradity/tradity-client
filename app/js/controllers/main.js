@@ -14,13 +14,12 @@ angular.module('tradity').
     };
 
     $scope.$on('$stateChangeSuccess', function(next, current) { 
-      $('body').removeClass('menuShow');
       $scope.loading = false;
     });
 
     $scope.$on('$stateChangeStart', function(next, current) { 
       $scope.loading = true;
-
+      $('body').removeClass('menuShow');
     });
     
     $scope.$on('makeadmin', function() { $scope.isAdmin = true; });

@@ -105,7 +105,6 @@ header#header .icon-bar > li {
 
 header#header .icon-bar > li > *, header#header .icon-bar > li > * img {
     display: block;
-    height: 100%;
     padding: 0px;
     margin: 0px;
 }

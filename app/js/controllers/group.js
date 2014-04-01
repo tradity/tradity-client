@@ -30,6 +30,20 @@ angular.module('tradity').
         if (!$scope.school.banner)
           $scope.school.banner = $scope.serverConfig.defaultschoolbanner;
         
+        $.each($scope.ownUser.schools, function(i, e) {
+          if (e.path == $scope.school.path) {
+            $scope.selfIsSchoolMember = true;
+            return;
+          }
+        });
+        
+        $.each($scope.school.admins, function(i, e) {
+          if (e.adminid == $scope.ownUser.id) {
+            $scope.selfIsSchoolAdmin = true;
+            return;
+          }
+        });
+        
         $.each($scope.comments, function(i, e) {
           if (e.trustedhtml)
             e.comment = $sce.trustAsHtml(e.comment);
@@ -40,7 +54,8 @@ angular.module('tradity').
     $scope.enterTeam = function () {
       socket.emit('get-own-options', function(data) {
         data.result.school = $scope.schoolid;
-        socket.emit('change-options',data.result);
+        socket.emit('change-options', data.result);
+        $scope.selfIsSchoolMember = true;
       });
     };
 
@@ -48,8 +63,10 @@ angular.module('tradity').
       if (confirm("Willst du wirklich die Gruppe verlassen ?")) {
         socket.emit('get-own-options', function(data) {
           data.result.school = null;
-          socket.emit('change-options',data.result);
+          socket.emit('change-options', data.result);
           notification("Gruppe verlassen");
+          $scope.selfIsSchoolMember = false;
+          $scope.selfIsSchoolAdmin = false;
         });          
       }
     };
@@ -69,7 +86,6 @@ angular.module('tradity').
         schoolid: user.school,
         uid: user.uid
       }, function() {
-        $scope.getRanking();
         alert('Ok!');
       });
     };
@@ -83,7 +99,6 @@ angular.module('tradity').
         uid: user.uid,
         status: 'admin'
       }, function() {
-        $scope.getRanking();
         alert('Ok!');
       });
     };
@@ -132,7 +147,6 @@ angular.module('tradity').
         uid: user.uid,
         status: 'member'
       }, function() {
-        $scope.getRanking();
         alert('Ok!');
       });
     };

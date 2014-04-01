@@ -6,14 +6,6 @@ angular.module('tradity').
 
   	$scope.$on('user-update', function() {
       $scope.computeGroupRanking();
-      
-      $scope.selfIsSchoolMember = false;
-      for (var i = 0; i < $scope.ownUser.schools.length; ++i) {
-        if ($scope.ownUser.schools[i].id == $scope.schoolid) {
-          $scope.selfIsSchoolMember = true;
-          break;
-        }
-      }
     });
     
     $scope.computeGroupRanking = function() {
@@ -65,18 +57,6 @@ angular.module('tradity').
           $scope.interGroupResults[i].rank = i+1;
         
         $scope.school.usercount = $scope.results.length - $scope.pendingMembers.length;
-        
-        $.each($scope.results, function(i, e) {
-          if (e.uid == $scope.ownUser.uid)
-            $scope.selfIsSchoolMember = true;
-        });
-        
-        if ($scope.school.admins) {
-          $.each($scope.school.admins, function(i, e) {
-            if (e.adminid == $scope.ownUser.uid)
-              $scope.selfIsSchoolAdmin = true;
-          });
-        }
       });
     };
 

@@ -8,6 +8,7 @@ body {
 a {
   text-decoration: none;
   color: #333;
+  cursor: pointer;
 }
 
 #feed a, .subschoollist a, .table a:hover, .widget , #faq a {

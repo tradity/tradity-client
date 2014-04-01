@@ -182,7 +182,7 @@ angular.module('tradity', [
     }).
     state('admin.userdetails', {
       url: '/userdetails/:uid',
-      templateUrl: 'templates/admin.html'
+      templateUrl: 'templates/admin.userdetails.html'
     }).
     state('game.group', {
       url: '/s/*schoolid',

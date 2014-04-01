@@ -13,12 +13,12 @@ angular.module('tradity').
 
     };
 
-    $scope.$on('$locationChangeSuccess', function(next, current) { 
+    $scope.$on('$stateChangeSuccess', function(next, current) { 
       $('body').removeClass('menuShow');
       $scope.loading = false;
     });
 
-    $scope.$on('$locationChangeStart', function(next, current) { 
+    $scope.$on('$stateChangeStart', function(next, current) { 
       $scope.loading = true;
 
     });

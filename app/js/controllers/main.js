@@ -5,6 +5,7 @@ angular.module('tradity').
     
     $scope.isAdmin = false;
     $scope.ownUser = null;
+    $scope.loading = false;
     $scope.serverConfig = {};
 
     $scope.toggleMenu = function() {
@@ -14,6 +15,12 @@ angular.module('tradity').
 
     $scope.$on('$locationChangeSuccess', function(next, current) { 
       $('body').removeClass('menuShow');
+      $scope.loading = false;
+    });
+
+    $scope.$on('$locationChangeStart', function(next, current) { 
+      $scope.loading = true;
+
     });
     
     $scope.$on('makeadmin', function() { $scope.isAdmin = true; });

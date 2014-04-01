@@ -64,8 +64,8 @@
                             <span class="dark nav-block-title">Neuigkeiten</span>
                         </a>
                     </li>
-                    <li ng-show="ownUser.bottomLevelSchool"  class="menu-item">
-                        <ul class="subMenu">
+                    <li ng-show="ownUser.bottomLevelSchool" class="menu-item">
+                        <ul class="subMenu desktop-only">
                             <li ng-repeat="item in ownUser.schools"><a href="#/s{{item.path}}">{{item.name}}</a></li>
                         </ul>
                         <a href="#/s{{ownUser.bottomLevelSchool.path}}" accesskey="g" title="ALT+SHIFT+G" ng-class="{active:isActive('#/s'+ownUser.bottomLevelSchool.path)}">

@@ -210,7 +210,7 @@
         list-style-type: none;
     }
 
-    #tabs ul a {
+    #tabs > ul a {
         display: block;
         color: #ffffff;
         background-color: #3276b1;

@@ -42,6 +42,15 @@ SoTradeConnection = function(rawsocket) {
 	}).bind(this));
 };
 
+SoTradeConnection.prototype.hasOpenQueries = function() {
+	console.log(this.ids, this.ids.length);
+	
+	for (var i = 0; i < this.ids.length; ++i)
+		if (this.ids[i] && !this.ids[i]._expect_no_response)
+			return true;
+	return false;
+};
+
 SoTradeConnection.prototype.invokeListeners = function(data, listener) {
 	listener = listener || function() {};
 	
@@ -96,6 +105,8 @@ SoTradeConnection.prototype.emit = function(evname, data, cb) {
 		data = null;
 	}
 	
+	cb = cb || function() {};
+	
 	data = data || {};
 	if (!evname)
 		return console.warn('event name missing');
@@ -140,15 +151,14 @@ SoTradeConnection.prototype.emit = function(evname, data, cb) {
 		}).bind(this);
 	}
 	
-	if (cb) {
-		this.ids[id] = {
-			cb: cb,
-			prefill: { 
-				_t_csend: new Date().getTime(),
-				_reqsize: JSON.stringify(data).length
-			}
-		};
-	}
+	this.ids[id] = {
+		cb: cb,
+		prefill: { 
+			_t_csend: new Date().getTime(),
+			_reqsize: JSON.stringify(data).length
+		},
+		_expect_no_response: data._expect_no_response
+	};
 	
 	this.socket.emit('query', data);
 	datalog('>', data);
@@ -184,16 +194,5 @@ SoTradeConnection.prototype.on = function(evname, cb, angularScope) {
 		angularScope.$on('$destroy', function() { delete this_.listeners[evname][index]; });
 	}
 };
-
-SoTradeModel = function(connection) {
-	this.conn = connection;
-};
-
-// model.ownUser.group.name
-Object.defineProperty(SoTradeModel.prototype, 'model', {
-	get: function() {
-		
-	}
-});
 
 })();

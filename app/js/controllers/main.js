@@ -7,6 +7,8 @@ angular.module('tradity').
     $scope.ownUser = null;
     $scope.loading = false;
     $scope.serverConfig = {};
+    
+    $scope.hasOpenQueries = socket.hasOpenQueries.bind(socket);
 
     $scope.toggleMenu = function() {
       $('body').toggleClass('menuShow');
@@ -115,11 +117,12 @@ angular.module('tradity').
       }, $scope);
     }
     
-    $scope.pokeEvents = function(cb) {
+    $scope.pokeEvents = function() {
       socket.emit('fetch-events', {
         since: 0,
-        count: null
-      }, cb);
+        count: null,
+        _expect_no_response: true
+      });
     }
     
     $scope.fetchSelf = function(cb) {

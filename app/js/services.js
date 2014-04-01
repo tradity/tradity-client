@@ -21,6 +21,9 @@ angular.module('tradity').
 						}
 					});
 				});
+			},
+			hasOpenQueries: function () {
+				return socket.hasOpenQueries();
 			}
 		};
 	});

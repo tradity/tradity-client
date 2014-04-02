@@ -8,6 +8,8 @@ angular.module('tradity').
 		function(data) {
 			if (data.code == 'get-ranking-success') {
 				$scope.results = data.result;
+				$scope.results.sort(function(a, b) { return a.rank - b.rank; });
+				
 				for (var i = 0; i < $scope.results.length; ++i)
 					$scope.results[i].rank = i + 1;
 			}

@@ -31,7 +31,7 @@
 	<div class="pure-g info-grid">
 
 		<div class="pure-u-1-3">
-			<div class="item" ng-class="{pos: performanceAll > 0, neg:  performanceAll < 0}">
+			<div class="item" ng-class="{pos: performanceAll > 0, neg: performanceAll < 0}">
 				<b>Gesamt</b>
 				{{ performanceAll = ((ownUser.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
 			</div>
@@ -101,21 +101,21 @@
 
 		<div class="pure-u-1-3">
 			<div class="item">
-				<b>Gesamt</b>
+				<b>Follower</b><br />
 				{{ownUser.f_count}}
 			</div>
 		</div>
 
 		<div class="pure-u-1-3">
 			<div class="item">
-				<b>Heute</b>
+				<b>verkaufte Anteile</b><br />
 				{{ownUser.f_amount}}
 			</div>
 		</div>
 
 		<div class="pure-u-1-3">
 			<div class="item">
-				<b>Woche</b>
+				<b>Woche</b><br />
 				{{ownUser.wprov_sum / 10000|currency}} / {{ownUser.lprov_sum / 10000|currency}}
 			</div>
 		</div>

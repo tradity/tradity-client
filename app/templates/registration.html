@@ -1,33 +1,33 @@
 <div class="register-form">
-  <form class="pure-form pure-form-aligned" ng-submit="register()">
-      <fieldset>
-          <div class="pure-control-group">
-              <label for="name">Benutzername</label>
-              <input id="name" ng-model="name" type="text" placeholder="Benutzername">
-          </div>
+	<form class="pure-form pure-form-aligned" ng-submit="register()">
+			<fieldset>
+				<div class="pure-control-group">
+						<label for="name">Benutzername</label>
+						<input id="name" ng-model="name" type="text" placeholder="Benutzername">
+				</div>
 
-          <div class="pure-control-group">
-              <label for="password">Passwort</label>
-              <input id="password" ng-model="password" type="password" placeholder="Passwort">
-          </div>
+				<div class="pure-control-group">
+						<label for="password">Passwort</label>
+						<input id="password" ng-model="password" type="password" placeholder="Passwort">
+				</div>
 
-          <div class="pure-control-group">
-              <label for="password-repeat">Passwort wiederholen</label>
-              <input id="password-repeat" ng-model="password_check" type="password" placeholder="Passwort">
-          </div>
+				<div class="pure-control-group">
+						<label for="password-repeat">Passwort wiederholen</label>
+						<input id="password-repeat" ng-model="password_check" type="password" placeholder="Passwort">
+				</div>
 
-          <div class="pure-control-group">
-              <label for="email">Email-Addresse</label>
-              <input id="email" ng-model="email" type="email" placeholder="Email Addresse">
-          </div>
+				<div class="pure-control-group">
+						<label for="email">Email-Addresse</label>
+						<input id="email" ng-model="email" type="email" placeholder="Email Addresse">
+				</div>
 
-          <div class="pure-controls">
-              <label for="cb" class="pure-checkbox">
-                  <input id="cb" ng-model="agbread" type="checkbox"> Ich habe die AGB gelesen und akzeptiert.
-              </label>
-          </div>
+				<div class="pure-controls">
+						<label for="cb" class="pure-checkbox">
+								<input id="cb" ng-model="agbread" type="checkbox"> Ich habe die AGB gelesen und akzeptiert.
+						</label>
+				</div>
 
-      </fieldset>
-      <button type="submit" class="btn btn-primary btn-sm">Registrieren</button><a ui-sref="index.login" id="gtlogin">Ich bin bereits registriert!</a>
-  </form>
+			</fieldset>
+			<button type="submit" class="btn btn-primary btn-sm">Registrieren</button><a ui-sref="index.login" id="gtlogin">Ich bin bereits registriert!</a>
+	</form>
 </div>

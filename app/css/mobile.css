@@ -1,300 +1,300 @@
 @media all and (max-width:480px){
 
-    /* ==========================================================================
-       General
-       ========================================================================== */
+	/* ==========================================================================
+	   General
+	   ========================================================================== */
 
-    body {
+	body {
 
-    }
+	}
 
-    .content-wrapper {
-        width: 100%;
-    }
+	.content-wrapper {
+		width: 100%;
+	}
 
-    .main-content {
-        padding: 5px;
-        padding-top: 55px;
+	.main-content {
+		padding: 5px;
+		padding-top: 55px;
 
-    }
+	}
 
-    .mobile-full {
-        width: 100%;
-        float: none;
-    }
+	.mobile-full {
+		width: 100%;
+		float: none;
+	}
 
-    .desktop-only {
-        display: none!important;
-    }
+	.desktop-only {
+		display: none!important;
+	}
 
-    .table-wrapper {
-        overflow-x: auto;
-    }
+	.table-wrapper {
+		overflow-x: auto;
+	}
 
-    .wrapper > .pure-g > div {
-        display: block;
-    }
+	.wrapper > .pure-g > div {
+		display: block;
+	}
 
-    /* ==========================================================================
-       Bootstrapoptimization
-       ========================================================================== */
+	/* ==========================================================================
+	   Bootstrapoptimization
+	   ========================================================================== */
 
-    .btn-group {
-        width: 100%;
-        text-align: center;
-        background-color: rgb(66, 139, 202);
-    }
+	.btn-group {
+		width: 100%;
+		text-align: center;
+		background-color: rgb(66, 139, 202);
+	}
 
-   .btn-group > .btn {
-        display: inline-block;
-        float: none;
-    }
+	.btn-group > .btn {
+		display: inline-block;
+		float: none;
+	}
 
-    .btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {
-        margin-left: -5px;
-    }
+	.btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {
+		margin-left: -5px;
+	}
 
-    /* ==========================================================================
-       Header
-       ========================================================================== */
+	/* ==========================================================================
+	   Header
+	   ========================================================================== */
 
-    header#header .inner {
-        width: 100%;
-    }
+	header#header .inner {
+		width: 100%;
+	}
 
-    #header .user-info, #header #logo, .mobile-hide {
-        display: none;
-    }
+	#header .user-info, #header #logo, .mobile-hide {
+		display: none;
+	}
 
-    #header .mobile-bar {
-        font-size: 25px;
-        display: block;
-        float: left;
-        padding: 7px;
-        padding-top: 9px;
-    }
+	#header .mobile-bar {
+		font-size: 25px;
+		display: block;
+		float: left;
+		padding: 7px;
+		padding-top: 9px;
+	}
 
-    header#header .cog {
-        font-size: 25px;
-        display: block;
-        padding: 7px;
-        padding-top: 9px;
-    }
+	header#header .cog {
+		font-size: 25px;
+		display: block;
+		padding: 7px;
+		padding-top: 9px;
+	}
 
-    header#header .dropdown-menu {
-        left: inherit;
-        margin-left: -1px;
-        margin-top: -2px;
-        left: 0px;
-        width: 100%;
-    }
+	header#header .dropdown-menu {
+		left: inherit;
+		margin-left: -1px;
+		margin-top: -2px;
+		left: 0px;
+		width: 100%;
+	}
 
 
-    /* ==========================================================================
-       menu
-       ========================================================================== */
+	/* ==========================================================================
+	   menu
+	   ========================================================================== */
 
-    nav#nav {
-        position: fixed;
-        left: 0px;
-        top: 0px;
-        margin-left: -100%;
-        width: 100%;
-        height: 100%;
-        z-index: 1000;
+	nav#nav {
+		position: fixed;
+		left: 0px;
+		top: 0px;
+		margin-left: -100%;
+		width: 100%;
+		height: 100%;
+		z-index: 1000;
 
-        background-color:#0E446A;
-        color: #fff;
-        overflow: auto;
+		background-color:#0E446A;
+		color: #fff;
+		overflow: auto;
 /* Speeed issues :(
-        -webkit-transition: all 0.2s ease-in-out;
-        -moz-transition: all 0.2s ease-in-out;
-        -ms-transition: all 0.2s ease-in-out;
-        -o-transition: all 0.2s ease-in-out;
-        transition: all 0.2s ease-in-out;
+		-webkit-transition: all 0.2s ease-in-out;
+		-moz-transition: all 0.2s ease-in-out;
+		-ms-transition: all 0.2s ease-in-out;
+		-o-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
 */
-    }
+	}
 
 
-    nav#nav ul, nav#nav li {
-        margin:0px;
-        padding: 0px;
-        list-style-type: none;
-    }
+	nav#nav ul, nav#nav li {
+		margin:0px;
+		padding: 0px;
+		list-style-type: none;
+	}
 
-    nav#nav ul {
-        margin-top: 50px;
-    }
+	nav#nav ul {
+		margin-top: 50px;
+	}
 
-    nav#nav a {
-        display: block;
-        padding: 14px;
-        color: #fff;
-        font-size: 17px;
-        border-bottom: 2px solid #0D3A5A;
-    }
+	nav#nav a {
+		display: block;
+		padding: 14px;
+		color: #fff;
+		font-size: 17px;
+		border-bottom: 2px solid #0D3A5A;
+	}
 
-    nav#nav a:hover {
-        text-decoration: none;
-    }
+	nav#nav a:hover {
+		text-decoration: none;
+	}
 
 
-    nav#nav .fa {
-        font-size: 15px;
-        padding: 5px;
-    }
+	nav#nav .fa {
+		font-size: 15px;
+		padding: 5px;
+	}
 
-    .menuShow nav#nav {
-        margin-left: 0px;
-    }
+	.menuShow nav#nav {
+		margin-left: 0px;
+	}
 
-    .menuShow {
-        overflow: hidden;
-    }
+	.menuShow {
+		overflow: hidden;
+	}
 
 /*
-    .main-content {
-        -webkit-transition: all 0.2s ease-in-out;
-        -moz-transition: all 0.2s ease-in-out;
-        -ms-transition: all 0.2s ease-in-out;
-        -o-transition: all 0.2s ease-in-out;
-        transition: all 0.2s ease-in-out;
-    }
+	.main-content {
+		-webkit-transition: all 0.2s ease-in-out;
+		-moz-transition: all 0.2s ease-in-out;
+		-ms-transition: all 0.2s ease-in-out;
+		-o-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
+	}
 
-    .menuShow .main-content {
-        -moz-transform: scale(0.8);
-        -webkit-transform: scale(0.8);
-        -o-transform: scale(0.8);
-        -ms-transform: scale(0.8);
-        transform: scale(0.8);
-        opacity: 0.8;
-    }
+	.menuShow .main-content {
+		-moz-transform: scale(0.8);
+		-webkit-transform: scale(0.8);
+		-o-transform: scale(0.8);
+		-ms-transform: scale(0.8);
+		transform: scale(0.8);
+		opacity: 0.8;
+	}
 
 */
-    /* ==========================================================================
-       Feed
-       ========================================================================== */
+	/* ==========================================================================
+	   Feed
+	   ========================================================================== */
 
-    .feed-item {
-        margin-bottom: 5px;
-        clear: left;
-        min-height: 40px;
-    }
+	.feed-item {
+		margin-bottom: 5px;
+		clear: left;
+		min-height: 40px;
+	}
 
-    .feed-item .feed-entry-symbol {
-        float: left;
-        padding: 10px;
-        background-color: #34495e;
-        color: #fff;
-        font-size: 15px;
-        height: 20px;
-        width: 20px;
-        text-align: center;
-    }
+	.feed-item .feed-entry-symbol {
+		float: left;
+		padding: 10px;
+		background-color: #34495e;
+		color: #fff;
+		font-size: 15px;
+		height: 20px;
+		width: 20px;
+		text-align: center;
+	}
 
-    .feed-item .feed-entry-content {
-        padding-left: 50px;
-    }
+	.feed-item .feed-entry-content {
+		padding-left: 50px;
+	}
 
-    .feed-item.feed-important-item .feed-entry-symbol {
-        background-color: #e74c3c;
-    }
+	.feed-item.feed-important-item .feed-entry-symbol {
+		background-color: #e74c3c;
+	}
 
-    /* ==========================================================================
-       Tabbing
-       ========================================================================== */
+	/* ==========================================================================
+	   Tabbing
+	   ========================================================================== */
 
-    #tabs ul, #tabs li {
-        margin: 0px;
-        padding: 0px;
-        list-style-type: none;
-    }
+	#tabs ul, #tabs li {
+		margin: 0px;
+		padding: 0px;
+		list-style-type: none;
+	}
 
-    #tabs > ul a {
-        display: block;
-        color: #ffffff;
-        background-color: #3276b1;
-        border-color: #285e8e;
-        margin-bottom:5px; 
-        padding: 5px 10px;
-        font-size: 15px;
-        line-height: 1.5;
-        text-align: center;
-    }
+	#tabs > ul a {
+		display: block;
+		color: #ffffff;
+		background-color: #3276b1;
+		border-color: #285e8e;
+		margin-bottom:5px; 
+		padding: 5px 10px;
+		font-size: 15px;
+		line-height: 1.5;
+		text-align: center;
+	}
 
 
-    /* ==========================================================================
-       Herounit
-       ========================================================================== */
+	/* ==========================================================================
+	   Herounit
+	   ========================================================================== */
 
-    #herounit .logo {
-        display: block;
-        width: 80%;
-        margin: 0px auto;
-        padding-top: 25px;
-    }   
+	#herounit .logo {
+		display: block;
+		width: 80%;
+		margin: 0px auto;
+		padding-top: 25px;
+	}
 
-    /* das team */
-    .infounit.team > .content {
-        width: 100%;
-    }
+	/* das team */
+	.infounit.team > .content {
+		width: 100%;
+	}
 
-    .infounit.team .team-item {
-        width: 100%;
-        display: block;
-        margin: 0px;
-        padding: 30px;
-        -moz-box-sizing: border-box; 
-        -webkit-box-sizing: border-box; 
-        box-sizing: border-box;
-    }
+	.infounit.team .team-item {
+		width: 100%;
+		display: block;
+		margin: 0px;
+		padding: 30px;
+		-moz-box-sizing: border-box; 
+		-webkit-box-sizing: border-box; 
+		box-sizing: border-box;
+	}
 
-    #herounit .login-form {
-        width: inherit;
-    }
+	#herounit .login-form {
+		width: inherit;
+	}
 
-    #herounit {
-        padding: 5px;
-    }
+	#herounit {
+		padding: 5px;
+	}
 
-    .left-footer {
-        padding-bottom: 10px;
-    }
+	.left-footer {
+		padding-bottom: 10px;
+	}
 
-    #hero-wrapper .infounit, #hero-wrapper .showcase{
-        display: none;
-    }
+	#hero-wrapper .infounit, #hero-wrapper .showcase{
+		display: none;
+	}
 
-    /* ==========================================================================
-        Trade Page
-    ========================================================================== */
+	/* ==========================================================================
+		Trade Page
+	========================================================================== */
 
-    .trade-button {
-        margin-top: 5px;
-    }
+	.trade-button {
+		margin-top: 5px;
+	}
 
-    .chose-paper {
-        overflow: hidden;
-    }
+	.chose-paper {
+		overflow: hidden;
+	}
 
-    /* ==========================================================================
-        School Page
-    ========================================================================== */
+	/* ==========================================================================
+		School Page
+	========================================================================== */
 
-    .school-hero h1 {
-        margin: 0px;
-    }
+	.school-hero h1 {
+		margin: 0px;
+	}
 
-    /* ==========================================================================
-       Profile
-    ========================================================================== */
+	/* ==========================================================================
+	   Profile
+	========================================================================== */
 
-    .user-info .btn-group {
-        background-color: transparent;
-    }
+	.user-info .btn-group {
+		background-color: transparent;
+	}
 
-    #herounit .showcase .header h2 {
-        font-size: 15px;
-    }
+	#herounit .showcase .header h2 {
+		font-size: 15px;
+	}
 
 }

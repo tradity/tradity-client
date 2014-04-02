@@ -41,7 +41,7 @@
 						<div class="school-descpage">{{descpage}}</div>
 						<a ng-show="isAdmin || selfIsSchoolAdmin" ng-click="enterDescpageEdit()"><i class="fa fa-pencil-square-o"></i></a>
 						<form ng-submit="changeDescription()" ng-show="editingDescpage" class="pure-form pure-form-stacked">
-							<textarea  ng-model="descpage" id="descpage" class="options-input pure-input-1"></textarea>
+							<textarea ng-model="descpage" id="descpage" class="options-input pure-input-1"></textarea>
 							<input type="submit" value="Speichern" class="btn btn-primary"/>
 						</form>
 					</div>				

@@ -20,7 +20,7 @@
 					<th>Transaktionskosten</th>
 				</tr>
 				<tr>
-					<td title="{{trade.stocktextid}}">{{trade.stockname}}</td>
+					<td title="{{trade.stocktextid}}"><a href="#/trade/buy/{{trade.stocktextid}}/0">{{trade.stockname}}</a></td>
 					<td>{{trade.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
 					<td ng-class="{pos: balance > 0, neg: balance < 0}">
 						{{ balance = (trade.money * -1) / 10000 | currency}}

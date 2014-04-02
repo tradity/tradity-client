@@ -54,7 +54,7 @@ angular.module('tradity').
         
         $scope.interGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
         for (var i = 0; i < $scope.interGroupResults.length; ++i)
-          $scope.interGroupResults[i].rank = i+1;
+          $scope.interGroupResults[i].rank = i + 1;
         
         $scope.school.usercount = $scope.results.length - $scope.pendingMembers.length;
       });

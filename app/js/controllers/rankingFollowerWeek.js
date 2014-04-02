@@ -9,7 +9,7 @@ angular.module('tradity').
 			if (data.code == 'get-ranking-success') {
 				$scope.results = data.result;
 				for (var i = 0; i < $scope.results.length; ++i)
-					$scope.results[i].rank = ++i;
+					$scope.results[i].rank = i + 1;
 			}
 		});
 	});

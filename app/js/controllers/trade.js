@@ -72,7 +72,7 @@ angular.module('tradity').
 						break;
 					case 'stock-buy-success':
 						alert('Trade erfolgreich');
-						$state.go('game.depot');
+						$state.go('game.depot.listing');
 						break;
 					case 'stock-buy-out-of-money':
 						alert('Nicht genügend Geld zum Trade');

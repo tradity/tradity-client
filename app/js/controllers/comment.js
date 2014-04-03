@@ -16,8 +16,14 @@ angular.module('tradity').
 			}, function() { alert('Ok!'); });
 		};
 		$scope.sendComment = function() {
+			var eventid = false;
+			if ($scope.$parent.trade) eventid = $scope.$parent.trade.eventid;
+			if ($scope.$parent.user) eventid = $scope.$parent.user.registerevent;
+			if ($scope.$parent.school) eventid = $scope.$parent.school.registerevent;
+
+
 			socket.emit('comment', {
-				eventid: $scope.$parent.trade.eventid || $scope.$parent.user.registerevent || $scope.$parent.school.registerevent,
+				eventid: eventid,
 				comment: $scope.comment,
 				ishtml: $scope.ishtml
 			},

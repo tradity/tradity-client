@@ -15,7 +15,8 @@
 				<th>Gesamtvermögen</th>
 				<th ng-show="isAdmin"></th>
 			</tr>
-			<tr ng-repeat="result in results | orderBy:'rank' ">
+
+			<tr ng-repeat="result in results | orderBy:'rank' " ng-class="{newtrader: result.hastraded == 0}">
 				<td>{{result.rank}}</td>
 				<td class="rank-name">
 					<a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a>

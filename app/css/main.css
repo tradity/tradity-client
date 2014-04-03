@@ -11,7 +11,7 @@ a {
 	cursor: pointer;
 }
 
-#feed a, .subschoollist a, .table a:hover, .widget , #faq a {
+#feed a, .subschoollist a, .table a:hover, .widget a , #faq a {
 	color: #010172;
 }
 
@@ -46,6 +46,10 @@ a {
 
 ul.styled li {
 	list-style-type: square;
+}
+
+tr.newtrader {
+    background-color: rgb(242,242,242);
 }
 /* ==========================================================================
 	Overlay
@@ -447,7 +451,6 @@ header#header .text > div {
 }
 
 .feed-item .feed-entry-content {
-	padding: 10px;
 	padding-left: 50px;
 }
 
@@ -455,20 +458,18 @@ header#header .text > div {
 	padding-bottom: 40px;
 }
 
-.feed-head, .feed-head a, .feed-footer {
-	font-size: 12px;
-	color:#333;
-	font-weight: normal;
-}
-
 .feed-head {
-	position: relative;
-	margin-top:-10px;
+	min-height: 5px;
+	overflow: hidden;
 }
 
 #feed .feed-head {
-	margin: 0px;
-	top: -10px;
+	font-weight: bold;
+}
+
+.feed-head, .feed-head a, .feed-footer {
+	font-size: 12px;
+	color:#333;
 }
 
 .feed-head .username {
@@ -477,6 +478,7 @@ header#header .text > div {
 
 .feed-time {
 	color: rgb(128, 128, 128);
+	font-size: 12px;
 }
 
 .feed-item .actions {

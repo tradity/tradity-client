@@ -31,17 +31,13 @@ angular.module('tradity').
 					$scope.school.banner = $scope.serverConfig.defaultschoolbanner;
 
 				$.each($scope.ownUser.schools, function(i, e) {
-					if (e.path == $scope.school.path) {
+					if (e.path == $scope.school.path) 
 						$scope.selfIsSchoolMember = true;
-						return;
-					}
 				});
 
 				$.each($scope.school.admins, function(i, e) {
-					if (e.adminid == $scope.ownUser.id) {
+					if (e.adminid == $scope.ownUser.uid && e.status == 'admin') 
 						$scope.selfIsSchoolAdmin = true;
-						return;
-					}
 				});
 
 				$.each($scope.comments, function(i, e) {

@@ -207,6 +207,8 @@ angular.module('tradity').
 				type: type,
 				typePerson: typePerson,
 				srcusername: data.srcusername,
+				comment: data.comment,
+				profilepic: data.profilepic,
 				orderid: data.orderid,
 				tradername: tn,
 				tradername_genitive: 'xsXS'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’',

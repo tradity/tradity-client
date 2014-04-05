@@ -212,5 +212,10 @@ angular.module('tradity', [
 		state('game.group.intergroup', {
 			templateUrl: 'templates/group.intergroup.html',
 			controller: 'RankingGroupCtrl'
+		}).
+		state('sponoren', {
+			url: '/sponsoren',
+			templateUrl: 'templates/sponsoren.html',
+			controller: 'RankingGroupCtrl'
 		});
 });

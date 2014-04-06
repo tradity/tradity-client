@@ -166,23 +166,23 @@ angular.module('tradity', [
 		}).
 		state('admin.userlist', {
 			url: '/userlist',
-			templateUrl: 'templates/admin.userlist.html'
+			templateUrl: 'templates/admin.userlist.html',
+			controller: 'AdminUserlistCtrl'
 		}).
 		state('admin.notifications', {
 			url: '/notifications',
-			templateUrl: 'templates/admin.notifications.html'
+			templateUrl: 'templates/admin.notifications.html',
+			controller: 'AdminNotificationsCtrl'
 		}).
 		state('admin.schools', {
 			url: '/schools',
-			templateUrl: 'templates/admin.schools.html'
-		}).
-		state('admin.monitoring', {
-			url: '/monitoring',
-			templateUrl: 'templates/admin.monitoring.html'
+			templateUrl: 'templates/admin.schools.html',
+			controller: 'AdminSchoolsCtrl'
 		}).
 		state('admin.userdetails', {
 			url: '/userdetails/:uid',
-			templateUrl: 'templates/admin.userdetails.html'
+			templateUrl: 'templates/admin.userdetails.html',
+			controller: 'AdminUserDetailsCtrl'
 		}).
 		state('game.group', {
 			url: '/s/*schoolid',

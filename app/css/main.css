@@ -433,25 +433,54 @@ header#header .text > div {
    ========================================================================== */
 
 .feed-item {
-	margin-bottom: 5px;
+	margin-bottom: 10px;
 	clear: left;
-	min-height: 40px;
 }
 
 
 .feed-item .feed-entry-symbol {
 	float: left;
-	padding: 10px;
+	padding: 5px;
 	background-color: #34495e;
 	color: #fff;
 	font-size: 15px;
-	height: 20px;
-	width: 20px;
+	height: 100%;
+	width: 60px;
 	text-align: center;
 }
 
+.feed-item .comment .feed-entry-symbol, .feed-item.comment .feed-entry-symbol {
+	height: 60px;
+}
+
+.feed-item .feed-arrow {
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 8px 8px 8px 0;
+	border-color: transparent #ffffff transparent transparent;
+	position: absolute;
+	margin-top: 30px;
+	margin-left: -8px;
+}
+
 .feed-item .feed-entry-content {
-	padding-left: 50px;
+	padding: 5px;
+	padding-left: 10px;
+	border: 1px solid rgba(204, 204, 204, 0.22);
+	border-left: none;
+	overflow: hidden;
+	min-height: 21px;
+}
+
+.feed-item .comment .feed-entry-content, .feed-item.comment .feed-entry-content {
+	height: 68px;
+	padding: 0px;
+	padding-left: 10px;
+}
+
+#feed .feed-item .feed-entry-content > a {
+	color: #333;
 }
 
 .comment-form {
@@ -461,10 +490,12 @@ header#header .text > div {
 .feed-head {
 	min-height: 5px;
 	overflow: hidden;
+	padding: 3px;
+	border-bottom: 1px solid rgba(204, 204, 204, 0.22);
+	margin-bottom: 3px;
 }
 
 #feed .feed-head {
-	font-weight: bold;
 }
 
 .feed-head, .feed-head a, .feed-footer {
@@ -486,6 +517,11 @@ header#header .text > div {
 }
 
 .feed-entry-symbol {
+	background-size: cover;
+}
+
+.no-image {
+	background: url(../img/profile.svg)!important;
 	background-size: cover;
 }
 
@@ -525,75 +561,3 @@ header#header .text > div {
 	margin: 10px;
 }
 
-#credits {
-	position: absolute;
-	width: 100%;
-	min-height: 100%;
-	color: #fff;
-	padding-top: 45px;
-}
-
-#credits h1 {
-	font-family: 'Quicksand', sans-serif;
-	padding: 20px;
-	text-align: center;
-	background: #008cd7;
-	margin: 0px;
-	margin-bottom: 15px;
-	margin-top: 5px;
-}
-
-#credits h2 {
-	font-family: 'Quicksand', sans-serif;
-	margin: 0px;
-}
-
-#credits p {
-	margin: 5px 0px;
-}
-
-#credits .firm-logo {
-	float: left;
-}
-
-#credits .content {
-	margin-left: 200px;
-	background: #fff;
-	padding: 10px;
-	color: #000;
-	min-height: 180px;
-}
-
-#credits .firm-holder {
-	padding:15px;
-	padding-bottom: 10px;
-	padding-top: 0px;
-}
-
-@media (min-width: 767px) {
-	#credits .firm-holder .pure-u-1-2:last-child img {
-		margin-left: 10px;
-	}
-
-	#credits .firm-holder .pure-u-1-2:last-child .content {
-		margin-left: 210px;
-	}
-}
-
-#credits .credits {
-	padding: 20px 0px ;
-}
-
-
-#credits .credits li {
-	display:inline-block;
-	list-style-type: none;
-	padding: 3px;
-	color: #000;
-	background-color: #fff;
-	margin: 3px;
-}
-
-#credits .real-credits {
-	color: #000;
-}

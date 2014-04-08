@@ -23,8 +23,8 @@ angular.module('tradity').
 			
 			while (!eventid && curScope) {
 				if (curScope.trade)  eventid = curScope.trade.eventid;
-				if (curScope.user)   eventid = curScope.user.registerevent;
-				if (curScope.school) eventid = curScope.school.eventid;
+				else if (curScope.user)   eventid = curScope.user.registerevent;
+				else if (curScope.school) eventid = curScope.school.eventid;
 				
 				curScope = curScope.$parent;
 			}

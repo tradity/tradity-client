@@ -8,8 +8,9 @@
 		<input type="submit" class="click-button comment-button btn btn-default pull-right" value="Kommentieren">
 	</form>
 	
-	<div ng-repeat="comment in comments | orderBy:'-time'" class="feed-item feed">
-		<div class="feed-entry-symbol"><i class="fa fa-bullhorn"></i></div>
+	<div ng-repeat="comment in comments | orderBy:'-time'" class="feed-item feed comment">
+		<div class="feed-entry-symbol" style="background-image:url({{comment.profilepic}})" ng-class="{'no-image': !comment.profilepic }"></div>
+		<span class="feed-arrow"></span>
 		<div class="feed-entry-content">
 			<div class="feed-head">
 				<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>

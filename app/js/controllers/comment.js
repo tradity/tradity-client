@@ -17,10 +17,19 @@ angular.module('tradity').
 		};
 		$scope.sendComment = function() {
 			var eventid = false;
-			if ($scope.$parent.trade) eventid = $scope.$parent.trade.eventid;
-			if ($scope.$parent.user) eventid = $scope.$parent.user.registerevent;
-			if ($scope.$parent.school) eventid = $scope.$parent.school.registerevent;
-
+			
+			var curScope = $scope;
+			
+			while (!eventid && curScope) {
+				if (curScope.trade)  eventid = curScope.trade.eventid;
+				if (curScope.user)   eventid = curScope.user.registerevent;
+				if (curScope.school) eventid = curScope.school.eventid;
+				
+				curScope = curScope.$parent;
+			}
+			
+			if (!eventid)
+				return alert('Konnte kein Kommentarevent finden!');
 
 			socket.emit('comment', {
 				eventid: eventid,
@@ -29,7 +38,7 @@ angular.module('tradity').
 			},
 			function(data) {
 				if (data.code == 'comment-notfound') {
-					alert((notfounderrmsg || 'Event nicht gefunden.') + '\nHier läuft etwas falsch.');
+					alert('Kommentarevent nicht gefunden.\nHier läuft etwas falsch.');
 				} else if (data.code == 'comment-success') {
 					var time = new Date();
 					$scope.comments.unshift({

@@ -19,7 +19,7 @@
 						<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>
 						<a ng-click="deleteComment(comment)" style="cursor: pointer">Löschen</a>
 					</span>
-					<span ng-show="selfIsSchoolAdmin">
+					<span ng-show="selfIsSchoolAdmin && !isAdmin">
 						<a ng-click="deleteCommentSA(comment)" style="cursor: pointer">Löschen</a>
 					</span>
 				</div>

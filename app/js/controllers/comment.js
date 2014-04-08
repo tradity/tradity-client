@@ -15,6 +15,7 @@ angular.module('tradity').
 				trustedhtml: true
 			}, function() { alert('Ok!'); });
 		};
+		
 		$scope.sendComment = function() {
 			var eventid = false;
 			

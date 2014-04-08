@@ -219,9 +219,9 @@ angular.module('tradity', [
 			templateUrl: 'templates/group.intergroup.html',
 			controller: 'RankingGroupCtrl'
 		}).
-		state('sponoren', {
-			url: '/sponsoren',
-			templateUrl: 'templates/sponsoren.html',
+		state('sponsors', {
+			url: '/sponsors',
+			templateUrl: 'templates/sponsors.html',
 			controller: 'RankingGroupCtrl'
 		});
 });

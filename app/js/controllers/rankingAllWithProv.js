@@ -1,5 +1,5 @@
 angular.module('tradity').
- 	controller('RankingAllWithProvCtrl', function($scope, socket) {
+	controller('RankingAllWithProvCtrl', function($scope, socket) {
 		socket.emit('get-ranking', {
 			rtype: 'general-wprov',
 			schoolid: $scope.schoolid,

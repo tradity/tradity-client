@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('TradeCtrl', function($scope, $stateParams, $state, $location, socket) {
+	controller('TradeCtrl', function($scope, $stateParams, $state, $location, socket, $modal) {
 		$scope.amount = null;
 		$scope.value = null;
 		$scope.stockid = null;

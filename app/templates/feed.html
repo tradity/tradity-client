@@ -141,7 +141,7 @@
 				<div class="feed-entry-content">
 					<div class="feed-head">
 						<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-						{{message.srcusername}} <i class="fa fa-angle-right"></i> <a ng-href="#/user/{{message.tradername}}">{{message.tradername_genitive}}</a> Pinnwand
+						<a ng-href="#/user/{{message.srcusername}}">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ng-href="#/user/{{message.tradername}}">{{message.tradername_genitive}}</a> Pinnwand
 					</div>
 					<a ng-href="#/user/{{message.tradername}}/pinboard">{{message.comment}}</a>
 				</div>
@@ -152,7 +152,7 @@
 				<div class="feed-entry-content">
 					<div class="feed-head">
 						<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-						{{message.srcusername}} <i class="fa fa-angle-right"></i> <a ng-href="#/user/{{message.tradername}}">{{message.tradername_genitive}}</a> <a ng-href="#/trade/{{message.orderid}}">Trade</a>
+						<a ng-href="#/user/{{message.srcusername}}">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ng-href="#/user/{{message.tradername}}">{{message.tradername_genitive}}</a> <a ng-href="#/trade/{{message.orderid}}">Trade</a>
 					</div>
 					<a ng-href="#/trade/{{message.orderid}}">{{message.comment}}</a>
 				</div>
@@ -164,7 +164,7 @@
 				<div class="feed-entry-content">
 					<div class="feed-head">
 						<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-						{{message.srcusername}} <i class="fa fa-angle-right"></i> <a ng-href="#/s{{message.schoolpath}}">{{message.tradername}}</a>
+						<a ng-href="#/user/{{message.srcusername}}">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ng-href="#/s{{message.schoolpath}}">{{message.tradername}}</a>
 					</div>
 					<a ng-href="#/s{{message.schoolpath}}">{{message.comment}}</a>
 				</div>

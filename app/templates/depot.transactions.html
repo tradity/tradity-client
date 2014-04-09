@@ -26,7 +26,7 @@
 					<td>{{order.query.dquerydata.ordertime | date:'d.M.yy HH:mm'}}</td>
 					<td>{{order.query.dquerydata.xtype}}</td>
 					<td>
-						<span ng-show="order.query.dquerydata.xvalue">{{order.query.dquerydata.xvalue | number:3}} €</span>
+						<span ng-show="order.query.dquerydata.xvalue">{{order.query.dquerydata.xvalue | number:3}} €</span>
 						<span ng-hide="order.query.dquerydata.xvalue">—</span>
 					</td>
 					<td>{{order.amount}}</td>
@@ -61,7 +61,7 @@
 					</td>
 					<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
 					<td>{{order.amount}}</td>
-					<td>{{order.price / 10000 | number:3}} €</td>
+					<td>{{order.price / 10000 | number:3}} €</td>
 					<td>{{order.fee / 10000 | currency}}</td>
 					<td ng-class="{pos: balance > 0, neg: balance < 0}">
 						{{ balance = (order.money * -1) / 10000 | currency}}

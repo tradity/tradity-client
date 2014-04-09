@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('MainCtrl', function($sce, $scope, $location, $state, socket) {
+	controller('MainCtrl', function($sce, $scope, $location, $state, socket, $dialogs) {
 		$scope.Math = Math;
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
@@ -12,7 +12,6 @@ angular.module('tradity').
 
 		$scope.toggleMenu = function() {
 			$('body').toggleClass('menuShow');
-
 		};
 
 		$scope.$on('$stateChangeSuccess', function(next, current) {

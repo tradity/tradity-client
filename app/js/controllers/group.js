@@ -41,8 +41,7 @@ angular.module('tradity').
 				});
 
 				$.each($scope.comments, function(i, e) {
-					if (e.trustedhtml)
-						e.comment = $sce.trustAsHtml(e.comment);
+					e.comment = $sce.trustAsHtml(e.trustedhtml ? e.comment : escapeHTML(e.comment));
 				});
 			}
 		});

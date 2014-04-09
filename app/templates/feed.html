@@ -143,7 +143,10 @@
 						<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
 						<a ng-href="#/user/{{message.srcusername}}">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ng-href="#/user/{{message.tradername}}">{{message.tradername_genitive}}</a> Pinnwand
 					</div>
-					<a ng-href="#/user/{{message.tradername}}/pinboard">{{message.comment}}</a>
+					<a ng-href="#/user/{{message.tradername}}/pinboard">
+						<span ng-show="message.trustedhtml" ng-bind-html="message.comment">{{message.comment}}</span>
+						<span ng-hide="message.trustedhtml">{{message.comment}}</span>
+					</a>
 				</div>
 			</div>
 			<div ng-if="message.type == 'comment-trade-self-me' || message.type == 'comment-trade-self-me' || message.type == 'comment-trade-me' || message.type == 'comment-trade'" class="comment">
@@ -154,7 +157,10 @@
 						<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
 						<a ng-href="#/user/{{message.srcusername}}">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ng-href="#/user/{{message.tradername}}">{{message.tradername_genitive}}</a> <a ng-href="#/trade/{{message.orderid}}">Trade</a>
 					</div>
-					<a ng-href="#/trade/{{message.orderid}}">{{message.comment}}</a>
+					<a ng-href="#/trade/{{message.orderid}}">
+						<span ng-show="message.trustedhtml" ng-bind-html="message.comment">{{message.comment}}</span>
+						<span ng-hide="message.trustedhtml">{{message.comment}}</span>
+					</a>
 				</div>
 			</div>
 
@@ -166,7 +172,10 @@
 						<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
 						<a ng-href="#/user/{{message.srcusername}}">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ng-href="#/s{{message.schoolpath}}">{{message.tradername}}</a>
 					</div>
-					<a ng-href="#/s{{message.schoolpath}}">{{message.comment}}</a>
+					<a ng-href="#/s{{message.schoolpath}}">
+						<span ng-show="message.trustedhtml" ng-bind-html="message.comment">{{message.comment}}</span>
+						<span ng-hide="message.trustedhtml">{{message.comment}}</span>
+					</a>
 				</div>
 			</div>
 		</div>

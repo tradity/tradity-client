@@ -31,9 +31,9 @@ angular.module('tradity').
 						$scope.user.profilepic = $scope.serverConfig.defaultprofile;
 					data.pinboard.sort(function(a,b) { return b.time - a.time; });
 					$scope.comments = data.pinboard;
+					
 					$.each($scope.comments, function(i, e) {
-						if (e.trustedhtml)
-							e.comment = $sce.trustAsHtml(e.comment);
+						e.comment = $sce.trustAsHtml(e.trustedhtml ? e.comment : escapeHTML(e.comment));
 					});
 				}
 			});

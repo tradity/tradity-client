@@ -15,8 +15,7 @@ angular.module('tradity').
 					$scope.comments = data.comments;
 					
 					$.each($scope.comments, function(i, e) {
-						if (e.trustedhtml)
-							e.comment = $sce.trustAsHtml(e.comment);
+						e.comment = $sce.trustAsHtml(e.trustedhtml ? e.comment : escapeHTML(e.comment));
 					});
 					
 					$scope.getUserInfo();

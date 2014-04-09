@@ -141,3 +141,11 @@ var fileemit = function(socket, input, evtype, template, serverconfig, callback)
 	
 	reader.readAsArrayBuffer(input);
 };
+
+var escapeHTML = function(s) {
+	return s.replace(/&/g, '&amp;')
+	        .replace(/</g, '&lt;')
+	        .replace(/>/, '&gt;')
+	        .replace(/'/, '&#039;')
+	        .replace(/"/, '&quot;');
+};

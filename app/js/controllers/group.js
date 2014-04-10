@@ -164,4 +164,10 @@ angular.module('tradity').
 					alert('Fehler: ' + data.code);
 			});
 		};
+
+		$scope.totalDisplayed = 20;
+
+		$scope.loadMore = function() {
+			$scope.totalDisplayed += 10;
+		};
 	});

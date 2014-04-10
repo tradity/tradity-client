@@ -202,17 +202,17 @@ angular.module('tradity', [
 		}).
 		state('game.group.intragroup-follower', {
 			url: '/+follower',
-			templateUrl: 'templates/group.intragroup.html',
+			templateUrl: 'templates/ranking.follower.html',
 			controller: 'RankingFollowerCtrl'
 		}).
 		state('game.group.intragroup-week', {
 			url: '/+week',
-			templateUrl: 'templates/group.intragroup.html',
+			templateUrl: 'templates/ranking.all-week.html',
 			controller: 'RankingAllWeekCtrl'
 		}).
 		state('game.group.intragroup-follower-week', {
 			url: '/+follower-week',
-			templateUrl: 'templates/group.intragroup.html',
+			templateUrl: 'templates/ranking.follower-week.html',
 			controller: 'RankingFollowerWeekCtrl'
 		}).
 		state('game.group.intergroup', {

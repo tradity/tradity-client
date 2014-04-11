@@ -162,6 +162,9 @@ SoTradeConnection.prototype.emit = function(evname, data, cb) {
 	
 	this.socket.emit('query', data);
 	datalog('>', data);
+	
+	if (evname == 'logout') 
+		this.setKey(null);
 };
 
 SoTradeConnection.prototype.getKey = function() {
@@ -179,6 +182,12 @@ SoTradeConnection.prototype.getKey = function() {
 };
 
 SoTradeConnection.prototype.setKey = function(k) {
+	datalog('#', 'key = ' + k);
+	
+	if (k != this.getKey()) {
+		this.qCache = {};
+	}
+	
 	document.cookie = 'key=' + k + '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
 	
 	var s = localStorage || window.localStorage;

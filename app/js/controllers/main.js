@@ -66,6 +66,7 @@ angular.module('tradity').
 
 			if ($scope.ownUser.schools.length > 0)
 				$scope.ownUser.bottomLevelSchool = $scope.ownUser.schools[$scope.ownUser.schools.length-1];
+				$scope.ownUser.topLevelSchool = $scope.ownUser.schools[0];
 
 			$scope.$broadcast('user-update', data);
 		}, $scope);
@@ -77,6 +78,7 @@ angular.module('tradity').
 
 				if ($scope.ownUser.schools.length > 0)
 					$scope.ownUser.bottomLevelSchool = $scope.ownUser.schools[$scope.ownUser.schools.length-1];
+					$scope.ownUser.topLevelSchool = $scope.ownUser.schools[0];
 
 				$scope.$broadcast('user-update', r);
 			}

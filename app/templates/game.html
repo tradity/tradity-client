@@ -64,13 +64,13 @@
 							<span class="dark nav-block-title">Neuigkeiten</span>
 						</a>
 					</li>
-					<li ng-show="ownUser.bottomLevelSchool" class="menu-item">
+					<li ng-show="ownUser.topLevelSchool" class="menu-item">
 						<ul class="subMenu desktop-only" ng-show="ownUser.schools.length > 1">
-							<li ng-repeat="item in ownUser.schools"><a href="#/s{{item.path}}">{{item.name}}</a></li>
+							<li ng-hide="ownUser.topLevelSchool == item" ng-repeat="item in ownUser.schools"><a href="#/s{{item.path}}">{{item.name}}</a></li>
 						</ul>
 						<a href="#/s{{ownUser.bottomLevelSchool.path}}" accesskey="g" title="ALT+SHIFT+G" ng-class="{active:isActive('#/s'+ownUser.bottomLevelSchool.path)}">
 							<i class="fa fa-users"></i>
-							<span class="dark nav-block-title">{{ownUser.bottomLevelSchool.name}}</span>
+							<span class="dark nav-block-title">{{ownUser.topLevelSchool.name}}</span>
 						</a>
 					</li>
 					<li>

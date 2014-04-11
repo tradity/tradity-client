@@ -65,7 +65,15 @@ tr.newtrader {
 	z-index: 99999;
 }
 
-#overlay img {
+#overlayQuery {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	text-align: center;
+	padding: 15px;
+}
+
+#overlay img, #overlayQuery img {
 	position: absolute;
 	left: 50%;
 	top: 50%;
@@ -75,7 +83,20 @@ tr.newtrader {
 
 	-webkit-box-shadow: 0 0 15px 0 rgba(40,40,40,0.2);
 	box-shadow: 0 0 15px 0 rgba(40,40,40,0.1);
+
+	background-color: #fff;
 }
+
+#overlayQuery img {
+	position: relative;
+	left: 0;
+	top: 0;
+}
+
+#overlayQuery b {
+	background-color: #fff;
+}
+
 
 
 /* ==========================================================================

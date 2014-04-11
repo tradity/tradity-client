@@ -3,7 +3,7 @@
  * Copyright (C) 2010,2011,2013 Hauke Henningsen <sqrt@entless.org>
  *
  * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
+ * it under the terms of the GNU Lesser General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
@@ -12,7 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
+ * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  **/
 
@@ -132,6 +132,7 @@ function ACInputElement(id, master, lastonly, minlen, timer, throbber, automatch
 		this.throbber = document.createElement('img');
 		this.throbber.style.display = 'none';
 		this.throbber.setAttribute('class', 'autocomplete-throbber');
+		this.throbber.setAttribute('alt', '…');
 		this.throbber.setAttribute('src', throbber);
 		this.inputWrap.appendChild(this.throbber);
 	}

@@ -156,6 +156,7 @@ module.exports = function (grunt) {
       dist: {
         files: {
           src: [
+            '<%= yeoman.dist %>/templates/{,*/}*.html',
             '<%= yeoman.dist %>/js/{,*/}*.js',
             '<%= yeoman.dist %>/css/{,*/}*.css',
             '<%= yeoman.dist %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
@@ -179,8 +180,12 @@ module.exports = function (grunt) {
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/css/{,*/}*.css'],
+      js: ['<%= yeoman.dist %>/js/{,*/}*.js'],
       options: {
-        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/img']
+        assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/img'],
+        patterns: {
+          js: [[/[\s'"]((?:templates|img|css)\/[^\s'"]+)[\s'"]/gm, 'Update js references to files']]
+        }
       }
     },
 

@@ -170,4 +170,13 @@ angular.module('tradity').
 		$scope.loadMore = function() {
 			$scope.totalDisplayed += 10;
 		};
+
+
+		$scope.groups = [];
+
+		socket.emit('list-schools', { 
+			_cache: 60
+		}, function(schoollist) {
+			$scope.groups = schoollist.result;
+		});
 	});

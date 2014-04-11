@@ -10,10 +10,8 @@
 			<tr>
 				<th>Rang</th>
 				<th>Name</th>
-				<th ng-show="school">Follower- performance</th>
-				<th ng-show="!school">Followerperformance</th>
-				<th ng-show="school">Follower- bewertung</th>
-				<th ng-show="!school">Followerbewertung</th>
+				<th>Follower­performance</th>
+				<th>Follower­bewertung</th>
 			</tr>
 			<tr ng-repeat="result in results | orderBy:'rank' | filter: searchText | limitTo:totalDisplayed">
 				<td>{{result.rank}}</td>

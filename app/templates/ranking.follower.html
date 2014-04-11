@@ -1,4 +1,4 @@
-<div id="follower">
+<div id="follower"  class="inner">
 	<div class="table-wrapper">
 		<table class="ranking table table-bordered">
 			<colgroup>
@@ -9,8 +9,10 @@
 			<tr>
 				<th>Rang</th>
 				<th>Name</th>
-				<th>Followerperformance</th>
-				<th>Followerbewertung</th>
+				<th ng-show="school">Follower- performance</th>
+				<th ng-show="!school">Followerperformance</th>
+				<th ng-show="school">Follower- bewertung</th>
+				<th ng-show="!school">Followerbewertung</th>
 			</tr>
 			<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed">
 				<td>{{result.rank}}</td>

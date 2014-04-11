@@ -93,8 +93,10 @@ tr.newtrader {
 	top: 0;
 }
 
-#overlayQuery b {
+#overlayQuery span {
 	background-color: #fff;
+	font-family: 'Quicksand', sans-serif;
+	font-size: 18px;
 }
 
 

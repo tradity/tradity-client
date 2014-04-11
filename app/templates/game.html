@@ -68,9 +68,15 @@
 						<ul class="subMenu desktop-only" ng-show="ownUser.schools.length > 1">
 							<li ng-hide="ownUser.topLevelSchool == item" ng-repeat="item in ownUser.schools"><a href="#/s{{item.path}}">{{item.name}}</a></li>
 						</ul>
-						<a href="#/s{{ownUser.bottomLevelSchool.path}}" accesskey="g" title="ALT+SHIFT+G" ng-class="{active:isActive('#/s'+ownUser.bottomLevelSchool.path)}">
+						<a href="#/s{{ownUser.topLevelSchool.path}}" accesskey="g" title="ALT+SHIFT+G" ng-class="{active:isActive('#/s'+ownUser.bottomLevelSchool.path)}">
 							<i class="fa fa-users"></i>
 							<span class="dark nav-block-title">{{ownUser.topLevelSchool.name}}</span>
+						</a>
+					</li>
+					<li ng-show="!ownUser.topLevelSchool" class="menu-item">
+						<a href="#/s/" accesskey="g" title="ALT+SHIFT+G">
+							<i class="fa fa-users"></i>
+							<span class="dark nav-block-title">Deine Gruppe</span>
 						</a>
 					</li>
 					<li>

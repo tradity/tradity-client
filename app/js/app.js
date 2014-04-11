@@ -185,6 +185,11 @@ angular.module('tradity', [
 			templateUrl: 'templates/admin.userdetails.html',
 			controller: 'AdminUserDetailsCtrl'
 		}).
+		/*state('game.groupOverview', {
+			url: '/s/',
+			templateUrl: 'templates/groupOverview.html',
+			controller: 'GroupCtrl'
+		}).*/
 		state('game.group', {
 			url: '/s/{schoolid:[\\w_/-]*[\\w_-]}',
 			templateUrl: 'templates/group.html',

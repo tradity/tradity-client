@@ -465,18 +465,18 @@ header#header .text > div {
 }
 
 .feed-item .feed-entry-content {
-	padding: 5px;
-	padding-left: 10px;
 	border: 1px solid rgba(204, 204, 204, 0.22);
 	border-left: none;
-	overflow: hidden;
 	min-height: 21px;
+	padding: 5px;
+	padding-left: 80px;
+
 }
 
 .feed-item .comment .feed-entry-content, .feed-item.comment .feed-entry-content {
-	height: 68px;
+	min-height: 68px;
 	padding: 0px;
-	padding-left: 10px;
+	padding-left: 80px;
 }
 
 #feed .feed-item .feed-entry-content > a {

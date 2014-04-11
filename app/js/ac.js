@@ -130,9 +130,9 @@ function ACInputElement(id, master, lastonly, minlen, timer, throbber, automatch
 	
 	this.throbber = throbber;
 	if (this.throbber) {
-		this.e.style.paddingLeft = this.getInputHeight() + 'px';
+		this.e.style.paddingRight = this.getInputHeight() + 'px';
 		this.e.style.backgroundRepeat = 'no-repeat';
-		this.e.style.backgroundPosition = '5px center';
+		this.e.style.backgroundPosition = '99% 50%';
 	}
 }
 

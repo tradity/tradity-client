@@ -77,13 +77,6 @@ tr.newtrader {
 	box-shadow: 0 0 15px 0 rgba(40,40,40,0.1);
 }
 
-.input-throbber {
-	background-image: url(../img/throbber.gif);
-	background-repeat: no-repeat;
-	background-position: 5px center;
-	padding-left: 25px!important;
-}
-
 
 /* ==========================================================================
 	Header

@@ -20,7 +20,7 @@ angular.module('tradity').
 		}
 
 		$scope.buy = function() {
-			dlg = $dialogs.confirm('Trade','Willst ' + $scope.amount + ' Aktien von ' + $scope.stockname + ' kaufen ?');
+			dlg = $dialogs.confirm('Trade', 'Willst du' + $scope.amount + ' Aktien von ' + $scope.stockname + ' kaufen ?');
 			dlg.result.then(function(btn){
 
 				if (!$scope.amount && !$scope.value)

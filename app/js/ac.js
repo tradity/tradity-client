@@ -128,13 +128,11 @@ function ACInputElement(id, master, lastonly, minlen, timer, throbber, automatch
 	this.inputWrap.style.display = this.e.style.display ? this.e.style.display : 'inline';
 	this.inputWrap.className = 'autocomplete-inputwrap';
 	
-	if (throbber) {
-		this.throbber = document.createElement('img');
-		this.throbber.style.display = 'none';
-		this.throbber.setAttribute('class', 'autocomplete-throbber');
-		this.throbber.setAttribute('alt', '…');
-		this.throbber.setAttribute('src', throbber);
-		this.inputWrap.appendChild(this.throbber);
+	this.throbber = throbber;
+	if (this.throbber) {
+		this.e.style.paddingLeft = this.getInputHeight() + 'px';
+		this.e.style.backgroundRepeat = 'no-repeat';
+		this.e.style.backgroundPosition = '5px center';
 	}
 }
 
@@ -259,7 +257,7 @@ ACInputElement.prototype.displayACData = function(s) {
 	d.style.position = 'absolute';
 	
 	d.style.left = '0px';
-	d.style.top = this.getInputHeight() + 3 + 'px';
+	d.style.top = '8px';
 	d.style.width = this.getInputWidth() + 'px';
 	
 	this.entries = [];
@@ -274,8 +272,9 @@ ACInputElement.prototype.displayACData = function(s) {
 	this.removeACData();
 	this.acPanel = d;
 	
-	if (this.throbber)
-		this.throbber.style.display = 'none';
+	if (this.throbber) {
+		this.e.style.backgroundImage = 'none';
+	}
 		
 	this.inputWrap.appendChild(d);
 }
@@ -320,13 +319,8 @@ ACInputElement.prototype.handleKey = function(ev) {
 
 	var fnc = function() {
 		if (_this.lastWanted == s) {
-			if (_this.throbber) {
-				var h = _this.getInputHeight();
-				_this.throbber.style.top = h * 0.1 + 'px';
-				_this.throbber.style.width =
-				_this.throbber.style.height = (h * 0.6) + 'px';
-				_this.throbber.style.display = 'block';
-			}
+			if (_this.throbber) 
+				_this.e.style.backgroundImage = 'url(' + _this.throbber + ')';
 			
 			_this.master.dataFetcher.fetchAutoComplete(_this, s);
 		}

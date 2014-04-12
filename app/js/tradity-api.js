@@ -43,8 +43,6 @@ SoTradeConnection = function(rawsocket) {
 };
 
 SoTradeConnection.prototype.hasOpenQueries = function() {
-	console.log(this.ids, this.ids.length);
-	
 	for (var i = 0; i < this.ids.length; ++i)
 		if (this.ids[i] && !this.ids[i]._expect_no_response)
 			return true;

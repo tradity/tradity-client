@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('MainCtrl', function($sce, $scope, $location, $state, socket, $dialogs) {
+	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs) {
 		$scope.Math = Math;
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
@@ -7,21 +7,32 @@ angular.module('tradity').
 		$scope.ownUser = null;
 		$scope.loading = false;
 		$scope.serverConfig = {};
-
 		$scope.hasOpenQueries = socket.hasOpenQueries.bind(socket);
 
 		$scope.toggleMenu = function() {
 			$('body').toggleClass('menuShow');
 		};
 
-		$scope.$on('$stateChangeSuccess', function(next, current) {
-			$scope.loading = false;
-		});
+		$scope.showSearch = function() {
+			$scope.search = true;
+		}
 
-		$scope.$on('$stateChangeStart', function(next, current) {
-			$scope.loading = true;
-			$('body').removeClass('menuShow');
-		});
+		$scope.openSearch = function(query) {
+			$state.go('game.search',{
+				query: query
+			});
+		}
+
+		$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams) { 
+			if (toParams.query) {
+				$scope.searchBarText = toParams.query;
+				$scope.search = true;
+			}
+			else {
+				$scope.search = false;
+				$scope.searchBarText = '';
+			}
+		})
 
 		$scope.$on('makeadmin', function() { $scope.isAdmin = true; });
 

@@ -1,0 +1,33 @@
+<div id="groupOverview" class="main-content">
+	<h1>Gruppen</h1>
+	<div ng-show="!ownUser.topLevelSchool">
+		<h2>Wähle deine Gruppe</h2>
+		<form class="pure-form" id="rankingSearch">
+			<input type="search" ng-model="searchText" placeholder="Suche (deine Schule, Organisation, Institut)" class="pure-input">
+			<!--Ist deins nicht hier aufgeführt ? <a href="">Gründe eine neue Gruppe !</a>-->
+		</form>
+		<hr/>
+		<div class="table-wrapper">
+			<table class="ranking table table-bordered">
+				<colgroup>
+					<col class="rankcol-1" style="width: 90%">
+					<col class="rankcol-1" style="width: 10%">
+				</colgroup>
+				<tr>
+					<th>Name</th>
+					<th>Mitglieder</th>
+				</tr>
+				<tr ng-repeat="result in groups | filter: searchText ">
+					<td><a href="#/s{{result.path}}">{{result.name}}</a></td>
+					<td class="text-center">{{result.usercount}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div ng-show="ownUser.topLevelSchool">
+		<h2>Deine Gruppen</h2>
+		<ul>
+			<li ng-repeat="item in ownUser.schools"><a href="#/s/{{item.path}}">{{item.name}}</a></li>
+		</ul>
+	</div>
+</div>

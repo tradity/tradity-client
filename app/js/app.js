@@ -54,6 +54,11 @@ angular.module('tradity', [
 			templateUrl: 'templates/feed.html',
 			controller: 'FeedCtrl'
 		}).
+		state('game.search', {
+			url: '/search/:query',
+			templateUrl: 'templates/search.html',
+			controller: 'SearchCtrl'
+		}).
 		state('game.options', {
 			url: '/options',
 			templateUrl: 'templates/options.html',

@@ -1,0 +1,74 @@
+<div id="search" class="main-content">
+	<div ng-show="users">
+		<h2>Benutzer</h2>
+		<div class="table-wrapper">
+			<table class="ranking table table-bordered">
+				<colgroup>
+					<col class="rankcol-1" style="width: 10%">
+					<col class="rankcol-2" style="width: 40%">
+					<col class="rankcol-3" style="width: 18%">
+					<col class="rankcol-4" style="width: 5%">
+				</colgroup>
+				<tr>
+					<th>Rang</th>
+					<th>Name</th>
+					<th>erh. Provision</th>
+					<th>Gesamtvermögen</th>
+				</tr>
+				<tr ng-repeat="result in users">
+					<td>{{result.rank}}</td>
+					<td class="rank-name">
+						<a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a>
+					</td>
+					<td>{{result.prov_sum / 10000 | currency}}</td>
+					<td>{{result.totalvalue / 10000 | currency}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div ng-show="groups">
+		<h2>Gruppen</h2>
+		<div class="table-wrapper">
+			<table class="ranking table table-bordered">
+				<colgroup>
+					<col class="rankcol-1" style="width: 90%">
+					<col class="rankcol-1" style="width: 10%">
+				</colgroup>
+				<tr>
+					<th>Name</th>
+					<th>Mitglieder</th>
+				</tr>
+				<tr ng-repeat="result in groups ">
+					<td><a href="#/s{{result.path}}">{{result.name}}</a></td>
+					<td class="text-center">{{result.usercount}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div ng-show="stocks">
+		<h2>Aktien</h2>
+		<div class="table-wrapper">
+			<table class="ranking table table-bordered">
+				<colgroup>
+					<col class="rankcol-1" style="width: 35%">
+					<col class="rankcol-1" style="width: 20%">
+					<col class="rankcol-1" style="width: 20%">
+					<col class="rankcol-1" style="width: 25%">
+				</colgroup>
+				<tr>
+					<th>Name</th>
+					<th class="text-center">Einkaufspreis</th>
+					<th class="text-center">Verkaufspreis</th>
+					<th class="text-center">Handelbare Stückzahl</th>
+				</tr>
+				<tr ng-repeat="result in stocks">
+					<td ng-show="result.name"><a href="#/s{{result.path}}">{{result.name}}</a></td>
+					<td ng-show="result.leadername"><a href="#/s{{result.path}}">{{result.leadername}}</a></td>
+					<td class="text-center">{{result.ask / 10000 | number:3}} €</td>
+					<td class="text-center">{{result.bid / 10000 | number:3}} €</td>
+					<td class="text-center">{{result.pieces}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

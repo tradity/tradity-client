@@ -28,7 +28,7 @@ angular.module('tradity').
 				});	
 			}
 
-			if ($scope.searchText.length > 3) 
+			if ($scope.searchText.length > 2) 
 				socket.emit('stock-search', { 
 					_cache: 60,
 					name: $scope.searchText

@@ -12,7 +12,7 @@
 				<th>Rang</th>
 				<th>Name</th>
 				<th>erh. Provision</th>
-				<th>Gesamtvermögen</th>
+				<th>Gesamt­vermögen</th>
 				<th ng-show="isAdmin"></th>
 			</tr>
 			<tr ng-repeat="result in results | orderBy:'rank' " ng-class="{newtrader: result.hastraded == 0}">
@@ -23,7 +23,7 @@
 				<td>{{result.prov_sum / 10000 | currency}}</td>
 				<td>{{result.totalvalue / 10000 | currency}}</td>
 				<td ng-show="isAdmin">
-					<a ng-click="kickUser(result)" tilte="Benutzer entfernen"><i class="fa fa-minus-circle"></i></a> 
+					<a ng-click="kickUser(result)" title="Benutzer entfernen"><i class="fa fa-minus-circle"></i></a> 
 					<a ng-hide="result.admin" ng-click="promoteUserToAdmin(result)" title="Benutzer befördern"><i class="fa fa-level-up"></i></a></td>
 			</tr>
 		</table>

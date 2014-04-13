@@ -186,11 +186,14 @@ SoTradeConnection.prototype.setKey = function(k) {
 		this.qCache = {};
 	}
 	
-	document.cookie = 'key=' + k + '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
-	
 	var s = localStorage || window.localStorage;
 	if (s)
 		s['sotradekey'] = k;
+	
+	if (this.getKey() != k)
+		document.cookie = 'key=' + k + '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+	else
+		document.cookie = 'key=; expires=Thu, 01 Jan 1970 00:00:01 GMT';
 };
 
 SoTradeConnection.prototype.on = function(evname, cb, angularScope) {

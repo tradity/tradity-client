@@ -34,7 +34,7 @@
 				</tr>
 				<tr ng-repeat="result in results">
 					<td>
-						<span ng-show="result.leader"><a href="#/user/{{result.leadername}}">{{result.stockname}}</a></span>
+						<span ng-show="result.leader"><a ng-href="#/user/{{result.leadername}}">{{result.stockname}}</a></span>
 						<span ng-hide="result.leader">{{result.stockname}}</span>
 					</td>
 					<td>{{result.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>

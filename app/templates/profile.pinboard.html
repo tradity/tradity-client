@@ -14,7 +14,7 @@
 		<div class="feed-entry-content">
 			<div class="feed-head">
 				<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
-				<a href="#/user/{{comment.username}}" class="text-link username">{{comment.username}}</a>
+				<a ng-href="#/user/{{comment.username}}" class="text-link username">{{comment.username}}</a>
 				<span ng-show="isAdmin" class="actions">
 					<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>
 					<a ng-click="deleteComment(comment)" style="cursor: pointer">Löschen</a>

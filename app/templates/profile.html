@@ -1,7 +1,7 @@
 <div class="main-content">
 	<div id="profile-user" class="profile">
 		<div class="user-info">
-			<img id="profile-picture" height="150px" ng-hide="!user.profilepic" class="profile-picture profile-box" src="{{user.profilepic}}" >
+			<img id="profile-picture" height="150px" ng-hide="!user.profilepic" class="profile-picture profile-box" ng-src="{{user.profilepic}}" >
 			<img id="profile-picture" ng-hide="user.profilepic" src="img/profile.svg" height="150px">
 			<h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
 			<div ng-hide="user.isSelf">

@@ -18,7 +18,7 @@
 					<th>Mitglieder</th>
 				</tr>
 				<tr ng-repeat="result in groups | filter: searchText ">
-					<td><a href="#/s{{result.path}}">{{result.name}}</a></td>
+					<td><a ng-href="#/s{{result.path}}">{{result.name}}</a></td>
 					<td class="text-center">{{result.usercount}}</td>
 				</tr>
 			</table>
@@ -27,7 +27,7 @@
 	<div ng-show="ownUser.topLevelSchool">
 		<h2>Deine Gruppen</h2>
 		<ul>
-			<li ng-repeat="item in ownUser.schools"><a href="#/s/{{item.path}}">{{item.name}}</a></li>
+			<li ng-repeat="item in ownUser.schools"><a ng-href="#/s/{{item.path}}">{{item.name}}</a></li>
 		</ul>
 	</div>
 </div>

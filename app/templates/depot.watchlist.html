@@ -28,7 +28,7 @@
 				</tr>
 				<tr ng-repeat="entry in watchlist">
 					<td>
-						<span ng-show="entry.leader"><a href="#/user/{{entry.username}}">{{entry.stockname}}</a></span>
+						<span ng-show="entry.leader"><a ng-href="#/user/{{entry.username}}">{{entry.stockname}}</a></span>
 						<span ng-hide="entry.leader">{{entry.stockname}}</span>
 					</td>
 					<td>{{entry.watchstarttime * 1000 | date:'d.M.yy HH:mm'}}</td>

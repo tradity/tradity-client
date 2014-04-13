@@ -11,7 +11,7 @@
 				<h3>Top-Wertpapiere</h3>
 				<div ng-class="{hideMost: !showPopularStocks}">
 					<ol class="popularstocks">
-						<li ng-repeat="stock in popularStocks"><a href="#/trade/buy/{{stock.stockid}}/0">{{stock.stockname}}</a></li>
+						<li ng-repeat="stock in popularStocks"><a ng-href="#/trade/buy/{{stock.stockid}}/0">{{stock.stockname}}</a></li>
 					</ol>
 					<a class="trade-more" ng-click="togglePopularStocks()"><span ng-show="!showPopularStocks">Mehr</span><span ng-show="showPopularStocks">Weniger</span> Wertpapiere</a>
 				</div>
@@ -19,7 +19,7 @@
 			<div class="pure-u-1-2">
 				<div class="options-field paper-preview-box padding-left" ng-show="cur"> 
 					<table class="paper-preview f">
-						<tr ng-show="leader"><th>Name</th><td><a href="#/user/{{cur.leadername}}">{{stockname}}</a></td></tr>
+						<tr ng-show="leader"><th>Name</th><td><a ng-href="#/user/{{cur.leadername}}">{{stockname}}</a></td></tr>
 						<tr ng-hide="leader"><th>Name</th><td ng-show="cur">{{stockname}}</td></tr>
 						<tr><th><span class="batch tooltip" data-info="(Auch Ask, Geldkurs oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span>
 							Kauf­preis</th><td ng-show="cur">{{cur.ask / 10000 | number:3}} €</td></tr>

@@ -20,13 +20,13 @@ angular.module('tradity').
 		}
 
 		$scope.buy = function() {
-			dlg = $dialogs.confirm('Trade', 'Willst du' + $scope.amount + ' Aktien von ' + $scope.stockname + ' kaufen ?');
-			dlg.result.then(function(btn){
-
-				if (!$scope.amount && !$scope.value)
-					return;
-				if (!$scope.leader && !$scope.stockid)
-					return $dialogs.error('Du musst ein Wertpapier auswählen!');
+			if (!$scope.amount)
+				return;
+			if (!$scope.leader && !$scope.stockid)
+				return $dialogs.error('Du musst ein Wertpapier auswählen!');
+				
+			dlg = $dialogs.confirm('Trade', 'Willst du ' + $scope.amount + ' ' + ($scope.amount > 1 ? 'Aktien' : 'Aktie') + ' von ' + $scope.stockname + ' ' + ($scope.sellbuy >= 0 ? 'kaufen' : 'verkaufen') + '?');
+			dlg.result.then(function(btn) {
 				var query = {
 					amount: $scope.amount * $scope.sellbuy,
 					stockid: $scope.stockid,
@@ -62,8 +62,8 @@ angular.module('tradity').
 					};
 					qtype = 'dquery';
 				}
-				socket.emit(qtype, query,
-				function(data) {
+				
+				socket.emit(qtype, query, function(data) {
 					switch (data.code) {
 						case 'dquery-success':
 							var modal = $dialogs.notify('tradity','Der Trade wird ausgeführt, sobald die angegebenen Bedingungen erfüllt sind.');

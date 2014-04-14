@@ -1,0 +1,6 @@
+{
+	"_module": "tradity",
+	"apiHost": "https://tradity.de:443",
+	"defaultProfileImg": "img/profile.svg",
+	"defaultGroupBanner": "img/groupbanner.jpg"
+}

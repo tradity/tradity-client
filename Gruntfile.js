@@ -327,9 +327,39 @@ module.exports = function (grunt) {
 				configFile: 'karma.conf.js',
 				singleRun: true
 			}
+		},
+		
+		createconfig: {
+			files: {
+				src: [
+					'<%= yeoman.app %>/js/config.global.json',
+					'<%= yeoman.app %>/js/config.local.json'
+				],
+				dest: '<%= yeoman.app %>/js/config.js'
+			}
 		}
 	});
 
+	grunt.registerMultiTask('createconfig', 'Merge global and local config', function() {
+		this.files.forEach(function(file) {
+			var j = {};
+			
+			file.src.forEach(function(f) {
+				j = grunt.util._.extend(j, grunt.file.readJSON(f));
+			});
+			
+			var s = 'angular.module("' + j._module + '")\n';
+			Object.keys(j).forEach(function(key) {
+				var macroStyleKey = key.replace(/[A-Z]/g, function(m) { return '_' + m.toLowerCase(); }).toUpperCase();
+				
+				s += '\t.constant("' + macroStyleKey + '", ' + JSON.stringify(j[key]) + ')\n';
+			});
+			s += ';\n';
+			
+			grunt.file.write(file.dest, s);
+			grunt.log.writeln('Written config to ' + file.dest);
+		});
+	});
 
 	grunt.registerTask('serve', function (target) {
 		if (target === 'dist') {
@@ -362,6 +392,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', [
 		'clean:dist',
 		'bower-install',
+		'createconfig',
 		'useminPrepare',
 		'concurrent:dist',
 		'autoprefixer',
@@ -375,7 +406,6 @@ module.exports = function (grunt) {
 		'usemin',
 		'htmlmin'
 	]);
-
 
 	grunt.registerTask('default', [
 		'newer:jshint',

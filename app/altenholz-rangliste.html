@@ -1,0 +1,1916 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Tradity – Altenholz-Rangliste</title>
+        <meta name="robots" content="noindex" />
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <style>
+
+            @font-face {
+              font-family: "batch";
+              src: url("type/batch/batch.eot");
+              src: local("☺"),
+                url("type/batch/batch.woff") format("woff"),
+                url("type/batch/batch.otf") format("opentype"),
+                url("type/batch/batch.svg#batch") format("svg");
+            }
+
+            @font-face {
+              font-family: 'Abel';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Abel'), local('Abel-Regular'), url("type/Abel/abel.woff") format('woff');
+            }
+            @font-face {
+              font-family: 'Droid Sans';
+              font-style: normal;
+              font-weight: 400;
+              src: local('Droid Sans'), local('DroidSans'), url("type/Droid_Sans/droidsans400.woff") format('woff');
+            }
+            @font-face {
+              font-family: 'Droid Sans';
+              font-style: normal;
+              font-weight: 700;
+              src: local('Droid Sans Bold'), local('DroidSans-Bold'), url("type/Droid_Sans/droidsans700.woff") format('woff');
+            }
+
+            body {
+                font-family: 'Droid Sans', sans-serif;
+                background: #f0f0f0;
+            }
+            .content {
+                width: 960px; 
+                margin: auto;
+                background: #fff;
+                padding: 15px;
+                background: #fff;
+                border: 1px solid;
+                border-color: #d6d7da #d5d8dd #c7c8ca;
+
+                -webkit-border-radius: 3px;
+            }
+            h1 {
+                text-align: center;
+                font-weight: 100;
+                color:#222;
+                padding: 20px;
+                font-size: 35px;
+            }
+            h2 {
+                font-size: 120%;
+            }
+
+            h3 {
+                font-size: 100%;
+            }
+
+            p {
+                margin: 0px;
+            }
+
+            #logo {
+                display: block;
+                width: 500px;
+                margin: auto;
+                padding: 50px;
+                opacity: 0.8;
+            }
+
+            #logo:hover {
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body>
+<h1>Altenholz 10.04.2014</h1>
+<h2>Gesamt</h2>
+<div class="inner ng-scope" id="intragroup">
+	<div class="table-wrapper">
+		<table class="ranking table table-bordered">
+			<colgroup>
+				<col style="width: 10%" class="rankcol-1" />
+				<col style="width: 40%" class="rankcol-2" />
+				<col style="width: 18%" class="rankcol-3" />
+				<col style="width: 5%" class="rankcol-4" />
+				<col style="width: 12%" class="rankcol-4" />
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>Rang</th><th>Name</th><th>erh. Provision</th><th>Gesamtvermögen</th><th ng-show="isAdmin" class=""></th>
+				</tr>
+				<!-- ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">1</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/schmo" class="ng-binding" href="/#/user/schmo">schmo</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">104.466,89&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">2</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/MtS" class="ng-binding" href="/#/user/MtS">MtS</a>
+					</td>
+					<td class="ng-binding">70,14&nbsp;€</td><td class="ng-binding">103.369,54&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">3</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Nikl" class="ng-binding" href="/#/user/Nikl">Nikl</a>
+					</td>
+					<td class="ng-binding">61,51&nbsp;€</td><td class="ng-binding">102.709,17&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">4</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/molli" class="ng-binding" href="/#/user/molli">molli</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">101.837,96&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">5</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/i13" class="ng-binding" href="/#/user/i13">i13</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">101.704,69&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">6</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/TmS" class="ng-binding" href="/#/user/TmS">TmS</a>
+					</td>
+					<td class="ng-binding">19,61&nbsp;€</td><td class="ng-binding">100.870,87&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">7</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/ChiLLn" class="ng-binding" href="/#/user/ChiLLn">ChiLLn</a>
+					</td>
+					<td class="ng-binding">0,64&nbsp;€</td><td class="ng-binding">100.795,35&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">8</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/alw912" class="ng-binding" href="/#/user/alw912">alw912</a>
+					</td>
+					<td class="ng-binding">491,29&nbsp;€</td><td class="ng-binding">101.079,51&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">9</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/fiete717" class="ng-binding" href="/#/user/fiete717">fiete717</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.572,88&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">10</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Westifler" class="ng-binding" href="/#/user/Westifler">Westifler</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.559,37&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">11</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Trader_Joe" class="ng-binding" href="/#/user/Trader_Joe">Trader_Joe</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.521,02&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">12</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/mikawntrpp" class="ng-binding" href="/#/user/mikawntrpp">mikawntrpp</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.289,24&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">13</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/outbleeder" class="ng-binding" href="/#/user/outbleeder">outbleeder</a>
+					</td>
+					<td class="ng-binding">2,54&nbsp;€</td><td class="ng-binding">100.010,59&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">14</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/pecorellita" class="ng-binding" href="/#/user/pecorellita">pecorellita</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">99.975,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">15</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/LucyChristensen" class="ng-binding" href="/#/user/LucyChristensen">LucyChristensen</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">99.881,51&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">16</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/BennetLüdersen" class="ng-binding" href="/#/user/BennetLüdersen">BennetLüdersen</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">99.732,06&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">17</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/MoneyMaker98" class="ng-binding" href="/#/user/MoneyMaker98">MoneyMaker98</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">99.425,56&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">18</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/hilkew" class="ng-binding" href="/#/user/hilkew">hilkew</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">99.422,99&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">19</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/LasseK" class="ng-binding" href="/#/user/LasseK">LasseK</a>
+					</td>
+					<td class="ng-binding">5,73&nbsp;€</td><td class="ng-binding">99.412,07&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">20</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/pauldetlefsen" class="ng-binding" href="/#/user/pauldetlefsen">pauldetlefsen</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">99.317,61&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">21</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/nadeo" class="ng-binding" href="/#/user/nadeo">nadeo</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">99.170,39&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">22</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/JannisWietzke" class="ng-binding" href="/#/user/JannisWietzke">JannisWietzke</a>
+					</td>
+					<td class="ng-binding">1,67&nbsp;€</td><td class="ng-binding">99.095,18&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">23</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/JonasW" class="ng-binding" href="/#/user/JonasW">JonasW</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.985,68&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">24</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/derhugo" class="ng-binding" href="/#/user/derhugo">derhugo</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.892,96&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">25</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/kingofwallstreet" class="ng-binding" href="/#/user/kingofwallstreet">kingofwallstreet</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.816,88&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">26</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/DarkAces" class="ng-binding" href="/#/user/DarkAces">DarkAces</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.753,98&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">27</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Niklas" class="ng-binding" href="/#/user/Niklas">Niklas</a>
+					</td>
+					<td class="ng-binding">3,01&nbsp;€</td><td class="ng-binding">98.744,31&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">28</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/ganjaru" class="ng-binding" href="/#/user/ganjaru">ganjaru</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.739,36&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">29</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/ViktorBaumann" class="ng-binding" href="/#/user/ViktorBaumann">ViktorBaumann</a>
+					</td>
+					<td class="ng-binding">0,20&nbsp;€</td><td class="ng-binding">98.722,35&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">30</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/dulsao" class="ng-binding" href="/#/user/dulsao">dulsao</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.677,67&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">31</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/striker" class="ng-binding" href="/#/user/striker">striker</a>
+					</td>
+					<td class="ng-binding">22,42&nbsp;€</td><td class="ng-binding">98.562,64&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">32</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/yolon" class="ng-binding" href="/#/user/yolon">yolon</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.526,77&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">33</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/DirkMüller" class="ng-binding" href="/#/user/DirkMüller">DirkMüller</a>
+					</td>
+					<td class="ng-binding">20,22&nbsp;€</td><td class="ng-binding">98.528,10&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">34</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Billhunter" class="ng-binding" href="/#/user/Billhunter">Billhunter</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.486,02&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">35</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/eBaynator" class="ng-binding" href="/#/user/eBaynator">eBaynator</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.387,06&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">36</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/NastyBoyJulius" class="ng-binding" href="/#/user/NastyBoyJulius">NastyBoyJulius</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.371,97&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">37</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/jani00" class="ng-binding" href="/#/user/jani00">jani00</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.267,13&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">38</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/amateurfunker" class="ng-binding" href="/#/user/amateurfunker">amateurfunker</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.233,51&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">39</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/MrMango" class="ng-binding" href="/#/user/MrMango">MrMango</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.208,99&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">40</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/gutzeit" class="ng-binding" href="/#/user/gutzeit">gutzeit</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.152,64&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">41</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Wirtschafts_Dieter" class="ng-binding" href="/#/user/Wirtschafts_Dieter">Wirtschafts_Dieter</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.081,43&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">42</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/NastyBoyJasper" class="ng-binding" href="/#/user/NastyBoyJasper">NastyBoyJasper</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.077,75&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">43</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/L-JW" class="ng-binding" href="/#/user/L-JW">L-JW</a>
+					</td>
+					<td class="ng-binding">0,72&nbsp;€</td><td class="ng-binding">98.068,38&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">44</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Svollo" class="ng-binding" href="/#/user/Svollo">Svollo</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">98.015,33&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">45</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Nobody" class="ng-binding" href="/#/user/Nobody">Nobody</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">97.993,37&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">46</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Holtenauer97" class="ng-binding" href="/#/user/Holtenauer97">Holtenauer97</a>
+					</td>
+					<td class="ng-binding">17,11&nbsp;€</td><td class="ng-binding">97.940,72&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">47</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Stratege123" class="ng-binding" href="/#/user/Stratege123">Stratege123</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">97.776,91&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">48</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/NiklasH" class="ng-binding" href="/#/user/NiklasH">NiklasH</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">97.758,28&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">49</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Heisenberg" class="ng-binding" href="/#/user/Heisenberg">Heisenberg</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">97.739,45&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">50</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/jonadohrenbusch" class="ng-binding" href="/#/user/jonadohrenbusch">jonadohrenbusch</a>
+					</td>
+					<td class="ng-binding">4,72&nbsp;€</td><td class="ng-binding">97.709,72&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">51</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/joporgi23" class="ng-binding" href="/#/user/joporgi23">joporgi23</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">97.392,22&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">52</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/timb2510" class="ng-binding" href="/#/user/timb2510">timb2510</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">97.215,23&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">53</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/TheBigOle" class="ng-binding" href="/#/user/TheBigOle">TheBigOle</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">97.075,76&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">54</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Nathan" class="ng-binding" href="/#/user/Nathan">Nathan</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">96.628,17&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">55</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/qwert" class="ng-binding" href="/#/user/qwert">qwert</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">96.492,19&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">56</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/tomausk" class="ng-binding" href="/#/user/tomausk">tomausk</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">96.451,62&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">57</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Julius610" class="ng-binding" href="/#/user/Julius610">Julius610</a>
+					</td>
+					<td class="ng-binding">19,02&nbsp;€</td><td class="ng-binding">96.266,75&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">58</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Beatzz" class="ng-binding" href="/#/user/Beatzz">Beatzz</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">96.138,68&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">59</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/isa_1" class="ng-binding" href="/#/user/isa_1">isa_1</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">96.101,05&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">60</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/imbanged" class="ng-binding" href="/#/user/imbanged">imbanged</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">96.081,26&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">61</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/alleine_unter_kapitalisten" class="ng-binding" href="/#/user/alleine_unter_kapitalisten">alleine_unter_kapitalisten</a>
+					</td>
+					<td class="ng-binding">4,66&nbsp;€</td><td class="ng-binding">96.008,27&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">62</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/AlexGrgut" class="ng-binding" href="/#/user/AlexGrgut">AlexGrgut</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">95.971,81&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">63</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/CP" class="ng-binding" href="/#/user/CP">CP</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">95.944,35&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">64</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Leroycash" class="ng-binding" href="/#/user/Leroycash">Leroycash</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">95.562,75&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">65</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/BrS" class="ng-binding" href="/#/user/BrS">BrS</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">95.509,62&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">66</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/JK" class="ng-binding" href="/#/user/JK">JK</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">95.437,69&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">67</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Tinaye" class="ng-binding" href="/#/user/Tinaye">Tinaye</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">95.329,22&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">68</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/amir" class="ng-binding" href="/#/user/amir">amir</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">95.197,62&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">69</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Fjan" class="ng-binding" href="/#/user/Fjan">Fjan</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">95.113,45&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">70</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/TheRealKock" class="ng-binding" href="/#/user/TheRealKock">TheRealKock</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">95.112,61&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">71</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/SwappyP23" class="ng-binding" href="/#/user/SwappyP23">SwappyP23</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">94.717,38&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">72</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/YouCantTryForce" class="ng-binding" href="/#/user/YouCantTryForce">YouCantTryForce</a>
+					</td>
+					<td class="ng-binding">446,55&nbsp;€</td><td class="ng-binding">94.748,94&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">73</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/LUSTTEUFEL" class="ng-binding" href="/#/user/LUSTTEUFEL">LUSTTEUFEL</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">94.288,72&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">74</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/BausK" class="ng-binding" href="/#/user/BausK">BausK</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">93.919,26&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">75</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/megatrader" class="ng-binding" href="/#/user/megatrader">megatrader</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">93.734,76&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">76</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/NicoLh" class="ng-binding" href="/#/user/NicoLh">NicoLh</a>
+					</td>
+					<td class="ng-binding">0,23&nbsp;€</td><td class="ng-binding">93.369,61&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">77</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Joni747" class="ng-binding" href="/#/user/Joni747">Joni747</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">90.111,71&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">78</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Blackpearl123" class="ng-binding" href="/#/user/Blackpearl123">Blackpearl123</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">84.048,69&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">79</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/hugobrandt" class="ng-binding" href="/#/user/hugobrandt">hugobrandt</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">80</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/thorbjoern" class="ng-binding" href="/#/user/thorbjoern">thorbjoern</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">81</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/barne" class="ng-binding" href="/#/user/barne">barne</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">82</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/chandre23" class="ng-binding" href="/#/user/chandre23">chandre23</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">83</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/schm1ttler" class="ng-binding" href="/#/user/schm1ttler">schm1ttler</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">84</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/RK92" class="ng-binding" href="/#/user/RK92">RK92</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">85</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Baltram101" class="ng-binding" href="/#/user/Baltram101">Baltram101</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">86</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Alexander" class="ng-binding" href="/#/user/Alexander">Alexander</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">87</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/sdavid" class="ng-binding" href="/#/user/sdavid">sdavid</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">88</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/PS-Profi" class="ng-binding" href="/#/user/PS-Profi">PS-Profi</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">89</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/livi" class="ng-binding" href="/#/user/livi">livi</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">90</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/JordanBelfort" class="ng-binding" href="/#/user/JordanBelfort">JordanBelfort</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">91</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Sofie" class="ng-binding" href="/#/user/Sofie">Sofie</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">92</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/anazoe" class="ng-binding" href="/#/user/anazoe">anazoe</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">93</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Baltram" class="ng-binding" href="/#/user/Baltram">Baltram</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">94</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/arwedb" class="ng-binding" href="/#/user/arwedb">arwedb</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">95</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Planna" class="ng-binding" href="/#/user/Planna">Planna</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">96</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Tradity_Admin" class="ng-binding" href="/#/user/Tradity_Admin">Tradity_Admin</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">97</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Veni-Vidi-Vicius" class="ng-binding" href="/#/user/Veni-Vidi-Vicius">Veni-Vidi-Vicius</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+				<tr ng-repeat="result in results | orderBy:'rank' " class="ng-scope">
+					<td class="ng-binding">98</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Monetos" class="ng-binding" href="/#/user/Monetos">Monetos</a>
+					</td>
+					<td class="ng-binding">0,00&nbsp;€</td><td class="ng-binding">100.000,00&nbsp;€</td>
+					<td ng-show="isAdmin" class="">
+						<a tilte="Benutzer entfernen" ng-click="kickUser(result)">
+							<i class="fa fa-minus-circle"></i>
+						</a>
+						<a title="Benutzer befördern" ng-click="promoteUserToAdmin(result)">
+							<i class="fa fa-level-up"></i>
+						</a>
+					</td>
+				</tr>
+				<!-- end ngRepeat: result in results | orderBy:'rank' -->
+			</tbody>
+		</table>
+	</div>
+</div>
+<h2>Follower</h2>
+<div id="follower" class="ng-scope">
+	<div class="table-wrapper">
+		<table class="ranking table table-bordered">
+			<colgroup>
+				<col style="width: 10%" class="rankcol-1" />
+				<col style="width: 65%" class="rankcol-2" />
+				<col style="width: 25%" class="rankcol-3" />
+			</colgroup>
+			<tbody>
+				<tr>
+					<th>Rang</th><th>Name</th><th>Followerperformance</th><th>Followerbewertung</th>
+				</tr>
+				<!-- ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">1</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Holtenauer97" class="ng-binding" href="/#/user/Holtenauer97">Holtenauer97</a>
+					</td>
+					<td class="ng-binding">0,08 %</td><td class="ng-binding">60,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">2</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/molli" class="ng-binding" href="/#/user/molli">molli</a>
+					</td>
+					<td class="ng-binding">0,41 %</td><td class="ng-binding">40,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">3</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/joporgi23" class="ng-binding" href="/#/user/joporgi23">joporgi23</a>
+					</td>
+					<td class="ng-binding">0,27 %</td><td class="ng-binding">10,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">4</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Trader_Joe" class="ng-binding" href="/#/user/Trader_Joe">Trader_Joe</a>
+					</td>
+					<td class="ng-binding">-0,02 %</td><td class="ng-binding">0,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">5</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/NastyBoyJulius" class="ng-binding" href="/#/user/NastyBoyJulius">NastyBoyJulius</a>
+					</td>
+					<td class="ng-binding">0,00 %</td><td class="ng-binding">0,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">6</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/gutzeit" class="ng-binding" href="/#/user/gutzeit">gutzeit</a>
+					</td>
+					<td class="ng-binding">-0,36 %</td><td class="ng-binding">-10,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">7</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/jonadohrenbusch" class="ng-binding" href="/#/user/jonadohrenbusch">jonadohrenbusch</a>
+					</td>
+					<td class="ng-binding">-0,22 %</td><td class="ng-binding">-10,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">8</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/NicoLh" class="ng-binding" href="/#/user/NicoLh">NicoLh</a>
+					</td>
+					<td class="ng-binding">-4,32 %</td><td class="ng-binding">-50,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">9</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/alw912" class="ng-binding" href="/#/user/alw912">alw912</a>
+					</td>
+					<td class="ng-binding">-1,80 %</td><td class="ng-binding">-90,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">10</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/L-JW" class="ng-binding" href="/#/user/L-JW">L-JW</a>
+					</td>
+					<td class="ng-binding">-1,62 %</td><td class="ng-binding">-100,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">11</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/BennetLüdersen" class="ng-binding" href="/#/user/BennetLüdersen">BennetLüdersen</a>
+					</td>
+					<td class="ng-binding">-0,46 %</td><td class="ng-binding">-230,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">12</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/pauldetlefsen" class="ng-binding" href="/#/user/pauldetlefsen">pauldetlefsen</a>
+					</td>
+					<td class="ng-binding">-4,48 %</td><td class="ng-binding">-230,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">13</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Tinaye" class="ng-binding" href="/#/user/Tinaye">Tinaye</a>
+					</td>
+					<td class="ng-binding">-7,07 %</td><td class="ng-binding">-230,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">14</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/alleine_unter_kapitalisten" class="ng-binding" href="/#/user/alleine_unter_kapitalisten">alleine_unter_kapitalisten</a>
+					</td>
+					<td class="ng-binding">-1,67 %</td><td class="ng-binding">-300,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">15</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Blackpearl123" class="ng-binding" href="/#/user/Blackpearl123">Blackpearl123</a>
+					</td>
+					<td class="ng-binding">-0,54 %</td><td class="ng-binding">-340,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">16</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Nathan" class="ng-binding" href="/#/user/Nathan">Nathan</a>
+					</td>
+					<td class="ng-binding">-0,64 %</td><td class="ng-binding">-350,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">17</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/SwappyP23" class="ng-binding" href="/#/user/SwappyP23">SwappyP23</a>
+					</td>
+					<td class="ng-binding">-0,72 %</td><td class="ng-binding">-370,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">18</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/LasseK" class="ng-binding" href="/#/user/LasseK">LasseK</a>
+					</td>
+					<td class="ng-binding">-1,49 %</td><td class="ng-binding">-460,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">19</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/BausK" class="ng-binding" href="/#/user/BausK">BausK</a>
+					</td>
+					<td class="ng-binding">-6,02 %</td><td class="ng-binding">-540,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">20</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Nikl" class="ng-binding" href="/#/user/Nikl">Nikl</a>
+					</td>
+					<td class="ng-binding">-1,12 %</td><td class="ng-binding">-570,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">21</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/BrS" class="ng-binding" href="/#/user/BrS">BrS</a>
+					</td>
+					<td class="ng-binding">-1,22 %</td><td class="ng-binding">-570,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">22</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/AlexGrgut" class="ng-binding" href="/#/user/AlexGrgut">AlexGrgut</a>
+					</td>
+					<td class="ng-binding">-2,55 %</td><td class="ng-binding">-630,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">23</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/NastyBoyJasper" class="ng-binding" href="/#/user/NastyBoyJasper">NastyBoyJasper</a>
+					</td>
+					<td class="ng-binding">-1,97 %</td><td class="ng-binding">-780,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">24</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/tomausk" class="ng-binding" href="/#/user/tomausk">tomausk</a>
+					</td>
+					<td class="ng-binding">-3,95 %</td><td class="ng-binding">-860,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">25</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/CP" class="ng-binding" href="/#/user/CP">CP</a>
+					</td>
+					<td class="ng-binding">-3,51 %</td><td class="ng-binding">-1.810,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">26</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Beatzz" class="ng-binding" href="/#/user/Beatzz">Beatzz</a>
+					</td>
+					<td class="ng-binding">-4,14 %</td><td class="ng-binding">-2.080,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+				<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" class="ng-scope">
+					<td class="ng-binding">27</td>
+					<td class="rank-name">
+						<a style="cursor: pointer" ng-href="/#/user/Joni747" class="ng-binding" href="/#/user/Joni747">Joni747</a>
+					</td>
+					<td class="ng-binding">-2,07 %</td><td class="ng-binding">-3.960,00</td>
+				</tr>
+				<!-- end ngRepeat: result in results | filter: searchText | limitTo:totalDisplayed -->
+			</tbody>
+		</table>
+	</div>
+</div>
+    </body>
+</html>

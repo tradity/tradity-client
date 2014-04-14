@@ -67,13 +67,13 @@ angular.module('tradity').
 					switch (data.code) {
 						case 'dquery-success':
 							var modal = $dialogs.notify('tradity','Der Trade wird ausgeführt, sobald die angegebenen Bedingungen erfüllt sind.');
-							modal.result.then(function(btn){
-								$state.gi('game.depot.opentransactions');
+							modal.result.then(function(btn) {
+								$state.go('game.depot.opentransactions');
 							});
 							break;
 						case 'stock-buy-success':
 							var modal = $dialogs.notify('tradity','Trade erfolgreich !');
-							modal.result.then(function(btn){
+							modal.result.then(function(btn) {
 								$state.go('game.depot.listing');
 							});
 							break;
@@ -88,7 +88,7 @@ angular.module('tradity').
 							break;
 						case 'stock-buy-autodelay-sxnotopen':
 							var modal = $dialogs.notify('tradity','Der Trade wird ausgeführt, sobald der Handelsplatz öffnet');
-							modal.result.then(function(btn){
+							modal.result.then(function(btn) {
 								$state.go('game.depot.transactions');
 							});
 							break;

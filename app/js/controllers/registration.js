@@ -1,10 +1,7 @@
 angular.module('tradity').
 	controller('RegistrationCtrl', function($scope, $stateParams, $state, socket) {
 		$scope.school = $stateParams.schoolid;
-		$scope.traderse = 0;
-		$scope.tradersp = 0;
 		$scope.traditye = 0;
-		$scope.wot = 0;
 		$scope.zipcode = '';
 		$scope.town = '';
 		$scope.street = '';
@@ -72,10 +69,7 @@ angular.module('tradity').
 				street: $scope.street,
 				zipcode: $scope.zipcode,
 				town: $scope.town,
-				traderse: $scope.traderse,
-				tradersp: $scope.tradersp,
 				traditye: $scope.traditye,
-				wot: $scope.wot,
 				invitekey: $scope.invitekey
 			});
 		};

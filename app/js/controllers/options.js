@@ -18,10 +18,7 @@ angular.module('tradity').
 			$scope.street = data.result.street;
 			$scope.zipcode = data.result.zipcode;
 			$scope.town = data.result.town;
-			$scope.traderse = data.result.traderse&&true;
-			$scope.tradersp = data.result.tradersp&&true;
 			$scope.traditye = data.result.traditye&&true;
-			$scope.wot = data.result.wot&&true;
 			$scope.delayorderhist = data.result.delayorderhist;
 			
 			if (data.result.birthday !== null) {
@@ -92,10 +89,7 @@ angular.module('tradity').
 				street: $scope.street,
 				zipcode: $scope.zipcode,
 				town: $scope.town,
-				traderse: $scope.traderse,
-				tradersp: $scope.tradersp,
 				traditye: $scope.traditye,
-				wot: $scope.wot,
 				delayorderhist: $scope.delayorderhist
 			},
 			function(data) {

@@ -11,7 +11,16 @@ angular.module('tradity').
 				$scope.results.sort(function(a, b) { return a.rank - b.rank; });
 
 				var admins = [];
-				for (i in $scope.$parent.school.admins) admins.push($scope.$parent.school.admins[i].adminname);
+				
+				var curScope = $scope;
+				
+				while (curScope) {
+					if (curScope.school && curScope.school.admins)
+						for (var i = 0; i < curScope.school.admins.length; ++i)
+							admins.push(curScope.school.admins[i].adminname);
+					
+					curScope = curScope.$parent;
+				}
 				
 				for (var i = 0; i < $scope.results.length; ++i) {
 					$scope.results[i].rank = i + 1;

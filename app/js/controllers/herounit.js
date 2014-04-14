@@ -9,7 +9,7 @@ angular.module('tradity').
 		};
 
 		$scope.goto = function (id) {
-			$("body").animate({scrollTop:$('#'+id).offset().top}, 1700)
+			$("html, body").animate({scrollTop:$('#'+id).offset().top}, 1700);
 		}
 
 		socket.on('get-user-info', function(data) {

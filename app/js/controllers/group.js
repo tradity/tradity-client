@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('GroupCtrl', function($scope, $sce, $state, $stateParams, socket) {
+	controller('GroupCtrl', function($scope, $sce, $state, $stateParams, DEFAULT_GROUP_BANNER, socket) {
 		$scope.school = {};
 		$scope.selfIsSchoolAdmin = false;
 		$scope.selfIsSchoolMember = false;
@@ -28,7 +28,7 @@ angular.module('tradity').
 				$scope.descpage = $scope.school.descpage;
 				$scope.schoolid = $scope.school.id;
 				if (!$scope.school.banner)
-					$scope.school.banner = $scope.serverConfig.defaultschoolbanner;
+					$scope.school.banner = DEFAULT_GROUP_BANNER;
 
 				$.each($scope.ownUser.schools, function(i, e) {
 					if (e.path == $scope.school.path) 

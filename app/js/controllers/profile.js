@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('ProfileCtrl', function($scope, $sce, $state, $stateParams, socket) {
+	controller('ProfileCtrl', function($scope, $sce, $state, $stateParams, DEFAULT_PROFILE_IMG, socket) {
 		$scope.values = [];
 		$scope.user = null;
 		
@@ -28,7 +28,7 @@ angular.module('tradity').
 					}
 					$scope.orders = orders;
 					if (!$scope.user.profilepic)
-						$scope.user.profilepic = $scope.serverConfig.defaultprofile;
+						$scope.user.profilepic = DEFAULT_PROFILE_IMG;
 					data.pinboard.sort(function(a,b) { return b.time - a.time; });
 					$scope.comments = data.pinboard;
 					

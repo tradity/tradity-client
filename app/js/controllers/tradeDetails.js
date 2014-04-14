@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('TradeDetailsCtrl', function($scope, $stateParams, socket) {
+	controller('TradeDetailsCtrl', function($scope, $stateParams, DEFAULT_PROFILE_IMG, socket) {
 		$scope.getTradeInfo = function() {
 			socket.emit('get-trade-info', {
 				tradeid: $stateParams.tradeId,
@@ -31,7 +31,7 @@ angular.module('tradity').
 			function(data) {
 				$scope.user = data.result;
 				if (!$scope.user.profilepic)
-						$scope.user.profilepic = $scope.serverConfig.defaultprofile;
+						$scope.user.profilepic = DEFAULT_PROFILE_IMG;
 			});
 		};
 		$scope.getTradeInfo();

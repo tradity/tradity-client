@@ -15,12 +15,12 @@
 						</ul>
 					</div>
 				</li>
-				<li ng-show="search" class="search">
+				<li ng-show="search" class="search desktop-only">
 					<form class="pure-form" id="rankingSearch" ng-submit="openSearch(searchBarText,search)">
 						<input type="search" ng-model="searchBarText" placeholder="Suche" class="pure-input" autofocus>
 					</form>
 				</li>
-				<li ng-show="!search">
+				<li class="desktop-only" ng-show="!search">
 					<a ng-click="showSearch()" href="" class="icon"><i class="fa fa-search"></i></a>
 				</li>
 				<li ng-show="isAdmin">

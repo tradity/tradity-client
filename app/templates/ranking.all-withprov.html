@@ -13,9 +13,9 @@
 				<th>erh. Provision</th>
 				<th>Gesamt­vermögen</th>
 			</tr>
-			<tr ng-repeat="result in results | orderBy:'rank' | filter: searchText | limitTo:totalDisplayed">
+			<tr ng-repeat="result in results | orderBy:'rank' | filter: searchText | limitTo:totalDisplayed" ng-class="'rank-'+result.rank">
 				<td>{{result.rank}}</td>
-				<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer" tradity-profile>{{result.name}}</a></td>
+				<td class="rank-name"><a ng-href="#/user/{{result.name}}" tradity-profile>{{result.name}}</a></td>
 				<td>{{result.prov_sum / 10000 | currency}}</td>
 				<td>{{result.totalvalue / 10000 | currency}}</td>
 			</tr>

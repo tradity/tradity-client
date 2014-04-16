@@ -12,9 +12,9 @@
 				<th>Follower­performance</th>
 				<th>Follower­bewertung</th>
 			</tr>
-			<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed">
+			<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" ng-class="'rank-'+result.rank">
 				<td>{{result.rank}}</td>
-				<td class="rank-name"><a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a></td>
+				<td class="rank-name"><a ng-href="#/user/{{result.name}}">{{result.name}}</a></td>
 				<td>{{(result.totalfperf-1)*100 | number:2}} %</td>
 				<td>{{(result.totalfperfval)*100000 | number:2}}</td>
 			</tr>

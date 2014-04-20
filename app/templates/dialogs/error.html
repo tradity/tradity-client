@@ -1,0 +1,10 @@
+<div class="modal-header dialog-header-error">
+    <button type="button" class="close" ng-click="close()">×</button>
+    <h4 class="modal-title text-danger">
+        <i class="fa fa-exclamation-triangle"></i> <span ng-bind-html="header"></span>
+    </h4>
+</div>
+<div class="modal-body text-danger" ng-bind-html="msg"></div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" ng-click="close()">Schließen</button>
+</div>

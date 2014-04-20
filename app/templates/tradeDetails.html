@@ -34,7 +34,7 @@
 	</div>
 	<div ng-controller="CommentCtrl">
 		<form ng-submit="sendComment()" class="pure-form pure-form-stacked main-comment comment-form">
-			<textarea ng-model="comment" ui-keypress="{13:'sendComment()'}" class="options-input comment-textarea pure-input-1" placeholder="Was sagst Du zu diesem Trade?"></textarea>
+			<textarea ng-model="comment" ui-keypress="{13:'sendComment()'}" class="options-input comment-textarea pure-input-1" placeholder="Was sagst du zu diesem Trade?"></textarea>
 			<div ng-show="isAdmin">
 				<label for="ishtml">HTML</label><input type="checkbox" ng-model="ishtml" id="ishtml">
 			</div>

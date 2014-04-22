@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('OptionsCtrl', function($scope, socket) {
+	controller('OptionsCtrl', function($scope, md5, socket) {
 		socket.emit('get-own-options', function(data) {
 			$scope.name = data.result.name;
 			$scope.giv_name = data.result.giv_name;
@@ -8,7 +8,6 @@ angular.module('tradity').
 			$scope.password = null;
 			$scope.password_check = null;
 			$scope.email = data.result.email;
-			$scope.gender = data.result.gender;
 			$scope.prevschool = data.result.school;
 			$scope.school = data.result.school;
 			$scope.schoolname = document.getElementById('schoolname').value = data.result.schoolname;
@@ -28,6 +27,31 @@ angular.module('tradity').
 				$scope.birthdayy = d.getUTCFullYear();
 			}
 		});
+		
+		$scope.handlePublishCode = function(code) {
+			switch (code) {
+				case 'publish-success':
+					alert('Profilbild erfolgreich hochgeladen!');
+					break;
+				case 'publish-quota-exceed':
+					alert('Die Profilbilddatei ist leider zu groß (höchstens 3 MB)');
+					break;
+				case 'publish-proxy-not-allowed':
+				case 'publish-inacceptable-role':
+				case 'publish-inacceptable-mime':
+					alert('Es gab beim Hochladen Deines Profilbilds leider technische Schwierigkeiten.\nWende dich bitte an tech@tradity.de');
+					break;
+			}
+		};
+		
+		$scope.useGravatar = function() {
+			fileemit(socket, 'https://secure.gravatar.com/avatar/' + md5.createHash($scope.ownUser.email), 'publish', {
+				base64: false,
+				role: 'profile.image',
+				proxy: true
+			}, $scope.serverConfig, $scope.handlePublishCode);
+		};
+		
 		$scope.changeOptions = function() {
 			$scope.schoolname = document.getElementById('schoolname').value;
 			var d = Date.UTC($scope.birthdayy, $scope.birthdaym-1, $scope.birthdayd);
@@ -39,20 +63,7 @@ angular.module('tradity').
 				fileemit(socket, piFile, 'publish', {
 					base64: true,
 					role: 'profile.image',
-				}, $scope.serverConfig, function(code) {
-					switch (code) {
-						case 'publish-success':
-							alert('Profilbild erfolgreich hochgeladen!');
-							break;
-						case 'publish-quota-exceed':
-							alert('Die Profilbilddatei ist leider zu groß (höchstens 3 MB)');
-							break;
-						case 'publish-inacceptable-role':
-						case 'publish-inacceptable-mime':
-							alert('Es gab beim Hochladen Deines Profilbilds leider technische Schwierigkeiten.\nWende dich bitte an tech@tradity.de');
-							break;
-					}
-				});
+				}, $scope.serverConfig, $scope.handlePublishCode);
 			}
 			
 			var school;

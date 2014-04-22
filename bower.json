@@ -12,7 +12,8 @@
 		"angular-intro.js": "",
 		"angular-ui-utils": "bower-keypress",
 		"angular-sanitize": "~1.2.16",
-		"angular-dialog-service": "~3.1.0"
+		"angular-dialog-service": "~3.1.0",
+		"angular-md5": "*"
 	},
 	"devDependencies": {
 		"angular-mocks": "1.2.14",

@@ -5,6 +5,7 @@ angular.module('tradity', [
 	'ui.bootstrap',
 	'ui.keypress',
 	'dialogs',
+	'angular-md5',
 	'infinite-scroll'
 ]).config(function($stateProvider, $urlRouterProvider) {
 	$urlRouterProvider.

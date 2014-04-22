@@ -9,13 +9,13 @@ var initNotifications = function() {
 	$('body').append(notificationContainer);
 };
 
-var notification = function (text,icon) { // icon == true -> success
-	var classes;
+var notification = function (text,icon) { // icon === true -> success
+	var classes = '';
 	
 	if (!icon)
 		icon = 'fa-exclamation-triangle';
 	
-	if (icon == true) {
+	if (icon === true) {
 		classes = 'success';
 		icon = 'fa-check';
 	}
@@ -27,19 +27,6 @@ var notification = function (text,icon) { // icon == true -> success
 	setTimeout(function() {
 		notificationItem.hide();
 	}, 3000);
-};
-
-var tabbing = function(div, targeturl, def, $location, $scope) {
-	div.tabs();
-	$(div.children('ul').get(0)).find('a').each(function(i, e) {
-		if ($(e).attr('href').split('/').pop().replace(/#/g, '') == def)
-			div.tabs('option', {active: i});
-	});
-	div.tabs({activate: function(event, ui) {
-		if (!ui.newTab)
-			return;
-		$scope.$apply(function() { $location.path(targeturl.replace(/\?/g, ui.newTab.children('a').attr('href').replace(/#/g, ''))); });
-	}});
 };
 
 var useSchoolAC = function($scope, socket) {

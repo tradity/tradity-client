@@ -236,7 +236,8 @@ angular.module('tradity', [
 			controller: 'RankingGroupCtrl'
 		});
 }).run(['$templateCache',function($templateCache){
-	['error', 'wait', 'notify', 'confirm'].forEach(function(t) {
-		$templateCache.put('/dialogs/' + t + '.html','<ng-include src="\'templates/dialogs/' + t + '.html\'"></ng-include>');
-	});
+	$templateCache.put('/dialogs/error.html',   "<ng-include src=\"'templates/dialogs/error.html'\"></ng-include>");
+	$templateCache.put('/dialogs/wait.html',    "<ng-include src=\"'templates/dialogs/wait.html'\"></ng-include>");
+	$templateCache.put('/dialogs/notify.html',  "<ng-include src=\"'templates/dialogs/notify.html'\"></ng-include>");
+	$templateCache.put('/dialogs/confirm.html', "<ng-include src=\"'templates/dialogs/confirm.html'\"></ng-include>");
 }]);

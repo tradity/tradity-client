@@ -24,7 +24,8 @@ angular.module('tradity').
 			},
 			hasOpenQueries: function () {
 				return socket.hasOpenQueries();
-			}
+			},
+			connected: socket.socket.socket.connected
 		};
 	});
 

@@ -13,7 +13,7 @@ angular.module('tradity', [
 	when('/depot', '/depot/overview').
 	when('/ranking', '/ranking/all').
 	when('/admin', '/admin/userlist').
-	otherwise('/');
+	otherwise('/error/404');
 	$stateProvider.
 		state('index', {
 			url: '/',
@@ -231,10 +231,16 @@ angular.module('tradity', [
 			templateUrl: 'templates/group.intergroup.html',
 			controller: 'RankingGroupCtrl'
 		}).
-		state('sponsors', {
-			url: '/sponsors',
-			templateUrl: 'templates/sponsors.html',
-			controller: 'RankingGroupCtrl'
+		state('error', {
+			templateUrl: 'templates/error.html'
+		}).
+		state('error.404', {
+			url:'/error/404',
+			templateUrl: 'templates/error.404.html'
+		}).
+		state('error.connection', {
+			url:'/error/connection',
+			templateUrl: 'templates/error.connection.html'
 		});
 }).run(['$templateCache',function($templateCache){
 	$templateCache.put('/dialogs/error.html',   "<ng-include src=\"'templates/dialogs/error.html'\"></ng-include>");

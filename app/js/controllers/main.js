@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs) {
+	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $timeout) {
 		$scope.Math = Math;
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
@@ -8,6 +8,10 @@ angular.module('tradity').
 		$scope.loading = false;
 		$scope.serverConfig = {};
 		$scope.hasOpenQueries = socket.hasOpenQueries.bind(socket);
+
+		$timeout(function(){
+			if (!socket.connected) $state.go('error.connection');	
+		},500);
 
 		$scope.toggleMenu = function() {
 			$('body').toggleClass('menuShow');
@@ -72,6 +76,7 @@ angular.module('tradity').
 					$state.go('index.login');
 			}
 		}, $scope);
+		
 		socket.on('self-info', function(data) {
 			$scope.ownUser = data;
 

@@ -39,8 +39,8 @@ module.exports = function (grunt) {
 				tasks: ['newer:jshint:test', 'karma']
 			},
 			styles: {
-				files: ['<%= yeoman.app %>/css/{,*/}*.css'],
-				tasks: ['newer:copy:styles', 'autoprefixer']
+				files: ['<%= yeoman.app %>/css/{,*/}*.css','<%= yeoman.app %>/less/{,*/}*.less'],
+				tasks: ['less:dev','newer:copy:styles', 'autoprefixer']
 			},
 			gruntfile: {
 				files: ['Gruntfile.js']
@@ -123,7 +123,6 @@ module.exports = function (grunt) {
 			},
 			server: '.tmp'
 		},
-
 		// Add vendor prefixed styles
 		autoprefixer: {
 			options: {
@@ -191,7 +190,7 @@ module.exports = function (grunt) {
 			}
 		},
 
-		// The following *-min tasks produce minified files in the dist folder
+		// The following *-min tasks produce minified files in the dist folder"
 		imagemin: {
 			dist: {
 				files: [{
@@ -337,7 +336,22 @@ module.exports = function (grunt) {
 				],
 				dest: '<%= yeoman.app %>/js/config.js'
 			}
-		}
+		},
+		less: {
+			dev: {
+				paths: ['<%= yeoman.app %>/less', '<%= yeoman.app %>/css'],
+			    files: {
+			    	'<%= yeoman.app %>/css/style.css': "<%= yeoman.app %>/less/main.less"
+			    }
+		  	},
+		  	build: {
+		  		compress: true,
+				paths: ['<%= yeoman.app %>/less', '<%= yeoman.app %>/css'],
+			    files: {
+			    	'<%= yeoman.app %>/css/style.css': "<%= yeoman.app %>/less/main.less"
+			    }
+		  	},
+		}		
 	});
 
 	grunt.registerMultiTask('createconfig', 'Merge global and local config', function() {
@@ -371,6 +385,7 @@ module.exports = function (grunt) {
 			'bower-install',
 			'concurrent:server',
 			'autoprefixer',
+			'less:dev',
 			'connect:livereload',
 			'watch'
 		]);
@@ -394,6 +409,7 @@ module.exports = function (grunt) {
 		'bower-install',
 		'createconfig',
 		'useminPrepare',
+		'less:build',
 		'concurrent:dist',
 		'autoprefixer',
 		'concat',

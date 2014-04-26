@@ -3,11 +3,11 @@ angular.module('tradity').
 		socket.emit('get-ranking', {
 			since: 0,
 			schoolid: $scope.schoolid,
-			_cache: 20
-		},
-		function(data) {
+			_cache: 30,
+			_prefill: { useForOwnUserRank: true }
+		}, function(data) {
 			if (data.code == 'get-ranking-success') {
-				$scope.results = rankify(data.result, function(r) { return r.hastraded ? r.totalvalue - r.prov_sum : -Infinity; });
+				$scope.results = rankify(data.result);
 
 				var admins = [];
 				

@@ -137,6 +137,7 @@ var escapeHTML = function(s) {
 
 var rankify = function(res, key, filter) {
 	filter = filter || function() { return true; };
+	key = key || function(r) { return r.hastraded ? r.totalvalue - r.prov_sum : -Infinity; };
 	
 	res = res.filter(filter);
 	res.sort(function(a, b) {

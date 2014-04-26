@@ -157,12 +157,13 @@ SoTradeConnection.prototype.emit = function(evname, data, cb) {
 		}).bind(this);
 	}
 	
+	var prefill = data._prefill || {};
+	prefill._t_csend = new Date().getTime();
+	prefill._reqsize = JSON.stringify(data).length;
+	
 	this.ids[id] = {
 		cb: cb,
-		prefill: { 
-			_t_csend: new Date().getTime(),
-			_reqsize: JSON.stringify(data).length
-		},
+		prefill: prefill,
 		_expect_no_response: data._expect_no_response
 	};
 	

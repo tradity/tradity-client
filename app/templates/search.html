@@ -16,7 +16,10 @@
 					<th>Gesamt­vermögen</th>
 				</tr>
 				<tr ng-repeat="result in users">
-					<td>{{result.rank}}</td>
+					<td>
+						<span ng-show="result.rank">{{result.rank}}</span>
+						<span ng-hide="result.rank">–</span>
+					</td>
 					<td class="rank-name">
 						<a ng-href="#/user/{{result.name}}" style="cursor: pointer">{{result.name}}</a>
 					</td>

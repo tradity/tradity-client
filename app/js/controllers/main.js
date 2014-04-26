@@ -51,6 +51,12 @@ angular.module('tradity').
 				$scope.isAdmin = false;
 				return;
 			}
+			
+			socket.emit('get-ranking', {
+				since: 0,
+				_cache: 30,
+				_prefill: { useForOwnUserRank: true }
+			});
 
 			if ($scope.isAdmin)
 				return;
@@ -92,6 +98,20 @@ angular.module('tradity').
 
 			$scope.$broadcast('user-update', data);
 		}, $scope);
+		
+		socket.on('get-ranking', function(data) {
+			if (!data.useForOwnUserRank || !$scope.ownUser)
+				return;
+			
+			var ranking = rankify(data.result);
+			
+			for (var i = 0; i < ranking.length; ++i) {
+				if (ranking[i].uid == $scope.ownUser.uid) {
+					$scope.ownUser.rank = i+1;
+					break;
+				}
+			}
+		});
 
 		socket.on('get-user-info', function(data) {
 			var r = data.result;

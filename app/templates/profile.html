@@ -16,7 +16,8 @@
 		<div class="pure-g user-stats desktop-only">
 			<div class="pure-u-1-6">
 				<h3 class="title">Platz</h3>
-				<span class="placement-number">{{user.rank}}</span>
+				<span class="placement-number" ng-show="user.rank">{{user.rank}}</span>
+				<span class="placement-number" ng-hide="user.rank">–</span>
 			</div>
 			<div class="pure-u-1-6">
 				<h3 class="title">Vermögen</h3>
@@ -36,7 +37,8 @@
 		<div class="pure-g user-stats mobile-only">
 			<div class="pure-u-1-5">
 				<h3 class="title">Platz</h3>
-				<span class="placement-number">{{user.rank}}</span>
+				<span class="placement-number" ng-show="user.rank">{{user.rank}}</span>
+				<span class="placement-number" ng-hide="user.rank">–</span>
 			</div>
 			<div class="pure-u-2-5">
 				<h3 class="title">Vermögen</h3>

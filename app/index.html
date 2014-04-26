@@ -73,11 +73,12 @@
 		<script type="text/javascript" src="js/controllers/search.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<!-- endbuild -->
-		<script defer="defer" type="text/javascript">window.onload = function(){if(typeof angular=='undefined'){var a;(a=document.getElementById('scriptfail')).style.display='block';a.src='scriptfail.html';}};</script>
+		<script type="text/javascript">window.onload = function(){if(typeof angular=='undefined'){var a;(a=document.getElementById('scriptfail')).style.display='block';a.src='scriptfail.html';}};</script>
 	</head>
 	<body ng-controller="MainCtrl">
 		<div id="view" ui-view>
-			<p class="text-center">Javascript muss in deinem Browser aktiviert sein, um Tradity zu benutzen.</p>
+			<p class="text-center" id="js-notice">Javascript muss in deinem Browser aktiviert sein, um Tradity zu benutzen.</p>
+			<script type="text/javascript">document.getElementById('js-notice').style.display='none';</script>
 		</div>
 		<iframe style="width:100%;height:100%;display:none;border:none;position:fixed" id="scriptfail" src="data:text/plain,"></iframe>
 	</body>

@@ -13,23 +13,8 @@
 		<link rel="stylesheet" href="css/style.css">
 		<!-- endbuild -->
 
-		<!-- Piwik -->
-		<script type="text/javascript">
-			var _paq = _paq || [];
-			_paq.push(["trackPageView"]);
-			_paq.push(["enableLinkTracking"]);
-
-			(function() {
-				var u=(("https:" == document.location.protocol) ? "https" : "http") + "://piwik.entless.org/";
-				_paq.push(["setTrackerUrl", u+"piwik.php"]);
-				_paq.push(["setSiteId", "3"]);
-				var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
-				g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
-			})();
-		</script>
-		<!-- End Piwik Code -->
-
 		<!-- build:js({.tmp,app}) js/scripts.js -->
+		<script type="text/javascript" src="js/piwik.js"></script>
 		<script type="text/javascript" src="js/vendor/jquery-2.0.3.min.js"></script>
 		<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 		<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
@@ -88,10 +73,12 @@
 		<script type="text/javascript" src="js/controllers/search.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<!-- endbuild -->
+		<script defer="defer" type="text/javascript">window.onload = function(){if(typeof angular=='undefined'){var a;(a=document.getElementById('scriptfail')).style.display='block';a.src='scriptfail.html';}};</script>
 	</head>
 	<body ng-controller="MainCtrl">
 		<div id="view" ui-view>
 			<p class="text-center">Javascript muss in deinem Browser aktiviert sein, um Tradity zu benutzen.</p>
 		</div>
+		<iframe style="width:100%;height:100%;display:none;border:none;position:fixed" id="scriptfail" src="data:text/plain,"></iframe>
 	</body>
 </html>

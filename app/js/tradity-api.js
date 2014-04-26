@@ -35,9 +35,15 @@ SoTradeConnection = function(rawsocket) {
 	
 	this.socket.on('response', this.responseHandler.bind(this));
 	
+	this._txPackets = 0;
+	this._rxPackets = 0;
+	this._pxPackets = 0;
+	
 	this.socket.on('push', (function(data) {
 		datalog('!', data);
 		
+		this._rxPackets++;
+		this._pxPackets++;
 		this.invokeListeners(data);
 	}).bind(this));
 };
@@ -89,6 +95,8 @@ SoTradeConnection.prototype.responseHandler = function(data) {
 		data._dt_sdelta   = data._t_ssend - data._t_srecv;
 		data._dt_outqueue = data._t_crecv - data._t_ssend;
 	}
+	
+	this._rxPackets++;
 	
 	datalog('<', data);
 	
@@ -158,6 +166,8 @@ SoTradeConnection.prototype.emit = function(evname, data, cb) {
 		_expect_no_response: data._expect_no_response
 	};
 	
+	this._txPackets++;
+	
 	this.socket.emit('query', data);
 	datalog('>', data);
 	
@@ -204,5 +214,9 @@ SoTradeConnection.prototype.on = function(evname, cb, angularScope) {
 		angularScope.$on('$destroy', function() { delete this_.listeners[evname][index]; });
 	}
 };
+
+SoTradeConnection.prototype.txPackets = function() { return this._txPackets; };
+SoTradeConnection.prototype.rxPackets = function() { return this._rxPackets; };
+SoTradeConnection.prototype.pxPackets = function() { return this._pxPackets; };
 
 })();

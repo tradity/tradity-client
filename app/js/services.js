@@ -22,10 +22,10 @@ angular.module('tradity').
 					});
 				});
 			},
-			hasOpenQueries: function () {
-				return socket.hasOpenQueries();
-			},
-			connected: socket.socket.socket.connected
+			hasOpenQueries: function () { return socket.hasOpenQueries(); },
+			txPackets: function() { return socket.txPackets(); },
+			rxPackets: function() { return socket.rxPackets(); },
+			pxPackets: function() { return socket.pxPackets(); }
 		};
 	});
 

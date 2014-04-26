@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, API_HOST, API_CONNECT_TEST_PATH) {
+	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, $timeout, API_HOST, API_CONNECT_TEST_PATH) {
 		$scope.Math = Math;
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
@@ -9,10 +9,15 @@ angular.module('tradity').
 		$scope.serverConfig = {};
 		$scope.hasOpenQueries = socket.hasOpenQueries.bind(socket);
 		
-		var connectTest = $http.get(API_HOST + API_CONNECT_TEST_PATH);
-		connectTest.error(function(data, status, headers, config) {
-			$state.go('error.connection');	
-		});
+		$timeout(function() {
+			if (socket.rxPackets() > 0)
+				return; // everything okay
+			
+			var connectTest = $http.get(API_HOST + API_CONNECT_TEST_PATH);
+			connectTest.error(function(data, status, headers, config) {
+				$state.go('error.connection');	
+			});
+		}, 3141);
 
 		$scope.toggleMenu = function() {
 			$('body').toggleClass('menuShow');

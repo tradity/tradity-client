@@ -3,7 +3,7 @@ angular.module('tradity').
 		$scope.steps = [
 			{
 				name: "Willkommen",
-				description: "Um den tollsten Menschen der Welt zu Watchen ! Klicke auf die Rangliste !",
+				description: "Um den tollsten Menschen der Welt zu Watchen! Klicke auf die Rangliste!",
 				condition:{
 					type:'state',
 					element:'#rangliste',
@@ -12,7 +12,7 @@ angular.module('tradity').
 			},
 			{
 				name: "Toll",
-				description: "Du hast es fast Geschaft noch ein Schritt zur Weltherschaft ! Suche einfacheruser",
+				description: "Du hast es fast Geschaft noch ein Schritt zur Weltherschaft! Suche einfacheruser",
 				condition:{
 					type:'keyup',
 					value:'einfacheruser',
@@ -21,7 +21,7 @@ angular.module('tradity').
 			},
 			{
 				name: "jaaaa :)",
-				description: "Klicke jetzt auf mich ! :D",
+				description: "Klicke jetzt auf mich! :D",
 				condition:{
 					type:'state',
 					state:'game.profile.overview',

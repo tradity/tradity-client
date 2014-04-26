@@ -134,3 +134,17 @@ var escapeHTML = function(s) {
 	        .replace(/'/, '&#039;')
 	        .replace(/"/, '&quot;');
 };
+
+var rankify = function(res, key, filter) {
+	filter = filter || function() { return true; };
+	
+	res = res.filter(filter);
+	res.sort(function(a, b) {
+		return key(b) - key(a);
+	});
+	
+	for (var i = 0; i < res.length; ++i)
+		res[i].rank = i + 1;
+	
+	return res;
+};

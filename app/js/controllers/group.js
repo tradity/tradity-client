@@ -171,7 +171,6 @@ angular.module('tradity').
 			$scope.totalDisplayed += 10;
 		};
 
-
 		$scope.groups = [];
 
 		socket.emit('list-schools', { 

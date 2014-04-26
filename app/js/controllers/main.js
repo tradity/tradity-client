@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, API_HOST) {
+	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, API_HOST, API_CONNECT_TEST_PATH) {
 		$scope.Math = Math;
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
@@ -9,10 +9,10 @@ angular.module('tradity').
 		$scope.serverConfig = {};
 		$scope.hasOpenQueries = socket.hasOpenQueries.bind(socket);
 		
-		var connectTest = $http.get(API_HOST);
-        connectTest.error(function(data, status, headers, config) {
-            $state.go('error.connection');	
-        });
+		var connectTest = $http.get(API_HOST + API_CONNECT_TEST_PATH);
+		connectTest.error(function(data, status, headers, config) {
+			$state.go('error.connection');	
+		});
 
 		$scope.toggleMenu = function() {
 			$('body').toggleClass('menuShow');
@@ -23,7 +23,7 @@ angular.module('tradity').
 		}
 
 		$scope.openSearch = function(query) {
-			$state.go('game.search',{
+			$state.go('game.search', {
 				query: query
 			});
 		}
@@ -55,7 +55,7 @@ angular.module('tradity').
 		});
 
 		$scope.isActive = function(route) {
-				return route === $location.path();
+			return route === $location.path();
 		};
 
 		$scope.logout = function() {
@@ -154,6 +154,7 @@ angular.module('tradity').
 		$scope.fetchSelf(function() {
 			$scope.pokeEvents();
 		});
+		
 		socket.emit('get-config');
 
 		/* events */

@@ -3,6 +3,7 @@ angular.module('tradity').
 		var ownDepotOrUser = function() {
 			if (!$scope.ownUser)
 				return;
+			
 			$scope.ownUser.depotvalue = 0;
 			for (var i in $scope.results) {
 				$scope.ownUser.depotvalue += parseInt($scope.results[i].total);
@@ -68,6 +69,7 @@ angular.module('tradity').
 				}
 			});
 		};
+		
 		socket.on('watchlist-show', function(data) {
 			if (data.code == 'watchlist-show-success') {
 				$scope.watchlist = data.results;
@@ -77,6 +79,7 @@ angular.module('tradity').
 		$scope.showWatchlist = function(nocache) {
 			socket.emit('watchlist-show', nocache ? null : { _cache: 20 });
 		};
+		
 		$scope.removeFromWatchlist = function(entry) {
 			socket.emit('watchlist-remove', {
 				stockid: entry.id
@@ -88,5 +91,6 @@ angular.module('tradity').
 				}
 			});
 		};
+		
 		$scope.showWatchlist();
 	});

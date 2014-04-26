@@ -52,16 +52,14 @@ angular.module('tradity').
 					}
 				});
 				
-				$scope.interGroupResults.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
-				for (var i = 0; i < $scope.interGroupResults.length; ++i)
-					$scope.interGroupResults[i].rank = i + 1;
+				$scope.interGroupResults = rankify($scope.interGroupResults, function(r) { return r.hastraded ? r.totalvalue : -Infinity; });
 				
 				$scope.school.usercount = $scope.results.length - $scope.pendingMembers.length;
 			});
 		};
 
 		socket.emit('get-ranking', {
-			rtype: 'general',
+			since: 0,
 			_cache: 20
 		},
 		function(data) {

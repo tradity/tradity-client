@@ -1,14 +1,13 @@
 angular.module('tradity').
 	controller('RankingAllCtrl', function($scope, socket) {
 		socket.emit('get-ranking', {
-			rtype: 'general',
+			since: 0,
 			schoolid: $scope.schoolid,
 			_cache: 20
 		},
 		function(data) {
 			if (data.code == 'get-ranking-success') {
-				$scope.results = data.result;
-				$scope.results.sort(function(a, b) { return a.rank - b.rank; });
+				$scope.results = rankify(data.result, function(r) { return r.hastraded ? r.totalvalue - r.prov_sum : -Infinity; });
 
 				var admins = [];
 				
@@ -22,10 +21,8 @@ angular.module('tradity').
 					curScope = curScope.$parent;
 				}
 				
-				for (var i = 0; i < $scope.results.length; ++i) {
-					$scope.results[i].rank = i + 1;
+				for (var i = 0; i < $scope.results.length; ++i) 
 					$scope.results[i].admin = admins.indexOf($scope.results[i].name) != -1;
-				}
 			}
 		});
 	});

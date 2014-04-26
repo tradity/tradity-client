@@ -13,7 +13,8 @@ angular.module('tradity', [
 	when('/depot', '/depot/overview').
 	when('/ranking', '/ranking/all').
 	when('/admin', '/admin/userlist').
-	otherwise('/error/404');
+	otherwise('/');
+	/*otherwise('/error/404');*/
 	$stateProvider.
 		state('index', {
 			url: '/',

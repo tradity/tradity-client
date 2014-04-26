@@ -22,7 +22,7 @@ angular.module('tradity').
 			var curScope = $scope;
 			
 			while (!eventid && curScope) {
-				if (curScope.trade)  eventid = curScope.trade.eventid;
+				if      (curScope.trade)  eventid = curScope.trade.eventid;
 				else if (curScope.user)   eventid = curScope.user.registerevent;
 				else if (curScope.school) eventid = curScope.school.eventid;
 				
@@ -36,8 +36,7 @@ angular.module('tradity').
 				eventid: eventid,
 				comment: $scope.comment,
 				ishtml: $scope.ishtml
-			},
-			function(data) {
+			}, function(data) {
 				if (data.code == 'comment-notfound') {
 					alert('Kommentarevent nicht gefunden.\nHier läuft etwas falsch.');
 				} else if (data.code == 'comment-success') {

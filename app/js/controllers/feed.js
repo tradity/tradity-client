@@ -24,5 +24,6 @@ angular.module('tradity').
 		$scope.$on('messages-changed', function() {
 			$scope.displayFeed();
 		});
+		
 		$scope.displayFeed();
 	});

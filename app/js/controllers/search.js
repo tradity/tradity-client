@@ -8,13 +8,12 @@ angular.module('tradity').
 		$scope.search = function() {
 			if ($scope.searchText.length != 0)
 				socket.emit('get-ranking', {
-					rtype: 'general',
 					search: $scope.searchText,
+					includeAll: true,
 					_cache: 20
-				},
-				function(data) {
+				}, function(data) {
 					if (data.code == 'get-ranking-success') {
-						$scope.users = data.result;
+						$scope.users = rankify(data.result, function(r) { return r.hastraded ? r.totalvalue : -Infinity; });
 					}
 				});		
 
@@ -37,8 +36,7 @@ angular.module('tradity').
 				});	
 		}
 		
-		if($stateParams.query) $scope.search();
-
-
+		if($stateParams.query)
+			$scope.search();
 	});
 

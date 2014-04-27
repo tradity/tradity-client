@@ -10,7 +10,7 @@ var devmode = function() { return document.cookie.indexOf('devmode') != -1; };
 function datalog() {
 	if (!devmode()) {
 		if (!logmsg) {
-			console.log('For data debugging, please call enterDevMode() once.');
+			/*console.log('For data debugging, please call enterDevMode() once.');*/
 			logmsg = true;
 		}
 		

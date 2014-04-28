@@ -32,7 +32,7 @@
 				<div class=" feed-entry-symbol"><i class="fa fa-eye"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-					Du hast <a ng-href="#/user/{{message.targetname}}" class="feed-link">{{message.targetname}}</a> auf deine Watchlist gesetzt.
+					Du hast <a ng-href="#/user/{{message.targetname}}" class="feed-link">{{message.targetname}}</a> auf <a href="#/depot/watchlist">deine Watchlist</a> gesetzt.
 				</div>
 			</div>
 			<div ng-switch-when="watch-add-me">
@@ -47,7 +47,9 @@
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
 					<a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an 
-						<span ng-show="message.leader"><a ng-href="#/user/{{message.leader}}">{{message.stockname}}</a></span> <span ng-hide="message.leader">{{message.stockname}}</span> <a ng-href="#/trade/{{message.targetid}}" class="feed-link">gekauft</a>.
+						<span ng-show="message.leader"><a ng-href="#/user/{{message.leader}}">{{message.stockname}}</a></span>
+						<span ng-hide="message.leader">{{message.stockname}}</span>
+					<a ng-href="#/trade/{{message.targetid}}" class="feed-link">gekauft</a>.
 				</div>
 			</div>
 			<div ng-switch-when="trade-sell">

@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('OptionsCtrl', function($scope, md5, socket) {
+	controller('OptionsCtrl', function($scope, md5, socket, $dialogs) {
 		socket.emit('get-own-options', function(data) {
 			$scope.name = data.result.name;
 			$scope.giv_name = data.result.giv_name;
@@ -130,10 +130,13 @@ angular.module('tradity').
 		};
 		
 		$scope.resetUser = function() {
-			socket.emit('reset-user', null, function(data) {
-				if (data.code == 'reset-user-success')
-					alert('Reset erfolgreich!');
-			});
+			var dlg = $dialogs.confirm('Options', 'Willst du dich wirklich Reseten ?');
+			dlg.result.then(function(btn) {
+				socket.emit('reset-user', null, function(data) {
+					if (data.code == 'reset-user-success')
+						alert('Reset erfolgreich!');
+				});
+			})
 		};
 		
 		socket.on('change-options', function(data) {

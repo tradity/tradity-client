@@ -4,7 +4,7 @@ angular.module('tradity').
 		$scope.steps = [
 			{
 				name: "Newsfeed",
-				description: "Du befindest Dich hier in deinem Feed. Wenn du von den neuesten Aktionen und Kommentaren deiner „Leader“ (was das für Leute sind, sagen wir dir nachher) und Freunde oder wichtigen Spielmeldungen erfahren willst, bist Du hier richtig. ",
+				description: "Du befindest dich hier in deinem Feed. Wenn du von den neuesten Aktionen und Kommentaren deiner „Leader“ (was das für Leute sind, sagen wir dir nachher) und Freunde oder wichtigen Spielmeldungen erfahren willst, bist du hier richtig.",
 				init: function() {
 					$("#feed").addClass('blink');
 					$scope.okayButton = true;
@@ -19,7 +19,7 @@ angular.module('tradity').
 			},
 			{
 				name: "Trade",
-				description: "Nun zeigen wir Dir, wo du Aktien und „Leaderpapiere“ (was die sind erklären wir dir nachher) kaufen und verkaufen kannst. Klicke dazu auf „Trade“ links im Navigationsmenü.",
+				description: "Nun zeigen wir dir, wo du Aktien und „Leaderpapiere“ (was die sind, erklären wir dir nachher) kaufen und verkaufen kannst. Klicke dazu auf „Trade“ links im Navigationsmenü.",
 				init: function() {
 					$("a[ui-sref='.trade']").addClass('blink');
 
@@ -34,7 +34,7 @@ angular.module('tradity').
 			},
 			{
 				name: "Trade",
-				description: "Hier findest Du die Liste der meistgehandelten Aktien und Leader-Papiere bei Tradity. Wähle das Erste aus.",
+				description: "Hier findest du die Liste der meistgehandelten Aktien und Leader-Papiere bei Tradity. Wähle das Erste aus.",
 				init: function() {
 					$timeout(function() {
 						$(".popularstocks").addClass('blink');
@@ -51,7 +51,7 @@ angular.module('tradity').
 			},
 			{
 				name: "Trade",
-				description: "Hier findest Du allerlei Informationen, die für den Handel von Bedeutung sind. Wenn Du bei „Weitere Informationen“ auf den Link klickst, kommst du auf eine externe Seite, zu der du mehr Informationen findest. Wird die langsam langweilig? Keine Angst, jetzt musst du gleich selbst aktiv werden!",
+				description: "Hier findest du allerlei Informationen, die für den Handel von Bedeutung sind. Wenn du bei „Weitere Informationen“ auf den Link klickst, kommst du auf eine externe Seite, zu der du mehr Informationen findest. Wird die langsam langweilig? Keine Angst, jetzt musst du gleich selbst aktiv werden!",
 				init: function() {
 					$timeout(function() {
 						$(".paper-preview-box").addClass('blink');
@@ -89,7 +89,7 @@ angular.module('tradity').
 						console.log(stocks)
 						$('#search').append(stocks);
 						stocks.removeClass('ng-hide');
-						var bob = $('<tr ng-repeat="result in stocks"><td class=""><a>Bob der Baumeister GmbH</a></td><td class="text-center">42,728 €</td><td class="text-center">42,579&nbsp;€</td><td class="text-center">42</td></tr>')
+						var bob = $('<tr ng-repeat="result in stocks"><td class=""><a>Bob der Baumeister GmbH</a></td><td class="text-center">42,728 €</td><td class="text-center">42,579 €</td><td class="text-center">42</td></tr>')
 						$('tbody',stocks).append(bob);
 
 						bob.click(function () {
@@ -103,7 +103,7 @@ angular.module('tradity').
 			},
 			{
 				name: "Kaufen",
-				description: "Du kaufst zum Kaufpreis und verkaufst zum Verkaufspreis – logisch. Der Unterschied zwischen den beiden Preisen heißt „Spread“ und ist umso größer je weniger die Aktie auf dem Markt gehandelt wird. Achtung! Du würdest bei einem sofortigen Verkauf also Verlust machen.",
+				description: "Du kaufst zum Kaufpreis und verkaufst zum Verkaufspreis – logisch. Der Unterschied zwischen den beiden Preisen heißt „Spread“ und ist umso größer, je weniger die Aktie auf dem Markt gehandelt wird. Achtung! Du würdest bei einem sofortigen Verkauf also Verlust machen.",
 				init: function() {
 					$scope.okayButton = true;
 					$scope.routeChange = function() {
@@ -119,7 +119,7 @@ angular.module('tradity').
 			},
 			{
 				name: "Kaufen",
-				description: "Die ISIN ist eine eindeutige Kennnummer für Aktien. Wenn Du also die ISIN einer Aktie kennst, kannst Du Dir sicher sein, dass es überall die gleiche Aktie ist. Du kannst so z.B. auch die ISIN in das Suchfenster eingeben, um eine bestimmte Aktie zu suchen. ",
+				description: "Die ISIN ist eine eindeutige Kennnummer für Aktien. Wenn du also die ISIN einer Aktie kennst, kannst du dir sicher sein, dass es überall die gleiche Aktie ist. Du kannst so z. B. auch die ISIN in das Suchfenster eingeben, um eine bestimmte Aktie zu suchen.",
 				init: function() {
 					
 				},

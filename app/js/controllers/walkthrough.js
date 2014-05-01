@@ -110,7 +110,7 @@ angular.module('tradity').
 						$scope.routeChange = function(next) {};
 						$timeout(function() {
 
-						};
+						},0);
 					}
 				},
 				exit: function() {

@@ -11,7 +11,7 @@
 				<h3>Top-Wertpapiere</h3>
 				<div ng-class="{hideMost: !showPopularStocks}">
 					<ol class="popularstocks">
-						<li ng-repeat="stock in popularStocks"><a ng-href="#/trade/buy/{{stock.stockid}}/0">{{stock.stockname}}</a></li>
+						<li ng-repeat="stock in popularStocks"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: stock.stockid, amount: 0})">{{stock.stockname}}</a></li>
 					</ol>
 					<a class="trade-more" ng-click="togglePopularStocks()"><span ng-show="!showPopularStocks">Mehr</span><span ng-show="showPopularStocks">Weniger</span> Wertpapiere</a>
 				</div>
@@ -19,7 +19,7 @@
 			<div class="pure-u-1-2">
 				<div class="options-field paper-preview-box padding-left" ng-show="cur"> 
 					<table class="paper-preview f">
-						<tr ng-show="leader"><th>Name</th><td><a ng-href="#/user/{{cur.leadername}}">{{stockname}}</a></td></tr>
+						<tr ng-show="leader"><th>Name</th><td><a ui-sref="game.profile({userId: cur.leadername})">{{stockname}}</a></td></tr>
 						<tr ng-hide="leader"><th>Name</th><td ng-show="cur">{{stockname}}</td></tr>
 						<tr><th><span class="batch tooltip" data-info="(Auch Ask, Geldkurs oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span>
 							Kauf­preis</th><td ng-show="cur">{{cur.ask / 10000 | number:3}} €</td></tr>
@@ -32,7 +32,7 @@
 						<tr ng-hide="leader"><th><span class="batch tooltip" data-info="Du kannst nur so viele Aktien kaufen, wie auch in der Realität an der Börse gehandelt wurden. Wurden an Tag X zum Beispiel nur 1000 Stück der Aktie gehandelt, die du kaufen oder verkaufen willst, kannst du an diesem Tag maximal je 1000 Stück kaufen und verkaufen. Achte vor allem bei sogennanten „Pennystocks“ auf die Liquidität, da diese oft sehr gering ist.">&#xF0AD;</span>Handelbare Stückzahl</th><td ng-show="cur">{{cur.pieces}}</td></tr>
 						<tr ng-hide="leader"><th>Aktien­informationen</th><td ng-show="cur"><a target="_blank" ng-href="http://ariva.de/{{cur.stockid}}">http://ariva.de/{{cur.stockid}}</a></td></tr>
 					</table>
-				</div>				
+				</div>
 			</div>
 		</div>
 

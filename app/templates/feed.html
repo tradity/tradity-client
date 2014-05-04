@@ -3,7 +3,7 @@
 		<h2>Willkommen bei Tradity!</h2>
 		<div class="text">
 			Willkommen bei Tradity – dem ersten Social Trading Börsenspiel Deutschlands! Leg gleich los und 
-			investiere in andere Spieler oder kaufe deine ersten Aktien – Du hast 100.000 € Startkapital. Das <a href="#/faq" class="text-link" title="Häufig gestellte Fragen">FAQ</a> hilft dir weiter.
+			investiere in andere Spieler oder kaufe deine ersten Aktien – Du hast 100.000 € Startkapital. Das <a ui-sref="game.faq" class="text-link" title="Häufig gestellte Fragen">FAQ</a> hilft dir weiter.
 		</div>
 		<hr/>
 		<div class="text">
@@ -25,73 +25,73 @@
 				<div class=" feed-entry-symbol"><i class="fa fa-eye"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-					<a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat <a ng-href="#/user/{{message.targetname}}" class="feed-link">{{message.targetname}}</a> auf seine Watchlist gesetzt.
+					<a ui-sref="game.profile({userId: message.srcusername})" class="feed-link">{{message.srcusername}}</a> hat <a ui-sref="game.profile({userId: message.targetname})" class="feed-link">{{message.targetname}}</a> auf seine Watchlist gesetzt.
 				</div>
 			</div>
 			<div ng-switch-when="watch-add-self">
 				<div class=" feed-entry-symbol"><i class="fa fa-eye"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-					Du hast <a ng-href="#/user/{{message.targetname}}" class="feed-link">{{message.targetname}}</a> auf <a href="#/depot/watchlist">deine Watchlist</a> gesetzt.
+					Du hast <a ui-sref="game.profile({userId: message.targetname})" class="feed-link">{{message.targetname}}</a> auf <a ui-sref="game.depot.watchlist">deine Watchlist</a> gesetzt.
 				</div>
 			</div>
 			<div ng-switch-when="watch-add-me">
 				<div class=" feed-entry-symbol"><i class="fa fa-eye"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-					<a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat dich auf seine Watchlist gesetzt.
+					<a ui-sref="game.profile({userId: message.srcusername})" class="feed-link">{{message.srcusername}}</a> hat dich auf seine Watchlist gesetzt.
 				</div>
 			</div>
 			<div ng-switch-when="trade-buy">
 				<div class=" feed-entry-symbol"><i class="fa fa-eur"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-					<a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an 
-						<span ng-show="message.leader"><a ng-href="#/user/{{message.leader}}">{{message.stockname}}</a></span>
+					<a ui-sref="game.profile({userId: message.srcusername})" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an 
+						<span ng-show="message.leader"><a ui-sref="game.profile({userId: message.leader})">{{message.stockname}}</a></span>
 						<span ng-hide="message.leader">{{message.stockname}}</span>
-					<a ng-href="#/trade/{{message.targetid}}" class="feed-link">gekauft</a>.
+					<a ui-sref="game.tradeDetails({tradeId: message.targetid})" class="feed-link">gekauft</a>.
 				</div>
 			</div>
 			<div ng-switch-when="trade-sell">
 				<div class=" feed-entry-symbol"><i class="fa fa-eur"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-					<a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an <span ng-show="message.leader"><a ng-href="#/user/{{message.leader}}">{{message.stockname}}</a></span> <span ng-hide="message.leader">{{message.stockname}}</span> <a ng-href="#/trade/{{message.targetid}}" class="feed-link">verkauft</a>.
+					<a ui-sref="game.profile({userId: message.srcusername})" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an <span ng-show="message.leader"><a ui-sref="game.profile({userId: message.leader})">{{message.stockname}}</a></span> <span ng-hide="message.leader">{{message.stockname}}</span> <a ui-sref="game.tradeDetails({tradeId: message.targetid})" class="feed-link">verkauft</a>.
 				</div>
 			</div>
 			<div ng-switch-when="trade-buy-self">
 				<div class=" feed-entry-symbol"><i class="fa fa-eur"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-					Du hast {{message.amount}} Anteile an <span ng-show="message.leader"><a ng-href="#/user/{{message.leader}}">{{message.stockname}}</a></span> <span ng-hide="message.leader">{{message.stockname}}</span> <a ng-href="#/trade/{{message.targetid}}" class="feed-link">gekauft</a>.
+					Du hast {{message.amount}} Anteile an <span ng-show="message.leader"><a ui-sref="game.profile({userId: message.leader})">{{message.stockname}}</a></span> <span ng-hide="message.leader">{{message.stockname}}</span> <a ui-sref="game.tradeDetails({tradeId: message.targetid})" class="feed-link">gekauft</a>.
 				</div>
 			</div>
 			<div ng-switch-when="trade-sell-self">
 				<div class=" feed-entry-symbol"><i class="fa fa-eur"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-					Du hast {{message.amount}} Anteile an <span ng-show="message.leader"><a ng-href="#/user/{{message.leader}}">{{message.stockname}}</a></span> <span ng-hide="message.leader">{{message.stockname}}</span> <a ng-href="#/trade/{{message.targetid}}" class="feed-link">verkauft</a>.
+					Du hast {{message.amount}} Anteile an <span ng-show="message.leader"><a ui-sref="game.profile({userId: message.leader})">{{message.stockname}}</a></span> <span ng-hide="message.leader">{{message.stockname}}</span> <a ui-sref="game.tradeDetails({tradeId: message.targetid})" class="feed-link">verkauft</a>.
 				</div>
 			</div>
 			<div ng-switch-when="trade-buy-me">
 				<div class=" feed-entry-symbol"><i class="fa fa-eur"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-					<a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an dir <a ng-href="#/trade/{{message.targetid}}" class="feed-link">gekauft</a>.
+					<a ui-sref="game.profile({userId: message.srcusername})" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an dir <a ui-sref="game.tradeDetails({tradeId: message.targetid})" class="feed-link">gekauft</a>.
 				</div>
 			</div>
 			<div ng-switch-when="trade-sell-me">
 				<div class=" feed-entry-symbol"><i class="fa fa-eur"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-					<a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an dir <a ng-href="#/trade/{{message.targetid}}" class="feed-link">verkauft</a>.
+					<a ui-sref="game.profile({userId: message.srcusername})" class="feed-link">{{message.srcusername}}</a> hat {{message.amount}} Anteile an dir <a ui-sref="game.tradeDetails({tradeId: message.targetid})" class="feed-link">verkauft</a>.
 				</div>
 			</div>
 			<div ng-switch-when="provchange">
 				<div class=" feed-entry-symbol"><i class="fa fa-credit-card"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-					<a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat 
+					<a ui-sref="game.profile({userId: message.srcusername})" class="feed-link">{{message.srcusername}}</a> hat 
 					<span ng-show="message.wprovchanged">seine Gewinnprovision von {{message.oldwprov}} % auf {{message.newwprov}} %</span>
 					<span ng-show="message.bothchanged">und</span>
 					<span ng-show="message.lprovchanged">seine Verlustprovision von {{message.oldlprov}} % auf {{message.newlprov}} %</span>
@@ -113,7 +113,7 @@
 				<div class=" feed-entry-symbol"></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-					<a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat seinen Benutzernamen von „{{message.oldname}}“ auf „{{message.newname}}“ verändert.
+					<a ui-sref="game.profile({userId: message.srcusername})" class="feed-link">{{message.srcusername}}</a> hat seinen Benutzernamen von „{{message.oldname}}“ auf „{{message.newname}}“ verändert.
 				</div>
 			</div>
 			<div ng-switch-when="namechange-self">
@@ -127,7 +127,7 @@
 				<div class=" feed-entry-symbol"></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-					<a ng-href="#/user/{{message.srcusername}}" class="feed-link">{{message.srcusername}}</a> hat seinen Account zurückgesetzt.
+					<a ui-sref="game.profile({userId: message.srcusername})" class="feed-link">{{message.srcusername}}</a> hat seinen Account zurückgesetzt.
 				</div>
 			</div>
 			<div ng-switch-when="reset-self">
@@ -143,9 +143,9 @@
 				<div class="feed-entry-content">
 					<div class="feed-head">
 						<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-						<a ng-href="#/user/{{message.srcusername}}">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ng-href="#/user/{{message.tradername}}">{{message.tradername_genitive}}</a> Pinnwand
+						<a ui-sref="game.profile({userId: message.srcusername})">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ui-sref="game.profile({userId: message.tradername})">{{message.tradername_genitive}}</a> Pinnwand
 					</div>
-					<a ng-href="#/user/{{message.tradername}}/pinboard">
+					<a ui-sref="game.profile({userId: message.tradername}).pinboard">
 						<span ng-show="message.trustedhtml" ng-bind-html="message.comment">{{message.comment}}</span>
 						<span ng-hide="message.trustedhtml">{{message.comment}}</span>
 					</a>
@@ -157,9 +157,9 @@
 				<div class="feed-entry-content">
 					<div class="feed-head">
 						<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-						<a ng-href="#/user/{{message.srcusername}}">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ng-href="#/user/{{message.tradername}}">{{message.tradername_genitive}}</a> <a ng-href="#/trade/{{message.orderid}}">Trade</a>
+						<a ui-sref="game.profile({userId: message.srcusername})">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ui-sref="game.profile({userId: message.tradername})">{{message.tradername_genitive}}</a> <a ui-sref="game.tradeDetails({tradeId: message.orderid})">Trade</a>
 					</div>
-					<a ng-href="#/trade/{{message.orderid}}">
+					<a ui-sref="game.tradeDetails({tradeId: message.orderid})">
 						<span ng-show="message.trustedhtml" ng-bind-html="message.comment">{{message.comment}}</span>
 						<span ng-hide="message.trustedhtml">{{message.comment}}</span>
 					</a>
@@ -172,9 +172,9 @@
 				<div class="feed-entry-content">
 					<div class="feed-head">
 						<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
-						<a ng-href="#/user/{{message.srcusername}}">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ng-href="#/s{{message.schoolpath}}">{{message.tradername}}</a>
+						<a ui-sref="game.profile({userId: message.srcusername})">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ui-sref="game.group({schoolid: message.schoolpath})">{{message.tradername}}</a>
 					</div>
-					<a ng-href="#/s{{message.schoolpath}}">
+					<a ui-sref="game.group({schoolid: message.schoolpath})">
 						<span ng-show="message.trustedhtml" ng-bind-html="message.comment">{{message.comment}}</span>
 						<span ng-hide="message.trustedhtml">{{message.comment}}</span>
 					</a>

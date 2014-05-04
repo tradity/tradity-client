@@ -14,10 +14,7 @@ angular.module('tradity').
 		if ($state.includes('*.group'))
 			$state.go('.pinboard');
 
-		if (parseInt($stateParams.schoolid) == $stateParams.schoolid)
-			$scope.schoolid = $stateParams.schoolid;
-		else
-			$scope.schoolid = '/' + $stateParams.schoolid;
+		$scope.schoolid = $stateParams.schoolid;
 
 		socket.emit('get-school-info', {
 			lookfor: $scope.schoolid

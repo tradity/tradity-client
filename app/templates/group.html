@@ -33,7 +33,7 @@
 
 				</div>
 				<div class="widget" ng-show="school.parentPath">
-					<a ng-href="#/s{{school.parentPath}}">zur Übergruppe</a>
+					<a ui-sref="game.group({schoolid: school.parentPath})">zur Übergruppe</a>
 				</div>
 				<div class="widget promo" ng-show="school.id==11">
 					<img src="img/Logo_KVB.jpg" width="100%">
@@ -53,7 +53,7 @@
 					<h3>Beliebte Aktien</h3>
 					<div class="inner">
 						<ol class="popularstocks">
-							<li ng-repeat="stock in school.popularStocks"><a ng-href="#/trade/buy/{{stock.stockid}}/0">{{stock.stockname}}</a></li>
+							<li ng-repeat="stock in school.popularStocks"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: stock.stockid, amount: 0})">{{stock.stockname}}</a></li>
 						</ol>
 					</div>
 				</div>
@@ -61,7 +61,7 @@
 					<h3>Administratoren</h3>
 					<div class="inner">
 						<ul class="groupadminlist">
-							<li ng-repeat="admin in school.admins"><a ng-href="#/user/{{admin.adminname}}">{{admin.adminname}}</a></li>
+							<li ng-repeat="admin in school.admins"><a ui-sref="game.profile({userId: admin.adminname})">{{admin.adminname}}</a></li>
 						</ul>
 					</div>
 				</div>
@@ -69,7 +69,7 @@
 					<h3>Untergruppen</h3>
 					<div class="inner">
 						<ul class="subschoollist">
-							<li ng-repeat="subschool in school.subschools"><a ng-href="#/s{{subschool.path}}">{{subschool.name}}</a></li>
+							<li ng-repeat="subschool in school.subschools"><a ui-sref="game.group({schoolid: subschool.path})">{{subschool.name}}</a></li>
 						</ul>
 						<a ng-show="isAdmin || selfIsSchoolAdmin" ng-click="createSchool()">Neue Untergruppe anlegen</a>
 					</div>
@@ -78,7 +78,7 @@
 					<h3>Nicht bestätigte User</h3>
 					<div class="inner">
 						<ul class="pendinguserslist">
-							<li ng-repeat="user in pendingMembers"><a ng-href="#/user/{{user.name}}">{{user.name}}</a> (<a ng-click="verifyMember(user)">bestätigen</a>)</li>
+							<li ng-repeat="user in pendingMembers"><a ui-sref="game.profile({userId: user.name})">{{user.name}}</a> (<a ng-click="verifyMember(user)">bestätigen</a>)</li>
 						</ul>
 					</div>
 				</div>

@@ -20,7 +20,7 @@
 				</tr>
 				<tr ng-repeat="order in delayedOrders">
 					<td class="depot-{{order.buysell}}" title="{{order.query.stockid}}">
-						<span ng-show="order.query.leader"><a ng-href="#/user/{{order.query.leader}}">{{order.query.dquerydata.name}}</a></span>
+						<span ng-show="order.query.leader"><a ui-sref="game.profile({userId: order.query.leader})">{{order.query.dquerydata.name}}</a></span>
 						<span ng-hide="order.query.leader">{{order.query.dquerydata.name}}</span>
 					</td>
 					<td>{{order.query.dquerydata.ordertime | date:'d.M.yy HH:mm'}}</td>
@@ -57,7 +57,7 @@
 				</tr>
 				<tr ng-repeat="order in orders">
 					<td class="{{order.ordertype}}" title="{{order.stocktextid}}">
-						<a class="text-link" ng-href="#/trade/{{order.orderid}}">{{order.stockname}}</a>
+						<a ui-sref="game.tradeDetails({tradeId: order.orderid})">{{order.stockname}}</a>
 					</td>
 					<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
 					<td>{{order.amount}}</td>

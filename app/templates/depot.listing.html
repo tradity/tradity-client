@@ -34,7 +34,7 @@
 				</tr>
 				<tr ng-repeat="result in results">
 					<td>
-						<span ng-show="result.leader"><a ng-href="#/user/{{result.leadername}}">{{result.stockname}}</a></span>
+						<span ng-show="result.leader"><a ui-sref="game.profile({uid: result.leadername})">{{result.stockname}}</a></span>
 						<span ng-hide="result.leader">{{result.stockname}}</span>
 					</td>
 					<td>{{result.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
@@ -50,7 +50,7 @@
 							{{( orderPerfYesterday = result.bid - result.daystartvalue)
 						/ result.daystartvalue * 100 | number:2}} %
 					</td>
-					<td class="trade-td text-center"><a ng-href="#/trade/sell/{{result.stockid}}/{{result.amount}}" class="batch block-link trade"><i class="fa fa-bar-chart-o"></i></a></td>
+					<td class="trade-td text-center"><a ui-sref="game.tradesellbuy({sellbuy: 'sell', stockId: result.stockid, amount: result.amount})" class="batch block-link trade"><i class="fa fa-bar-chart-o"></i></a></td>
 				</tr>
 			</table>
 		</div>

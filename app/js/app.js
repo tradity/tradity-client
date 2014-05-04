@@ -43,7 +43,7 @@ angular.module('tradity', [
 			controller: 'RegistrationCtrl'
 		}).
 		state('index.schoolregister', {
-			url: 'register/s/:schoolid',
+			url: 'register/s{schoolid:/[\\w_/-]*[\\w_-]}',
 			templateUrl: 'templates/registration.html',
 			controller: 'RegistrationCtrl'
 		}).
@@ -198,7 +198,7 @@ angular.module('tradity', [
 			controller: 'GroupCtrl'
 		}).
 		state('game.group', {
-			url: '/s/{schoolid:[\\w_/-]*[\\w_-]}',
+			url: '/s{schoolid:/[\\w_/-]*[\\w_-]}',
 			templateUrl: 'templates/group.html',
 			controller: 'GroupCtrl'
 		}).

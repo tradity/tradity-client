@@ -7,9 +7,9 @@
 					<div>
 						<a href="" class="dropdown-toggle icon" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-							<li><a ng-href="#/user/{{ownUser.name}}"><b>{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</b></a></li>
-							<li><a ng-href="#/user/{{ownUser.name}}">Mein Profil</a></li>
-							<li><a href="#/options">Einstellungen</a></li>
+							<li><a ui-sref="game.profile({userId: ownUser.name})"><b>{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</b></a></li>
+							<li><a ui-sref="game.profile({userId: ownUser.name})">Mein Profil</a></li>
+							<li><a ui-sref="game.options">Einstellungen</a></li>
 							<li class="divider"></li>
 							<li><a ng-click="logout()" href="">Abmelden</a></li>
 						</ul>
@@ -30,13 +30,13 @@
 					<a ng-click="logout()" href="" class="icon"><i class="fa fa-sign-out"></i></a>
 				</li>
 				<li>
-					<a ng-href="#/user/{{ownUser.name}}" ng-hide="!ownUser.profilepic"><img id="profile-picture" height="50px" ng-src="{{ownUser.profilepic}}" alt="">
-					<a ng-href="#/user/{{ownUser.name}}" ng-hide="ownUser.profilepic"><img id="profile-picture" height="50px" src="img/profile.svg" alt=""></a>
+					<a ui-sref="game.profile({userId: ownUser.name})" ng-hide="!ownUser.profilepic"><img id="profile-picture" height="50px" ng-src="{{ownUser.profilepic}}" alt="">
+					<a ui-sref="game.profile({userId: ownUser.name})" ng-hide="ownUser.profilepic"><img id="profile-picture" height="50px" src="img/profile.svg" alt=""></a>
 				</li>
 			</ul>     
 			<ul class="icon-bar">
 				<li class="desktop-only">
-					<a ng-href="#/feed">
+					<a ui-sref="game.feed">
 						<img src="img/symbol.png">
 					</a>
 				</li>
@@ -77,15 +77,15 @@
 					</li>
 					<li ng-show="ownUser.topLevelSchool" class="menu-item">
 						<ul class="subMenu desktop-only" ng-show="ownUser.schools.length > 1">
-							<li ng-hide="ownUser.topLevelSchool == item" ng-repeat="item in ownUser.schools"><a ng-href="#/s{{item.path}}">{{item.name}}</a></li>
+							<li ng-hide="ownUser.topLevelSchool == item" ng-repeat="item in ownUser.schools"><a ui-sref="game.group({schoolid: item.path})">{{item.name}}</a></li>
 						</ul>
-						<a ng-href="#/s{{ownUser.topLevelSchool.path}}" accesskey="g" title="ALT+SHIFT+G" ng-class="{active:isActive('#/s'+ownUser.bottomLevelSchool.path)}">
+						<a ui-sref="game.group({schoolid: ownUser.topLevelSchool.path})" accesskey="g" title="ALT+SHIFT+G" ng-class="{active: ('*.group.*' | includedByState)}">
 							<i class="fa fa-users"></i>
 							<span class="dark nav-block-title">{{ownUser.topLevelSchool.name}}</span>
 						</a>
 					</li>
 					<li ng-show="!ownUser.topLevelSchool" class="menu-item">
-						<a href="#/s/" accesskey="g" title="ALT+SHIFT+G">
+						<a ui-sref="game.groupOverview" accesskey="g" title="ALT+SHIFT+G">
 							<i class="fa fa-users"></i>
 							<span class="dark nav-block-title">Deine Gruppe</span>
 						</a>

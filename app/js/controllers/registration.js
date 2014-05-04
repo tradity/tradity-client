@@ -53,6 +53,7 @@ angular.module('tradity').
 					break;
 			}
 		});
+		
 		$scope.register = function() {
 			if (!$scope.agbread)
 				return alert('Bitte bestätige, dass du die AGB gelesen hast.');

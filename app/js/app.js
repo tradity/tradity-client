@@ -7,7 +7,7 @@ angular.module('tradity', [
 	'dialogs',
 	'angular-md5',
 	'infinite-scroll'
-]).config(function($stateProvider, $urlRouterProvider) {
+]).config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 	$urlRouterProvider.
 	// redirect abstract states to child
 	when('/depot', '/depot/overview').
@@ -243,6 +243,10 @@ angular.module('tradity', [
 			url:'/error/connection',
 			templateUrl: 'templates/error.connection.html'
 		});
+		
+	$locationProvider.
+		html5Mode(true).
+		hashPrefix('!');
 }).run(['$templateCache',function($templateCache){
 	$templateCache.put('/dialogs/error.html',   "<ng-include src=\"'templates/dialogs/error.html'\"></ng-include>");
 	$templateCache.put('/dialogs/wait.html',    "<ng-include src=\"'templates/dialogs/wait.html'\"></ng-include>");

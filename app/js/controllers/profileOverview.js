@@ -29,11 +29,11 @@ angular.module('tradity').
 			var data = $.map($.grep($scope.$parent.values, function(e) {
 				return now/1000 - e.time < 86400 * mode.days;
 			}), function(e) {
-				if (e.time*1000 < tmin) tmin = e.time*1000;
-				if (e.time*1000 > tmax) tmax = e.time*1000;
-				if (e.value/10000 < vmin) vmin = e.value/10000;
-				if (e.value/10000 > vmax) vmax = e.value/10000;
-				return [[e.time*1000, e.value/10000]];
+				if (e.time*1000        < tmin) tmin = e.time*1000;
+				if (e.time*1000        > tmax) tmax = e.time*1000;
+				if (e.totalvalue/10000 < vmin) vmin = e.totalvalue/10000;
+				if (e.totalvalue/10000 > vmax) vmax = e.totalvalue/10000;
+				return [[e.time*1000, e.totalvalue/10000]];
 			});
 
 			if (!data || data.length == 0)
@@ -61,7 +61,6 @@ angular.module('tradity').
 						}
 					}
 				},
-
 
 				grid:{
 					background:'#fff',

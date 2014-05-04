@@ -14,6 +14,7 @@ angular.module('tradity').
 				} else if (data.code == 'get-user-info-success') {
 					$scope.user = data.result;
 					$scope.values = data.values;
+					
 					var orders = data.orders;
 					orders.sort(function(a,b) { return b.buytime - a.buytime; });
 					for (var i in orders) {

@@ -4,10 +4,11 @@ angular.module('tradity', [
 	'ui.router',
 	'ui.bootstrap',
 	'ui.keypress',
+	'pascalprecht.translate',
 	'dialogs',
 	'angular-md5',
 	'infinite-scroll'
-]).config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+]).config(function($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider) {
 	$urlRouterProvider.
 	// redirect abstract states to child
 	when('/depot', '/depot/overview').
@@ -247,6 +248,13 @@ angular.module('tradity', [
 	$locationProvider.
 		html5Mode(true).
 		hashPrefix('!');
+	$translateProvider.
+		useStaticFilesLoader({
+			prefix: 'locale-',
+			suffix: '.json'
+		}).
+		fallbackLanguage(['en', 'de']).
+		preferredLanguage('de');
 }).run(['$templateCache',function($templateCache){
 	$templateCache.put('/dialogs/error.html',   "<ng-include src=\"'templates/dialogs/error.html'\"></ng-include>");
 	$templateCache.put('/dialogs/wait.html',    "<ng-include src=\"'templates/dialogs/wait.html'\"></ng-include>");

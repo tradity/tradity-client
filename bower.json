@@ -15,7 +15,9 @@
     "angular-dialog-service": "~3.1.0",
     "angular-md5": "*",
     "pure": "~0.4.2",
-    "ac.js": "*"
+    "ac.js": "*",
+    "angular-translate": "2.1.0",
+    "angular-translate-loader-static-files": ""
   },
   "devDependencies": {
     "angular-mocks": "1.2.14",

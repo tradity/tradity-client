@@ -110,28 +110,28 @@
 				</div>
 			</div>
 			<div ng-switch-when="namechange">
-				<div class=" feed-entry-symbol"></div>
+				<div class=" feed-entry-symbol"><i class="fa fa-info"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
 					<a ui-sref="game.profile({userId: message.srcusername})" class="feed-link">{{message.srcusername}}</a> hat seinen Benutzernamen von „{{message.oldname}}“ auf „{{message.newname}}“ verändert.
 				</div>
 			</div>
 			<div ng-switch-when="namechange-self">
-				<div class=" feed-entry-symbol"></div>
+				<div class=" feed-entry-symbol"><i class="fa fa-info"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
 					Du hast deinen Benutzernamen von „{{message.oldname}}“ auf „{{message.newname}}“ verändert.
 				</div>
 			</div>
 			<div ng-switch-when="reset">
-				<div class=" feed-entry-symbol"></div>
+				<div class=" feed-entry-symbol"><i class="fa fa-info"></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
 					<a ui-sref="game.profile({userId: message.srcusername})" class="feed-link">{{message.srcusername}}</a> hat seinen Account zurückgesetzt.
 				</div>
 			</div>
 			<div ng-switch-when="reset-self">
-				<div class=" feed-entry-symbol"></div>
+				<div class=" feed-entry-symbol"><i class="fa fa-info"></i></i></div>
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
 					Du hast deinen Account zurückgesetzt.

@@ -52,7 +52,7 @@ angular.module('tradity').
 					}
 				});
 				
-				$scope.interGroupResults = rankify($scope.interGroupResults, function(r) { return r.hastraded ? r.totalvalue : -Infinity; });
+				$scope.interGroupResults = rankify($scope.interGroupResults, function(r) { return r.totalvalue; });
 				
 				$scope.school.usercount = $scope.results.length - $scope.pendingMembers.length;
 			});

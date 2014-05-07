@@ -77,7 +77,7 @@ angular.module('tradity').
 					$scope.ownUser = null;
 					$scope.isAdmin = false;
 					$scope.$broadcast('user-update');
-					$state.go('index');
+					$state.go('index.login');
 				}
 			});
 		};

@@ -6,7 +6,7 @@ angular.module('tradity').
 		return {
 			on: function (eventName, callback, angularScope) {
 				socket.on(eventName, function () {
-					var args = arguments;
+					var args = arguments;	
 					$rootScope.$apply(function () {
 						callback.apply(socket, args);
 					});
@@ -24,8 +24,7 @@ angular.module('tradity').
 			},
 			hasOpenQueries: function () { return socket.hasOpenQueries(); },
 			txPackets: function() { return socket.txPackets(); },
-			rxPackets: function() { return socket.rxPackets(); },
-			pxPackets: function() { return socket.pxPackets(); }
+			rxPackets: function() { return socket.rxPackets(); }
 		};
 	});
 

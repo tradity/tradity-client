@@ -30,21 +30,39 @@ SoTradeConnection = function(rawsocket) {
 	this.listeners = {}; // listener name -> array of callbacks
 	this.ids = []; // numeric id -> {cb: callback for that id, prefill: object}
 	this.id = 0;
+	this.lzma = null;
+	
+	if (typeof LZMA != 'undefined' && typeof Blob != 'undefined' && typeof Uint8Array != 'undefined' && 
+		window.URL && window.URL.createObjectURL && lzma_worker_js)
+		this.lzma = new LZMA(URL.createObjectURL(new Blob([lzma_worker_js])));
 	
 	this.qCache = {};
 	
-	this.socket.on('response', this.responseHandler.bind(this));
-	
 	this._txPackets = 0;
 	this._rxPackets = 0;
-	this._pxPackets = 0;
 	
-	this.socket.on('push', (function(data) {
-		datalog('!', data);
-		
-		this._rxPackets++;
-		this._pxPackets++;
-		this.invokeListeners(data);
+	this.socket.on('response', (function(wdata) {
+		this.unwrap(wdata, this.responseHandler.bind(this));
+	}).bind(this));
+	
+	this.socket.on('push', (function(wdata) {
+		this.unwrap(wdata, (function(data) {
+			datalog('!', data);
+			
+			this._rxPackets++;
+			this.invokeListeners(data);
+		}).bind(this));
+	}).bind(this));
+	
+	this.socket.on('push-container', (function(wdata) {
+		this.unwrap(wdata, (function(data) {
+			datalog('!', data);
+			
+			this._rxPackets++;
+			
+			for (var i = 0; i < data.pushes.length; ++i)
+				this.invokeListeners(data.pushes[i]);
+		}).bind(this));
 	}).bind(this));
 };
 
@@ -88,21 +106,22 @@ SoTradeConnection.prototype.responseHandler = function(data) {
 	}
 	
 	if (devmode()) {
-		data._respsize = JSON.stringify(data).length;
 		data._t_crecv = new Date().getTime();
 		data._dt_cdelta   = data._t_crecv - data._t_csend;
 		data._dt_inqueue  = data._t_srecv - data._t_csend;
 		data._dt_sdelta   = data._t_ssend - data._t_srecv;
 		data._dt_outqueue = data._t_crecv - data._t_ssend;
+		data._dt_scomp    = data._t_ssend - data._t_sdone;
+		data._dt_ccomp    = data._t_cdeco - data._t_crecv;
 	}
 	
 	this._rxPackets++;
 	
 	datalog('<', data);
 	
-	this.invokeListeners(data, waitentry ? waitentry.cb : null);
-	
 	delete this.ids[numericID];
+	
+	this.invokeListeners(data, waitentry ? waitentry.cb : null);
 };
 
 SoTradeConnection.prototype.emit = function(evname, data, cb) {
@@ -169,6 +188,9 @@ SoTradeConnection.prototype.emit = function(evname, data, cb) {
 	
 	this._txPackets++;
 	
+	if (this.lzma)
+		data.lzma = 1;
+	
 	this.socket.emit('query', data);
 	datalog('>', data);
 	
@@ -216,8 +238,27 @@ SoTradeConnection.prototype.on = function(evname, cb, angularScope) {
 	}
 };
 
+SoTradeConnection.prototype.unwrap = function(data, cb) {
+	(this.lzma && data.e == 'lzma' ? function(cont) {
+		this.lzma.decompress(new Uint8Array(base64codec.decodeBuffer(data.s)), cont);
+	} : function(cont) {
+		if (data.e != 'raw') {
+			console.warn(data);
+			throw new Error('Unknown/unsupported encoding: ' + data.e);
+		}
+		
+		cont(data.s);
+	}).bind(this)(function(decoded) {
+		var e = JSON.parse(decoded);
+		e._t_ssend = data.t;
+		e._t_cdeco = new Date().getTime();
+		e._resp_encsize = data.s.length;
+		e._resp_decsize = decoded.length;
+		cb(e);
+	});
+};
+
 SoTradeConnection.prototype.txPackets = function() { return this._txPackets; };
 SoTradeConnection.prototype.rxPackets = function() { return this._rxPackets; };
-SoTradeConnection.prototype.pxPackets = function() { return this._pxPackets; };
 
 })();

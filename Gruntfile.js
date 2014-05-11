@@ -306,15 +306,15 @@ module.exports = function (grunt) {
 		//     }
 		//   }
 		// },
-		// uglify: {
-		//   dist: {
-		//     files: {
-		//       '<%= yeoman.dist %>/js/scripts.js': [
-		//         '<%= yeoman.dist %>/js/scripts.js'
-		//       ]
-		//     }
-		//   }
-		// },
+		uglify: {
+			lzma: {
+				files: {
+					'.tmp/lzma_worker.js': [
+						'<%= yeoman.app %>/bower_components/lzma-js/src/lzma_worker.js'
+					]
+				}
+			}
+		},
 		// concat: {
 		//   dist: {}
 		// },
@@ -324,6 +324,15 @@ module.exports = function (grunt) {
 			unit: {
 				configFile: 'karma.conf.js',
 				singleRun: true
+			}
+		},
+		
+		stringwrap: {
+			files: {
+				src: [
+					'.tmp/lzma_worker.js'
+				],
+				dest: '<%= yeoman.app %>/js/lzma_worker.wrap.js'
 			}
 		},
 		
@@ -353,6 +362,20 @@ module.exports = function (grunt) {
 		}		
 	});
 
+	grunt.registerMultiTask('stringwrap', 'Wrap file contents as string', function() {
+		this.files.forEach(function(file) {
+			var j = '';
+			
+			file.src.forEach(function(f) {
+				j += ('var ' + f.replace(/^(.*\/)?([^\/]+)$/, '$2').replace(/[^\w]/g, '_').replace(/_+/g, '_') + 
+					' = ' + JSON.stringify(grunt.file.read(f)));
+			});
+			
+			grunt.file.write(file.dest, j);
+			grunt.log.writeln('Written wrapped result to ' + file.dest);
+		});
+	});
+	
 	grunt.registerMultiTask('createconfig', 'Merge global and local config', function() {
 		this.files.forEach(function(file) {
 			var j = {};
@@ -407,6 +430,8 @@ module.exports = function (grunt) {
 		'clean:dist',
 		'bower-install',
 		'createconfig',
+		'uglify:lzma',
+		'stringwrap',
 		'useminPrepare',
 		'less:build',
 		'concurrent:dist',
@@ -416,7 +441,7 @@ module.exports = function (grunt) {
 		'copy:dist',
 		'cdnify',
 		'cssmin',
-		'uglify',
+		'uglify:generated',
 		'rev',
 		'usemin',
 		'htmlmin'

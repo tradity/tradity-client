@@ -21,6 +21,11 @@
 				<input id="email" ng-model="email" type="email" placeholder="Email Addresse">
 			</div>
 
+			<div class="pure-control-group" ng-show="serverConfig.betakeyRequired">
+				<label for="betakey">Betakey</label>
+				<input id="betakey" ng-model="betakey" type="betakey" placeholder="Betakey">
+			</div>
+
 			<div class="pure-controls">
 				<label for="cb" class="pure-checkbox">
 					<input id="cb" ng-model="agbread" type="checkbox"> Ich habe die AGB gelesen und akzeptiert.

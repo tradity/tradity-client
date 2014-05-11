@@ -6,6 +6,7 @@ angular.module('tradity').
 		$scope.town = '';
 		$scope.street = '';
 		$scope.invitekey = $stateParams.inviteCode;
+		$scope.betakey = '';
 		
 		if ($scope.invitekey) {
 			socket.emit('get-invitekey-info', {

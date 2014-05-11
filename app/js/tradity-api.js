@@ -106,7 +106,6 @@ SoTradeConnection.prototype.responseHandler = function(data) {
 	}
 	
 	if (devmode()) {
-		data._t_crecv = new Date().getTime();
 		data._dt_cdelta   = data._t_crecv - data._t_csend;
 		data._dt_inqueue  = data._t_srecv - data._t_csend;
 		data._dt_sdelta   = data._t_ssend - data._t_srecv;
@@ -239,6 +238,7 @@ SoTradeConnection.prototype.on = function(evname, cb, angularScope) {
 };
 
 SoTradeConnection.prototype.unwrap = function(data, cb) {
+	var recvTime = new Date().getTime();
 	(this.lzma && data.e == 'lzma' ? function(cont) {
 		this.lzma.decompress(new Uint8Array(base64codec.decodeBuffer(data.s)), cont);
 	} : function(cont) {
@@ -250,6 +250,7 @@ SoTradeConnection.prototype.unwrap = function(data, cb) {
 		cont(data.s);
 	}).bind(this)(function(decoded) {
 		var e = JSON.parse(decoded);
+		e._t_crecv = recvTime;
 		e._t_ssend = data.t;
 		e._t_cdeco = new Date().getTime();
 		e._resp_encsize = data.s.length;

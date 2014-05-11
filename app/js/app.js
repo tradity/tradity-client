@@ -140,6 +140,11 @@ angular.module('tradity', [
 			templateUrl: 'templates/ranking.intergroup.html',
 			controller: 'RankingGroupCtrl'
 		}).
+		state('game.ranking.xp', {
+			url: '/xp',
+			templateUrl: 'templates/ranking.xp.html',
+			controller: 'RankingXPCtrl'
+		}).
 		state('game.profile', {
 			url: '/user/:userId',
 			templateUrl: 'templates/profile.html',

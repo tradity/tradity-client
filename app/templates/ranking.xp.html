@@ -1,0 +1,21 @@
+<div id="follower"  class="inner">
+	<div class="table-wrapper">
+		<table class="ranking table table-bordered">
+			<colgroup>
+				<col class="rankcol-1" style="width: 10%">
+				<col class="rankcol-2" style="width: 65%">
+				<col class="rankcol-3" style="width: 25%">
+			</colgroup>
+			<tr>
+				<th>Rang</th>
+				<th>Name</th>
+				<th>XP</th>
+			</tr>
+			<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" ng-class="'rank-'+result.rank">
+				<td>{{result.rank}}</td>
+				<td class="rank-name"><a ui-sref="game.profile({userId: result.name})">{{result.name}}</a></td>
+				<td>{{result.xp}}</td>
+			</tr>
+		</table>
+	</div>
+</div>

@@ -9,6 +9,7 @@
 					<a ng-click="getUserInfo()" class="btn btn-sm btn-default"><i class="fa fa-refresh"></i></a>
 					<a ng-click="addToWatchlist()" class="btn btn-sm btn-default"><i class="fa fa-eye"></i> Watchen</a>
 					<a class="btn btn-success btn-sm" ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: '__LEADER_' + user.uid + '__', amount: 0})">Folgen</a>
+					<a class="btn btn-default btn-sm" ui-sref="game.chat.user({ userId: user.uid})">Nachricht</a>
 				</div>
 			</div>
 		</div>

@@ -62,6 +62,36 @@ angular.module('tradity', [
 			templateUrl: 'templates/search.html',
 			controller: 'SearchCtrl'
 		}).
+		state('game.chat', {
+			url: '/chat',
+			templateUrl: 'templates/chats.html',
+			controller: 'ChatCtrl'
+		}).
+		state('game.chat.id', {
+			url: '/id/:id',
+			templateUrl: 'templates/chat.html',
+			controller: 'ChatCtrl'
+		}).
+		state('game.chat.user', {
+			url: '/user/:userId',
+			templateUrl: 'templates/chat.html',
+			controller: 'ChatCtrl'
+		}).
+		state('game.achievments', {
+			url: '/achievments',
+			templateUrl: 'templates/achievments.html',
+			controller: 'AchievmentsCtrl'
+		}).
+		state('game.achievments.categorys', {
+			url: '/category',
+			templateUrl: 'templates/achievmentCategory.html',
+			controller: 'AchievmentsCtrl'
+		}).
+		state('game.achievments.list', {
+			url: '/category/:id',
+			templateUrl: 'templates/achievmentList.html',
+			controller: 'AchievmentsCtrl'
+		}).
 		state('game.options', {
 			url: '/options',
 			templateUrl: 'templates/options.html',

@@ -34,6 +34,7 @@ angular.module('tradity').
 		}
 
 		$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams) { 
+			$('body').removeClass('menuShow');
 			if (toParams.query) {
 				$scope.searchBarText = toParams.query;
 				$scope.search = true;

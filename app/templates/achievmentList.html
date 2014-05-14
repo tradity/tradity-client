@@ -1,0 +1,13 @@
+<div ng-repeat="(id, achievment) in category(categoryId)" class="achievment-item" ng-class="{'no-desc': !category.description}">
+	<img src="{{achievment.img}}" class="picture pull-left" ng-show="achievment.img">
+	<div class="icon" ng-hide="achievment.img">
+		<i class="fa fa-trophy"></i>
+	</div>
+	<div class="content">
+		<h2>{{achievment.name}}</h2>
+		<p>{{achievment.description}}</p>
+	</div>
+	<div class="clearfix"></div>
+	<div class="achieved" ng-show="achieved(achievment.id)"></div>
+	<div class="not achieved" ng-hide="achieved(achievment.id)"></div>
+</div>

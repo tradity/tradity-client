@@ -68,7 +68,7 @@ angular.module('tradity').
 						case 'dquery-success':
 							var modal = $dialogs.notify('tradity', 'Der Trade wird ausgeführt, sobald die angegebenen Bedingungen erfüllt sind.');
 							modal.result.then(function(btn) {
-								$state.go('game.depot.opentransactions');
+								$state.go('game.depot.transactions');
 							});
 							break;
 						case 'stock-buy-success':

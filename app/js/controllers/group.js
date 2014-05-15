@@ -17,7 +17,8 @@ angular.module('tradity').
 		$scope.schoolid = $stateParams.schoolid;
 
 		socket.emit('get-school-info', {
-			lookfor: $scope.schoolid
+			lookfor: $scope.schoolid,
+			_cache: 30
 		}, function(data) {
 			if (data.code == 'get-school-info-success') {
 				$scope.school = data.result;

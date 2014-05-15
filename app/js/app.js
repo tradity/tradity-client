@@ -14,8 +14,8 @@ angular.module('tradity', [
 	when('/depot', '/depot/overview').
 	when('/ranking', '/ranking/all').
 	when('/admin', '/admin/userlist').
-	otherwise('/');
-	/*otherwise('/error/404');*/
+	otherwise('/error/404');
+	
 	$stateProvider.
 		state('index', {
 			url: '/',
@@ -278,6 +278,10 @@ angular.module('tradity', [
 		state('error.connection', {
 			url:'/error/connection',
 			templateUrl: 'templates/error.connection.html'
+		}).
+		state('unknownEntity', {
+			url:'{entity:/[\\w_/-]*[\\w_-]}',
+			controller: 'UnknownEntityCtrl'
 		});
 		
 	$locationProvider.

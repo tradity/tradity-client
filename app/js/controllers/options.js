@@ -105,9 +105,6 @@ angular.module('tradity').
 			},
 			function(data) {
 				switch (data.code) {
-					case 'reg-email-sending':
-						alert('Aktivierungsmail wird versandt');
-						break;
 					case 'reg-email-already-present':
 						alert('Email bereits vorhanden');
 						break;

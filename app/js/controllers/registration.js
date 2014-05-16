@@ -31,9 +31,6 @@ angular.module('tradity').
 				case 'reg-email-failed':
 					alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
 					break;
-				case 'reg-email-sending':
-					alert('Aktivierungsmail wird versandt');
-					break;
 				case 'reg-email-already-present':
 					alert('Email bereits vorhanden');
 					break;

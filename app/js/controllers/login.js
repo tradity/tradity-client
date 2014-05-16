@@ -64,8 +64,6 @@ angular.module('tradity').
 				notification('Das neue Passwort konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
 			} else if (data.code == 'password-reset-notfound') {
 				notification('Benutzer existiert nicht');
-			} else if (data.code == 'password-reset-sending') {
-				notification('Neues Passwort wird versandt');
 			}
 		});
 

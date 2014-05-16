@@ -34,7 +34,7 @@ SoTradeConnection = function(rawsocket) {
 	
 	if (typeof LZMA != 'undefined' && typeof Blob != 'undefined' && typeof Uint8Array != 'undefined' && 
 		window.URL && window.URL.createObjectURL && lzma_worker_js)
-		this.lzma = new LZMA(URL.createObjectURL(new Blob([lzma_worker_js])));
+		this.lzma = new LZMA(URL.createObjectURL(new Blob([lzma_worker_js], {type: 'application/x-javascript'})));
 	
 	this.qCache = {};
 	

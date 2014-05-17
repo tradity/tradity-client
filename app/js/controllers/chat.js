@@ -46,7 +46,7 @@ angular.module('tradity').
 			});
 		}
 
-		$scope.getUserInfo = function(userId,cb) {
+		$scope.getUserInfo = function(userId, cb) {
 			socket.emit('get-user-info', {
 				lookfor: userId,
 				_cache: 20

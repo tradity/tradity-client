@@ -79,7 +79,7 @@ angular.module('tradity', [
 		state('game.chat.user', {
 			url: '/user/:userId',
 			controller: 'ChatCtrl'
-		}).d
+		}).
 		state('game.options', {
 			url: '/options',
 			templateUrl: 'templates/options.html',

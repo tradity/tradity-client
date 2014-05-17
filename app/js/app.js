@@ -62,36 +62,24 @@ angular.module('tradity', [
 			templateUrl: 'templates/search.html',
 			controller: 'SearchCtrl'
 		}).
+		state('game.chats', {
+			url: '/chats',
+			templateUrl: 'templates/chats.html',
+			controller: 'ChatCtrl'
+		}).
 		state('game.chat', {
 			url: '/chat',
-			templateUrl: 'templates/chats.html',
+			templateUrl: 'templates/chat.html',
 			controller: 'ChatCtrl'
 		}).
 		state('game.chat.id', {
 			url: '/id/:id',
-			templateUrl: 'templates/chat.html',
 			controller: 'ChatCtrl'
 		}).
 		state('game.chat.user', {
 			url: '/user/:userId',
-			templateUrl: 'templates/chat.html',
 			controller: 'ChatCtrl'
-		}).
-		state('game.achievments', {
-			url: '/achievments',
-			templateUrl: 'templates/achievments.html',
-			controller: 'AchievmentsCtrl'
-		}).
-		state('game.achievments.categorys', {
-			url: '/category',
-			templateUrl: 'templates/achievmentCategory.html',
-			controller: 'AchievmentsCtrl'
-		}).
-		state('game.achievments.list', {
-			url: '/category/:id',
-			templateUrl: 'templates/achievmentList.html',
-			controller: 'AchievmentsCtrl'
-		}).
+		}).d
 		state('game.options', {
 			url: '/options',
 			templateUrl: 'templates/options.html',
@@ -193,6 +181,21 @@ angular.module('tradity', [
 			url: '/pinboard',
 			templateUrl: 'templates/profile.pinboard.html',
 			controller: 'CommentCtrl'
+		}).
+		state('game.profile.achievements', {
+			url: '/achievements',
+			templateUrl: 'templates/profile.achievements.html',
+			controller: 'AchievementsCtrl'
+		}).
+		state('game.profile.achievements.categorys', {
+			url: '/categorys',
+			templateUrl: 'templates/profile.achievements.categorys.html',
+			controller: 'AchievementsCtrl'
+		}).
+		state('game.profile.achievements.list', {
+			url: '/list/:id',
+			templateUrl: 'templates/profile.achievements.list.html',
+			controller: 'AchievementsCtrl'
 		}).
 		state('game.faq', {
 			url: '/faq',

@@ -84,18 +84,7 @@ angular.module('tradity').
 				name: "Suche",
 				description: "Siehe da! Die „Bob der Baumeister AG“. Die Aktie gibt es nicht wirklich, aber sie soll hier als Beispiel dienen ;) Wähle die Aktie aus.",
 				init: function() {
-					$timeout(function() {
-						var stocks = $('.stocks').clone();
-						console.log(stocks)
-						$('#search').append(stocks);
-						stocks.removeClass('ng-hide');
-						var bob = $('<tr ng-repeat="result in stocks"><td class=""><a>Bob der Baumeister GmbH</a></td><td class="text-center">42,728 €</td><td class="text-center">42,579 €</td><td class="text-center">42</td></tr>')
-						$('tbody',stocks).append(bob);
-
-						bob.click(function () {
-							$scope.next();
-						});
-					},0);
+					
 				},
 				exit: function() {
 					
@@ -130,7 +119,7 @@ angular.module('tradity').
 		]
 
 		$scope.step = 0;
-		$scope.show = false;
+		$scope.show = !true;
 		$scope.pp;
 		$scope.okayButton = false;
 

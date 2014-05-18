@@ -28,7 +28,7 @@ enterDevMode = function() {
 SoTradeConnection = function(rawsocket) {
 	this.socket = rawsocket;
 	this.listeners = {}; // listener name -> array of callbacks
-	this.ids = []; // numeric id -> {cb: callback for that id, prefill: object}
+	this.ids = {}; // numeric id -> {cb: callback for that id, prefill: object}
 	this.id = 0;
 	this.lzma = null;
 	
@@ -67,7 +67,7 @@ SoTradeConnection = function(rawsocket) {
 };
 
 SoTradeConnection.prototype.hasOpenQueries = function() {
-	for (var i = 0; i < this.ids.length; ++i)
+	for (var i in this.ids)
 		if (this.ids[i] && !this.ids[i]._expect_no_response)
 			return true;
 	return false;

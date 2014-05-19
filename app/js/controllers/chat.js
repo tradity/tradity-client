@@ -45,6 +45,15 @@ angular.module('tradity').
 
 		socket.on('comment', function(event) {
 			console.log('##', event);
+			if (event.baseeventtype == 'chat-start' && event.baseeventid == $scope.eventId) {
+				$scope.messages.push({
+					comment: event.comment,
+					eventid: $scope.eventId,
+					profilepic: event.profilepic,
+					uid: event.commenter,
+					time:event.eventtime
+				});
+			}
 		}, $scope);
 
 		$scope.send = function(message) {
@@ -53,17 +62,8 @@ angular.module('tradity').
 				eventid: $scope.eventId,
 				comment: message
 			}, function(data) {
-				if (data.code == 'comment-success') {
+				if (data.code == 'comment-success')
 					$scope.comment = "";
-					console.log($scope.$parent.$parent.ownUser)
-					$scope.messages.unshift({
-						comment: message,
-						eventid: $scope.eventId,
-						profilepic: $scope.$parent.$parent.ownUser.profilepic,
-						uid: $scope.$parent.$parent.ownUser.id,
-						username: "einfacheruser",
-					});	
-				}		
 			});
 		}
 

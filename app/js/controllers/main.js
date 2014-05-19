@@ -238,6 +238,8 @@ angular.module('tradity').
 				type += '-pinboard';
 			} else if (data.baseeventtype == 'school-create') {
 				type += '-schoolpinboard';
+			} else {
+				return;
 			}
 
 			if (data.srcuser == $scope.ownUser.uid) {
@@ -248,6 +250,7 @@ angular.module('tradity').
 				type += '-me';
 			}
 			var tn = data.tradername || data.schoolname;
+			
 			$scope.messages.push({
 				type: type,
 				typePerson: typePerson,

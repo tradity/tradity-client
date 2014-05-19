@@ -13,7 +13,7 @@ angular.module('tradity').
 
 		socket.emit('list-all-chats', function(data) {
 			console.log(data);
-		}, $scope);		
+		}, $scope);
 
 		$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
 			if(toParams.userId) {
@@ -28,8 +28,8 @@ angular.module('tradity').
 		})
 
 		socket.on('comment', function(event) {
-			console.log(event)
-		});
+			console.log('##', event);
+		}, $scope);
 
 		$scope.send = function(message) {
 			console.log($scope.eventId);

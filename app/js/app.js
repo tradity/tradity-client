@@ -187,9 +187,9 @@ angular.module('tradity', [
 			templateUrl: 'templates/profile.achievements.html',
 			controller: 'AchievementsCtrl'
 		}).
-		state('game.profile.achievements.categorys', {
-			url: '/categorys',
-			templateUrl: 'templates/profile.achievements.categorys.html',
+		state('game.profile.achievements.categories', {
+			url: '/categories',
+			templateUrl: 'templates/profile.achievements.categories.html',
 			controller: 'AchievementsCtrl'
 		}).
 		state('game.profile.achievements.list', {

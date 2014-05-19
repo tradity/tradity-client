@@ -18,14 +18,14 @@ angular.module('tradity').
 				socket.emit('chat-get',{
 					endpoints: [toParams.userId]
 				}, function(data) {
-					$scope.messages = data.chat.messages;
+					//$scope.messages = data.chat.messages;
 					$scope.eventId = data.chat.eventid || data.chat.chatstartevent;
 				}, $scope);
 			} else if (toParams.id) {
 				socket.emit('chat-get',{
 					chatid:toParams.id
 				}, function(data) {
-					$scope.messages = data.chat.messages;
+					//$scope.messages = data.chat.messages;
 					$scope.eventId = data.chat.eventid || data.chat.chatstartevent;
 				}, $scope);
 			}

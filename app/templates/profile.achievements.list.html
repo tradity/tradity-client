@@ -1,4 +1,3 @@
-{{userAchievements}}
 <div ng-repeat="(id, achievement) in category(categoryId)" class="achievement-item" ng-class="{'no-desc': !category.description}">
 	<img src="{{achievement.img}}" class="picture pull-left" ng-show="achievement.img">
 	<div class="icon" ng-hide="achievement.img">
@@ -9,6 +8,6 @@
 		<p>{{achievement.description}}</p>
 	</div>
 	<div class="clearfix"></div>
-	<div class="achieved" ng-show="achieved(achievement.id)"></div>
-	<div class="not achieved" ng-hide="achieved(achievement.id)"></div>
+	<div class="achieved" ng-show="achievement.achieved"></div>
+	<div class="not achieved" ng-hide="achievement.achieved"></div>
 </div>

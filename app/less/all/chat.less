@@ -3,6 +3,7 @@
 
 	.chat {
 		display:block;
+		margin-top:15px;
 	}
 
 	.chat-image {
@@ -34,8 +35,19 @@
 		margin-top:25px;
 	}
 
+	.chat-item.me {
+		.chat-image {
+			float:right;
+		}
+
+		.content {
+			margin-left:0;
+			margin-right:@image-size+ 10px;
+		}
+	}
+
 	.chat-image {
-		.pull-left();
+		float:left;
 		border-radius: 150px;
 		height:80px;
 		width:80px;
@@ -45,36 +57,17 @@
 		padding:10px;
 		border:1px solid #f5f5f5;
 		margin-left:@image-size+ 10px;
-		min-height:(@image-size)-20px;
+		min-height:(@image-size)-20px-2px;
 	}
 
-
-	.content {
-		position: relative;
-		background: #fff;
-		border: 1px solid #f5f5f5;
-	}
-	.content:after, .content:before {
-		right: 100%;
-		top: 50%;
-		border: solid transparent;
-		content: " ";
-		height: 0;
-		width: 0;
-		position: absolute;
-		pointer-events: none;
+	.chat-item:hover .time {
+		display:block;
 	}
 
-	.content:after {
-		border-color: rgba(255, 255, 255, 0);
-		border-right-color: #fff;
-		border-width: 30px;
-		margin-top: -30px;
+	.time {
+		display:none;
+		color:#888;
+		font-size:11px;
 	}
-	.content:before {
-		border-color: rgba(245, 245, 245, 0);
-		border-right-color: #f5f5f5;
-		border-width: 31px;
-		margin-top: -31px;
-	}
+
 }

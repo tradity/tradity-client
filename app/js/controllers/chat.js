@@ -11,21 +11,36 @@ angular.module('tradity').
 		$scope.messages = [];
 		$scope.eventId = 0;
 
-		socket.emit('list-all-chats', function(data) {
-			console.log(data);
-		}, $scope);
+				
 
 		$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
 			if(toParams.userId) {
-				console.log('chat get')
 				socket.emit('chat-get',{
 					endpoints: [toParams.userId]
 				}, function(data) {
-					$scope.messages = data.chat.messages.reverse();
+					$scope.messages = data.chat.messages;
+					$scope.eventId = data.chat.eventid || data.chat.chatstartevent;
+				}, $scope);
+			} else if (toParams.id) {
+				socket.emit('chat-get',{
+					chatid:toParams.id
+				}, function(data) {
+					$scope.messages = data.chat.messages;
 					$scope.eventId = data.chat.eventid || data.chat.chatstartevent;
 				}, $scope);
 			}
 		})
+
+		$scope.loadChatList = function() {
+			socket.emit('list-all-chats', function(data) {
+				$scope.chats = [];
+				for (i in data.chats) {
+					if (!data.chats[i].profilepic) data.chats[i].profilepic = 'http://placekitten.com/80/80';
+					$scope.chats.push(data.chats[i]);
+				}
+			}, $scope);
+		}
+		$scope.loadChatList();
 
 		socket.on('comment', function(event) {
 			console.log('##', event);
@@ -39,11 +54,12 @@ angular.module('tradity').
 			}, function(data) {
 				if (data.code == 'comment-success') {
 					$scope.comment = "";
+					console.log($scope.$parent.$parent.ownUser)
 					$scope.messages.unshift({
 						comment: message,
 						eventid: $scope.eventId,
-						profilepic: "/dynamic/files/35-7503-6c839031c5780df337a24d6c0d087b44",
-						uid: false,
+						profilepic: $scope.$parent.$parent.ownUser.profilepic,
+						uid: $scope.$parent.$parent.ownUser.id,
 						username: "einfacheruser",
 					});	
 				}		

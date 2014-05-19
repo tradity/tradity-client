@@ -1,0 +1,14 @@
+<a ng-repeat="(id, category) in categories" class="achievment-item" ui-sref="game.profile.achievements.list({ id: id})">
+	<img src="{{category.img}}" class="picture pull-left" ng-show="category.img">
+	<div class="icon" ng-hide="category.img">
+		<i class="fa fa-trophy"></i>
+	</div>
+	<div class="content">
+		<h2>{{category.name}} <span class="count">({{category.achieved}}/{{category.achievements}})</span></h2>
+		<p>{{category.description}}</p>
+	</div>
+	<div class="clearfix"></div>
+	<div class="progress">
+		<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{(100/category.achievements)*category.achieved}}%;"></div>
+	</div>
+</a>

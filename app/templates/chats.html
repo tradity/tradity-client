@@ -1,10 +1,9 @@
-{{chats}}
 <div id="chats" class="main-content">
-	<a ng-repeat="chat in chats" class="chat" ui-sref="game.chat.id({ id: chat.id})">
-		<img src="{{chat.img}}" class="chat-image">
+	<a ng-repeat="chat in chats" class="chat" ui-sref="game.chat.id({ id: chat.chatid})">
+		<img src="{{chat.profilepic}}" class="chat-image">
 		<div class="content">
-			<h2>{{chat.name}}</h2>
-			<p>Letzte Nachricht Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>
+			<h2><span ng-repeat="member in chat.members" ng-hide="ownUser.id == member.id">{{member.name}} </span></h2>
+			<p></p>
 		</div>
 	</a>
 </div>

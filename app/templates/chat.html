@@ -3,9 +3,10 @@
 		<textarea ng-model="comment" ui-keypress="{13:'send(comment)'}" class="options-input comment-textarea pure-input-1" placeholder="Nachricht"></textarea>
 		<input type="submit" class="click-button comment-button btn btn-default" value="Senden">
 	</form>
-	<div class="chat-item" ng-repeat="message in messages">
+	<div class="chat-item" ng-repeat="message in messages | orderBy:'-time'" ng-class="{me: message.uid == ownUser.id}">
 		<img src="http://dev.tradity.de/{{message.profilepic}}" class="chat-image">
 		<div class="content">
+			<span class="pull-right time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
 			{{message.comment}}
 		</div>
 		<div class="clearfix"></div>

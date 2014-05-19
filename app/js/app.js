@@ -63,7 +63,7 @@ angular.module('tradity', [
 			controller: 'SearchCtrl'
 		}).
 		state('game.chats', {
-			url: '/chats',
+			url: '/chats/',
 			templateUrl: 'templates/chats.html',
 			controller: 'ChatCtrl'
 		}).

@@ -71,7 +71,7 @@ module.exports = function (grunt) {
 					var directory = options.directory || options.base[options.base.length - 1];
 
 					// enable Angular's HTML5 mode
-					middlewares.push(modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.png$ /index.html [L]']));
+					middlewares.push(modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.woff|\\.png$ /index.html [L]']));
 
 					if (!Array.isArray(options.base)) {
 					options.base = [options.base];

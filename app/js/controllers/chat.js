@@ -27,6 +27,10 @@ angular.module('tradity').
 			}
 		})
 
+		socket.on('comment', function(event) {
+			console.log(event)
+		});
+
 		$scope.send = function(message) {
 			console.log($scope.eventId);
 			socket.emit('comment', {

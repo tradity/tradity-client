@@ -1,1 +1,13 @@
-chat.js
+<div id="chat" class="main-content">
+	<form ng-submit="send(comment)" class="pure-form pure-form-stacked main-comment comment-form">
+		<textarea ng-model="comment" ui-keypress="{13:'send(comment)'}" class="options-input comment-textarea pure-input-1" placeholder="Nachricht"></textarea>
+		<input type="submit" class="click-button comment-button btn btn-default" value="Senden">
+	</form>
+	<div class="chat-item" ng-repeat="message in messages">
+		<img src="http://dev.tradity.de/{{message.profilepic}}" class="chat-image">
+		<div class="content">
+			{{message.comment}}
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>

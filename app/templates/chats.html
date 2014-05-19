@@ -1,2 +1,10 @@
-chats
-<a ng-click="test()">test</a>
+{{chats}}
+<div id="chats" class="main-content">
+	<a ng-repeat="chat in chats" class="chat" ui-sref="game.chat.id({ id: chat.id})">
+		<img src="{{chat.img}}" class="chat-image">
+		<div class="content">
+			<h2>{{chat.name}}</h2>
+			<p>Letzte Nachricht Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>
+		</div>
+	</a>
+</div>

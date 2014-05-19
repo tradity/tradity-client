@@ -257,7 +257,7 @@ angular.module('tradity').
 			0: {
 				name: "Tradity",
 				description: "Allgemeines um Tradity",
-				img: "http: //placekitten.com/80/80"
+				img: "http://placekitten.com/80/80"
 			},
 			1: {
 				name: "Trading",

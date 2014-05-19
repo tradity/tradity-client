@@ -1,4 +1,4 @@
-#chat {
+#chats {
 	@image-size:80px;
 
 	.chat {
@@ -24,5 +24,57 @@
 
 	h2, p {
 		margin:0px;
+	}
+}
+
+#chat {
+	@image-size:80px;
+
+	.chat-item {
+		margin-top:25px;
+	}
+
+	.chat-image {
+		.pull-left();
+		border-radius: 150px;
+		height:80px;
+		width:80px;
+	}
+	.content {
+		overflow:hidden;
+		padding:10px;
+		border:1px solid #f5f5f5;
+		margin-left:@image-size+ 10px;
+		min-height:(@image-size)-20px;
+	}
+
+
+	.content {
+		position: relative;
+		background: #fff;
+		border: 1px solid #f5f5f5;
+	}
+	.content:after, .content:before {
+		right: 100%;
+		top: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+	}
+
+	.content:after {
+		border-color: rgba(255, 255, 255, 0);
+		border-right-color: #fff;
+		border-width: 30px;
+		margin-top: -30px;
+	}
+	.content:before {
+		border-color: rgba(245, 245, 245, 0);
+		border-right-color: #f5f5f5;
+		border-width: 31px;
+		margin-top: -31px;
 	}
 }

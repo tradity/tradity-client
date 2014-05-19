@@ -37,6 +37,7 @@ angular.module('tradity').
 				for (i in data.chats) {
 					if (!data.chats[i].profilepic) data.chats[i].profilepic = 'http://placekitten.com/80/80';
 					$scope.chats.push(data.chats[i]);
+					$scope.getChatImage(data.chats[i].id);
 				}
 			}, $scope);
 		}
@@ -64,6 +65,19 @@ angular.module('tradity').
 					});	
 				}		
 			});
+		}
+
+		$scope.getChat = function(id) {
+			for (var i = $scope.chats.length - 1; i >= 0; i--) {
+				if ($scope.chats[i].id == id) return i;
+			};
+		}
+
+		$scope.getChatImage = function(chatId) {
+			var chat = $scope.chats[$scope.getChat(chatId)];
+			$scope.getUserInfo(chat.members[0].id,function (data) {
+				if (data) chat.profilepic = data.profilepic;
+			})
 		}
 
 		$scope.getUserInfo = function(userId, cb) {

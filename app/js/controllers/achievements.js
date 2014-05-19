@@ -258,14 +258,14 @@ angular.module('tradity').
 				name: "Tradity",
 				description: "Allgemeines um Tradity",
 				img: "http://placekitten.com/80/80",
-				achievements:0,
-				achieved:0,
+				achievements: 0,
+				achieved: 0,
 			},
 			1: {
 				name: "Trading",
 				description: "Alle Erfolge beim Traden",
-				achievements:0,
-				achieved:0,
+				achievements: 0,
+				achieved: 0,
 			}
 		}
 
@@ -299,13 +299,12 @@ angular.module('tradity').
 				}
 
 				for (var i = $scope.achievements.length - 1; i >= 0; i--) {
-					if ($scope.userAchievements.indexOf($scope.achievements[i].id) != -1)
-						$scope.achievements[i].achieved = true;
-					else
-						$scope.achievements[i].achieved = false;
+					$scope.achievements[i].achieved = ($scope.userAchievements.indexOf($scope.achievements[i].id) != -1);
 
 					$scope.categories[$scope.achievements[i].category].achievements++;
-					if ($scope.achievements[i].achieved) $scope.categories[$scope.achievements[i].category].achieved++;
+					
+					if ($scope.achievements[i].achieved)
+						$scope.categories[$scope.achievements[i].category].achieved++;
 				};
 
 			});

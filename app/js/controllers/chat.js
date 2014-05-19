@@ -11,7 +11,7 @@ angular.module('tradity').
 		$scope.messages = [];
 		$scope.eventId = 0;
 
-				
+		
 
 		$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
 			if(toParams.userId) {

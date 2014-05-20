@@ -35,6 +35,9 @@ angular.module('tradity').
 				if (e.totalvalue/10000 > vmax) vmax = e.totalvalue/10000;
 				return [[e.time*1000, e.totalvalue/10000]];
 			});
+			
+			var vcenter = (vmin + vmax) / 2;
+			var vdiff = (vmax - vcenter) * 1.30;
 
 			if (!data || data.length == 0)
 				return;
@@ -54,8 +57,8 @@ angular.module('tradity').
 						}
 					},
 					yaxis: {
-						min: vmin * 0.85,
-						max: vmax / 0.85,
+						min: vcenter - vdiff,
+						max: vcenter + vdiff,
 						tickOptions: {
 							formatString: '%.2f €'
 						}

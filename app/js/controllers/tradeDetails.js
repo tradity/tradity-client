@@ -8,7 +8,7 @@ angular.module('tradity').
 			function(data) {
 				if (data.code == 'get-trade-info-notfound') {
 					alert('Trade existiert nicht');
-				} else if (data.code == 'get-trade-info-succes') {
+				} else if (data.code == 'get-trade-info-success') {
 					$scope.trade = data.trade;
 					$scope.trade.price = Math.abs($scope.trade.money / $scope.trade.amount);
 					data.comments.sort(function(a,b) { return b.time - a.time; });

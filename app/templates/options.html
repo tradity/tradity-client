@@ -28,11 +28,11 @@
 			<div class="pure-u-1-2">
 				<div class="padding-left">
 					<h2>Geschäftliches</h2>
-					<label for="provision">Gewinnprovision deiner Follower (5 % – 30 %)</label>
-					<input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="pure-input-1" min="5" max="30" step="1">
+					<label for="provision">Gewinnprovision deiner Follower ({{serverConfig.minWProvision}} % – {{serverConfig.maxWProvision}} %)</label>
+					<input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="pure-input-1" min="{{serverConfig.minWProvision}}" max="{{serverConfig.maxWProvision}}" step="1">
 
-					<label for="provision">Verlustprovision deiner Follower (0 % – 100 %)</label>
-					<input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="pure-input-1" min="0" max="100" step="1">
+					<label for="provision">Verlustprovision deiner Follower ({{serverConfig.minLProvision}} % – {{serverConfig.maxLProvision}} %)</label>
+					<input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="pure-input-1" min="{{serverConfig.minLProvision}}" max="{{serverConfig.maxLProvision}}" step="1">
 
 					<label for="delayorderhist">Verzögerung deiner Orderhistorie </label>
 					<input type="checkbox" ng-model="delayorderhist" id="delayorderhist"> Ja

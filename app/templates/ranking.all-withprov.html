@@ -15,7 +15,7 @@
 			</tr>
 			<tr ng-repeat="result in results | orderBy:'rank' | filter: searchText | limitTo:totalDisplayed" ng-class="'rank-'+result.rank">
 				<td>{{result.rank}}</td>
-				<td class="rank-name"><a ui-sref="game.profile({userId: result.name})" tradity-profile>{{result.name}}</a></td>
+				<td class="rank-name"><a ui-sref="game.profile.overview({userId: result.name})" tradity-profile>{{result.name}}</a></td>
 				<td>{{result.prov_sum / 10000 | currency}}</td>
 				<td>{{result.totalvalue / 10000 | currency}}</td>
 			</tr>

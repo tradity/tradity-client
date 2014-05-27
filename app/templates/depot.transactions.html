@@ -20,7 +20,7 @@
 				</tr>
 				<tr ng-repeat="order in delayedOrders">
 					<td class="depot-{{order.buysell}}" title="{{order.query.stockid}}">
-						<span ng-show="order.query.leader"><a ui-sref="game.profile({userId: order.query.leader})">{{order.query.dquerydata.name}}</a></span>
+						<span ng-show="order.query.leader"><a ui-sref="game.profile.overview({userId: order.query.leader})">{{order.query.dquerydata.name}}</a></span>
 						<span ng-hide="order.query.leader">{{order.query.dquerydata.name}}</span>
 					</td>
 					<td>{{order.query.dquerydata.ordertime | date:'d.M.yy HH:mm'}}</td>

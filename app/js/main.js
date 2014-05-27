@@ -82,9 +82,9 @@ var fileemit = function(socket, input, evtype, template, serverconfig, callback)
 	
 	if (input.name) { // File
 		filename = input.name;
-		if (/\.jpe?g$/.test(filename)) mime = 'image/jpeg';
-		if (/\.png$/.test(filename))   mime = 'image/png';
-		if (/\.gif$/.test(filename))   mime = 'image/gif';
+		if (/\.jpe?g$/i.test(filename)) mime = 'image/jpeg';
+		if (/\.png$/i.test(filename))   mime = 'image/png';
+		if (/\.gif$/i.test(filename))   mime = 'image/gif';
 		
 		if (!mime) {
 			return alert('Dein Profilbild musst du als JPEG, PNG oder GIF hochladen');

@@ -19,7 +19,7 @@
 			<div class="pure-u-1-2">
 				<div class="options-field paper-preview-box padding-left" ng-show="cur"> 
 					<table class="paper-preview f">
-						<tr ng-show="leader"><th>Name</th><td><a ui-sref="game.profile({userId: cur.leadername})">{{stockname}}</a></td></tr>
+						<tr ng-show="leader"><th>Name</th><td><a ui-sref="game.profile.overview({userId: cur.leadername})">{{stockname}}</a></td></tr>
 						<tr ng-hide="leader"><th>Name</th><td ng-show="cur">{{stockname}}</td></tr>
 						<tr><th><span class="batch tooltip" data-info="(Auch Ask, Geldkurs oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span>
 							Kauf­preis</th><td ng-show="cur">{{cur.ask / 10000 | number:3}} €</td></tr>

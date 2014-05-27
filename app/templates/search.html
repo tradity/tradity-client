@@ -21,7 +21,7 @@
 						<span ng-hide="result.rank">–</span>
 					</td>
 					<td class="rank-name">
-						<a ui-sref="game.profile({userId: result.name})" style="cursor: pointer">{{result.name}}</a>
+						<a ui-sref="game.profile.overview({userId: result.name})" style="cursor: pointer">{{result.name}}</a>
 					</td>
 					<td>{{result.prov_sum / 10000 | currency}}</td>
 					<td>{{result.totalvalue / 10000 | currency}}</td>

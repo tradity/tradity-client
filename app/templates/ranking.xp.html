@@ -13,7 +13,7 @@
 			</tr>
 			<tr ng-repeat="result in results | filter: searchText | limitTo:totalDisplayed" ng-class="'rank-'+result.rank">
 				<td>{{result.rank}}</td>
-				<td class="rank-name"><a ui-sref="game.profile({userId: result.name})">{{result.name}}</a></td>
+				<td class="rank-name"><a ui-sref="game.profile.overview({userId: result.name})">{{result.name}}</a></td>
 				<td>{{result.xp}}</td>
 			</tr>
 		</table>

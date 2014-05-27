@@ -13,7 +13,7 @@
 			</tr>
 			<tr ng-repeat="result in results | orderBy:'rank' | filter: searchText | limitTo:totalDisplayed" ng-class="'rank-'+result.rank">
 				<td>{{result.rank}}</td>
-				<td class="rank-name"><a ui-sref="game.profile({userId: result.name})" style="cursor: pointer">{{result.name}}</a></td>
+				<td class="rank-name"><a ui-sref="game.profile.overview({userId: result.name})" style="cursor: pointer">{{result.name}}</a></td>
 				<td>{{((result.totalvalue - result.prov_sum) / (result.past_totalvalue - result.past_prov_sum) - 1)*100 | number:2}} %</td>
 			</tr>
 		</table>

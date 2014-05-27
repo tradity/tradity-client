@@ -7,8 +7,8 @@
 					<div>
 						<a href="" class="dropdown-toggle icon" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-							<li><a ui-sref="game.profile({userId: ownUser.name})"><b>{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</b></a></li>
-							<li><a ui-sref="game.profile({userId: ownUser.name})">Mein Profil</a></li>
+							<li><a ui-sref="game.profile.overview({userId: ownUser.name})"><b>{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</b></a></li>
+							<li><a ui-sref="game.profile.overview({userId: ownUser.name})">Mein Profil</a></li>
 							<li><a ui-sref="game.options">Einstellungen</a></li>
 							<li class="divider"></li>
 							<li><a ng-click="logout()" href="">Abmelden</a></li>
@@ -36,8 +36,8 @@
 					<a ng-click="logout()" href="" class="icon"><i class="fa fa-sign-out"></i></a>
 				</li>
 				<li>
-					<a ui-sref="game.profile({userId: ownUser.name})" ng-hide="!ownUser.profilepic"><img id="profile-picture" height="50px" ng-src="{{ownUser.profilepic}}" alt="">
-					<a ui-sref="game.profile({userId: ownUser.name})" ng-hide="ownUser.profilepic"><img id="profile-picture" height="50px" src="img/profile.svg" alt=""></a>
+					<a ui-sref="game.profile.overview({userId: ownUser.name})" ng-hide="!ownUser.profilepic"><img id="profile-picture" height="50px" ng-src="{{ownUser.profilepic}}" alt="">
+					<a ui-sref="game.profile.overview({userId: ownUser.name})" ng-hide="ownUser.profilepic"><img id="profile-picture" height="50px" src="img/profile.svg" alt=""></a>
 				</li>
 			</ul>     
 			<ul class="icon-bar">

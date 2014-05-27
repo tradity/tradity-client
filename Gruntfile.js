@@ -236,7 +236,7 @@ module.exports = function (grunt) {
 		htmlmin: {
 			dist: {
 				options: {
-					collapseWhitespace: true,
+					collapseWhitespace: false, // https://github.com/kangax/html-minifier/issues/178
 					collapseBooleanAttributes: true,
 					removeCommentsFromCDATA: true,
 					removeOptionalTags: true

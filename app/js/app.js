@@ -231,6 +231,11 @@ angular.module('tradity', [
 			templateUrl: 'templates/admin.userlist.html',
 			controller: 'AdminUserlistCtrl'
 		}).
+		state('admin.statistics', {
+			url: '/statistics',
+			templateUrl: 'templates/admin.statistics.html',
+			controller: 'AdminStatisticsCtrl'
+		}).
 		state('admin.notifications', {
 			url: '/notifications',
 			templateUrl: 'templates/admin.notifications.html',

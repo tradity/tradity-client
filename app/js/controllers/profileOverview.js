@@ -33,7 +33,7 @@ angular.module('tradity').
 				if (e.time*1000        > tmax) tmax = e.time*1000;
 				if (e.totalvalue/10000 < vmin) vmin = e.totalvalue/10000;
 				if (e.totalvalue/10000 > vmax) vmax = e.totalvalue/10000;
-				return [[e.time*1000, e.totalvalue/10000]];
+				return [[e.time * 1000, e.totalvalue/10000]];
 			});
 			
 			var vcenter = (vmin + vmax) / 2;
@@ -42,7 +42,9 @@ angular.module('tradity').
 			if (!data || data.length == 0)
 				return;
 
-			if ($scope.curPlot) $scope.curPlot.destroy();
+			if ($scope.curPlot)
+				$scope.curPlot.destroy();
+			
 			$scope.curPlot = $.jqplot('chart', [data], {
 				title: 'Performance ' + mode.name,
 				axes: {

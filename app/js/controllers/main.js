@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, $timeout, API_HOST, API_CONNECT_TEST_PATH) {
+	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, $timeout, API_HOST, API_CONNECT_TEST_PATH, HOST, DEFAULT_PROFILE_IMG) {
 		$scope.Math = Math;
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
@@ -8,6 +8,7 @@ angular.module('tradity').
 		$scope.loading = false;
 		$scope.serverConfig = {};
 		$scope.hasOpenQueries = socket.hasOpenQueries.bind(socket);
+
 		
 		$timeout(function() {
 			if (socket.rxPackets() > 0)
@@ -64,6 +65,8 @@ angular.module('tradity').
 
 			if ($scope.ownUser.access.indexOf('*') != -1)
 				$scope.$emit('makeadmin');
+
+			$scope.ownUser.profilepic = HOST + '/' + $scope.ownUser.profilepic;
 		});
 
 		$scope.isActive = function(route) {
@@ -251,13 +254,16 @@ angular.module('tradity').
 			}
 			var tn = data.tradername || data.schoolname;
 			
+			if (!data.profilepic) data.profilepic = DEFAULT_PROFILE_IMG;
+
+
 			$scope.messages.push({
 				type: type,
 				typePerson: typePerson,
 				srcusername: data.srcusername,
 				comment: $sce.trustAsHtml(data.trustedhtml ? data.comment : escapeHTML(data.comment)),
 				trustedhtml: data.trustedhtml,
-				profilepic: data.profilepic,
+				profilepic: HOST + '/' + data.profilepic,
 				orderid: data.orderid,
 				tradername: tn,
 				tradername_genitive: 'xsXS'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’',

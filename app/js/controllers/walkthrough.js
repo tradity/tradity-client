@@ -65,31 +65,31 @@ angular.module('tradity').
 					$scope.okay = function() {};
 				}
 			},
-			{
-				name: "Suche",
-				description: "Hier kannst Du Aktien und „Leaderpapiere“ suchen. Gib z.B. „Bob der“ ein.",
-				init: function() {
-					$(".search-btn").addClass('blink');
-					$scope.routeChange = function(next) {
-						console.log(next);
-						if(next.name == 'game.search') $scope.next();
-					}
-				},
-				exit: function() {
-					$(".search-btn").removeClass('blink');
-					$scope.routeChange = function(next) {}
-				}
-			},
-			{
-				name: "Suche",
-				description: "Siehe da! Die „Bob der Baumeister AG“. Die Aktie gibt es nicht wirklich, aber sie soll hier als Beispiel dienen ;) Wähle die Aktie aus.",
-				init: function() {
+			// {
+			// 	name: "Suche",
+			// 	description: "Hier kannst Du Aktien und „Leaderpapiere“ suchen. Gib z.B. „Bob der“ ein.",
+			// 	init: function() {
+			// 		$(".search-btn").addClass('blink');
+			// 		$scope.routeChange = function(next) {
+			// 			console.log(next);
+			// 			if(next.name == 'game.search') $scope.next();
+			// 		}
+			// 	},
+			// 	exit: function() {
+			// 		$(".search-btn").removeClass('blink');
+			// 		$scope.routeChange = function(next) {}
+			// 	}
+			// },
+			// {
+			// 	name: "Suche",
+			// 	description: "Siehe da! Die „Bob der Baumeister AG“. Die Aktie gibt es nicht wirklich, aber sie soll hier als Beispiel dienen ;) Wähle die Aktie aus.",
+			// 	init: function() {
 					
-				},
-				exit: function() {
+			// 	},
+			// 	exit: function() {
 					
-				}
-			},
+			// 	}
+			// },
 			{
 				name: "Kaufen",
 				description: "Du kaufst zum Kaufpreis und verkaufst zum Verkaufspreis – logisch. Der Unterschied zwischen den beiden Preisen heißt „Spread“ und ist umso größer, je weniger die Aktie auf dem Markt gehandelt wird. Achtung! Du würdest bei einem sofortigen Verkauf also Verlust machen.",

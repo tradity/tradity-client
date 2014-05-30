@@ -1,6 +1,7 @@
 angular.module('tradity').
-	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, $timeout, API_HOST, API_CONNECT_TEST_PATH, HOST, DEFAULT_PROFILE_IMG) {
+	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, $timeout, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
 		$scope.Math = Math;
+		HOST = '"https://tradity.de';//dirty fix
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
 		$scope.isAdmin = false;

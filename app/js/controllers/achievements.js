@@ -262,19 +262,19 @@ angular.module('tradity').
 				description: "Deine Achievements im Following",
 				achievements: 0,
 				achieved: 0,
-			};
+			},
 			2: {
 				name: "Socializer",
 				description: "Wie 'social' bist du?",
 				achievements: 0,
 				achieved: 0,
-			};
+			},
 			3: {
 				name: "Leader",
 				description: "Wie gut bist du als Leader?",
 				achievements: 0,
 				achieved: 0,
-			};
+			},
 		}
 
 		$scope.userAchievements = [];

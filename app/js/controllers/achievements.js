@@ -235,17 +235,17 @@ angular.module('tradity').
 			{
 				id: "LEADER_WPROV_CHANGE",
 				name: "Ändere deine Gewinnprovision.",
-				category: 0,
+				category: 3,
 			},
 			{
 				id: "LEADER_LPROV_CHANGE",
 				name: "Ändere deine Verlustprovision.",
-				category: 0,
+				category: 3,
 			},
 			{
 				id: "LEADER_DESC_CHANGE",
 				name: "Schreibe eine Kurzbeschreibung über dich.",
-				category: 0,
+				category: 2,
 			}
 		];
 
@@ -253,7 +253,7 @@ angular.module('tradity').
 			0: {
 				name: "Trader",
 				description: "Deine Achievements im Trading",
-				img: "http://placekitten.com/80/80",
+				// img: "http://placekitten.com/80/80",
 				achievements: 0,
 				achieved: 0,
 			},
@@ -262,13 +262,19 @@ angular.module('tradity').
 				description: "Deine Achievements im Following",
 				achievements: 0,
 				achieved: 0,
-			}
+			};
 			2: {
 				name: "Socializer",
 				description: "Wie 'social' bist du?",
 				achievements: 0,
 				achieved: 0,
-			}
+			};
+			3: {
+				name: "Leader",
+				description: "Wie gut bist du als Leader?",
+				achievements: 0,
+				achieved: 0,
+			};
 		}
 
 		$scope.userAchievements = [];

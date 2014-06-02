@@ -1,29 +1,32 @@
 #learning {
 	.question {
-		border-top:1px solid #f5f5f5;
 		border-bottom:1px solid #f5f5f5;
 		padding:5px;
 		margin-top:7px;
 		margin-bottom:7px;
 	}
 
-	.question.wrong {
+	.question.proved {
+		background:lighten(#2ecc71,30);
+	}
+
+	.question.wrong.proved {
 		background:lighten(#e74c3c,30);
 	}
 
-	.question .questions {
-		float:left;
-	}
-
 	.question .info {
-		margin-left:250px;
-		border-left:1px solid #f5f5f5;
-		min-height:100%;
-		padding:5px;
+		background-color: rgba(255, 109, 56, 0.83);
+		color:#fff;
+		padding:7px;
+		margin-bottom:5px;
 	}
 
 	.question h2 {
 		margin-bottom:0px;
 		margin-top:0px;
+	}
+
+	.item {
+		padding-top:5px;
 	}
 }

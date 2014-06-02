@@ -1,15 +1,12 @@
-<h1>Fragen</h1>
-<div class="question" ng-repeat="question in questions" ng-class="{wrong: question.wrong}">
+<h1><a ui-sref="game.learning.katalog()"><i class="fa fa-angle-left"></i></a> Fragen</h1>
+<div class="question" ng-repeat="question in questions" ng-class="{wrong: question.wrong,proved: proved}">
 	<h2>{{question.name}}</h2>
+	<div class="info">{{question.description}}</div>
 	<div class="questions">
-		<div ng-repeat="(key, answer) in question.answers">
+		<div class="item" ng-repeat="(key, answer) in question.answers">
 			<input type="radio" ng-model="question.answer" value="{{key}}"> {{answer}}<br>
 		</div>
 	</div>
-	<div class="info">
-		{{question.description}}
-	</div>
-	<div class="clearfix"></div>
 </div>
 
 <a class="btn btn-success" ng-click="prove()">Prüfen</a>

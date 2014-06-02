@@ -3,6 +3,5 @@
 	"apiHost": "https://tradity.de:443",
 	"apiConnectTestPath": "/dynamic/ping",
 	"defaultProfileImg": "img/profile.svg",
-	"defaultGroupBanner": "img/groupbanner.jpg",
-	"HOST": "https://tradity.de"
+	"defaultGroupBanner": "img/groupbanner.jpg"
 }

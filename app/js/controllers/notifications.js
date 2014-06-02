@@ -13,8 +13,6 @@ angular.module('tradity').
 				},5000);
 		};
 
-		
-
 		$scope.test = function() {
 			$scope.add({
 				message:'test nachricht app gestartet',
@@ -33,7 +31,7 @@ angular.module('tradity').
 
 		socket.on('comment', function(event) {
 			if (event.baseeventtype == 'chat-start') {
-				console.log('##push', event);
+				//console.log('##push', event);
 			}
 		});
 

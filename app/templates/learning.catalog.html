@@ -1,0 +1,11 @@
+<h1>Lektionen</h1>
+<div ng-repeat="catalog in learaningcatalog">
+	<h2><a ng-click="catalog.show = !catalog.show" href="">{{catalog.name}}</a></h2>
+	<div ng-show="catalog.show">
+		<p>{{catalog.description}}</p>
+		<div class="btn-group">
+		  <a href="{{catalog.link}}" class="btn btn-default">Learning</a>
+		  <a type="button" ui-sref="game.learning.questions({ id: catalog.id})" class="btn btn-primary">Quiz</a>
+		</div>
+	</div>
+</div>

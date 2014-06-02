@@ -1,7 +1,6 @@
 angular.module('tradity').
 	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, $timeout, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
 		$scope.Math = Math;
-		HOST = '"https://tradity.de';//dirty fix
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
 		$scope.isAdmin = false;
@@ -67,7 +66,7 @@ angular.module('tradity').
 			if ($scope.ownUser.access.indexOf('*') != -1)
 				$scope.$emit('makeadmin');
 
-			$scope.ownUser.profilepic = HOST + '/' + $scope.ownUser.profilepic;
+			$scope.ownUser.profilepic = DEFAULT_PROFILE_IMG;
 		});
 
 		$scope.isActive = function(route) {

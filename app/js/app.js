@@ -62,13 +62,13 @@ angular.module('tradity', [
 			templateUrl: 'templates/learning.html',
 			controller: 'LearningCtrl'
 		}).
-		state('game.learning.katalog', {
-			url: '/katalog',
-			templateUrl: 'templates/learning.katalog.html',
+		state('game.learning.catalog', {
+			url: '/catalog',
+			templateUrl: 'templates/learning.catalog.html',
 			controller: 'LearningCtrl'
 		}).
 		state('game.learning.questions', {
-			url: '/katalog/:id',
+			url: '/catalog/:id',
 			templateUrl: 'templates/learning.questions.html',
 			controller: 'LearningCtrl'
 		}).

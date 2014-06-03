@@ -254,8 +254,8 @@ angular.module('tradity').
 			}
 			var tn = data.tradername || data.schoolname;
 			
-			if (!data.profilepic) data.profilepic = DEFAULT_PROFILE_IMG;
-
+			if (!data.profilepic)
+				data.profilepic = DEFAULT_PROFILE_IMG;
 
 			$scope.messages.push({
 				type: type,

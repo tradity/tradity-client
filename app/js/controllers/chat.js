@@ -83,6 +83,7 @@ angular.module('tradity').
 		$scope.getUserInfo = function(userId, cb) {
 			socket.emit('get-user-info', {
 				lookfor: userId,
+				nohistory: true,
 				_cache: 20
 			},
 			function(data) {

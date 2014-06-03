@@ -10,16 +10,16 @@ angular.module('tradity').
 					$scope.notifications.splice(index-1,1);
 					console.log(index)
 					console.log($scope.notifications)
-				},5000);
+				}, 5000);
 		};
 
 		$scope.test = function() {
 			$scope.add({
-				message:'test nachricht app gestartet',
+				message: 'test nachricht app gestartet',
 				link:function() {
 
 				},
-				sticky:false,
+				sticky: false,
 			})
 		}
 

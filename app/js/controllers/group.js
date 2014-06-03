@@ -20,7 +20,16 @@ angular.module('tradity').
 			lookfor: $scope.schoolid,
 			_cache: 30
 		}, function(data) {
-			if (data.code == 'get-school-info-success') {
+			if (data.code == 'not-logged-in') {
+				socket.emit('school-exists', {
+					lookfor: $scope.schoolid,
+					_cache: 30
+				}, function(data) {
+					if (data.code == 'school-exists-success' && data.exists) {
+						$state.go('index.schoolregister', {schoolid: data.path});
+					}
+				});
+			} else if (data.code == 'get-school-info-success') {
 				$scope.school = data.result;
 				$scope.comments = $scope.school.comments;
 				$scope.descpage = $scope.school.descpage;

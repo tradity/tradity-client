@@ -1,11 +1,11 @@
 angular.module('tradity').
 	controller('UnknownEntityCtrl', function($scope, $stateParams, $state, socket) {
-		socket.emit('get-school-info', {
+		socket.emit('school-exists', {
 			lookfor: $stateParams.entity,
 			_cache: 30
 		}, function(data) {
-			if (data.code == 'get-school-info-success') {
-				$state.go('game.group', {schoolid: data.result.path});
+			if (data.code == 'school-exists-success' && data.exists) {
+				$state.go('game.group', {schoolid: data.path});
 			} else {
 				var strippedEntity = $stateParams.entity.replace(/^\//, '');
 				

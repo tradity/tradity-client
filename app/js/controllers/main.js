@@ -263,7 +263,7 @@ angular.module('tradity').
 				srcusername: data.srcusername,
 				comment: $sce.trustAsHtml(data.trustedhtml ? data.comment : escapeHTML(data.comment)),
 				trustedhtml: data.trustedhtml,
-				profilepic: HOST + '/' + data.profilepic,
+				profilepic: DEFAULT_PROFILE_IMG,
 				orderid: data.orderid,
 				tradername: tn,
 				tradername_genitive: 'xsXS'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’',

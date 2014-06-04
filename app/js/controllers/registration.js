@@ -7,6 +7,18 @@ angular.module('tradity').
 		$scope.street = '';
 		$scope.invitekey = $stateParams.inviteCode;
 		$scope.betakey = '';
+		$scope.onLSResult = [
+			function() {
+				for (var i = 0; i < $scope.schoolList.length; ++i) {
+					var s = $scope.schoolList[i];
+					if (s.path == $scope.school || s.id == $scope.school || s.name == $scope.school) {
+						$scope.schoolname = document.getElementById('schoolname').value = s.name;
+						$scope.school = s.id;
+						break;
+					}
+				}
+			}
+		];
 		
 		if ($scope.invitekey) {
 			socket.emit('get-invitekey-info', {
@@ -54,7 +66,12 @@ angular.module('tradity').
 		
 		$scope.register = function() {
 			if (!$scope.agbread)
-				return alert('Bitte bestätige, dass du die AGB gelesen hast.');
+				return notification('Bitte bestätige, dass du die AGB gelesen hast.');
+			if ($scope.password_check != $scope.password)
+				return notification('Die Passwörter stimmen nicht überein!');
+			if (!$scope.giv_name || !$scope.fam_name)
+				return notification('Bitte gib deinen Namen an, damit du Gewinne erhalten kannst.');
+			
 			socket.emit('register', {
 				name: $scope.name,
 				giv_name: $scope.giv_name,
@@ -72,4 +89,6 @@ angular.module('tradity').
 				invitekey: $scope.invitekey
 			});
 		};
+		
+		useSchoolAC($scope, socket);
 	});

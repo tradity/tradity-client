@@ -17,13 +17,28 @@
 			</div>
 
 			<div class="pure-control-group">
-				<label for="email">Email-Addresse</label>
-				<input id="email" ng-model="email" type="email" placeholder="Email Addresse">
+				<label for="email">Emailadresse</label>
+				<input id="email" ng-model="email" type="email" placeholder="Emailadresse">
+			</div>
+
+			<div class="pure-control-group">
+				<label for="giv_name">Vorname</label>
+				<input type="text" ng-model="giv_name" placeholder="Vorname" id="giv_name">
+			</div>
+
+			<div class="pure-control-group">
+				<label for="fam_name">Nachname</label>
+				<input type="text" ng-model="fam_name" placeholder="Nachname" id="fam_name">
 			</div>
 
 			<div class="pure-control-group" ng-show="serverConfig.betakeyRequired">
 				<label for="betakey">Betakey</label>
 				<input id="betakey" ng-model="betakey" type="text" placeholder="Betakey">
+			</div>
+			
+			<div class="pure-control-group">
+				<label for="schoolname">Institution / Schule (optional)</label>
+				<input type="text" ng-model="schoolname" placeholder="Schule" id="schoolname">
 			</div>
 
 			<div class="pure-controls">

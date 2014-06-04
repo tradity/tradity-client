@@ -43,7 +43,7 @@
 }
 
 .autocomplete-right {
-	position: absolute;
+	float: right;
 	right: 5px;
 	text-align: right;
 	font-size: 77%;

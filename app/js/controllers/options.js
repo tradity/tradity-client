@@ -53,6 +53,9 @@ angular.module('tradity').
 		};
 		
 		$scope.changeOptions = function() {
+			if ($scope.password_check != $scope.password)
+				return notification('Die Passwörter stimmen nicht überein');
+			
 			$scope.schoolname = document.getElementById('schoolname').value;
 			var d = Date.UTC($scope.birthdayy, $scope.birthdaym-1, $scope.birthdayd);
 			if (!$scope.birthdayy)

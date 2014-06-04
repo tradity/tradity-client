@@ -9,7 +9,7 @@ var initNotifications = function() {
 	$('body').append(notificationContainer);
 };
 
-var notification = function (text,icon) { // icon === true -> success
+var notification = function (text, icon) { // icon === true -> success
 	var classes = '';
 	
 	if (!icon)
@@ -30,8 +30,9 @@ var notification = function (text,icon) { // icon === true -> success
 };
 
 var useSchoolAC = function($scope, socket) {
-	$scope.onLSResult = [];
-	$scope.schoolList = [];
+	$scope.onLSResult = $scope.onLSResult || [];
+	$scope.schoolList = $scope.schoolList || [];
+	
 	socket.on('list-schools', function(result) {
 		$scope.schoolList = result.result;
 		for (var i = 0; i < $scope.schoolList.length; ++i) {
@@ -39,6 +40,7 @@ var useSchoolAC = function($scope, socket) {
 			$scope.schoolList[i].getEntryName = function() { return this.name; };
 			$scope.schoolList[i].getExtra = function() { return this.usercount + ' Personen'; };
 		}
+		
 		for (var i = 0; i < $scope.onLSResult.length; ++i)
 			$scope.onLSResult[i]();
 	}, $scope);
@@ -47,7 +49,10 @@ var useSchoolAC = function($scope, socket) {
 	
 	$scope.acFetcher = {
 		fetchAutoComplete: function(ac, s) {
-			var enter = function() { ac.putData($scope.schoolList, s); };
+			var enter = function() {
+				ac.putData($scope.schoolList, s);
+			};
+			
 			if ($scope.schoolList.length)
 				enter();
 			else

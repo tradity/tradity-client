@@ -75,27 +75,27 @@
 								<label for="birthday">Geburtsdatum</label>
 								<div class="pure-g">
 									<div class="pure-u-1-3"> 
-										<input type="number" ng-model="birthdayd" placeholder="Tag" id="birthdayd" class="pure-input-1">
+										<input type="number" ng-model="birthdayd" max="31" min="0" placeholder="Tag" id="birthdayd" class="pure-input-1">
 									</div>
 									<div class="pure-u-1-3"> 
-										<input type="number" ng-model="birthdaym" placeholder="Monat" id="birthdaym" class="pure-input-1">
+										<input type="number" ng-model="birthdaym" max="12" min="0" placeholder="Monat" id="birthdaym" class="pure-input-1">
 									</div>
 									<div class="pure-u-1-3">
-										<input type="number" ng-model="birthdayy" placeholder="Jahr" id="birthdayy" class="pure-input-1">
+										<input type="number" ng-model="birthdayy" max="2015" min="0" placeholder="Jahr" id="birthdayy" class="pure-input-1">
 									</div>
 								</div>
-								<label for="desc">Kurzbeschreibung</label>
-								<textarea ng-model="desc" id="desc" placeholder="Erzähl uns, was dich ausmacht" class="pure-input-1"></textarea>
 							</div>
 						</div>
 					</div>
+					<label for="desc">Kurzbeschreibung</label>
+					<textarea ng-model="desc" id="desc" placeholder="Erzähl uns, was dich ausmacht" class="pure-input-1"></textarea>
 				</div>
 				<div class="pure-u-1-2">
 					<div class="padding-left">
 						<h2>Profilbild</h2>
 						<img id="profile-picture" class="inline" width="200px" ng-show="ownUser.profilepic" ng-src="{{ownUser.profilepic}}" alt="">
 						<label for="profileimage">Profilbild hochladen</label>
-						<input type="file" id="profileimage" class="options-input" accept="image/png,image/jpeg,image/gif">
+						<input type="file" id="profileimage" class="options-input" accept="image/png,image/jpeg,image/gif"><br/>
 						<input type="button" ng-click="useGravatar()" ng-show="ownUser.email_verif != 0 && ownUser.email" class="btn btn-primary" value="Gravatar verwenden" />
 					</div>
 				</div>

@@ -40,7 +40,8 @@ angular.module('tradity').
 				description: 'Umwelt- und Klimaschutz fängt bei jedem zu Hause an, das ist klar. Aber ein großer Teil der Emissionen geht von Unternehmen aus. Wie kann man mit Investments ethische, nachhaltige und grüne Unternehmen fördern? Zielgerichtete „grüne“ Geldanlagen können hierbei eine wichtige Rolle spielen. Doch Achtung: Grün ist nicht gleich grün.',
 				requirements: [],
 				link: 'https://boersenspiel.tradity.de/learning/gruene-geldanlage/',
-				show: false
+				show: false,
+				xp:42
 			}
 		];
 

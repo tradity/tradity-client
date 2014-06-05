@@ -118,6 +118,11 @@ angular.module('tradity').
 		});
 
 		socket.on('get-user-info', function(data) {
+			if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
+				$scope.ownUser = null;
+				if ($state.includes('game'))
+					$state.go('index.login');
+			}
 			var r = data.result;
 			if (r && r.isSelf) {
 				$scope.ownUser = r;

@@ -1,0 +1,5 @@
+<div ng-controller="SponsorsCtrl" id="sponsors">      
+		<div class="sponsor" ng-repeat="sponsor in sponsors" ng-hide="group && !sponsor.group">
+			<a href="{{sponsor.link}}"><img src="{{sponsor.picture}}"/></a>
+		</div>
+</div>

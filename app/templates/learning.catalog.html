@@ -1,6 +1,6 @@
 <h1>Lektionen</h1>
 <div ng-repeat="catalog in learaningcatalog">
-	<h2><a ng-click="catalog.show = !catalog.show" href="">{{catalog.name}}</a></h2>
+	<h2><a ng-click="catalog.show = !catalog.show" href="">{{catalog.name}}</a><span class="xp">{{catalog.xp}} xp</span></h2>
 	<div ng-show="catalog.show">
 		<p>{{catalog.description}}</p>
 		<div class="btn-group">

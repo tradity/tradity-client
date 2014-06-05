@@ -1,0 +1,34 @@
+#topmenu {
+	@height:50px;
+	@padding:10px;
+
+	height:(@height)-@padding;
+
+	background-color:lighten(#2B3990,20%);
+
+	ul {
+		padding:0px;
+		margin:0px;
+	}
+
+	li {
+		list-style-type:none;
+		float:left;
+	}
+
+	a {
+		display:block;
+		padding:@padding 15px;
+		color:#fff;
+		font-size:15px;
+	}
+
+	a:hover, a.active {
+		background-color:#fff;
+		color:#333;
+	}
+
+	.subMenu {
+		display:none;
+	}
+}

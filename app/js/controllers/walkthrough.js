@@ -65,60 +65,87 @@ angular.module('tradity').
 					$scope.okay = function() {};
 				}
 			},
-			// {
-			// 	name: "Suche",
-			// 	description: "Hier kannst Du Aktien und „Leaderpapiere“ suchen. Gib z.B. „Bob der“ ein.",
-			// 	init: function() {
-			// 		$(".search-btn").addClass('blink');
-			// 		$scope.routeChange = function(next) {
-			// 			console.log(next);
-			// 			if(next.name == 'game.search') $scope.next();
-			// 		}
-			// 	},
-			// 	exit: function() {
-			// 		$(".search-btn").removeClass('blink');
-			// 		$scope.routeChange = function(next) {}
-			// 	}
-			// },
-			// {
-			// 	name: "Suche",
-			// 	description: "Siehe da! Die „Bob der Baumeister AG“. Die Aktie gibt es nicht wirklich, aber sie soll hier als Beispiel dienen ;) Wähle die Aktie aus.",
-			// 	init: function() {
-					
-			// 	},
-			// 	exit: function() {
-					
-			// 	}
-			// },
 			{
 				name: "Kaufen",
 				description: "Du kaufst zum Kaufpreis und verkaufst zum Verkaufspreis – logisch. Der Unterschied zwischen den beiden Preisen heißt „Spread“ und ist umso größer, je weniger die Aktie auf dem Markt gehandelt wird. Achtung! Du würdest bei einem sofortigen Verkauf also Verlust machen.",
 				init: function() {
 					$scope.okayButton = true;
-					$scope.routeChange = function() {
-						$scope.routeChange = function(next) {};
-						$timeout(function() {
-
-						},0);
-					}
+					$scope.okay = $scope.next;
 				},
 				exit: function() {
-					
+					$scope.okayButton = false;
+					$scope.okay = function() {};
 				}
 			},
 			{
 				name: "Kaufen",
 				description: "Die ISIN ist eine eindeutige Kennnummer für Aktien. Wenn du also die ISIN einer Aktie kennst, kannst du dir sicher sein, dass es überall die gleiche Aktie ist. Du kannst so z. B. auch die ISIN in das Suchfenster eingeben, um eine bestimmte Aktie zu suchen.",
 				init: function() {
-					
+					$timeout(function() {
+						$(".isin").addClass('blink');
+						$scope.okayButton = true;
+						$scope.okay = $scope.next;
+					},0)
 				},
 				exit: function() {
-					
+					$(".isin").removeClass('blink');
+					$scope.okayButton = false;
+					$scope.okay = function() {};
 				}
-			}
+			},
+			{
+			 	name: "Suche",
+			 	description: "Im Suchfeld kannst du nach Aktien	oder sog. „Leader-Papieren“	suchen.	Gib	„Bob der	Baumeister“	ein.",
+			 	init: function() {
+			 		$timeout(function() {
+						$("#paper").addClass('blink');
+						$("#paper").on('input',function(e){
+							if(this.value.toLowerCase() == 'google'.toLowerCase())
+								$scope.next();
+						});
+					});
+			 	},
+			 	exit: function() {
+			 		$("#paper").off('input');
+			 		$("#paper").removeClass('blink');
+			 	}
+			 },
+			 {
+				name: "Kaufen",
+				description: "Rechts findest du Informationen zum Wertpapier. Ein Stück „Bob der Baumeister“ kostet 100€.",
+				init: function() {
+					$timeout(function() {
+						$(".buyprice").addClass('blink');
+						$scope.okayButton = true;
+						$scope.okay = $scope.next;
+					},0)
+				},
+				exit: function() {
+					$(".buyprice").removeClass('blink');
+					$scope.okayButton = false;
+					$scope.okay = function() {};
+				}
+			},
+			{
+				name: "Kaufen",
+				description: "Gib nun an, wie viele Du kaufen möchtest (am besten Du gibst da 100 ein, weil sonst das Tutorial nicht weitergeht) und klicke auf Trade.",
+				init: function() {
+					$timeout(function() {
+						$("#amount").addClass('blink');
+					},0)
+					$scope.routeChange = function(next) {
+						if(next.name == 'game.depot.transactions') $scope.next();
+					}
+				},
+				exit: function() {
+					$("#amount").removeClass('blink');
+					$scope.routeChange = function(next) {};
+				}
+			},
+
 		]
 
-		$scope.step = 0;
+		$scope.step = 3;
 		$scope.show = !true;
 		$scope.pp;
 		$scope.okayButton = false;
@@ -136,8 +163,8 @@ angular.module('tradity').
 
 		$scope.next = function() {
 			$scope.step++;
-			$scope.steps[$scope.step].init();
 			$scope.steps[$scope.step-1].exit();
+			$scope.steps[$scope.step].init();
 			$scope.name = $scope.steps[$scope.step].name;
 			$scope.description = $scope.steps[$scope.step].description;
 		}

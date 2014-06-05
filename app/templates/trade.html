@@ -21,14 +21,18 @@
 					<table class="paper-preview f">
 						<tr ng-show="leader"><th>Name</th><td><a ui-sref="game.profile.overview({userId: cur.leadername})">{{stockname}}</a></td></tr>
 						<tr ng-hide="leader"><th>Name</th><td ng-show="cur">{{stockname}}</td></tr>
-						<tr><th><span class="batch tooltip" data-info="(Auch Ask, Geldkurs oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">&#xF0AD;</span>
-							Kauf­preis</th><td ng-show="cur">{{cur.ask / 10000 | number:3}} €</td></tr>
-						<tr><th><span class="batch tooltip" data-info="(Auch Bid, Briefkurs oder Angebot) ist der höchste Preis, den ein Händler für eine Aktie bereit ist zu zahlen">&#xF0AD;</span>
-							Verkaufs­preis</th><td ng-show="cur">{{cur.bid / 10000 | number:3}} €</td></tr>
+						<tr class="buyprice">
+							<th tooltip="(Auch Ask, Geldkurs oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre eine Aktie zu verkaufen">Kauf­preis</th>
+							<td ng-show="cur">{{cur.ask / 10000 | number:3}} €</td>
+						</tr>
+						<tr>
+							<th tootlip="(Auch Bid, Briefkurs oder Angebot) ist der höchste Preis, den ein Händler für eine Aktie bereit ist zu zahlen">Verkaufs­preis</th>
+							<td ng-show="cur">{{cur.bid / 10000 | number:3}} €</td>
+						</tr>
 						<!-- <tr><th>Wert</th><td ng-show="cur">{{cur.lastvalue / 10000 | currency}}</td></tr> -->
 						<tr ng-show="leader"><th>Gewinn­provision</th><td ng-show="cur">{{cur.wprovision}} %</td></tr>
 						<tr ng-show="leader"><th>Verlust­provision</th><td ng-show="cur">{{cur.lprovision}} %</td></tr>
-						<tr ng-hide="leader"><th>ISIN</th><td ng-show="cur">{{cur.stockid}}</td></tr>
+						<tr ng-hide="leader" class="isin"><th>ISIN</th><td ng-show="cur">{{cur.stockid}}</td></tr>
 						<tr ng-hide="leader"><th><span class="batch tooltip" data-info="Du kannst nur so viele Aktien kaufen, wie auch in der Realität an der Börse gehandelt wurden. Wurden an Tag X zum Beispiel nur 1000 Stück der Aktie gehandelt, die du kaufen oder verkaufen willst, kannst du an diesem Tag maximal je 1000 Stück kaufen und verkaufen. Achte vor allem bei sogennanten „Pennystocks“ auf die Liquidität, da diese oft sehr gering ist.">&#xF0AD;</span>Handelbare Stückzahl</th><td ng-show="cur">{{cur.pieces}}</td></tr>
 						<tr ng-hide="leader"><th>Aktien­informationen</th><td ng-show="cur"><a target="_blank" ng-href="http://ariva.de/{{cur.stockid}}">http://ariva.de/{{cur.stockid}}</a></td></tr>
 					</table>

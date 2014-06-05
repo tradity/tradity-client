@@ -6,7 +6,7 @@ angular.module('tradity').
 		return {
 			on: function (eventName, callback, angularScope) {
 				socket.on(eventName, function () {
-					var args = arguments;	
+					var args = arguments;
 					$rootScope.$apply(function () {
 						callback.apply(socket, args);
 					});

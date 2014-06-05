@@ -1,4 +1,3 @@
-
 angular.module('tradity').
 	controller('AchievementsCtrl', function($scope, socket, $stateParams) {
 		$scope.achievements = [

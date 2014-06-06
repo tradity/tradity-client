@@ -81,7 +81,7 @@ SoTradeConnection.prototype.init = function() {
 					console.warn(
 						'Tried socket.socket.reconnect, but it failed for some reason; ' +
 						'It is from the socket.io private API, so it’s basically voodoo anyway ' +
-						'(but nothing seems to be matching in the public API, so we’re using it anyway)');
+						'(but nothing seems to be matching in the public API, so we’re using it)');
 					throw e;
 				}
 			}).bind(this), 2000);
@@ -116,7 +116,7 @@ SoTradeConnection.prototype.responseHandler = function(data) {
 	var type = rid[0];
 	if ((type == 'login' || data.code == 'login-success' || type == 'register' || (data.code && data.code.match(/^reg-/))) && data.key)
 		this.setKey(data.key);
-		
+	
 	data.type = type;
 		
 	var numericID = parseInt(rid[1]);

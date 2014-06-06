@@ -27,7 +27,7 @@ angular.module('tradity').
 			$scope.notifications.splice(index,1);
 		}
 
-		$scope.test();
+		//$scope.test();
 
 		socket.on('comment', function(event) {
 			if (event.baseeventtype == 'chat-start') {

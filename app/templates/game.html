@@ -29,6 +29,10 @@
 				<li>
 					<a ui-sref="game.chats" class="icon" title="Nachrichten"><i class="fa fa-envelope"></i></a>
 				</li>
+				<li ng-controller="NotificationsCtrl">
+					<a class="icon" title="Benachrichtigungen"><i class="fa fa-globe"></i></a>
+					<div id="pushNotifications"></div>
+				</li>
 				<li ng-show="isAdmin">
 					<a ui-sref="admin.userlist" class="icon" title="admin"><i class="fa fa-shield"></i></a>
 				</li>
@@ -119,9 +123,15 @@
 				</a>
 			</li>
 			<li>
-				<a ui-sref=".faq"  accesskey="h" title="ALT+SHIFT+H" ng-class="{active: ('game.faq' | isState)}">
+				<a ui-sref=".learning.catalog" ng-class="{active: ('game.learning.catalog' | isState)}" >
+					<i class="fa fa-graduation-cap"></i>
+					<span class="dark nav-block-title">Learning</span>
+				</a>
+			</li>
+			<li>
+				<a href="https://boersenspiel.tradity.de/hilfe/" targe="_blank">
 					<i class="fa fa-question"></i>
-					<span class="dark nav-block-title">Häufige Fragen</span>
+					<span class="dark nav-block-title">Hilfe</span>
 				</a>
 			</li>
 		</ul>

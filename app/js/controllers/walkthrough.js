@@ -145,7 +145,7 @@ angular.module('tradity').
 
 		]
 
-		$scope.step = 3;
+		$scope.step = 0;
 		$scope.show = !true;
 		$scope.pp;
 		$scope.okayButton = false;

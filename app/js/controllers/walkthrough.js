@@ -51,7 +51,7 @@ angular.module('tradity').
 			},
 			{
 				name: "Trade",
-				description: "Hier findest du allerlei Informationen, die für den Handel von Bedeutung sind. Wenn du bei „Weitere Informationen“ auf den Link klickst, kommst du auf eine externe Seite, zu der du mehr Informationen findest. Wird die langsam langweilig? Keine Angst, jetzt musst du gleich selbst aktiv werden!",
+				description: "Hier findest du allerlei Informationen, die für den Handel von Bedeutung sind. Wenn du bei „Weitere Informationen“ auf den Link klickst, kommst du auf eine externe Seite, zu der du mehr Informationen findest. Wird dir langsam langweilig? Keine Angst, jetzt musst du gleich selbst aktiv werden!",
 				init: function() {
 					$timeout(function() {
 						$(".paper-preview-box").addClass('blink');
@@ -95,7 +95,7 @@ angular.module('tradity').
 			},
 			{
 			 	name: "Suche",
-			 	description: "Im Suchfeld kannst du nach Aktien	oder sog. „Leader-Papieren“	suchen.	Gib	„Bob der	Baumeister“	ein.",
+			 	description: "Im Suchfeld kannst du nach Aktien oder sog. „Leader-Papieren“ suchen. Gib „Bob der Baumeister“ ein.",
 			 	init: function() {
 			 		$timeout(function() {
 						$("#paper").addClass('blink');
@@ -112,7 +112,7 @@ angular.module('tradity').
 			 },
 			 {
 				name: "Kaufen",
-				description: "Rechts findest du Informationen zum Wertpapier. Ein Stück „Bob der Baumeister“ kostet 100€.",
+				description: "Rechts findest du Informationen zum Wertpapier. Ein Stück „Bob der Baumeister“ kostet 100 €.",
 				init: function() {
 					$timeout(function() {
 						$(".buyprice").addClass('blink');
@@ -128,7 +128,7 @@ angular.module('tradity').
 			},
 			{
 				name: "Kaufen",
-				description: "Gib nun an, wie viele Du kaufen möchtest (am besten Du gibst da 100 ein, weil sonst das Tutorial nicht weitergeht) und klicke auf Trade.",
+				description: "Gib nun an, wie viele du kaufen möchtest (Am besten gibst du da 100 ein, weil sonst das Tutorial nicht weitergeht) und klicke auf Trade.",
 				init: function() {
 					$timeout(function() {
 						$("#amount").addClass('blink');

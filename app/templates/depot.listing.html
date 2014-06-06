@@ -34,7 +34,7 @@
 				</tr>
 				<tr ng-repeat="result in results">
 					<td>
-						<span tooltip="Gewinnprovision: {{result.wprov_sum | number:2}} €       Verlustprovision: {{result.lprov_sum | number:2}} €" ng-show="result.leader"><a ui-sref="game.profile.overview({userId: result.leadername})">{{result.stockname}}</a></span>
+						<span tooltip="Gewinnprovision: {{result.wprov_sum / 10000 | number:2}} € &#x0a; Verlustprovision: {{result.lprov_sum / 10000 | number:2}} €" ng-show="result.leader"><a ui-sref="game.profile.overview({userId: result.leadername})">{{result.stockname}}</a></span>
 						<span ng-hide="result.leader">{{result.stockname}}</span>
 					</td>
 					<td>{{result.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>

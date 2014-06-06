@@ -41,7 +41,7 @@ angular.module('tradity').
 				requirements: [],
 				link: 'https://boersenspiel.tradity.de/learning/gruene-geldanlage/',
 				show: false,
-				xp:42
+				xp: 42
 			}
 		];
 

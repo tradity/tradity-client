@@ -4,12 +4,12 @@ angular.module('tradity').
 			{
 				picture: 'http://placekitten.com/200/300',
 				link: 'http://google.de',
-				group:false,
+				group: false,
 			},
 			{
 				picture: 'http://placekitten.com/200/70',
 				link: 'http://google.de',
-				group:true,
+				group: true,
 			}
 		]
 		$scope.group = false;

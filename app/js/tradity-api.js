@@ -25,8 +25,9 @@ enterDevMode = function() {
 };
 
 // socket.io wrapper object
-SoTradeConnection = function(rawsocket) {
-	this.socket = rawsocket;
+SoTradeConnection = function(connect) {
+	this.connect = connect;
+	this.socket = null;
 	this.listeners = {}; // listener name -> array of callbacks
 	this.ids = {}; // numeric id -> {cb: callback for that id, prefill: object}
 	this.id = 0;
@@ -40,6 +41,12 @@ SoTradeConnection = function(rawsocket) {
 	
 	this._txPackets = 0;
 	this._rxPackets = 0;
+	
+	this.init();
+};
+
+SoTradeConnection.prototype.init = function() {
+	this.socket = this.connect();
 	
 	this.socket.on('response', (function(wdata) {
 		this.unwrap(wdata, this.responseHandler.bind(this));
@@ -63,6 +70,22 @@ SoTradeConnection = function(rawsocket) {
 			for (var i = 0; i < data.pushes.length; ++i)
 				this.invokeListeners(data.pushes[i]);
 		}).bind(this));
+	}).bind(this));
+	
+	this.socket.on('disconnect', (function(reason) {
+		if (reason == 'booted') {
+			setTimeout((function() {
+				try {
+					this.socket.socket.reconnect();
+				} catch (e) {
+					console.warn(
+						'Tried socket.socket.reconnect, but it failed for some reason; ' +
+						'It is from the socket.io private API, so it’s basically voodoo anyway ' +
+						'(but nothing seems to be matching in the public API, so we’re using it anyway)');
+					throw e;
+				}
+			}).bind(this), 2000);
+		}
 	}).bind(this));
 };
 

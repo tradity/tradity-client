@@ -2,7 +2,12 @@
 
 angular.module('tradity').
 	factory('socket', function ($rootScope, API_HOST) {
-		var socket = new SoTradeConnection(io.connect(API_HOST));
+		var connect = function() {
+			return io.connect(API_HOST);
+		};
+		
+		var socket = new SoTradeConnection(connect);
+		
 		return {
 			on: function (eventName, callback, angularScope) {
 				socket.on(eventName, function () {

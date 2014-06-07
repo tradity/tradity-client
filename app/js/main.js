@@ -73,45 +73,59 @@ var useSchoolAC = function($scope, socket) {
 var fileemit = function(socket, input, evtype, template, serverconfig, callback) {
 	var filename = null; 
 	var mime = null;
-	var goPublish = function(data) {
-		var encoded = template.base64 ? base64codec.encodeBuffer(data.buffer) : data;
-		
-		template.content = encoded;
-		template.mime = template.mime || mime;
-		template.name = template.name || filename;
-		
-		socket.emit(evtype, template, function(data) {
-			callback(data.code);
-		});
-	};
 	
-	if (input.name) { // File
-		filename = input.name;
-		if (/\.jpe?g$/i.test(filename)) mime = 'image/jpeg';
-		if (/\.png$/i.test(filename))   mime = 'image/png';
-		if (/\.gif$/i.test(filename))   mime = 'image/gif';
-		
-		if (!mime) {
-			return alert('Dein Profilbild musst du als JPEG, PNG oder GIF hochladen');
-		}
-		
-		var reader = new FileReader();
+	var fail = function() { notification('Leider gab es ein technisches Problem beim Hochladen deiner Datei. :('); };
 	
-		reader.readAsArrayBuffer(input);
-		
-		reader.onload = function() { 
-			var buf = reader.result;
-			if (!buf)
-				return alert('Konnte Profilbild nicht laden');
-			if (serverconfig && reader.result.length > serverconfig.fsdb.userquota)
-				return alert('Die Profilbilddatei ist leider zu groß (höchstens 3 MB)');
-			
-			var bytes = new Uint8Array(buf);
-			
-			goPublish(bytes);
+	try {
+		var goPublish = function(data) {
+			try {
+				var encoded = template.base64 ? base64codec.encodeBuffer(data.buffer) : data;
+				
+				template.content = encoded;
+				template.mime = template.mime || mime;
+				template.name = template.name || filename;
+				
+				socket.emit(evtype, template, function(data) {
+					callback(data.code);
+				});
+			} catch (e) {
+				fail();
+				throw e;
+			}
 		};
-	} else {
-		goPublish(input);
+		
+		if (input.name) { // File
+			filename = input.name;
+			if (/\.jpe?g$/i.test(filename)) mime = 'image/jpeg';
+			if (/\.png$/i.test(filename))   mime = 'image/png';
+			if (/\.gif$/i.test(filename))   mime = 'image/gif';
+			
+			if (!mime) {
+				return alert('Dein Profilbild musst du als JPEG, PNG oder GIF hochladen');
+			}
+			
+			var reader = new FileReader();
+		
+			reader.readAsArrayBuffer(input);
+			
+			reader.onload = function() { 
+				var buf = reader.result;
+				if (!buf)
+					return alert('Konnte Profilbild nicht laden');
+					
+				if (serverconfig && reader.result.byteLength > serverconfig.fsdb.userquota)
+					return alert('Die Profilbilddatei ist leider zu groß (höchstens 3 MB)');
+				
+				var bytes = new Uint8Array(buf);
+				
+				goPublish(bytes);
+			};
+		} else {
+			goPublish(input);
+		}
+	} catch (e) {
+		fail();
+		throw e;
 	}
 };
 

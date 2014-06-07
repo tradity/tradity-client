@@ -2,7 +2,7 @@ angular.module('tradity').
 	controller('LearningCtrl', function($scope, $stateParams, $state, socket) {
 		$scope.learningQuestions = [
 			{
-				catalog: 0,
+				catalog: 'green-investments',
 				description: 'Aus welchen drei Komponenten besteht das sogenannte „Magische Dreieck“ bei Investments?',
 				answers: {
 					0: 'Preis, Leistung, Gebühren',
@@ -12,7 +12,7 @@ angular.module('tradity').
 				right: 1
 			},
 			{
-				catalog: 0,
+				catalog: 'green-investments',
 				description: 'Welche Eigenschaften sind bei „grünen“ Anlagen garantiert?',
 				answers: {
 					0: 'CO²-neutral und ohne Genpflanzen',
@@ -22,7 +22,7 @@ angular.module('tradity').
 				right: 2
 			},
 			{
-				catalog: 0,
+				catalog: 'green-investments',
 				description: 'Was bedeutet das „Best-in-Class“-Prinzip bei nachhaltigen Anlagen? ',
 				answers: {
 					0: 'Es werden die klassenbesten Schüler in Entwicklungsländern mit einem Stipendium gefördert, damit sie weiter zur Schule gehen können.',
@@ -33,15 +33,15 @@ angular.module('tradity').
 			}
 		];
 
-		$scope.learaningcatalog = [
+		$scope.learningcatalog = [
 			{
-				id: 0,
+				id: 'green-investments',
 				name: 'Grüne Geldanlage',
 				description: 'Umwelt- und Klimaschutz fängt bei jedem zu Hause an, das ist klar. Aber ein großer Teil der Emissionen geht von Unternehmen aus. Wie kann man mit Investments ethische, nachhaltige und grüne Unternehmen fördern? Zielgerichtete „grüne“ Geldanlagen können hierbei eine wichtige Rolle spielen. Doch Achtung: Grün ist nicht gleich grün.',
 				requirements: [],
 				link: 'https://boersenspiel.tradity.de/learning/gruene-geldanlage/',
 				show: false,
-				xp: 42
+				achievement: 'LEARNING_GREEN_INVESTMENTS'
 			}
 		];
 
@@ -61,10 +61,7 @@ angular.module('tradity').
 			console.log($scope.questions)
 			$scope.proved = true;
 			for (var i = $scope.questions.length - 1; i >= 0; i--) {
-				if ($scope.questions[i].answer == $scope.questions[i].right)
-					$scope.questions[i].wrong = false;
-				else
-					$scope.questions[i].wrong = true;
+				$scope.questions[i].wrong = ($scope.questions[i].answer != $scope.questions[i].right);
 			};
 		}
 	});

@@ -27,7 +27,7 @@ angular.module('tradity').
 			$scope.chats = data.chats;
 			
 			for (var i = 0; i < $scope.chats.length; ++i) {
-				for (var j = 0; j < $scope.chats[i].members; ++j) {
+				for (var j = 0; j < $scope.chats[i].members.length; ++j) {
 					var member = $scope.chats[i].members[j];
 					
 					if (!member.profilepic)

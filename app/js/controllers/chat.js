@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('ChatCtrl', function($scope, socket, $stateParams) {
+	controller('ChatCtrl', function($scope, socket, $stateParams, DEFAULT_PROFILE_IMG) {
 		$scope.chats = [];
 		$scope.messages = [];
 		$scope.eventId = 0;
@@ -14,12 +14,26 @@ angular.module('tradity').
 				chatid: toParams.id
 			}, function(data) {
 				$scope.messages = data.chat.messages;
+				for (var i = 0; i < $scope.messages.length; ++i) {
+					if (!$scope.messages[i].profilepic)
+						$scope.messages[i].profilepic = DEFAULT_PROFILE_IMG;
+				}
+				
 				$scope.eventId = data.chat.eventid || data.chat.chatstartevent;
 			}, $scope);
 		})
 
 		socket.on('list-all-chats', function(data) {
 			$scope.chats = data.chats;
+			
+			for (var i = 0; i < $scope.chats.length; ++i) {
+				for (var j = 0; j < $scope.chats[i].members; ++j) {
+					var member = $scope.chats[i].members[j];
+					
+					if (!member.profilepic)
+						member.profilepic = DEFAULT_PROFILE_IMG;
+				}
+			}
 		}, $scope);
 		
 		socket.emit('list-all-chats');
@@ -33,7 +47,7 @@ angular.module('tradity').
 				$scope.messages.push({
 					comment: event.comment,
 					eventid: $scope.eventId,
-					profilepic: event.profilepic,
+					profilepic: event.profilepic || DEFAULT_PROFILE_IMG,
 					uid: event.commenter,
 					time: event.eventtime
 				});

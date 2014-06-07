@@ -13,7 +13,7 @@ angular.module('tradity').
 			'o.mo10uhr': 'Gib eine Order am Montag vor 10 Uhr auf.',
 			't.10uhr5': 'Führe 5 Trades vor 10 Uhr aus.',
 			't.uhr19': 'Führe 1 Trade nach 10 Uhr aus.',
-			't.fruhr19', 'Führe 1 Trade nach 19 Uhr am Freitag aus.',
+			't.fruhr19': 'Führe 1 Trade nach 19 Uhr am Freitag aus.',
 			'TRADE_VOLUME_25K': 'Führe 1 Trade mit mehr als 25.000 € Volumen aus.',
 			'TRADE_STOCKNAME_AZ': 'Trade ein Wertpapier, das mit A und eines, das mit Z beginnt.',
 			'TRADE_RESELL_1H': 'Kaufe und verkaufe ein Wertpapier innerhalb von einer Stunde.',

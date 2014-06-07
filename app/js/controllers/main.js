@@ -135,7 +135,7 @@ angular.module('tradity').
 			}
 		}, $scope);
 
-		socket.on('get-config', function(data) {
+		socket.on('server-config', function(data) {
 			var cfg = data.config;
 			for (var k in cfg)
 				$scope.serverConfig[k] = cfg[k];
@@ -189,7 +189,7 @@ angular.module('tradity').
 			$scope.pokeEvents();
 		});
 		
-		socket.emit('get-config');
+		socket.emit('server-config');
 
 		/* events */
 		$scope.$on('watch-add', function(angEv, data) {

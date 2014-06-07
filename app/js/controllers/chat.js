@@ -26,7 +26,7 @@ angular.module('tradity').
 		socket.on('list-all-chats', function(data) {
 			$scope.chats = data.chats;
 			
-			for (var i = 0; i < $scope.chats.length; ++i) {
+			for (var i in $scope.chats) {
 				for (var j = 0; j < $scope.chats[i].members.length; ++j) {
 					var member = $scope.chats[i].members[j];
 					

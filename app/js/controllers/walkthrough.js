@@ -245,6 +245,7 @@ angular.module('tradity').
 				description: "So – der Walkthrough ist durch. Wende dich bei Fragen gern an „Tradity_Admin“ oder schreibe uns an team@tradity.de eine Mail. Wir würden uns freuen, wenn Du unsere FB-Seite likest, weil dort über die Wochen- und Gesamtsieger und besondere Angebote berichtet wird. Viel Erfolg! – das Tradity Team",
 				init: function() {
 					$state.go('game.feed');
+					$scope.success();
 
 				},
 				exit: function() {
@@ -254,10 +255,25 @@ angular.module('tradity').
 		]
 
 		$scope.step = 0;
-		$scope.show = true;
+		$scope.show = false;
 		$rootScope.walkthrough = $scope.show;
 		$scope.pp;
 		$scope.okayButton = false;
+
+		socket.emit('get-user-info', {
+				lookfor: '$self',
+				nohistory: true,
+				_cache: 20
+			}, function (user) {
+				if(user.result.skipwalkthrough  == 0)
+					$scope.show = true;
+				if(user.result.skipwalkthrough  == 1)
+					$scope.show = false;
+				if ($scope.show)
+					$scope.start();
+		
+			});
+
 
 		$scope.routeChange =  function() {};
 		$scope.okay = function () {};
@@ -285,9 +301,13 @@ angular.module('tradity').
 			$scope.description = $scope.steps[$scope.step].description;
 		}
 
-		if ($scope.show) {
-			$scope.start();
+		$scope.success = function() {
+			socket.emit('get-own-options', function(data) {
+				data.result.skipwalkthrough = 1;
+				socket.emit('change-options', data.result);
+			});
 		}
+
 
 
 	});

@@ -276,7 +276,7 @@ SoTradeConnection.prototype.unwrap = function(data, cb) {
 		e._t_crecv = recvTime;
 		e._t_ssend = data.t;
 		e._t_cdeco = new Date().getTime();
-		e._resp_encsize = data.s.length;
+		e._resp_encsize = data.s.byteLength || data.s.length;
 		e._resp_decsize = decoded.length;
 		cb(e);
 	});

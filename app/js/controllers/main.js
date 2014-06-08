@@ -13,9 +13,10 @@ angular.module('tradity').
 		$scope.connectionLastRx = 0;
 		$scope.connectionCheck = function() {
 			var alive = function() {
-				if (!$scope.connectionAlive)
+				if (!$scope.connectionAlive) {
 					$scope.connectionAlive = true;
-				$state.go('game.feed');
+					$state.go('game.feed');
+				}
 			};
 			var dead = function() {
 				$scope.connectionAlive = false;

@@ -3,13 +3,16 @@
 		<div class="user-info">
 			<img id="profile-picture" height="150px" ng-hide="!user.profilepic" class="profile-picture profile-box" ng-src="{{user.profilepic}}" >
 			<img id="profile-picture" ng-hide="user.profilepic" src="img/profile.svg" height="150px">
-			<h2 class="name">{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}</h2>
+			<h2 class="name">
+				{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}
+				<a ui-sref="admin.userdetails({uid: user.uid})" class="icon" title="admin"><i class="fa fa-shield"></i></a>
+			</h2>
 			<div ng-hide="user.isSelf">
 				<div class="btn-group">
 					<a ng-click="getUserInfo()" class="btn btn-sm btn-default"><i class="fa fa-refresh"></i></a>
 					<a ng-click="addToWatchlist()" class="btn btn-sm btn-default"><i class="fa fa-eye"></i> Watchen</a>
 					<a class="btn btn-success btn-sm" ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: '__LEADER_' + user.uid + '__', amount: 0})">Investieren</a>
-					<a class="btn btn-default btn-sm" ui-sref="game.chat.user({ userId: user.uid})">Nachricht</a>
+					<a class="btn btn-default btn-sm" ui-sref="game.chat.user({userId: user.uid})">Nachricht</a>
 				</div>
 			</div>
 		</div>

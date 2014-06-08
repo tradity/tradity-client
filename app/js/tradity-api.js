@@ -263,7 +263,7 @@ SoTradeConnection.prototype.on = function(evname, cb, angularScope) {
 SoTradeConnection.prototype.unwrap = function(data, cb) {
 	var recvTime = new Date().getTime();
 	(this.lzma && data.e == 'lzma' ? function(cont) {
-		this.lzma.decompress(new Uint8Array(base64codec.decodeBuffer(data.s)), cont);
+		this.lzma.decompress(new Uint8Array(data.s), cont);
 	} : function(cont) {
 		if (data.e != 'raw') {
 			console.warn(data);

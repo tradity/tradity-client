@@ -271,7 +271,7 @@ angular.module('tradity').
 				profilepic: data.profilepic,
 				orderid: data.orderid,
 				tradername: tn,
-				tradername_genitive: 'xsXS'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’',
+				tradername_genitive: tn ? 'xsXS'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’' : null,
 				time: data.eventtime,
 				schoolpath: data.schoolpath
 			});

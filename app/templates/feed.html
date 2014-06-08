@@ -147,7 +147,7 @@
 						<span class="feed-time pull-right" title="{{message.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
 						<a ui-sref="game.profile.overview({userId: message.srcusername})">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ui-sref="game.profile.overview({userId: message.tradername})">{{message.tradername_genitive}}</a> Pinnwand
 					</div>
-					<a ui-sref="game.profile.overview({userId: message.tradername}).pinboard">
+					<a ui-sref="game.profile.overview.pinboard({userId: message.tradername})">
 						<span ng-show="message.trustedhtml" ng-bind-html="message.comment">{{message.comment}}</span>
 						<span ng-hide="message.trustedhtml">{{message.comment}}</span>
 					</a>

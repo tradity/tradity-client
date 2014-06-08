@@ -79,7 +79,7 @@ var fileemit = function(socket, input, evtype, template, serverconfig, callback)
 	try {
 		var goPublish = function(data) {
 			try {
-				var encoded = template.base64 ? base64codec.encodeBuffer(data.buffer) : data;
+				var encoded = data.buffer ? data.buffer : data;
 				
 				template.content = encoded;
 				template.mime = template.mime || mime;
@@ -116,9 +116,7 @@ var fileemit = function(socket, input, evtype, template, serverconfig, callback)
 				if (serverconfig && reader.result.byteLength > serverconfig.fsdb.userquota)
 					return alert('Die Profilbilddatei ist leider zu groß (höchstens 3 MB)');
 				
-				var bytes = new Uint8Array(buf);
-				
-				goPublish(bytes);
+				goPublish(buf);
 			};
 		} else {
 			goPublish(input);

@@ -46,7 +46,6 @@ angular.module('tradity').
 		
 		$scope.useGravatar = function() {
 			fileemit(socket, 'https://secure.gravatar.com/avatar/' + md5.createHash($scope.ownUser.email), 'publish', {
-				base64: false,
 				role: 'profile.image',
 				proxy: true
 			}, $scope.serverConfig, $scope.handlePublishCode);
@@ -64,7 +63,6 @@ angular.module('tradity').
 			var piFile = document.getElementById('profileimage').files[0];
 			if (piFile) {
 				fileemit(socket, piFile, 'publish', {
-					base64: true,
 					role: 'profile.image',
 				}, $scope.serverConfig, $scope.handlePublishCode);
 			}

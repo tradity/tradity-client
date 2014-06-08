@@ -126,7 +126,6 @@ angular.module('tradity').
 			var bannerFile = document.getElementById('bannerupload').files[0];
 			if (bannerFile) {
 				fileemit(socket, bannerFile, 'school-publish-banner', {
-					base64: true,
 					schoolid: $scope.schoolid
 				}, $scope.serverConfig, function(code) {
 					switch (code) {

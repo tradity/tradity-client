@@ -9,18 +9,15 @@ angular.module('tradity').
 		$scope.serverConfig = {};
 		$scope.hasOpenQueries = socket.hasOpenQueries.bind(socket);
 		
-		$scope.connectionAlive = true;
 		$scope.connectionLastRx = 0;
 		$scope.connectionCheck = function() {
 			var alive = function() {
-				if (!$scope.connectionAlive) {
+				if ($state.includes('error')) {
 					socket.reconnect();
-					$scope.connectionAlive = true;
 					$state.go('game.feed');
 				}
 			};
 			var dead = function() {
-				$scope.connectionAlive = false;
 				$state.go('error.connection');
 			};
 			

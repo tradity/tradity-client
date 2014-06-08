@@ -83,6 +83,10 @@ SoTradeConnection.prototype.init = function() {
 
 SoTradeConnection.prototype.reconnect = function() {
 	try {
+		for (var i in this.ids)
+			if (this.ids[i])
+				this.ids[i]._expect_no_response = true;
+		
 		this.socket.io.reconnect();
 	} catch (e) {
 		console.warn(

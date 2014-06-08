@@ -83,10 +83,10 @@ SoTradeConnection.prototype.init = function() {
 
 SoTradeConnection.prototype.reconnect = function() {
 	try {
-		this.socket.socket.reconnect();
+		this.socket.io.reconnect();
 	} catch (e) {
 		console.warn(
-			'Tried socket.socket.reconnect, but it failed for some reason; ' +
+			'Tried socket.io.reconnect, but it failed for some reason; ' +
 			'It is from the socket.io private API, so it’s basically voodoo anyway ' +
 			'(but nothing seems to be matching in the public API, so we’re using it)');
 		throw e;

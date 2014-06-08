@@ -34,32 +34,35 @@ angular.module('tradity').
 		socket.on('register', function(data) {
 			switch (data.code) {
 				case 'reg-success':
-					notification('Registrierung erfolgreich', true);
-					$scope.fetchSelf(function() {
-						$scope.pokeEvents();
+					var modal = $dialogs.notify('Willkommen bei Tradity!', 'Bitte bestätige die "Bestätigungsmail", um alle Funktionen freizuschalten und für die Preise gewinnberechtigt zu sein.');
+					modal.result.then(function(btn) {
+						notification('Registrierung erfolgreich', true);
+						$scope.fetchSelf(function() {
+							$scope.pokeEvents();
+						});
+						$state.go('game.feed');
 					});
-					$state.go('game.feed');
 					break;
 				case 'reg-email-failed':
-					alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
+					notification('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
 					break;
 				case 'reg-email-already-present':
-					alert('Email bereits vorhanden');
+					notification('Email bereits vorhanden');
 					break;
 				case 'reg-name-already-present':
-					alert('Benutzername bereits vergeben');
+					notification('Benutzername bereits vergeben');
 					break;
 				case 'reg-unknown-school':
-					alert('Unbekannte Schule');
+					notification('Unbekannte Schule');
 					break;
 				case 'reg-too-short-pw':
-					alert('Das Passwort ist zu kurz');
+					notification('Das Passwort ist zu kurz');
 					break;
 				case 'reg-beta-necessary':
-					alert('Beta-Schlüssel ungültig oder nicht angegeben');
+					notification('Beta-Schlüssel ungültig oder nicht angegeben');
 					break;
 				case 'reg-name-invalid-char':
-					alert('Der Benutzername enthält unerlaubte Zeichen');
+					notification('Der Benutzername enthält unerlaubte Zeichen');
 					break;
 			}
 		});

@@ -7,7 +7,10 @@ angular.module('tradity').
 				name: "Newsfeed",
 				description: "Du befindest dich hier in deinem Feed. Wenn du von den neuesten Aktionen und Kommentaren deiner „Leader“ (was das für Leute sind, sagen wir dir nachher) und Freunde oder wichtigen Spielmeldungen erfahren willst, bist du hier richtig.",
 				init: function() {
-					$("#feed").addClass('blink');
+					$state.go('game.feed');
+					$timeout(function() {
+						$("#feed").addClass('blink');
+					},0)
 					$scope.okayButton = true;
 					$scope.okay = $scope.next;
 

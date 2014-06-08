@@ -7,8 +7,7 @@ angular.module('tradity').
 			socket.emit('get-user-info', {
 				lookfor: $stateParams.userId,
 				_cache: 20
-			},
-			function(data) {
+			}, function(data) {
 				if (data.code == 'get-user-info-notfound') {
 					alert('Benutzer existiert nicht');
 				} else if (data.code == 'get-user-info-success') {

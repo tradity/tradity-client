@@ -66,7 +66,8 @@ angular.module('tradity').
 			if ($scope.ownUser.access.indexOf('*') != -1)
 				$scope.$emit('makeadmin');
 
-			$scope.ownUser.profilepic = DEFAULT_PROFILE_IMG;
+			if (!$scope.ownUser.profilepic)
+				$scope.ownUser.profilepic = DEFAULT_PROFILE_IMG;
 		});
 
 		$scope.isActive = function(route) {

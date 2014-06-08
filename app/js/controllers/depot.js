@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('DepotCtrl', function($scope, socket) {
+	controller('DepotCtrl', function($scope, $rootScope, socket) {
 		var ownDepotOrUser = function() {
 			if (!$scope.ownUser)
 				return;
@@ -15,6 +15,20 @@ angular.module('tradity').
 				$scope.results = data.results;
 				ownDepotOrUser();
 			}
+			if ($rootScope.walkthrough)
+				$scope.results.unshift({
+					stockname:'Google',
+					buytime:Math.abs(new Date().getTime()/1000),
+					ask: 9950819,
+					bid: 9924979,
+					buymoney: 10024231,
+					lastvalue: 9937899,
+					total: 9924979,
+					lprov_sum: -29777,
+					daystartvalue: 9924979,
+					amount: 1,
+					stockid:'walkthrough'
+				});
 		}, $scope);
 
 		socket.on('get-user-info', function(data) {
@@ -34,7 +48,7 @@ angular.module('tradity').
 				} else {
 					orders[i].ordertype = '';
 				}
-				orders[i].price = Math.abs(orders[i].money / orders[i].amount);
+				orders[i].price = (orders[i].money / orders[i].amount);
 			}
 			$scope.orders = orders;
 		}, $scope);

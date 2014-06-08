@@ -26,7 +26,16 @@ angular.module('tradity').
 				return $dialogs.error('Du musst ein Wertpapier auswählen!');
 				
 			dlg = $dialogs.confirm('Trade', 'Willst du ' + $scope.amount + ' ' + ($scope.amount > 1 ? 'Aktien' : 'Aktie') + ' von ' + $scope.stockname + ' ' + ($scope.sellbuy >= 0 ? 'kaufen' : 'verkaufen') + '?');
+
 			dlg.result.then(function(btn) {
+				if ($scope.stockid == 'US38259P5089')  {
+					$state.go('game.depot.listing');
+					return;
+				} else if ($scope.stockid = 'walkthrough') {
+					$state.go('game.ranking.all');
+					return;
+				}
+
 				var query = {
 					amount: $scope.amount * $scope.sellbuy,
 					stockid: $scope.stockid,
@@ -93,6 +102,7 @@ angular.module('tradity').
 							});
 							break;
 						case 'stock-buy-over-pieces-limit':
+
 							$dialogs.error('tradity', 'Leider übersteigt dein Trade die handelbare Menge für dieses Wertpapier!');
 							break;
 						case 'stock-buy-stock-not-found':
@@ -164,7 +174,8 @@ angular.module('tradity').
 				$scope.sellbuy = 1;
 			}
 			$scope.stockid = $stateParams.stockId;
-			socket.emit('stock-search', {
+
+			if ($scope.stockid != 'walkthrough') socket.emit('stock-search', {
 				name: $scope.stockid
 			}, function(data) {
 				if (data.code == 'stock-search-success') {
@@ -178,6 +189,27 @@ angular.module('tradity').
 					$scope.calcValue();
 				}
 			});
+			else {
+				console.log("sdfsdfdsfd")
+				$scope.stockname = 'google';
+
+				$scope.amount = 1;
+				$scope.ask = 4154500;
+				$scope.bid = 4133900;
+				$scope.lastvalue = 4139300;
+				$scope.name = 'Google';
+
+				$scope.cur = {
+					amount: 1,
+					ask: 4154500,
+					bid: 4133900,
+					lastvalue: 4139300,
+					name: 'Google',
+				}
+				$scope.amount = 1;
+				$scope.value = 1;
+				$scope.calcValue();
+			}
 		}
 		
 		socket.emit('list-popular-stocks', {_cache: 1800}, function(data) {

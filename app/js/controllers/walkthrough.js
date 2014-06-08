@@ -1,6 +1,7 @@
 angular.module('tradity').
 	controller('WalkthroughCtrl', function($rootScope, $scope, $timeout, $location, $state, socket, $rootScope) {
 
+		$rootScope.walkthrough = false;
 		$scope.steps = [
 			{
 				name: "Newsfeed",
@@ -19,7 +20,7 @@ angular.module('tradity').
 			},
 			{
 				name: "Trade",
-				description: "Nun zeigen wir dir, wo du Aktien und „Leaderpapiere“ (was die sind, erklären wir dir nachher) kaufen und verkaufen kannst. Klicke dazu auf „Trade“ links im Navigationsmenü.",
+				description: "Nun zeigen wir dir, wo du Aktien und „Leaderpapiere“ (was die sind, erklären wir dir nachher) kaufen und verkaufen kannst. Klicke dazu auf „Trade“ oben im Navigationsmenü.",
 				init: function() {
 					$("a[ui-sref='.trade']").addClass('blink');
 
@@ -95,7 +96,7 @@ angular.module('tradity').
 			},
 			{
 			 	name: "Suche",
-			 	description: "Im Suchfeld kannst du nach Aktien oder sog. „Leader-Papieren“ suchen. Gib „Bob der Baumeister“ ein.",
+			 	description: "Im Suchfeld kannst du nach Aktien oder sog. „Leader-Papieren“ suchen. Gib „Google“ ein.",
 			 	init: function() {
 			 		$timeout(function() {
 						$("#paper").addClass('blink');
@@ -112,7 +113,7 @@ angular.module('tradity').
 			 },
 			 {
 				name: "Kaufen",
-				description: "Rechts findest du Informationen zum Wertpapier. Ein Stück „Bob der Baumeister“ kostet 100 €.",
+				description: "Rechts findest du Informationen zum Wertpapier.",
 				init: function() {
 					$timeout(function() {
 						$(".buyprice").addClass('blink');
@@ -128,13 +129,13 @@ angular.module('tradity').
 			},
 			{
 				name: "Kaufen",
-				description: "Gib nun an, wie viele du kaufen möchtest (Am besten gibst du da 100 ein, weil sonst das Tutorial nicht weitergeht) und klicke auf Trade.",
+				description: "Gib nun an, wie viele du kaufen möchtest (Am besten gibst du da 1 ein, weil sonst das Tutorial nicht weitergeht) und klicke auf Trade.",
 				init: function() {
 					$timeout(function() {
 						$("#amount").addClass('blink');
 					},0)
 					$scope.routeChange = function(next) {
-						if(next.name == 'game.depot.transactions') $scope.next();
+						if(next.name == 'game.depot.listing') $scope.next();
 					}
 				},
 				exit: function() {
@@ -142,17 +143,126 @@ angular.module('tradity').
 					$scope.routeChange = function(next) {};
 				}
 			},
+			{
+				name: "Wertpapiere in Besitz",
+				description: "Hier siehst Du nun die 1 Stück, die Du gekauft hast. Verkaufe sie nun wieder, indem Du auf das Trade-Symbol rechts in der Zeile klickst.",
+				init: function() {
+					$scope.routeChange = function(next) {
+						if(next.name == 'game.tradesellbuy') $scope.next();
+					}
+				},
+				exit: function() {
+					$scope.routeChange = function(next) {};
+				}
+			},
+			{
+				name: "Trade",
+				description: "Es wurde alles automatisch für Dich vorausgefüllt – Du musst nur noch auf Trade klicken und Du hast deine 1 Stück zum Verkaufspreis verkauft.",
+				init: function() {
+					$scope.okayButton = true;
+					$scope.okay = $scope.next;
+				},
+				exit: function() {
+					$scope.okayButton = false;
+					$scope.okay = function() {};
+				}
+			},
+			{
+				name: "Trade",
+				description: "Nochmal überprüfen, ob alles so ist, wie Du Dir das vorgestellt hast, und dann den Trade bestätigen.",
+				init: function() {
+					$scope.routeChange = function(next) {
+						if(next.name == 'game.ranking.all') $scope.next();
+					}
+				},
+				exit: function() {
+					$scope.routeChange = function(next) {};
+				}
+			},
+			{
+				name: "Rangliste",
+				description: "Hier kannst Du deine Mitspieler sehen. Gib in der Suchleiste „Tradity_Admin“ ein und klicke auf den Namen. Du gelangst auf das Profil des Spielers.",
+				init: function() {
+					$scope.routeChange = function(next) {
+						if(next.name == 'game.profile.overview') $scope.next();
+					}
+				},
+				exit: function() {
+					$scope.okay = function() {};
+				}
+			},
+			{
+				name: "Profil",
+				description: "Du kannst in „Tradity_Admin“ investieren, indem Du auf „Folgen“ klickst und dann die sog. „Leaderpapiere“ von ihm kaufst – das ist Following... erläutern wir in einem anderen Walkthrough näher.",
+				init: function() {
+					$scope.okayButton = true;
+					$scope.okay = $scope.next;
+				},
+				exit: function() {
+					$scope.okayButton = false;
+					$scope.okay = function() {};
+				}
+			},
+			{
+				name: "Profil",
+				description: "Du kannst „Tradity_Admin“ adden, um Nachrichten über seine Aktionen zu bekommen. Adde „Tradity-Admin“",
+				init: function() {
+					$scope.okayButton = true;
+					$scope.okay = $scope.next;
+				},
+				exit: function() {
+					$scope.okayButton = false;
+					$scope.okay = function() {};
+				}
+			},
+			{
+				name: "Einstellungen",
+				description: "Hier kannst Du allerlei Einstellungen verändern.",
+				init: function() {
+					$state.go('game.options');
+					$scope.okayButton = true;
+					$scope.okay = $scope.next;
+				},
+				exit: function() {
+					$scope.okayButton = false;
+					$scope.okay = function() {};
+				}
+			},
+			{
+				name: "Einstellungen",
+				description: "Dort kannst Du Freunde per E-Mail zum Mitspielen einladen oder Du schickst ihnen deinen Link. Ihr erhaltet beide Bonus- XP für das Achievementsystem (erklären wir dir bei einem anderen Walkthrough). Außerdem gewinnst Du damit vielleicht einen Follower und hast dann größere Chancen auf den Leaderpreis – ein iPad 4.",
+				init: function() {
+					$scope.okayButton = true;
+					$scope.okay = $scope.next;
+				},
+				exit: function() {
+					$scope.okayButton = false;
+					$scope.okay = function() {};
+				}
+			},
+			{
+				name: "Ende",
+				description: "So – der Walkthrough ist durch. Wende dich bei Fragen gern an „Tradity_Admin“ oder schreibe uns an team@tradity.de eine Mail. Wir würden uns freuen, wenn Du unsere FB-Seite likest, weil dort über die Wochen- und Gesamtsieger und besondere Angebote berichtet wird. Viel Erfolg! – das Tradity Team",
+				init: function() {
+					$state.go('game.feed');
+
+				},
+				exit: function() {
+				}
+			},
 
 		]
 
 		$scope.step = 0;
-		$scope.show = !true;
+		$scope.show = true;
+		$rootScope.walkthrough = $scope.show;
 		$scope.pp;
 		$scope.okayButton = false;
 
 		$scope.routeChange =  function() {};
 		$scope.okay = function () {};
 		$rootScope.$on('$stateChangeSuccess', function(cur,next){
+			console.log(next)
 			$scope.routeChange(next);
 		});
 

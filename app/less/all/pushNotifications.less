@@ -1,17 +1,41 @@
 #pushNotifications {
-	@breite:300px;
+	@width:250px;
 
 	position:fixed;
 	z-index: 1029;
-	top:50px;
-	left:50%;
-	width:@breite;
-	margin-left:-(@breite/2);
+	width:@width;
+	border:1px solid #B8B8B8;
+	background-color:#fff;
+
+	margin-left:-(@width/2)+(42/2);
+	margin-top:-2px;
 
 	.item {
-		background-color:#fff;
-		border:1px solid #B8B8B8;
-		padding:7px;
-		margin-bottom:10px;
+		padding:5px;
+	}
+
+	.arrow {
+		width: 0px;
+		height: 0px;
+		border-style: solid;
+		border-width: 0 10.5px 10px 10.5px;
+		border-color: transparent transparent #B8B8B8 transparent;
+		position:absolute;
+		margin-left:((@width/2)-(21/2));
+		margin-top:-10px;
+
+	}
+
+	.arrowIn {
+		width: 0px;
+		height: 0px;
+		border-style: solid;
+		border-width: 0 10px 10px 10px;
+		border-color: transparent transparent #fff transparent;
+		position:absolute;
+		margin-top:2px;
+		margin-left:-10px;
+
 	}
 }
+

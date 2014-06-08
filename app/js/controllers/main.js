@@ -14,6 +14,7 @@ angular.module('tradity').
 		$scope.connectionCheck = function() {
 			var alive = function() {
 				if (!$scope.connectionAlive) {
+					socket.reconnect();
 					$scope.connectionAlive = true;
 					$state.go('game.feed');
 				}

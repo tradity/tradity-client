@@ -30,6 +30,7 @@ angular.module('tradity').
 			hasOpenQueries: function () { return socket.hasOpenQueries(); },
 			txPackets: function() { return socket.txPackets(); },
 			rxPackets: function() { return socket.rxPackets(); }
+			reconnect: function() { return socket.reconnect(); }
 		};
 	});
 

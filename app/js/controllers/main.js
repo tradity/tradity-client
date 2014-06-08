@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, $timeout, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
+	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, $interval, $timeout, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
 		$scope.Math = Math;
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
@@ -8,17 +8,45 @@ angular.module('tradity').
 		$scope.loading = false;
 		$scope.serverConfig = {};
 		$scope.hasOpenQueries = socket.hasOpenQueries.bind(socket);
-
 		
-		$timeout(function() {
-			if (socket.rxPackets() > 0)
-				return; // everything okay
+		$scope.connectionAlive = true;
+		$scope.connectionLastRx = 0;
+		$scope.connectionCheck = function() {
+			var alive = function() {
+				if (!$scope.connectionAlive)
+					$scope.connectionAlive = true;
+				$state.go('game.feed');
+			};
+			var dead = function() {
+				$scope.connectionAlive = false;
+				$state.go('error.connection');
+			};
 			
-			var connectTest = $http.get(API_HOST + API_CONNECT_TEST_PATH);
-			connectTest.error(function(data, status, headers, config) {
-				$state.go('error.connection');	
-			});
-		}, 3141);
+			var curRx = socket.rxPackets();
+			if (curRx > $scope.connectionLastRx) {
+				$scope.connectionLastRx = curRx;
+				return alive(); // everything okay
+			}
+			
+			$scope.connectionLastRx = curRx;
+			socket.emit('ping', alive);
+			
+			$timeout(function() {
+				if (socket.rxPackets() > $scope.connectionLastRx)
+					return;
+				
+				var connectTest = $http.get(API_HOST + API_CONNECT_TEST_PATH);
+				connectTest.success(alive);
+				connectTest.error(dead);
+			}, 3000);
+		};
+		
+		$timeout($scope.connectionCheck, 3141);
+		var connectionCheck = $interval($scope.connectionCheck, 20000);
+		
+		$scope.$on('destroy', function() {
+			$interval.cancel(connectionCheck);
+		});
 
 		$scope.toggleMenu = function() {
 			$('body').toggleClass('menuShow');

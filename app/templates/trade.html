@@ -22,11 +22,11 @@
 						<tr ng-show="leader"><th>Name</th><td><a ui-sref="game.profile.overview({userId: cur.leadername})">{{stockname}}</a></td></tr>
 						<tr ng-hide="leader"><th>Name</th><td ng-show="cur">{{stockname}}</td></tr>
 						<tr class="buyprice">
-							<th tooltip="(Auch Ask, Geldkurs oder Nachfrage) ist der niedrigste Preis, für den ein Händler bereit wäre, eine Aktie zu verkaufen">Kauf­preis</th>
+							<th tooltip="(Auch Ask, Briefkurs oder Nachfrage) ist der Preis, zu dem Du an der Börse kaufst.">Kauf­preis (Ask)</th>
 							<td ng-show="cur">{{cur.ask / 10000 | number:3}} €</td>
 						</tr>
 						<tr>
-							<th tootlip="(Auch Bid, Briefkurs oder Angebot) ist der höchste Preis, den ein Händler für eine Aktie zu zahlen bereit ist">Verkaufs­preis</th>
+							<th tootlip="(Auch Bid, Geldkurs oder Angebot) ist der Preis, zu dem Du an der Börse verkaufst.">Verkaufs­preis (Bid)</th>
 							<td ng-show="cur">{{cur.bid / 10000 | number:3}} €</td>
 						</tr>
 						<!-- <tr><th>Wert</th><td ng-show="cur">{{cur.lastvalue / 10000 | currency}}</td></tr> -->

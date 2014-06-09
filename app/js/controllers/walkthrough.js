@@ -263,7 +263,7 @@ angular.module('tradity').
 		$scope.pp;
 		$scope.okayButton = false;
 
-		socket.emit('get-user-info', {
+		/*socket.emit('get-user-info', {
 				lookfor: '$self',
 				nohistory: true,
 				_cache: 20
@@ -275,7 +275,7 @@ angular.module('tradity').
 				if ($scope.show)
 					$scope.start();
 		
-			});
+			});*/
 
 
 		$scope.routeChange =  function() {};

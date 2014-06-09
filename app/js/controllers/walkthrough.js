@@ -263,20 +263,21 @@ angular.module('tradity').
 		$scope.pp;
 		$scope.okayButton = false;
 
-		/*socket.emit('get-user-info', {
-				lookfor: '$self',
-				nohistory: true,
-				_cache: 20
-			}, function (user) {
-				if(user.result.skipwalkthrough  == 0)
-					$scope.show = true;
-				if(user.result.skipwalkthrough  == 1)
-					$scope.show = false;
-				if ($scope.show)
-					$scope.start();
+		$scope.firstUserUpdate = true;
+		/*$scope.$on('user-update', function (user) {
+			if (user.code != 'get-user-info-success' || !$scope.firstUserUpdate)
+				return;
+			
+			$scope.firstUserUpdate = true;
+			if(user.result.skipwalkthrough  == 0)
+				$scope.show = true;
+			if(user.result.skipwalkthrough  == 1)
+				$scope.show = false;
+			if ($scope.show)
+				$scope.start();
+		});
 		
-			});*/
-
+		$scope.fetchSelf();*/
 
 		$scope.routeChange =  function() {};
 		$scope.okay = function () {};

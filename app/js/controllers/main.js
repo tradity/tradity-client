@@ -108,7 +108,7 @@ angular.module('tradity').
 				if (data.code == 'logout-success') {
 					$scope.ownUser = null;
 					$scope.isAdmin = false;
-					$scope.$broadcast('user-update');
+					$scope.$broadcast('user-update', null);
 					$state.go('index.login');
 				}
 			});
@@ -122,13 +122,13 @@ angular.module('tradity').
 		}, $scope);
 		
 		socket.on('self-info', function(data) {
-			$scope.ownUser = data;
+			$scope.ownUser = data.result;
 
 			if ($scope.ownUser.schools.length > 0)
 				$scope.ownUser.bottomLevelSchool = $scope.ownUser.schools[$scope.ownUser.schools.length-1];
 				$scope.ownUser.topLevelSchool = $scope.ownUser.schools[0];
 
-			$scope.$broadcast('user-update', data);
+			$scope.$broadcast('user-update', data.result);
 		}, $scope);
 		
 		socket.on('get-ranking', function(data) {
@@ -212,9 +212,12 @@ angular.module('tradity').
 				_cache: 20
 			}, cb);
 		}
-
-		$scope.fetchSelf(function() {
-			$scope.pokeEvents();
+		
+		// server-config will also be pushed on reconnect
+		socket.on('server-config', function() {
+			$scope.fetchSelf(function() {
+				$scope.pokeEvents();
+			});
 		});
 		
 		socket.emit('server-config');

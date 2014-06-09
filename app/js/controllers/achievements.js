@@ -85,6 +85,8 @@ angular.module('tradity').
 			
 			for (var i = 0; i < $scope.achievements.length; ++i) 
 				$scope.achievements[i].text = $scope.achievementTexts[$scope.achievements[i].name];
+			
+			$scope.displayAchievements();
 		});
 
 		$scope.categories = {
@@ -138,9 +140,8 @@ angular.module('tradity').
 		$scope.displayAchievements = function() {
 			$scope.userAchievementIDs = [];
 
-			for (i in $scope.$parent.userAchievements) {
+			for (var i in $scope.$parent.userAchievements)
 				$scope.userAchievementIDs.push($scope.$parent.userAchievements[i].achname);
-			}
 
 			for (var i = $scope.achievements.length - 1; i >= 0; i--) {
 				$scope.achievements[i].achieved = $scope.achieved($scope.achievements[i].name);
@@ -158,6 +159,4 @@ angular.module('tradity').
 		$scope.$watch('$parent.userAchievements', function() {
 			$scope.displayAchievements();
 		});
-		
-		$scope.displayAchievements();
 	});

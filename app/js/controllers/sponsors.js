@@ -2,9 +2,9 @@ angular.module('tradity').
 	controller('SponsorsCtrl', function($scope, socket, $stateParams) {
 		$scope.sponsors = [
 			{
-				picture: 'http://placekitten.com/200/300',
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Tradity_Boersenspiel_Flatex.jpg',
 				link: 'http://google.de',
-				group: false,
+				group: true,
 			},
 			{
 				picture: 'http://placekitten.com/200/70',

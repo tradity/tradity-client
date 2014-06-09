@@ -1,6 +1,14 @@
 <div id="pushNotifications" ng-show="show">
 	<div class="arrow"><div class="arrowIn"></div></div>
-	<div ng-repeat="(key,notification) in notifications" class="item">
-		{{notification.message}}
+	<div ng-repeat="(key,notification) in notifications | orderBy:eventtime | limitTo:7" class="item" ng-class="{seen: notification.seen==1}">
+		<ANY ng-switch="notification.type">
+		  <ANY ng-switch-when="achievement">
+		  	<div class="icon">
+				<i class="fa fa-trophy"></i>
+			</div>
+		  	<div class="content">{{notification.name}} {{notification.seen}}</div>
+		  	<div class="clearfix"></div>
+		  </ANY>
+		</ANY>
 	</div>
 </div>

@@ -11,7 +11,34 @@
 	margin-top:-2px;
 
 	.item {
-		padding:5px;
+		@icon-width:30px;
+		border-bottom:1px solid #fff;
+		background-color:lighten(#2ecc71,40%);
+
+		.icon {
+			float: left;
+			background-color: @secondary;
+			text-align:center;
+			width:@icon-width;
+			font-size:15px;
+			padding: 14px 0px;
+			color: #fff;
+		}
+
+		.content {
+			padding:5px;
+			padding-left:(@icon-width)+5;
+		}
+
+
+	}
+
+	.item.seen {
+		background-color:#fff;
+	}
+
+	.item:last-child {
+		border-bottom:none;
 	}
 
 	.arrow {

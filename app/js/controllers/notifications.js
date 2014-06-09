@@ -2,6 +2,7 @@ angular.module('tradity').
 	controller('NotificationsCtrl', function($scope, $rootScope, $stateParams, $state, socket, $timeout) {
 		$scope.show = false;
 		$scope.notifications = [];
+		$scope.count = 0;
 
 		$scope.add = function(notification) {
 			if (notification.type == 'achievement')
@@ -17,13 +18,8 @@ angular.module('tradity').
 			})
 
 			$scope.notifications = $scope.notifications.slice(0,5);
+			$scope.countUnseen();
 		};
-
-		socket.on('comment', function(event) {
-			if (event.baseeventtype == 'chat-start') {
-				//console.log('##push', event); }
-			}
-		});
 
 		socket.on('achievement', function(data) {
 			if (data.srcusername == $scope.$parent.$parent.ownUser.name) {
@@ -31,6 +27,25 @@ angular.module('tradity').
 			}
 		})
 
+		$scope.seen = function (id) {
+			if ($scope.notifications[id].seen == 0) {
+				$scope.notifications[id].seen = 1;
+				socket.emit('mark-as-seen', {
+					eventid: $scope.notifications[id].eventid,
+					_cache: 30
+				}, function(data) {
+					
+				});
+				$scope.countUnseen();
+			}
+		}
 
+		$scope.countUnseen = function() {
+			$scope.count = 0;
+			for (var i = $scope.notifications.length - 1; i >= 0; i--) {
+				if ($scope.notifications[i].seen == 0) 
+					$scope.count++;
+			};
+		}
 
 	});

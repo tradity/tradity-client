@@ -4,7 +4,7 @@ angular.module('tradity', [
 	'ui.router',
 	'ui.bootstrap',
 	'ui.keypress',
-	//'ui-event',
+	'ui.event',
 	'pascalprecht.translate',
 	'dialogs',
 	'angular-md5',

@@ -1,6 +1,6 @@
 <div id="pushNotifications" ng-show="show">
 	<div class="arrow"><div class="arrowIn"></div></div>
-	<div ng-repeat="(key,notification) in notifications | orderBy:eventtime | limitTo:7" class="item" ng-class="{seen: notification.seen==1}">
+	<div ng-repeat="(key,notification) in notifications | orderBy:eventtime | limitTo:7" class="item" ng-class="{seen: notification.seen==1}" ui-event="{ mouseenter : 'seen(key)' }">
 		<ANY ng-switch="notification.type">
 		  <ANY ng-switch-when="achievement">
 		  	<div class="icon">

@@ -132,7 +132,7 @@ angular.module('tradity').
 			},
 			{
 				name: "Kaufen",
-				description: "Gib nun an, wie viele du kaufen möchtest (Am besten gibst du da 1 ein, weil sonst das Tutorial nicht weitergeht) und klicke auf Trade.",
+				description: "Gib nun an, wie viele du kaufen möchtest (Am besten gibst du dort 1 ein, weil sonst das Tutorial nicht weitergeht) und klicke auf Trade.",
 				init: function() {
 					$timeout(function() {
 						$("#amount").addClass('blink');
@@ -148,7 +148,7 @@ angular.module('tradity').
 			},
 			{
 				name: "Wertpapiere in Besitz",
-				description: "Hier siehst Du nun die 1 Stück, die Du gekauft hast. Verkaufe sie nun wieder, indem Du auf das Trade-Symbol rechts in der Zeile klickst.",
+				description: "Hier siehst Du nun die 1 Stück, die Du gekauft hast. Verkaufe sie nun wieder, indem Du auf das Trade-Symbol rechts in der Zeile klickst.",
 				init: function() {
 					$scope.routeChange = function(next) {
 						if(next.name == 'game.tradesellbuy') $scope.next();
@@ -233,7 +233,7 @@ angular.module('tradity').
 			},
 			{
 				name: "Einstellungen",
-				description: "Dort kannst Du Freunde per E-Mail zum Mitspielen einladen oder Du schickst ihnen deinen Link. Ihr erhaltet beide Bonus- XP für das Achievementsystem (erklären wir dir bei einem anderen Walkthrough). Außerdem gewinnst Du damit vielleicht einen Follower und hast dann größere Chancen auf den Leaderpreis – ein iPad 4.",
+				description: "Dort kannst Du Freunde per E-Mail zum Mitspielen einladen oder Du schickst ihnen deinen Link. Ihr erhaltet beide Bonus-XP für das Achievementsystem (erklären wir dir bei einem anderen Walkthrough). Außerdem gewinnst Du damit vielleicht einen Follower und hast dann größere Chancen auf den Leaderpreis – ein iPad 4.",
 				init: function() {
 					$scope.okayButton = true;
 					$scope.okay = $scope.next;

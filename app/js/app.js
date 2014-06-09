@@ -254,7 +254,7 @@ angular.module('tradity', [
 		state('game.groupOverview', {
 			url: '/s/',
 			templateUrl: 'templates/groupOverview.html',
-			controller: 'GroupCtrl'
+			controller: 'GroupOverviewCtrl'
 		}).
 		state('game.group', {
 			url: '/s{schoolid:/[\\w_/-]*[\\w_-]}',

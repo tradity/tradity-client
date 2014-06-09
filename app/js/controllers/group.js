@@ -74,7 +74,10 @@ angular.module('tradity').
 			if (confirm("Willst du wirklich die Gruppe verlassen ?")) {
 				socket.emit('get-own-options', function(data) {
 					data.result.school = null;
-					socket.emit('change-options', data.result);
+					socket.emit('change-options', data.result, function(data) {
+						if (/success$/.test(data.code)) 
+							$state.go('game.groupOverview');
+					});
 					notification("Gruppe verlassen");
 					$scope.selfIsSchoolMember = false;
 					$scope.selfIsSchoolAdmin = false;
@@ -185,12 +188,4 @@ angular.module('tradity').
 		$scope.loadMore = function() {
 			$scope.totalDisplayed += 10;
 		};
-
-		$scope.groups = [];
-
-		socket.emit('list-schools', { 
-			_cache: 60
-		}, function(schoollist) {
-			$scope.groups = schoollist.result;
-		});
 	});

@@ -1,6 +1,7 @@
 angular.module('tradity').
 	controller('AchievementsCtrl', function($scope, socket, $stateParams) {
 		$scope.achievements = [];
+		
 		$scope.achievementTexts = {
 			'TRADE_COUNT_1': 'Mache 1 Trade.',
 			'TRADE_COUNT_2': 'Mache 2 Trades.',
@@ -117,8 +118,6 @@ angular.module('tradity').
 		for (var i in $scope.categories)
 			$scope.categories[i].linkId = i.toLowerCase();
 
-		$scope.userAchievements = [];
-
 		$scope.categoryId = '';
 		if ($stateParams.id) 
 			$scope.categoryId = $stateParams.id.toUpperCase();
@@ -133,33 +132,32 @@ angular.module('tradity').
 		}
 
 		$scope.achieved = function(id) {
-			return ($scope.userAchievements.indexOf(id) != -1);
+			return ($scope.userAchievementIDs.indexOf(id) != -1);
 		}
+		
+		$scope.displayAchievements = function() {
+			$scope.userAchievementIDs = [];
 
-		$scope.get = function() {
-			socket.emit('get-user-info', {
-				lookfor: '$self',
-				_cache: 20
-			}, function(data) {
-				for (i in data.achievements) {
-					$scope.userAchievements.push(data.achievements[i].achname);
-				}
+			for (i in $scope.$parent.userAchievements) {
+				$scope.userAchievementIDs.push($scope.$parent.userAchievements[i].achname);
+			}
 
-				for (var i = $scope.achievements.length - 1; i >= 0; i--) {
-					$scope.achievements[i].achieved = ($scope.userAchievements.indexOf($scope.achievements[i].name) != -1);
+			for (var i = $scope.achievements.length - 1; i >= 0; i--) {
+				$scope.achievements[i].achieved = $scope.achieved($scope.achievements[i].name);
 
-					if (!$scope.categories[$scope.achievements[i].category])
-						continue;
-					
-					$scope.categories[$scope.achievements[i].category].achievements++;
-					
-					if ($scope.achievements[i].achieved)
-						$scope.categories[$scope.achievements[i].category].achieved++;
-				};
-
-			});
-		}
-
-		$scope.get();
-
+				if (!$scope.categories[$scope.achievements[i].category])
+					continue;
+				
+				$scope.categories[$scope.achievements[i].category].achievements++;
+				
+				if ($scope.achievements[i].achieved)
+					$scope.categories[$scope.achievements[i].category].achieved++;
+			};
+		};
+		
+		$scope.$watch('$parent.userAchievements', function() {
+			$scope.displayAchievements();
+		});
+		
+		$scope.displayAchievements();
 	});

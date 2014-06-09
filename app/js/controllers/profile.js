@@ -1,6 +1,7 @@
 angular.module('tradity').
 	controller('ProfileCtrl', function($scope, $sce, $state, $stateParams, DEFAULT_PROFILE_IMG, socket) {
 		$scope.values = [];
+		$scope.achievements = [];
 		$scope.user = null;
 		
 		$scope.getUserInfo = function() {
@@ -13,6 +14,7 @@ angular.module('tradity').
 				} else if (data.code == 'get-user-info-success') {
 					$scope.user = data.result;
 					$scope.values = data.values;
+					$scope.userAchievements = data.achievements;
 					
 					var orders = data.orders;
 					orders.sort(function(a,b) { return b.buytime - a.buytime; });
@@ -38,6 +40,7 @@ angular.module('tradity').
 				}
 			});
 		};
+		
 		$scope.addToWatchlist = function() {
 			socket.emit('watchlist-add', {
 				stockid: $scope.user.lstockid
@@ -50,6 +53,7 @@ angular.module('tradity').
 				}
 			});
 		};
+		
 		$scope.getUserInfo();
 		// in case a profile gets called without /overview
 		if ($state.includes('*.profile'))

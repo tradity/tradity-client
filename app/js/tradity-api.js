@@ -73,28 +73,18 @@ SoTradeConnection.prototype.init = function() {
 	}).bind(this));
 	
 	this.socket.on('disconnect', (function(reason) {
-		if (reason == 'booted') {
-			setTimeout((function() {
-				this.reconnect();
-			}).bind(this), 2000);
-		}
+		setTimeout((function() {
+			this.reconnect();
+		}).bind(this), 2300);
 	}).bind(this));
 };
 
 SoTradeConnection.prototype.reconnect = function() {
-	try {
-		for (var i in this.ids)
-			if (this.ids[i])
-				this.ids[i]._expect_no_response = true;
-		
-		this.socket.io.reconnect();
-	} catch (e) {
-		console.warn(
-			'Tried socket.io.reconnect, but it failed for some reason; ' +
-			'It is from the socket.io private API, so it’s basically voodoo anyway ' +
-			'(but nothing seems to be matching in the public API, so we’re using it)');
-		throw e;
-	}
+	for (var i in this.ids)
+		if (this.ids[i])
+			this.ids[i]._expect_no_response = true;
+	
+	this.socket.connect(null, 'forceNew');
 };
 
 SoTradeConnection.prototype.hasOpenQueries = function() {

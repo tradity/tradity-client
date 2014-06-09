@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('RegistrationCtrl', function($scope, $stateParams, $state, socket) {
+	controller('RegistrationCtrl', function($scope, $stateParams, $state, $dialogs, socket) {
 		$scope.school = $stateParams.schoolid;
 		$scope.traditye = 0;
 		$scope.zipcode = '';

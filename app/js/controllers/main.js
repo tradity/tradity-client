@@ -28,7 +28,9 @@ angular.module('tradity').
 			}
 			
 			$scope.connectionLastRx = curRx;
-			socket.emit('ping', alive);
+			socket.emit('ping', {
+				_expect_no_response: true
+			}, alive);
 			
 			$timeout(function() {
 				if (socket.rxPackets() > $scope.connectionLastRx)

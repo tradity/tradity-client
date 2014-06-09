@@ -37,7 +37,7 @@ angular.module('tradity').
 			};
 			return false;
 		}
-
+		
 		socket.on('self-info', function(data) {
 				for (var i = $scope.sponsors.length - 1; i >= 0; i--) {
 					if ($scope.sponsors[i].school)
@@ -56,3 +56,4 @@ angular.module('tradity').
 		else
 			$scope.group = false;
 	});
+

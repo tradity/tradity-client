@@ -9,7 +9,7 @@ angular.module('tradity').
 				init: function() {
 					$state.go('game.feed');
 					$timeout(function() {
-						$("#feed").addClass('blink');
+						//$("#feed").addClass('blink');
 					},0)
 					$scope.okayButton = true;
 					$scope.okay = $scope.next;
@@ -281,7 +281,6 @@ angular.module('tradity').
 		$scope.routeChange =  function() {};
 		$scope.okay = function () {};
 		$rootScope.$on('$stateChangeSuccess', function(cur,next){
-			console.log(next)
 			$scope.routeChange(next);
 		});
 

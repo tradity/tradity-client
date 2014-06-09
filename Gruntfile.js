@@ -207,7 +207,7 @@ module.exports = function (grunt) {
 				assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/img'],
 				patterns: {
 					js: [[/[\s'"]((?:templates|img|css)\/[^\s'"]+)[\s'"]/gm, 'Update js references to files']],
-					ngInclude: [[/<ng-include[^\>]+src=['"]{2}([^"']+)["']{2}/gm, 'Update ng-include direct source file references']]
+					ngInclude: [[/(?:<ng-include[^\>]+src|<[^\>]+ng-include)=['"]{2}([^"']+)["']{2}/gm, 'Update ng-include direct source file references']]
 				}
 			}
 		},

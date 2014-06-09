@@ -3,7 +3,7 @@ angular.module('tradity').
 		$scope.sponsors = [
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Tradity_Boersenspiel_Flatex.jpg',
-				link: 'http://google.de',
+				link: 'https://www.flatex.de/',
 				group: true,
 			},
 			{

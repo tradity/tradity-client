@@ -264,7 +264,7 @@ angular.module('tradity').
 		$scope.okayButton = false;
 
 		$scope.firstUserUpdate = true;
-		/*$scope.$on('user-update', function (user) {
+		$scope.$on('user-update', function (user) {
 			if (user.code != 'get-user-info-success' || !$scope.firstUserUpdate)
 				return;
 			
@@ -277,7 +277,7 @@ angular.module('tradity').
 				$scope.start();
 		});
 		
-		$scope.fetchSelf();*/
+		$scope.fetchSelf();
 
 		$scope.routeChange =  function() {};
 		$scope.okay = function () {};
@@ -310,8 +310,5 @@ angular.module('tradity').
 				socket.emit('change-options', data.result);
 			});
 		}
-
-
-
 	});
 

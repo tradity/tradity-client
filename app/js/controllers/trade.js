@@ -28,13 +28,13 @@ angular.module('tradity').
 			dlg = $dialogs.confirm('Trade', 'Willst du ' + $scope.amount + ' ' + ($scope.amount > 1 ? 'Aktien' : 'Aktie') + ' von ' + $scope.stockname + ' ' + ($scope.sellbuy >= 0 ? 'kaufen' : 'verkaufen') + '?');
 
 			dlg.result.then(function(btn) {
-				/*if ($scope.stockid == 'US38259P5089')  {
+				if ($scope.stockid == 'US38259P5089')  {
 					$state.go('game.depot.listing');
 					return;
 				} else if ($scope.stockid = 'walkthrough') {
 					$state.go('game.ranking.all');
 					return;
-				}*/
+				}
 
 				var query = {
 					amount: $scope.amount * $scope.sellbuy,
@@ -175,22 +175,21 @@ angular.module('tradity').
 			}
 			$scope.stockid = $stateParams.stockId;
 
-			/*if ($scope.stockid != 'walkthrough') {*/
-				socket.emit('stock-search', {
-					name: $scope.stockid
-				}, function(data) {
-					if (data.code == 'stock-search-success') {
-						for (var i = 0; i < data.results.length; ++i) {
-							if (data.results[i].stockid == $scope.stockid) {
-							gotData($scope.ac, data.results[i]);
-							break;
-							}
+			if ($scope.stockid != 'walkthrough') socket.emit('stock-search', {
+				name: $scope.stockid
+			}, function(data) {
+				if (data.code == 'stock-search-success') {
+					for (var i = 0; i < data.results.length; ++i) {
+						if (data.results[i].stockid == $scope.stockid) {
+						gotData($scope.ac, data.results[i]);
+						break;
 						}
-						$scope.amount = parseInt($stateParams.amount);
-						$scope.calcValue();
 					}
-				});
-			/*} else {
+					$scope.amount = parseInt($stateParams.amount);
+					$scope.calcValue();
+				}
+			});
+			else {
 				console.log("sdfsdfdsfd")
 				$scope.stockname = 'google';
 
@@ -210,7 +209,7 @@ angular.module('tradity').
 				$scope.amount = 1;
 				$scope.value = 1;
 				$scope.calcValue();
-			}*/
+			}
 		}
 		
 		socket.emit('list-popular-stocks', {_cache: 1800}, function(data) {

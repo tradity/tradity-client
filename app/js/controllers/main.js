@@ -4,7 +4,7 @@ angular.module('tradity').
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
 		$scope.isAdmin = false;
-		$scope.ownUser = null;
+		$rootScope.ownUser = $scope.ownUser = null;
 		$scope.loading = false;
 		$scope.serverConfig = {};
 		$scope.hasOpenQueries = socket.hasOpenQueries.bind(socket);

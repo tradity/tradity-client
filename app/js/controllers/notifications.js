@@ -3,6 +3,7 @@ angular.module('tradity').
 		$scope.show = false;
 		$scope.notifications = [];
 		$scope.count = 0;
+		$scope.amount = 10;
 
 		$scope.add = function(notification) {
 			if (notification.type == 'achievement')
@@ -17,7 +18,7 @@ angular.module('tradity').
 				return 0;
 			})
 
-			$scope.notifications = $scope.notifications.slice(0,5);
+			$scope.notifications = $scope.notifications.slice(0,$scope.amount+1);
 			$scope.countUnseen();
 		};
 

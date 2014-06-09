@@ -58,7 +58,6 @@ angular.module('tradity').
 		})
 
 		$scope.prove = function() {
-			console.log($scope.questions)
 			$scope.proved = true;
 			for (var i = $scope.questions.length - 1; i >= 0; i--) {
 				$scope.questions[i].wrong = ($scope.questions[i].answer != $scope.questions[i].right);

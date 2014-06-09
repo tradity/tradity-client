@@ -55,7 +55,6 @@ angular.module('tradity').
 		}, $scope);
 
 		$scope.send = function(message) {
-			console.log($scope.eventId);
 			socket.emit('comment', {
 				eventid: $scope.eventId,
 				comment: message

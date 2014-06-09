@@ -30,7 +30,4 @@ angular.module('tradity').
 				//console.log('##push', event);
 			}
 		});
-		console.log('waas',$scope.$parent.$parent)
-
-
 	});

@@ -56,7 +56,7 @@ angular.module('tradity').
 		socket.emit('list-all-achievements', {
 			_cache: 1800
 		}, function(data) {
-			$scope.achievements = data;
+			$scope.achievements = data.result;
 			
 			for (var i = 0; i < $scope.achievements.length; ++i) 
 				$scope.achievements[i].text = $scope.achievementTexts[$scope.achievements[i].name];
@@ -124,6 +124,9 @@ angular.module('tradity').
 				for (var i = $scope.achievements.length - 1; i >= 0; i--) {
 					$scope.achievements[i].achieved = ($scope.userAchievements.indexOf($scope.achievements[i].id) != -1);
 
+					if (!$scope.categories[$scope.achievements[i].category])
+						continue;
+					
 					$scope.categories[$scope.achievements[i].category].achievements++;
 					
 					if ($scope.achievements[i].achieved)

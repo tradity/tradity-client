@@ -102,8 +102,7 @@ angular.module('tradity').
 				town: $scope.town,
 				traditye: $scope.traditye,
 				delayorderhist: $scope.delayorderhist
-			},
-			function(data) {
+			}, function(data) {
 				switch (data.code) {
 					case 'reg-email-already-present':
 						alert('Email bereits vorhanden');

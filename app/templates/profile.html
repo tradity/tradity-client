@@ -5,7 +5,7 @@
 			<img id="profile-picture" ng-hide="user.profilepic" src="img/profile.svg" height="150px">
 			<h2 class="name">
 				{{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}
-				<a ui-sref="admin.userdetails({uid: user.uid})" class="icon" title="admin"><i class="fa fa-shield"></i></a>
+				<a ng-show="isAdmin" ui-sref="admin.userdetails({uid: user.uid})" class="icon" title="admin"><i class="fa fa-shield"></i></a>
 			</h2>
 			<div ng-hide="user.isSelf">
 				<div class="btn-group">

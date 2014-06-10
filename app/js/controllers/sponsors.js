@@ -5,7 +5,7 @@ angular.module('tradity').
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Tradity_Boersenspiel_Flatex.jpg',
 				link: 'https://www.flatex.de/',
 				group: true,
-				school:'TestSchule',
+				schoolPathRegex: /^\/TestSchule(\/|$)/
 			},
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Logo_Logitech.png',
@@ -25,34 +25,17 @@ angular.module('tradity').
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRBankNiebuell.png',
 				link: 'https://www.vrbankniebuell.de/privatkunden.html',
-				school:'Niebüll',
-				group: true,
+				schoolPathRegex: /^\/niebuell(\/|$)/,
+				group: true
 			},
 		]
-		$scope.group = false;
 
-		var isIn = function(ob,val) {
-			for (var i = ob.length - 1; i >= 0; i--) {
-				if (ob[i].name == val) return true;
-			};
-			return false;
-		}
-
-		socket.on('self-info', function(data) {
-				for (var i = $scope.sponsors.length - 1; i >= 0; i--) {
-					if ($scope.sponsors[i].school)
-						if (isIn(data.result.schools,$scope.sponsors[i].school))
-							$scope.sponsors[i].show = true;
-						else
-							$scope.sponsors[i].show = false;
-					else
-						$scope.sponsors[i].show = true;
-				};
+		$scope.$on('user-update', function(event, data) {
+			var userSchoolPath = (data.bottomLevelSchool || {path: '/'}).path;
+			
+			for (var i = $scope.sponsors.length - 1; i >= 0; i--)
+				$scope.sponsors[i].show = !$scope.sponsors[i].schoolPathRegex || $scope.sponsors[i].schoolPathRegex.test(userSchoolPath);
 		});
 
-		if ($scope.$parent.$parent.school) 
-			$scope.group = true;
-		else
-			$scope.group = false;
+		$scope.group = !!$scope.$parent.$parent.school;
 	});
-

@@ -3,11 +3,24 @@ angular.module('tradity').
 		$scope.show = false;
 		$scope.notifications = [];
 		$scope.count = 0;
-		$scope.amount = 10;
+		$scope.amount = 7;
+
+		$scope.isIn = function(a,b) {
+			for (var i = a.length - 1; i >= 0; i--) {
+				if (a[i].achname == b)
+					return true;
+			};
+			return false;
+		}
 
 		$scope.add = function(notification) {
-			if (notification.type == 'achievement')
+
+			if (notification.type == 'achievement') {
 				notification.name = $rootScope.achievementTexts[notification.achname];
+				if ($scope.isIn($scope.notifications,notification.achname))
+					return false;
+			}
+
 			var index = $scope.notifications.push(notification);			
 
 			$scope.notifications.sort(function (a,b) {

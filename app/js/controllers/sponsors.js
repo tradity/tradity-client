@@ -25,7 +25,7 @@ angular.module('tradity').
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRBankNiebuell.png',
 				link: 'https://www.vrbankniebuell.de/privatkunden.html',
-				school:'Niebüll'
+				school:'Niebüll',
 				group: true,
 			},
 		]
@@ -37,7 +37,7 @@ angular.module('tradity').
 			};
 			return false;
 		}
-		
+
 		socket.on('self-info', function(data) {
 				for (var i = $scope.sponsors.length - 1; i >= 0; i--) {
 					if ($scope.sponsors[i].school)
@@ -48,7 +48,6 @@ angular.module('tradity').
 					else
 						$scope.sponsors[i].show = true;
 				};
-				console.log($scope.sponsors)
 		});
 
 		if ($scope.$parent.$parent.school) 

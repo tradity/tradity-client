@@ -36,10 +36,18 @@ angular.module('tradity').
 		};
 
 		socket.on('achievement', function(data) {
-			if (data.srcusername == $scope.$parent.$parent.ownUser.name) {
+			if (data.srcusername == $scope.$parent.$parent.ownUser.name)
+				$scope.add(data);
+		})
+
+		socket.on('comment', function(data) {
+			if (data.baseeventtype == 'user-register' && data.traderid == $scope.$parent.$parent.ownUser.uid) {
+				data.type="comment-pinboard-self"
 				$scope.add(data);
 			}
 		})
+
+
 
 		$scope.seen = function (id) {
 			if ($scope.notifications[id].seen == 0) {

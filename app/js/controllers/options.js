@@ -92,7 +92,6 @@ angular.module('tradity').
 				realnamepublish: $scope.realnamepublish,
 				password: $scope.password,
 				email: $scope.email,
-				gender: $scope.gender,
 				school: $scope.schoolname ? ($scope.school ? $scope.school : $scope.schoolname) : null,
 				birthday: d,
 				desc: $scope.desc,

@@ -83,7 +83,6 @@ angular.module('tradity').
 				realnamepublish: $scope.realnamepublish,
 				password: $scope.password,
 				email: $scope.email,
-				gender: $scope.gender,
 				school: $scope.school,
 				betakey: $scope.betakey,
 				street: $scope.street,

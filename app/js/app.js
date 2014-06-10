@@ -11,6 +11,7 @@ angular.module('tradity', [
 	'infinite-scroll'
 ]).config(function($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider) {
 	$urlRouterProvider.
+	when('/preise', 'https://boersenspiel.tradity.de/preise/').
 	// redirect abstract states to child
 	when('/depot', '/depot/overview').
 	when('/ranking', '/ranking/all').

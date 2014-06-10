@@ -1,6 +1,6 @@
 angular.module('tradity').
 	controller('ChatCtrl', function($scope, socket, $stateParams, DEFAULT_PROFILE_IMG) {
-		$scope.chats = [];
+		$scope.chats = {};
 		$scope.messages = [];
 		$scope.eventId = 0;
 
@@ -8,7 +8,7 @@ angular.module('tradity').
 			if (!toParams.userId && !toParams.id)
 				return;
 			
-			socket.emit('chat-get', toParams.userId ? {
+			/*socket.emit('chat-get', toParams.userId ? {
 				endpoints: [toParams.userId]
 			} : {
 				chatid: toParams.id
@@ -20,33 +20,38 @@ angular.module('tradity').
 				}
 				
 				$scope.eventId = data.chat.eventid || data.chat.chatstartevent;
-			}, $scope);
+			}, $scope);*/
 		})
 
 		socket.on('list-all-chats', function(data) {
-			$scope.chats = data.chats;
+			//$scope.chats = data.chats;
 			
-			for (var i in $scope.chats) {
+			/*for (var i in $scope.chats) {
 				for (var j = 0; j < $scope.chats[i].members.length; ++j) {
 					var member = $scope.chats[i].members[j];
 					
 					if (!member.profilepic)
 						member.profilepic = DEFAULT_PROFILE_IMG;
 				}
-			}
+			}*/
+			console.log(data)
 		}, $scope);
 		
 		socket.emit('list-all-chats');
 
 		socket.on('comment', function(event) {
-			if (event.baseeventtype == 'chat-start' && event.baseeventid == $scope.eventId) {
-				for (var i = 0; i < $scope.messages.length; ++i)
-					if ($scope.messages[i].commentid == event.commentid)
+			if (event.baseeventtype == 'chat-start') {
+				if (!$scope.chats[event.baseeventid])
+					$scope.chats[event.baseeventid] = {};
+				if (!$scope.chats[event.baseeventid].messages)
+					$scope.chats[event.baseeventid].messages = [];
+
+				for (var i = 0; i < $scope.chats[event.baseeventid].messages.length; ++i)
+					if ($scope.chats[event.baseeventid].messages[i].commentid == event.commentid)
 						return;
-				
-				$scope.messages.push({
+				console.log(event)
+				$scope.chats[event.baseeventid].messages.push({
 					comment: event.comment,
-					eventid: $scope.eventId,
 					profilepic: event.profilepic || DEFAULT_PROFILE_IMG,
 					uid: event.commenter,
 					time: event.eventtime

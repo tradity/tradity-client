@@ -149,6 +149,11 @@ angular.module('tradity', [
 			templateUrl: 'templates/ranking.all.html',
 			controller: 'RankingAllCtrl'
 		}).
+		state('game.ranking.admin-all', {
+			url: '/admin-all',
+			templateUrl: 'templates/ranking.admin-all.html',
+			controller: 'RankingAdminAllCtrl'
+		}).
 		state('game.ranking.all-withprov', {
 			url: '/all-withprov',
 			templateUrl: 'templates/ranking.all-withprov.html',
@@ -291,6 +296,11 @@ angular.module('tradity', [
 			url: '/+intergroup',
 			templateUrl: 'templates/group.intergroup.html',
 			controller: 'RankingGroupCtrl'
+		}).
+		state('game.group.admin-all', {
+			url: '/+admin-all',
+			templateUrl: 'templates/ranking.admin-all.html',
+			controller: 'RankingAdminAllCtrl'
 		}).
 		state('error', {
 			templateUrl: 'templates/error.html'

@@ -20,6 +20,7 @@
 			<li ng-show="school.config.rankingTabs.indexOf('follower-week') >= 0"><a ui-sref=".intragroup-follower-week">Followerrangliste (Woche)</a></li>
 			<li ng-show="school.config.rankingTabs.indexOf('all-week') >= 0"><a ui-sref=".intragroup-week">Wochenrangliste</a></li>
 			<li ng-show="school.config.rankingTabs.indexOf('intergroup') >= 0 && interGroupResults.length > 1"><a ui-sref=".intergroup">Gruppenrangliste</a></li>
+			<li ng-show="school.config.rankingTabs.indexOf('admin-all') >= 0 && (isAdmin || selfIsSchoolAdmin)"><a ui-sref=".admin-all">Nutzerdaten</a></li>
 		</ul>
 		<div class="pure-g-r">
 			<div class="pure-u-2-3 conti">

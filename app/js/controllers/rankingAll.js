@@ -4,7 +4,7 @@ angular.module('tradity').
 			since: 0,
 			schoolid: $scope.schoolid,
 			_cache: 30,
-			_prefill: { useForOwnUserRank: true }
+			_prefill: { useForOwnUserRank: !$scope.schoolid }
 		}, function(data) {
 			if (data.code == 'get-ranking-success') {
 				$scope.results = rankify(data.result);

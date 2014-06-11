@@ -68,11 +68,14 @@ angular.module('tradity').
 
 			for (var i in $scope.$parent.userAchievements)
 				$scope.userAchievementIDs.push($scope.$parent.userAchievements[i].achname);
+				
+			for (var i in $scope.categories)
+				$scope.categories[i].achievements = $scope.categories[i].achieved = 0;
 
 			for (var i = $scope.achievements.length - 1; i >= 0; i--) {
 				$scope.achievements[i].achieved = $scope.achieved($scope.achievements[i].name);
 
-				if (!$scope.categories[$scope.achievements[i].category])
+				if (!$scope.categories[$scope.achievements[i].category] || $scope.achievements[i].xp == 0)
 					continue;
 				
 				$scope.categories[$scope.achievements[i].category].achievements++;

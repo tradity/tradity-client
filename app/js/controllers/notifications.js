@@ -21,7 +21,7 @@ angular.module('tradity').
 					return false;
 			}
 
-			var index = $scope.notifications.push(notification);			
+			var index = $scope.notifications.push(notification);
 
 			$scope.notifications.sort(function (a,b) {
 				if (a.eeventtime < b.eventtime)

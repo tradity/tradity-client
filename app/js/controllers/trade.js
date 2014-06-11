@@ -86,6 +86,9 @@ angular.module('tradity').
 								$state.go('game.depot.listing');
 							});
 							break;
+						case 'stock-buy-email-not-verif':
+							$dialogs.error('tradity', 'Deine E-Mail muss bestätigt sein, um Followertrades zu machen!');
+							break;
 						case 'stock-buy-out-of-money':
 							$dialogs.error('tradity', 'Nicht genügend Geld zum Trade!');
 							break;

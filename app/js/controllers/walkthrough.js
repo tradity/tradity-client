@@ -263,12 +263,12 @@ angular.module('tradity').
 		$scope.pp;
 		$scope.okayButton = false;
 
-		$scope.firstUserUpdate = true;
-		$scope.$on('user-update', function (user) {
-			if (user.code != 'get-user-info-success' || !$scope.firstUserUpdate)
+		$scope.firstUserUpdate = null;
+		$scope.$on('user-update', function (event, user) {
+			if (!user || ($scope.firstUserUpdate == user.uid))
 				return;
 			
-			$scope.firstUserUpdate = true;
+			$scope.firstUserUpdate = user.uid;
 			if(user.result.skipwalkthrough  == 0)
 				$scope.show = true;
 			if(user.result.skipwalkthrough  == 1)

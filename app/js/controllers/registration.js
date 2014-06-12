@@ -38,9 +38,7 @@ angular.module('tradity').
 					
 					modal.result.then(function(btn) {
 						notification('Registrierung erfolgreich', true);
-						$scope.fetchSelf(function() {
-							$scope.pokeEvents();
-						});
+						$scope.fetchSelf();
 						$state.go('game.feed');
 					});
 					break;

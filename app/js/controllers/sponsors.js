@@ -37,5 +37,5 @@ angular.module('tradity').
 				$scope.sponsors[i].show = !$scope.sponsors[i].schoolPathRegex || $scope.sponsors[i].schoolPathRegex.test(userSchoolPath);
 		});
 
-		$scope.group = !!$scope.$parent.$parent.school;
+		$scope.group = !!($scope.$parent && $scope.$parent.$parent && $scope.$parent.$parent.school);
 	});

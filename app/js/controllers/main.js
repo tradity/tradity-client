@@ -207,19 +207,27 @@ angular.module('tradity').
 			});
 		}
 
-		$scope.fetchSelf = function(cb) {
+		$scope.hasPendingSelfFetch = false;
+		$scope.fetchSelf = function() {
+			if ($scope.hasPendingSelfFetch)
+				return;
+			
+			$scope.hasPendingSelfFetch = true;
 			socket.emit('get-user-info', {
 				lookfor: '$self',
 				nohistory: true,
 				_cache: 20
-			}, cb);
+			}, function(data) {
+				$scope.hasPendingSelfFetch = false;
+				
+				if (data.code == 'get-user-info-success')
+					$scope.pokeEvents();
+			});
 		}
 		
 		// server-config will also be pushed on reconnect
 		socket.on('server-config', function() {
-			$scope.fetchSelf(function() {
-				$scope.pokeEvents();
-			});
+			$scope.fetchSelf();
 		});
 		
 		socket.emit('server-config');

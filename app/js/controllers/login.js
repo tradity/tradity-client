@@ -13,9 +13,7 @@ angular.module('tradity').
 				switch (data.code) {
 					case 'login-success':
 						notification('Emailadresse erfolgreich bestätigt', true);
-						$scope.fetchSelf(function() {
-							$scope.pokeEvents();
-						});
+						$scope.fetchSelf();
 						$state.go('game.feed');
 						break;
 					case 'email-verify-already-verified':
@@ -42,9 +40,7 @@ angular.module('tradity').
 			function(data) {
 				switch (data.code) {
 					case 'login-success':
-						$scope.fetchSelf(function() {
-							$scope.pokeEvents();
-						});
+						$scope.fetchSelf();
 						$state.go('game.feed');
 						break;
 					case 'login-badname':

@@ -31,6 +31,9 @@ angular.module('tradity').
 			});
 		}
 		$scope.login = function() {
+			$scope.username = $('#username').val();
+			$scope.password = $('#password').val();
+			
 			socket.emit('login', {
 				name: $scope.username,
 				pw: $scope.password,
@@ -45,7 +48,7 @@ angular.module('tradity').
 						$state.go('game.feed');
 						break;
 					case 'login-badname':
-						notification('Benutzer existiert nicht');
+						notification('Benutzer „' + $scope.username + '“ existiert nicht');
 						break;
 					case 'login-wrongpw':
 						notification('Falsches Passwort');
@@ -63,7 +66,7 @@ angular.module('tradity').
 			} else if (data.code == 'password-reset-failed') {
 				notification('Das neue Passwort konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
 			} else if (data.code == 'password-reset-notfound') {
-				notification('Benutzer existiert nicht');
+				notification('Benutzer „' + $scope.username + '“ existiert nicht');
 			}
 		});
 

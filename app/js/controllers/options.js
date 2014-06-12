@@ -126,7 +126,7 @@ angular.module('tradity').
 		};
 		
 		$scope.resetUser = function() {
-			var dlg = $dialogs.confirm('Options', 'Willst du dich wirklich Reseten ?');
+			var dlg = $dialogs.confirm('Options', 'Willst du dich wirklich resetten?');
 			dlg.result.then(function(btn) {
 				socket.emit('reset-user', null, function(data) {
 					if (data.code == 'reset-user-success')

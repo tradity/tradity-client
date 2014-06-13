@@ -4,8 +4,7 @@ angular.module('tradity').
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Tradity_Boersenspiel_Flatex.jpg',
 				link: 'https://www.flatex.de/',
-				group: true,
-				schoolPathRegex: /^\/TestSchule(\/|$)/
+				group: true
 			},
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Logo_Logitech.png',

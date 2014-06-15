@@ -264,7 +264,8 @@ angular.module('tradity').
 		$scope.okayButton = false;
 
 		$scope.firstUserUpdate = null;
-		$scope.$on('user-update', function (event, user) {
+		/* temporarily disabled */
+		/*$scope.$on('user-update', function (event, user) {
 			if (!user || ($scope.firstUserUpdate == user.uid))
 				return;
 			
@@ -275,7 +276,7 @@ angular.module('tradity').
 				$scope.show = false;
 			if ($scope.show)
 				$scope.start();
-		});
+		});*/
 		
 		$scope.fetchSelf();
 

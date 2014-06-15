@@ -26,13 +26,14 @@
 				<li>
 					<a ui-sref="game.depot.watchlist" class="icon" title="watchlist"><i class="fa fa-eye"></i></a>
 				</li>
-				<li>
+				<!-- temporarily disabled -->
+				<!--li>
 					<a ui-sref="game.chats" class="icon" title="Nachrichten"><i class="fa fa-envelope"></i></a>
-				</li>
-				<li ng-controller="NotificationsCtrl">
+				</li-->
+				<!--li ng-controller="NotificationsCtrl">
 					<a class="icon" href="" title="Benachrichtigungen" ng-click="show = !show"><span class="badge" ng-show="count != 0">{{count}}</span><i class="fa fa-globe"></i></a>
 					<ng-include src="'templates/notifications.html'"></ng-include> 
-				</li>
+				</li-->
 				<li ng-show="isAdmin">
 					<a ui-sref="admin.userlist" class="icon" title="admin"><i class="fa fa-shield"></i></a>
 				</li>
@@ -121,12 +122,19 @@
 					<span class="dark nav-block-title">Einstellungen</span>
 				</a>
 			</li>
-			<li>
+			<!-- temporarily disabled -->
+			<!--li>
 				<a ui-sref=".learning.catalog" ng-class="{active: ('game.learning.catalog' | isState)}" >
 					<i class="fa fa-graduation-cap"></i>
 					<span class="dark nav-block-title">Learning</span>
 				</a>
-			</li>
+			</li-->
+			<li><!-- temporarily enabled -->
+				<a ui-sref=".profile.achievements.categories({userId: ownUser.name})" ng-class="{active: ('game.profile.achievements.categories' | isState)}" >
+					<i class="fa fa-graduation-cap"></i>
+					<span class="dark nav-block-title">Errungenschaften</span>
+				</a>
+			</li><!-- temporarily enabled -->
 			<li>
 				<a href="https://boersenspiel.tradity.de/hilfe/" targe="_blank">
 					<i class="fa fa-question"></i>

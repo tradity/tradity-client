@@ -37,7 +37,7 @@ angular.module('tradity').
 			});
 			
 			var vcenter = (vmin + vmax) / 2;
-			var vdiff = (vmax - vcenter) * 1.30;
+			var vdiff = (vmax - vcenter) * 1.30 + 1;
 
 			if (!data || data.length == 0)
 				return;

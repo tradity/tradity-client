@@ -10,6 +10,7 @@ angular.module('tradity').
 		$scope.xvalue = '';
 		$scope.sellbuy = 1;
 		$scope.fee = 0;
+		$scope.forceNow = false;
 		$scope.isMarketOrder = true;
 		$scope.results = [];
 		$scope.popularStocks = [];
@@ -40,6 +41,7 @@ angular.module('tradity').
 					amount: $scope.amount * $scope.sellbuy,
 					stockid: $scope.stockid,
 					leader: $scope.leader,
+					forceNow: $scope.forceNow,
 					retainUntilCode: 'stock-buy-success',
 					dquerydata: { /* will be returned in the dquery-exec event */
 						xtype: $scope.xtype,

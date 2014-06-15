@@ -81,13 +81,17 @@
 					<div class="trade-label-button">Welchen Ordertyp soll deine Transaktion haben?</div>
 
 					<div class="btn-group">
-					<button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'market'">Market</button>
-					<button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'limit'">Limit</button>
-					<button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'stop'">Stop</button>
-				</div>
+						<button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'market'">Market</button>
+						<button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'limit'">Limit</button>
+						<button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'stop'">Stop</button>
+					</div>
 					<div ng-hide="xtype == 'market'">
 						<label class="trade" for="limit-stop">Wo soll der Stop-/Limitwert liegen?</label>
 						<input type="text" ng-model="xvalue" placeholder="Stop-/Limitwert" id="limit-stop" autocomplete="off" class="options-input mobile-full">
+					</div>
+					<div ng-show="isAdmin">
+						<label for="force-now">Erzwingen</label>
+						<input type="checkbox" ng-model="forceNow" id="force-now" />
 					</div>
 				</div>
 			</div>

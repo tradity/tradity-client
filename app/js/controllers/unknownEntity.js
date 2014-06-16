@@ -1,5 +1,8 @@
 angular.module('tradity').
 	controller('UnknownEntityCtrl', function($scope, $stateParams, $state, socket) {
+		if ($stateParams.entity && $stateParams.entity.toString().toLowerCase() == '/bad-oldesloe')
+			$stateParams.entity = '/BadOldesloe';
+		
 		socket.emit('school-exists', {
 			lookfor: $stateParams.entity,
 			_cache: 30

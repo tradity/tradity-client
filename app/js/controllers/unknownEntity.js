@@ -4,10 +4,8 @@ angular.module('tradity').
 		if (!entity)
 			$state.go('game.feed');
 		
-		console.log(entity);
 		if (entity && entity.toString().toLowerCase() == '/bad-oldesloe')
 			entity = '/BadOldesloe';
-		console.log(entity);
 		
 		socket.emit('school-exists', {
 			lookfor: entity,

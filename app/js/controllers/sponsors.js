@@ -30,7 +30,7 @@ angular.module('tradity').
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRStormarn.png',
 				link: 'https://www.volksbank-stormarn.de/privatkunden.html',
-				school:'Badoldesloe',
+				school:'Bad Oldesloe',
 				group: true
 			},
 			{

@@ -53,7 +53,7 @@ angular.module('tradity').
 
 			var userSchoolPath = $scope.group ? $scope.group.path : (data.bottomLevelSchool || {path: '/'}).path;
 			for (var i = $scope.sponsors.length - 1; i >= 0; i--)
-				$scope.sponsors[i].show = (!$scope.group && !$scope.sponsors[i].schoolPathRegex) || $scope.sponsors[i].schoolPathRegex.test(userSchoolPath);
+				$scope.sponsors[i].show = !$scope.sponsors[i].schoolPathRegex || $scope.sponsors[i].schoolPathRegex.test(userSchoolPath);
 		}
 		
 		$scope.getShown();

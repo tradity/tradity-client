@@ -3,53 +3,49 @@ angular.module('tradity').
 		$scope.sponsors = [
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Tradity_Boersenspiel_Flatex.jpg',
-				link: 'https://www.flatex.de/',
-				group: true
+				link: 'https://www.flatex.de/'
 			},
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Logo_Logitech.png',
-				link: 'http://www.logitech.com/de-de/speakers-audio/home-pc-speakers',
-				group: true,
+				link: 'http://www.logitech.com/de-de/speakers-audio/home-pc-speakers'
 			},
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Logo_Boerse_Frankfurt.png',
-				link: 'http://www.boerse-frankfurt.de/de/start#&reiter=vedesanleihe',
-				group: true,
+				link: 'http://www.boerse-frankfurt.de/de/start#&reiter=vedesanleihe'
 			},
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_Campello.png',
-				link: 'http://www.campello-store.com/',
-				group: true,
+				link: 'http://www.campello-store.com/'
 			},
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRBankNiebuell.png',
 				link: 'https://www.vrbankniebuell.de/privatkunden.html',
-				school:'Niebüll',
-				group: true
+				schoolPathRegex: /^\/niebuell(\/|$)/i
 			},
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRStormarn.png',
 				link: 'https://www.volksbank-stormarn.de/privatkunden.html',
-				school:'Bad Oldesloe',
-				group: true
+				schoolPathRegex: /^\/BadOldesloe(\/|$)/i
 			},
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRBANKHUSUM.png',
 				link: 'https://www.husumer-volksbank.de/homepage.html',
-				school:'Husum',
-				group: true
+				schoolPathRegex: /^\/Husum(\/|$)/i
 			},
 		]
 
 		$scope.getShown = function (data) {
-			if (!data && $rootScope.ownUser)
-				data = $rootScope.ownUser;
+			data = data || $rootScope.ownUser;
+			
 			if (!data)
 				return;
+
+			var userSchoolPath = (data.bottomLevelSchool || {path: '/'}).path;
 			for (var i = $scope.sponsors.length - 1; i >= 0; i--)
-				$scope.sponsors[i].show = (data.topLevelSchool.name == $scope.sponsors[i].school || !$scope.sponsors[i].school);
+				$scope.sponsors[i].show = !$scope.sponsors[i].schoolPathRegex || $scope.sponsors[i].schoolPathRegex.test(userSchoolPath);
 		}
-		$scope.getShown(false);
+		
+		$scope.getShown();
 
 		$scope.$on('user-update', function(event, data) {
 			$scope.getShown(data);

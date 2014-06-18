@@ -24,28 +24,27 @@ angular.module('tradity').
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRBankNiebuell.png',
 				link: 'https://www.vrbankniebuell.de/privatkunden.html',
-				schoolPathRegex: /^\/niebuell(\/|$)/,
+				school:'Niebüll',
 				group: true
 			},
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRStormarn.png',
 				link: 'https://www.volksbank-stormarn.de/privatkunden.html',
-				schoolPathRegex: /^\/badoldesloe(\/|$)/,
+				school:'Badoldesloe',
 				group: true
 			},
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRBANKHUSUM.png',
 				link: 'https://www.husumer-volksbank.de/homepage.html',
-				schoolPathRegex: /^\/husum(\/|$)/,
+				school:'Husum',
 				group: true
 			},
 		]
 
 		$scope.$on('user-update', function(event, data) {
-			var userSchoolPath = (data.bottomLevelSchool || {path: '/'}).path;
-			
 			for (var i = $scope.sponsors.length - 1; i >= 0; i--)
-				$scope.sponsors[i].show = !$scope.sponsors[i].schoolPathRegex || $scope.sponsors[i].schoolPathRegex.test(userSchoolPath);
+				$scope.sponsors[i].show = (data.topLevelSchool.name == $scope.sponsors[i].school || !$scope.sponsors[i].school);
+
 		});
 
 		$scope.group = !!($scope.$parent && $scope.$parent.$parent && $scope.$parent.$parent.school);

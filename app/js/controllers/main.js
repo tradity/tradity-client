@@ -4,7 +4,7 @@ angular.module('tradity').
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
 		$scope.isAdmin = false;
-		$rootScope.ownUser = $scope.ownUser = null;
+		$scope.ownUser = $rootScope.ownUser = null;
 		$scope.loading = false;
 		$scope.serverConfig = {};
 		$scope.hasOpenQueries = socket.hasOpenQueries.bind(socket);
@@ -124,7 +124,7 @@ angular.module('tradity').
 		}, $scope);
 		
 		socket.on('self-info', function(data) {
-			$scope.ownUser = data.result;
+			$scope.ownUser = $rootScope.ownUser = data.result;
 
 			if ($scope.ownUser.schools.length > 0)
 				$scope.ownUser.bottomLevelSchool = $scope.ownUser.schools[$scope.ownUser.schools.length-1];

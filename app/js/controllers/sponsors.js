@@ -41,10 +41,18 @@ angular.module('tradity').
 			},
 		]
 
-		$scope.$on('user-update', function(event, data) {
+		$scope.getShown = function (data) {
+			if (!data && $rootScope.ownUser)
+				data = $rootScope.ownUser;
+			if (!data)
+				return;
 			for (var i = $scope.sponsors.length - 1; i >= 0; i--)
 				$scope.sponsors[i].show = (data.topLevelSchool.name == $scope.sponsors[i].school || !$scope.sponsors[i].school);
+		}
+		$scope.getShown(false);
 
+		$scope.$on('user-update', function(event, data) {
+			$scope.getShown(data);
 		});
 
 		$scope.group = !!($scope.$parent && $scope.$parent.$parent && $scope.$parent.$parent.school);

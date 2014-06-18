@@ -33,6 +33,12 @@ angular.module('tradity').
 				schoolPathRegex: /^\/badoldesloe(\/|$)/,
 				group: true
 			},
+			{
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRBANKHUSUM.png',
+				link: 'https://www.husumer-volksbank.de/homepage.html',
+				schoolPathRegex: /^\/husum(\/|$)/,
+				group: true
+			},
 		]
 
 		$scope.$on('user-update', function(event, data) {

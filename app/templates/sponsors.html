@@ -1,5 +1,5 @@
-<div ng-controller="SponsorsCtrl" id="sponsors">      
-	<div class="sponsor" ng-repeat="sponsor in sponsors" ng-hide="(group && !sponsor.group) || sponsor.show == false">
+<div ng-controller="SponsorsCtrl" id="sponsors">
+	<div class="sponsor" ng-repeat="sponsor in sponsors" ng-show="sponsor.show">
 		<a href="{{sponsor.link}}"><img src="{{sponsor.picture}}"/></a>
 	</div>
 </div>

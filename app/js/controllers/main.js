@@ -124,7 +124,7 @@ angular.module('tradity').
 		}, $scope);
 		
 		socket.on('self-info', function(data) {
-			$scope.ownUser = data.result;
+			$rootScope.ownUser = $scope.ownUser = data.result;
 
 			if ($scope.ownUser.schools.length > 0)
 				$scope.ownUser.bottomLevelSchool = $scope.ownUser.schools[$scope.ownUser.schools.length-1];
@@ -155,7 +155,7 @@ angular.module('tradity').
 			}
 			var r = data.result;
 			if (r && r.isSelf) {
-				$scope.ownUser = r;
+				$rootScope.ownUser = $scope.ownUser = r;
 
 				if ($scope.ownUser.schools.length > 0)
 					$scope.ownUser.bottomLevelSchool = $scope.ownUser.schools[$scope.ownUser.schools.length-1];

@@ -57,21 +57,21 @@ angular.module('tradity').
 				link: 'http://www.campello-store.com/',
 				group: true,
 			},
-		]		
+		];
+		
 		$scope.group = null;
 
-		$scope.getShown = function (data) {
+		$scope.getShown = function (data, group) {
 			$scope.group = $scope.$parent && $scope.$parent.$parent && $scope.$parent.$parent.school;
 		
 			data = data || $rootScope.ownUser;
-
+			group = group || $scope.group;
 			
 			if (!data)
 				return;
 
-
-			var userSchoolPath = $scope.group ? $scope.group.path : (data.topLevelSchool || {path: '/'}).path;
-
+			var userSchoolPath = group ? group.path : (data.bottomLevelSchool || {path: '/'}).path;
+			
 			for (var i = $scope.sponsors.length - 1; i >= 0; i--)
 				$scope.sponsors[i].show = !$scope.sponsors[i].schoolPathRegex || $scope.sponsors[i].schoolPathRegex.test(userSchoolPath);
 		}
@@ -80,6 +80,10 @@ angular.module('tradity').
 
 		$scope.$on('user-update', function(event, data) {
 			$scope.getShown(data);
+		});
+		
+		$scope.$on('school-info-update', function(event, data) {
+			$scope.getShown(null, data);
 		});
 		
 		$scope.$on('$stateChangeSuccess', function() {

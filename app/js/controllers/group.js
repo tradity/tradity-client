@@ -31,16 +31,18 @@ angular.module('tradity').
 				});
 			} else if (data.code == 'get-school-info-success') {
 				$scope.school = data.result;
-				$scope.comments = $scope.school.comments;
+				$scope.comments = $.extend(true, [], $scope.school.comments); // deep copy
 				$scope.descpage = $scope.school.descpage;
 				$scope.schoolid = $scope.school.id;
 				if (!$scope.school.banner)
 					$scope.school.banner = DEFAULT_GROUP_BANNER;
-
-				$.each($scope.ownUser.schools, function(i, e) {
-					if (e.path == $scope.school.path) 
-						$scope.selfIsSchoolMember = true;
-				});
+				
+				if ($scope.ownUser) {
+					$.each($scope.ownUser.schools, function(i, e) {
+						if (e.path == $scope.school.path) 
+							$scope.selfIsSchoolMember = true;
+					});
+				}
 
 				$.each($scope.school.admins, function(i, e) {
 					if (e.adminid == $scope.ownUser.uid && e.status == 'admin') 
@@ -50,6 +52,8 @@ angular.module('tradity').
 				$.each($scope.comments, function(i, e) {
 					e.comment = $sce.trustAsHtml(e.trustedhtml ? e.comment : escapeHTML(e.comment));
 				});
+				
+				$scope.$broadcast('school-info-update', $scope.school);
 			}
 		});
 

@@ -128,6 +128,9 @@ var fileemit = function(socket, input, evtype, template, serverconfig, callback)
 };
 
 var escapeHTML = function(s) {
+	if (!s)
+		return s;
+	
 	return s.replace(/&/g, '&amp;')
 	        .replace(/</g, '&lt;')
 	        .replace(/>/, '&gt;')

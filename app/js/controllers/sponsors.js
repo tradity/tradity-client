@@ -2,24 +2,16 @@ angular.module('tradity').
 	controller('SponsorsCtrl', function($scope, $rootScope, socket, $stateParams) {
 		$scope.sponsors = [
 			{
-				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Tradity_Boersenspiel_Flatex.jpg',
-				link: 'https://www.flatex.de/',
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_FahrschuleTiedemann.png',
+				link: 'http://www.fahrschule-tiedemann.de/',
+				schoolPathRegex: /^\/Schleswig(\/|$)/i,
 				group: true
 			},
 			{
-				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Logo_Logitech.png',
-				link: 'http://www.logitech.com/de-de/speakers-audio/home-pc-speakers',
-				group: true,
-			},
-			{
-				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Logo_Boerse_Frankfurt.png',
-				link: 'http://www.boerse-frankfurt.de/de/start#&reiter=vedesanleihe',
-				group: true,
-			},
-			{
-				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_Campello.png',
-				link: 'http://www.campello-store.com/',
-				group: true,
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_FahrschuleSchneiderNMS.png',
+				link: 'http://www.fahrschule-nms.de/',
+				schoolPathRegex: /^\/Neumuenster(\/|$)/i,
+				group: true
 			},
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRBankNiebuell.png',
@@ -38,6 +30,32 @@ angular.module('tradity').
 				link: 'https://www.husumer-volksbank.de/homepage.html',
 				schoolPathRegex: /^\/Husum(\/|$)/i,
 				group: true
+			},
+			{
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_NordseefahrschuleHusum.png',
+				link: 'http://www.nordseefahrschule.de/',
+				schoolPathRegex: /^\/Husum(\/|$)/i,
+				group: true
+			},
+			{
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Tradity_Boersenspiel_Flatex.jpg',
+				link: 'https://www.flatex.de/',
+				group: true
+			},
+			{
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Logo_Logitech.png',
+				link: 'http://www.logitech.com/de-de/speakers-audio/home-pc-speakers',
+				group: true,
+			},
+			{
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Logo_Boerse_Frankfurt.png',
+				link: 'http://www.boerse-frankfurt.de/de/start#&reiter=vedesanleihe',
+				group: true,
+			},
+			{
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_Campello.png',
+				link: 'http://www.campello-store.com/',
+				group: true,
 			},
 		]
 		

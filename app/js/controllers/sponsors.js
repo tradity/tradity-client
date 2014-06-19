@@ -64,11 +64,14 @@ angular.module('tradity').
 			$scope.group = $scope.$parent && $scope.$parent.$parent && $scope.$parent.$parent.school;
 		
 			data = data || $rootScope.ownUser;
+
 			
 			if (!data)
 				return;
 
-			var userSchoolPath = $scope.group ? $scope.group.path : (data.bottomLevelSchool || {path: '/'}).path;
+
+			var userSchoolPath = $scope.group ? $scope.group.path : (data.topLevelSchool || {path: '/'}).path;
+
 			for (var i = $scope.sponsors.length - 1; i >= 0; i--)
 				$scope.sponsors[i].show = !$scope.sponsors[i].schoolPathRegex || $scope.sponsors[i].schoolPathRegex.test(userSchoolPath);
 		}

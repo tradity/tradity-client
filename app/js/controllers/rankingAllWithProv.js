@@ -7,7 +7,7 @@ angular.module('tradity').
 		},
 		function(data) {
 			if (data.code == 'get-ranking-success') {
-				$scope.results = rankify(data.result, function(r) { return r.hastraded ? r.totalvalue : -Infinity; });
+				$scope.results = rankify(data.result, function(r) { return r.hastraded ? r.prov_sum : -Infinity; });
 			}
 		});
 	});

@@ -44,10 +44,15 @@ angular.module('tradity').
 					});
 				}
 
-				$.each($scope.school.admins, function(i, e) {
-					if (e.adminid == $scope.ownUser.uid && e.status == 'admin') 
-						$scope.selfIsSchoolAdmin = true;
-				});
+				var checkAdmin = function() {
+					$.each($scope.school.admins, function(i, e) {
+						if ($scope.ownUser && e.adminid == $scope.ownUser.uid && e.status == 'admin') 
+							$scope.selfIsSchoolAdmin = true;
+					});
+				}
+				
+				checkAdmin();
+				$scope.$on('user-update', checkAdmin);
 
 				$.each($scope.comments, function(i, e) {
 					e.comment = $sce.trustAsHtml(e.trustedhtml ? e.comment : escapeHTML(e.comment));
@@ -192,4 +197,17 @@ angular.module('tradity').
 		$scope.loadMore = function() {
 			$scope.totalDisplayed += 10;
 		};
+		
+		socket.emit('get-ranking', {
+			since: 0,
+			schoolid: $scope.schoolid,
+			_cache: 20,
+		}, function(data) {
+			$scope.pendingMembers = [];
+			
+			$.each(data.result, function(i, e) {
+				if ($scope.school && e.schoolpath == $scope.school.path && e.pending)
+					$scope.pendingMembers.push(e);
+			});
+		});
 	});

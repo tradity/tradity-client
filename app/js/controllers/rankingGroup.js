@@ -20,14 +20,10 @@ angular.module('tradity').
 				// linearize intergroup results
 				$.each(schools, function(i, s) {
 					var students = [];
-					$scope.pendingMembers = [];
 					
 					$.each($scope.results, function(i, e) {
 						if (e.schoolpath && (e.schoolpath == s.path || e.schoolpath.substr(0, s.path.length + 1) == s.path + '/') && e.hastraded && !e.pending)
 							students.push(e);
-							
-						if ($scope.school && e.schoolpath == $scope.school.path && e.pending)
-							$scope.pendingMembers.push(e);
 					});
 			
 					students.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
@@ -60,9 +56,9 @@ angular.module('tradity').
 
 		socket.emit('get-ranking', {
 			since: 0,
+			schoolid: $scope.schoolid,
 			_cache: 20
-		},
-		function(data) {
+		}, function(data) {
 			if (data.code == 'get-ranking-success') {
 				$scope.results = data.result;
 				$scope.computeGroupRanking();

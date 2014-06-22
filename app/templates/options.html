@@ -96,6 +96,7 @@
 						<img id="profile-picture" class="inline" width="200px" ng-show="ownUser.profilepic" ng-src="{{ownUser.profilepic}}" alt="">
 						<label for="profileimage">Profilbild hochladen</label>
 						<input type="file" id="profileimage" class="options-input" accept="image/png,image/jpeg,image/gif"><br/>
+						Oder (statt Hochladen):
 						<input type="button" ng-click="useGravatar()" ng-show="ownUser.email_verif != 0 && ownUser.email" class="btn btn-primary" value="Gravatar verwenden" />
 					</div>
 				</div>

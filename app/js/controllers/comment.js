@@ -45,6 +45,7 @@ angular.module('tradity').
 						comment: $scope.comment,
 						trustedhtml: $scope.ishtml,
 						username: $scope.ownUser.name,
+						profilepic: $scope.ownUser.profilepic,
 						time: time.getTime() / 1000 - 1
 					});
 					$scope.comment = '';

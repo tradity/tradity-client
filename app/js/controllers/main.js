@@ -18,7 +18,7 @@ angular.module('tradity').
 				}
 			};
 			var dead = function() {
-				$state.go('error.connection');
+				//$state.go('error.connection');
 			};
 			
 			var curRx = socket.rxPackets();

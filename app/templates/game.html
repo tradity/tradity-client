@@ -30,10 +30,10 @@
 				<!--li>
 					<a ui-sref="game.chats" class="icon" title="Nachrichten"><i class="fa fa-envelope"></i></a>
 				</li-->
-				<!--li ng-controller="NotificationsCtrl">
+				<li ng-controller="NotificationsCtrl">
 					<a class="icon" href="" title="Benachrichtigungen" ng-click="show = !show"><span class="badge" ng-show="count != 0">{{count}}</span><i class="fa fa-globe"></i></a>
 					<ng-include src="'templates/notifications.html'"></ng-include> 
-				</li-->
+				</li>
 				<li ng-show="isAdmin">
 					<a ui-sref="admin.userlist" class="icon" title="admin"><i class="fa fa-shield"></i></a>
 				</li>

@@ -1,6 +1,5 @@
 <div id="chats" class="main-content">
-{{chats}}
-	<a ng-repeat="chat in chats" class="chat" ui-sref="game.chat.id({id: chat.chatid})">
+	<a ng-repeat="(id,chat) in chats" class="chat" ui-sref="game.chat.id({id:chat.chatid})">
 		<div class="content">
 			<h2>
 				<span ng-repeat="member in chat.members" ng-hide="ownUser.id == member.id">
@@ -8,7 +7,7 @@
 					{{member.name}}
 				</span>
 			</h2>
-			<p></p>
+			<p>{{getLastMessage(id).comment}}</p>
 		</div>
 	</a>
 </div>

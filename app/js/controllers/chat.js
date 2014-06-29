@@ -1,6 +1,6 @@
 angular.module('tradity').
-	controller('ChatCtrl', function($scope, socket, $stateParams, DEFAULT_PROFILE_IMG) {
-		$scope.chats = {};
+	controller('ChatCtrl', function($scope, $rootScope, socket, $stateParams, DEFAULT_PROFILE_IMG) {
+		$scope.chats = $rootScope.chats;
 		$scope.messages = [];
 		$scope.eventId = 0;
 
@@ -8,56 +8,27 @@ angular.module('tradity').
 			if (!toParams.userId && !toParams.id)
 				return;
 			
-			/*socket.emit('chat-get', toParams.userId ? {
-				endpoints: [toParams.userId]
+			$scope.getChat(toParams.userId,toParams.id);
+		})
+
+		$scope.getChat = function(user,id) {
+			console.log(user,id)
+			socket.emit('chat-get', user ? {
+				endpoints: [user]
 			} : {
-				chatid: toParams.id
+				chatid: id
 			}, function(data) {
-				$scope.messages = data.chat.messages;
+				/*$scope.messages = data.chat.messages;
 				for (var i = 0; i < $scope.messages.length; ++i) {
 					if (!$scope.messages[i].profilepic)
 						$scope.messages[i].profilepic = DEFAULT_PROFILE_IMG;
 				}
-				
+				*/
+				//console.log(data)
 				$scope.eventId = data.chat.eventid || data.chat.chatstartevent;
-			}, $scope);*/
-		})
+			}, $scope);
+		}
 
-		socket.on('list-all-chats', function(data) {
-			//$scope.chats = data.chats;
-			
-			/*for (var i in $scope.chats) {
-				for (var j = 0; j < $scope.chats[i].members.length; ++j) {
-					var member = $scope.chats[i].members[j];
-					
-					if (!member.profilepic)
-						member.profilepic = DEFAULT_PROFILE_IMG;
-				}
-			}*/
-			console.log(data)
-		}, $scope);
-		
-		socket.emit('list-all-chats');
-
-		socket.on('comment', function(event) {
-			if (event.baseeventtype == 'chat-start') {
-				if (!$scope.chats[event.baseeventid])
-					$scope.chats[event.baseeventid] = {};
-				if (!$scope.chats[event.baseeventid].messages)
-					$scope.chats[event.baseeventid].messages = [];
-
-				for (var i = 0; i < $scope.chats[event.baseeventid].messages.length; ++i)
-					if ($scope.chats[event.baseeventid].messages[i].commentid == event.commentid)
-						return;
-				console.log(event)
-				$scope.chats[event.baseeventid].messages.push({
-					comment: event.comment,
-					profilepic: event.profilepic || DEFAULT_PROFILE_IMG,
-					uid: event.commenter,
-					time: event.eventtime
-				});
-			}
-		}, $scope);
 
 		$scope.send = function(message) {
 			socket.emit('comment', {
@@ -68,4 +39,21 @@ angular.module('tradity').
 					$scope.comment = "";
 			});
 		}
+
+		$scope.getLastMessage = function(chat) {
+			var last = {time:false,comment:""};
+			if ($scope.chats[chat].messages) for (var i = $scope.chats[chat].messages.length - 1; i >= 0; i--) {
+				if ($scope.chats[chat].messages[i].time > last.time) last = $scope.chats[chat].messages[i];
+			};
+			return last;
+		}
+
+		$scope.getMessages = function(id) {
+			if ($scope.chats[id]) return $scope.chats[id].messages;
+			else return [];
+		}
+
+
+		if ($stateParams.userId || $stateParams.id)
+			$scope.getChat($stateParams.userId,$stateParams.id);
 	});

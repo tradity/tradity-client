@@ -8,6 +8,7 @@ angular.module('tradity').
 		$scope.loading = false;
 		$scope.serverConfig = {};
 		$scope.hasOpenQueries = socket.hasOpenQueries.bind(socket);
+		$scope.version = null;
 		
 		$scope.connectionLastRx = 0;
 		$scope.connectionCheck = function() {
@@ -169,6 +170,12 @@ angular.module('tradity').
 			var cfg = data.config;
 			for (var k in cfg)
 				$scope.serverConfig[k] = cfg[k];
+			
+			if (data.versionInfo)
+				$scope.version = data.versionInfo;
+			
+			if (socket.protocolVersion() < $scope.version.minimum)
+				notification('Deine Tradity-Clientversion wird leider nicht mehr unterstützt!');
 		});
 
 		var feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange', 'user-reset', 'mod-notification'];

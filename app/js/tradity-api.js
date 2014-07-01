@@ -1,6 +1,5 @@
 var enterDevMode = function(){};
 var SoTradeConnection;
-var SoTradeModel;
 
 (function() {'use strict';
 
@@ -32,6 +31,7 @@ SoTradeConnection = function(connect) {
 	this.ids = {}; // numeric id -> {cb: callback for that id, prefill: object}
 	this.id = 0;
 	this.lzma = null;
+	this.protocolVersion = function() { return 1; };
 	
 	if (typeof LZMA != 'undefined' && typeof Blob != 'undefined' && typeof Uint8Array != 'undefined' && 
 		window.URL && window.URL.createObjectURL && lzma_worker_js)

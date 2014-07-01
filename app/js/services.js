@@ -31,6 +31,7 @@ angular.module('tradity').
 			txPackets: function() { return socket.txPackets(); },
 			rxPackets: function() { return socket.rxPackets(); },
 			reconnect: function() { return socket.reconnect(); }
+			protocolVersion: function() { return socket.protocolVersion(); }
 		};
 	});
 

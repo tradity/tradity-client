@@ -31,7 +31,7 @@ angular.module('tradity').
 			},
 			'SOCIAL': {
 				name: "Socializer",
-				description: "Wie 'social' bist du?",
+				description: "Wie „social“ bist du?",
 				achievements: 0,
 				achieved: 0,
 			},

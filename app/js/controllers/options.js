@@ -45,7 +45,7 @@ angular.module('tradity').
 		};
 		
 		$scope.useGravatar = function() {
-			fileemit(socket, 'https://secure.gravatar.com/avatar/' + md5.createHash($scope.ownUser.email), 'publish', {
+			fileemit(socket, 'https://secure.gravatar.com/avatar/' + md5.createHash($scope.ownUser.email) + '?s=384', 'publish', {
 				role: 'profile.image',
 				proxy: true
 			}, $scope.serverConfig, $scope.handlePublishCode);

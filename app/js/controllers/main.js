@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('MainCtrl', function($sce, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, $interval, $timeout, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
+	controller('MainCtrl', function($sce, chat, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, $interval, $timeout, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
 		$scope.Math = Math;
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
@@ -19,7 +19,7 @@ angular.module('tradity').
 				}
 			};
 			var dead = function() {
-				//$state.go('error.connection');
+				$state.go('error.connection');
 			};
 			
 			var curRx = socket.rxPackets();
@@ -409,38 +409,4 @@ angular.module('tradity').
 			});
 		});
 
-		/* chat */
-
-		$rootScope.chats = {};
-
-		socket.on('list-all-chats', function(data) {
-			for (i in data.chats) {
-				if (!$rootScope.chats [data.chats[i].chatstartevent]) $rootScope.chats [data.chats[i].chatstartevent] = {};
-				$rootScope.chats[data.chats[i].chatstartevent].members = data.chats[i].members;
-				$rootScope.chats[data.chats[i].chatstartevent].chatid = data.chats[i].chatid;
-				console.log(data)
-			};
-		}, $scope);
-		
-		socket.emit('list-all-chats');
-
-		socket.on('comment', function(event) {
-			if (event.baseeventtype == 'chat-start') {
-				if (!$rootScope.chats [event.baseeventid])
-					$rootScope.chats [event.baseeventid] = {};
-				if (!$rootScope.chats [event.baseeventid].messages)
-					$rootScope.chats [event.baseeventid].messages = [];
-
-				for (var i = 0; i < $rootScope.chats [event.baseeventid].messages.length; ++i)
-					if ($rootScope.chats [event.baseeventid].messages[i].commentid == event.commentid)
-						return;
-
-				$rootScope.chats [event.baseeventid].messages.push({
-					comment: event.comment,
-					profilepic: event.profilepic || DEFAULT_PROFILE_IMG,
-					uid: event.commenter,
-					time: event.eventtime
-				});
-			}
-		}, $scope);
 	});

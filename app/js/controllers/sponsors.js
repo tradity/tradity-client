@@ -96,8 +96,10 @@ angular.module('tradity').
 		});
 
 		$scope.getWidth = function() {
-			if ($scope.horizontal) return 95/$scope.count+'%';
-			else return;
+			if ($scope.horizontal) 
+				return 95/$scope.count+'%';
+			else 
+				return;
 		}
 
 		

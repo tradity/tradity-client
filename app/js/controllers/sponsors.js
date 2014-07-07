@@ -60,6 +60,7 @@ angular.module('tradity').
 		];
 		
 		$scope.group = null;
+		$scope.count = 0;
 
 		$scope.getShown = function (data, group) {
 			$scope.group = $scope.$parent && $scope.$parent.$parent && $scope.$parent.$parent.school;
@@ -71,9 +72,13 @@ angular.module('tradity').
 				return;
 
 			var userSchoolPath = group ? group.path : (data.bottomLevelSchool || {path: '/'}).path;
-			
-			for (var i = $scope.sponsors.length - 1; i >= 0; i--)
+
+			$scope.count = 0;
+
+			for (var i = $scope.sponsors.length - 1; i >= 0; i--) {
 				$scope.sponsors[i].show = !$scope.sponsors[i].schoolPathRegex || $scope.sponsors[i].schoolPathRegex.test(userSchoolPath);
+				if ($scope.sponsors[i].show) $scope.count++;
+			}
 		}
 		
 		$scope.getShown();
@@ -89,4 +94,13 @@ angular.module('tradity').
 		$scope.$on('$stateChangeSuccess', function() {
 			$scope.getShown();
 		});
+
+		$scope.getWidth = function() {
+			if ($scope.horizontal) 
+				return 95/$scope.count+'%';
+			else 
+				return;
+		}
+
+		
 	});

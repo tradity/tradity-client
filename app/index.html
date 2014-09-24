@@ -15,8 +15,8 @@
 		<!-- endbuild -->
 
 		<!-- build:js({.tmp,app}) js/scripts.js -->
-		<script type="text/javascript" src="js/piwik.js"></script>
-		<script type="text/javascript" src="js/vendor/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="js/vendor/piwik.js"></script>
+		<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
 		<script type="text/javascript" src="bower_components/angular/angular.js"></script>
 		<script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 		<script type="text/javascript" src="bower_components/angular-translate/angular-translate.js"></script>
@@ -27,22 +27,22 @@
 		<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 		<script type="text/javascript" src="bower_components/angular-dialog-service/dialogs.js"></script>
 		<script type="text/javascript" src="bower_components/angular-md5/angular-md5.min.js"></script>
+		<script type="text/javascript" src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
 		<script type="text/javascript" src="bower_components/lzma-js/src/lzma.js"></script>
-		<script type="text/javascript" src="js/lzma_worker.wrap.js"></script>
-
-		<script type="text/javascript" src="js/vendor/angular-locale_de.js"></script>
-		<script type="text/javascript" src="js/ng-infinite-scroll.min.js"></script>
-		<script type="text/javascript" src="js/vagueTime.min.js"></script>
-		<script type="text/javascript" src="js/jquery.jqplot.min.js"></script>
-		<script type="text/javascript" src="js/jqplot.highlighter.min.js"></script>
-		<script type="text/javascript" src="js/jqplot.cursor.min.js"></script>
-		<script type="text/javascript" src="js/jqplot.enhancedLegendRenderer.min.js"></script>
-		<script type="text/javascript" src="js/jqplot.dateAxisRenderer.min.js"></script>
-		<script type="text/javascript" src="js/jqplot.canvasAxisTickRenderer.min.js"></script>
-		<script type="text/javascript" src="js/jqplot.canvasTextRenderer.min.js"></script>
-		<script type="text/javascript" src="js/jquery.pointpoint.js"></script>
 		<script type="text/javascript" src="bower_components/ac.js/ac.js"></script>
 		<script type="text/javascript" src="bower_components/socket.io-client/socket.io.js"></script>
+
+		<script type="text/javascript" src="js/vendor/lzma_worker.wrap.js"></script>
+		<script type="text/javascript" src="js/vendor/angular-locale_de.js"></script>
+		<script type="text/javascript" src="js/vendor/vagueTime.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jquery.jqplot.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jqplot.highlighter.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jqplot.cursor.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jqplot.enhancedLegendRenderer.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jqplot.dateAxisRenderer.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jqplot.canvasAxisTickRenderer.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jqplot.canvasTextRenderer.min.js"></script>
+		<script type="text/javascript" src="js/vendor/jquery.pointpoint.js"></script>
 
 		<script type="text/javascript" src="js/app.js"></script>
 		<script type="text/javascript" src="js/config.js"></script>
@@ -88,6 +88,7 @@
 		<script type="text/javascript" src="js/controllers/learning.js"></script>
 		<script type="text/javascript" src="js/controllers/sponsors.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
+		<script src="scripts/services/achievements.js"></script>
 		<!-- endbuild -->
 		<script type="text/javascript">window.onload = function(){if(typeof angular=='undefined'){var a;(a=document.getElementById('scriptfail')).style.display='block';a.src='scriptfail.html';}};</script>
 	</head>

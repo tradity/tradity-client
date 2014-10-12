@@ -62,15 +62,6 @@ angular.module('tradity').
 			}
 		});
 
-		$scope.createNewSchool = function () {
-			socket.emit('get-own-options', function(data) {
-				var t = prompt("deine Schule, Organisation, Institut");
-				data.result.school = t;
-				socket.emit('change-options', data.result);
-				$scope.selfIsSchoolMember = true;
-			});
-		}	
-
 		$scope.enterTeam = function () {
 			socket.emit('get-own-options', function(data) {
 				data.result.school = $scope.schoolid;

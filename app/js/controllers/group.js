@@ -69,7 +69,7 @@ angular.module('tradity').
 				socket.emit('change-options', data.result);
 				$scope.selfIsSchoolMember = true;
 			});
-		}	
+		}
 
 		$scope.enterTeam = function () {
 			socket.emit('get-own-options', function(data) {

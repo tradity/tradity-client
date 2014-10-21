@@ -38,6 +38,12 @@ angular.module('tradity').
 				group: true
 			},
 			{
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/10/Boersenspiel_Tradity_Volksbank-Ahlen-Sassenberg-Warendorf_Unterstuetzer.png',
+				link: 'https://www.vbasw.de/homepage.html',
+				schoolPathRegex: /^\/sassenberg(\/|$)/i,
+				group: true
+			},
+			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Tradity_Boersenspiel_Flatex.jpg',
 				link: 'https://www.flatex.de/',
 				group: true

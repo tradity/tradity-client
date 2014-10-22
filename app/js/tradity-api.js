@@ -210,6 +210,8 @@ SoTradeConnection.prototype.emit = function(evname, data, cb) {
 	
 	if (this.lzma)
 		data.lzma = 1;
+		
+	data.pv = this.protocolVersion();
 	
 	this.socket.emit('query', data);
 	datalog('>', data);

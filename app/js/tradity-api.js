@@ -100,7 +100,7 @@ SoTradeConnection.prototype.invokeListeners = function(data, listener) {
 	var type = data.type;
 	
 	// general listeners
-	var listeners = this.listeners[type] || [];
+	var listeners = (this.listeners[type] || []).concat(this.listeners['*'] || []);
 	for (var i = 0; i < listeners.length; ++i) 
 		if (listeners[i])
 			listeners[i](data);
@@ -254,6 +254,7 @@ SoTradeConnection.prototype.setKey = function(k) {
 SoTradeConnection.prototype.on = function(evname, cb, angularScope) {
 	var index = (this.listeners[evname] = (this.listeners[evname] || [])).push(cb) - 1;
 	this.socket.on(evname, cb);
+	
 	if (angularScope) {
 		var this_ = this;
 		angularScope.$on('$destroy', function() { delete this_.listeners[evname][index]; });

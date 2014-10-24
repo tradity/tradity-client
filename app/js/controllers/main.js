@@ -116,7 +116,7 @@ angular.module('tradity').
 				}
 			});
 		};
-		socket.on('response', function(data) {
+		socket.on('*', function(data) {
 			if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
 				$scope.ownUser = null;
 				if ($state.includes('game'))

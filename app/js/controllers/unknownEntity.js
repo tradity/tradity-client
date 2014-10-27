@@ -1,13 +1,14 @@
 angular.module('tradity').
 	controller('UnknownEntityCtrl', function($scope, $stateParams, $state, socket) {
+		var entity = $stateParams.entity.replace(/\/$/, ''); // strip trailing slash
 		socket.emit('school-exists', {
-			lookfor: $stateParams.entity,
+			lookfor: entity,
 			_cache: 30
 		}, function(data) {
 			if (data.code == 'school-exists-success' && data.exists) {
 				$state.go('game.group', {schoolid: data.path});
 			} else {
-				var strippedEntity = $stateParams.entity.replace(/^\//, '');
+				var strippedEntity = entity.replace(/^\//, ''); // strip leading slash
 				
 				socket.emit('get-user-info', {
 					lookfor: strippedEntity,

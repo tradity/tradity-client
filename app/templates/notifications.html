@@ -2,21 +2,20 @@
 	<div class="arrow"><div class="arrowIn"></div></div>
 	<div ng-repeat="(key,notification) in notifications | orderBy:eventtime" class="item" ng-class="{seen: notification.seen==1}" ui-event="{ mouseenter : 'seen(key)' }">
 		<ANY ng-switch="notification.type">
-		  <ANY ng-switch-when="achievement">
-		  	<div class="icon">
-				<i class="fa fa-trophy"></i>
-			</div>
-		  	<div class="content">{{notification.name}}</div>
-		  	<div class="clearfix"></div>
-		  </ANY>
-		  <ANY ng-switch-when="comment-pinboard-self">
-		  	<div class="icon">
-				<i class="fa fa-comment"></i>
-			</div>
-		  	<div class="content">{{notification}} hat auf deine Pinnwand geschrieben</div>
-		  	<div class="clearfix"></div>
-		  </ANY>
-
+			<ANY ng-switch-when="achievement">
+				<div class="icon">
+					<i class="fa fa-trophy"></i>
+				</div>
+				<div class="content">{{notification.name}}</div>
+				<div class="clearfix"></div>
+			</ANY>
+			<ANY ng-switch-when="comment-pinboard-self">
+				<div class="icon">
+					<i class="fa fa-comment"></i>
+				</div>
+				<div class="content">{{notification.srcusername}} hat auf deine Pinnwand geschrieben</div>
+				<div class="clearfix"></div>
+			</ANY>
 		</ANY>
 	</div>
 </div>

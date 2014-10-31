@@ -314,7 +314,7 @@ angular.module('tradity', [
 			templateUrl: 'templates/error.connection.html'
 		}).
 		state('unknownEntity', {
-			url:'{entity:/[\\w_/-]*[\\w_-]}',
+			url:'{entity:/[\\w_/-]*}',
 			controller: 'UnknownEntityCtrl'
 		});
 		

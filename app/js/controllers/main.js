@@ -76,7 +76,11 @@ angular.module('tradity').
 			}
 		})
 
-		$scope.$on('makeadmin', function() { $scope.isAdmin = true; });
+		$scope.$on('makeadmin', function() {
+			$scope.isAdmin = true;
+			
+			socket.emit('set-debug-mode', { debugMode: true, __only_in_dev_mode__: true });
+		});
 
 		$scope.$on('user-update', function() {
 			if (!$scope.ownUser) {
@@ -176,6 +180,10 @@ angular.module('tradity').
 			
 			if (socket.protocolVersion() < $scope.version.minimum)
 				notification('Deine Tradity-Clientversion wird leider nicht mehr unterstützt!');
+		});
+		
+		socket.on('internal-server-error', function() {
+			notification('Es gab leider einen Fehler – das Tech-Team von Tradity wurde informiert!');
 		});
 
 		var feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange', 'user-reset', 'mod-notification'];

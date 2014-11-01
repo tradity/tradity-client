@@ -77,12 +77,26 @@ SoTradeConnection.prototype.init = function() {
 			this.reconnect();
 		}).bind(this), 2300);
 	}).bind(this));
+	
+	this.on('internal-server-error', (function() {
+		this.resetExpectedResponses();
+	}).bind(this));
+	
+	this.on('debug-info', (function(data) {
+		var args = data.args.slice();
+		args.unshift('~!');
+		console.log.apply(console, args);
+	}).bind(this));
 };
 
-SoTradeConnection.prototype.reconnect = function() {
+SoTradeConnection.prototype.resetExpectedResponses = function() {
 	for (var i in this.ids)
 		if (this.ids[i])
 			this.ids[i]._expect_no_response = true;
+};
+
+SoTradeConnection.prototype.reconnect = function() {
+	this.resetExpectedResponses();
 	
 	this.socket.connect(null, 'forceNew');
 };
@@ -158,6 +172,9 @@ SoTradeConnection.prototype.emit = function(evname, data, cb) {
 	data.type = evname;
 	var id = ++this.id;
 	data.id = evname + '--' + id;
+	
+	if (data.__only_in_dev_mode__ && !devmode())
+		return cb(null);
 	
 	if (this.getKey() && !data.key)
 		data.key = this.getKey();

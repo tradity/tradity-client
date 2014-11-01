@@ -120,8 +120,8 @@ angular.module('tradity', [
 			templateUrl: 'templates/depot.transactions.html'
 		}).
 		state('game.depot.transactionlog', {
-			url: '/transactions',
-			templateUrl: 'templates/profile.transactions.html',
+			url: '/transactionlog',
+			templateUrl: 'templates/depot.transactionlog.html',
 			controller: 'DepotTransactionLogCtrl'
 		}).
 		state('game.depot.watchlist', {

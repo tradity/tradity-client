@@ -3,41 +3,41 @@ angular.module('tradity').
 		$scope.values = [];
 		$scope.achievements = [];
 		$scope.user = null;
+		$scope.orders = [];
 		
 		$scope.getUserInfo = function() {
 			socket.emit('get-user-info', {
 				lookfor: $stateParams.userId,
 				_cache: 20
 			}, function(data) {
-				if (data.code == 'get-user-info-notfound') {
-					alert('Benutzer existiert nicht');
-				} else if (data.code == 'get-user-info-success') {
-					$scope.user = data.result;
-					$scope.values = data.values;
-					$scope.userAchievements = data.achievements;
-					
-					var orders = data.orders;
-					orders.sort(function(a,b) { return b.buytime - a.buytime; });
-					for (var i in orders) {
-						if (orders[i].money > 0) {
-							orders[i].ordertype = 'depot-buy';
-						} else if (orders[i].money < 0) {
-							orders[i].ordertype = 'depot-sell';
-						} else {
-							orders[i].ordertype = '';
-						}
-						orders[i].price = Math.abs(orders[i].money / orders[i].amount);
+				if (data.code == 'get-user-info-notfound')
+					return alert('Benutzer existiert nicht');
+				
+				$scope.user = data.result;
+				$scope.values = data.values;
+				$scope.userAchievements = data.achievements;
+				
+				var orders = data.orders;
+				orders.sort(function(a,b) { return b.buytime - a.buytime; });
+				for (var i in orders) {
+					if (orders[i].money > 0) {
+						orders[i].ordertype = 'depot-buy';
+					} else if (orders[i].money < 0) {
+						orders[i].ordertype = 'depot-sell';
+					} else {
+						orders[i].ordertype = '';
 					}
-					$scope.orders = orders;
-					if (!$scope.user.profilepic)
-						$scope.user.profilepic = DEFAULT_PROFILE_IMG;
-					data.pinboard.sort(function(a,b) { return b.time - a.time; });
-					$scope.comments = data.pinboard;
-					
-					$.each($scope.comments, function(i, e) {
-						e.comment = $sce.trustAsHtml(e.trustedhtml ? e.comment : escapeHTML(e.comment));
-					});
+					orders[i].price = Math.abs(orders[i].money / orders[i].amount);
 				}
+				$scope.orders = orders;
+				if (!$scope.user.profilepic)
+					$scope.user.profilepic = DEFAULT_PROFILE_IMG;
+				data.pinboard.sort(function(a,b) { return b.time - a.time; });
+				$scope.comments = data.pinboard;
+				
+				$.each($scope.comments, function(i, e) {
+					e.comment = $sce.trustAsHtml(e.trustedhtml ? e.comment : escapeHTML(e.comment));
+				});
 			});
 		};
 		

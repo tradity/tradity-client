@@ -198,6 +198,11 @@ angular.module('tradity', [
 			url: '/history',
 			templateUrl: 'templates/profile.history.html'
 		}).
+		state('game.profile.transactions', {
+			url: '/transactions',
+			templateUrl: 'templates/profile.transactions.html',
+			controller: 'ProfileTransactionsCtrl'
+		}).
 		state('game.profile.pinboard', {
 			url: '/pinboard',
 			templateUrl: 'templates/profile.pinboard.html',

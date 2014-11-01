@@ -1,0 +1,56 @@
+<div id="history">
+	<div class="options-field">
+		<h2>Transaktionslog</h2>
+		<div class="table-wrapper">
+			<table class="transaction-history table table-bordered">
+				<colgroup>
+					<col class="column-0">
+					<col class="column-1">
+					<col class="column-2">
+					<col class="column-3">
+					<col class="column-4-5">
+					<col class="column-6-7">
+				</colgroup>
+				<tr>
+					<th>Wertpapier</th>
+					<th>Datum</th>
+					<th>Typ</th>
+					<th>Order</th>
+					<th>Zahler</th>
+					<th>Empfänger</th>
+					<th>Betrag</th>
+					<th>Anlass</th>
+				</tr>
+				<tr ng-repeat="ta in transactions">
+					<td title="{{ta.stocktextid}}">
+						<span ng-show="ta.stocktextid">
+							<a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: ta.stocktextid, amount: 0})">{{ta.stockname}}</a>
+						</span>
+						<span ng-hide="ta.stocktextid">—</span>
+					</td>
+					<td>{{ta.time * 1000 | date:'d.M.yy HH:mm'}}</td>
+					<td>{{ta.typeText}}</td>
+					<td>
+						<span ng-show="ta.orderid">
+							<a class="text-link" ui-sref="game.tradeDetails({tradeId: ta.orderid})"># {{ta.orderid}}</a>
+						</span>
+						<span ng-hide="ta.orderid">—</span>
+					</td>
+					<td>
+						<span ng-show="ta.payerId">
+							<a ui-sref="game.profile.overview({userId: ta.payerName})">{{ta.payerName}}</a> 
+						</span>
+						<span ng-hide="ta.payerId">–</span>
+					</td>
+					<td>
+						<span ng-show="ta.payeeId">
+							<a ui-sref="game.profile.overview({userId: ta.payeeName})">{{ta.payeeName}}</a> 
+						</span>
+						<span ng-hide="ta.payeeId">–</span>
+					</td>
+					<td>{{ta.reasonText}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

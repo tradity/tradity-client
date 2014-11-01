@@ -119,6 +119,11 @@ angular.module('tradity', [
 			url: '/transactions',
 			templateUrl: 'templates/depot.transactions.html'
 		}).
+		state('game.depot.transactionlog', {
+			url: '/transactions',
+			templateUrl: 'templates/profile.transactions.html',
+			controller: 'DepotTransactionLogCtrl'
+		}).
 		state('game.depot.watchlist', {
 			url: '/watchlist',
 			templateUrl: 'templates/depot.watchlist.html'
@@ -197,11 +202,6 @@ angular.module('tradity', [
 		state('game.profile.history', {
 			url: '/history',
 			templateUrl: 'templates/profile.history.html'
-		}).
-		state('game.profile.transactions', {
-			url: '/transactions',
-			templateUrl: 'templates/profile.transactions.html',
-			controller: 'ProfileTransactionsCtrl'
 		}).
 		state('game.profile.pinboard', {
 			url: '/pinboard',

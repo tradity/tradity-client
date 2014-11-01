@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('ProfileTransactionsCtrl', function($scope, socket) {
+	controller('DepotTransactionLogCtrl', function($scope, socket) {
 		$scope.transactions = [];
 		
 		socket.emit('list-transactions', function(data) {

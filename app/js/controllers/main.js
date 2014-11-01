@@ -79,7 +79,7 @@ angular.module('tradity').
 		$scope.$on('makeadmin', function() {
 			$scope.isAdmin = true;
 			
-			socket.emit('set-debug-mode', { debugMode: true, __only_in_dev_mode__: true });
+			socket.emit('set-debug-mode', { debugMode: true, __only_in_srv_dev_mode__: true });
 		});
 
 		$scope.$on('user-update', function() {

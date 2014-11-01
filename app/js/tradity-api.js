@@ -1,10 +1,15 @@
 var enterDevMode = function(){};
+var enterSrvDevMode = function(){};
 var SoTradeConnection;
 
 (function() {'use strict';
 
 var logmsg = false;
 var devmode = function() { return document.cookie.indexOf('devmode') != -1; };
+var srvdevmode = function() { return document.cookie.indexOf('srvdevmode') != -1; };
+
+enterDevMode = function() { document.cookie = 'devmode=1;expires=Fri, 31 Dec 9999 23:59:59 GMT'; };
+enterSrvDevMode = function() { document.cookie = 'srvdevmode=1;expires=Fri, 31 Dec 9999 23:59:59 GMT'; };
 
 function datalog() {
 	if (!devmode()) {
@@ -17,10 +22,6 @@ function datalog() {
 	}
 	
 	console.log.apply(console, arguments);
-};
-
-enterDevMode = function() {
-	document.cookie = 'devmode=1;expires=Fri, 31 Dec 9999 23:59:59 GMT';
 };
 
 // socket.io wrapper object
@@ -63,7 +64,8 @@ SoTradeConnection.prototype.init = function() {
 	
 	this.socket.on('push-container', (function(wdata) {
 		this.unwrap(wdata, (function(data) {
-			datalog('!', data);
+			if (data.type != 'debug-info') // server debug info only in server debug mode
+				datalog('!', data);
 			
 			this._rxPackets++;
 			
@@ -174,6 +176,8 @@ SoTradeConnection.prototype.emit = function(evname, data, cb) {
 	data.id = evname + '--' + id;
 	
 	if (data.__only_in_dev_mode__ && !devmode())
+		return cb(null);
+	if (data.__only_in_srv_dev_mode__ && !srvdevmode())
 		return cb(null);
 	
 	if (this.getKey() && !data.key)

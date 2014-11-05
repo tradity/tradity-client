@@ -49,8 +49,9 @@ angular.module('tradity').
 				});
 				
 				$scope.interGroupResults = rankify($scope.interGroupResults, function(r) { return r.totalvalue; });
-				
-				$scope.school.usercount = $scope.results.length - $scope.pendingMembers.length;
+
+				if ($scope.school)
+					$scope.school.usercount = $scope.results.length - $scope.pendingMembers.length;
 			});
 		};
 

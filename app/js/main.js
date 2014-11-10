@@ -137,18 +137,3 @@ var escapeHTML = function(s) {
 	        .replace(/'/, '&#039;')
 	        .replace(/"/, '&quot;');
 };
-
-var rankify = function(res, key, filter) {
-	filter = filter || function() { return true; };
-	key = key || function(r) { return r.hastraded ? r.totalvalue - r.prov_sum : -Infinity; };
-	
-	res = res.filter(filter);
-	res.sort(function(a, b) {
-		return key(b) - key(a);
-	});
-	
-	for (var i = 0; i < res.length; ++i)
-		res[i].rank = i + 1;
-	
-	return res;
-};

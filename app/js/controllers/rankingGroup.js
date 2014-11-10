@@ -8,53 +8,6 @@ angular.module('tradity').
 			$scope.computeGroupRanking();
 		});
 		
-		$scope.computeGroupRanking = function() {
-			socket.emit('list-schools', { 
-				_cache: 60,
-				parentPath: $scope.school ? $scope.school.path : null
-			}, function(schoollist) {
-				var schools = schoollist.result || [];
-				
-				$scope.interGroupResults = [];
-				
-				// linearize intergroup results
-				$.each(schools, function(i, s) {
-					var students = [];
-					
-					$.each($scope.results, function(i, e) {
-						if (e.schoolpath && (e.schoolpath == s.path || e.schoolpath.substr(0, s.path.length + 1) == s.path + '/') && e.hastraded && !e.pending)
-							students.push(e);
-					});
-			
-					students.sort(function(a, b) { return b.totalvalue - a.totalvalue; });
-					
-					if (students.length == 0)
-						return;
-						
-					var avg = {prov_sum: 0, totalvalue: 0, school: s.id, schoolname: s.name, schoolpath: s.path};
-					var n = 0;
-					for (var i = 0; i < students.length && i < 5; ++i) {
-						++n;
-						avg.prov_sum += students[i].prov_sum;
-						avg.totalvalue += students[i].totalvalue;
-					}
-					
-					if (n > 0) {
-						avg.count = students.length;
-						avg.prov_sum /= n;
-						avg.totalvalue /= n;
-						
-						$scope.interGroupResults.push(avg);
-					}
-				});
-				
-				$scope.interGroupResults = rankify($scope.interGroupResults, function(r) { return r.totalvalue; });
-
-				if ($scope.school)
-					$scope.school.usercount = $scope.results.length - $scope.pendingMembers.length;
-			});
-		};
-
 		socket.emit('get-ranking', {
 			since: 0,
 			schoolid: $scope.schoolid,

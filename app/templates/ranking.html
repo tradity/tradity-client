@@ -1,15 +1,14 @@
 <div id="stats" class="main-content ranking" infinite-scroll="loadMore()" infinite-scroll-distance="2">
 	<div id="tabs">
 		<ul>
-			<li><a ui-sref=".all">Reingewinn</a></li>
-			<li><a ui-sref=".all-withprov">Leader</a></li>
-			<li><a ui-sref=".follower">Follower</a></li>
-			<li><a ui-sref=".all-week">Reingewinn (Woche)</a></li>
-			<li><a ui-sref=".follower-week">Follower (Woche)</a></li>
-			<li ng-show="ownUser.schoolid"><a ui-sref=".intragroup">{{ownUser.schoolname}}</a></li>
-			<li><a ui-sref=".intergroup">Gruppen</a></li>
-			<li><a ui-sref=".xp">XP</a></li>
-			<li ng-show="isAdmin"><a ui-sref=".admin-all">Mitglieder</a></li>
+			<li><a ui-sref=".({spec: csr({type: 'all'})})">Reingewinn</a></li>
+			<li><a ui-sref=".({spec: csr({type: 'xp'})})">XP</a></li>
+			<li ng-show="isAdmin"><a ui-sref=".({spec: csr({type: 'administrative'})})">Mitglieder</a></li>
+		</ul>
+		
+		<ul>
+			<li><a ng-hide="spec.includeProvision" ui-sref=".({spec: csr({includeProvision: true})})">Mit Provision</a></li>
+			<li><a ng-show="spec.includeProvision" ui-sref=".({spec: csr({includeProvision: false})})">Ohne Provision</a></li>
 		</ul>
 
 		<form class="pure-form" id="rankingSearch">
@@ -18,6 +17,35 @@
 
 		<div class="clearfix"></div>
 
-		<div ui-view></div>
+		<div id="all">
+			<div class="table-wrapper">
+				<table class="ranking table table-bordered">
+					<tr>
+						<th>Rang</th>
+						<th>Name</th>
+						<th>Reingewinn</th>
+						<th>XP</th>
+						<th>Schulname</th>
+						<th>Spielerzahl</th>
+						<th colspan="2">Vollname</th>
+						<th>Follower­performance</th>
+						<th>Follower­bewertung</th>
+					</tr>
+					<tr ng-repeat="result in results[spec.type] | filter: searchText | limitTo:totalDisplayed" ng-class="'rank-item rank-'+result.rank">
+						<td>{{result.rank}}</td>
+						<td class="rank-name"><a ui-sref="game.profile.overview({userId: result.name})">{{result.name}}</a></td>
+						<td>{{((result.totalvalue - result.prov_sum) / 10000) - 100000 | currency}} ({{(((result.totalvalue - result.prov_sum) / 10000) - 100000) / 1000 | number:2}} %)</td>
+						<td>{{result.xp}}</td>
+						<td><a ui-sref="game.group({schoolid: result.schoolpath})">{{result.schoolname}}</a></td>
+						<td>{{result.count}}</td>
+						<td>{{result.giv_name}}</td>
+						<td>{{result.fam_name}}</td>
+						<td>{{(result.fperf-1)*100 | number:2}} %</td>
+						<td>{{(result.fperfval)*100000 | number:2}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
 	</div>
 </div>

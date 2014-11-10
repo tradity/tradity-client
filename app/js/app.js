@@ -144,50 +144,9 @@ angular.module('tradity', [
 			controller: 'TradeDetailsCtrl'
 		}).
 		state('game.ranking', {
-			abstract: true,
-			url: '/ranking',
+			url: '/ranking/:spec',
 			templateUrl: 'templates/ranking.html',
 			controller: 'RankingCtrl'
-		}).
-		state('game.ranking.all', {
-			url: '/all',
-			templateUrl: 'templates/ranking.all.html',
-			controller: 'RankingAllCtrl'
-		}).
-		state('game.ranking.admin-all', {
-			url: '/admin-all',
-			templateUrl: 'templates/ranking.admin-all.html',
-			controller: 'RankingAdminAllCtrl'
-		}).
-		state('game.ranking.all-withprov', {
-			url: '/all-withprov',
-			templateUrl: 'templates/ranking.all-withprov.html',
-			controller: 'RankingAllWithProvCtrl'
-		}).
-		state('game.ranking.all-week', {
-			url: '/all-week',
-			templateUrl: 'templates/ranking.all-week.html',
-			controller: 'RankingAllWeekCtrl'
-		}).
-		state('game.ranking.follower', {
-			url: '/follower',
-			templateUrl: 'templates/ranking.follower.html',
-			controller: 'RankingFollowerCtrl'
-		}).
-		state('game.ranking.follower-week', {
-			url: '/follower-week',
-			templateUrl: 'templates/ranking.follower-week.html',
-			controller: 'RankingFollowerWeekCtrl'
-		}).
-		state('game.ranking.intergroup', {
-			url: '/intergroup',
-			templateUrl: 'templates/ranking.intergroup.html',
-			controller: 'RankingGroupCtrl'
-		}).
-		state('game.ranking.xp', {
-			url: '/xp',
-			templateUrl: 'templates/ranking.xp.html',
-			controller: 'RankingXPCtrl'
 		}).
 		state('game.profile', {
 			url: '/user/:userId',
@@ -277,35 +236,10 @@ angular.module('tradity', [
 			templateUrl: 'templates/group.pinboard.html',
 			controller: 'CommentCtrl'
 		}).
-		state('game.group.intragroup', {
-			url: '/+ranking',
-			templateUrl: 'templates/group.intragroup.html',
-			controller: 'RankingAllCtrl'
-		}).
-		state('game.group.intragroup-follower', {
-			url: '/+follower',
-			templateUrl: 'templates/ranking.follower.html',
-			controller: 'RankingFollowerCtrl'
-		}).
-		state('game.group.intragroup-week', {
-			url: '/+week',
-			templateUrl: 'templates/ranking.all-week.html',
-			controller: 'RankingAllWeekCtrl'
-		}).
-		state('game.group.intragroup-follower-week', {
-			url: '/+follower-week',
-			templateUrl: 'templates/ranking.follower-week.html',
-			controller: 'RankingFollowerWeekCtrl'
-		}).
-		state('game.group.intergroup', {
-			url: '/+intergroup',
-			templateUrl: 'templates/group.intergroup.html',
-			controller: 'RankingGroupCtrl'
-		}).
-		state('game.group.admin-all', {
-			url: '/+admin-all',
-			templateUrl: 'templates/ranking.admin-all.html',
-			controller: 'RankingAdminAllCtrl'
+		state('game.group.ranking', {
+			url: '/+ranking/:spec',
+			templateUrl: 'templates/ranking.html',
+			controller: 'RankingCtrl'
 		}).
 		state('error', {
 			templateUrl: 'templates/error.html'

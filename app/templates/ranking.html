@@ -36,13 +36,14 @@
 						ng-show="!result.isSchoolEntry || result.count > 1">
 						<td>{{result.rank}}</td>
 						<td class="rank-name"><a ui-sref="game.profile.overview({userId: result.name})">{{result.name}}</a></td>
-						<td>{{((result.totalvalue - result.prov_sum) / 10000) - 100000 | currency}} ({{(((result.totalvalue - result.prov_sum) / 10000) - 100000) / 1000 | number:2}} %)</td>
-						<td>{{result.xp}}</td>
-						<td><a ui-sref="game.group({schoolid: result.schoolpath})">{{result.schoolname}}</a> ({{result.count}} Spieler)</td>
+						<td style="text-align: right">{{((result.totalvalue - result.prov_sum) / 10000) - 100000 | currency}} ({{(((result.totalvalue - result.prov_sum) / 10000) - 100000) / 1000 | number:2}} %)</td>
+						<td style="text-align: right">{{result.xp | number:0}}</td>
+						<td><a ui-sref="game.group({schoolid: result.schoolpath})">{{result.schoolname}}</a>
+							<span ng-show="result.isSchoolEntry">({{result.count}} Spieler)</span></td>
 						<td ng-show="spec.type == 'administrative'">{{result.giv_name}}</td>
 						<td ng-show="spec.type == 'administrative'">{{result.fam_name}}</td>
-						<td ng-show="spec.type == 'follower'">{{(result.fperf-1)*100 | number:2}} %</td>
-						<td ng-show="spec.type == 'follower'">{{(result.fperfval)*100000 | number:2}}</td>
+						<td style="text-align: right" ng-show="spec.type == 'follower'">{{(result.fperf-1)*100 | number:2}} %</td>
+						<td style="text-align: right" ng-show="spec.type == 'follower'">{{(result.fperfval)*100000 | number:2}}</td>
 					</tr>
 				</table>
 			</div>

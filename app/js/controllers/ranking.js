@@ -81,6 +81,7 @@ angular.module('tradity').
 						totalvalue: 0,
 						fperfval: 0,
 						fperf: 0,
+						xp: 0,
 						school: s.id,
 						schoolname:
 						s.name,
@@ -96,6 +97,7 @@ angular.module('tradity').
 						avg.totalvalue += students[i].totalvalue;
 						avg.fperfval += students[i].fperfval;
 						avg.fperf += students[i].fperf;
+						avg.xp += students[i].xp;
 					}
 					
 					if (n > 0) {
@@ -104,6 +106,7 @@ angular.module('tradity').
 						avg.totalvalue /= n;
 						avg.fperfval /= n;
 						avg.fperf /= n;
+						avg.xp /= n;
 						
 						res.push(avg);
 					}

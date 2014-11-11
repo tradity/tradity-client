@@ -140,7 +140,7 @@ angular.module('tradity').
 					r.fperfval : -Infinity; }
 			},
 			xp: {
-				filter: function(r, s) { return r.xp != null; },
+				filter: function(r, s) { return r.xp; },
 				key: function(r, s) { return r.xp; }
 			}
 		};

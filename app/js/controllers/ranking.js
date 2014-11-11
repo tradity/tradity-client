@@ -54,6 +54,7 @@ angular.module('tradity').
 			filter = function(r) { return filter_ ? filter_(r, $scope.spec) : true; };
 			key    = function(r) { return key_(r, $scope.spec); };
 			
+			res = $.extend(true, [], res); // deep copy (so user.rank does not get carried over)
 			res = res.filter(filter);
 			
 			for (var i = 0; i < res.length; ++i)
@@ -69,15 +70,17 @@ angular.module('tradity').
 							&& !e.pending)
 							students.push(e);
 					});
-			
-					students.sort(function(a, b) { return key(b) - key(a); });
 					
 					if (students.length == 0)
 						return;
 					
+					students.sort(function(a, b) { return key(b) - key(a); });
+					
 					var avg = {
 						prov_sum: 0,
 						totalvalue: 0,
+						fperfval: 0,
+						fperf: 0,
 						school: s.id,
 						schoolname:
 						s.name,
@@ -91,12 +94,16 @@ angular.module('tradity').
 						++n;
 						avg.prov_sum += students[i].prov_sum;
 						avg.totalvalue += students[i].totalvalue;
+						avg.fperfval += students[i].fperfval;
+						avg.fperf += students[i].fperf;
 					}
 					
 					if (n > 0) {
 						avg.count = students.length;
 						avg.prov_sum /= n;
 						avg.totalvalue /= n;
+						avg.fperfval /= n;
+						avg.fperf /= n;
 						
 						res.push(avg);
 					}
@@ -121,11 +128,13 @@ angular.module('tradity').
 				key: function(r, s) { return r.uid; }
 			},
 			all: {
-				key: function(r, s) { return r.hastraded ? r.totalvalue - (s.includeProvision ? 0 : r.prov_sum) : -Infinity; }
+				key: function(r, s) { return (r.hastraded || r.isSchoolEntry) ?
+					r.totalvalue - (s.includeProvision ? 0 : r.prov_sum) : -Infinity; }
 			},
 			follower: {
 				filter: function(r, s) { return r.fperf != null; },
-				key: function(r, s) { return r.hastraded ? r.fperfval : -Infinity; }
+				key: function(r, s) { return (r.hastraded || r.isSchoolEntry) ? 
+					r.fperfval : -Infinity; }
 			},
 			xp: {
 				filter: function(r, s) { return r.xp != null; },

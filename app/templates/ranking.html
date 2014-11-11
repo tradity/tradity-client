@@ -3,7 +3,8 @@
 		<ul>
 			<li><a ui-sref=".({spec: csr({type: 'all'})})">Reingewinn</a></li>
 			<li><a ui-sref=".({spec: csr({type: 'xp'})})">XP</a></li>
-			<li ng-show="isAdmin"><a ui-sref=".({spec: csr({type: 'administrative'})})">Mitglieder</a></li>
+			<li><a ui-sref=".({spec: csr({type: 'follower'})})">Follower</a></li>
+			<li ng-show="isAdmin || selfIsSchoolAdmin"><a ui-sref=".({spec: csr({type: 'administrative'})})">Mitglieder</a></li>
 		</ul>
 		
 		<ul>
@@ -25,23 +26,23 @@
 						<th>Name</th>
 						<th>Reingewinn</th>
 						<th>XP</th>
-						<th>Schulname</th>
-						<th>Spielerzahl</th>
-						<th colspan="2">Vollname</th>
-						<th>Follower­performance</th>
-						<th>Follower­bewertung</th>
+						<th>Schule</th>
+						<th ng-show="spec.type == 'administrative'" colspan="2">Vollname</th>
+						<th ng-show="spec.type == 'follower'">Follower­performance</th>
+						<th ng-show="spec.type == 'follower'">Follower­bewertung</th>
 					</tr>
-					<tr ng-repeat="result in results[spec.type] | filter: searchText | limitTo:totalDisplayed" ng-class="'rank-item rank-'+result.rank">
+					<tr ng-repeat="result in results[spec.type] | filter: searchText | limitTo:totalDisplayed"
+						ng-class="'rank-item rank-'+result.rank"
+						ng-show="!result.isSchoolEntry || result.count > 1">
 						<td>{{result.rank}}</td>
 						<td class="rank-name"><a ui-sref="game.profile.overview({userId: result.name})">{{result.name}}</a></td>
 						<td>{{((result.totalvalue - result.prov_sum) / 10000) - 100000 | currency}} ({{(((result.totalvalue - result.prov_sum) / 10000) - 100000) / 1000 | number:2}} %)</td>
 						<td>{{result.xp}}</td>
-						<td><a ui-sref="game.group({schoolid: result.schoolpath})">{{result.schoolname}}</a></td>
-						<td>{{result.count}}</td>
-						<td>{{result.giv_name}}</td>
-						<td>{{result.fam_name}}</td>
-						<td>{{(result.fperf-1)*100 | number:2}} %</td>
-						<td>{{(result.fperfval)*100000 | number:2}}</td>
+						<td><a ui-sref="game.group({schoolid: result.schoolpath})">{{result.schoolname}}</a> ({{result.count}} Spieler)</td>
+						<td ng-show="spec.type == 'administrative'">{{result.giv_name}}</td>
+						<td ng-show="spec.type == 'administrative'">{{result.fam_name}}</td>
+						<td ng-show="spec.type == 'follower'">{{(result.fperf-1)*100 | number:2}} %</td>
+						<td ng-show="spec.type == 'follower'">{{(result.fperfval)*100000 | number:2}}</td>
 					</tr>
 				</table>
 			</div>

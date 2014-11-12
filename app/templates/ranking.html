@@ -10,6 +10,8 @@
 		<ul>
 			<li><a ng-hide="spec.includeProvision" ui-sref=".({spec: csr({includeProvision: true})})">Provision miteinbeziehen</a></li>
 			<li><a ng-show="spec.includeProvision" ui-sref=".({spec: csr({includeProvision: false})})">Provision nicht miteinbeziehen</a></li>
+			<li><a ng-hide="spec.showUsers" ui-sref=".({spec: csr({showUsers: true})})">Auch Benutzer anzeigen</a></li>
+			<li><a ng-show="spec.showUsers" ui-sref=".({spec: csr({showUsers: false})})">Nur Gruppen anzeigen</a></li>
 		</ul>
 		<ul ng-show="spec.type == 'all' || spec.type == 'follower'">
 			<li>
@@ -41,22 +43,35 @@
 			<div class="table-wrapper">
 				<table class="ranking table table-bordered">
 					<tr>
-						<th>Rang</th>
-						<th>Name</th>
-						<th ng-show="spec.type == 'all'">Kursänderung</th>
+						<th ng-show="spec.showUsers">Rang</th>
+						<th ng-show="spec.showUsers">Name</th>
+						<th ng-show="spec.type == 'all'" colspan="2">Kursänderung</th>
+						<th ng-show="spec.type == 'all'">(Provision)</th>
 						<th ng-show="spec.type == 'xp'">XP</th>
 						<th>Schule</th>
 						<th ng-show="spec.type == 'administrative'" colspan="2">Vollname</th>
 						<th ng-show="spec.type == 'follower'">Follower­performance</th>
 						<th ng-show="spec.type == 'follower'">Follower­bewertung</th>
 					</tr>
-					<tr ng-repeat="result in results[spec.type] | filter: searchText | limitTo:totalDisplayed"
-						ng-class="'rank-item rank-'+result.rank"
-						ng-show="!result.isSchoolEntry || result.count > 1">
-						<td>{{result.rank}}</td>
-						<td class="rank-name"><a ui-sref="game.profile.overview({userId: result.name})">{{result.name}}</a></td>
+					<tr ng-repeat="result in results[spec.type] | filter: searchText | filter: resultDisplayFilter | limitTo:totalDisplayed"
+						ng-class="'rank-item rank-' + result.rank + (!result.hastraded ? ' newtrader' : '')">
+						<td ng-show="spec.showUsers">{{result.rank}}</td>
+						<td ng-show="spec.showUsers" class="rank-name"><a ui-sref="game.profile.overview({userId: result.name})">{{result.name}}</a></td>
 						<td style="text-align: right" ng-show="spec.type == 'all'">
-							{{(result.key - 1) * 100 | number:2}} %
+							<span ng-show="result.hastraded">
+								{{(result.key - 1) * 100 | number:2}} %
+							</span>
+							<span ng-hide="result.hastraded">–</span>
+						</td>
+						<td style="text-align: right" ng-show="spec.type == 'all'">
+							<span ng-show="result.hastraded">
+								{{(result.totalvalue - result.past_totalvalue) / 10000 | number:2}} €
+							</span>
+							<span ng-hide="result.hastraded">–</span>
+						</td>
+						<td style="text-align: right" ng-show="spec.type == 'all'">
+							<span ng-show="result.hastraded">{{(result.prov_sum - result.past_prov_sum) / 10000 | number:2}} €</span>
+							<span ng-hide="result.hastraded">–</span>
 						</td>
 						<td style="text-align: right" ng-show="spec.type == 'xp'">{{result.xp | number:0}}</td>
 						<td><a ui-sref="game.group({schoolid: result.schoolpath})">{{result.schoolname}}</a>

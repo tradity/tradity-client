@@ -88,11 +88,10 @@ angular.module('tradity').
 					];
 					
 					var avg = {
+						hastraded: 0,
 						school: s.id,
-						schoolname:
-						s.name,
-						schoolpath:
-						s.path,
+						schoolname: s.name,
+						schoolpath: s.path,
 						isSchoolEntry: true
 					};
 					
@@ -102,6 +101,8 @@ angular.module('tradity').
 					var n = 0;
 					for (var i = 0; i < students.length && i < 5; ++i) {
 						++n;
+						
+						avg.hastraded |= students[i].hastraded;
 						for (var j = 0; j < additiveKeys.length; ++j)
 							avg[additiveKeys[j]] += students[i][additiveKeys[j]];
 					}
@@ -224,6 +225,10 @@ angular.module('tradity').
 				case 'wprov':   $scope.spec.includeProvision = true; break;
 			}
 		}
+		
+		$scope.resultDisplayFilter = function(result) {
+			return result.isSchoolEntry ? ($scope.spec.showGroups && result.count > 1) : $scope.spec.showUsers;
+		};
 		
 		// return a string representing a new ranking specification
 		$scope.csr = $scope.changedSpecRef = function(changes) {

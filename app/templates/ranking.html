@@ -11,6 +11,25 @@
 			<li><a ng-hide="spec.includeProvision" ui-sref=".({spec: csr({includeProvision: true})})">Provision miteinbeziehen</a></li>
 			<li><a ng-show="spec.includeProvision" ui-sref=".({spec: csr({includeProvision: false})})">Provision nicht miteinbeziehen</a></li>
 		</ul>
+		<ul>
+			<li>
+				<a>
+					Startzeitpunkt:
+					<span ng-show="spec.since">{{spec.since | date:'short'}}</span>
+					<span ng-hide="spec.since">Spielbeginn</span>
+				</a>
+			</li>
+			<li>
+				<a>
+					Endzeitpunkt:
+					<span ng-show="spec.upto">{{spec.upto | date:'short'}}</span>
+					<span ng-hide="spec.upto">Jetzt</span>
+				</a>
+			</li>
+			<li><a ui-sref=".({spec: csr({since: 'weekstart'})})">Seit Wochenanfang</a></li>
+			<li><a ui-sref=".({spec: csr({since: '1 week'})})">Seit 1 Woche</a></li>
+			<li><a ui-sref=".({spec: csr({since: '1 month'})})">Seit 1 Monat</a></li>
+		</div>
 
 		<form class="pure-form" id="rankingSearch">
 			<input type="search" ng-model="searchText" placeholder="Suche" class="pure-input">

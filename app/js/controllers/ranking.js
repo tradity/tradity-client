@@ -1,4 +1,4 @@
-function parseDateSpec(arg) {
+function parseDateSpec(arg, defaultDate) {
 	// relative unix timestamp
 	if (arg && (arg[0] == '+' || arg[0] == '-') && parseInt(arg) == arg)
 		return new Date(parseInt(arg) * 1000 + Date.now());
@@ -8,8 +8,13 @@ function parseDateSpec(arg) {
 		return new Date(arg * 1000);
 	
 	// do not accepty falsey values except for 0
-	if (!arg)
-		return null;
+	if (!arg || arg === 'null')
+		return defaultDate;
+	
+	if (arg === 'weekstart') {
+		var now = new Date();
+		return new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - now.getUTCDay(), 0, 0, 0, 0);
+	}
 	
 	arg = String(arg).toLowerCase();
 	
@@ -38,11 +43,11 @@ function parseDateSpec(arg) {
 	if (new Date(arg).getTime())
 		return new Date(arg);
 	
-	return null;
+	return defaultDate;
 }
 
 angular.module('tradity').
-	controller('RankingCtrl', function($scope, $stateParams, socket) {
+	controller('RankingCtrl', function($scope, $state, $stateParams, socket) {
 		$scope.totalDisplayed = 20;
 
 		$scope.loadMore = function() {
@@ -180,6 +185,7 @@ angular.module('tradity').
 				$scope.rawResults[i].isSchoolAdmin = admins.indexOf($scope.rawResults[i].name) != -1;
 		}
 		
+		/* build results */
 		$scope.rawResults = [];
 		$scope.results = {};
 		$scope.schools = [];
@@ -196,8 +202,12 @@ angular.module('tradity').
 			$scope.spec.type = 'all'; // default type
 		spec.shift();
 		
-		if ($scope.spec.since = parseDateSpec(spec[0])) spec.shift();
-		if ($scope.spec.upto  = parseDateSpec(spec[0])) spec.shift();
+		$scope.rankingCfg = ($scope.school ?
+			($scope.school.config && $scope.school.config.ranking) :
+			$scope.serverConfig.ranking) || {};
+		
+		if ($scope.spec.since = parseDateSpec(spec[0], $scope.rankingCfg.since)) spec.shift();
+		if ($scope.spec.upto  = parseDateSpec(spec[0], $scope.rankingCfg.upto))  spec.shift();
 		
 		// various flags
 		$scope.spec.showGroups = true;
@@ -216,8 +226,8 @@ angular.module('tradity').
 		$scope.csr = $scope.changedSpecRef = function(changes) {
 			var newSpec = $.extend(true, {}, $scope.spec, changes);
 			var specArray = [newSpec.type];
-			if (newSpec.since) specArray.push(newSpec.since.toDateString());
-			if (newSpec.upto)  specArray.push(newSpec.upto .toDateString());
+			if (newSpec.since) specArray.push(newSpec.since.toDateString ? newSpec.since.toDateString() : newSpec.since);
+			if (newSpec.upto)  specArray.push(newSpec.upto .toDateString ? newSpec.upto .toDateString() : newSpec.upto);
 			if (!newSpec.showGroups) specArray.push('nogroup');
 			if (!newSpec.showUsers)  specArray.push('nouser');
 			if (newSpec.includeProvision) specArray.push('wprov');

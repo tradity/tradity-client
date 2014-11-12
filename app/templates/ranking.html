@@ -11,7 +11,7 @@
 			<li><a ng-hide="spec.includeProvision" ui-sref=".({spec: csr({includeProvision: true})})">Provision miteinbeziehen</a></li>
 			<li><a ng-show="spec.includeProvision" ui-sref=".({spec: csr({includeProvision: false})})">Provision nicht miteinbeziehen</a></li>
 		</ul>
-		<ul>
+		<ul ng-show="spec.type == 'all' || spec.type == 'follower'">
 			<li>
 				<a>
 					Startzeitpunkt:
@@ -43,7 +43,7 @@
 					<tr>
 						<th>Rang</th>
 						<th>Name</th>
-						<th ng-show="spec.type == 'all'">Reingewinn</th>
+						<th ng-show="spec.type == 'all'">Kursänderung</th>
 						<th ng-show="spec.type == 'xp'">XP</th>
 						<th>Schule</th>
 						<th ng-show="spec.type == 'administrative'" colspan="2">Vollname</th>
@@ -56,12 +56,11 @@
 						<td>{{result.rank}}</td>
 						<td class="rank-name"><a ui-sref="game.profile.overview({userId: result.name})">{{result.name}}</a></td>
 						<td style="text-align: right" ng-show="spec.type == 'all'">
-							{{((result.totalvalue - result.prov_sum) / 10000) - 100000 | currency}}
-							({{(((result.totalvalue - result.prov_sum) / 10000) - 100000) / 1000 | number:2}} %)
+							{{(result.key - 1) * 100 | number:2}} %
 						</td>
 						<td style="text-align: right" ng-show="spec.type == 'xp'">{{result.xp | number:0}}</td>
 						<td><a ui-sref="game.group({schoolid: result.schoolpath})">{{result.schoolname}}</a>
-							<span ng-show="result.isSchoolEntry">({{result.count}} Spieler)</span></td>
+							<span ng-show="result.isSchoolEntry">({{result.count}} Spieler, Top {{result.rankCount}})</span></td>
 						<td ng-show="spec.type == 'administrative'">{{result.giv_name}}</td>
 						<td ng-show="spec.type == 'administrative'">{{result.fam_name}}</td>
 						<td style="text-align: right" ng-show="spec.type == 'follower'">{{(result.fperf-1)*100 | number:2}} %</td>

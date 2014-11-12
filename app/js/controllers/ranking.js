@@ -62,8 +62,10 @@ angular.module('tradity').
 			res = $.extend(true, [], res); // deep copy (so user.rank does not get carried over)
 			res = res.filter(filter);
 			
-			for (var i = 0; i < res.length; ++i)
-				res.isSchoolEntry = false;
+			for (var i = 0; i < res.length; ++i) {
+				res[i].isSchoolEntry = false;
+				res[i].key = key(res[i]);
+			}
 			
 			if (schools && schools.length > 0) {
 				// linearize intergroup results
@@ -79,14 +81,13 @@ angular.module('tradity').
 					if (students.length == 0)
 						return;
 					
-					students.sort(function(a, b) { return key(b) - key(a); });
+					students.sort(function(a, b) { return b.key - a.key; });
+					
+					var additiveKeys = [
+						'prov_sum', 'past_prov_sum', 'totalvalue', 'past_totalvalue', 'fperfval', 'fperf', 'xp'
+					];
 					
 					var avg = {
-						prov_sum: 0,
-						totalvalue: 0,
-						fperfval: 0,
-						fperf: 0,
-						xp: 0,
 						school: s.id,
 						schoolname:
 						s.name,
@@ -95,23 +96,24 @@ angular.module('tradity').
 						isSchoolEntry: true
 					};
 					
+					for (var j = 0; j < additiveKeys.length; ++j)
+						avg[additiveKeys[j]] = 0;
+					
 					var n = 0;
 					for (var i = 0; i < students.length && i < 5; ++i) {
 						++n;
-						avg.prov_sum += students[i].prov_sum;
-						avg.totalvalue += students[i].totalvalue;
-						avg.fperfval += students[i].fperfval;
-						avg.fperf += students[i].fperf;
-						avg.xp += students[i].xp;
+						for (var j = 0; j < additiveKeys.length; ++j)
+							avg[additiveKeys[j]] += students[i][additiveKeys[j]];
 					}
 					
 					if (n > 0) {
 						avg.count = students.length;
-						avg.prov_sum /= n;
-						avg.totalvalue /= n;
-						avg.fperfval /= n;
-						avg.fperf /= n;
-						avg.xp /= n;
+						avg.rankCount = n;
+						
+						for (var j = 0; j < additiveKeys.length; ++j)
+							avg[additiveKeys[j]] /= n;
+						
+						avg.key = key(avg);
 						
 						res.push(avg);
 					}
@@ -119,7 +121,7 @@ angular.module('tradity').
 			}
 			
 			res.sort(function(a, b) {
-				return key(b) - key(a);
+				return b.key - a.key;
 			});
 			
 			var r = 1;
@@ -137,7 +139,8 @@ angular.module('tradity').
 			},
 			all: {
 				key: function(r, s) { return (r.hastraded || r.isSchoolEntry) ?
-					r.totalvalue - (s.includeProvision ? 0 : r.prov_sum) : -Infinity; }
+					(r.totalvalue - (s.includeProvision ? 0 : r.prov_sum)) /
+					(r.past_totalvalue - (s.includeProvision ? 0 : r.past_prov_sum)) : -Infinity; }
 			},
 			follower: {
 				filter: function(r, s) { return r.fperf != null; },

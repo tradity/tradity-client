@@ -10,16 +10,11 @@
 					<col class="rankcol-4" style="width: 5%">
 				</colgroup>
 				<tr>
-					<th>Rang</th>
 					<th>Name</th>
 					<th>erh. Provision</th>
 					<th>Gesamt­vermögen</th>
 				</tr>
 				<tr ng-repeat="result in users" class="name-{{result.name}}">
-					<td>
-						<span ng-show="result.rank">{{result.rank}}</span>
-						<span ng-hide="result.rank">–</span>
-					</td>
 					<td class="rank-name">
 						<a ui-sref="game.profile.overview({userId: result.name})" style="cursor: pointer">{{result.name}}</a>
 					</td>

@@ -12,9 +12,8 @@ angular.module('tradity').
 					includeAll: true,
 					_cache: 20
 				}, function(data) {
-					if (data.code == 'get-ranking-success') {
-						$scope.users = rankify(data.result, function(r) { return r.hastraded ? r.totalvalue : -Infinity; });
-					}
+					if (data.code == 'get-ranking-success')
+						$scope.users = data.result;
 				});
 
 			if ($scope.searchText.length != 0) {

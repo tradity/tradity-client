@@ -224,8 +224,6 @@ angular.module('tradity').
 		socket.on('server-config', function() {
 			$scope.fetchSelf();
 		});
-		
-		socket.emit('server-config');
 
 		/* events */
 		$scope.$on('watch-add', function(angEv, data) {

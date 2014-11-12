@@ -13,7 +13,7 @@
 			<span class="feed-arrow"></span>
 			<div class="feed-entry-content">
 				<div class="feed-head">
-					<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
+					<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'short'}}">{{vtime(comment.time)}}</span>
 					<a ui-sref="game.profile.overview({userId: comment.username})" class="text-link username">{{comment.username}}</a>
 					<span ng-show="isAdmin" class="actions">
 						<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>

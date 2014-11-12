@@ -31,7 +31,7 @@
 						<span ng-show="entry.leader"><a ui-sref="game.profile.overview({userId: entry.username})">{{entry.stockname}}</a></span>
 						<span ng-hide="entry.leader">{{entry.stockname}}</span>
 					</td>
-					<td>{{entry.watchstarttime * 1000 | date:'d.M.yy HH:mm'}}</td>
+					<td>{{entry.watchstarttime * 1000 | date:'short'}}</td>
 					<td>{{entry.watchstartvalue / 10000 | number:3}} €</td>
 					<td>{{entry.bid / 10000 | number:3}} €</td>
 					<td ng-class="{pos: watchlistPerformAll > 0, neg: watchlistPerformAll < 0}">

@@ -6,7 +6,7 @@
 	<div class="chat-item" ng-repeat="message in chat.messages | orderBy:'-time'" ng-class="{me: message.uid == ownUser.id}">
 		<img src="{{message.profilepic || 'img/profile.svg'}}" class="chat-image">
 		<div class="content">
-			<span class="pull-right time" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(message.time)}}</span>
+			<span class="pull-right time" title="{{comment.time * 1000 | date:'short'}}">{{vtime(message.time)}}</span>
 			{{message.content}}
 		</div>
 		<div class="clearfix"></div>

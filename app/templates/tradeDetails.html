@@ -21,7 +21,7 @@
 				</tr>
 				<tr>
 					<td title="{{trade.stocktextid}}"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: trade.stocktextid, amount: 0})">{{trade.stockname}}</a></td>
-					<td>{{trade.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
+					<td>{{trade.buytime * 1000 | date:'short'}}</td>
 					<td ng-class="{pos: balance > 0, neg: balance < 0}">
 						{{ balance = (trade.money * -1) / 10000 | currency}}
 					</td>
@@ -46,7 +46,7 @@
 			<span class="feed-arrow"></span>
 			<div class="feed-entry-content">
 				<div class="feed-head">
-					<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'d.M.yy HH:mm'}}">{{vtime(comment.time)}}</span>
+					<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'short'}}">{{vtime(comment.time)}}</span>
 					<a ui-sref="game.profile.overview({userId: comment.username})" class="text-link username">{{comment.username}}</a>
 					<span ng-show="isAdmin" class="actions">
 						<a ng-click="editComment(comment)" style="cursor: pointer">Bearbeiten</a>

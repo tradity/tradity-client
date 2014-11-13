@@ -23,7 +23,7 @@
 						<span ng-show="order.query.leader"><a ui-sref="game.profile.overview({userId: order.query.leader})">{{order.query.dquerydata.name}}</a></span>
 						<span ng-hide="order.query.leader"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: order.query.stockid, amount: 0})">{{order.query.dquerydata.name}}</a<</span>
 					</td>
-					<td>{{order.query.dquerydata.ordertime | date:'d.M.yy HH:mm'}}</td>
+					<td>{{order.query.dquerydata.ordertime | date:'short'}}</td>
 					<td>{{order.query.dquerydata.xtype}}</td>
 					<td>
 						<span ng-show="order.query.dquerydata.xvalue">{{order.query.dquerydata.xvalue | number:3}} €</span>
@@ -59,7 +59,7 @@
 					<td class="{{order.ordertype}}" title="{{order.stocktextid}}">
 						<a ui-sref="game.tradeDetails({tradeId: order.orderid})">{{order.stockname}}</a>
 					</td>
-					<td>{{order.buytime * 1000 | date:'d.M.yy HH:mm'}}</td>
+					<td>{{order.buytime * 1000 | date:'short'}}</td>
 					<td>{{order.amount}}</td>
 					<td>{{order.price / 10000 | number:3}} €</td>
 					<td>{{order.fee / 10000 | currency}}</td>

@@ -1,6 +1,7 @@
 angular.module('tradity').
 	controller('RegistrationCtrl', function($scope, $stateParams, $state, $dialogs, socket) {
 		$scope.school = $stateParams.schoolid;
+		$scope.schoolname_none = false;
 		$scope.traditye = 0;
 		$scope.zipcode = '';
 		$scope.town = '';
@@ -67,12 +68,16 @@ angular.module('tradity').
 		});
 		
 		$scope.register = function() {
+			if (!$scope.email)
+				return notification('Bitte gib deine E-Mail-Adresse an.');
 			if (!$scope.agbread)
 				return notification('Bitte bestätige, dass du die AGB gelesen hast.');
 			if ($scope.password_check != $scope.password)
 				return notification('Die Passwörter stimmen nicht überein!');
 			if (!$scope.giv_name || !$scope.fam_name)
 				return notification('Bitte gib deinen Namen an, damit du Gewinne erhalten kannst.');
+			if (!$scope.schoolname_none && !$scope.schoolname)
+				return notification('Bitte gib an, ob und welcher Gruppe du angehörst.');
 			
 			socket.emit('register', {
 				name: $scope.name,

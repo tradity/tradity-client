@@ -11,6 +11,7 @@ angular.module('tradity').
 			$scope.prevschool = data.result.school;
 			$scope.school = data.result.school;
 			$scope.schoolname = document.getElementById('schoolname').value = data.result.schoolname;
+			$scope.schoolname_none = (data.result.school == null);
 			$scope.desc = data.result.desc;
 			$scope.lprovision = data.result.lprovision;
 			$scope.wprovision = data.result.wprovision;
@@ -55,7 +56,7 @@ angular.module('tradity').
 			if ($scope.password_check != $scope.password)
 				return notification('Die Passwörter stimmen nicht überein');
 			
-			$scope.schoolname = document.getElementById('schoolname').value;
+			$scope.schoolname = $scope.schoolname_none ? '' : document.getElementById('schoolname').value;
 			var d = Date.UTC($scope.birthdayy, $scope.birthdaym-1, $scope.birthdayd);
 			if (!$scope.birthdayy)
 				d = null;
@@ -68,7 +69,7 @@ angular.module('tradity').
 			}
 			
 			var school;
-			if (!$scope.schoolname && $scope.school) {
+			if ((!$scope.schoolname && $scope.school) || $scope.schoolname_none) {
 				school = null;
 			} else {
 				var foundSNameInList = null;
@@ -92,7 +93,7 @@ angular.module('tradity').
 				realnamepublish: $scope.realnamepublish,
 				password: $scope.password,
 				email: $scope.email,
-				school: $scope.schoolname ? ($scope.school ? $scope.school : $scope.schoolname) : null,
+				school: school,
 				birthday: d,
 				desc: $scope.desc,
 				lprovision: $scope.lprovision,

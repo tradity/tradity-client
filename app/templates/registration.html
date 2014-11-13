@@ -37,13 +37,15 @@
 			</div>
 			
 			<div class="pure-control-group">
-				<label for="schoolname">Institution / Schule (optional)</label>
-				<input type="text" ng-model="schoolname" placeholder="Schule" id="schoolname">
+				<label for="schoolname">Institution / Schule</label>
+				<input type="text" ng-model="schoolname" placeholder="Schule" id="schoolname"><br>
+				oder: <input id="schoolname_none" ng-model="schoolname_none" type="checkbox"> Keine Gruppe
 			</div>
 
 			<div class="pure-controls">
 				<label for="cb" class="pure-checkbox">
-					<input id="cb" ng-model="agbread" type="checkbox"> Ich habe die <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/">AGB</a> gelesen und akzeptiert.
+					<input id="cb" ng-model="agbread" type="checkbox">
+					Ich habe die <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/">AGB</a> gelesen und akzeptiert.
 				</label>
 			</div>
 

@@ -47,11 +47,16 @@ function parseDateSpec(arg, defaultDate) {
 }
 
 angular.module('tradity').
-	controller('RankingCtrl', function($scope, $state, $stateParams, socket) {
+	controller('RankingCtrl', function($scope, $state, $stateParams, $timeout, socket) {
 		$scope.totalDisplayed = 20;
 
 		$scope.loadMore = function() {
 			$scope.totalDisplayed += 10;
+		};
+		
+		$scope.printRanking = function() {
+			$scope.totalDisplayed = 2000000000; // Infinity possible after angular 1.3.2
+			$timeout(function() { window.print(); }, 10);
 		};
 		
 		/* filter and sort a ranking list (by some given key) and add .rank properties */

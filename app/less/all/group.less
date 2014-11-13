@@ -89,3 +89,13 @@
 #schools .main-comment {
 	margin-bottom: 50px;
 }
+
+@media print {
+	.widgets {
+		display: none;
+	}
+	
+	#schools:after {
+		content: "";
+	}
+}

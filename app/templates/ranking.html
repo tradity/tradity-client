@@ -1,6 +1,6 @@
 <div id="stats" class="main-content ranking" infinite-scroll="loadMore()" infinite-scroll-distance="2">
 	<div id="tabs">
-		<ul>
+		<ul class="ranking-spec-choice">
 			<li><a ui-sref=".({spec: csr({type: 'all', includeProvision: false})})">Reingewinn</a></li>
 			<li><a ui-sref=".({spec: csr({type: 'all', includeProvision: true})})">Leader</a></li>
 			<li><a ui-sref=".({spec: csr({type: 'xp'})})">XP</a></li>
@@ -8,11 +8,12 @@
 			<li ng-show="isAdmin || selfIsSchoolAdmin"><a ui-sref=".({spec: csr({type: 'administrative'})})">Mitglieder</a></li>
 		</ul>
 		
-		<ul>
-			<li><a ng-hide="spec.showUsers" ui-sref=".({spec: csr({showUsers: true})})">Auch Benutzer anzeigen</a></li>
-			<li><a ng-show="spec.showUsers" ui-sref=".({spec: csr({showUsers: false})})">Nur Gruppen anzeigen</a></li>
+		<ul class="ranking-spec-choice">
+			<li ng-hide="spec.showUsers"><a ui-sref=".({spec: csr({showUsers: true})})">Auch Benutzer anzeigen</a></li>
+			<li ng-show="spec.showUsers"><a ui-sref=".({spec: csr({showUsers: false})})">Nur Gruppen anzeigen</a></li>
+			<li ng-show="school"><a ng-click="printRanking()">Drucken</a></li>
 		</ul>
-		<ul ng-show="spec.type == 'all' || spec.type == 'follower'">
+		<ul ng-show="spec.type == 'all' || spec.type == 'follower'" class="ranking-spec-choice">
 			<li>
 				<a>
 					Startzeitpunkt:
@@ -42,9 +43,9 @@
 			<li ng-repeat="tab in rankingCfg().extraTabs">
 				<a ui-sref=".({spec: csr(tab.csr)})">{{tab.text}}</a>
 			</li>
-		</div>
+		</ul>
 
-		<form class="pure-form" id="rankingSearch">
+		<form class="pure-form ranking-spec-choice" id="rankingSearch">
 			<input type="search" ng-model="searchText" placeholder="Suche" class="pure-input">
 		</form>
 

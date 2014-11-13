@@ -35,10 +35,25 @@ var useSchoolAC = function($scope, socket) {
 	
 	socket.on('list-schools', function(result) {
 		$scope.schoolList = result.result;
+		$scope.schoolIndexByPath = {};
+		for (var i = 0; i < $scope.schoolList.length; ++i)
+			$scope.schoolIndexByPath[$scope.schoolList[i].path] = $scope.schoolList[i];
+		
 		for (var i = 0; i < $scope.schoolList.length; ++i) {
-			$scope.schoolList[i].getInputTextValue = 
-			$scope.schoolList[i].getEntryName = function() { return this.name; };
 			$scope.schoolList[i].getExtra = function() { return this.usercount + ' Personen'; };
+			
+			$scope.schoolList[i].getInputTextValue = function() { return this.name; };
+			$scope.schoolList[i].getEntryName = function() {
+				var sep = ' » '; // note that the spaces here are U+2009 (thin space) for compactness
+				var prefix = '';
+				
+				if (parentPath(this.path) != '/') {
+					var parent = $scope.schoolIndexByPath[parentPath(this.path)];
+					prefix = parent.getEntryName() + sep;
+				}
+				
+				return prefix + this.name;
+			};
 		}
 		
 		for (var i = 0; i < $scope.onLSResult.length; ++i)

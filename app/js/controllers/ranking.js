@@ -206,12 +206,15 @@ angular.module('tradity').
 			$scope.spec.type = 'all'; // default type
 		spec.shift();
 		
-		$scope.rankingCfg = ($scope.school ?
-			($scope.school.config && $scope.school.config.ranking) :
-			$scope.serverConfig.ranking) || {};
+		$scope.rankingCfg = function() { 
+			if ($scope.school)
+				return ($scope.school.config && $scope.school.config.ranking) || {};
+			else
+				return $scope.serverConfig.ranking || {};
+		};
 		
-		if ($scope.spec.since = parseDateSpec(spec[0], $scope.rankingCfg.since)) spec.shift();
-		if ($scope.spec.upto  = parseDateSpec(spec[0], $scope.rankingCfg.upto))  spec.shift();
+		if ($scope.spec.since = parseDateSpec(spec[0], $scope.rankingCfg().since)) spec.shift();
+		if ($scope.spec.upto  = parseDateSpec(spec[0], $scope.rankingCfg().upto))  spec.shift();
 		
 		// various flags
 		$scope.spec.showGroups = true;

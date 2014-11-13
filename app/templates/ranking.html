@@ -27,9 +27,21 @@
 					<span ng-hide="spec.upto">Jetzt</span>
 				</a>
 			</li>
-			<li><a ui-sref=".({spec: csr({since: 'weekstart'})})">Seit Wochenanfang</a></li>
-			<li><a ui-sref=".({spec: csr({since: '1 week'})})">Seit 1 Woche</a></li>
-			<li><a ui-sref=".({spec: csr({since: '1 month'})})">Seit 1 Monat</a></li>
+			<li>
+				<a ui-sref=".({spec: csr({since: null, upto: null})})">Seit Spielbeginn</a>
+			</li>
+			<li>
+				<a ui-sref=".({spec: csr({since: 'weekstart'})})">Seit Wochenanfang</a>
+			</li>
+			<li>
+				<a ui-sref=".({spec: csr({since: '1 week'})})">Seit 1 Woche</a>
+			</li>
+			<li>
+				<a ui-sref=".({spec: csr({since: '1 month'})})">Seit 1 Monat</a>
+			</li>
+			<li ng-repeat="tab in rankingCfg().extraTabs">
+				<a ui-sref=".({spec: csr(tab.csr)})">{{tab.text}}</a>
+			</li>
 		</div>
 
 		<form class="pure-form" id="rankingSearch">

@@ -1,15 +1,14 @@
 <div id="stats" class="main-content ranking" infinite-scroll="loadMore()" infinite-scroll-distance="2">
 	<div id="tabs">
 		<ul>
-			<li><a ui-sref=".({spec: csr({type: 'all'})})">Reingewinn</a></li>
+			<li><a ui-sref=".({spec: csr({type: 'all', includeProvision: false})})">Reingewinn</a></li>
+			<li><a ui-sref=".({spec: csr({type: 'all', includeProvision: true})})">Leader</a></li>
 			<li><a ui-sref=".({spec: csr({type: 'xp'})})">XP</a></li>
 			<li><a ui-sref=".({spec: csr({type: 'follower'})})">Follower</a></li>
 			<li ng-show="isAdmin || selfIsSchoolAdmin"><a ui-sref=".({spec: csr({type: 'administrative'})})">Mitglieder</a></li>
 		</ul>
 		
 		<ul>
-			<li><a ng-hide="spec.includeProvision" ui-sref=".({spec: csr({includeProvision: true})})">Provision miteinbeziehen</a></li>
-			<li><a ng-show="spec.includeProvision" ui-sref=".({spec: csr({includeProvision: false})})">Provision nicht miteinbeziehen</a></li>
 			<li><a ng-hide="spec.showUsers" ui-sref=".({spec: csr({showUsers: true})})">Auch Benutzer anzeigen</a></li>
 			<li><a ng-show="spec.showUsers" ui-sref=".({spec: csr({showUsers: false})})">Nur Gruppen anzeigen</a></li>
 		</ul>

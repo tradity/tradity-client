@@ -161,14 +161,15 @@ angular.module('tradity').
 			if (socket.protocolVersion() < $scope.version.minimum)
 				notification('Deine Tradity-Clientversion wird leider nicht mehr unterstützt!');
 			
-			$scope.ownUserRanking = ranking.getRanking(null, $scope.serverConfig.ranking || {});
+			$scope.ownUserRanking = ranking.getRanking(null, $scope.serverConfig.ranking || {}, null, null, true);
 			$scope.ownUserRanking.onRankingUpdated(function() {
 				if ($scope.ownUser)
 					$scope.ownUser.rank = $scope.ownUserRanking.get('all').rankForUser($scope.ownUser.uid);
 			});
 			
 			$scope.$on('user-update', function() {
-				$scope.ownUserRanking.fetch();
+				if ($scope.ownUser)
+					$scope.ownUserRanking.fetch();
 			});
 		});
 		
@@ -262,7 +263,7 @@ angular.module('tradity').
 			} else {
 				var type = 'trade-buy';
 			}
-			if (data.srcuser == $scope.ownUser.uid) {
+			if ($scope.ownUser && data.srcuser == $scope.ownUser.uid) {
 				type += '-self';
 				typePerson = 'yourself';
 			} else if (data.stocktextid == '__LEADER_' + $scope.ownUser.uid + '__') {

@@ -12,11 +12,11 @@ angular.module('tradity')
 		var Ranking = function(school, spec, rankifyOptions, resultFilters) {
 			this.school = school || null;
 			this.spec = spec;
-			this.rankifyOptions = rankifyOptions;
+			this.rankifyOptions = rankifyOptions || {};
 			this.resultFilters = resultFilters || [];
 			this.onRankingUpdatedHandlers = [];
 			
-			this.schoollist = [];
+			this.schools = [];
 			this.rawResults = [];
 			this.results = {};
 			
@@ -33,7 +33,7 @@ angular.module('tradity')
 				_cache: 60,
 				parentPath: self.school ? self.school.path : null
 			}, function(schoollist) {
-				self.schoollist = schoollist.result;
+				self.schools = schoollist.result;
 				self.updateRanking();
 			});
 			
@@ -136,6 +136,14 @@ angular.module('tradity')
 			for (var i = 0; i < res.length; ++i)
 				if (!res[i].isSchoolEntry)
 					res[i].rank = r++;
+			
+			res.rankForUser = function(uid) {
+				for (var i = 0; i < this.length; ++i)
+					if (this[i].uid == uid || this[i].name == uid)
+						return this[i].rank;
+				
+				return null;
+			};
 			
 			return res;
 		};
@@ -261,8 +269,17 @@ angular.module('tradity')
 			return spec;
 		};
 		
-		RankingProvider.prototype.getRanking = function(school, spec, rankifyOptions) {
-			return new Ranking(school, spec, rankifyOptions);
+		RankingProvider.defaultRankifyOptions = {
+			all: {
+				key: function(r, s) { return (r.hastraded || r.isSchoolEntry) ?
+					(r.totalvalue - (s.includeProvision ? 0 : r.prov_sum)) /
+					(r.past_totalvalue - (s.includeProvision ? 0 : r.past_prov_sum)) : -Infinity; }
+			}
+		};
+		
+		RankingProvider.prototype.getRanking = function(school, spec, rankifyOptions, resultFilters) {
+			rankifyOptions = $.extend(true, {}, RankingProvider.defaultRankifyOptions, rankifyOptions || {});
+			return new Ranking(school, spec, rankifyOptions, resultFilters);
 		};
 		
 		return new RankingProvider();

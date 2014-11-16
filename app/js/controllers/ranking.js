@@ -55,18 +55,29 @@ angular.module('tradity').
 			var curScope = $scope;
 			
 			while (curScope) {
-				if (curScope.school && curScope.school.admins)
-					for (var i = 0; i < curScope.school.admins.length; ++i)
-						admins.push(curScope.school.admins[i].adminname);
+				if (curScope.school) {
+					curScope.school.pendingMembers = [];
+					
+					for (var i = 0; curScope.school && i < rawResults.length; ++i) {
+						for (var j = 0; curScope.school.admins && j < curScope.school.admins.length; ++j)
+							rawResults[i].isSchoolAdmin = rawResults[i].isSchoolAdmin ||
+								(rawResults[i].name == curScope.school.admins[j].adminname);
+						
+						if (rawResults[i].pending && rawResults[i].schoolpath == curScope.school.path)
+							curScope.school.pendingMembers.push(rawResults[i]);
+					}
+				}
 				
 				curScope = curScope.$parent;
 			}
 			
-			for (var i = 0; i < rawResults.length; ++i) 
-				rawResults[i].isSchoolAdmin = admins.indexOf(rawResults[i].name) != -1;
-			
 			return rawResults;
 		};
 		
-		$scope.rankingResult = ranking.getRanking($scope.school, $scope.spec, $scope.rankifyOptions, [$scope.markSchoolAdmins]);
+		$scope.rankingResult = ranking.getRanking($scope.school, $scope.spec, $scope.rankifyOptions,
+			[$scope.markSchoolAdmins]);
+		
+		$scope.$on('school-info-update', function() {
+			$scope.rankingResult.fetch();
+		});
 	});

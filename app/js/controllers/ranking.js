@@ -18,11 +18,6 @@ angular.module('tradity').
 				filter: function(r, s) { return r.uid; },
 				key: function(r, s) { return r.uid; }
 			},
-			all: {
-				key: function(r, s) { return (r.hastraded || r.isSchoolEntry) ?
-					(r.totalvalue - (s.includeProvision ? 0 : r.prov_sum)) /
-					(r.past_totalvalue - (s.includeProvision ? 0 : r.past_prov_sum)) : -Infinity; }
-			},
 			follower: {
 				filter: function(r, s) { return r.fperf != null; },
 				key: function(r, s) { return (r.hastraded || r.isSchoolEntry) ? 
@@ -67,13 +62,11 @@ angular.module('tradity').
 				curScope = curScope.$parent;
 			}
 			
-			for (var i = 0; i < $scope.rawResults.length; ++i) 
+			for (var i = 0; i < rawResults.length; ++i) 
 				rawResults[i].isSchoolAdmin = admins.indexOf(rawResults[i].name) != -1;
+			
+			return rawResults;
 		};
 		
 		$scope.rankingResult = ranking.getRanking($scope.school, $scope.spec, $scope.rankifyOptions, [$scope.markSchoolAdmins]);
-		
-		$scope.$on('user-update', function() {
-			$scope.rankingResult.fetch();
-		});
 	});

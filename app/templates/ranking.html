@@ -34,12 +34,12 @@
 			<li>
 				<a ui-sref=".({spec: csr({since: 'weekstart'})})">Seit Wochenanfang</a>
 			</li>
-			<li>
+			<!--<li>
 				<a ui-sref=".({spec: csr({since: '1 week'})})">Seit 1 Woche</a>
 			</li>
 			<li>
 				<a ui-sref=".({spec: csr({since: '1 month'})})">Seit 1 Monat</a>
-			</li>
+			</li>-->
 			<li ng-repeat="tab in rankingCfg().extraTabs">
 				<a ui-sref=".({spec: csr(tab.csr)})">{{tab.text}}</a>
 			</li>

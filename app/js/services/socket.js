@@ -12,24 +12,21 @@ angular.module('tradity')
 		var connect = function() {
 			return io.connect(API_HOST);
 		};
-		var socket = new SoTradeConnection(connect);
+		var socket = new SoTradeConnection(connect, $rootScope.$apply.bind($rootScope));
 		return {
 			on: function (eventName, callback, angularScope) {
 				socket.on(eventName, function () {
 					var args = arguments;
-					$rootScope.$apply(function () {
-						callback.apply(socket, args);
-					});
+					callback.apply(socket, args);
 				}, angularScope);
 			},
 			emit: function (eventName, data, callback) {
 				socket.emit(eventName, data, function () {
 					var args = arguments;
-					$rootScope.$apply(function () {
-						if (callback) {
-							callback.apply(socket, args);
-						}
-					});
+					
+					if (callback) {
+						callback.apply(socket, args);
+					}
 				});
 			},
 			hasOpenQueries: function () { return socket.hasOpenQueries(); },

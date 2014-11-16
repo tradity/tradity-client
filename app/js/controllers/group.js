@@ -1,9 +1,8 @@
 angular.module('tradity').
 	controller('GroupCtrl', function($scope, $sce, $state, $stateParams, DEFAULT_GROUP_BANNER, socket) {
-		$scope.school = {};
+		$scope.school = { pendingMembers: [] };
 		$scope.selfIsSchoolAdmin = false;
 		$scope.selfIsSchoolMember = false;
-		$scope.pendingMembers = [];
 		$scope.comments = [];
 		$scope.schoolid = null;
 		$scope.descpage = '';
@@ -30,7 +29,7 @@ angular.module('tradity').
 					}
 				});
 			} else if (data.code == 'get-school-info-success') {
-				$scope.school = data.result;
+				$.extend(true, $scope.school, data.result);
 				$scope.comments = $.extend(true, [], $scope.school.comments); // deep copy
 				$scope.descpage = $scope.school.descpage;
 				$scope.schoolid = $scope.school.id;
@@ -182,23 +181,4 @@ angular.module('tradity').
 					alert('Fehler: ' + data.code);
 			});
 		};
-
-		$scope.totalDisplayed = 20;
-
-		$scope.loadMore = function() {
-			$scope.totalDisplayed += 10;
-		};
-		
-		socket.emit('get-ranking', {
-			since: 0,
-			schoolid: $scope.schoolid,
-			_cache: 20,
-		}, function(data) {
-			$scope.pendingMembers = [];
-			
-			$.each(data.result, function(i, e) {
-				if ($scope.school && e.schoolpath == $scope.school.path && e.pending)
-					$scope.pendingMembers.push(e);
-			});
-		});
 	});

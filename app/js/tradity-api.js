@@ -25,9 +25,10 @@ function datalog() {
 };
 
 // socket.io wrapper object
-SoTradeConnection = function(connect) {
+SoTradeConnection = function(connect, applyWrap) {
 	this.connect = connect;
 	this.socket = null;
+	this.applyWrap = applyWrap || function(f) { f(); };
 	this.listeners = {}; // listener name -> array of callbacks
 	this.ids = {}; // numeric id -> {cb: callback for that id, prefill: object}
 	this.id = 0;
@@ -46,23 +47,34 @@ SoTradeConnection = function(connect) {
 	this.init();
 };
 
+SoTradeConnection.prototype.externallyCalled = function(fn) {
+	var self = this;
+	return function() {
+		var args = arguments;
+		
+		return self.applyWrap(function() {
+			return fn.apply(self, args);
+		});
+	};
+};
+
 SoTradeConnection.prototype.init = function() {
 	this.socket = this.connect();
 	
-	this.socket.on('response', (function(wdata) {
+	this.socket.on('response', this.externallyCalled(function(wdata) {
 		this.unwrap(wdata, this.responseHandler.bind(this));
-	}).bind(this));
+	}));
 	
-	this.socket.on('push', (function(wdata) {
+	this.socket.on('push', this.externallyCalled(function(wdata) {
 		this.unwrap(wdata, (function(data) {
 			datalog('!', data);
 			
 			this._rxPackets++;
 			this.invokeListeners(data);
 		}).bind(this));
-	}).bind(this));
+	}));
 	
-	this.socket.on('push-container', (function(wdata) {
+	this.socket.on('push-container', this.externallyCalled(function(wdata) {
 		this.unwrap(wdata, (function(data) {
 			if (data.type != 'debug-info') // server debug info only in server debug mode
 				datalog('!', data);
@@ -72,13 +84,13 @@ SoTradeConnection.prototype.init = function() {
 			for (var i = 0; i < data.pushes.length; ++i)
 				this.invokeListeners(data.pushes[i]);
 		}).bind(this));
-	}).bind(this));
+	}));
 	
-	this.socket.on('disconnect', (function(reason) {
+	this.socket.on('disconnect', this.externallyCalled(function(reason) {
 		setTimeout((function() {
 			this.reconnect();
 		}).bind(this), 2300);
-	}).bind(this));
+	}));
 	
 	this.on('internal-server-error', (function() {
 		this.resetExpectedResponses();
@@ -274,7 +286,7 @@ SoTradeConnection.prototype.setKey = function(k) {
 
 SoTradeConnection.prototype.on = function(evname, cb, angularScope) {
 	var index = (this.listeners[evname] = (this.listeners[evname] || [])).push(cb) - 1;
-	this.socket.on(evname, cb);
+	this.socket.on(evname, this.externallyCalled(cb));
 	
 	if (angularScope) {
 		var this_ = this;

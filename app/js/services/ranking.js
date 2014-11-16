@@ -37,10 +37,12 @@ angular.module('tradity')
 				self.updateRanking();
 			});
 			
+			var schoolid;
+			if (!self.school || (schoolid = self.school.id || self.school.schoolid || self.school.path))
 			socket.emit('get-ranking', {
 				since: self.spec.since ? self.spec.since.getTime() / 1000 : null,
 				upto:  self.spec.upto  ? self.spec.upto .getTime() / 1000 : null,
-				schoolid: self.schoolid,
+				schoolid: schoolid,
 				_cache: 30
 			}, function(data) {
 				if (data.code != 'get-ranking-success')

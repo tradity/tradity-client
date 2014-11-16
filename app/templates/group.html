@@ -72,8 +72,11 @@
 				<div class="widget" ng-show="isAdmin || selfIsSchoolAdmin">
 					<h3>Nicht bestätigte User</h3>
 					<div class="inner">
-						<ul class="pendinguserslist">
-							<li ng-repeat="user in pendingMembers"><a ui-sref="game.profile.overview({userId: user.name})">{{user.name}}</a> (<a ng-click="verifyMember(user)">bestätigen</a>)</li>
+						<ul class="pendinguserslist" ng-controller="RankingCtrl">
+							<li ng-repeat="user in school.pendingMembers">
+								<a ui-sref="game.profile.overview({userId: user.name})">{{user.name}}</a>
+								(<a ng-click="verifyMember(user)">bestätigen</a>)
+							</li>
 						</ul>
 					</div>
 				</div>

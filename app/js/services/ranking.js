@@ -9,7 +9,7 @@
  */
 angular.module('tradity')
 	.factory('ranking', function (socket) {
-		var Ranking = function(school, spec, rankifyOptions, resultFilters) {
+		var Ranking = function(school, spec, rankifyOptions, resultFilters, noAutoFetch) {
 			this.school = school || null;
 			this.spec = spec;
 			this.rankifyOptions = rankifyOptions || {};
@@ -23,7 +23,8 @@ angular.module('tradity')
 			for (var type in this.rankifyOptions)
 				this.results[type] = [];
 			
-			this.fetch();
+			if (!noAutoFetch)
+				this.fetch();
 		};
 		
 		Ranking.prototype.fetch = function() {
@@ -279,9 +280,9 @@ angular.module('tradity')
 			}
 		};
 		
-		RankingProvider.prototype.getRanking = function(school, spec, rankifyOptions, resultFilters) {
+		RankingProvider.prototype.getRanking = function(school, spec, rankifyOptions, resultFilters, noAutoFetch) {
 			rankifyOptions = $.extend(true, {}, RankingProvider.defaultRankifyOptions, rankifyOptions || {});
-			return new Ranking(school, spec, rankifyOptions, resultFilters);
+			return new Ranking(school, spec, rankifyOptions, resultFilters, noAutoFetch || false);
 		};
 		
 		return new RankingProvider();

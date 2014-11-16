@@ -9,7 +9,27 @@ angular.module('tradity', [
 	'dialogs',
 	'angular-md5',
 	'infinite-scroll'
-]).config(function($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider) {
+]).config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider, $translateProvider) {
+	/* Create custom angular-ui-router parameter types.
+	 * This is necessary since 0.2.12; Since then,
+	 * angular-ui-router encodes slashes in parameters. */
+	
+	var schoolIdRegexp = /\/[\w_/-]*[\w_-]/;
+	var genericEntityRegexp = /\/[\w_/-]*/;
+	$urlMatcherFactoryProvider
+		.type('SchoolID', {
+			encode: function (val) { return String(val); },
+			decode: function (val) { return String(val); },
+			is: function (val) { return schoolIdRegexp.test(String(val)); },
+			pattern: schoolIdRegexp
+		})
+		.type('GenericEntityID', {
+			encode: function (val) { return String(val); },
+			decode: function (val) { return String(val); },
+			is: function (val) { return genericEntityRegexp.test(String(val)); },
+			pattern: genericEntityRegexp
+		});
+	
 	$urlRouterProvider.
 	// redirect abstract states to child
 	when('/depot', '/depot/overview').
@@ -45,7 +65,7 @@ angular.module('tradity', [
 			controller: 'RegistrationCtrl'
 		}).
 		state('index.schoolregister', {
-			url: 'register/s{schoolid:/[\\w_/-]*[\\w_-]}',
+			url: 'register/s{schoolid:SchoolID}',
 			templateUrl: 'templates/registration.html',
 			controller: 'RegistrationCtrl'
 		}).
@@ -227,7 +247,7 @@ angular.module('tradity', [
 			controller: 'GroupOverviewCtrl'
 		}).
 		state('game.group', {
-			url: '/s{schoolid:/[\\w_/-]*[\\w_-]}',
+			url: '/s{schoolid:SchoolID}',
 			templateUrl: 'templates/group.html',
 			controller: 'GroupCtrl'
 		}).
@@ -253,7 +273,7 @@ angular.module('tradity', [
 			templateUrl: 'templates/error.connection.html'
 		}).
 		state('unknownEntity', {
-			url:'{entity:/[\\w_/-]*}',
+			url:'{entity:GenericEntityID}',
 			controller: 'UnknownEntityCtrl'
 		});
 		

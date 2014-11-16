@@ -65,7 +65,7 @@
 						<th ng-show="spec.type == 'follower'">Follower­performance</th>
 						<th ng-show="spec.type == 'follower'">Follower­bewertung</th>
 					</tr>
-					<tr ng-repeat="result in results[spec.type] | filter: searchText | filter: resultDisplayFilter | limitTo:totalDisplayed"
+					<tr ng-repeat="result in rankingResult.get(spec.type) | filter: searchText | filter: resultDisplayFilter | limitTo:totalDisplayed"
 						ng-class="'rank-item rank-' + result.rank + (!result.hastraded ? ' newtrader' : '')">
 						<td ng-show="spec.showUsers">{{result.rank}}</td>
 						<td ng-show="spec.showUsers" class="rank-name"><a ui-sref="game.profile.overview({userId: result.name})">{{result.name}}</a></td>

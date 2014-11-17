@@ -19,6 +19,24 @@ module.exports = function (grunt) {
 
 	// Define the configuration for all the tasks
 	grunt.initConfig({
+		nggettext_extract: {
+			pot: {
+				files: {
+					'po/templates.pot': ['<%= yeoman.app %>/{,*/}*.html'],
+				}
+			}
+		},
+		
+		nggettext_compile: {
+			all: {
+				options: {
+					module: 'tradity'
+				},
+				files: {
+					'<%= yeoman.app %>/js/translations.js': ['po/*.po']
+				}
+			}
+		},
 		
 		// Project settings
 		yeoman: {
@@ -449,6 +467,8 @@ module.exports = function (grunt) {
 	]);
 
 	grunt.registerTask('build', [
+		'nggettext_extract',
+		'nggettext_compile',
 		'clean:dist',
 		'bower-install',
 		'createconfig',

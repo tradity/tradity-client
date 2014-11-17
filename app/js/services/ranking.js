@@ -162,7 +162,7 @@ angular.module('tradity')
 					this.rankifyOptions[type].filter);
 			
 			if (this.school)
-				this.school.usercount = this.rawResults.length - this.school.pendingMembers.length;
+				this.school.usercount = this.rawResults.length - this.pendingMembers.length;
 			
 			for (var i = 0; i < this.onRankingUpdatedHandlers.length; ++i)
 				this.onRankingUpdatedHandlers[i](this);

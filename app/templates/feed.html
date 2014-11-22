@@ -136,6 +136,16 @@
 								<a ui-sref="game.profile.overview({userId: message.srcusername})" class="feed-link">{{message.srcusername}}</a> hat seinen Account zurückgesetzt.
 							</div>
 						</div>
+						<div ng-switch-when="email-bounced" ng-show="message.mailtype == 'register'">
+							<div class=" feed-entry-symbol"><i class="fa fa-info"></i></div>
+							<div class="feed-entry-content">
+								<span class="feed-time pull-right" title="{{message.time * 1000 | date:'short'}}">{{vtime(message.time)}}</span>
+								<span title="{{message.diagnostic_code}}">
+									Die Mail an „{{message.mailrecipient}}“ zur E-Mail-Bestätigung konnte nicht abgeschickt werden.
+									Bitte gehe <a ui-sref=".options">zu deinen Einstellungen</a> und gib eine aktuelle E-Mail-Adresse an.
+								</span>
+							</div>
+						</div>
 						<div ng-switch-when="reset-self">
 							<div class=" feed-entry-symbol"><i class="fa fa-info"></i></i></div>
 							<div class="feed-entry-content">

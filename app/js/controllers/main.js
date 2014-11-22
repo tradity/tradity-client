@@ -177,7 +177,7 @@ angular.module('tradity').
 			notification('Es gab leider einen Fehler – das Tech-Team von Tradity wurde informiert!');
 		});
 
-		var feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange', 'user-reset', 'mod-notification'];
+		var feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange', 'user-reset', 'mod-notification', 'email-bounced'];
 		$scope.messages = [];
 		$scope.eventIDs = {};
 
@@ -321,6 +321,7 @@ angular.module('tradity').
 				schoolpath: data.schoolpath
 			});
 		});
+		
 		/*
 		$scope.$on('dquery-exec', function(angEv, data) {
 			if (data.result == 'stock-buy-success') {
@@ -333,6 +334,7 @@ angular.module('tradity').
 				});
 			}
 		});*/
+		
 		$scope.$on('user-provchange', function(angEv, data) {
 			var type = 'provchange';
 			if (data.srcuser == $scope.ownUser.uid) {
@@ -362,6 +364,7 @@ angular.module('tradity').
 				time: data.eventtime
 			});
 		});
+		
 		$scope.$on('user-namechange', function(angEv, data) {
 			var type = 'namechange';
 			if (data.srcuser == $scope.ownUser.uid) {
@@ -379,6 +382,7 @@ angular.module('tradity').
 				time: data.eventtime
 			});
 		});
+		
 		$scope.$on('user-reset', function(angEv, data) {
 			var type = 'reset';
 			if (data.srcuser == $scope.ownUser.uid) {
@@ -394,6 +398,7 @@ angular.module('tradity').
 				time: data.eventtime
 			});
 		});
+		
 		$scope.$on('mod-notification', function(angEv, data) {
 			var type = 'mod-notification';
 
@@ -403,6 +408,20 @@ angular.module('tradity').
 				time: data.eventtime,
 				content: $sce.trustAsHtml(data.notifcontent),
 				sticky: data.notifsticky,
+			});
+		});
+		
+		$scope.$on('email-bounced', function(angEv, data) {
+			var type = 'email-bounced';
+
+			$scope.messages.push({
+				type: type,
+				typePerson: 'important-item',
+				mailtype: data.mailtype,
+				mailrecipient: data.mailrecipient,
+				sendingtime: data.sendingtime,
+				diagnostic_code: data.diagnostic_code,
+				time: data.eventtime
 			});
 		});
 	});

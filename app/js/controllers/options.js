@@ -53,6 +53,9 @@ angular.module('tradity').
 		};
 		
 		$scope.changeOptions = function() {
+			if (!$scope.password_check) $scope.password_check = null;
+			if (!$scope.password)       $scope.password = null;
+			
 			if ($scope.password_check != $scope.password)
 				return notification('Die Passwörter stimmen nicht überein');
 			

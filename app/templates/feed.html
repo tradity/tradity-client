@@ -106,13 +106,15 @@
 						</div>
 						<div ng-switch-when="provchange-self">
 							<div class=" feed-entry-symbol"><i class="fa fa-credit-card"></i></div>
-							<div class="feed-entry-content" translate>
+							<div class="feed-entry-content">
 								<span class="feed-time pull-right" title="{{message.time * 1000 | date:'short'}}">{{vtime(message.time)}}</span>
-								You changed
-								<span ng-show="message.wprovchanged">your gain provision from {{message.oldwprov}} % to {{message.newwprov}} %</span>
-								<span ng-show="message.bothchanged">and</span>
-								<span ng-show="message.lprovchanged">your loss provision from {{message.oldlprov}} % to {{message.newlprov}} %</span>
-								.
+								<span translate>
+									You changed
+									<span ng-show="message.wprovchanged">your gain provision from {{message.oldwprov}} % to {{message.newwprov}} %</span>
+									<span ng-show="message.bothchanged">and</span>
+									<span ng-show="message.lprovchanged">your loss provision from {{message.oldlprov}} % to {{message.newlprov}} %</span>
+									.
+								</span>
 							</div>
 						</div>
 						<div ng-switch-when="namechange">

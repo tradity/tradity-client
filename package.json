@@ -42,7 +42,11 @@
 		"karma-phantomjs-launcher": "~0.1.2",
 		"karma": "~0.10.9",
 		"karma-ng-html2js-preprocessor": "~0.1.0",
-		"grunt-contrib-less": "^0.11.0"
+		"grunt-contrib-less": "^0.11.0",
+		"remarkup": "*",
+		"pofile": "~0.2.12",
+		"levenshtein": "~1.0",
+		"munkres-js": "*"
 	},
 	"engines": {
 		"node": ">=0.8.0"

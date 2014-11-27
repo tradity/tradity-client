@@ -169,7 +169,7 @@ angular.module('tradity').
 			$scope.calcFee();
 		};
 		$scope.calcFee = function() {
-			$scope.fee = Math.max(Math.abs($scope.serverConfig['transaction-fee-perc'] * parseFloat($scope.value.replace(',', '.'))), $scope.serverConfig['transaction-fee-min'] / 10000);
+			$scope.fee = Math.max(Math.abs($scope.serverConfig.transactionFeePerc * parseFloat($scope.value.replace(',', '.'))), $scope.serverConfig.transactionFeeMin / 10000);
 		};
 
 		if ($stateParams.sellbuy) {

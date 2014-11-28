@@ -435,6 +435,8 @@ module.exports = function (grunt) {
 		});
 	});
 	
+	function stripTabs(msgid) { return msgid.replace(/^\s*|\s*$/gm, ''); }
+	
 	grunt.registerMultiTask('unMarkupPo', 'Strip unneccessary markup from pot file', function() {
 		var pofile = require('pofile');
 		var remarkup = require('remarkup');
@@ -444,7 +446,7 @@ module.exports = function (grunt) {
 			var rm = new remarkup.ReMarkup();
 			
 			for (var i = 0; i < pot.items.length; ++i)
-				pot.items[i].msgid = rm.unMarkup(pot.items[i].msgid);
+				pot.items[i].msgid = rm.unMarkup(stripTabs(pot.items[i].msgid));
 			
 			grunt.file.write(file.dest, pot.toString());
 		});
@@ -469,7 +471,9 @@ module.exports = function (grunt) {
 			for (var i = 0; i < pot.items.length; ++i) {
 				distanceMatrix[i] = [];
 				for (var j = 0; j < po.items.length; ++j)
-					distanceMatrix[i][j] = new Levenshtein(rm.unMarkup(pot.items[i].msgid), po.items[i].msgid).distance;
+					distanceMatrix[i][j] = new Levenshtein(
+						rm.unMarkup(stripTabs(pot.items[i].msgid)),
+						po.items[i].msgid).distance;
 			}
 			
 			var m = new munkres.Munkres();

@@ -8,40 +8,40 @@
 						<a href="" class="dropdown-toggle icon" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 							<li><a ui-sref="game.profile.overview({userId: ownUser.name})"><b>{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</b></a></li>
-							<li><a ui-sref="game.profile.overview({userId: ownUser.name})">Mein Profil</a></li>
-							<li><a ui-sref="game.options">Einstellungen</a></li>
+							<li><a ui-sref="game.profile.overview({userId: ownUser.name})" translate>Your Profile</a></li>
+							<li><a ui-sref="game.options" translate>Settings</a></li>
 							<li class="divider"></li>
-							<li><a ng-click="logout()" href="">Abmelden</a></li>
+							<li><a ng-click="logout()" href="" translate>Logout</a></li>
 						</ul>
 					</div>
 				</li>
 				<li ng-show="search" class="search desktop-only">
 					<form class="pure-form" id="rankingSearch" ng-submit="openSearch(searchBarText,search)">
-						<input type="search" ng-model="searchBarText" placeholder="Suche" class="pure-input" autofocus>
+						<input type="search" ng-model="searchBarText" placeholder="Search" class="pure-input" autofocus translate>
 					</form>
 				</li>
 				<li class="desktop-only search-btn" ng-show="!search">
-					<a ng-click="showSearch()" href="" class="icon"><i class="fa fa-search"></i></a>
+					<a ng-click="showSearch()" href="" title="Search" class="icon" translate><i class="fa fa-search"></i></a>
 				</li>
 				<li>
-					<a ui-sref="game.depot.watchlist" class="icon" title="watchlist"><i class="fa fa-eye"></i></a>
+					<a ui-sref="game.depot.watchlist" class="icon" title="Watchlist" translate><i class="fa fa-eye"></i></a>
 				</li>
 				<!-- temporarily disabled -->
 				<!--li>
 					<a ui-sref="game.chats" class="icon" title="Nachrichten"><i class="fa fa-envelope"></i></a>
 				</li-->
 				<li ng-controller="NotificationsCtrl">
-					<a class="icon" href="" title="Benachrichtigungen" ng-click="show = !show"><span class="badge" ng-show="count != 0">{{count}}</span><i class="fa fa-globe"></i></a>
+					<a class="icon" href="" title="Notifications" ng-click="show = !show" translate><span class="badge" ng-show="count != 0">{{count}}</span><i class="fa fa-globe"></i></a>
 					<ng-include src="'templates/notifications.html'"></ng-include> 
 				</li>
 				<li ng-show="isAdmin">
-					<a ui-sref="admin.userlist" class="icon" title="admin"><i class="fa fa-shield"></i></a>
+					<a ui-sref="admin.userlist" class="icon" title="Admin"><i class="fa fa-shield"></i></a>
 				</li>
 				<li>
-					<a ng-click="logout()" href="" class="icon"><i class="fa fa-sign-out"></i></a>
+					<a ng-click="logout()" href="" title="Logout" class="icon" translate><i class="fa fa-sign-out"></i></a>
 				</li>
 				<li>
-					<a ui-sref="game.profile.overview({userId: ownUser.name})"><img id="profile-picture" height="50px" ng-src="{{ownUser.profilepic}}" alt="{{ownUser.name}}" /></a>
+					<a ui-sref="game.profile.overview({userId: ownUser.name})" title="Your Profile" translate><img id="profile-picture" height="50px" ng-src="{{ownUser.profilepic}}" alt="{{ownUser.name}}" /></a>
 				</li>
 			</ul>     
 			<ul class="icon-bar">
@@ -67,7 +67,7 @@
 				</li>
 				<li class="desktop-only text">
 					<div>
-						<h2>Rang</h2>
+						<h2 translate>Rank</h2>
 						<span class="placement-number" ng-show="ownUser.rank">{{ownUser.rank}}</span>
 						<span class="placement-number" ng-hide="ownUser.rank">–</span>
 					</div>
@@ -80,7 +80,7 @@
 			<li>
 				<a ui-sref=".feed" accesskey="f" ng-class="{active: ('game.feed' | isState)}">
 					<i class="fa fa-inbox"></i>
-					<span class="dark nav-block-title">Neuigkeiten</span>
+					<span class="dark nav-block-title" translate>News</span>
 				</a>
 			</li>
 			<li ng-show="ownUser.topLevelSchool" class="menu-item">
@@ -97,31 +97,31 @@
 			<li ng-show="!ownUser.topLevelSchool" class="menu-item">
 				<a ui-sref="game.groupOverview" accesskey="g" title="ALT+SHIFT+G">
 					<i class="fa fa-users"></i>
-					<span class="dark nav-block-title">Deine Gruppe</span>
+					<span class="dark nav-block-title" translate>Your Group</span>
 				</a>
 			</li>
 			<li>
 				<a ui-sref=".depot.overview" accesskey="d" title="ALT+SHIFT+D" ng-class="{active: ('*.depot.*' | includedByState)}">
 					<i class="fa fa-bar-chart-o"></i>
-					<span class="dark nav-block-title">Mein Depot</span>
+					<span class="dark nav-block-title" translate>Your portfolio</span>
 				</a>
 			</li>
 			<li>
 				<a ui-sref=".trade" accesskey="t" title="ALT+SHIFT+T" ng-class="{active: ('game.trade' | isState)}">
 					<i class="fa fa-eur" ></i>
-					<span class="dark nav-block-title">Trade</span>
+					<span class="dark nav-block-title" translate>Trade</span>
 				</a>
 			</li>
 			<li>
 				<a ui-sref=".ranking" id="rangliste" accesskey="r" title="ALT+SHIFT+R" ng-class="{active: ('*.ranking.*' | includedByState)}">
 					<i class="fa fa-flag"></i> 
-					<span class="dark nav-block-title">Rangliste</span>
+					<span class="dark nav-block-title" translate>Ranking</span>
 				</a>
 			</li>
 			<li>
 				<a ui-sref=".options" accesskey="o" title="ALT+SHIFT+O" ng-class="{active: ('game.options' | isState)}">
 					<i class="fa fa-wrench"></i>
-					<span class="dark nav-block-title">Einstellungen</span>
+					<span class="dark nav-block-title" translate>Settings</span>
 				</a>
 			</li>
 			<!-- temporarily disabled -->
@@ -134,13 +134,13 @@
 			<li><!-- temporarily enabled -->
 				<a ui-sref=".profile.achievements.categories({userId: ownUser.name})" ng-class="{active: ('game.profile.achievements.categories' | isState)}" >
 					<i class="fa fa-graduation-cap"></i>
-					<span class="dark nav-block-title">Errungenschaften</span>
+					<span class="dark nav-block-title" translate>Achievements</span>
 				</a>
 			</li><!-- temporarily enabled -->
 			<li>
 				<a href="https://boersenspiel.tradity.de/hilfe/" targe="_blank">
 					<i class="fa fa-question"></i>
-					<span class="dark nav-block-title">Hilfe</span>
+					<span class="dark nav-block-title" translate>Support</span>
 				</a>
 			</li>
 		</ul>
@@ -148,7 +148,7 @@
 	<div class="clearfix"></div>
 	<div id="legalHolder">
 		<div id="legal">
-			<a target="_blank" href="https://boersenspiel.tradity.de/impressum/">Impressum</a> | <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/" target="_blank">Teilnahmebedingungen & Datenschutz</a>
+			<a target="_blank" href="https://boersenspiel.tradity.de/impressum/" translate>Imprint</a> | <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/" target="_blank" translate>Terms &amp; Privacy</a>
 		</div>
 	</div>
 	<div class="content-wrapper">
@@ -157,6 +157,6 @@
 </div>
 <div id="overlayQuery" ng-show="hasOpenQueries()">
 	<img src="img/throbber.gif" alt="…" /><br/>
-	<span>Lade Daten</span>
+	<span translate>Loading</span>
 </div>
 

@@ -1,0 +1,5 @@
+*.mo
+*.pot
+
+# generated from stripped file
+templates.po

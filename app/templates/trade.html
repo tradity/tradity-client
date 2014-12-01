@@ -50,12 +50,12 @@
 				<div>
 					<label for="amount" class="trade-label">Anzahl</label>
 					<input type="number" ng-model="amount" ng-change="calcValue();" placeholder="Anzahl" id="amount" autocomplete="off" class="options-input pure-input-1">
-					<span class="max-values" ng-show="cur && sellbuy > 0">Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSinglePaperShare) / cur.ask)}}</span>
+					<span class="max-values" ng-show="cur && sellbuy > 0">Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSingleStockShare) / cur.ask)}}</span>
 				</div>
 				<div>
 					<label for="value" class="trade-label" style="margin-top: 10px; font-size: 13px;">Kauf-/Verkaufswert</label>
 					<input type="text" ng-model="value" ng-change="calcAmount();" placeholder="Kaufwert" id="value" autocomplete="off" class="options-input pure-input-1">
-					<span class="max-values" ng-show="cur && sellbuy > 0">Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSinglePaperShare) / cur.ask) * cur.ask / 10000 | currency}}</span>
+					<span class="max-values" ng-show="cur && sellbuy > 0">Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSingleStockShare) / cur.ask) * cur.ask / 10000 | currency}}</span>
 				</div>
 				<!--<label class="trade-label">Kontostand<span class="batch tooltip" data-info="Kontostand vor Order +/- Kaufwert - Transaktionskosten = Kontostand nach Order"> &#xF0AD;</span></label>
 				1337 <span class="pos">350</span><span class="neg"> -{{fee | currency}}</span> = 1230 <br>-->

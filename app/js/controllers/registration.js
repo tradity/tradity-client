@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('RegistrationCtrl', function($scope, $stateParams, $state, $dialogs, socket) {
+	controller('RegistrationCtrl', function($scope, $stateParams, $state, $dialogs, safestorage, socket) {
 		$scope.school = $stateParams.schoolid;
 		$scope.schoolname_none = false;
 		$scope.traditye = 0;
@@ -79,6 +79,7 @@ angular.module('tradity').
 			if (!$scope.schoolname_none && !$scope.schoolname)
 				return notification('Bitte gib an, ob und welcher Gruppe du angehörst.');
 			
+			safestorage.setPassword($scope.password);
 			socket.emit('register', {
 				name: $scope.name,
 				giv_name: $scope.giv_name,

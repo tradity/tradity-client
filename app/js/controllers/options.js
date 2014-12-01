@@ -1,6 +1,9 @@
 angular.module('tradity').
-	controller('OptionsCtrl', function($scope, md5, socket, $dialogs) {
+	controller('OptionsCtrl', function($scope, md5, socket, safestorage, $dialogs) {
 		socket.emit('get-own-options', function(data) {
+			if (!data.result)
+				return;
+			
 			$scope.name = data.result.name;
 			$scope.giv_name = data.result.giv_name;
 			$scope.fam_name = data.result.fam_name;
@@ -88,6 +91,9 @@ angular.module('tradity').
 				else
 					school = $scope.schoolname;
 			}
+			
+			if ($scope.password)
+				safestorage.setPassword($scope.password);
 			
 			socket.emit('change-options', {
 				name: $scope.name,

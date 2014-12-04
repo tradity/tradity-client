@@ -12,20 +12,20 @@ angular.module('tradity')
 		function DailyLoginAchievements () {
 		}
 		
-		DailyLoginAchievements.prototype.submitToServer = function() {
-			var certs = safestorage.getEntry('dl_certificates') || [];
-		
-			if (data.result && data.result.clientopt &&
-				data.result.clientopt.dailyLoginAchievements)
-			{
-				var serverCerts = [];
-				for (var i = 0; i < certs.length; ++i)
-					serverCerts.push(certs[i].cert);
-				
-				return socket.emit('dl-achievement', {
-					certs: serverCerts
-				});
-			}
+		DailyLoginAchievements.prototype.submitToServer = function(force) {
+			return socket.emit('get-own-options').then(function(data) {
+				var certs = safestorage.getEntry('dl_certificates') || [];
+			
+				if ((data.result && data.result.dla_optin) || force) {
+					var serverCerts = [];
+					for (var i = 0; i < certs.length; ++i)
+						serverCerts.push(certs[i].cert);
+					
+					return socket.emit('dl-achievement', {
+						certs: serverCerts
+					});
+				}
+			});
 		};
 		
 		DailyLoginAchievements.prototype.check = function() {
@@ -48,9 +48,7 @@ angular.module('tradity')
 					safestorage.setEntry('dl_certificates', certs);
 				}
 				
-				return socket.emit('get-own-options');
-			}).then(function(data) {
-				self.submitToServer();
+				return self.submitToServer(false);
 			});
 		}
 		

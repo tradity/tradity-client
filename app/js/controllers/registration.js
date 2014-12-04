@@ -3,6 +3,7 @@ angular.module('tradity').
 		$scope.school = $stateParams.schoolid;
 		$scope.schoolname_none = false;
 		$scope.traditye = 0;
+		$scope.dla_optin = 0;
 		$scope.zipcode = '';
 		$scope.town = '';
 		$scope.street = '';
@@ -93,6 +94,7 @@ angular.module('tradity').
 				zipcode: $scope.zipcode,
 				town: $scope.town,
 				traditye: $scope.traditye,
+				dla_optin: $scope.dla_optin,
 				invitekey: $scope.invitekey
 			});
 		};

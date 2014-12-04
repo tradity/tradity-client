@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('OptionsCtrl', function($scope, md5, socket, safestorage, $dialogs) {
+	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, $dialogs) {
 		socket.emit('get-own-options', function(data) {
 			if (!data.result)
 				return;
@@ -22,6 +22,7 @@ angular.module('tradity').
 			$scope.zipcode = data.result.zipcode;
 			$scope.town = data.result.town;
 			$scope.traditye = data.result.traditye&&true;
+			$scope.dla_optin = data.result.dla_optin&&true;
 			$scope.delayorderhist = data.result.delayorderhist;
 			
 			if (data.result.birthday !== null) {
@@ -95,6 +96,9 @@ angular.module('tradity').
 			if ($scope.password)
 				safestorage.setPassword($scope.password);
 			
+			if ($scope.dla_optin)
+				dailyLoginAchievements.submitToServer(true);
+			
 			socket.emit('change-options', {
 				name: $scope.name,
 				giv_name: $scope.giv_name,
@@ -111,6 +115,7 @@ angular.module('tradity').
 				zipcode: $scope.zipcode,
 				town: $scope.town,
 				traditye: $scope.traditye,
+				dla_optin: $scope.dla_optin,
 				delayorderhist: $scope.delayorderhist
 			}, function(data) {
 				switch (data.code) {

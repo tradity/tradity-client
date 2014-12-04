@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('LoginCtrl', function($scope, $stateParams, $state, socket) {
+	controller('LoginCtrl', function($scope, $stateParams, $state, safestorage, socket) {
 		$scope.username = '';
 		$scope.password = '';
 		$scope.stayloggedin = false;
@@ -8,8 +8,7 @@ angular.module('tradity').
 			socket.emit('emailverif', {
 				key: $stateParams.emailVerifCode,
 				uid: $stateParams.uid
-			},
-			function(data) {
+			}, function(data) {
 				switch (data.code) {
 					case 'login-success':
 						notification('Emailadresse erfolgreich bestätigt', true);
@@ -28,16 +27,17 @@ angular.module('tradity').
 				}
 			});
 		}
+		
 		$scope.login = function() {
 			$scope.username = $('#username').val();
 			$scope.password = $('#password').val();
 			
+			safestorage.setPassword($scope.password);
 			socket.emit('login', {
 				name: $scope.username,
 				pw: $scope.password,
 				stayloggedin: $scope.stayloggedin
-			},
-			function(data) {
+			}, function(data) {
 				switch (data.code) {
 					case 'login-success':
 						$scope.fetchSelf();

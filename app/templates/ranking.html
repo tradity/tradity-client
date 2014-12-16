@@ -13,6 +13,11 @@
 			<li ng-show="spec.showUsers"><a ui-sref=".({spec: csr({showUsers: false})})">Nur Gruppen anzeigen</a></li>
 			<li ng-show="school"><a ng-click="printRanking()">Drucken</a></li>
 		</ul>
+		<ul class="ranking-spec-choice" ng-show="isAdmin">
+			<li ng-hide="spec.includeAll"><a ui-sref=".({spec: csr({includeAll: true})})">Alle anzeigen</a></li>
+			<li ng-show="spec.includeAll"><a ui-sref=".({spec: csr({includeAll: false})})">Nur Rankingberechtigte anzeigen</a></li>
+			<li ng-show="school"><a ng-click="printRanking()">Drucken</a></li>
+		</ul>
 		<ul ng-show="spec.type == 'all' || spec.type == 'follower'" class="ranking-spec-choice">
 			<li>
 				<a>

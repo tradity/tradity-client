@@ -44,6 +44,7 @@ angular.module('tradity')
 				since: self.spec.since ? self.spec.since.getTime() / 1000 : null,
 				upto:  self.spec.upto  ? self.spec.upto .getTime() / 1000 : null,
 				schoolid: schoolid,
+				includeAll: self.spec.includeAll,
 				_cache: 30
 			}, function(data) {
 				if (data.code != 'get-ranking-success')
@@ -237,6 +238,7 @@ angular.module('tradity')
 			if (!spec.showGroups) specArray.push('nogroup');
 			if (!spec.showUsers)  specArray.push('nouser');
 			if (spec.includeProvision) specArray.push('wprov');
+			if (spec.includeAll) specArray.push('wall');
 			
 			return specArray.join(':');
 		};
@@ -256,16 +258,19 @@ angular.module('tradity')
 			if (spec.since = this.parseDateSpec(specArray[0], rankingCfg.since)) specArray.shift();
 			if (spec.upto  = this.parseDateSpec(specArray[0], rankingCfg.upto))  specArray.shift();
 			
-			// various flags
+			/* various flags */
+			// default values
 			spec.showGroups = true;
 			spec.showUsers  = true;
 			spec.includeProvision = false;
+			spec.includeAll = false;
 			
 			for (var i = 0; i < specArray.length; ++i) {
 				switch (specArray[i]) {
 					case 'nogroup': spec.showGroups = false; break;
 					case 'nouser':  spec.showUsers  = false; break;
 					case 'wprov':   spec.includeProvision = true; break;
+					case 'wall':    spec.includeAll = true; break;
 				}
 			}
 			

@@ -28,10 +28,7 @@ angular.module('tradity').
 			});
 		}
 		
-		$scope.login = function() {
-			$scope.username = $('#username').val();
-			$scope.password = $('#password').val();
-			
+		$scope.login = function() {			
 			safestorage.setPassword($scope.password);
 			socket.emit('login', {
 				name: $scope.username,

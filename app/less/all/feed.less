@@ -7,7 +7,6 @@
 	clear: left;
 }
 
-
 .feed-item .feed-entry-symbol {
 	float: left;
 	padding: 5px;
@@ -15,12 +14,17 @@
 	color: #fff;
 	font-size: 15px;
 	height: 100%;
-	width: 60px;
+	width: 66px;
 	text-align: center;
 }
 
 .feed-item .comment .feed-entry-symbol, .feed-item.comment .feed-entry-symbol {
-	height: 60px;
+	height: 66px;
+}
+
+.feed-important-item .feed-entry-symbol {
+	padding: 22.5px 0px;
+	background-color:#e74c3c;
 }
 
 .feed-item .feed-arrow {
@@ -30,7 +34,7 @@
 	border-width: 8px 8px 8px 0;
 	border-color: transparent #ffffff transparent transparent;
 	position: absolute;
-	margin-top: 30px;
+	margin-top: 24.5px;
 	margin-left: -8px;
 }
 
@@ -40,13 +44,17 @@
 	min-height: 21px;
 	padding: 5px;
 	padding-left: 80px;
-
+	a:hover {text-decoration:none;}
 }
 
-.feed-item .comment .feed-entry-content, .feed-item.comment .feed-entry-content {
+.feed-item .comment .feed-entry-content, .feed-item.comment .feed-entry-content, .feed-important-item .feed-entry-content {
 	min-height: 68px;
 	padding: 0px;
 	padding-left: 80px;
+}
+
+#feed {
+	padding-top:15px;
 }
 
 #feed .feed-item .feed-entry-content > a {
@@ -63,9 +71,6 @@
 	padding: 3px;
 	border-bottom: 1px solid rgba(204, 204, 204, 0.22);
 	margin-bottom: 3px;
-}
-
-#feed .feed-head {
 }
 
 .feed-head, .feed-head a, .feed-footer {
@@ -93,4 +98,9 @@
 .no-image {
 	background: url(../img/profile.svg)!important;
 	background-size: cover;
+}
+
+.row > .vertical {
+	border-left:1px solid #e7e7e7;
+	margin-top:15px;
 }

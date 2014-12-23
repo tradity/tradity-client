@@ -11,7 +11,13 @@ angular.module('tradity')
 	.factory('dailyLoginAchievements', function (socket, safestorage) {
 		function DailyLoginAchievements () {
 		}
-		
+		/**
+		 * @ngdoc method
+		 * @kind function
+		 * @name tradity.dailyLoginAchievements#submitToServer
+		 * @methodOf tradity.dailyLoginAchievements
+		 * @param {object} force force
+		 */
 		DailyLoginAchievements.prototype.submitToServer = function(force) {
 			return socket.emit('get-own-options').then(function(data) {
 				var certs = safestorage.getEntry('dl_certificates') || [];
@@ -27,7 +33,12 @@ angular.module('tradity')
 				}
 			});
 		};
-		
+		/**
+		 * @ngdoc method
+		 * @kind function
+		 * @name tradity.dailyLoginAchievements#check
+		 * @methodOf tradity.dailyLoginAchievements
+		 */
 		DailyLoginAchievements.prototype.check = function() {
 			var self = this;
 			

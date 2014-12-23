@@ -38,7 +38,6 @@ angular.module('tradity')
 				return;
 			ownUserRanking.fetch();
 			angular.extend($user,user);
-			console.log($user.schools)
 		}
 		
 		socket.on('self-info',updateUser)
@@ -91,7 +90,6 @@ angular.module('tradity')
 					pw: password,
 					stayloggedin: stayloggedin
 				}).then(function(data) {
-					console.log(data)
 					switch (data.code) {
 						case 'login-success':
 							$state.go('game.ranking.all');
@@ -152,7 +150,6 @@ angular.module('tradity')
 					lookfor: username,
 					_cache: 20
 				}).then(function(res) {
-					console.log(res)
 					return parse(res);
 				})
 			 }

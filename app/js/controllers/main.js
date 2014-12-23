@@ -56,34 +56,6 @@ angular.module('tradity').
 			$scope.isAdmin = true;
 			socket.emit('set-debug-mode', { debugMode: true, __only_in_srv_dev_mode__: true });
 		});
-/*
-		socket.on('self-info', function(data) {
-			$rootScope.ownUser = $scope.ownUser = data.result;
-
-			if ($scope.ownUser.schools.length > 0)
-				$scope.ownUser.bottomLevelSchool = $scope.ownUser.schools[$scope.ownUser.schools.length-1];
-				$scope.ownUser.topLevelSchool = $scope.ownUser.schools[0];
-
-			$scope.$broadcast('user-update', data.result);
-		}, $scope);
-
-		socket.on('get-user-info', function(data) {
-			if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
-				$scope.ownUser = null;
-				if ($state.includes('game'))
-					$state.go('index.login');
-			}
-			var r = data.result;
-			if (r && r.isSelf) {
-				$rootScope.ownUser = $scope.ownUser = r;
-
-				if ($scope.ownUser.schools.length > 0)
-					$scope.ownUser.bottomLevelSchool = $scope.ownUser.schools[$scope.ownUser.schools.length-1];
-					$scope.ownUser.topLevelSchool = $scope.ownUser.schools[0];
-
-				$scope.$broadcast('user-update', r);
-			}
-		}, $scope);*/
 
 		socket.on('server-config', function(data) {
 			var cfg = data.config;

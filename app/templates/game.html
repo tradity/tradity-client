@@ -33,8 +33,7 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-
-				<li ng-show="search" class="search desktop-only">
+				<li ng-show="search" class="search">
 					<form class="pure-form" id="rankingSearch" ng-submit="openSearch(searchBarText,search)">
 						<input type="search" ng-model="searchBarText" placeholder="Suche" class="pure-input" autofocus>
 					</form>
@@ -54,7 +53,7 @@
 				</li>
 				<li ng-include="'templates/notifications.html'" ng-controller="NotificationsCtrl"></li>
 				<li><a ng-click="logout()" href="" class="icon"><i class="fa fa-sign-out"></i></a></li>
-				<li><a ui-sref="game.profile.overview({userId: ownUser.name})" class="profilepicture" style="background-image:url(http://tradity.de/{{ownUser.profilepic}});"></a></li>
+				<li><a ui-sref="game.profile.overview({userId: ownUser.name})" class="profilepicture" style="background-image:url({{ownUser.profilepic}});"></a></li>
 			</ul>
 		</div>
 	</div>
@@ -75,12 +74,12 @@
 				</ul>
 			</li>
 			<li ng-show="ownUser.schools.length <= 1">
-				<a ui-sref="game.group({schoolid: ownUser.topLevelSchool.path})" ng-class="{active: ('*.group.*' | includedByState)}">
+				<a ui-sref="game.group({schoolid: ownUser.schools[0].path})" ng-class="{active: ('*.group.*' | includedByState)}">
 					<i class="fa fa-users"></i>
-					<span class="dark nav-block-title">{{ownUser.topLevelSchool.name}}</span>
+					<span class="dark nav-block-title">{{ownUser.schools[0].name}}</span>
 				</a>
 			</li>
-			<li ng-show="!ownUser.topLevelSchool" class="menu-item">
+			<li ng-show="ownUser.schools.length == 0" class="menu-item">
 				<a ui-sref="game.groupOverview" accesskey="g" title="ALT+SHIFT+G">
 					<i class="fa fa-users"></i>
 					<span class="dark nav-block-title">Deine Gruppe</span>

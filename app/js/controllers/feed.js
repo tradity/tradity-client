@@ -15,7 +15,7 @@ angular.module('tradity').
 			$scope.lastScrollCheck = now;
 			
 			var d = document.documentElement;
-			if ((d.scrollTop + d.clientHeight)/(d.scrollHeight) > 0.7 && $scope.messageCount < $scope.messages.length) {
+			if ((d.scrollTop + d.clientHeight)/(d.scrollHeight) > 0.7 && $scope.messageCount < $feed.items.length) {
 				$scope.messageCount /= 0.8;
 				$scope.$apply($scope.displayFeed);
 			}

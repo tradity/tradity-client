@@ -8,11 +8,11 @@
  * Factory
  */
 angular.module('tradity')
-	.factory('user', function ($q,socket,$state,$rootScope,config,$timeout) {
+	.factory('user', function ($q,socket,$state,ranking,$rootScope,config,$timeout,safestorage,dailyLoginAchievements) {
 
 		var $user = $rootScope.$new(true);
-
-		 var parse = function(res) {
+		var ownUserRanking;
+		var parse = function(res) {
 			if (res.code == 'get-user-info-success')
 				var user = res.result;
 			else
@@ -28,16 +28,41 @@ angular.module('tradity')
 		}
 
 		var updateUser = function(res) {
+			safestorage.check().then(function() {
+				dailyLoginAchievements.check();
+			});
 			var user = parse(res);
 			if (!user) 
 				return;
 			if (!user.isSelf) 
 				return;
+			ownUserRanking.fetch();
 			angular.extend($user,user);
+			console.log($user.schools)
 		}
 		
 		socket.on('self-info',updateUser)
 		socket.on('get-user-info',updateUser)
+
+		socket.on('*', function(data) {
+			if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
+				$user = $rootScope.$new(true);
+				if ($state.includes('game'))
+					$state.go('index.login');
+			}
+		});
+
+		socket.on('server-config', function(data) {
+			var serverConfig = {};
+			var cfg = data.config;
+			for (var k in cfg)
+				serverConfig[k] = cfg[k];
+
+			ownUserRanking = ranking.getRanking(null, serverConfig.ranking || {}, null, null, true);
+			ownUserRanking.onRankingUpdated(function() {
+				$user.rank = ownUserRanking.get('all').rankForUser($user.uid);
+			});
+		})
 
 		return {
 			/**
@@ -79,6 +104,20 @@ angular.module('tradity')
 							return $q.reject('Emailadresse noch nicht bestätigt');
 					}
 				})
+			},
+			/**
+			 * @ngdoc method
+			 * @name tradity.user#logout
+			 * @methodOf tradity.user
+			 */
+			logout:function() {
+				socket.emit('logout', function(data) {
+					safestorage.clear();
+					
+					var $user = $rootScope.$new(true);
+					$rootScope.$broadcast('user-update', null);
+					$state.go('index.login');
+				});
 			},
 			/**
 			 * @ngdoc method

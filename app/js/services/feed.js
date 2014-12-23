@@ -22,6 +22,7 @@ angular.module('tradity')
 			if (res.type == 'user-provchange') $feed.items.push(event.userProvchange(res));
 			if (res.type == 'user-namechange') $feed.items.push(event.userNamechange(res));
 			if (res.type == 'user-reset') $feed.items.push(event.userReset(res));
+			$feed.$emit('change')
 		}
 
 		for (var i = 0; i < feedEvents.length; ++i) 

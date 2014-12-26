@@ -4,7 +4,7 @@
  * @ngdoc service
  * @name tradity.user
  * @description
- * # handels login auth and gets user info
+ * # handles login auth and fetches user info
  * Factory
  */
 angular.module('tradity')

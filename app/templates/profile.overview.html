@@ -1,4 +1,25 @@
 <div id="overview">
+	<div class="row">
+		<div class="col-sm-2">
+			<h3 class="title">Platz</h3>
+			<span class="placement-number" ng-show="user.rank">{{user.rank}}</span>
+			<span class="placement-number" ng-hide="user.rank">–</span>
+		</div>
+		<div class="col-sm-2">
+			<h3 class="title">Vermögen</h3>
+			<span class="depot-wert">{{user.totalvalue / 10000 | currency}}</span>
+		</div>
+		<div class="col-sm-2">
+			<h3 class="title">Provision</h3>
+			<span class="placement-number">{{user.wprovision}} % / {{user.lprovision}} %</span>
+			<br>
+			<span class="depot-wert">({{user.prov_sum/10000 | currency}})</span>
+		</div>
+		<div class="col-sm-6">
+			<h3 class="title">Kurzbeschreibung</h3>
+			<p>{{user.desc}}</p>
+		</div>
+	</div>
 	<div class="options-field">
 		<h2>Performance</h2>
 		<div id="chart-wrap">
@@ -17,24 +38,24 @@
 
 	<h2>Vermögensentwicklung</h2>
 
-	<div class="pure-g info-grid">
+	<div class="row">
 
-		<div class="pure-u-1-3">
-			<div class="item" ng-class="{pos: performanceAll > 0, neg: performanceAll < 0}">
+		<div class="col-sm-4">
+			<div class="item text-center" ng-class="{pos: performanceAll > 0, neg: performanceAll < 0}">
 				<b>Gesamt</b><br />
 				{{ performanceAll = ((user.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
 			</div>
 		</div>
 
-		<div class="pure-u-1-3">
-			<div class="item" ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
+		<div class="col-sm-4">
+			<div class="item text-center" ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
 				<b>Heute</b><br />
 				{{( performanceToday = user.totalvalue / user.daystarttotalvalue - 1) * 100 | number:2}} %
 			</div>
 		</div>
 
-		<div class="pure-u-1-3">
-			<div class="item" ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
+		<div class="col-sm-4">
+			<div class="item text-center" ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
 				<b>Woche</b><br />
 				{{ performanceWeek = (user.totalvalue / user.weekstarttotalvalue - 1) * 100 | number:2}} %
 			</div>
@@ -44,24 +65,24 @@
 
 	<h2>als Leader</h2>
 
-	<div class="pure-g info-grid">
+	<div class="row">
 
-		<div class="pure-u-1-3">
-			<div class="item">
+		<div class="col-sm-4">
+			<div class="item text-center">
 				<b>Follower</b><br />
 				{{user.f_count}}
 			</div>
 		</div>
 
-		<div class="pure-u-1-3">
-			<div class="item">
+		<div class="col-sm-4">
+			<div class="item text-center">
 				<b>verkaufte Anteile</b><br />
 				{{user.f_amount}}
 			</div>
 		</div>
 
-		<div class="pure-u-1-3">
-			<div class="item">
+		<div class="col-sm-4">
+			<div class="item text-center">
 				<b>erh. Provision</b><br />
 				{{user.prov_sum / 10000|currency}}
 			</div>

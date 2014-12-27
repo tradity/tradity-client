@@ -2,106 +2,114 @@
 	<div class="btn btn-primary btn-block">Vergiss nicht, deine Einstellungen zu speichern!</div>
 	<form ng-submit="changeOptions()" class="pure-form pure-form-stacked">
 
-		<div class="pure-g-r">
-			<div class="pure-u-1-2"> 
+		<div class="row">
+			<div class="col-sm-6"> 
 				<h2>Account</h2>
-				<div class="pure-g-r">
-						<div class="pure-u-1-2">
-							<label for="name">Benutzername</label>
-							<input type="text" ng-model="name" placeholder="Benutzername" id="name" class="pure-input-1">
-
-							<label for="password">Passwort</label>
-							<input type="password" ng-model="password" placeholder="Passwort" id="password" class="pure-input-1">
+				<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="name">Benutzername</label>
+								<input type="text" ng-model="name" placeholder="Benutzername" id="name" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="password">Passwort</label>
+								<input type="password" ng-model="password" placeholder="Passwort" id="password" class="form-control">
+							</div>
 						</div>
-						<div class="pure-u-1-2">
-							<div class="padding-left">
+						<div class="col-sm-6">
+							<div class="form-group">
 								<label for="email">E-Mail</label>
-								<input type="email" ng-model="email" placeholder="E-Mail" id="email" class="pure-input-1">
-
-								<label for="password_check">Wiederhole dein Passwort</label>
-								<input type="password" ng-model="password_check" placeholder="Passwort" id="password" class="pure-input-1">
+								<input type="email" ng-model="email" placeholder="E-Mail" id="email" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="password_check">Passwort Wiederholung</label>
+								<input type="password" ng-model="password_check" placeholder="Passwort" id="password" class="form-control">
 							</div>
 						</div>
 				</div>
 			</div>
 
-			<div class="pure-u-1-2">
-				<div class="padding-left">
-					<h2>Geschäftliches</h2>
+			<div class="col-sm-6">
+				<h2>Geschäftliches</h2>
+				<div class="form-group">
 					<label for="provision">Gewinnprovision deiner Follower ({{serverConfig.minWProvision}} % – {{serverConfig.maxWProvision}} %)</label>
-					<input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="pure-input-1" min="{{serverConfig.minWProvision}}" max="{{serverConfig.maxWProvision}}" step="1">
-
+					<input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="form-control" min="{{serverConfig.minWProvision}}" max="{{serverConfig.maxWProvision}}" step="1">
+				</div>
+				<div class="form-group">
 					<label for="provision">Verlustprovision deiner Follower ({{serverConfig.minLProvision}} % – {{serverConfig.maxLProvision}} %)</label>
-					<input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="pure-input-1" min="{{serverConfig.minLProvision}}" max="{{serverConfig.maxLProvision}}" step="1">
-
+					<input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="form-control" min="{{serverConfig.minLProvision}}" max="{{serverConfig.maxLProvision}}" step="1">
+				</div>
+				<div class="form-group">
 					<label for="delayorderhist">Verzögerung deiner Orderhistorie </label>
 					<input type="checkbox" ng-model="delayorderhist" id="delayorderhist"> Ja
 				</div>
 			</div>
 		</div>
-		<hr class="desktop-only"/>
 
 		<div class="options-field"> 
-			<div class="pure-g-r">
-				<div class="pure-u-1-2">
+			<div class="row">
+				<div class="col-sm-6">
 					<h2>Privates</h2>
-					<div class="pure-g-r">
-						<div class="pure-u-1-2">
-							<label for="giv_name">Vorname</label>
-							<input type="text" ng-model="giv_name" placeholder="Vorname" id="giv_name" class="pure-input-1">
-
-							<label for="fam_name">Nachname</label>
-							<input type="text" ng-model="fam_name" placeholder="Nachname" id="fam_name" class="pure-input-1">
-						</div>
-						<div class="pure-u-1-2">
-							<div class="padding-left">
-								<label for="schoolname">Institution / Schule</label>
-								<input type="text" ng-model="schoolname" placeholder="Schule" id="schoolname" class="pure-input-1">
-								oder: <input id="schoolname_none" ng-model="schoolname_none" type="checkbox"> Keine Gruppe
-
-								<label for="realnamepublish">Soll dein Klarname <br>veröffentlicht werden?</label>
-								<input type="checkbox" ng-model="realnamepublish" id="realnamepublish"> Ja<br>
+					<div class="row">
+						<div class="col-sm-6">			
+							<div class="form-group">
+								<label for="giv_name">Vorname</label>
+								<input type="text" ng-model="giv_name" placeholder="Vorname" id="giv_name" class="form-control">
+							</div>
+							<div class="form-group">
+								<label for="fam_name">Nachname</label>
+								<input type="text" ng-model="fam_name" placeholder="Nachname" id="fam_name" class="form-control">
 							</div>
 						</div>
-						<div class="pure-u-1-2">
-							<label for="dla_optin">Möchtest du Achievements für tägliches Einloggen erhalten?</label>
-							<input type="checkbox" ng-model="dla_optin" id="dla_optin"> ja
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="schoolname">Institution / Schule</label>
+								<input type="text" ng-model="schoolname" placeholder="Schule" id="schoolname" class="form-control">
+								oder: <input id="schoolname_none" ng-model="schoolname_none" type="checkbox"> Keine Gruppe
+							</div>
+							<div class="form-group">
+								<label for="realnamepublish">Soll dein Klarname veröffentlicht werden?</label>
+								<input type="checkbox" ng-model="realnamepublish" id="realnamepublish"> Ja
+							</div>
 						</div>
 					</div>
-					<div class="pure-g-r">
-						<div class="pure-u-1-2">
+					<div class="form-group">
+								<label for="dla_optin">Möchtest du Achievements für tägliches Einloggen erhalten?</label>
+								<input type="checkbox" ng-model="dla_optin" id="dla_optin"> ja
+							</div>
+					<div class="row">
+						<div class="col-sm-6">
 							<label for="street">Adresse</label>
-							<input type="text" ng-model="street" placeholder="Straße, Hausnr." id="street" class="pure-input-1">
-							<input type="text" ng-model="zipcode" placeholder="PLZ" id="zipcode" class="pure-input-1">
-							<input type="text" ng-model="town" placeholder="Stadt" id="town" class="pure-input-1"><br>
+							<input type="text" ng-model="street" placeholder="Straße, Hausnr." id="street" class="form-control">
+							<input type="text" ng-model="zipcode" placeholder="PLZ" id="zipcode" class="form-control">
+							<input type="text" ng-model="town" placeholder="Stadt" id="town" class="form-control"><br>
 						</div>
-						<div class="pure-u-1-2">
+						<div class="col-sm-6">
 							<div class="padding-left">
 								<label for="birthday">Geburtsdatum</label>
 								<div class="pure-g">
 									<div class="pure-u-1-3"> 
-										<input type="number" ng-model="birthdayd" max="31" min="0" placeholder="Tag" id="birthdayd" class="pure-input-1">
+										<input type="number" ng-model="birthdayd" max="31" min="0" placeholder="Tag" id="birthdayd" class="form-control">
 									</div>
 									<div class="pure-u-1-3"> 
-										<input type="number" ng-model="birthdaym" max="12" min="0" placeholder="Monat" id="birthdaym" class="pure-input-1">
+										<input type="number" ng-model="birthdaym" max="12" min="0" placeholder="Monat" id="birthdaym" class="form-control">
 									</div>
 									<div class="pure-u-1-3">
-										<input type="number" ng-model="birthdayy" max="2015" min="0" placeholder="Jahr" id="birthdayy" class="pure-input-1">
+										<input type="number" ng-model="birthdayy" max="2015" min="0" placeholder="Jahr" id="birthdayy" class="form-control">
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<label for="desc">Kurzbeschreibung</label>
-					<textarea ng-model="desc" id="desc" placeholder="Erzähl uns, was dich ausmacht" class="pure-input-1"></textarea>
+					<textarea ng-model="desc" id="desc" placeholder="Erzähl uns, was dich ausmacht" class="form-control"></textarea>
 				</div>
-				<div class="pure-u-1-2">
+				<div class="col-sm-6">
 					<div class="padding-left">
 						<h2>Profilbild</h2>
-						<img id="profile-picture" class="inline" width="200px" ng-show="ownUser.profilepic" ng-src="{{ownUser.profilepic}}" alt="">
-						<label for="profileimage">Profilbild hochladen</label>
+						<img id="profile-picture" width="200px" ng-show="ownUser.profilepic" ng-src="{{ownUser.profilepic}}" alt="">
 						<input type="file" id="profileimage" class="options-input" accept="image/png,image/jpeg,image/gif"><br/>
-						Oder (statt Hochladen):
+						Oder (statt Hochladen):<br/>
 						<input type="button" ng-click="useGravatar()" ng-show="ownUser.email_verif != 0 && ownUser.email" class="btn btn-primary" value="Gravatar verwenden" />
 					</div>
 				</div>

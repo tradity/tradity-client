@@ -58,7 +58,7 @@ angular.module('tradity')
 			if (!localStorage.ssKey || !this.encryptedStorage)
 				return;
 			
-			var decrypted;
+			var decrypted = '';
 			
 			if (this.encryptedStorage.length > 0) {
 				var iv = this.encryptedStorage.subarray(0, 16);

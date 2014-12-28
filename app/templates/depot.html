@@ -1,14 +1,15 @@
 <div id="depot" class="main-content">
-	<div id="tabs">
-		<ul>
-			<li><a ui-sref=".overview">Vermögensentwicklung</a></li>
-			<li><a ui-sref=".listing">Wertpapiere in Besitz</a></li>
-			<li><a ui-sref=".transactions">Orderhistorie</a></li>
-			<li><a ui-sref=".watchlist"><i class="fa fa-eye"></i></a></li>
-			<li><a ui-sref=".transactionlog">Transaktionslog</a></li>
-		</ul>
-	</div>
-	<br>
+	<nav class="navbar navbar-default" id="pagesubnav">
+		<div class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li ng-class="{active: ('game.depot.overview' | isState)}"><a ui-sref=".overview">Vermögensentwicklung</a></li>
+				<li ng-class="{active: ('game.depot.listing' | isState)}"><a ui-sref=".listing">Wertpapiere in Besitz</a></li>
+				<li ng-class="{active: ('game.depot.transactions' | isState)}"><a ui-sref=".transactions">Orderhistorie</a></li>
+				<li ng-class="{active: ('game.depot.watchlist' | isState)}"><a ui-sref=".watchlist"><i class="fa fa-eye"></i></a></li>
+				<li ng-class="{active: ('game.depot.transactionlog' | isState)}"><a ui-sref=".transactionlog">Transaktionslog</a></li>
+			</ul>
+		</div>
+	</nav>
 	<div ui-view></div>
 	<div class="horizontal" ng-init="horizontal = true" ng-include="'templates/sponsors.html'"></div> 
 </div>

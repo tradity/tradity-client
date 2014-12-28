@@ -1,11 +1,12 @@
 <div id="pinboard">
 	<h2>Pinnwand</h2>
 	<form ng-submit="sendComment()" class="pure-form pure-form-stacked main-comment comment-form">
-		<textarea ui-keypress="{13:'sendComment()'}" ng-model="comment" class="options-input comment-textarea pure-input-1" placeholder="Was sagst du zu diesem Trader?"></textarea>
+		<textarea ui-keypress="{13:'sendComment()'}" ng-model="comment" class="form-control" placeholder="Was sagst du zu diesem Trader?"></textarea>
+		<input type="submit" class="btn btn-default pull-right" value="Kommentieren">
 		<div ng-show="isAdmin">
 			<label for="ishtml">HTML</label><input type="checkbox" ng-model="ishtml" id="ishtml">
 		</div>
-		<input type="submit" class="click-button comment-button btn btn-default pull-right" value="Kommentieren">
+		
 	</form>
 	
 	<div ng-repeat="comment in comments | orderBy:'-time'" class="feed-item feed comment">

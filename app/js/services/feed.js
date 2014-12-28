@@ -40,7 +40,7 @@ angular.module('tradity')
 			 * @name tradity.feed#scope
 			 * @methodOf tradity.feed
 			 * @description
-			 * feed scope acces
+			 * feed scope access
 			 */
 			scope:$feed
 		}

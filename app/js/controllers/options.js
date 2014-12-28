@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, $dialogs) {
+	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, dialogs) {
 		socket.emit('get-own-options', function(data) {
 			if (!data.result)
 				return;
@@ -141,7 +141,7 @@ angular.module('tradity').
 		};
 		
 		$scope.resetUser = function() {
-			var dlg = $dialogs.confirm('Options', 'Willst du dich wirklich resetten?');
+			var dlg = dialogs.confirm('Options', 'Willst du dich wirklich resetten?');
 			dlg.result.then(function(btn) {
 				socket.emit('reset-user', null, function(data) {
 					if (data.code == 'reset-user-success')

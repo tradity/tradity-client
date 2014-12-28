@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('MainCtrl', function($sce, chat, ranking, $rootScope, $scope, $location, $state, $stateParams, socket, safestorage, dailyLoginAchievements, $dialogs, $http, $interval, $timeout, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
+	controller('MainCtrl', function($sce, chat, ranking, $rootScope, $scope, $location, $state, $stateParams, socket, safestorage, dailyLoginAchievements, $http, $interval, $timeout, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
 		$scope.Math = Math;
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 

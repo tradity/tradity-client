@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('TradeCtrl', function($scope, $stateParams, $state, $location, socket, $dialogs) {
+	controller('TradeCtrl', function($scope, $stateParams, $state, $location, socket, dialogs) {
 		$scope.amount = null;
 		$scope.value = null;
 		$scope.stockid = null;
@@ -24,9 +24,9 @@ angular.module('tradity').
 			if (!$scope.amount)
 				return;
 			if (!$scope.leader && !$scope.stockid)
-				return $dialogs.error('Du musst ein Wertpapier auswählen!');
+				return dialogs.error('Du musst ein Wertpapier auswählen!');
 				
-			dlg = $dialogs.confirm('Trade', 'Willst du ' + $scope.amount + ' ' + ($scope.amount > 1 ? 'Aktien' : 'Aktie') + ' von ' + $scope.stockname + ' ' + ($scope.sellbuy >= 0 ? 'kaufen' : 'verkaufen') + '?');
+			dlg = dialogs.confirm('Trade', 'Willst du ' + $scope.amount + ' ' + ($scope.amount > 1 ? 'Aktien' : 'Aktie') + ' von ' + $scope.stockname + ' ' + ($scope.sellbuy >= 0 ? 'kaufen' : 'verkaufen') + '?');
 
 			dlg.result.then(function(btn) {
 				/*if ($scope.stockid == 'US38259P5089')  {
@@ -55,7 +55,7 @@ angular.module('tradity').
 				var qtype = 'stock-buy';
 				if ($scope.xtype != 'market') {
 					if ($scope.xvalue == null)
-						return $dialogs.error('Bitte geben Sie den Stop-/Limitwert als Zahl an');
+						return dialogs.error('Bitte geben Sie den Stop-/Limitwert als Zahl an');
 					var fieldname = ($scope.amount >= 0) ^ ($scope.sellbuy < 0) ? 'ask' : 'bid';
 					var compar = !(($scope.xtype == 'limit') ^ ($scope.amount >= 0) ^ ($scope.sellbuy < 0)) ? '<' : '>';
 					
@@ -77,41 +77,41 @@ angular.module('tradity').
 				socket.emit(qtype, query, function(data) {
 					switch (data.code) {
 						case 'dquery-success':
-							var modal = $dialogs.notify('tradity', 'Der Trade wird ausgeführt, sobald die angegebenen Bedingungen erfüllt sind.');
+							var modal = dialogs.notify('tradity', 'Der Trade wird ausgeführt, sobald die angegebenen Bedingungen erfüllt sind.');
 							modal.result.then(function(btn) {
 								$state.go('game.depot.transactions');
 							});
 							break;
 						case 'stock-buy-success':
-							var modal = $dialogs.notify('tradity', 'Trade erfolgreich!');
+							var modal = dialogs.notify('tradity', 'Trade erfolgreich!');
 							modal.result.then(function(btn) {
 								$state.go('game.depot.listing');
 							});
 							break;
 						case 'stock-buy-email-not-verif':
-							$dialogs.error('tradity', 'Deine E-Mail muss bestätigt sein, um Followertrades zu machen!');
+							dialogs.error('tradity', 'Deine E-Mail muss bestätigt sein, um Followertrades zu machen!');
 							break;
 						case 'stock-buy-out-of-money':
-							$dialogs.error('tradity', 'Nicht genügend Geld zum Trade!');
+							dialogs.error('tradity', 'Nicht genügend Geld zum Trade!');
 							break;
 						case 'stock-buy-single-paper-share-exceed':
-							$dialogs.error('tradity', 'Dein Vermögen darf höchstens zu 50 % in ein einzelnes Wertpapier investiert sein!');
+							dialogs.error('tradity', 'Dein Vermögen darf höchstens zu 50 % in ein einzelnes Wertpapier investiert sein!');
 							break;
 						case 'stock-buy-not-enough-stocks':
-							$dialogs.error('tradity', 'Nicht genug Wertpapiere');
+							dialogs.error('tradity', 'Nicht genug Wertpapiere');
 							break;
 						case 'stock-buy-autodelay-sxnotopen':
-							var modal = $dialogs.notify('tradity', 'Der Trade wird ausgeführt, sobald der Handelsplatz öffnet');
+							var modal = dialogs.notify('tradity', 'Der Trade wird ausgeführt, sobald der Handelsplatz öffnet');
 							modal.result.then(function(btn) {
 								$state.go('game.depot.transactions');
 							});
 							break;
 						case 'stock-buy-over-pieces-limit':
 
-							$dialogs.error('tradity', 'Leider übersteigt dein Trade die handelbare Menge für dieses Wertpapier!');
+							dialogs.error('tradity', 'Leider übersteigt dein Trade die handelbare Menge für dieses Wertpapier!');
 							break;
 						case 'stock-buy-stock-not-found':
-							$dialogs.error('tradity', 'Wertpapier existiert nicht');
+							dialogs.error('tradity', 'Wertpapier existiert nicht');
 							break;
 					}
 				});

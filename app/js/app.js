@@ -6,7 +6,7 @@ angular.module('tradity', [
 	'ui.keypress',
 	'ui.event',
 	'pascalprecht.translate',
-	'dialogs',
+	'dialogs.main',
 	'angular-md5',
 	'infinite-scroll'
 ]).config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider, $translateProvider) {

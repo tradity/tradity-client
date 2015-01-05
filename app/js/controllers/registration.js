@@ -9,6 +9,7 @@ angular.module('tradity').
 		$scope.street = '';
 		$scope.invitekey = $stateParams.inviteCode;
 		$scope.betakey = '';
+		$scope.lang = 'de';
 		$scope.onLSResult = [
 			function() {
 				for (var i = 0; i < $scope.schoolList.length; ++i) {

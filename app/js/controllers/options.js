@@ -1,5 +1,7 @@
 angular.module('tradity').
 	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, dialogs) {
+		$scope.lang = 'de'; // dummy
+		
 		socket.emit('get-own-options', function(data) {
 			if (!data.result)
 				return;

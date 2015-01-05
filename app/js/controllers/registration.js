@@ -1,8 +1,9 @@
 angular.module('tradity').
-	controller('RegistrationCtrl', function($scope, $stateParams, $state, $dialogs, socket) {
+	controller('RegistrationCtrl', function($scope, $stateParams, $state, dialogs, safestorage, socket) {
 		$scope.school = $stateParams.schoolid;
 		$scope.schoolname_none = false;
 		$scope.traditye = 0;
+		$scope.dla_optin = 0;
 		$scope.zipcode = '';
 		$scope.town = '';
 		$scope.street = '';
@@ -35,7 +36,7 @@ angular.module('tradity').
 		socket.on('register', function(data) {
 			switch (data.code) {
 				case 'reg-success':
-					var modal = $dialogs.notify('Willkommen bei Tradity!', 'Bitte bestätige die „Bestätigungsmail“, um alle Funktionen freizuschalten und für die Preise gewinnberechtigt zu sein.');
+					var modal = dialogs.notify('Willkommen bei Tradity!', 'Bitte bestätige die „Bestätigungsmail“, um alle Funktionen freizuschalten und für die Preise gewinnberechtigt zu sein.');
 					
 					modal.result.then(function(btn) {
 						notification('Registrierung erfolgreich', true);
@@ -79,6 +80,7 @@ angular.module('tradity').
 			if (!$scope.schoolname_none && !$scope.schoolname)
 				return notification('Bitte gib an, ob und welcher Gruppe du angehörst.');
 			
+			safestorage.setPassword($scope.password);
 			socket.emit('register', {
 				name: $scope.name,
 				giv_name: $scope.giv_name,
@@ -92,6 +94,7 @@ angular.module('tradity').
 				zipcode: $scope.zipcode,
 				town: $scope.town,
 				traditye: $scope.traditye,
+				dla_optin: $scope.dla_optin,
 				invitekey: $scope.invitekey
 			});
 		};

@@ -152,3 +152,4 @@ var escapeHTML = function(s) {
 	        .replace(/'/, '&#039;')
 	        .replace(/"/, '&quot;');
 };
+

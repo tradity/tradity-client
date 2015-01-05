@@ -1,0 +1,145 @@
+body {
+	font-size:13px;
+	font-family:Arial;
+	padding-top:50px;
+}
+
+.content.container {
+	border: 1px solid #e7e7e7;
+	border-top:none;
+}
+
+.navbar-default {
+	background-color:#fff;
+}
+
+#header {
+	.navbar-brand {
+		padding:5px;
+		img {
+			height:100%;
+		}
+	}
+	.profilepicture {
+		width:50px;
+		height:50px;
+		background-size:cover;
+	}
+	.info {
+		h2 {
+			color:#333;
+			font-size:12px;
+			padding:0px;
+			margin:0px;
+		}
+		a {
+			padding:8px;
+		}
+
+	}
+	.notifications {
+		padding:0px;
+		min-width: 250px;
+		li {
+			border-bottom:1px solid lighten(@secondary,20%);
+			background-color:lighten(@secondary,30%)
+		}
+		.seen {
+			background-color:#fff;
+		}
+		.icon {
+			background-color:@secondary;
+			color:#fff;
+			padding:15px 0px;
+			text-align:center;
+		}
+		.row {
+			margin:0px;
+		}
+		.content {
+			font-size:13px;
+			padding-top:5px;
+		}
+	}
+}
+
+#pagenav {
+	margin-bottom:0px;
+	padding:0px;
+	.navbar-right {
+		a { padding:15px 10px; }
+		.nav-block-title { display:none; }
+	}
+}
+
+@media (min-width: @screen-md-min) {
+	#pagenav {
+		padding:0px;
+		.navbar-right {
+			a { padding:15px 15px; }
+			.nav-block-title { display:inline; }
+		}
+	}
+}
+
+#legal {
+	position:absolute;
+	width:250px;
+	z-index:100;
+	margin-left:-235px;
+	a { color: #777777; }
+	a:hover {text-decoration:none;}
+	padding:2px;
+	font-size:10px;
+}
+
+#pagesubnav {
+	margin-bottom:10px;
+	.navbar-collapse {
+		padding:0px;
+	}
+
+	.navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+		background-color:@primary;
+		color:#fff;
+	}
+}
+
+.main-content {
+	padding-top:15px;
+
+	h1, h2, h3 {
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 300;
+	}
+
+	h1 {
+		font-size:25px;
+	}
+
+	h2 {
+		font-size:20px;
+	}
+
+	h3 {
+		font-size:15px;
+	}
+}
+
+.neg, #depot .item.neg  {
+	background-color: #e74c3c;
+	color: #fff;
+}
+
+.pos, #depot .item.pos  {
+	background-color: #2ecc71;
+	color: #fff;
+}
+
+a {
+	color:#333;
+}
+
+hr {
+	margin:15px 0px;
+}

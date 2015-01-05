@@ -180,7 +180,8 @@ module.exports = function (grunt) {
 					]
 				}]
 			},
-			server: '.tmp'
+			server: '.tmp',
+			doc: 'docs/*'
 		},
 		// Add vendor prefixed styles
 		autoprefixer: {
@@ -320,7 +321,8 @@ module.exports = function (grunt) {
 						'templates/{,*/}*.html',
 						'bower_components/**/*',
 						'img/{,*/}*.{webp}',
-						'fonts/{,*/}*'
+						'fonts/{,*/}*',
+						'js/jit/**/*',
 					]
 				}, {
 					expand: true,
@@ -407,18 +409,28 @@ module.exports = function (grunt) {
 		less: {
 			dev: {
 				paths: ['<%= yeoman.app %>/less', '<%= yeoman.app %>/css'],
-			    files: {
-			    	'<%= yeoman.app %>/css/style.css': "<%= yeoman.app %>/less/main.less"
-			    }
-		  	},
-		  	build: {
-		  		compress: true,
+				files: {
+					'<%= yeoman.app %>/css/style.css': "<%= yeoman.app %>/less/main.less"
+				}
+			},
+			build: {
+				compress: true,
 				paths: ['<%= yeoman.app %>/less', '<%= yeoman.app %>/css'],
-			    files: {
-			    	'<%= yeoman.app %>/css/style.css': "<%= yeoman.app %>/less/main.less"
-			    }
-		  	},
-		}		
+				files: {
+					'<%= yeoman.app %>/css/style.css': "<%= yeoman.app %>/less/main.less"
+				}
+			},
+		},
+		ngdocs: {
+			tradity: {
+				src: [
+					'<%= yeoman.app %>/js/controllers/*.js',
+					'<%= yeoman.app %>/js/directives/*.js',
+					'<%= yeoman.app %>/js/services/*.js'
+				],
+				title: 'Tradity Documentation'
+			}
+		},
 	});
 
 	grunt.registerMultiTask('stringwrap', 'Wrap file contents as string', function() {
@@ -541,6 +553,11 @@ module.exports = function (grunt) {
 		'karma'
 	]);
 
+	grunt.registerTask('doc', [
+		'clean:doc',
+		'ngdocs'
+	]);
+
 	grunt.registerTask('build', [
 		'nggettext_extract',
 		'nggettext_compile',
@@ -557,7 +574,7 @@ module.exports = function (grunt) {
 		'ngmin',
 		'copy:dist',
 		'cdnify',
-		'cssmin',
+		//'cssmin',
 		'uglify:generated',
 		'rev',
 		'usemin',

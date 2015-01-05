@@ -1,6 +1,9 @@
 angular.module('tradity').
-	controller('OptionsCtrl', function($scope, md5, socket, $dialogs) {
+	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, dialogs) {
 		socket.emit('get-own-options', function(data) {
+			if (!data.result)
+				return;
+			
 			$scope.name = data.result.name;
 			$scope.giv_name = data.result.giv_name;
 			$scope.fam_name = data.result.fam_name;
@@ -19,6 +22,7 @@ angular.module('tradity').
 			$scope.zipcode = data.result.zipcode;
 			$scope.town = data.result.town;
 			$scope.traditye = data.result.traditye&&true;
+			$scope.dla_optin = data.result.dla_optin&&true;
 			$scope.delayorderhist = data.result.delayorderhist;
 			
 			if (data.result.birthday !== null) {
@@ -89,6 +93,12 @@ angular.module('tradity').
 					school = $scope.schoolname;
 			}
 			
+			if ($scope.password)
+				safestorage.setPassword($scope.password);
+			
+			if ($scope.dla_optin)
+				dailyLoginAchievements.submitToServer(true);
+			
 			socket.emit('change-options', {
 				name: $scope.name,
 				giv_name: $scope.giv_name,
@@ -105,6 +115,7 @@ angular.module('tradity').
 				zipcode: $scope.zipcode,
 				town: $scope.town,
 				traditye: $scope.traditye,
+				dla_optin: $scope.dla_optin,
 				delayorderhist: $scope.delayorderhist
 			}, function(data) {
 				switch (data.code) {
@@ -130,7 +141,7 @@ angular.module('tradity').
 		};
 		
 		$scope.resetUser = function() {
-			var dlg = $dialogs.confirm('Options', 'Willst du dich wirklich resetten?');
+			var dlg = dialogs.confirm('Options', 'Willst du dich wirklich resetten?');
 			dlg.result.then(function(btn) {
 				socket.emit('reset-user', null, function(data) {
 					if (data.code == 'reset-user-success')

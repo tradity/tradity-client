@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('MainCtrl', function($sce, chat, ranking, $rootScope, $scope, $location, $state, $stateParams, socket, $dialogs, $http, $interval, $timeout, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
+	controller('MainCtrl', function($sce, chat, ranking, $rootScope, $scope, $location, $state, $stateParams, socket, safestorage, dailyLoginAchievements, $http, $interval, $timeout, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
 		$scope.Math = Math;
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
@@ -84,9 +84,15 @@ angular.module('tradity').
 
 		$scope.$on('user-update', function() {
 			if (!$scope.ownUser) {
+				safestorage.clear();
+				
 				$scope.isAdmin = false;
 				return;
 			}
+			
+			safestorage.check().then(function() {
+				dailyLoginAchievements.check();
+			});
 
 			if ($scope.isAdmin)
 				return;
@@ -105,13 +111,14 @@ angular.module('tradity').
 		$scope.logout = function() {
 			$scope.eventIDs = {};
 			$scope.messages = [];
+			
 			socket.emit('logout', function(data) {
-				if (data.code == 'logout-success') {
-					$scope.ownUser = null;
-					$scope.isAdmin = false;
-					$scope.$broadcast('user-update', null);
-					$state.go('index.login');
-				}
+				safestorage.clear();
+				
+				$scope.ownUser = null;
+				$scope.isAdmin = false;
+				$scope.$broadcast('user-update', null);
+				$state.go('index.login');
 			});
 		};
 		socket.on('*', function(data) {

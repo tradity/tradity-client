@@ -4,7 +4,6 @@
 	"devDependencies": {
 		"grunt": "~0.4.1",
 		"grunt-autoprefixer": "~0.4.0",
-		"grunt-angular-gettext": "~0.2.15",
 		"grunt-bower-install": "~0.7.0",
 		"grunt-concurrent": "~0.4.1",
 		"grunt-contrib-clean": "~0.5.0",
@@ -42,11 +41,7 @@
 		"karma-phantomjs-launcher": "~0.1.2",
 		"karma": "~0.10.9",
 		"karma-ng-html2js-preprocessor": "~0.1.0",
-		"grunt-contrib-less": "^0.11.0",
-		"remarkup": "*",
-		"pofile": "~0.2.12",
-		"levenshtein": "~1.0",
-		"munkres-js": "*"
+		"grunt-contrib-less": "^0.11.0"
 	},
 	"engines": {
 		"node": ">=0.8.0"
@@ -55,7 +50,8 @@
 		"test": "grunt test"
 	},
 	"dependencies": {
+		"connect-modrewrite": "^0.7.5",
 		"grunt-connect-rewrite": "^0.2.1",
-		"connect-modrewrite": "^0.7.5"
+		"grunt-ngdocs": "^0.2.6"
 	}
 }

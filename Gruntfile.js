@@ -284,7 +284,8 @@ module.exports = function (grunt) {
 						'templates/{,*/}*.html',
 						'bower_components/**/*',
 						'img/{,*/}*.{webp}',
-						'fonts/{,*/}*'
+						'fonts/{,*/}*',
+						'js/jit/**/*',
 					]
 				}, {
 					expand: true,
@@ -478,7 +479,7 @@ module.exports = function (grunt) {
 		'ngmin',
 		'copy:dist',
 		'cdnify',
-		'cssmin',
+		//'cssmin',
 		'uglify:generated',
 		'rev',
 		'usemin',

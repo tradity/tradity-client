@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('RegistrationCtrl', function($scope, $stateParams, $state, $dialogs, safestorage, socket) {
+	controller('RegistrationCtrl', function($scope, $stateParams, $state, dialogs, safestorage, socket) {
 		$scope.school = $stateParams.schoolid;
 		$scope.schoolname_none = false;
 		$scope.traditye = 0;
@@ -36,7 +36,7 @@ angular.module('tradity').
 		socket.on('register', function(data) {
 			switch (data.code) {
 				case 'reg-success':
-					var modal = $dialogs.notify('Willkommen bei Tradity!', 'Bitte bestätige die „Bestätigungsmail“, um alle Funktionen freizuschalten und für die Preise gewinnberechtigt zu sein.');
+					var modal = dialogs.notify('Willkommen bei Tradity!', 'Bitte bestätige die „Bestätigungsmail“, um alle Funktionen freizuschalten und für die Preise gewinnberechtigt zu sein.');
 					
 					modal.result.then(function(btn) {
 						notification('Registrierung erfolgreich', true);

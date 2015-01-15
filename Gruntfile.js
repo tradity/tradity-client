@@ -308,6 +308,12 @@ module.exports = function (grunt) {
 				cwd: '<%= yeoman.app %>/css',
 				dest: '.tmp/css/',
 				src: '{,*/}*.css'
+			},
+			css: {
+				expand: true,
+				dest: '<%= yeoman.dist %>/css',
+				cwd: '.tmp/concat/css/',
+				src: 'main.css'
 			}
 		},
 
@@ -480,8 +486,8 @@ module.exports = function (grunt) {
 		'createconfig',
 		'uglify:lzma',
 		'stringwrap',
-		'useminPrepare',
 		'less:build',
+		'useminPrepare',
 		'concurrent:dist',
 		'autoprefixer',
 		'concat',
@@ -492,7 +498,8 @@ module.exports = function (grunt) {
 		'uglify:generated',
 		'rev',
 		'usemin',
-		'htmlmin'
+		'htmlmin',
+		'copy:css'
 	]);
 
 	grunt.registerTask('default', [

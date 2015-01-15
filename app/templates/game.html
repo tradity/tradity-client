@@ -51,7 +51,7 @@
 				<li ng-show="isAdmin">
 					<a ui-sref="admin.userlist" class="icon" title="admin"><i class="fa fa-shield"></i></a>
 				</li>
-				<li ng-include="'templates/notifications.html'" ng-controller="NotificationsCtrl"></li>
+				<li ng-include="'templates/notifications.html'" dropdown ng-controller="NotificationsCtrl"></li>
 				<li><a ng-click="logout()" href="" class="icon"><i class="fa fa-sign-out"></i></a></li>
 				<li><a ui-sref="game.profile.overview({userId: ownUser.name})" class="profilepicture" style="background-image:url({{ownUser.profilepic}});"></a></li>
 			</ul>
@@ -67,8 +67,8 @@
 					<span class="dark nav-block-title">Neuigkeiten</span>
 				</a>
 			</li>
-			<li class="dropdown" ng-show="ownUser.schools.length > 1">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-users"></i> Gruppen <span class="caret"></span></a>
+			<li class="dropdown" dropdown ng-show="ownUser.schools.length > 1">
+				<a href class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle role="button" aria-expanded="false"><i class="fa fa-users"></i> Gruppen <span class="caret"></span></a>
 				<ul class="dropdown-menu" role="menu">
 					<li ng-repeat="item in ownUser.schools"><a ui-sref="game.group({schoolid: item.path})">{{item.name}}</a></li>
 				</ul>

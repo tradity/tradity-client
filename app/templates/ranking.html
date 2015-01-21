@@ -5,7 +5,7 @@
 			<a class="btn btn-default" ng-show="spec.includeAll" ui-sref=".({spec: csr({includeAll: false})})">Nur Rankingberechtigte</a>
 			<a class="btn btn-default" ng-hide="spec.showUsers" ui-sref=".({spec: csr({showUsers: true})})">Benutzer</a>
 			<a class="btn btn-default" ng-show="spec.showUsers" ui-sref=".({spec: csr({showUsers: false})})">Gruppen</a>
-			<a class="btn btn-default"><i ng-click="printRanking()" class="fa fa-print"/></a>
+			<a class="btn btn-default"><i ng-click="printRanking()" class="fa fa-print"></i></a>
 		</div>
 		<div class="btn-group">
 			<a ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='all'&& spec.includeProvision==false]"  class="btn" ui-sref=".({spec: csr({type: 'all', includeProvision: false})})">Reingewinn</a>

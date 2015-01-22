@@ -59,13 +59,13 @@ angular.module('tradity', [
 			controller: 'RegistrationCtrl'
 		}).
 		//change to register/:inviteCode
-		state('index.invite', {
-			url: 'join/:inviteCode',
+		state('invite', {
+			url: '/join/:inviteCode',
 			templateUrl: 'templates/registration.html',
 			controller: 'RegistrationCtrl'
 		}).
-		state('index.schoolregister', {
-			url: 'register/s{schoolid:SchoolID}',
+		state('schoolregister', {
+			url: '/register/s{schoolid:SchoolID}',
 			templateUrl: 'templates/registration.html',
 			controller: 'RegistrationCtrl'
 		}).

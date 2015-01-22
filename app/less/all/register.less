@@ -2,12 +2,34 @@
 	.box {
 		border: 1px solid #e7e7e7;
 		box-shadow:0px -2px 0 0px @primary;
-		padding:10px;
-
+		padding:15px;
 	}
 
-	.info h2 {
+	.box.row {
+		.col-sm-6 {
+			padding-top:15px;
+		}
+		padding:0px;
+		margin-left: 0px;
+		margin-right: 0px;
+		margin-top: 15px;
+	}
+
+	h2 {
 		margin:0px;
 		margin-bottom:15px;
+	}
+
+	.logo {
+		width:100%;
+		padding:15px 15%;
+	}
+}
+
+@media (min-width: @screen-sm-min) {
+	.registration .box.row { 
+		margin-left: -15px;
+		margin-right: -15px;
+		margin-top: 0px;
 	}
 }

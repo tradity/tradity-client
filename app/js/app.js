@@ -13,7 +13,7 @@ angular.module('tradity', [
 	/* Create custom angular-ui-router parameter types.
 	 * This is necessary since 0.2.12; Since then,
 	 * angular-ui-router encodes slashes in parameters. */
-	
+
 	var schoolIdRegexp = /\/[\w_/-]*[\w_-]/;
 	var genericEntityRegexp = /\/[\w_/-]*/;
 	$urlMatcherFactoryProvider
@@ -29,14 +29,14 @@ angular.module('tradity', [
 			is: function (val) { return genericEntityRegexp.test(String(val)); },
 			pattern: genericEntityRegexp
 		});
-	
+
 	$urlRouterProvider.
 	// redirect abstract states to child
 	when('/depot', '/depot/overview').
 	when('/ranking', '/ranking/all').
 	when('/admin', '/admin/userlist').
 	otherwise('/error/404');
-	
+
 	$stateProvider.
 		state('index', {
 			url: '/',
@@ -53,8 +53,8 @@ angular.module('tradity', [
 			templateUrl: 'templates/login.html',
 			controller: 'LoginCtrl'
 		}).
-		state('index.register', {
-			url: 'register',
+		state('register', {
+			url: '/register',
 			templateUrl: 'templates/registration.html',
 			controller: 'RegistrationCtrl'
 		}).
@@ -276,7 +276,7 @@ angular.module('tradity', [
 			url:'{entity:GenericEntityID}',
 			controller: 'UnknownEntityCtrl'
 		});
-		
+
 	$locationProvider.
 		html5Mode(true).
 		hashPrefix('!');

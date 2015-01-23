@@ -22,7 +22,8 @@ angular.module('tradity')
 			user.orders 		= res.orders 		|| [];
 			user.pinboard 		= res.pinboard 		|| [];
 			user.achievements 	= res.achievements 	|| [];
-			user.profilepic = config.HOST + user.profilepic;
+			user.profilepic = (config.server().protocol + '://' + config.server().hostname + '/' +
+				 (user.profilepic || config.DEFAULT_PROFILE_IMG));
 			user.parsed = true;
 			return user;
 		}

@@ -129,10 +129,8 @@ angular.module('tradity')
 				}
 				var tn = event.tradername || event.schoolname;
 				
-				if (!event.profilepic)
-					event.profilepic = config.HOST + config.DEFAULT_PROFILE_IMG;
-				else
-					event.profilepic = config.HOST + event.profilepic;
+				event.profilepic = (config.server().protocol + '://' + config.server().hostname + '/' +
+					 (event.profilepic || config.DEFAULT_PROFILE_IMG));
 
 				return {
 					type: type,

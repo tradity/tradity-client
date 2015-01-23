@@ -8,16 +8,16 @@
  * ```json
  * {
  *	API_HOST:String,
- *	HOST:String,
- *	DEFAULT_PROFILE_IMG:String
+ *	DEFAULT_PROFILE_IMG:String,
+ *	server:A function returning the server config
  * }
  * ```
  */
 angular.module('tradity')
-	.factory('config', function (API_HOST,DEFAULT_PROFILE_IMG) {
+	.factory('config', function (API_HOST, DEFAULT_PROFILE_IMG, socket) {
 		return {
-			API_HOST:API_HOST,
-			HOST:'https://tradity.de', // wie kann man das variable machen ?
-			DEFAULT_PROFILE_IMG:DEFAULT_PROFILE_IMG
-		}
+			API_HOST: API_HOST,
+			DEFAULT_PROFILE_IMG: DEFAULT_PROFILE_IMG,
+			server: function() { return socket.serverConfig || {}; }
+		};
 	})

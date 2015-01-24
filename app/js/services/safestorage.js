@@ -67,6 +67,13 @@ angular.module('tradity')
 			}
 			
 			localStorage.clientStorage = bytesToString(decrypted);
+			
+			try {
+				JSON.parse(localStorage.clientStorage);
+			} catch (e) {
+				localStorage.clientStorage = '{}';
+			}
+			
 			this.hasLoadedRemoteData = true;
 		};
 		

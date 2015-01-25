@@ -15,6 +15,7 @@ angular.module('tradity').
 			$scope.school = data.result.school;
 			$scope.schoolname = document.getElementById('schoolname').value = data.result.schoolname;
 			$scope.schoolname_none = (data.result.school == null);
+			$scope.schoolclass = data.result.schoolclass;
 			$scope.desc = data.result.desc;
 			$scope.lprovision = data.result.lprovision;
 			$scope.wprovision = data.result.wprovision;
@@ -114,6 +115,7 @@ angular.module('tradity').
 				street: $scope.street,
 				zipcode: $scope.zipcode,
 				town: $scope.town,
+				schoolclass: $scope.schoolclass,
 				traditye: $scope.traditye,
 				dla_optin: $scope.dla_optin,
 				delayorderhist: $scope.delayorderhist

@@ -7,6 +7,7 @@ angular.module('tradity').
 		$scope.zipcode = '';
 		$scope.town = '';
 		$scope.street = '';
+		$scope.schoolclass = '';
 		$scope.invitekey = $stateParams.inviteCode;
 		$scope.betakey = '';
 		$scope.onLSResult = [
@@ -89,6 +90,7 @@ angular.module('tradity').
 				password: $scope.password,
 				email: $scope.email,
 				school: $scope.schoolname ? ($scope.school ? $scope.school : $scope.schoolname) : null,
+				schoolclass: $scope.schoolclass,
 				betakey: $scope.betakey,
 				street: $scope.street,
 				zipcode: $scope.zipcode,

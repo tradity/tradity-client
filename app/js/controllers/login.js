@@ -4,6 +4,7 @@ angular.module('tradity').
 		$scope.password = '';
 		$scope.stayloggedin = false;
 		$scope.alerts = [];
+		$scope.logging_in = false;
 		$scope.closeAlert = function(index) {
 			$scope.alerts.splice(index, 1);
 		};
@@ -32,13 +33,15 @@ angular.module('tradity').
 			});
 		}
 		
-		$scope.login = function() {			
+		$scope.login = function() {		
+			$scope.logging_in = true;
 			safestorage.setPassword($scope.password);
 			socket.emit('login', {
 				name: $scope.username,
 				pw: $scope.password,
 				stayloggedin: $scope.stayloggedin
 			}, function(data) {
+				$scope.logging_in = false;
 				switch (data.code) {
 					case 'login-success':
 						$scope.fetchSelf();

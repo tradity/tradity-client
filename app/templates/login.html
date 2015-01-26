@@ -1,4 +1,4 @@
-<form ng-submit="login()">
+<form ng-submit="login()" ng-hide="logging_in">
 	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 	<div class="form-group">
 		<input type="text" ng-model="username" class="form-control" placeholder="Benutzername">
@@ -20,3 +20,6 @@
 	</div>
 	<button type="submit" class="btn btn-primary btn-sm">Login</button>
 </form>
+<div ng-show="logging_in" class="loading text-center">
+	<i class="fa fa-cog fa-spin fa-3x"></i>
+</div>

@@ -1,4 +1,5 @@
 <form ng-submit="login()">
+	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
 	<div class="form-group">
 		<input type="text" ng-model="username" class="form-control" placeholder="Benutzername">
 	</div>

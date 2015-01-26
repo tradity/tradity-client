@@ -3,6 +3,11 @@ angular.module('tradity').
 		$scope.username = '';
 		$scope.password = '';
 		$scope.stayloggedin = false;
+		$scope.alerts = [];
+		$scope.logging_in = false;
+		$scope.closeAlert = function(index) {
+			$scope.alerts.splice(index, 1);
+		};
 
 		if ($stateParams.emailVerifCode && $stateParams.uid) {
 			socket.emit('emailverif', {
@@ -11,43 +16,45 @@ angular.module('tradity').
 			}, function(data) {
 				switch (data.code) {
 					case 'login-success':
-						notification('Emailadresse erfolgreich bestätigt', true);
+						$scope.alerts.push({ type: 'success', msg:'Emailadresse erfolgreich bestätigt'});
 						$scope.fetchSelf();
 						$state.go('game.feed');
 						break;
 					case 'email-verify-already-verified':
-						notification('Emailadresse bereits bestätigt');
+						$scope.alerts.push({ type: 'danger', msg:'Emailadresse bereits bestätigt'});
 						break;
 					case 'email-verify-other-already-verified':
-						notification('Jemand anderes hat diese Emailadresse bereits bestätigt');
+						$scope.alerts.push({ type: 'danger', msg:'Jemand anderes hat diese Emailadresse bereits bestätigt'});
 						break;
 					case 'email-verify-failure':
-						notification('Fehler beim Bestätigen der Emailadresse');
+						$scope.alerts.push({ type: 'danger', msg:'Fehler beim Bestätigen der Emailadresse'});
 						break;
 				}
 			});
 		}
 		
-		$scope.login = function() {			
+		$scope.login = function() {		
+			$scope.logging_in = true;
 			safestorage.setPassword($scope.password);
 			socket.emit('login', {
 				name: $scope.username,
 				pw: $scope.password,
 				stayloggedin: $scope.stayloggedin
 			}, function(data) {
+				$scope.logging_in = false;
 				switch (data.code) {
 					case 'login-success':
 						$scope.fetchSelf();
 						$state.go('game.feed');
 						break;
 					case 'login-badname':
-						notification('Benutzer „' + $scope.username + '“ existiert nicht');
+						$scope.alerts.push({ type: 'danger', msg:'Benutzer „' + $scope.username + '“ existiert nicht'});
 						break;
 					case 'login-wrongpw':
-						notification('Falsches Passwort');
+						$scope.alerts.push({ type: 'danger', msg:'Falsches Passwort'});
 						break;
 					case 'login-email-not-verified':
-						notification('Emailadresse noch nicht bestätigt');
+						$scope.alerts.push({ type: 'danger', msg:'Emailadresse noch nicht bestätigt'});
 						break;
 				}
 			});
@@ -55,11 +62,11 @@ angular.module('tradity').
 
 		socket.on('password-reset', function(data) {
 			if (data.code == 'password-reset-success') {
-				notification('Neues Passwort erfolgreich versandt',true);
+				$scope.alerts.push({ type: 'success', msg:'Neues Passwort erfolgreich versandt'});
 			} else if (data.code == 'password-reset-failed') {
-				notification('Das neue Passwort konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
+				$scope.alerts.push({ type: 'danger', msg:'Das neue Passwort konnte nicht versandt werden. Bitte an tech@tradity.de wenden'});
 			} else if (data.code == 'password-reset-notfound') {
-				notification('Benutzer „' + $scope.username + '“ existiert nicht');
+				$scope.alerts.push({ type: 'danger', msg:'Benutzer „' + $scope.username + '“ existiert nicht'});
 			}
 		});
 

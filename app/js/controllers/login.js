@@ -1,5 +1,5 @@
 angular.module('tradity').
-	controller('LoginCtrl', function($scope, $stateParams, $state, safestorage, socket) {
+	controller('LoginCtrl', function($scope, user, $stateParams, $state, safestorage, socket) {
 		$scope.username = '';
 		$scope.password = '';
 		$scope.stayloggedin = false;
@@ -8,6 +8,10 @@ angular.module('tradity').
 		$scope.closeAlert = function(index) {
 			$scope.alerts.splice(index, 1);
 		};
+
+		user.me().then(function(){
+			$state.go('game.feed');
+		})
 
 		if ($stateParams.emailVerifCode && $stateParams.uid) {
 			socket.emit('emailverif', {

@@ -64,7 +64,7 @@
 					<div class="col-sm-6">
 						<div class="form-group">
 							<label for="schoolname">Institution / Schule</label>
-							<input type="text" ng-model="schoolname" placeholder="Schule" id="schoolname" class="form-control">
+							<input type="text" ng-init="loadSearch()" ng-model="schoolname" placeholder="Schule" id="schoolname" class="form-control">
 							<input id="schoolname_none" ng-model="schoolname_none" type="checkbox"> Keine Gruppe
 							<input type="text" ng-model="schoolclass" placeholder="Schule" id="schoolclass" class="form-control">
 						</div>
@@ -117,5 +117,5 @@
 		<input type="button" ng-click="resetUser();" value="Benutzer zurücksetzen" id="options-reset" class="btn btn-primary" ng-show="serverConfig.resetAllowed || isAdmin">
 	</div>
 	<!-- ja das muss ich noch machen -->
-	<div class="hidden"><input type="text" ng-model="schoolname" placeholder="Schule" id="schoolname" class="form-control"></div>
+	
 </div>

@@ -159,5 +159,9 @@ angular.module('tradity').
 				alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
 			}
 		});
-		useSchoolAC($scope, socket);
+		
+		$scope.loadSearch = function() {
+			useSchoolAC($scope, socket);
+		}
+		
 	});

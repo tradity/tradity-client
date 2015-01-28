@@ -76,7 +76,7 @@
             <span ng-show="message.leader">
               <a ui-sref="game.profile.overview({userId: message.leader})" translate-id="leader-link">{{message.stockname}}</a>
             </span>
-            <span ng-hide="message.leader">{{message.stockname}}</span>.
+            <a stock isin="{{message.stocktextid}}" title="{{message.stockname}}" ng-hide="message.leader">{{message.stockname}}</span>.
           </translate>
         </div>
       </div>

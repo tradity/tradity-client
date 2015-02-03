@@ -287,9 +287,22 @@ angular.module('tradity', [
 		}).
 		fallbackLanguage(['en', 'de']).
 		preferredLanguage('de');
-}).run(['$templateCache',function($templateCache){
+}).run(['$templateCache','$rootScope',function($templateCache,$rootScope){
 	$templateCache.put('/dialogs/error.html',   "<ng-include src=\"'templates/dialogs/error.html'\"></ng-include>");
 	$templateCache.put('/dialogs/wait.html',    "<ng-include src=\"'templates/dialogs/wait.html'\"></ng-include>");
 	$templateCache.put('/dialogs/notify.html',  "<ng-include src=\"'templates/dialogs/notify.html'\"></ng-include>");
 	$templateCache.put('/dialogs/confirm.html', "<ng-include src=\"'templates/dialogs/confirm.html'\"></ng-include>");
+	
+	$rootScope.loadState = false;
+	$rootScope.$on("$stateChangeStart", function () {
+		$rootScope.loadState = true;
+	});
+
+	var end = function() {
+		$rootScope.loadState = false;
+	}
+
+	$rootScope.$on("$stateChangeSuccess", end);
+	$rootScope.$on("$stateChangeError", end);
+
 }]);

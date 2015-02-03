@@ -154,7 +154,10 @@
 			<a target="_blank" href="https://boersenspiel.tradity.de/impressum/">Impressum</a> | <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/" target="_blank">Teilnahmebedingungen & Datenschutz</a>
 		</div>
 	</div>
-	<div ui-view></div>
+	<div ng-hide="loadState" ui-view></div>
+	<div ng-show="loadState">
+	loading
+	</div>
 </div>
 
 <div id="overlayQuery" ng-show="hasOpenQueries()">

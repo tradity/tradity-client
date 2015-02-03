@@ -21,8 +21,9 @@ angular.module('tradity')
 				return user;
 			user.orders 		= res.orders 		|| [];
 			user.pinboard 		= res.pinboard 		|| [];
+			user.values 		= res.values 		|| [];
 			user.achievements 	= res.achievements 	|| [];
-			user.profilepic = (config.server().protocol + '://' + config.server().hostname + '/' +
+			user.profilepic = (config.server().protocol + '://' + config.server().hostname  +
 				 (user.profilepic || config.DEFAULT_PROFILE_IMG));
 			user.parsed = true;
 			return user;
@@ -157,7 +158,6 @@ angular.module('tradity')
 					lookfor: username,
 					_cache: 20
 				}).then(function(res) {
-					console.log(res)
 					return parse(res);
 				})
 			 }

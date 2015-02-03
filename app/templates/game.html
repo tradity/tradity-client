@@ -33,11 +33,6 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li ng-show="search" class="search">
-					<form class="pure-form" id="rankingSearch" ng-submit="openSearch(searchBarText,search)">
-						<input type="search" ng-model="searchBarText" placeholder="Suche" class="pure-input" autofocus>
-					</form>
-				</li>
 				<li class="desktop-only search-btn" ng-show="!search">
 					<a ng-click="showSearch()" href="" class="icon"><i class="fa fa-search"></i></a>
 				</li>
@@ -55,6 +50,9 @@
 				<li><a ng-click="logout()" href="" class="icon"><i class="fa fa-sign-out"></i></a></li>
 				<li><a ui-sref="game.profile.overview({userId: ownUser.name})" class="profilepicture" style="background-image:url({{ownUser.profilepic}});"></a></li>
 			</ul>
+			<form ng-show="search" ng-submit="openSearch(searchBarText,search)" class="navbar-form navbar-right">
+				<input type="search" ng-model="searchBarText" placeholder="Suche" class="form-control" autofocus>
+			</form>
 		</div>
 	</div>
 </nav>

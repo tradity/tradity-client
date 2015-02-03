@@ -64,6 +64,12 @@ angular.module('tradity')
 			});
 		})
 
+		socket.emit('get-user-info', {
+			lookfor: '$self',
+			nohistory: true,
+			_cache: 20
+		});
+
 		return {
 			/**
 			 * @ngdoc property
@@ -151,6 +157,7 @@ angular.module('tradity')
 					lookfor: username,
 					_cache: 20
 				}).then(function(res) {
+					console.log(res)
 					return parse(res);
 				})
 			 }

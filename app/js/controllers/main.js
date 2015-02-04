@@ -9,6 +9,11 @@ angular.module('tradity').
 		$scope.serverConfig = {};
 		$scope.hasOpenQueries = socket.hasOpenQueries.bind(socket);
 		$scope.version = null;
+
+		$scope.toggleM = function() {
+			console.log('sdfs')
+			$('#pagenav').toggleClass('hidden-xs');
+		}
 		
 		$scope.connectionLastRx = 0;
 		$scope.connectionCheck = function() {

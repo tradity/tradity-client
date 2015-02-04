@@ -48,7 +48,7 @@ angular.module('tradity').
 				$scope.logging_in = false;
 				switch (data.code) {
 					case 'login-success':
-						$scope.fetchSelf();
+						user.fetch();
 						$state.go('game.feed');
 						break;
 					case 'login-badname':

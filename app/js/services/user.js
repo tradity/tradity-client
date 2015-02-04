@@ -65,11 +65,14 @@ angular.module('tradity')
 			});
 		})
 
-		socket.emit('get-user-info', {
-			lookfor: '$self',
-			nohistory: true,
-			_cache: 20
-		});
+		var fetchSelf = function() {
+			socket.emit('get-user-info', {
+				lookfor: '$self',
+				nohistory: true,
+				_cache: 20
+			});
+		}
+		fetchSelf();
 
 		return {
 			/**
@@ -100,6 +103,7 @@ angular.module('tradity')
 				}).then(function(data) {
 					switch (data.code) {
 						case 'login-success':
+							fetchSelf();
 							$state.go('game.ranking.all');
 							break;
 						case 'login-badname':
@@ -160,7 +164,14 @@ angular.module('tradity')
 				}).then(function(res) {
 					return parse(res);
 				})
-			 }
+			 },
+			 /**
+			 * @ngdoc method
+			 * @name tradity.user#fetch
+			 * @methodOf tradity.user
+			 * @description pokes the server for the user
+			 */
+			 fetch:fetchSelf
 		};
 	})
 	/**

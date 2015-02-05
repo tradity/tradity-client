@@ -32,7 +32,7 @@ angular.module('tradity').
 					_cache: 30
 				}, function(data) {
 					if (data.code == 'school-exists-success' && data.exists) {
-						$state.go('index.schoolregister', {schoolid: data.path});
+						$state.go('schoolregister', {schoolid: data.path});
 					}
 				});
 			} else if (data.code == 'get-school-info-success') {

@@ -1,9 +1,14 @@
 angular.module('tradity').
-	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, dialogs) {
-		socket.emit('get-own-options', function(data) {
+	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs) {
+		socket.on('get-own-options', function(data) {
 			if (!data.result)
 				return;
 			
+			$scope.DLAValidityDays = config.server().DLAValidityDays;
+			$scope.show_dlainfo = false;
+			$scope.dla_cert_days = dailyLoginAchievements.getCertificates().map(function(cert) {
+				return new Date(cert.date)
+			});
 			$scope.name = data.result.name;
 			$scope.giv_name = data.result.giv_name;
 			$scope.fam_name = data.result.fam_name;
@@ -33,6 +38,8 @@ angular.module('tradity').
 				$scope.birthdayy = d.getUTCFullYear();
 			}
 		});
+		
+		socket.emit('get-own-options');
 		
 		$scope.handlePublishCode = function(code) {
 			switch (code) {

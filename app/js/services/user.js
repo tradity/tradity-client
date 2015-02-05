@@ -123,7 +123,6 @@ angular.module('tradity')
 			logout:function() {
 				socket.emit('logout', function(data) {
 					safestorage.clear();
-					
 					var $user = $rootScope.$new(true);
 					$rootScope.$broadcast('user-update', null);
 					$state.go('index.login');

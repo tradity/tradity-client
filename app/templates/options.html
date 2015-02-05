@@ -113,7 +113,7 @@
 	</form>
 	<hr/>
 	<div class="save">
-		<input type="submit" value="Speichern" id="options-sb" class="btn btn-primary">
+		<input type="submit" value="Speichern" id="options-sb" class="btn btn-primary" ng-click="changeOptions()">
 		<input type="button" ng-click="resetUser();" value="Benutzer zurücksetzen" id="options-reset" class="btn btn-primary" ng-show="serverConfig.resetAllowed || isAdmin">
 	</div>
 	<!-- ja das muss ich noch machen -->

@@ -60,17 +60,18 @@ angular.module('tradity')
 			
 			var decrypted = '';
 			
-			if (this.encryptedStorage.length > 0) {
-				var iv = this.encryptedStorage.subarray(0, 16);
-				var key = new Uint8Array(localStorage.ssKey.split(','));
-				decrypted = asmCrypto.AES_GCM.decrypt(this.encryptedStorage.subarray(16), key, iv);
-			}
-			
-			localStorage.clientStorage = bytesToString(decrypted);
-			
 			try {
+				if (this.encryptedStorage.length > 0) {
+					var iv = this.encryptedStorage.subarray(0, 16);
+					var key = new Uint8Array(localStorage.ssKey.split(','));
+					decrypted = asmCrypto.AES_GCM.decrypt(this.encryptedStorage.subarray(16), key, iv);
+				}
+				
+				localStorage.clientStorage = bytesToString(decrypted);
+			
 				JSON.parse(localStorage.clientStorage);
 			} catch (e) {
+				console.warn('Could not decrypt clientStorage: ', e);
 				localStorage.clientStorage = '{}';
 			}
 			

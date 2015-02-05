@@ -2,15 +2,6 @@
 
 angular.module('tradity')
 	.factory('event', function ($sce,$user,config) {
-		var escapeHTML = function(s) {
-			if (!s)
-				return s;
-			return s.replace(/&/g, '&amp;')
-				.replace(/</g, '&lt;')
-				.replace(/>/, '&gt;')
-				.replace(/'/, '&#039;')
-				.replace(/"/, '&quot;');
-		};
 		/**
 		 * @ngdoc service
 		 * @name tradity.event

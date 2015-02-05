@@ -158,6 +158,18 @@ hr {
 
 
 
-.navbar-default {
-	border-color:none;
+#pagesubnav, #pagesubnav.navbar-default .navbar-collapse, #pagesubnav.navbar-default .navbar-form {
+	border-color:#fff;
+	text-align: center;
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+		border-color:#fff;
+		text-align: center;
+	}
+}
+
+@media (min-width: @screen-sm-min) {
+	#pagesubnav, #pagesubnav.navbar-default .navbar-collapse, #pagesubnav.navbar-default .navbar-form {
+		text-align:left;
+		border-color:#e7e7e7;
+	}
 }

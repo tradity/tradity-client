@@ -43,7 +43,7 @@ angular.module('tradity')
 		DailyLoginAchievements.prototype.getCertificates = function() {
 			var DLAValidityDays = config.server().DLAValidityDays;
 			var minValidDate = DLAValidityDays ? 
-				new Date(Date.now() - (DLAValidityDays+1) * 86400 * 1000).toJSON().substr(0, 10) : new Date(0);
+				new Date(Date.now() - (DLAValidityDays+1) * 86400 * 1000) : new Date(0);
 			
 			// read certificates and filter out invalid ones
 			return (safestorage.getEntry('dl_certificates') || []).filter(function(cert) {

@@ -68,10 +68,14 @@ angular.module('tradity')
 				}
 				
 				localStorage.clientStorage = bytesToString(decrypted);
-			
-				JSON.parse(localStorage.clientStorage);
 			} catch (e) {
 				console.warn('Could not decrypt clientStorage: ', e);
+			}
+			
+			try {
+				JSON.parse(localStorage.clientStorage);
+			} catch (e) {
+				console.warn('Could not parse clientStorage: ', e);
 				localStorage.clientStorage = '{}';
 			}
 			

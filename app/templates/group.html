@@ -86,10 +86,15 @@
 			</div>
 		</div>
 		<div class="widget" ng-show="isAdmin || selfIsSchoolAdmin">
-			
 			<h3>User einladen</h3>
 			<div class="inner">
 				<ng-include src="'templates/inviteform.html'"></ng-include>
+			</div>
+		</div>
+		<div class="widget" ng-show="isAdmin">
+			<h3>Wordpress-Integration</h3>
+			<div class="inner">
+				<ng-include src="'templates/feedblogs.html'"></ng-include>
 			</div>
 		</div>
 	</div>

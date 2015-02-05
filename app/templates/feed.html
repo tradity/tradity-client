@@ -189,6 +189,21 @@
 					</a>
 				</div>
 			</div>
+			<div ng-switch-when="blogpost" class="comment">
+				<div class="feed-entry-content">
+					<div class="feed-head">
+						<span class="feed-time pull-right" title="{{message.time * 1000 | date:'short'}}">{{vtime(message.time)}}</span>
+						<a ui-sref="game.group({schoolid: message.schoolpath})">{{message.schoolname}}</a> <i class="fa fa-angle-right"></i> 
+						<a ng-href="{{message.link}}" class="feed-link" ng-bind-html="message.title">{{message.title}}</a>
+					</div>
+					<div ng-bind-html="message.excerpt">
+						{{message.excerpt}}
+					</div>
+					<div>
+						<a ng-href="{{message.link}}" class="feed-link">Weiterlesen</a>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="col-sm-3 vertical hidden-xs" ng-include="'templates/sponsors.html'"></div>

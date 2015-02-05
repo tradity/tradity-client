@@ -1,5 +1,9 @@
 'use strict';
 
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 var enterDevMode = function() { document.cookie = 'devmode=1;expires=Fri, 31 Dec 9999 23:59:59 GMT'; };
 var enterSrvDevMode = function() { document.cookie = 'srvdevmode=1;expires=Fri, 31 Dec 9999 23:59:59 GMT'; };
 

@@ -1,3 +1,6 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <a ng-repeat="(id, category) in categories" class="achievment-item" ui-sref="game.profile.achievements.list({id: category.linkId})">
 	<img src="{{category.img}}" class="picture pull-left" ng-show="category.img">
 	<div class="icon" ng-hide="category.img">

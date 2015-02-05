@@ -1,21 +1,25 @@
-<div class="login-form">
-	<form class="pure-form pure-form-stacked" ng-submit="login()">
-		<fieldset class="pure-group">
-		<input type="text" class="pure-input pure-input-1" ng-model="username" placeholder="Benutzername" id="username" autofocus>
-		<input type="password" class="pure-input pure-input-1" ng-model="password" placeholder="Passwort" id="password">
-		</fieldset>
-
-		<label for="remember" class="pure-checkbox">
-			<input id="remember" ng-model="stayloggedin" type="checkbox"> Eingeloggt bleiben ?
+<form ng-submit="login()" ng-hide="logging_in">
+	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+	<div class="form-group">
+		<input type="text" ng-model="username" class="form-control" placeholder="Benutzername">
+	</div>
+	<div class="form-group">
+		<input type="password" placeholder="Passwort" ng-model="password" class="form-control">
+	</div>
+	<div class="checkbox">
+		<label>
+			<input type="checkbox" ng-model="stayloggedin"> Eingeloggt bleiben ?
 		</label>
-		<br>
-		<div class="pull-right">
-			<small>
-			<a class="text-link" ng-click="passwordReset();" style="cursor: pointer; margin-right: 20px;">Passwort vergessen?</a><br>
-			<a class="registerq" ui-sref="index.register">Noch nicht registriert?</a>
-			</small>
-		</div>
-		<button type="submit" class="btn btn-primary btn-sm">Login</button> 
-
-	</form>
+	</div>
+	<br>
+	<div class="pull-right">
+		<small>
+		<a class="text-link" ng-click="passwordReset();" style="cursor: pointer; margin-right: 20px;">Passwort vergessen?</a><br>
+		<a class="registerq" ui-sref="register">Noch nicht registriert?</a>
+		</small>
+	</div>
+	<button type="submit" class="btn btn-primary btn-sm">Login</button>
+</form>
+<div ng-show="logging_in" class="loading text-center">
+	<i class="fa fa-cog fa-spin fa-3x"></i>
 </div>

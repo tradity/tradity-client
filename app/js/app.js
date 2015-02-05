@@ -6,14 +6,14 @@ angular.module('tradity', [
 	'ui.keypress',
 	'ui.event',
 	'pascalprecht.translate',
-	'dialogs',
+	'dialogs.main',
 	'angular-md5',
 	'infinite-scroll'
 ]).config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider, $translateProvider) {
 	/* Create custom angular-ui-router parameter types.
 	 * This is necessary since 0.2.12; Since then,
 	 * angular-ui-router encodes slashes in parameters. */
-	
+
 	var schoolIdRegexp = /\/[\w_/-]*[\w_-]/;
 	var genericEntityRegexp = /\/[\w_/-]*/;
 	$urlMatcherFactoryProvider
@@ -29,19 +29,19 @@ angular.module('tradity', [
 			is: function (val) { return genericEntityRegexp.test(String(val)); },
 			pattern: genericEntityRegexp
 		});
-	
+
 	$urlRouterProvider.
 	// redirect abstract states to child
 	when('/depot', '/depot/overview').
 	when('/ranking', '/ranking/all').
 	when('/admin', '/admin/userlist').
 	otherwise('/error/404');
-	
+
 	$stateProvider.
 		state('index', {
 			url: '/',
 			templateUrl: 'templates/index.html',
-			controller: 'HerounitCtrl'
+			controller:'IndexCtrl'
 		}).
 		state('index.login', {
 			url: 'login',
@@ -53,19 +53,19 @@ angular.module('tradity', [
 			templateUrl: 'templates/login.html',
 			controller: 'LoginCtrl'
 		}).
-		state('index.register', {
-			url: 'register',
+		state('register', {
+			url: '/register',
 			templateUrl: 'templates/registration.html',
 			controller: 'RegistrationCtrl'
 		}).
 		//change to register/:inviteCode
-		state('index.invite', {
-			url: 'join/:inviteCode',
+		state('invite', {
+			url: '/join/:inviteCode',
 			templateUrl: 'templates/registration.html',
 			controller: 'RegistrationCtrl'
 		}).
-		state('index.schoolregister', {
-			url: 'register/s{schoolid:SchoolID}',
+		state('schoolregister', {
+			url: '/register/s{schoolid:SchoolID}',
 			templateUrl: 'templates/registration.html',
 			controller: 'RegistrationCtrl'
 		}).
@@ -276,7 +276,7 @@ angular.module('tradity', [
 			url:'{entity:GenericEntityID}',
 			controller: 'UnknownEntityCtrl'
 		});
-		
+
 	$locationProvider.
 		html5Mode(true).
 		hashPrefix('!');
@@ -287,9 +287,22 @@ angular.module('tradity', [
 		}).
 		fallbackLanguage(['en', 'de']).
 		preferredLanguage('de');
-}).run(['$templateCache',function($templateCache){
+}).run(['$templateCache','$rootScope',function($templateCache,$rootScope){
 	$templateCache.put('/dialogs/error.html',   "<ng-include src=\"'templates/dialogs/error.html'\"></ng-include>");
 	$templateCache.put('/dialogs/wait.html',    "<ng-include src=\"'templates/dialogs/wait.html'\"></ng-include>");
 	$templateCache.put('/dialogs/notify.html',  "<ng-include src=\"'templates/dialogs/notify.html'\"></ng-include>");
 	$templateCache.put('/dialogs/confirm.html', "<ng-include src=\"'templates/dialogs/confirm.html'\"></ng-include>");
+	
+	$rootScope.loadState = false;
+	$rootScope.$on("$stateChangeStart", function () {
+		$rootScope.loadState = true;
+	});
+
+	var end = function() {
+		$rootScope.loadState = false;
+	}
+
+	$rootScope.$on("$stateChangeSuccess", end);
+	$rootScope.$on("$stateChangeError", end);
+
 }]);

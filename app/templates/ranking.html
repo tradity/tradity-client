@@ -1,60 +1,42 @@
 <div id="stats" class="main-content ranking" infinite-scroll="loadMore()" infinite-scroll-distance="2">
 	<div id="tabs">
-		<ul class="ranking-spec-choice">
-			<li><a ui-sref=".({spec: csr({type: 'all', includeProvision: false})})">Reingewinn</a></li>
-			<li><a ui-sref=".({spec: csr({type: 'all', includeProvision: true})})">Leader</a></li>
-			<li><a ui-sref=".({spec: csr({type: 'xp'})})">XP</a></li>
-			<li><a ui-sref=".({spec: csr({type: 'follower'})})">Follower</a></li>
-			<li ng-show="isAdmin || selfIsSchoolAdmin"><a ui-sref=".({spec: csr({type: 'administrative'})})">Mitglieder</a></li>
+		<div class="btn-group pull-right">
+			<a class="btn btn-default" ng-hide="spec.includeAll" ui-sref=".({spec: csr({includeAll: true})})">Alle</a>
+			<a class="btn btn-default" ng-show="spec.includeAll" ui-sref=".({spec: csr({includeAll: false})})">Nur Rankingberechtigte</a>
+			<a class="btn btn-default" ng-hide="spec.showUsers" ui-sref=".({spec: csr({showUsers: true})})">Benutzer</a>
+			<a class="btn btn-default" ng-show="spec.showUsers" ui-sref=".({spec: csr({showUsers: false})})">Gruppen</a>
+			<a class="btn btn-default"><i ng-click="printRanking()" class="fa fa-print"></i></a>
+		</div>
+		<div class="btn-group">
+			<a ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='all'&& spec.includeProvision==false]"  class="btn" ui-sref=".({spec: csr({type: 'all', includeProvision: false})})">Reingewinn</a>
+			<a ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='all'&& spec.includeProvision==true]" class="btn" ui-sref=".({spec: csr({type: 'all', includeProvision: true})})">Leader</a>
+			<a ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='xp']"class="btn" ui-sref=".({spec: csr({type: 'xp'})})">XP</a>
+			<a  ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='follower']"class="btn" ui-sref=".({spec: csr({type: 'follower'})})">Follower</a>
+			<a  ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='administrative']"class="btn" ng-show="isAdmin || selfIsSchoolAdmin" ui-sref=".({spec: csr({type: 'administrative'})})">Mitglieder</a>
+		</div>
+
+		<hr/>
+
+<div class="input-group" ng-show="spec.type == 'all' || spec.type == 'follower'">
+	<input type="text" class="form-control" placeholder="suche">
+	<div class="input-group-btn">
+		<div class="btn btn-default">
+			von <span ng-show="spec.since">{{spec.since | date:'short'}}</span><span ng-hide="spec.since">Spielbeginn</span> bis <span ng-show="spec.upto">{{spec.upto | date:'short'}}</span><span ng-hide="spec.upto">Jetzt</span>
+		</div>
+	</div>
+	<div class="input-group-btn">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Startzeitpunkt <span class="caret"></span></button>
+		<ul class="dropdown-menu dropdown-menu-right" role="menu">
+			<li><a ui-sref=".({spec: csr({since: null, upto: null})})">Spielbeginn</a></li>
+			<li ui-sref=".({spec: csr({since: 'weekstart'})})"><a>Seit Wochenanfang</a></li>
+			<li ui-sref=".({spec: csr({since: '1 week'})})"><a>Seit 1 Woche</a></li>
+			<li ui-sref=".({spec: csr({since: '1 month'})})"><a>Seit 1 Monat</a></li>
 		</ul>
+	</div>
+</div>
+<input ng-hide="spec.type == 'all' || spec.type == 'follower'" type="text" class="form-control" placeholder="suche">
 		
-		<ul class="ranking-spec-choice">
-			<li ng-hide="spec.showUsers"><a ui-sref=".({spec: csr({showUsers: true})})">Auch Benutzer anzeigen</a></li>
-			<li ng-show="spec.showUsers"><a ui-sref=".({spec: csr({showUsers: false})})">Nur Gruppen anzeigen</a></li>
-			<li ng-show="school"><a ng-click="printRanking()">Drucken</a></li>
-		</ul>
-		<ul class="ranking-spec-choice" ng-show="isAdmin">
-			<li ng-hide="spec.includeAll"><a ui-sref=".({spec: csr({includeAll: true})})">Alle anzeigen</a></li>
-			<li ng-show="spec.includeAll"><a ui-sref=".({spec: csr({includeAll: false})})">Nur Rankingberechtigte anzeigen</a></li>
-			<li ng-show="school"><a ng-click="printRanking()">Drucken</a></li>
-		</ul>
-		<ul ng-show="spec.type == 'all' || spec.type == 'follower'" class="ranking-spec-choice">
-			<li>
-				<a>
-					Startzeitpunkt:
-					<span ng-show="spec.since">{{spec.since | date:'short'}}</span>
-					<span ng-hide="spec.since">Spielbeginn</span>
-				</a>
-			</li>
-			<li>
-				<a>
-					Endzeitpunkt:
-					<span ng-show="spec.upto">{{spec.upto | date:'short'}}</span>
-					<span ng-hide="spec.upto">Jetzt</span>
-				</a>
-			</li>
-			<li>
-				<a ui-sref=".({spec: csr({since: null, upto: null})})">Seit Spielbeginn</a>
-			</li>
-			<li>
-				<a ui-sref=".({spec: csr({since: 'weekstart'})})">Seit Wochenanfang</a>
-			</li>
-			<!--<li>
-				<a ui-sref=".({spec: csr({since: '1 week'})})">Seit 1 Woche</a>
-			</li>
-			<li>
-				<a ui-sref=".({spec: csr({since: '1 month'})})">Seit 1 Monat</a>
-			</li>-->
-			<li ng-repeat="tab in rankingCfg().extraTabs">
-				<a ui-sref=".({spec: csr(tab.csr)})">{{tab.text}}</a>
-			</li>
-		</ul>
 
-		<form class="pure-form ranking-spec-choice" id="rankingSearch">
-			<input type="search" ng-model="searchText" placeholder="Suche" class="pure-input">
-		</form>
-
-		<div class="clearfix"></div>
 
 		<div id="all">
 			<div class="table-wrapper">

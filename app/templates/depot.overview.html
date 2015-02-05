@@ -1,25 +1,25 @@
 <div id="overview">
 	<h2>Vermögen</h2>
 	
-	<div class="pure-g info-grid">
+	<div class="row">
 
-		<div class="pure-u-1-3">
-			<div class="item">
-				<b>Gesamt</b>
+		<div class="col-sm-4">
+			<div class="item text-center">
+				<b>Gesamt</b><br/>
 				{{ownUser.totalvalue / 10000| currency}}
 			</div>
 		</div>
 
-		<div class="pure-u-1-3">
-			<div class="item">
-				<b>Konto</b>
+		<div class="col-sm-4">
+			<div class="item text-center">
+				<b>Konto</b><br/>
 				{{ownUser.freemoney / 10000 | currency}}
 			</div>
 		</div>
 
-		<div class="pure-u-1-3">
-			<div class="item">
-				<b>Depot</b>
+		<div class="col-sm-4">
+			<div class="item text-center">
+				<b>Depot</b><br/>
 				{{ownUser.depotvalue / 10000 | currency}}
 			</div>
 		</div>
@@ -28,25 +28,25 @@
 
 	<h2>Vermögensentwicklung</h2>
 
-	<div class="pure-g info-grid">
+	<div class="row">
 
-		<div class="pure-u-1-3">
-			<div class="item" ng-class="{pos: performanceAll > 0, neg: performanceAll < 0}">
-				<b>Gesamt</b>
+		<div class="col-sm-4">
+			<div class="item text-center" ng-class="{pos: performanceAll > 0, neg: performanceAll < 0}">
+				<b>Gesamt</b><br/>
 				{{ performanceAll = ((ownUser.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
 			</div>
 		</div>
 
-		<div class="pure-u-1-3">
-			<div class="item" ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
-				<b>Heute</b>
+		<div class="col-sm-4">
+			<div class="item text-center" ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
+				<b>Heute</b><br/>
 				{{( performanceToday = ownUser.totalvalue / ownUser.daystarttotalvalue - 1) * 100 | number:2}} %
 			</div>
 		</div>
 
-		<div class="pure-u-1-3">
-			<div class="item" ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
-				<b>Woche</b>
+		<div class="col-sm-4">
+			<div class="item text-center" ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
+				<b>Woche</b><br/>
 				{{ performanceWeek = (ownUser.totalvalue / ownUser.weekstarttotalvalue - 1) * 100 | number:2}} %
 			</div>
 		</div>
@@ -55,11 +55,11 @@
 
 	<h2>Followerbewertung</h2>
 
-	<div class="pure-g info-grid">
+	<div class="row">
 
-		<div class="pure-u-1-3">
-			<div class="item" ng-class="{pos: ownUser.totalfperf && fperfAll > 0, neg: ownUser.totalfperf && fperfAll < 0}">
-				<b>Gesamt</b>
+		<div class="col-sm-4">
+			<div class="item text-center" ng-class="{pos: ownUser.totalfperf && fperfAll > 0, neg: ownUser.totalfperf && fperfAll < 0}">
+				<b>Gesamt</b><br/>
 				<span ng-show="ownUser.totalfperf">
 					{{ fperfAll = (ownUser.totalfperf-1) * 100 | number:2}} %
 				</span>
@@ -69,9 +69,9 @@
 			</div>
 		</div>
 
-		<div class="pure-u-1-3">
-			<div class="item" ng-class="{pos: ownUser.dayfperf && fperfToday > 0, neg: ownUser.dayfperf && fperfToday < 0}">
-				<b>Heute</b>
+		<div class="col-sm-4">
+			<div class="item text-center" ng-class="{pos: ownUser.dayfperf && fperfToday > 0, neg: ownUser.dayfperf && fperfToday < 0}">
+				<b>Heute</b><br/>
 				<span ng-show="ownUser.dayfperf">
 					{{ fperfToday = (ownUser.dayfperf-1) * 100 | number:2}} %
 				</span>
@@ -81,9 +81,9 @@
 			</div>
 		</div>
 
-		<div class="pure-u-1-3">
-			<div class="item" ng-class="{pos: ownUser.weekfperf && fperfWeek > 0, neg: ownUser.weekfperf && fperfWeek < 0}">
-				<b>Woche</b>
+		<div class="col-sm-4">
+			<div class="item text-center" ng-class="{pos: ownUser.weekfperf && fperfWeek > 0, neg: ownUser.weekfperf && fperfWeek < 0}">
+				<b>Woche</b><br/>
 				<span ng-show="ownUser.weekfperf">
 					{{ fperfWeek = (ownUser.weekfperf-1) * 100 | number:2}} %
 				</span>
@@ -97,25 +97,25 @@
 
 	<h2>als Leader</h2>
 
-	<div class="pure-g info-grid">
+	<div class="row">
 
-		<div class="pure-u-1-3">
-			<div class="item">
-				<b>Follower</b><br />
+		<div class="col-sm-4">
+			<div class="item text-center">
+				<b>Follower</b><br/>
 				{{ownUser.f_count}}
 			</div>
 		</div>
 
-		<div class="pure-u-1-3">
-			<div class="item">
-				<b>verkaufte Anteile</b><br />
+		<div class="col-sm-4">
+			<div class="item text-center">
+				<b>verkaufte Anteile</b><br/>
 				{{ownUser.f_amount}}
 			</div>
 		</div>
 
-		<div class="pure-u-1-3">
-			<div class="item">
-				<b>Woche</b><br />
+		<div class="col-sm-4">
+			<div class="item text-center">
+				<b>Woche</b><br/>
 				{{ownUser.wprov_sum / 10000|currency}} / {{ownUser.lprov_sum / 10000|currency}}
 			</div>
 		</div>

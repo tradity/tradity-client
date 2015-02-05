@@ -1,10 +1,10 @@
 angular.module('tradity').
-	controller('FeedCtrl', function($scope, socket) {
+	controller('FeedCtrl', function($scope, $feed) {
 		$scope.displaymessages = [];
-		$scope.messageCount = 20;
+		$scope.messageCount = 12;
 		
 		$scope.displayFeed = function() {
-			$scope.displaymessages = $scope.messages.slice(0, parseInt($scope.messageCount));
+			$scope.displaymessages = $feed.items.slice(0, parseInt($scope.messageCount));
 		};
 
 		$scope.lastScrollCheck = 0;
@@ -15,13 +15,13 @@ angular.module('tradity').
 			$scope.lastScrollCheck = now;
 			
 			var d = document.documentElement;
-			if ((d.scrollTop + d.clientHeight)/(d.scrollHeight) > 0.7 && $scope.messageCount < $scope.messages.length) {
+			if ((d.scrollTop + d.clientHeight)/(d.scrollHeight) > 0.7 && $scope.messageCount < $feed.items.length) {
 				$scope.messageCount /= 0.8;
 				$scope.$apply($scope.displayFeed);
 			}
 		});
 		
-		$scope.$on('messages-changed', function() {
+		$feed.$on('change', function() {
 			$scope.displayFeed();
 		});
 		

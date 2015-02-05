@@ -1,3 +1,6 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div ng-controller="SponsorsCtrl" id="sponsors">
 	<div class="sponsor" ng-repeat="sponsor in sponsors" ng-show="sponsor.show">
 		<a href="{{sponsor.link}}"><img width="{{getWidth(aspect)}}" src="{{sponsor.picture}}"/></a>

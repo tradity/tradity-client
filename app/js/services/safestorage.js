@@ -1,5 +1,9 @@
 'use strict';
 
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 function uint8concat(buf1, buf2) {
 	var tmp = new Uint8Array(buf1.byteLength + buf2.byteLength);
 	tmp.set(new Uint8Array(buf1), 0);

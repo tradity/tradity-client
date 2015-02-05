@@ -1,6 +1,14 @@
 angular.module('tradity').
-	controller('OptionsCtrl', function($scope, md5, socket, $dialogs) {
-		socket.emit('get-own-options', function(data) {
+	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs) {
+		socket.on('get-own-options', function(data) {
+			if (!data.result)
+				return;
+			
+			$scope.DLAValidityDays = config.server().DLAValidityDays;
+			$scope.show_dlainfo = false;
+			$scope.dla_cert_days = dailyLoginAchievements.getCertificates().map(function(cert) {
+				return new Date(cert.date)
+			});
 			$scope.name = data.result.name;
 			$scope.giv_name = data.result.giv_name;
 			$scope.fam_name = data.result.fam_name;
@@ -12,6 +20,7 @@ angular.module('tradity').
 			$scope.school = data.result.school;
 			$scope.schoolname = document.getElementById('schoolname').value = data.result.schoolname;
 			$scope.schoolname_none = (data.result.school == null);
+			$scope.schoolclass = data.result.schoolclass;
 			$scope.desc = data.result.desc;
 			$scope.lprovision = data.result.lprovision;
 			$scope.wprovision = data.result.wprovision;
@@ -19,6 +28,7 @@ angular.module('tradity').
 			$scope.zipcode = data.result.zipcode;
 			$scope.town = data.result.town;
 			$scope.traditye = data.result.traditye&&true;
+			$scope.dla_optin = data.result.dla_optin&&true;
 			$scope.delayorderhist = data.result.delayorderhist;
 			
 			if (data.result.birthday !== null) {
@@ -28,6 +38,8 @@ angular.module('tradity').
 				$scope.birthdayy = d.getUTCFullYear();
 			}
 		});
+		
+		socket.emit('get-own-options');
 		
 		$scope.handlePublishCode = function(code) {
 			switch (code) {
@@ -89,6 +101,12 @@ angular.module('tradity').
 					school = $scope.schoolname;
 			}
 			
+			if ($scope.password)
+				safestorage.setPassword($scope.password);
+			
+			if ($scope.dla_optin)
+				dailyLoginAchievements.submitToServer(true);
+			
 			socket.emit('change-options', {
 				name: $scope.name,
 				giv_name: $scope.giv_name,
@@ -104,7 +122,9 @@ angular.module('tradity').
 				street: $scope.street,
 				zipcode: $scope.zipcode,
 				town: $scope.town,
+				schoolclass: $scope.schoolclass,
 				traditye: $scope.traditye,
+				dla_optin: $scope.dla_optin,
 				delayorderhist: $scope.delayorderhist
 			}, function(data) {
 				switch (data.code) {
@@ -130,7 +150,7 @@ angular.module('tradity').
 		};
 		
 		$scope.resetUser = function() {
-			var dlg = $dialogs.confirm('Options', 'Willst du dich wirklich resetten?');
+			var dlg = dialogs.confirm('Options', 'Willst du dich wirklich resetten?');
 			dlg.result.then(function(btn) {
 				socket.emit('reset-user', null, function(data) {
 					if (data.code == 'reset-user-success')
@@ -146,5 +166,9 @@ angular.module('tradity').
 				alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
 			}
 		});
-		useSchoolAC($scope, socket);
+		
+		$scope.loadSearch = function() {
+			useSchoolAC($scope, socket);
+		}
+		
 	});

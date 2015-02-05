@@ -1,11 +1,13 @@
 angular.module('tradity').
-	controller('RegistrationCtrl', function($scope, $stateParams, $state, $dialogs, socket) {
+	controller('RegistrationCtrl', function($scope, $stateParams, $state, dialogs, safestorage, socket) {
 		$scope.school = $stateParams.schoolid;
 		$scope.schoolname_none = false;
 		$scope.traditye = 0;
+		$scope.dla_optin = 0;
 		$scope.zipcode = '';
 		$scope.town = '';
 		$scope.street = '';
+		$scope.schoolclass = '';
 		$scope.invitekey = $stateParams.inviteCode;
 		$scope.betakey = '';
 		$scope.onLSResult = [
@@ -20,6 +22,11 @@ angular.module('tradity').
 				}
 			}
 		];
+		$scope.alerts = [];
+		$scope.closeAlert = function(index) {
+			$scope.alerts.splice(index, 1);
+		};
+
 		
 		if ($scope.invitekey) {
 			socket.emit('get-invitekey-info', {
@@ -35,50 +42,51 @@ angular.module('tradity').
 		socket.on('register', function(data) {
 			switch (data.code) {
 				case 'reg-success':
-					var modal = $dialogs.notify('Willkommen bei Tradity!', 'Bitte bestätige die „Bestätigungsmail“, um alle Funktionen freizuschalten und für die Preise gewinnberechtigt zu sein.');
+					var modal = dialogs.notify('Willkommen bei Tradity!', 'Bitte bestätige die „Bestätigungsmail“, um alle Funktionen freizuschalten und für die Preise gewinnberechtigt zu sein.');
 					
 					modal.result.then(function(btn) {
-						notification('Registrierung erfolgreich', true);
+						$scope.alerts.push({ type: 'danger', msg:'Registrierung erfolgreich'});
 						$scope.fetchSelf();
 						$state.go('game.feed');
 					});
 					break;
 				case 'reg-email-failed':
-					notification('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
+					$scope.alerts.push({ type: 'danger', msg:'Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden'});
 					break;
 				case 'reg-email-already-present':
-					notification('Email bereits vorhanden');
+					$scope.alerts.push({ type: 'danger', msg:'Email bereits vorhanden'});
 					break;
 				case 'reg-name-already-present':
-					notification('Benutzername bereits vergeben');
+					$scope.alerts.push({ type: 'danger', msg:'Benutzername bereits vergeben'});
 					break;
 				case 'reg-unknown-school':
-					notification('Unbekannte Schule');
+					$scope.alerts.push({ type: 'danger', msg:'Unbekannte Schule'});
 					break;
 				case 'reg-too-short-pw':
-					notification('Das Passwort ist zu kurz');
+					$scope.alerts.push({ type: 'danger', msg:'Das Passwort ist zu kurz'});
 					break;
 				case 'reg-beta-necessary':
-					notification('Beta-Schlüssel ungültig oder nicht angegeben');
+					$scope.alerts.push({ type: 'danger', msg:'Beta-Schlüssel ungültig oder nicht angegeben'});
 					break;
 				case 'reg-name-invalid-char':
-					notification('Der Benutzername enthält unerlaubte Zeichen');
+					$scope.alerts.push({ type: 'danger', msg:'Der Benutzername enthält unerlaubte Zeichen'});
 					break;
 			}
 		});
 		
 		$scope.register = function() {
 			if (!$scope.email)
-				return notification('Bitte gib deine E-Mail-Adresse an.');
+				return $scope.alerts.push({ type: 'danger', msg:'Bitte gib deine E-Mail-Adresse an.'});
 			if (!$scope.agbread)
-				return notification('Bitte bestätige, dass du die AGB gelesen hast.');
+				return $scope.alerts.push({ type: 'danger', msg:'Bitte bestätige, dass du die AGB gelesen hast.'});
 			if ($scope.password_check != $scope.password)
-				return notification('Die Passwörter stimmen nicht überein!');
+				return $scope.alerts.push({ type: 'danger', msg:'Die Passwörter stimmen nicht überein!'});
 			if (!$scope.giv_name || !$scope.fam_name)
-				return notification('Bitte gib deinen Namen an, damit du Gewinne erhalten kannst.');
+				return $scope.alerts.push({ type: 'danger', msg:'Bitte gib deinen Namen an, damit du Gewinne erhalten kannst.'});
 			if (!$scope.schoolname_none && !$scope.schoolname)
-				return notification('Bitte gib an, ob und welcher Gruppe du angehörst.');
+				return $scope.alerts.push({ type: 'danger', msg:'Bitte gib an, ob und welcher Gruppe du angehörst.'});
 			
+			safestorage.setPassword($scope.password);
 			socket.emit('register', {
 				name: $scope.name,
 				giv_name: $scope.giv_name,
@@ -87,11 +95,13 @@ angular.module('tradity').
 				password: $scope.password,
 				email: $scope.email,
 				school: $scope.schoolname ? ($scope.school ? $scope.school : $scope.schoolname) : null,
+				schoolclass: $scope.schoolclass,
 				betakey: $scope.betakey,
 				street: $scope.street,
 				zipcode: $scope.zipcode,
 				town: $scope.town,
 				traditye: $scope.traditye,
+				dla_optin: $scope.dla_optin,
 				invitekey: $scope.invitekey
 			});
 		};

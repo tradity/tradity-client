@@ -10,10 +10,9 @@
 		
 		<!-- build:css({.tmp,app}) css/main.css -->
 		<link rel="stylesheet" href="css/ac.css">
-		<link rel="stylesheet" href="css/introjs.css">
 		<link rel="stylesheet" href="css/style.css">
 		<!-- endbuild -->
-
+		
 		<!-- build:js({.tmp,app}) js/scripts.js -->
 		<script type="text/javascript" src="js/vendor/piwik.js"></script>
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -24,14 +23,14 @@
 		<script type="text/javascript" src="bower_components/angular-ui-utils-event/event.min.js"></script>
 		<script type="text/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 		<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-		<script type="text/javascript" src="bower_components/angular-dialog-service/dialogs.js"></script>
+		<script type="text/javascript" src="bower_components/angular-dialog-service/dist/dialogs.min.js"></script>
 		<script type="text/javascript" src="bower_components/angular-md5/angular-md5.min.js"></script>
 		<script type="text/javascript" src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
 		<script type="text/javascript" src="bower_components/lzma-js/src/lzma.js"></script>
 		<script type="text/javascript" src="bower_components/munkres-js/munkres.js"></script>
 		<script type="text/javascript" src="bower_components/ac.js/ac.js"></script>
 		<script type="text/javascript" src="bower_components/socket.io-client/socket.io.js"></script>
-		<script type="text/javascript" src="bower_components/cytoscape/dist/cytoscape.min.js"></script>
+		<script type="text/javascript" src="bower_components/asmcrypto/asmcrypto.js"></script>
 
 		<script type="text/javascript" src="js/vendor/angular-locale_de.js"></script>
 		<script type="text/javascript" src="js/vendor/vagueTime.min.js"></script>
@@ -54,8 +53,8 @@
 		<script type="text/javascript" src="js/translations.js"></script>
 
 		<script type="text/javascript" src="js/controllers/main.js"></script>
-		<script type="text/javascript" src="js/controllers/herounit.js"></script>
 		<script type="text/javascript" src="js/controllers/inviteform.js"></script>
+		<script type="text/javascript" src="js/controllers/feedblogs.js"></script>
 		<script type="text/javascript" src="js/controllers/login.js"></script>
 		<script type="text/javascript" src="js/controllers/registration.js"></script>
 		<script type="text/javascript" src="js/controllers/feed.js"></script>
@@ -75,9 +74,9 @@
 		<script type="text/javascript" src="js/controllers/adminSchools.js"></script>
 		<script type="text/javascript" src="js/controllers/adminUserlist.js"></script>
 		<script type="text/javascript" src="js/controllers/adminStatistics.js"></script>
+		<script type="text/javascript" src="js/controllers/index.js"></script>
 		<script type="text/javascript" src="js/controllers/comment.js"></script>
 		<script type="text/javascript" src="js/directives/profile.js"></script>
-		<script type="text/javascript" src="js/controllers/walkthrough.js"></script>
 		<script type="text/javascript" src="js/controllers/search.js"></script>
 		<script type="text/javascript" src="js/controllers/chat.js"></script>
 		<script type="text/javascript" src="js/controllers/achievements.js"></script>
@@ -90,6 +89,13 @@
 		<script type="text/javascript" src="js/services/socket.js"></script>
 		<script type="text/javascript" src="js/services/user.js"></script>
 		<script type="text/javascript" src="js/services/ranking.js"></script>
+		<script type="text/javascript" src="js/services/safestorage.js"></script>
+		<script type="text/javascript" src="js/services/dailyLoginAchievements.js"></script>
+		<script type="text/javascript" src="js/services/config.js"></script>
+		<script type="text/javascript" src="js/services/asyncLoadJS.js"></script>
+		<script type="text/javascript" src="js/services/feed.js"></script>
+		<script type="text/javascript" src="js/services/event.js"></script>
+		<script type="text/javascript" src="js/services/group.js"></script>
 		<!-- endbuild -->
 		<script type="text/javascript">window.onload = function(){if(typeof angular=='undefined'){var a;(a=document.getElementById('scriptfail')).style.display='block';a.src='scriptfail.html';}};</script>
 	</head>

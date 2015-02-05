@@ -2,26 +2,26 @@
   "name": "tradity",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "1.2.16",
-    "angular-ui-router": "~0.2.12",
-    "angular-bootstrap": "~0.10.0",
-    "bootstrap": "3.1.1",
+    "angular": "1.3.8",
+    "angular-ui-router": "~0.2.13",
+    "angular-bootstrap": "~0.12.0",
+    "bootstrap": "3.3.1",
     "fontawesome": "4.1.0",
     "socket.io-client": ">=1.2.1",
-    "angular-intro.js": "",
     "angular-ui-utils-keypress": "angular-ui-utils#bower-keypress",
     "angular-ui-utils-event": "angular-ui-utils#bower-event",
     "angular-sanitize": "~1.2.16",
-    "angular-dialog-service": "~3.1.0",
+    "angular-dialog-service": "~5.2.6",
     "angular-md5": "*",
-    "pure": "~0.4.2",
     "munkres-js": ">=1.1.1",
     "ac.js": ">=0.0.4",
-    "angular-gettext": "~1.1.4",
     "lzma-js": "https://github.com/nmrugg/LZMA-JS.git#~1.3.7",
     "jquery": "2.1.1",
     "ngInfiniteScroll": "~1.1.2",
-    "cytoscape": "~2.3.3"
+    "cytoscape": "~2.3.3",
+    "asmcrypto": "~0.0.6",
+    "angular-translate-loader-static-files": "~2.5.2",
+    "open-sans-fontface": "~1.2.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",
@@ -29,6 +29,6 @@
   },
   "resolutions": {
     "angular": "1.2.16",
-    "bootstrap": "3.1.1"
+    "bootstrap": "3.3.1"
   }
 }

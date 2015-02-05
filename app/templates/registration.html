@@ -1,55 +1,74 @@
-<div class="register-form">
-	<form class="pure-form pure-form-aligned" ng-submit="register()">
-		<fieldset>
-			<div class="pure-control-group">
-				<label for="name">Benutzername</label>
-				<input id="name" ng-model="name" type="text" placeholder="Benutzername">
-			</div>
+<div class="container registration">
 
-			<div class="pure-control-group">
-				<label for="password">Passwort</label>
-				<input id="password" ng-model="password" type="password" placeholder="Passwort">
+	<div class="row">
+		<div class="col-sm-4">
+			<img class="logo" src="img/logo.png"/>
+		</div>
+		<div class="col-sm-12">
+			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+		</div>
+		<div class="col-sm-4 info">
+			<div class="box">
+				<h2>Warum Mitmachen?</h2>
+				<ul>
+					<li>Probiere Wirtschaft und Börse spielerisch aus</li>
+					<li>Handle mit fiktiven 100.000 € alle Aktien der Börse Frankfurt in Echtzeit</li>
+					<li>Triff kluge Entscheidungen und siege als bester Trader oder…</li>
+					<li>Lerne als Neuling von erfahreneren Mitspielern und werde bester Follower im Social Trading</li>
+					<li>Tausche dich mit deinen Freunden über Nachrichten und Entscheidungen in einer eigenen Gruppe aus</li>
+					<li>Gewinne in verschiedenen Kategorien und jede Woche wertvolle Preise</li>
+				</ul>
 			</div>
-
-			<div class="pure-control-group">
-				<label for="password-repeat">Passwort wiederholen</label>
-				<input id="password-repeat" ng-model="password_check" type="password" placeholder="Passwort">
+		</div>
+		<div class="col-sm-8 register">
+			<div class="row box">
+				<div class="col-sm-6">
+					<h2>Allgemein</h2>
+					<div class="form-group">
+						<input ng-model="name" type="text" class="form-control" placeholder="Benutzername">
+					</div>
+					<div class="form-group">
+						<input ng-model="email" type="email" class="form-control" placeholder="Emailadresse">
+					</div>
+					<div class="form-group">
+						<input ng-model="password" type="password" class="form-control" placeholder="Passwort">
+					</div>
+					<div class="form-group">
+						<input ng-model="password_check" type="password" class="form-control" placeholder="Passwort wiederholen">
+					</div>
+					<h2>Über Dich</h2>
+					<p>Diese Daten benötigen wir, damit du auch am Wettbewerb teilnehmen kannst.</p>
+					<div class="form-group">
+						<input ng-model="giv_name" type="text" class="form-control" placeholder="Vorname">
+					</div>
+					<div class="form-group">
+						<input ng-model="fam_name" type="text" class="form-control" placeholder="Nachname">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<h2>Institution / Schule</h2>
+					<div class="form-group">
+						<input ng-model="schoolname" id="schoolname" type="text" class="form-control" placeholder="Schule">
+					</div>
+					<div class="form-group">
+						<input ng-model="schoolclass" id="schoolclass" type="text" class="form-control" placeholder="(Klasse)">
+					</div>
+					<div class="form-group" ng-show="serverConfig.betakeyRequired">
+						<input ng-model="betakey" id="betakey" type="text" class="form-control" placeholder="Betakey">
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" ng-model="agbread"> Ich habe die <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/">AGB</a> gelesen und akzeptiert.
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<div class="pull-right text-right">
+						<button ng-click="register()" type="submit" class="btn btn-primary btn-sm">Registrieren</button><br/>
+						<a ui-sref="index.login" id="gtlogin">Ich bin bereits registriert!</a>
+					</div>
+				</div>
 			</div>
-
-			<div class="pure-control-group">
-				<label for="email">Emailadresse</label>
-				<input id="email" ng-model="email" type="email" placeholder="Emailadresse">
-			</div>
-
-			<div class="pure-control-group">
-				<label for="giv_name">Vorname</label>
-				<input type="text" ng-model="giv_name" placeholder="Vorname" id="giv_name">
-			</div>
-
-			<div class="pure-control-group">
-				<label for="fam_name">Nachname</label>
-				<input type="text" ng-model="fam_name" placeholder="Nachname" id="fam_name">
-			</div>
-
-			<div class="pure-control-group" ng-show="serverConfig.betakeyRequired">
-				<label for="betakey">Betakey</label>
-				<input id="betakey" ng-model="betakey" type="text" placeholder="Betakey">
-			</div>
-			
-			<div class="pure-control-group">
-				<label for="schoolname">Institution / Schule</label>
-				<input type="text" ng-model="schoolname" placeholder="Schule" id="schoolname"><br>
-				oder: <input id="schoolname_none" ng-model="schoolname_none" type="checkbox"> Keine Gruppe
-			</div>
-
-			<div class="pure-controls">
-				<label for="cb" class="pure-checkbox">
-					<input id="cb" ng-model="agbread" type="checkbox">
-					Ich habe die <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/">AGB</a> gelesen und akzeptiert.
-				</label>
-			</div>
-
-		</fieldset>
-		<button type="submit" class="btn btn-primary btn-sm">Registrieren</button><a ui-sref="index.login" id="gtlogin">Ich bin bereits registriert!</a>
-	</form>
+		</div>
+	</div>
 </div>

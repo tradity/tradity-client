@@ -4,22 +4,7 @@
 @import 'bootstrap';
 @import 'fontawesome';
 
-//soon move to bootstrap
-@import (less) "../bower_components/pure/forms-min.css";
-@import (less) "../bower_components/pure/grids-min.css";
+@import '../bower_components/open-sans-fontface/open-sans.less';
+@OpenSansPath: "/fonts";
 
-
-//font stuf
-@import 'quicksand';
-
-
-// platform stuf
 @import 'all';
-
-@media @mobile {
-	@import 'mobile';
-}
-
-@media @tablet, @desktop, @desktop-xl {
-	@import 'desktop';
-}

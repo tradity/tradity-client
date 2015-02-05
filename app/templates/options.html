@@ -1,7 +1,7 @@
 <div id="options" class="main-content">
 	<form ng-submit="changeOptions()">
-		<tabset vertical="true" type="pills">
-			<tab heading="Account">
+		<!--<tabset vertical="true" type="pills">
+			<tab heading="Account">-->
 				<div class="row">
 					<div class="col-sm-12"><h2>Account</h2></div>
 					<div class="col-sm-6">
@@ -32,8 +32,8 @@
 						<input type="button" ng-click="useGravatar()" ng-show="ownUser.email_verif != 0 && ownUser.email" class="btn btn-primary" value="Gravatar verwenden" />
 					</div>
 				</div>
-			</tab>
-			<tab heading="Spiel">
+			<!--</tab>
+			<tab heading="Spiel">-->
 				<h2>Spiel</h2>
 				<div class="form-group">
 					<label for="provision">Gewinnprovision deiner Follower ({{serverConfig.minWProvision}} % – {{serverConfig.maxWProvision}} %)</label>
@@ -47,8 +47,8 @@
 					<label for="delayorderhist">Verzögerung deiner Orderhistorie </label><br/>
 					<input type="checkbox" ng-model="delayorderhist" id="delayorderhist"> Ja
 				</div>
-			</tab>
-			<tab heading="Privates">
+			<!--</tab>
+			<tab heading="Privates">-->
 				<h2>Privates</h2>
 				<div class="row">
 					<div class="col-sm-6">
@@ -124,12 +124,12 @@
 				</div>
 				<label for="desc">Kurzbeschreibung</label>
 				<textarea ng-model="desc" id="desc" placeholder="Erzähl uns, was dich ausmacht" class="form-control"></textarea>
-			</tab>
-			<tab heading="Einladen">
+			<!--</tab>
+			<tab heading="Einladen">-->
 				<h2>User einladen</h2>
 				<ng-include src="'templates/inviteform.html'"></ng-include>
-			</tab>
-		</tabset>
+			<!--</tab>
+		</tabset>-->
 	</form>
 	<hr/>
 	<div class="save">

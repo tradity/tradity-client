@@ -148,8 +148,8 @@ var escapeHTML = function(s) {
 	
 	return s.replace(/&/g, '&amp;')
 	        .replace(/</g, '&lt;')
-	        .replace(/>/, '&gt;')
-	        .replace(/'/, '&#039;')
-	        .replace(/"/, '&quot;');
+	        .replace(/>/g, '&gt;')
+	        .replace(/'/g, '&#039;')
+	        .replace(/"/g, '&quot;');
 };
 

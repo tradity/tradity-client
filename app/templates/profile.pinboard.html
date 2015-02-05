@@ -21,8 +21,7 @@
 					<a ng-click="deleteComment(comment)" style="cursor: pointer">Löschen</a>
 				</span>
 			</div>
-			<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
-			<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
+			<span ng-bind-html="comment.comment">{{comment.comment}}</span>
 		</div>
 	</div>
 </div>

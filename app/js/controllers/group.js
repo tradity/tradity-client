@@ -1,3 +1,9 @@
+'use strict';
+
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 angular.module('tradity').
 	controller('GroupCtrl', function($scope, $sce, $state, $stateParams, DEFAULT_GROUP_BANNER, socket) {
 		$scope.school = { pendingMembers: [] };
@@ -26,7 +32,7 @@ angular.module('tradity').
 					_cache: 30
 				}, function(data) {
 					if (data.code == 'school-exists-success' && data.exists) {
-						$state.go('index.schoolregister', {schoolid: data.path});
+						$state.go('schoolregister', {schoolid: data.path});
 					}
 				});
 			} else if (data.code == 'get-school-info-success') {

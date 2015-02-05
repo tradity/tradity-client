@@ -6,7 +6,10 @@ angular.module('tradity').
 		$scope.orders = [];
 
 		user.get($stateParams.userId).then(function(user){
-			console.log(user);
+			if (!user) {
+				alert('Ups')
+				return;
+			}
 			$scope.user = user;
 			$scope.values = user.values;
 			$scope.userAchievements = user.achievements;

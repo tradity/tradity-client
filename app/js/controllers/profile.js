@@ -31,7 +31,6 @@ angular.module('tradity').
 			$.each($scope.comments, function(i, e) {
 				e.comment = $sce.trustAsHtml(e.trustedhtml ? e.comment : escapeHTML(e.comment));
 			});
-
 		})
 		
 		$scope.addToWatchlist = function() {

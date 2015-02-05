@@ -8,6 +8,7 @@ angular.module('tradity').
 		$scope.descpage = '';
 		$scope.editingDescpage = false;
 		$scope.uploadField = false;
+		$scope.feedblogs = [];
 
 		// in case a group gets called without /pinboard
 		if ($state.includes('*.group'))
@@ -33,6 +34,7 @@ angular.module('tradity').
 				$scope.comments = $.extend(true, [], $scope.school.comments); // deep copy
 				$scope.descpage = $scope.school.descpage;
 				$scope.schoolid = $scope.school.id;
+				$scope.feedblogs = $scope.school.feedblogs;
 				if (!$scope.school.banner)
 					$scope.school.banner = DEFAULT_GROUP_BANNER;
 				
@@ -174,7 +176,7 @@ angular.module('tradity').
 			socket.emit('create-school', {
 				schoolname: n,
 				schoolpath: $scope.school.path + '/' + n.replace(/[^\w_-]/g, '-').replace(/-+/g, '-'),
-			}, function(data) {
+			}).then(function(data) {
 				if (data.code == 'create-school-success')
 					alert('Ok!');
 				else

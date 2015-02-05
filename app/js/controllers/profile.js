@@ -1,45 +1,37 @@
 angular.module('tradity').
-	controller('ProfileCtrl', function($scope, $sce, $state, $stateParams, DEFAULT_PROFILE_IMG, socket) {
+	controller('ProfileCtrl', function($scope, user, $sce, $state, $stateParams, DEFAULT_PROFILE_IMG, socket) {
 		$scope.values = [];
-		$scope.achievements = [];
+		$scope.userAchievements = [];
 		$scope.user = null;
 		$scope.orders = [];
-		
-		$scope.getUserInfo = function() {
-			socket.emit('get-user-info', {
-				lookfor: $stateParams.userId,
-				_cache: 20
-			}, function(data) {
-				if (data.code == 'get-user-info-notfound')
-					return alert('Benutzer existiert nicht');
-				
-				$scope.user = data.result;
-				$scope.values = data.values;
-				$scope.userAchievements = data.achievements;
-				
-				var orders = data.orders;
-				orders.sort(function(a,b) { return b.buytime - a.buytime; });
-				for (var i in orders) {
-					if (orders[i].money > 0) {
-						orders[i].ordertype = 'depot-buy';
-					} else if (orders[i].money < 0) {
-						orders[i].ordertype = 'depot-sell';
-					} else {
-						orders[i].ordertype = '';
-					}
-					orders[i].price = Math.abs(orders[i].money / orders[i].amount);
+
+		user.get($stateParams.userId).then(function(user){
+			if (!user) {
+				alert('Ups')
+				return;
+			}
+			$scope.user = user;
+			$scope.values = user.values;
+			$scope.userAchievements = user.achievements;
+			var orders = user.orders;
+			orders.sort(function(a,b) { return b.buytime - a.buytime; });
+			for (var i in orders) {
+				if (orders[i].money > 0) {
+					orders[i].ordertype = 'depot-buy';
+				} else if (orders[i].money < 0) {
+					orders[i].ordertype = 'depot-sell';
+				} else {
+					orders[i].ordertype = '';
 				}
-				$scope.orders = orders;
-				if (!$scope.user.profilepic)
-					$scope.user.profilepic = DEFAULT_PROFILE_IMG;
-				data.pinboard.sort(function(a,b) { return b.time - a.time; });
-				$scope.comments = data.pinboard;
-				
-				$.each($scope.comments, function(i, e) {
-					e.comment = $sce.trustAsHtml(e.trustedhtml ? e.comment : escapeHTML(e.comment));
-				});
+				orders[i].price = Math.abs(orders[i].money / orders[i].amount);
+			}
+			$scope.orders = orders;
+			user.pinboard.sort(function(a,b) { return b.time - a.time; });
+			$scope.comments = user.pinboard;
+			$.each($scope.comments, function(i, e) {
+				e.comment = $sce.trustAsHtml(e.trustedhtml ? e.comment : escapeHTML(e.comment));
 			});
-		};
+		})
 		
 		$scope.addToWatchlist = function() {
 			socket.emit('watchlist-add', {
@@ -54,7 +46,6 @@ angular.module('tradity').
 			});
 		};
 		
-		$scope.getUserInfo();
 		// in case a profile gets called without /overview
 		if ($state.includes('*.profile'))
 			$state.go('.overview');

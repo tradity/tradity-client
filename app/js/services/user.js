@@ -8,11 +8,11 @@
  * Factory
  */
 angular.module('tradity')
-	.factory('user', function ($q,socket,$state,$rootScope,config,$timeout) {
+	.factory('user', function ($q,socket,$state,ranking,$rootScope,config,$timeout,safestorage,dailyLoginAchievements) {
 
 		var $user = $rootScope.$new(true);
-
-		 var parse = function(res) {
+		var ownUserRanking;
+		var parse = function(res) {
 			if (res.code == 'get-user-info-success')
 				var user = res.result;
 			else
@@ -21,23 +21,58 @@ angular.module('tradity')
 				return user;
 			user.orders 		= res.orders 		|| [];
 			user.pinboard 		= res.pinboard 		|| [];
+			user.values 		= res.values 		|| [];
 			user.achievements 	= res.achievements 	|| [];
-			user.profilepic = config.HOST + user.profilepic;
+			user.profilepic = (config.server().protocol + '://' + config.server().hostname  +
+				 (user.profilepic || config.DEFAULT_PROFILE_IMG));
 			user.parsed = true;
 			return user;
 		}
 
 		var updateUser = function(res) {
+			safestorage.check().then(function() {
+				dailyLoginAchievements.check();
+			});
 			var user = parse(res);
 			if (!user) 
 				return;
 			if (!user.isSelf) 
 				return;
+			ownUserRanking.fetch();
 			angular.extend($user,user);
 		}
 		
 		socket.on('self-info',updateUser)
 		socket.on('get-user-info',updateUser)
+
+		socket.on('*', function(data) {
+			if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
+				$user = $rootScope.$new(true);
+				if ($state.includes('game'))
+					$state.go('index.login');
+			}
+		});
+
+		socket.on('server-config', function(data) {
+			var serverConfig = {};
+			var cfg = data.config;
+			for (var k in cfg)
+				serverConfig[k] = cfg[k];
+
+			ownUserRanking = ranking.getRanking(null, serverConfig.ranking || {}, null, null, true);
+			ownUserRanking.onRankingUpdated(function() {
+				$user.rank = ownUserRanking.get('all').rankForUser($user.uid);
+			});
+		})
+
+		var fetchSelf = function() {
+			socket.emit('get-user-info', {
+				lookfor: '$self',
+				nohistory: true,
+				_cache: 20
+			});
+		}
+		fetchSelf();
 
 		return {
 			/**
@@ -66,9 +101,9 @@ angular.module('tradity')
 					pw: password,
 					stayloggedin: stayloggedin
 				}).then(function(data) {
-					console.log(data)
 					switch (data.code) {
 						case 'login-success':
+							fetchSelf();
 							$state.go('game.ranking.all');
 							break;
 						case 'login-badname':
@@ -79,6 +114,19 @@ angular.module('tradity')
 							return $q.reject('Emailadresse noch nicht bestätigt');
 					}
 				})
+			},
+			/**
+			 * @ngdoc method
+			 * @name tradity.user#logout
+			 * @methodOf tradity.user
+			 */
+			logout:function() {
+				socket.emit('logout', function(data) {
+					safestorage.clear();
+					var $user = $rootScope.$new(true);
+					$rootScope.$broadcast('user-update', null);
+					$state.go('index.login');
+				});
 			},
 			/**
 			 * @ngdoc method
@@ -113,10 +161,16 @@ angular.module('tradity')
 					lookfor: username,
 					_cache: 20
 				}).then(function(res) {
-					console.log(res)
 					return parse(res);
 				})
-			 }
+			 },
+			 /**
+			 * @ngdoc method
+			 * @name tradity.user#fetch
+			 * @methodOf tradity.user
+			 * @description pokes the server for the user
+			 */
+			 fetch:fetchSelf
 		};
 	})
 	/**

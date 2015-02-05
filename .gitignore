@@ -4,3 +4,4 @@ cclient
 node_modules
 docs
 *.log
+bower_components

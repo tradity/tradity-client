@@ -1,11 +1,16 @@
 angular.module('tradity').
-	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, dialogs) {
+	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs) {
 		$scope.lang = 'de'; // dummy
-		
-		socket.emit('get-own-options', function(data) {
+
+		socket.on('get-own-options', function(data) {
 			if (!data.result)
 				return;
 			
+			$scope.DLAValidityDays = config.server().DLAValidityDays;
+			$scope.show_dlainfo = false;
+			$scope.dla_cert_days = dailyLoginAchievements.getCertificates().map(function(cert) {
+				return new Date(cert.date)
+			});
 			$scope.name = data.result.name;
 			$scope.giv_name = data.result.giv_name;
 			$scope.fam_name = data.result.fam_name;
@@ -17,6 +22,7 @@ angular.module('tradity').
 			$scope.school = data.result.school;
 			$scope.schoolname = document.getElementById('schoolname').value = data.result.schoolname;
 			$scope.schoolname_none = (data.result.school == null);
+			$scope.schoolclass = data.result.schoolclass;
 			$scope.desc = data.result.desc;
 			$scope.lprovision = data.result.lprovision;
 			$scope.wprovision = data.result.wprovision;
@@ -34,6 +40,8 @@ angular.module('tradity').
 				$scope.birthdayy = d.getUTCFullYear();
 			}
 		});
+		
+		socket.emit('get-own-options');
 		
 		$scope.handlePublishCode = function(code) {
 			switch (code) {
@@ -116,6 +124,7 @@ angular.module('tradity').
 				street: $scope.street,
 				zipcode: $scope.zipcode,
 				town: $scope.town,
+				schoolclass: $scope.schoolclass,
 				traditye: $scope.traditye,
 				dla_optin: $scope.dla_optin,
 				delayorderhist: $scope.delayorderhist
@@ -159,5 +168,9 @@ angular.module('tradity').
 				alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
 			}
 		});
-		useSchoolAC($scope, socket);
+		
+		$scope.loadSearch = function() {
+			useSchoolAC($scope, socket);
+		}
+		
 	});

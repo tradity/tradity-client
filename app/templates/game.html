@@ -1,25 +1,37 @@
-<ng-include src="'templates/walkthrough.html'"></ng-include>
-<div class="wrapper">
-	<header id="header">
-		<div class="inner">   
-			<ul class="icon-bar pull-right">
-				<li class="mobile-only">
-					<div>
-						<a href="" class="dropdown-toggle icon" id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-							<li><a ui-sref="game.profile.overview({userId: ownUser.name})"><b>{{ownUser.giv_name}} <span class="nick">„{{ownUser.name}}“</span> {{ownUser.fam_name}}</b></a></li>
-							<li><a ui-sref="game.profile.overview({userId: ownUser.name})" translate>Your Profile</a></li>
-							<li><a ui-sref="game.options" translate>Settings</a></li>
-							<li class="divider"></li>
-							<li><a ng-click="logout()" href="" translate>Logout</a></li>
-						</ul>
-					</div>
+<nav id="header" class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" ng-click="toggleM()" class="navbar-toggle collapsed">
+				<span class="sr-only">Navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" ui-sref="game.feed"><img src="img/symbol.png"></a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse hidden-xs">
+			<ul class="nav navbar-nav">
+				<li class="info">
+					<a ui-sref="game.profile.overview({userId: ownUser.name})">
+						<h2 class="title" translate>ACCOUNT</h2>
+						<span class="depot-wert">{{ownUser.freemoney / 10000 | currency}}</span>
+					</a>
 				</li>
-				<li ng-show="search" class="search desktop-only">
-					<form class="pure-form" id="rankingSearch" ng-submit="openSearch(searchBarText,search)">
-						<input type="search" ng-model="searchBarText" placeholder="Search" class="pure-input" autofocus translate>
-					</form>
+				<li class="info">
+					<a ui-sref="game.profile.overview({userId: ownUser.name})">
+						<h2 class="title">Gesamt­vermögen</h2>
+						<span class="depot-wert">{{ownUser.totalvalue / 10000 | currency}}</span>
+					</a>
 				</li>
+				<li class="info">
+					<a ui-sref="game.profile.overview({userId: ownUser.name})">
+						<h2>Rang</h2>
+						<span class="placement-number" ng-show="ownUser.rank">{{ownUser.rank}}</span>
+						<span class="placement-number" ng-hide="ownUser.rank">–</span>
+					</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
 				<li class="desktop-only search-btn" ng-show="!search">
 					<a ng-click="showSearch()" href="" title="Search" class="icon" translate><i class="fa fa-search"></i></a>
 				</li>
@@ -30,60 +42,47 @@
 				<!--li>
 					<a ui-sref="game.chats" class="icon" title="Nachrichten"><i class="fa fa-envelope"></i></a>
 				</li-->
-				<li ng-controller="NotificationsCtrl">
-					<a class="icon" href="" title="Notifications" ng-click="show = !show" translate><span class="badge" ng-show="count != 0">{{count}}</span><i class="fa fa-globe"></i></a>
-					<ng-include src="'templates/notifications.html'"></ng-include> 
-				</li>
 				<li ng-show="isAdmin">
 					<a ui-sref="admin.userlist" class="icon" title="Admin"><i class="fa fa-shield"></i></a>
 				</li>
-				<li>
-					<a ng-click="logout()" href="" title="Logout" class="icon" translate><i class="fa fa-sign-out"></i></a>
-				</li>
-				<li>
-					<a ui-sref="game.profile.overview({userId: ownUser.name})" title="Your Profile" translate><img id="profile-picture" height="50px" ng-src="{{ownUser.profilepic}}" alt="{{ownUser.name}}" /></a>
-				</li>
-			</ul>     
-			<ul class="icon-bar">
-				<li class="desktop-only">
-					<a ui-sref="game.feed">
-						<img src="img/symbol.png">
-					</a>
-				</li>
-				<li class="mobile-only">
-					<a ng-click="toggleMenu()" class="icon"><i class="fa fa-bars"></i></a>
-				</li>
-				<li class="desktop-only text">
-					<div>
-						<h2 class="title" translate>Account</h2>
-						<span class="depot-wert">{{ownUser.freemoney / 10000 | currency}}</span>
-					</div>
-				</li>
-				<li class="desktop-only text">
-					<div>
-						<h2 class="title" translate>Total assets</h2>
-						<span class="depot-wert">{{ownUser.totalvalue / 10000 | currency}}</span>
-					</div>
-				</li>
-				<li class="desktop-only text">
-					<div>
-						<h2 translate>Rank</h2>
-						<span class="placement-number" ng-show="ownUser.rank">{{ownUser.rank}}</span>
-						<span class="placement-number" ng-hide="ownUser.rank">–</span>
-					</div>
-				</li>
-			</ul>         
+				<li ng-include="'templates/notifications.html'" dropdown ng-controller="NotificationsCtrl"></li>
+				<li><a ng-click="logout()" href="" class="icon"><i class="fa fa-sign-out"></i></a></li>
+				<li><a ui-sref="game.profile.overview({userId: ownUser.name})" class="profilepicture" style="background-image:url({{ownUser.profilepic}});"></a></li>
+			</ul>
+			<form ng-show="search" ng-submit="openSearch(searchBarText,search)" class="navbar-form navbar-right">
+				<input type="search" ng-model="searchBarText" placeholder="Suche" class="form-control" autofocus>
+			</form>
 		</div>
-	</header>
-	<nav id="topmenu">
-		<ul>
+	</div>
+</nav>
+<nav class="container navbar navbar-default hidden-xs" role="navigation" id="pagenav">
+	<div class="collapse navbar-collapse">
+		<ul class="nav navbar-nav">
 			<li>
 				<a ui-sref=".feed" accesskey="f" ng-class="{active: ('game.feed' | isState)}">
 					<i class="fa fa-inbox"></i>
 					<span class="dark nav-block-title" translate>News</span>
 				</a>
 			</li>
-			<li ng-show="ownUser.topLevelSchool" class="menu-item">
+			<li class="dropdown" dropdown ng-show="ownUser.schools.length > 1">
+				<a href class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle role="button" aria-expanded="false"><i class="fa fa-users"></i> Gruppen <span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu">
+					<li ng-repeat="item in ownUser.schools"><a ui-sref="game.group({schoolid: item.path})">{{item.name}}</a></li>
+				</ul>
+			</li>
+			<li ng-show="ownUser.schools.length <= 1">
+				<a ui-sref="game.group({schoolid: ownUser.schools[0].path})" ng-class="{active: ('*.group.*' | includedByState)}">
+					<i class="fa fa-users"></i>
+					<span class="dark nav-block-title">{{ownUser.schools[0].name}}</span>
+				</a>
+			</li>
+			<li ng-show="ownUser.schools.length == 0" class="menu-item">
+				<a ui-sref="game.groupOverview" accesskey="g" title="ALT+SHIFT+G">
+					<i class="fa fa-users"></i>
+					<span class="dark nav-block-title">Deine Gruppe</span>
+				</a>
+			</li-->
+			<!--li ng-show="ownUser.topLevelSchool" class="menu-item">
 				<ul class="subMenu desktop-only" ng-show="ownUser.schools.length > 1">
 					<li ng-hide="ownUser.topLevelSchool == item" ng-repeat="item in ownUser.schools">
 						<a ui-sref="game.group({schoolid: item.path})">{{item.name}}</a>
@@ -99,7 +98,7 @@
 					<i class="fa fa-users"></i>
 					<span class="dark nav-block-title" translate>Your Group</span>
 				</a>
-			</li>
+			</li-->
 			<li>
 				<a ui-sref=".depot.overview" accesskey="d" title="ALT+SHIFT+D" ng-class="{active: ('*.depot.*' | includedByState)}">
 					<i class="fa fa-bar-chart-o"></i>
@@ -118,12 +117,7 @@
 					<span class="dark nav-block-title" translate>Ranking</span>
 				</a>
 			</li>
-			<li>
-				<a ui-sref=".options" accesskey="o" title="ALT+SHIFT+O" ng-class="{active: ('game.options' | isState)}">
-					<i class="fa fa-wrench"></i>
-					<span class="dark nav-block-title" translate>Settings</span>
-				</a>
-			</li>
+			
 			<!-- temporarily disabled -->
 			<!--li>
 				<a ui-sref=".learning.catalog" ng-class="{active: ('game.learning.catalog' | isState)}" >
@@ -131,12 +125,20 @@
 					<span class="dark nav-block-title">Learning</span>
 				</a>
 			</li-->
-			<li><!-- temporarily enabled -->
+			<li>
 				<a ui-sref=".profile.achievements.categories({userId: ownUser.name})" ng-class="{active: ('game.profile.achievements.categories' | isState)}" >
 					<i class="fa fa-graduation-cap"></i>
 					<span class="dark nav-block-title" translate>Achievements</span>
 				</a>
-			</li><!-- temporarily enabled -->
+			</li>
+		  </ul>
+		  <ul class="nav navbar-nav navbar-right">
+			<li>
+				<a ui-sref=".options" accesskey="o" title="ALT+SHIFT+O" ng-class="{active: ('game.options' | isState)}">
+					<i class="fa fa-wrench"></i>
+					<span class="dark nav-block-title">Einstellungen</span>
+				</a>
+			</li>
 			<li>
 				<a href="https://boersenspiel.tradity.de/hilfe/" targe="_blank">
 					<i class="fa fa-question"></i>
@@ -144,17 +146,21 @@
 				</a>
 			</li>
 		</ul>
-	</nav>
-	<div class="clearfix"></div>
-	<div id="legalHolder">
+	</div>
+</nav>
+
+<div class="container content">
+	<div id="legalHolder" class="pull-right">
 		<div id="legal">
 			<a target="_blank" href="https://boersenspiel.tradity.de/impressum/" translate>Imprint</a> | <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/" target="_blank" translate>Terms &amp; Privacy</a>
 		</div>
 	</div>
-	<div class="content-wrapper">
-			<div ui-view></div>
+	<div ng-hide="loadState" ui-view></div>
+	<div ng-show="loadState">
+	loading
 	</div>
 </div>
+
 <div id="overlayQuery" ng-show="hasOpenQueries()">
 	<img src="img/throbber.gif" alt="…" /><br/>
 	<span translate>Loading</span>

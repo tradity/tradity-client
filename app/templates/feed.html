@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-sm-9" id="feed" class="main-content">
-		<div class="tutorial" ng-hide="messages.length > 0">
+		<div class="tutorial" ng-hide="displaymessages.length > 0">
 			<h2>Willkommen bei Tradity!</h2>
 			<div class="text">
 				<p>
@@ -158,8 +158,7 @@
 						<a ui-sref="game.profile.overview({userId: message.srcusername})">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ui-sref="game.profile.overview({userId: message.tradername})">{{message.tradername_genitive}}</a> Pinnwand
 					</div>
 					<a ui-sref="game.profile.pinboard({userId: message.tradername})">
-						<span ng-show="message.trustedhtml" ng-bind-html="message.comment">{{message.comment}}</span>
-						<span ng-hide="message.trustedhtml">{{message.comment}}</span>
+						<span ng-bind-html="message.comment">{{message.comment}}</span>
 					</a>
 				</div>
 			</div>
@@ -172,8 +171,7 @@
 						<a ui-sref="game.profile.overview({userId: message.srcusername})">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ui-sref="game.profile.overview({userId: message.tradername})">{{message.tradername_genitive}}</a> <a ui-sref="game.tradeDetails({tradeId: message.orderid})">Trade</a>
 					</div>
 					<a ui-sref="game.tradeDetails({tradeId: message.orderid})">
-						<span ng-show="message.trustedhtml" ng-bind-html="message.comment">{{message.comment}}</span>
-						<span ng-hide="message.trustedhtml">{{message.comment}}</span>
+						<span ng-bind-html="message.comment">{{message.comment}}</span>
 					</a>
 				</div>
 			</div>
@@ -187,12 +185,26 @@
 						<a ui-sref="game.profile.overview({userId: message.srcusername})">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ui-sref="game.group({schoolid: message.schoolpath})">{{message.tradername}}</a>
 					</div>
 					<a ui-sref="game.group({schoolid: message.schoolpath})">
-						<span ng-show="message.trustedhtml" ng-bind-html="message.comment">{{message.comment}}</span>
-						<span ng-hide="message.trustedhtml">{{message.comment}}</span>
+						<span ng-bind-html="message.comment">{{message.comment}}</span>
 					</a>
+				</div>
+			</div>
+			<div ng-switch-when="blogpost" class="comment">
+				<div class="feed-entry-content">
+					<div class="feed-head">
+						<span class="feed-time pull-right" title="{{message.time * 1000 | date:'short'}}">{{vtime(message.time)}}</span>
+						<a ui-sref="game.group({schoolid: message.schoolpath})">{{message.schoolname}}</a> <i class="fa fa-angle-right"></i> 
+						<a ng-href="{{message.link}}" class="feed-link" ng-bind-html="message.title">{{message.title}}</a>
+					</div>
+					<div ng-bind-html="message.excerpt">
+						{{message.excerpt}}
+					</div>
+					<div>
+						<a ng-href="{{message.link}}" class="feed-link">Weiterlesen</a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-3 vertical" ng-include="'templates/sponsors.html'"></div>
+	<div class="col-sm-3 vertical hidden-xs" ng-include="'templates/sponsors.html'"></div>
 </div>

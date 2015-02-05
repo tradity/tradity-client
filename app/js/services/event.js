@@ -2,15 +2,6 @@
 
 angular.module('tradity')
 	.factory('event', function ($sce,$user,config) {
-		var escapeHTML = function(s) {
-			if (!s)
-				return s;
-			return s.replace(/&/g, '&amp;')
-				.replace(/</g, '&lt;')
-				.replace(/>/, '&gt;')
-				.replace(/'/, '&#039;')
-				.replace(/"/, '&quot;');
-		};
 		/**
 		 * @ngdoc service
 		 * @name tradity.event
@@ -101,6 +92,26 @@ angular.module('tradity')
 			/**
 			 * @ngdoc method
 			 * @kind function
+			 * @name tradity.event#blogpost
+			 * @methodOf tradity.event
+			 * @param {object} event with detailed information
+			 * @description
+			 * parse the 'blogpost' event
+			 */
+			blogpost:function(event) {
+				return {
+					type: event.type,
+					excerpt: $sce.trustAsHtml(event.excerpt),
+					link: event.link,
+					title: $sce.trustAsHtml(event.title),
+					time: event.posttime,
+					schoolpath: event.schoolpath,
+					schoolname: event.schoolname
+				};
+			},
+			/**
+			 * @ngdoc method
+			 * @kind function
 			 * @name tradity.event#comment
 			 * @methodOf tradity.event
 			 * @param {object} event with detailed information
@@ -129,10 +140,8 @@ angular.module('tradity')
 				}
 				var tn = event.tradername || event.schoolname;
 				
-				if (!event.profilepic)
-					event.profilepic = config.HOST + config.DEFAULT_PROFILE_IMG;
-				else
-					event.profilepic = config.HOST + event.profilepic;
+				event.profilepic = (config.server().protocol + '://' + config.server().hostname + '/' +
+					 (event.profilepic || config.DEFAULT_PROFILE_IMG));
 
 				return {
 					type: type,

@@ -16,7 +16,7 @@ module.exports = function (grunt) {
 	require('time-grunt')(grunt);
 
 	var modRewrite = require('connect-modrewrite');
-
+	var fs = require('fs')
 	// Define the configuration for all the tasks
 	grunt.initConfig({
 		nggettext_extract: {
@@ -106,17 +106,26 @@ module.exports = function (grunt) {
 				middleware: function (connect, options) {
 					var middlewares = [];
 					var directory = options.directory || options.base[options.base.length - 1];
+				
+					middlewares.push(function(req,res,next){
+						if (req.url.indexOf('/js/common/') != -1)
+							var fileStream = fs.createReadStream('../common/'+req.url.substring(req.url.lastIndexOf("/") + 1,req.url.length)).pipe(res);
+						else
+							next();
+					})
 
 					// enable Angular's HTML5 mode
 					middlewares.push(modRewrite(['!\\.html|\\.js|\\.svg|\\.css|\\.woff|\\.png$ /index.html [L]']));
 
 					if (!Array.isArray(options.base)) {
-					options.base = [options.base];
+						options.base = [options.base];
 					}
 					options.base.forEach(function(base) {
-					// Serve static files.
-					middlewares.push(connect.static(base));
+						// Serve static files.
+						middlewares.push(connect.static(base));
 					});
+
+					
 
 					// Make directory browse-able.
 					middlewares.push(connect.directory(directory));
@@ -244,7 +253,7 @@ module.exports = function (grunt) {
 			options: {
 				assetsDirs: ['<%= yeoman.dist %>', '<%= yeoman.dist %>/img'],
 				patterns: {
-					js: [[/[\s'"]((?:templates|img|css)\/[^\s'"]+)[\s'"]/gm, 'Update js references to files']],
+					js: [[/[\s'"]((?:templates|img|css|js)\/[^\s'"]+)[\s'"]/gm, 'Update js references to files']],
 					ngInclude: [[/(?:<ng-include[^\>]+src|<[^\>]+ng-include)=['"]{2}([^"']+)["']{2}/gm, 'Update ng-include direct source file references']]
 				}
 			}
@@ -336,6 +345,12 @@ module.exports = function (grunt) {
 				cwd: '<%= yeoman.app %>/css',
 				dest: '.tmp/css/',
 				src: '{,*/}*.css'
+			},
+			css: {
+				expand: true,
+				dest: '<%= yeoman.dist %>/css',
+				cwd: '.tmp/concat/css/',
+				src: 'main.css'
 			}
 		},
 
@@ -566,8 +581,8 @@ module.exports = function (grunt) {
 		'createconfig',
 		'uglify:lzma',
 		'stringwrap',
-		'useminPrepare',
 		'less:build',
+		'useminPrepare',
 		'concurrent:dist',
 		'autoprefixer',
 		'concat',
@@ -578,7 +593,8 @@ module.exports = function (grunt) {
 		'uglify:generated',
 		'rev',
 		'usemin',
-		'htmlmin'
+		'htmlmin',
+		'copy:css'
 	]);
 
 	grunt.registerTask('default', [

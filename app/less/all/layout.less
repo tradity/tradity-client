@@ -1,7 +1,6 @@
 body {
 	font-size:13px;
 	font-family:Arial;
-	padding-top:50px;
 }
 
 .content.container {
@@ -39,7 +38,7 @@ body {
 	}
 	.notifications {
 		padding:0px;
-		min-width: 250px;
+		min-width: 270px;
 		li {
 			border-bottom:1px solid lighten(@secondary,20%);
 			background-color:lighten(@secondary,30%)
@@ -105,9 +104,7 @@ body {
 	}
 }
 
-.main-content {
-	padding-top:15px;
-
+.main-content, .registration {
 	h1, h2, h3 {
 		font-family: 'Open Sans', sans-serif;
 		font-weight: 300;
@@ -126,6 +123,21 @@ body {
 	}
 }
 
+#overlayQuery {
+	position:fixed;
+	bottom:0px;
+	width:100%;
+	text-align:center;	
+}
+
+#view {
+	margin-top:50px;
+}
+
+.main-content {
+	padding-top:15px;
+}
+
 .neg, #depot .item.neg  {
 	background-color: #e74c3c;
 	color: #fff;
@@ -142,4 +154,22 @@ a {
 
 hr {
 	margin:15px 0px;
+}
+
+
+
+#pagesubnav, #pagesubnav.navbar-default .navbar-collapse, #pagesubnav.navbar-default .navbar-form {
+	border-color:#fff;
+	text-align: center;
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+		border-color:#fff;
+		text-align: center;
+	}
+}
+
+@media (min-width: @screen-sm-min) {
+	#pagesubnav, #pagesubnav.navbar-default .navbar-collapse, #pagesubnav.navbar-default .navbar-form {
+		text-align:left;
+		border-color:#e7e7e7;
+	}
 }

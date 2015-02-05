@@ -12,16 +12,18 @@ angular.module('tradity')
 
 		var	$feed = $rootScope.$new(true);
 				$feed.items = [];
-		var	feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange', 'user-reset', 'mod-notification'];
+		var	feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange', 'user-reset', 'mod-notification', 'blogpost'];
 
 		var updateFeed = function(res) {
 			if (res.type == 'mod-notification') $feed.items.push(event.modNotification(res));
 			if (res.type == 'watch-add') $feed.items.push(event.watchAdd(res));
 			if (res.type == 'trade') $feed.items.push(event.trade(res));
 			if (res.type == 'comment') $feed.items.push(event.comment(res));
+			if (res.type == 'blogpost') $feed.items.push(event.blogpost(res));
 			if (res.type == 'user-provchange') $feed.items.push(event.userProvchange(res));
 			if (res.type == 'user-namechange') $feed.items.push(event.userNamechange(res));
 			if (res.type == 'user-reset') $feed.items.push(event.userReset(res));
+			$feed.$emit('change')
 		}
 
 		for (var i = 0; i < feedEvents.length; ++i) 

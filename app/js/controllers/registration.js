@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('RegistrationCtrl', function($scope, $stateParams, $state, dialogs, safestorage, socket) {
+	controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dialogs, safestorage, socket) {
 		$scope.school = $stateParams.schoolid;
 		$scope.schoolname_none = false;
 		$scope.traditye = 0;
@@ -52,7 +52,7 @@ angular.module('tradity').
 					
 					modal.result.then(function(btn) {
 						$scope.alerts.push({ type: 'danger', msg:'Registrierung erfolgreich'});
-						$scope.fetchSelf();
+						user.fetch();
 						$state.go('game.feed');
 					});
 					break;
@@ -81,6 +81,8 @@ angular.module('tradity').
 		});
 		
 		$scope.register = function() {
+			$scope.schoolname = document.getElementById('schoolname').value;
+			
 			if (!$scope.email)
 				return $scope.alerts.push({ type: 'danger', msg:'Bitte gib deine E-Mail-Adresse an.'});
 			if (!$scope.agbread)

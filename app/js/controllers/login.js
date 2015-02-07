@@ -27,7 +27,7 @@ angular.module('tradity').
 				switch (data.code) {
 					case 'login-success':
 						$scope.alerts.push({ type: 'success', msg:'Emailadresse erfolgreich bestätigt'});
-						$scope.fetchSelf();
+						user.fetch();
 						$state.go('game.feed');
 						break;
 					case 'email-verify-already-verified':

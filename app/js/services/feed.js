@@ -63,6 +63,7 @@ angular.module('tradity')
 		$feed.clear = function() {
 			$feed.items = [];
 			$feed.rawItems = [];
+			$feed.knownEventIDs = {};
 			$feed.forUserId = null;
 		};
 		
@@ -81,8 +82,7 @@ angular.module('tradity')
 		$feed.clear();
 		
 		$feed.receiveEvent = function(res) {
-			var knownEventIDs = $feed.rawItems.map(function(event) { return event.eventid; });
-			if (knownEventIDs.indexOf(res.eventid) != -1)
+			if ($feed.knownEventIDs[res.eventid])
 				return;
 			
 			var saveToRawItems = [
@@ -97,6 +97,7 @@ angular.module('tradity')
 			var origEvent = $.extend(true, {}, res); // deep copy, so event.* can do anything with res
 			
 			$feed.rawItems.push(origEvent);
+			$feed.knownEventIDs[res.eventid] = true;
 			$feed.$emit(res.type, $.extend(true, {}, res));
 			
 			if (res.type == 'mod-notification') parsedEvent = event.modNotification(res);

@@ -76,7 +76,12 @@ angular.module('tradity')
 		$feed.clear();
 		
 		$feed.receiveEvent = function(res) {
+			var knownEventIDs = $feed.items.map(function(event) { return event._origEvent.eventid; });
+			if (knownEventIDs.indexOf(res.eventid) != -1)
+				return;
+			
 			var parsedEvent = null;
+			var origEvent = $.extend(true, {}, res); // deep copy, so event.* can do anything with res
 			
 			if (res.type == 'mod-notification') parsedEvent = event.modNotification(res);
 			if (res.type == 'watch-add') parsedEvent = event.watchAdd(res);
@@ -88,7 +93,7 @@ angular.module('tradity')
 			if (res.type == 'user-reset') parsedEvent = event.userReset(res);
 			
 			if (parsedEvent) {
-				parsedEvent._origEvent = res;
+				parsedEvent._origEvent = origEvent;
 				$feed.addEvent(parsedEvent);
 			}
 		}

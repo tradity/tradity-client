@@ -15,7 +15,8 @@ angular.module('tradity')
 	.factory('feed', function ($rootScope,socket,event) {
 
 		var	$feed = $rootScope.$new(true);
-				$feed.items = [];
+		$feed.items = [];
+		
 		var	feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange', 'user-reset', 'mod-notification', 'blogpost'];
 
 		var updateFeed = function(res) {
@@ -27,17 +28,23 @@ angular.module('tradity')
 			if (res.type == 'user-provchange') $feed.items.push(event.userProvchange(res));
 			if (res.type == 'user-namechange') $feed.items.push(event.userNamechange(res));
 			if (res.type == 'user-reset') $feed.items.push(event.userReset(res));
-			$feed.$emit('change')
+			$feed.$emit('change');
 		}
 
 		for (var i = 0; i < feedEvents.length; ++i) 
-			socket.on(feedEvents[i],updateFeed);
+			socket.on(feedEvents[i], updateFeed);
 
-		socket.emit('fetch-events', {
-			since: 0,
-			count: null,
-			_expect_no_response: true
-		});
+		$feed.fetch = function() {
+			socket.emit('fetch-events', {
+				since: 0,
+				count: null,
+				_expect_no_response: true
+			});
+		};
+		
+		$feed.clear = function() {
+			$feed.items = [];
+		};
 
 		return {
 			/**

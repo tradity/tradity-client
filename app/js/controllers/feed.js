@@ -10,7 +10,11 @@ angular.module('tradity').
 		$scope.messageCount = 12;
 		
 		$scope.displayFeed = function() {
-			$scope.displaymessages = $feed.items.slice(0, parseInt($scope.messageCount));
+			$scope.displaymessages = $feed.items.sort(function(a, b) {
+				if (b.sticky && !a.sticky) return +1;
+				if (!b.sticky && a.sticky) return -1;
+				return b.time - a.time;
+			}).slice(0, parseInt($scope.messageCount));
 		};
 
 		$scope.lastScrollCheck = 0;

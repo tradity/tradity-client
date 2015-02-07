@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('MainCtrl', function($sce, chat, ranking, $user, $rootScope, $scope, $location, $state, $stateParams, socket, safestorage, dailyLoginAchievements, $http, $interval, $timeout, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
+	controller('MainCtrl', function($sce, chat, ranking, $feed, $user, $rootScope, $scope, $location, $state, $stateParams, socket, safestorage, dailyLoginAchievements, $http, $interval, $timeout, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
 		$scope.Math = Math;
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
@@ -102,7 +102,7 @@ angular.module('tradity').
 			if ($scope.isAdmin)
 				return;
 
-			if ($scope.ownUser.access.indexOf('*') != -1)
+			if ($scope.ownUser.access && $scope.ownUser.access.indexOf('*') != -1)
 				$scope.$emit('makeadmin');
 
 			if (!$scope.ownUser.profilepic)

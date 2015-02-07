@@ -14,7 +14,7 @@ angular.module('tradity')
 	 */
 	.factory('feed', function ($rootScope,socket,event) {
 		var localStorage_ = typeof localStorage != 'undefined' ? localStorage : {};
-		var feedCacheVersion = 1;
+		var feedCacheVersion = 2;
 
 		var	$feed = $rootScope.$new(true);
 		
@@ -87,7 +87,7 @@ angular.module('tradity')
 			
 			var saveToRawItems = [
 				'trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange',
-				'user-reset', 'mod-notification', 'blogpost', 'achievement'
+				'user-reset', 'mod-notification', 'blogpost', 'achievement', 'file-publish'
 			];
 			
 			if (saveToRawItems.indexOf(res.type) == '-1')

@@ -102,7 +102,7 @@ angular.module('tradity').
 			if ($scope.isAdmin)
 				return;
 
-			if ($scope.ownUser.access.indexOf('*') != -1)
+			if ($scope.ownUser.access && $scope.ownUser.access.indexOf('*') != -1)
 				$scope.$emit('makeadmin');
 
 			if (!$scope.ownUser.profilepic)

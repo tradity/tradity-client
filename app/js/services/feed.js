@@ -14,7 +14,7 @@ angular.module('tradity')
 	 */
 	.factory('feed', function ($rootScope,socket,event) {
 		var localStorage_ = typeof localStorage != 'undefined' ? localStorage : {};
-		var feedCacheVersion = 1;
+		var feedCacheVersion = 2;
 
 		var	$feed = $rootScope.$new(true);
 		
@@ -63,6 +63,7 @@ angular.module('tradity')
 		$feed.clear = function() {
 			$feed.items = [];
 			$feed.rawItems = [];
+			$feed.knownEventIDs = {};
 			$feed.forUserId = null;
 		};
 		
@@ -81,13 +82,12 @@ angular.module('tradity')
 		$feed.clear();
 		
 		$feed.receiveEvent = function(res) {
-			var knownEventIDs = $feed.rawItems.map(function(event) { return event.eventid; });
-			if (knownEventIDs.indexOf(res.eventid) != -1)
+			if ($feed.knownEventIDs[res.eventid])
 				return;
 			
 			var saveToRawItems = [
 				'trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange',
-				'user-reset', 'mod-notification', 'blogpost', 'achievement'
+				'user-reset', 'mod-notification', 'blogpost', 'achievement', 'file-publish'
 			];
 			
 			if (saveToRawItems.indexOf(res.type) == '-1')
@@ -97,6 +97,7 @@ angular.module('tradity')
 			var origEvent = $.extend(true, {}, res); // deep copy, so event.* can do anything with res
 			
 			$feed.rawItems.push(origEvent);
+			$feed.knownEventIDs[res.eventid] = true;
 			$feed.$emit(res.type, $.extend(true, {}, res));
 			
 			if (res.type == 'mod-notification') parsedEvent = event.modNotification(res);

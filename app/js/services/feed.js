@@ -14,6 +14,7 @@ angular.module('tradity')
 	 */
 	.factory('feed', function ($rootScope,socket,event) {
 		var localStorage_ = typeof localStorage != 'undefined' ? localStorage : {};
+		var feedCacheVersion = 1;
 
 		var	$feed = $rootScope.$new(true);
 		
@@ -27,7 +28,9 @@ angular.module('tradity')
 			
 			var latestKnownEventTime = 0;
 			
-			if (!lsFeedData || lsFeedData.forUserId != $feed.forUserId) {
+			if (!lsFeedData || lsFeedData.forUserId != $feed.forUserId ||
+			    !lsFeedData.feedCacheVersion || lsFeedData.feedCacheVersion < feedCacheVersion)
+			{
 				localStorage_.feed = 'null';
 			} else {
 				/* wrapped in try so that corrupt localStorage_ entries won’t break anything */
@@ -51,13 +54,15 @@ angular.module('tradity')
 		
 		$feed.saveToLocalStorage = function() {
 			localStorage_.feed = JSON.stringify({
-				rawItems: $feed.items.map(function(ev) { return ev._origEvent; }),
-				forUserId: $feed.forUserId
+				rawItems: $feed.rawItems,
+				forUserId: $feed.forUserId,
+				feedCacheVersion: feedCacheVersion
 			});
 		};
 		
 		$feed.clear = function() {
 			$feed.items = [];
+			$feed.rawItems = [];
 			$feed.forUserId = null;
 		};
 		
@@ -76,12 +81,23 @@ angular.module('tradity')
 		$feed.clear();
 		
 		$feed.receiveEvent = function(res) {
-			var knownEventIDs = $feed.items.map(function(event) { return event._origEvent.eventid; });
+			var knownEventIDs = $feed.rawItems.map(function(event) { return event.eventid; });
 			if (knownEventIDs.indexOf(res.eventid) != -1)
+				return;
+			
+			var saveToRawItems = [
+				'trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange',
+				'user-reset', 'mod-notification', 'blogpost', 'achievement'
+			];
+			
+			if (saveToRawItems.indexOf(res.type) == '-1')
 				return;
 			
 			var parsedEvent = null;
 			var origEvent = $.extend(true, {}, res); // deep copy, so event.* can do anything with res
+			
+			$feed.rawItems.push(origEvent);
+			$feed.$emit(res.type, $.extend(true, {}, res));
 			
 			if (res.type == 'mod-notification') parsedEvent = event.modNotification(res);
 			if (res.type == 'watch-add') parsedEvent = event.watchAdd(res);

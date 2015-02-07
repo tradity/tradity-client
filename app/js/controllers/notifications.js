@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('NotificationsCtrl', function($scope, $rootScope, $stateParams, $state, socket, $timeout) {
+	controller('NotificationsCtrl', function($scope, $rootScope, $stateParams, $state, $feed, socket, $timeout) {
 		$scope.show = false;
 		$scope.notifications = [];
 		$scope.count = 0;
@@ -41,12 +41,12 @@ angular.module('tradity').
 			$scope.countUnseen();
 		};
 
-		socket.on('achievement', function(data) {
+		$feed.$on('achievement', function(ev, data) {
 			if ($scope.$parent && $scope.$parent.$parent && $scope.$parent.$parent.ownUser && data.srcusername == $scope.$parent.$parent.ownUser.name)
 				$scope.add(data);
 		});
 
-		socket.on('comment', function(data) {
+		$feed.$on('comment', function(ev, data) {
 			if ($scope.$parent && $scope.$parent.$parent && $scope.$parent.$parent.ownUser && data.baseeventtype == 'user-register' && data.traderid == $scope.$parent.$parent.ownUser.uid) {
 				data.type = "comment-pinboard-self"
 				$scope.add(data);

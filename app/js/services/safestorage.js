@@ -136,7 +136,7 @@ angular.module('tradity')
 		};
 		
 		SafeStorage.prototype.generateKeyFromPassword = function(pw) {
-			// Yes, this is a fixed salt in production code. Yes, this is a bad idea.
+			// Yes, this is a fixed salt in production code. Yes, this is a (mildly) bad idea.
 			return asmCrypto.PBKDF2_HMAC_SHA256.bytes(pw, '7b020da8f05fcdad7cb15d7457483a77').subarray(0, 16);
 		};
 		

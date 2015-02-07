@@ -12,7 +12,7 @@
  * Factory
  */
 angular.module('tradity')
-	.factory('user', function ($q,socket,$state,ranking,$rootScope,config,$timeout,safestorage,dailyLoginAchievements) {
+	.factory('user', function ($q, socket, $state, ranking, $rootScope, config, $timeout, safestorage, dailyLoginAchievements) {
 
 		var $user = $rootScope.$new(true);
 		var ownUserRanking;
@@ -34,24 +34,31 @@ angular.module('tradity')
 		}
 
 		var updateUser = function(res) {
-			safestorage.check().then(function() {
-				dailyLoginAchievements.check();
-			});
 			var user = parse(res);
 			if (!user) 
 				return;
 			if (!user.isSelf) 
 				return;
+			
+			safestorage.check().then(function() {
+				dailyLoginAchievements.check();
+			});
+			
 			ownUserRanking.fetch();
-			angular.extend($user,user);
+			
+			angular.extend($user, user);
+			$rootScope.$broadcast('user-update', $user);
 		}
 		
-		socket.on('self-info',updateUser)
-		socket.on('get-user-info',updateUser)
+		socket.on('self-info', updateUser);
+		socket.on('get-user-info', updateUser);
 
 		socket.on('*', function(data) {
 			if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
 				$user = $rootScope.$new(true);
+				
+				safestorage.clear();
+				$rootScope.$broadcast('user-update', null);
 				if ($state.includes('game'))
 					$state.go('index.login');
 			}

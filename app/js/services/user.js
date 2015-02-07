@@ -57,7 +57,6 @@ angular.module('tradity')
 			if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
 				$user = $rootScope.$new(true);
 				
-				safestorage.clear();
 				$rootScope.$broadcast('user-update', null);
 				if ($state.includes('game'))
 					$state.go('index.login');

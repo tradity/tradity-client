@@ -89,8 +89,6 @@ angular.module('tradity').
 
 		$scope.$on('user-update', function() {
 			if (!$scope.ownUser) {
-				safestorage.clear();
-				
 				$scope.isAdmin = false;
 				return;
 			}

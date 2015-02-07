@@ -43,7 +43,7 @@ angular.module('tradity').
 			});
 		}
 		
-		$scope.login = function() {		
+		$scope.login = function() {
 			$scope.logging_in = true;
 			safestorage.setPassword($scope.password);
 			socket.emit('login', {

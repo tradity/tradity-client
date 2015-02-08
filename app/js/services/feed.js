@@ -12,57 +12,71 @@ angular.module('tradity')
 	 * # feed
 	 * Factory in the tradityApp.
 	 */
-	.factory('feed', function ($rootScope,socket,event) {
+	.factory('feed', function ($rootScope, socket, event, debounce, maybeCompress) {
+		// wraps a function into one that outputs warnings rather than throws
+		var warnOnFail = function(f) {
+			return function() {
+				try {
+					return f.apply(this, arguments);
+				} catch(e) {
+					console.warn(e);
+				}
+			};
+		};
+		
 		var localStorage_ = typeof localStorage != 'undefined' ? localStorage : {};
-		var feedCacheVersion = 2;
+		var feedCacheVersion = 3;
 
 		var	$feed = $rootScope.$new(true);
 		
 		$feed.fetch = function() {
-			// load events from localStorage cache and calculate latest known event time
-			
-			var lsFeedData = null;
-			try {
-				lsFeedData = JSON.parse(localStorage_.feed);
-			} catch (e) { console.warn(e); }
-			
-			var latestKnownEventTime = 0;
-			
-			if (!lsFeedData || lsFeedData.forUserId != $feed.forUserId ||
-			    !lsFeedData.feedCacheVersion || lsFeedData.feedCacheVersion < feedCacheVersion)
-			{
-				localStorage_.feed = 'null';
-			} else {
-				/* wrapped in try so that corrupt localStorage_ entries won’t break anything */
+			maybeCompress.decompress(localStorage_.feed).then(warnOnFail(function(lsFeedData_) {
+				// load events from localStorage cache and calculate latest known event time
+				
+				var lsFeedData = null;
 				try {
-					// filter out event times, sort, and take last element
-					latestKnownEventTime = lsFeedData.rawItems.map(function(event) {
-						return event.eventtime;
-					}).sort().slice(-1)[0] || 0;
-					
-					for (var i = 0; lsFeedData.rawItems && i < lsFeedData.rawItems.length; ++i)
-						$feed.receiveEvent(lsFeedData.rawItems[i]);
-				} catch(e) { console.error(e); }
-			}
-			
-			socket.emit('fetch-events', {
-				since: latestKnownEventTime,
-				count: null,
-				_expect_no_response: true
-			});
+					lsFeedData = JSON.parse(lsFeedData_);
+				} catch (e) { console.warn(e); }
+				
+				var latestKnownEventTime = 0;
+				
+				if (!lsFeedData || lsFeedData.forUserId != $feed.forUserId ||
+					!lsFeedData.feedCacheVersion || lsFeedData.feedCacheVersion < feedCacheVersion)
+				{
+					localStorage_.feed = 'null';
+				} else {
+					/* wrapped in try so that corrupt localStorage_ entries won’t break anything */
+					try {
+						// filter out event times, sort, and take last element
+						latestKnownEventTime = lsFeedData.rawItems.map(function(event) {
+							return event.eventtime;
+						}).sort().slice(-1)[0] || 0;
+						
+						for (var i = 0; lsFeedData.rawItems && i < lsFeedData.rawItems.length; ++i)
+							$feed.receiveEvent(lsFeedData.rawItems[i]);
+					} catch(e) { console.error(e); }
+				}
+				
+				socket.emit('fetch-events', {
+					since: latestKnownEventTime,
+					count: null,
+					_expect_no_response: true
+				});
+			}));
 		};
 		
-		$feed.saveToLocalStorage = function() {
-			try {
-				localStorage_.feed = JSON.stringify({
-					rawItems: $feed.rawItems,
-					forUserId: $feed.forUserId,
-					feedCacheVersion: feedCacheVersion
-				});
-			} catch(e) {
-				console.warn(e);
-			}
-		};
+		// call at most each 2 seconds
+		$feed.saveToLocalStorage = debounce(2000, warnOnFail(function() {
+			var feedData = JSON.stringify({
+				rawItems: $feed.rawItems,
+				forUserId: $feed.forUserId,
+				feedCacheVersion: feedCacheVersion
+			});
+			
+			maybeCompress.compress(feedData, 256 * 1024).then(warnOnFail(function(possiblyCompressedData) {
+				localStorage_.feed = possiblyCompressedData;
+			}));
+		}));
 		
 		$feed.clear = function() {
 			$feed.items = [];

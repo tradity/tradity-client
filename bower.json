@@ -13,6 +13,7 @@
     "angular-sanitize": "~1.2.16",
     "angular-dialog-service": "~5.2.6",
     "angular-md5": "*",
+    "angular-debounce": "~1.0.1",
     "munkres-js": ">=1.1.1",
     "ac.js": ">=0.0.4",
     "lzma-js": "https://github.com/nmrugg/LZMA-JS.git#~1.3.7",

@@ -55,6 +55,8 @@ angular.module('tradity')
 			console.error(e);
 		}
 		
+		var tradityClientVersion = typeof TRADITY_BUILD_STAMP != 'undefined' ? TRADITY_BUILD_STAMP : 'TDYC0';
+		
 		var socket = new SoTradeConnection({
 			connect: function() { return io.connect(API_HOST); },
 			applyWrap: $rootScope.$apply.bind($rootScope),
@@ -62,7 +64,8 @@ angular.module('tradity')
 			logSrvCheck: function() { return document.cookie.indexOf('srvdevmode') != -1; },
 			lzma: lzma,
 			keyStorage: webKeyStorage,
-			q: $q
+			q: $q,
+			clientSoftwareVersion: tradityClientVersion
 		});
 		
 		return socket;

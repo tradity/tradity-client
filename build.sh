@@ -1,6 +1,7 @@
 #!/bin/sh
-touch app/js/config.js 
+touch app/js/config.js
 
+echo "var TRADITY_BUILD_STAMP = 'TDYC$(date +%s)-$(git rev-parse HEAD)';" > app/js/buildstamp.js && \
 npm --quiet install && \
 bower -q install && \
 grunt --no-color build doc

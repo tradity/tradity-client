@@ -42,6 +42,9 @@ angular.module('tradity')
 		};
 		
 		MaybeCompress.prototype.decompress = function(input) {
+			if (input == '' || input == 'null' || input == null)
+				return $q.when(null);
+			
 			var encodingID = input.substr(0, 2);
 			if (encodingID == 'r:')
 				return $q.when(input.substr(2));

@@ -15,7 +15,7 @@ var enterSrvDevMode = function() { document.cookie = 'srvdevmode=1;expires=Fri, 
  * Factory
  */
 angular.module('tradity')
-	.factory('socket', function ($rootScope, $q, API_HOST) {
+	.factory('socket', function ($rootScope, $q, API_HOST, lzma) {
 		var webKeyStorage = {
 			getKey: function() {
 				var s = localStorage || window.localStorage;
@@ -46,14 +46,7 @@ angular.module('tradity')
 			}
 		};
 		
-		var lzma = null;
-		try {
-			if (typeof LZMA != 'undefined' && typeof Blob != 'undefined' && typeof Uint8Array != 'undefined' && 
-				window.URL && window.URL.createObjectURL && lzma_worker_js)
-				lzma = new LZMA(URL.createObjectURL(new Blob([lzma_worker_js], {type: 'application/x-javascript'})));
-		} catch(e) {
-			console.error(e);
-		}
+		var tradityClientVersion = typeof TRADITY_BUILD_STAMP != 'undefined' ? TRADITY_BUILD_STAMP : 'TDYC0';
 		
 		var socket = new SoTradeConnection({
 			connect: function() { return io.connect(API_HOST); },
@@ -62,7 +55,8 @@ angular.module('tradity')
 			logSrvCheck: function() { return document.cookie.indexOf('srvdevmode') != -1; },
 			lzma: lzma,
 			keyStorage: webKeyStorage,
-			q: $q
+			q: $q,
+			clientSoftwareVersion: tradityClientVersion
 		});
 		
 		return socket;

@@ -53,11 +53,15 @@ angular.module('tradity')
 		};
 		
 		$feed.saveToLocalStorage = function() {
-			localStorage_.feed = JSON.stringify({
-				rawItems: $feed.rawItems,
-				forUserId: $feed.forUserId,
-				feedCacheVersion: feedCacheVersion
-			});
+			try {
+				localStorage_.feed = JSON.stringify({
+					rawItems: $feed.rawItems,
+					forUserId: $feed.forUserId,
+					feedCacheVersion: feedCacheVersion
+				});
+			} catch(e) {
+				console.warn(e);
+			}
 		};
 		
 		$feed.clear = function() {

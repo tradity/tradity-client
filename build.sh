@@ -6,6 +6,9 @@ npm --quiet install && \
 npm --quiet update && \
 bower -q install && \
 grunt --no-color build doc
+EXIT_CODE=$?
 
 mkdir -p dist
 [ -e dist/index.html ] || cp buildfail.html dist/index.html
+
+exit $EXIT_CODE

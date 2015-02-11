@@ -1,4 +1,6 @@
 # tradity-client
+
+[![Build Status](https://travis-ci.org/tradity/tradity-client.svg?style=flat&branch=master)](https://travis-ci.org/tradity/tradity-client?branch=master)
 Web client of the [Tradity](https://tradity.de/) stock trading game
 
 ## About

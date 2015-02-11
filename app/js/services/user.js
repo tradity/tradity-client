@@ -15,7 +15,9 @@ angular.module('tradity')
 	.factory('user', function ($q, socket, $state, ranking, $rootScope, config, $timeout, safestorage, dailyLoginAchievements) {
 
 		var $user = $rootScope.$new(true);
+		
 		var ownUserRanking;
+		
 		var parse = function(res) {
 			if (res.code == 'get-user-info-success')
 				var user = res.result;
@@ -44,6 +46,13 @@ angular.module('tradity')
 				dailyLoginAchievements.check();
 			});
 			
+			if (!ownUserRanking) { // initialize ownUserRanking only once
+				ownUserRanking = ranking.getRanking(null, config.server().ranking || {}, null, null, true);
+				ownUserRanking.onRankingUpdated(function() {
+					$user.rank = ownUserRanking.get('all').rankForUser($user.uid);
+				});
+			}
+			
 			ownUserRanking.fetch();
 			
 			angular.extend($user, user);
@@ -62,18 +71,6 @@ angular.module('tradity')
 					$state.go('index.login');
 			}
 		});
-
-		socket.on('server-config', function(data) {
-			var serverConfig = {};
-			var cfg = data.config;
-			for (var k in cfg)
-				serverConfig[k] = cfg[k];
-
-			ownUserRanking = ranking.getRanking(null, serverConfig.ranking || {}, null, null, true);
-			ownUserRanking.onRankingUpdated(function() {
-				$user.rank = ownUserRanking.get('all').rankForUser($user.uid);
-			});
-		})
 
 		var fetchSelf = function() {
 			socket.emit('get-user-info', {

@@ -88,8 +88,11 @@ angular.module('tradity').
 			$scope.count = 0;
 
 			for (var i = $scope.sponsors.length - 1; i >= 0; i--) {
-				$scope.sponsors[i].show = !$scope.sponsors[i].schoolPathRegex || $scope.sponsors[i].schoolPathRegex.test(userSchoolPath);
-				if ($scope.sponsors[i].show) $scope.count++;
+				$scope.sponsors[i].show = !$scope.sponsors[i].schoolPathRegex ||
+					$scope.sponsors[i].schoolPathRegex.test(userSchoolPath);
+				
+				if ($scope.sponsors[i].show)
+					$scope.count++;
 			}
 		}
 		
@@ -113,6 +116,4 @@ angular.module('tradity').
 			else 
 				return;
 		}
-
-		
 	});

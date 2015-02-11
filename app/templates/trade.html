@@ -67,7 +67,7 @@
 						Kauf-/Verkaufswert
 						<span g-show="cur && sellbuy > 0">(Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSingleStockShare) / cur.ask) * cur.ask / 10000 | currency}})</span>
 					</label>
-					<input type="number" ng-model="text" ng-change="calcAmount();" placeholder="Kaufwert" id="value" autocomplete="off" class="form-control">
+					<input type="text" ng-model="value" ng-change="calcAmount();" placeholder="Kaufwert" id="value" autocomplete="off" class="form-control">
 				</div>
 				<!--<label class="trade-label">Kontostand<span class="batch tooltip" data-info="Kontostand vor Order +/- Kaufwert - Transaktionskosten = Kontostand nach Order"> &#xF0AD;</span></label>
 				1337 <span class="pos">350</span><span class="neg"> -{{fee | currency}}</span> = 1230 <br>-->

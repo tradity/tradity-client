@@ -55,7 +55,7 @@ angular.module('tradity').
 				switch (data.code) {
 					case 'login-success':
 						user.fetch();
-						$state.go('game.feed');
+						location.href = '/feed';
 						break;
 					case 'login-badname':
 						$scope.alerts.push({ type: 'danger', msg:'Benutzer „' + $scope.username + '“ existiert nicht'});

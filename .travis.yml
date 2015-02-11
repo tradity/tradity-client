@@ -3,6 +3,7 @@ node_js:
   - "0.12"
   - "0.10"
 install:
+  - sudo npm -g install bower grunt
   - ./build.sh
 script:
 # no tests so far

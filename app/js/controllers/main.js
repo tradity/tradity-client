@@ -52,6 +52,13 @@ angular.module('tradity').
 				connectTest.success(alive);
 				connectTest.error(dead);
 			}, 3000);
+			
+			$timeout(function() {
+				if (socket.rxPackets() > $scope.connectionLastRx)
+					return;
+				
+				socket.reconnect();
+			}, 10000);
 		};
 		
 		$timeout($scope.connectionCheck, 3141);

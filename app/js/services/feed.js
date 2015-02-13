@@ -12,31 +12,140 @@ angular.module('tradity')
 	 * # feed
 	 * Factory in the tradityApp.
 	 */
-	.factory('feed', function ($rootScope,socket,event) {
+	.factory('feed', function ($rootScope, socket, event, debounce, maybeCompress) {
+		// wraps a function into one that outputs warnings rather than throws
+		var warnOnFail = function(f) {
+			return function() {
+				try {
+					return f.apply(this, arguments);
+				} catch(e) {
+					console.warn(e);
+				}
+			};
+		};
+		
+		var localStorage_ = typeof localStorage != 'undefined' ? localStorage : {};
+		var feedCacheVersion = 3;
 
 		var	$feed = $rootScope.$new(true);
-				$feed.items = [];
-		var	feedEvents = ['trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange', 'user-reset', 'mod-notification', 'blogpost'];
-
-		var updateFeed = function(res) {
-			if (res.type == 'mod-notification') $feed.items.push(event.modNotification(res));
-			if (res.type == 'watch-add') $feed.items.push(event.watchAdd(res));
-			if (res.type == 'trade') $feed.items.push(event.trade(res));
-			if (res.type == 'comment') $feed.items.push(event.comment(res));
-			if (res.type == 'blogpost') $feed.items.push(event.blogpost(res));
-			if (res.type == 'user-provchange') $feed.items.push(event.userProvchange(res));
-			if (res.type == 'user-namechange') $feed.items.push(event.userNamechange(res));
-			if (res.type == 'user-reset') $feed.items.push(event.userReset(res));
-			$feed.$emit('change')
+		
+		$feed.fetch = function() {
+			maybeCompress.decompress(localStorage_.feed).then(warnOnFail(function(lsFeedData_) {
+				// load events from localStorage cache and calculate latest known event time
+				
+				var lsFeedData = null;
+				try {
+					lsFeedData = JSON.parse(lsFeedData_);
+				} catch (e) { console.warn(e); }
+				
+				var latestKnownEventTime = 0;
+				
+				if (!lsFeedData || lsFeedData.forUserId != $feed.forUserId ||
+					!lsFeedData.feedCacheVersion || lsFeedData.feedCacheVersion < feedCacheVersion)
+				{
+					localStorage_.feed = 'null';
+				} else {
+					/* wrapped in try so that corrupt localStorage_ entries won’t break anything */
+					try {
+						// filter out event times, sort, and take last element
+						latestKnownEventTime = lsFeedData.rawItems.map(function(event) {
+							return event.eventtime;
+						}).sort().slice(-1)[0] || 0;
+						
+						for (var i = 0; lsFeedData.rawItems && i < lsFeedData.rawItems.length; ++i)
+							$feed.receiveEvent(lsFeedData.rawItems[i]);
+					} catch(e) { console.error(e); }
+				}
+				
+				socket.emit('fetch-events', {
+					since: latestKnownEventTime,
+					count: null,
+					_expect_no_response: true
+				});
+			}));
+		};
+		
+		// call at most each 2 seconds
+		$feed.saveToLocalStorage = debounce(2000, warnOnFail(function() {
+			var feedData = JSON.stringify({
+				rawItems: $feed.rawItems,
+				forUserId: $feed.forUserId,
+				feedCacheVersion: feedCacheVersion
+			});
+			
+			maybeCompress.compress(feedData, 256 * 1024).then(warnOnFail(function(possiblyCompressedData) {
+				localStorage_.feed = possiblyCompressedData;
+			}));
+		}));
+		
+		$feed.clear = function() {
+			$feed.items = [];
+			$feed.rawItems = [];
+			$feed.knownEventIDs = {};
+			$feed.forUserId = null;
+		};
+		
+		$feed.clearFull = function() {
+			$feed.clear();
+			$feed.saveToLocalStorage();
+		};
+		
+		$feed.addEvent = function(ev) {
+			$feed.items.push(ev);
+			$feed.saveToLocalStorage();
+			
+			$feed.$emit('change');
+		};
+		
+		$feed.clear();
+		
+		$feed.receiveEvent = function(res) {
+			if ($feed.knownEventIDs[res.eventid])
+				return;
+			
+			var saveToRawItems = [
+				'trade', 'watch-add', 'comment', 'dquery-exec', 'user-provchange', 'user-namechange',
+				'user-reset', 'mod-notification', 'blogpost', 'achievement', 'file-publish'
+			];
+			
+			if (saveToRawItems.indexOf(res.type) == '-1')
+				return;
+			
+			var parsedEvent = null;
+			var origEvent = $.extend(true, {}, res); // deep copy, so event.* can do anything with res
+			
+			$feed.rawItems.push(origEvent);
+			$feed.knownEventIDs[res.eventid] = true;
+			$feed.$emit(res.type, $.extend(true, {}, res));
+			
+			if (res.type == 'mod-notification') parsedEvent = event.modNotification(res);
+			if (res.type == 'watch-add') parsedEvent = event.watchAdd(res);
+			if (res.type == 'trade') parsedEvent = event.trade(res);
+			if (res.type == 'comment') parsedEvent = event.comment(res);
+			if (res.type == 'blogpost') parsedEvent = event.blogpost(res);
+			if (res.type == 'user-provchange') parsedEvent = event.userProvchange(res);
+			if (res.type == 'user-namechange') parsedEvent = event.userNamechange(res);
+			if (res.type == 'user-reset') parsedEvent = event.userReset(res);
+			
+			if (parsedEvent) {
+				parsedEvent._origEvent = origEvent;
+				$feed.addEvent(parsedEvent);
+			}
 		}
 
-		for (var i = 0; i < feedEvents.length; ++i) 
-			socket.on(feedEvents[i],updateFeed);
-
-		socket.emit('fetch-events', {
-			since: 0,
-			count: null,
-			_expect_no_response: true
+		socket.on('*', $feed.receiveEvent);
+		
+		/* allow the remote to clear bogus client caches */
+		socket.on('clear-feed-full', $feed.clearFull);
+		
+		$rootScope.$on('user-update', function(ev, $user) {
+			if (!$user)
+				return $feed.clearFull();
+			
+			if ($user.id != null && $user.id != $feed.forUserId) {
+				$feed.forUserId = $user.id;
+				$feed.fetch();
+			}
 		});
 
 		return {

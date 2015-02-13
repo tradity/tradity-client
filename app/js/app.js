@@ -12,7 +12,8 @@ angular.module('tradity', [
 	'gettext',
 	'dialogs.main',
 	'angular-md5',
-	'infinite-scroll'
+	'infinite-scroll',
+	'rt.debounce'
 ]).config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider) {
 	/* Create custom angular-ui-router parameter types.
 	 * This is necessary since 0.2.12; Since then,

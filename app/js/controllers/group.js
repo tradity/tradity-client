@@ -44,7 +44,7 @@ angular.module('tradity').
 				if (!$scope.school.banner)
 					$scope.school.banner = DEFAULT_GROUP_BANNER;
 				
-				if ($scope.ownUser) {
+				if ($scope.ownUser && $scope.ownUser.schools) {
 					$.each($scope.ownUser.schools, function(i, e) {
 						if (e.path == $scope.school.path) 
 							$scope.selfIsSchoolMember = true;

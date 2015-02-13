@@ -331,7 +331,8 @@ module.exports = function (grunt) {
 						'bower_components/**/*',
 						'img/{,*/}*.{webp}',
 						'fonts/{,*/}*',
-						'js/jit/**/*',
+						'js/buildstamp.js',
+						'js/jit/**/*'
 					]
 				}, {
 					expand: true,

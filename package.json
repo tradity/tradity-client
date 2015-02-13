@@ -1,6 +1,6 @@
 {
   "name": "tradity-client",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "~0.4.0",
@@ -58,5 +58,13 @@
     "connect-modrewrite": "^0.7.5",
     "grunt-connect-rewrite": "^0.2.1",
     "grunt-ngdocs": "^0.2.6"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tradity/tradity-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tradity/tradity-client/issues"
   }
 }

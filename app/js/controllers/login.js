@@ -27,7 +27,7 @@ angular.module('tradity').
 				switch (data.code) {
 					case 'login-success':
 						$scope.alerts.push({ type: 'success', msg:'Emailadresse erfolgreich bestätigt'});
-						$scope.fetchSelf();
+						user.fetch();
 						$state.go('game.feed');
 						break;
 					case 'email-verify-already-verified':
@@ -43,7 +43,7 @@ angular.module('tradity').
 			});
 		}
 		
-		$scope.login = function() {		
+		$scope.login = function() {
 			$scope.logging_in = true;
 			safestorage.setPassword($scope.password);
 			socket.emit('login', {
@@ -55,7 +55,7 @@ angular.module('tradity').
 				switch (data.code) {
 					case 'login-success':
 						user.fetch();
-						$state.go('game.feed');
+						location.href = '/feed';
 						break;
 					case 'login-badname':
 						$scope.alerts.push({ type: 'danger', msg:'Benutzer „' + $scope.username + '“ existiert nicht'});

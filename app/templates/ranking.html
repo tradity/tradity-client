@@ -52,6 +52,7 @@
 						<th ng-show="spec.type == 'xp'">XP</th>
 						<th>Schule</th>
 						<th ng-show="spec.type == 'administrative'" colspan="2">Vollname</th>
+						<th ng-show="spec.type == 'administrative'">Aktionen</th>
 						<th ng-show="spec.type == 'follower'">Follower­performance</th>
 						<th ng-show="spec.type == 'follower'">Follower­bewertung</th>
 					</tr>
@@ -85,6 +86,10 @@
 						</td>
 						<td ng-show="spec.type == 'administrative'">{{result.giv_name}}</td>
 						<td ng-show="spec.type == 'administrative'">{{result.fam_name}}</td>
+						<td ng-show="spec.type == 'administrative'">
+							<a title="User kicken" ng-click="kickUser(result)"><i class="fa fa-minus-circle"></i></a>
+							<a title="User zu Admin befördern" ng-click="promoteUserToAdmin(result)">A</a>
+						</td>
 						<td style="text-align: right" ng-show="spec.type == 'follower'">{{(result.fperf-1)*100 | number:2}} %</td>
 						<td style="text-align: right" ng-show="spec.type == 'follower'">{{(result.fperfval)*100000 | number:2}}</td>
 					</tr>

@@ -12,10 +12,12 @@
  * Factory
  */
 angular.module('tradity')
-	.factory('user', function ($q,socket,$state,ranking,$rootScope,config,$timeout,safestorage,dailyLoginAchievements) {
+	.factory('user', function ($q, socket, $state, ranking, $rootScope, config, $timeout, safestorage, dailyLoginAchievements) {
 
 		var $user = $rootScope.$new(true);
+		
 		var ownUserRanking;
+		
 		var parse = function(res) {
 			if (res.code == 'get-user-info-success')
 				var user = res.result;
@@ -34,40 +36,41 @@ angular.module('tradity')
 		}
 
 		var updateUser = function(res) {
-			safestorage.check().then(function() {
-				dailyLoginAchievements.check();
-			});
 			var user = parse(res);
 			if (!user) 
 				return;
 			if (!user.isSelf) 
 				return;
+			
+			safestorage.check().then(function() {
+				dailyLoginAchievements.check();
+			});
+			
+			if (!ownUserRanking) { // initialize ownUserRanking only once
+				ownUserRanking = ranking.getRanking(null, config.server().ranking || {}, null, null, true);
+				ownUserRanking.onRankingUpdated(function() {
+					$user.rank = ownUserRanking.get('all').rankForUser($user.uid);
+				});
+			}
+			
 			ownUserRanking.fetch();
-			angular.extend($user,user);
+			
+			angular.extend($user, user);
+			$rootScope.$broadcast('user-update', $user);
 		}
 		
-		socket.on('self-info',updateUser)
-		socket.on('get-user-info',updateUser)
+		socket.on('self-info', updateUser);
+		socket.on('get-user-info', updateUser);
 
 		socket.on('*', function(data) {
 			if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
 				$user = $rootScope.$new(true);
+				
+				$rootScope.$broadcast('user-update', null);
 				if ($state.includes('game'))
 					$state.go('index.login');
 			}
 		});
-
-		socket.on('server-config', function(data) {
-			var serverConfig = {};
-			var cfg = data.config;
-			for (var k in cfg)
-				serverConfig[k] = cfg[k];
-
-			ownUserRanking = ranking.getRanking(null, serverConfig.ranking || {}, null, null, true);
-			ownUserRanking.onRankingUpdated(function() {
-				$user.rank = ownUserRanking.get('all').rankForUser($user.uid);
-			});
-		})
 
 		var fetchSelf = function() {
 			socket.emit('get-user-info', {

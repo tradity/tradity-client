@@ -32,7 +32,7 @@ angular.module('tradity').
 			if (!$scope.leader && !$scope.stockid)
 				return dialogs.error('Du musst ein Wertpapier auswählen!');
 				
-			dlg = dialogs.confirm('Trade', 'Willst du ' + $scope.amount + ' ' + ($scope.amount > 1 ? 'Aktien' : 'Aktie') + ' von ' + $scope.stockname + ' ' + ($scope.sellbuy >= 0 ? 'kaufen' : 'verkaufen') + '?');
+			var dlg = dialogs.confirm('Trade', 'Willst du ' + $scope.amount + ' ' + ($scope.amount > 1 ? 'Aktien' : 'Aktie') + ' von ' + $scope.stockname + ' ' + ($scope.sellbuy >= 0 ? 'kaufen' : 'verkaufen') + '?');
 
 			dlg.result.then(function(btn) {
 				/*if ($scope.stockid == 'US38259P5089')  {

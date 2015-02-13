@@ -16,7 +16,9 @@
 		<link rel="stylesheet" href="css/style.css">
 		<!-- endbuild -->
 		
-		<!-- build:js({.tmp,app}) js/scripts.js -->
+		<!-- buildstamp changes with every git commit -> not suitable for grunt-rev -->
+		<script type="text/javascript" src="js/buildstamp.js"></script>
+		<!-- build:js({.tmp,app}) js/dependencies.js -->
 		<script type="text/javascript" src="js/vendor/piwik.js"></script>
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="bower_components/angular/angular.js"></script>
@@ -28,6 +30,7 @@
 		<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
 		<script type="text/javascript" src="bower_components/angular-dialog-service/dist/dialogs.min.js"></script>
 		<script type="text/javascript" src="bower_components/angular-md5/angular-md5.min.js"></script>
+		<script type="text/javascript" src="bower_components/angular-debounce/dist/angular-debounce.min.js"></script>
 		<script type="text/javascript" src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js"></script>
 		<script type="text/javascript" src="bower_components/lzma-js/src/lzma.js"></script>
 		<script type="text/javascript" src="bower_components/munkres-js/munkres.js"></script>
@@ -49,6 +52,9 @@
 		<script type="text/javascript" src="js/vendor/jquery.pointpoint.js"></script>
 		
 		<script type="text/javascript" src="js/lzma_worker.wrap.js"></script>
+		<!-- endbuild -->
+		
+		<!-- build:js({.tmp,app}) js/scripts.js -->
 		<script type="text/javascript" src="js/main.js"></script>
 
 		<script type="text/javascript" src="js/app.js"></script>
@@ -97,6 +103,8 @@
 		<script type="text/javascript" src="js/services/config.js"></script>
 		<script type="text/javascript" src="js/services/asyncLoadJS.js"></script>
 		<script type="text/javascript" src="js/services/feed.js"></script>
+		<script type="text/javascript" src="js/services/lzma.js"></script>
+		<script type="text/javascript" src="js/services/maybeCompress.js"></script>
 		<script type="text/javascript" src="js/services/event.js"></script>
 		<script type="text/javascript" src="js/services/group.js"></script>
 		<!-- endbuild -->

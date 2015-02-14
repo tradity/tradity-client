@@ -25,7 +25,7 @@ angular.module('tradity')
 		};
 		
 		var localStorage_ = typeof localStorage != 'undefined' ? localStorage : {};
-		var feedCacheVersion = 3;
+		var feedCacheVersion = 4;
 
 		var	$feed = $rootScope.$new(true);
 		

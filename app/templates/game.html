@@ -74,7 +74,7 @@
 					<li ng-repeat="item in ownUser.schools"><a ui-sref="game.group({schoolid: item.path})">{{item.name}}</a></li>
 				</ul>
 			</li>
-			<li ng-show="ownUser.schools.length <= 1">
+			<li ng-show="ownUser.schools.length == 1">
 				<a ui-sref="game.group({schoolid: ownUser.schools[0].path})" ng-class="{active: ('*.group.*' | includedByState)}">
 					<i class="fa fa-users"></i>
 					<span class="dark nav-block-title">{{ownUser.schools[0].name}}</span>

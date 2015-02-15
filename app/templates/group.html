@@ -2,13 +2,12 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div class="school-hero" style="background-image:url({{school.banner}});">
-	<div class="config" ng-hide="uploadField" ng-show="selfIsSchoolAdmin">
-		<a href="" ng-click="enterPictureUpload()"><i class="fa fa-cloud-upload"></i></a>
-	</div>
-	<div class="upload-field" ng-show="uploadField">
-		<form class="pure-form pure-form-stacked" ng-submit="changeDescription()">
-			<input type="file" id="bannerupload" class="options-input" accept="image/png,image/jpeg,image/gif"><br/>
-			<input type="submit" value="Speichern" class="btn btn-sm btn-success"/>
+	<div class="upload-field form-group" ng-show="isAdmin || selfIsSchoolAdmin">
+		<form ng-submit="changeDescription()" class="pull-left">
+			<b>Gruppenbild</b>
+			<input type="file" id="bannerupload" class="options-input" accept="image/png,image/jpeg,image/gif">
+			<input type="submit" value="Speichern" class="btn btn-sm btn-success pull-left"/> 
+			
 		</form>
 	</div>
 	<div class="info">

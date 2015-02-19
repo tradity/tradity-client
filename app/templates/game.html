@@ -74,7 +74,7 @@
 					<li ng-repeat="item in ownUser.schools"><a ui-sref="game.group({schoolid: item.path})">{{item.name}}</a></li>
 				</ul>
 			</li>
-			<li ng-show="ownUser.schools.length <= 1">
+			<li ng-show="ownUser.schools.length == 1">
 				<a ui-sref="game.group({schoolid: ownUser.schools[0].path})" ng-class="{active: ('*.group.*' | includedByState)}">
 					<i class="fa fa-users"></i>
 					<span class="dark nav-block-title">{{ownUser.schools[0].name}}</span>
@@ -154,7 +154,9 @@
 <div class="container content">
 	<div id="legalHolder" class="pull-right">
 		<div id="legal">
-			<a target="_blank" href="https://boersenspiel.tradity.de/impressum/">Impressum</a> | <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/" target="_blank">Teilnahmebedingungen & Datenschutz</a>
+			<a target="_blank" href="https://boersenspiel.tradity.de/impressum/">Impressum</a> |
+			<a href="https://boersenspiel.tradity.de/teilnahmebedingungen/" target="_blank">Teilnahmebedingungen &amp; Datenschutz</a> |
+			<a href="https://github.com/tradity/tradity-client" target="_blank">Tradity ist Open Source!</a>
 		</div>
 	</div>
 	<div ng-hide="loadState" ui-view></div>

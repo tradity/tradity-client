@@ -146,14 +146,19 @@ var fileemit = function(socket, input, evtype, template, serverconfig, callback)
 	}
 };
 
+var rg1 = /&/g;
+var rg2 = /</g;
+var rg3 = />/g;
+var rg4 = /'/g;
+var rg5 = /"/g;
+ 
 var escapeHTML = function(s) {
 	if (!s)
 		return s;
-	
-	return s.replace(/&/g, '&amp;')
-	        .replace(/</g, '&lt;')
-	        .replace(/>/g, '&gt;')
-	        .replace(/'/g, '&#039;')
-	        .replace(/"/g, '&quot;');
-};
 
+	return s.replace(rg1, '&amp;')
+			.replace(rg2, '&lt;')
+			.replace(rg3, '&gt;')
+			.replace(rg4, '&#039;')
+			.replace(rg5, '&quot;');
+};

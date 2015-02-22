@@ -119,18 +119,15 @@
 					<span class="dark nav-block-title">Rangliste</span>
 				</a>
 			</li>
-			
-			<!-- temporarily disabled -->
-			<!--li>
-				<a ui-sref=".learning.catalog" ng-class="{active: ('game.learning.catalog' | isState)}" >
-					<i class="fa fa-graduation-cap"></i>
-					<span class="dark nav-block-title">Learning</span>
-				</a>
-			</li-->
 			<li>
 				<a ui-sref=".profile.achievements.categories({userId: ownUser.name})" ng-class="{active: ('game.profile.achievements.categories' | isState)}" >
-					<i class="fa fa-graduation-cap"></i>
+					<i class="fa fa-trophy"></i>
 					<span class="dark nav-block-title">Errungenschaften</span>
+				</a>
+			</li>
+			<li>
+				<a ui-sref=".learning.catalog" ng-class="{active: ('game.learning.catalog' | isState)}" >
+					<i class="fa fa-graduation-cap"></i>
 				</a>
 			</li>
 		  </ul>

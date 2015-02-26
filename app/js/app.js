@@ -9,6 +9,7 @@ angular.module('tradity', [
 	'ui.bootstrap',
 	'ui.keypress',
 	'ui.event',
+	'pascalprecht.translate',
 	'dialogs.main',
 	'angular-md5',
 	'infinite-scroll',
@@ -284,6 +285,13 @@ angular.module('tradity', [
 	$locationProvider.
 		html5Mode(true).
 		hashPrefix('!');
+	$translateProvider.
+		useStaticFilesLoader({
+			prefix: 'locale-',
+			suffix: '.json'
+		}).
+		fallbackLanguage(['en', 'de']).
+		preferredLanguage('de');
 }).run(['$templateCache','$rootScope',function($templateCache,$rootScope){
 	$templateCache.put('/dialogs/error.html',   "<ng-include src=\"'templates/dialogs/error.html'\"></ng-include>");
 	$templateCache.put('/dialogs/wait.html',    "<ng-include src=\"'templates/dialogs/wait.html'\"></ng-include>");

@@ -13,24 +13,24 @@ angular.module('tradity').
 				schoolPathRegex: /^\/Schleswig(\/|$)/i,
 				group: true
 			},
-			{
+/*			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_FahrschuleSchneiderNMS.png',
 				link: 'http://www.fahrschule-nms.de/',
 				schoolPathRegex: /^\/Neumuenster(\/|$)/i,
 				group: true
-			},
+			},*/
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRBankNiebuell.png',
 				link: 'https://www.vrbankniebuell.de/privatkunden.html',
 				schoolPathRegex: /^\/niebuell(\/|$)/i,
 				group: true
 			},
-			{
+/*			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRStormarn.png',
 				link: 'https://www.volksbank-stormarn.de/privatkunden.html',
 				schoolPathRegex: /^\/BadOldesloe(\/|$)/i,
 				group: true
-			},
+			},*/
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRBANKHUSUM.png',
 				link: 'https://www.husumer-volksbank.de/homepage.html',
@@ -43,12 +43,12 @@ angular.module('tradity').
 				schoolPathRegex: /^\/Husum(\/|$)/i,
 				group: true
 			},
-			{
+/*			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/10/Boersenspiel_Tradity_Volksbank-Ahlen-Sassenberg-Warendorf_Unterstuetzer.png',
 				link: 'https://www.vbasw.de/homepage.html',
 				schoolPathRegex: /^\/sassenberg(\/|$)/i,
 				group: true
-			},
+			},*/
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Tradity_Boersenspiel_Flatex.jpg',
 				link: 'https://www.flatex.de/',
@@ -64,11 +64,11 @@ angular.module('tradity').
 				link: 'http://www.boerse-frankfurt.de/de/start#&reiter=vedesanleihe',
 				group: true,
 			},
-			{
+/*			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_Campello.png',
 				link: 'http://www.campello-store.com/',
 				group: true,
-			},
+			},*/
 		];
 		
 		$scope.group = null;

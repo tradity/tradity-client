@@ -8,7 +8,19 @@ angular.module('tradity').
 	controller('SponsorsCtrl', function($scope, $rootScope, socket, $stateParams) {
 		$scope.sponsors = [
 			{
-				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_FahrschuleTiedemann.png',
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/02/Tradity_EckernfoerderBank_Unterstuetzer.png',
+				link: 'https://www.eckernfoerder-bank.de/privatkunden.html',
+				schoolPathRegex: /^\/eckernfoerde(\/|$)/i,
+				group: true,
+			},
+			{
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/02/Boersenspiel_Tradity_Unterstuetzer_FS-Christan-Sellhorn.png',
+				link: 'http://www.fahrschulesellhorn.de/',
+				schoolPathRegex: /^\/elmshorn(\/|$)/i,
+				group: true,
+			},
+			{
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_Fahrschule-Tiedemann.png',
 				link: 'http://www.fahrschule-tiedemann.de/',
 				schoolPathRegex: /^\/Schleswig(\/|$)/i,
 				group: true
@@ -20,7 +32,7 @@ angular.module('tradity').
 				group: true
 			},*/
 			{
-				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRBankNiebuell.png',
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_VR-Bank-Niebuell.png',
 				link: 'https://www.vrbankniebuell.de/privatkunden.html',
 				schoolPathRegex: /^\/niebuell(\/|$)/i,
 				group: true
@@ -32,13 +44,13 @@ angular.module('tradity').
 				group: true
 			},*/
 			{
-				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRBANKHUSUM.png',
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_Husumer-Volksbank.png',
 				link: 'https://www.husumer-volksbank.de/homepage.html',
 				schoolPathRegex: /^\/Husum(\/|$)/i,
 				group: true
 			},
 			{
-				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_NordseefahrschuleHusum.png',
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_Nordseefahrschule-Husum.png',
 				link: 'http://www.nordseefahrschule.de/',
 				schoolPathRegex: /^\/Husum(\/|$)/i,
 				group: true
@@ -50,20 +62,21 @@ angular.module('tradity').
 				group: true
 			},*/
 			{
-				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Tradity_Boersenspiel_Flatex.jpg',
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Flatex_Unterstuetzer-e1403979869133.png',
 				link: 'https://www.flatex.de/',
 				group: true
 			},
 			{
-				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Logo_Logitech.png',
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Logitech_Unterstuetzer-e1403979928493.png',
 				link: 'http://www.logitech.com/de-de/speakers-audio/home-pc-speakers',
 				group: true,
 			},
 			{
-				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/05/Logo_Boerse_Frankfurt.png',
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/03/Boersenspiel_Tradity_Unterstuetzer_BoerseFrankfurt.png',
 				link: 'http://www.boerse-frankfurt.de/de/start#&reiter=vedesanleihe',
 				group: true,
 			},
+
 /*			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_Campello.png',
 				link: 'http://www.campello-store.com/',

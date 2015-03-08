@@ -7,6 +7,7 @@
 angular.module('tradity').
 	controller('LearningCtrl', function($scope, $stateParams, $state, socket) {
 		$scope.learningQuestions = [
+			//GREEN_INVESTMENTS
 			{
 				catalog: 'green-investments',
 				description: 'Aus welchen drei Komponenten besteht das sogenannte „Magische Dreieck“ bei Investments?',
@@ -37,6 +38,47 @@ angular.module('tradity').
 				},
 				right: 1
 			}
+			//LOW_INTEREST-RATES
+			{
+				catalog: 'low-interest-rates',
+				description: 'Worin besteht das Problem?',
+				answers: {
+					0: 'Weil die Zinsen, die man z. B. bei Tages- oder Festgeld bekommt so niedrig sind, ist die Inflation so hoch.',
+					1: 'Da die Zinsen, die man bei sicheren Geldanlagen wie Tages- oder Festgeld erhält, niedriger sind als die Preissteigerungsrate (Inflation), "verliert" man effektiv Geld.',
+					2: 'Da die Inflationsrate höher ist, als die Zinsen, die man bei "sicheren" Geldanlageformen erhält, "verliert" man effektiv Geld. Hinzukommt, dass das Zinsniveau im Verhältnis zu anderen Anlageformen deutlich niedriger ist als es "gewöhnlich" der Fall ist.	'
+				},
+				right: 3
+			},
+			{
+				catalog: 'low-interest-rates',
+				description: 'Welche Anlageprodukte bieten sich als "Inflationsschutz" an?',
+				answers: {
+					0: 'Sparanlagen',
+					1: 'Sachwerte',
+					2: 'Staatsanleihen'
+				},
+				right: 2
+			},
+			{
+				catalog: 'low-interest-rates',
+				description: 'Welchen Vorteil bieten Investmentfonds gegenüber einzelnen Aktien? ',
+				answers: {
+					0: 'Bereits bei niedrigerem Kapital ist eine Streuung (Diversifikation) möglich.',
+					1: 'Investmentfonds erzielen generell höhere Renditen als einzelne Aktien.',
+					2: 'Investmentfonds werden staatlich überwarcht.'
+				},
+				right: 1
+			}
+			{
+				catalog: 'low-interest-rates',
+				description: 'Was ist eine Alternative zu Investmentfonds, die das Kapital ähnlich anlegt? ',
+				answers: {
+					0: 'ETFs (Exchange Traded Funds)',
+					1: 'Offene Immoblienfonds',
+					2: 'Futures'
+				},
+				right: 1
+			}
 		];
 
 		$scope.learningcatalog = [
@@ -45,9 +87,18 @@ angular.module('tradity').
 				name: 'Grüne Geldanlage',
 				description: 'Umwelt- und Klimaschutz fängt bei jedem zu Hause an, das ist klar. Aber ein großer Teil der Emissionen geht von Unternehmen aus. Wie kann man mit Investments ethische, nachhaltige und grüne Unternehmen fördern? Zielgerichtete „grüne“ Geldanlagen können hierbei eine wichtige Rolle spielen. Doch Achtung: Grün ist nicht gleich grün.',
 				requirements: [],
-				link: 'https://boersenspiel.tradity.de/learning/gruene-geldanlage/',
+				link: 'http://www.verbraucherzentrale-niedersachsen.de/link1811491A.html',
 				show: false,
 				achievement: 'LEARNING_GREEN_INVESTMENTS'
+			}
+			{
+				id: 'low-interest-rates',
+				name: '	Niedrigzinsen',
+				description: 'Für Verbraucher, die ihr Geld möglichst sicher anlegen wollen, stellt sich die Situation derzeit düster dar. Stecken sie ihr Geld in sichere Anlageformen wie Sparbuch, Tagesgeld und Festgeld, bekommen sie dafür kaum Zinsen. Erste Banken verlangen sogar schon einen Negativzins. Das bedeutet, Sparer bekommen keine Zinsen, sie müssen dafür bezahlen, dass sie Geld anlegen. Wie soll man sein Geld heute noch anlegen?',
+				requirements: [],
+				link: 'https://www.vzsh.de/link1128833A.html',
+				show: false,
+				achievement: 'LEARNING_LOW_INTEREST_RATES'
 			}
 		];
 

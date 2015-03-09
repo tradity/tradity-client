@@ -121,8 +121,8 @@ angular.module('tradity').
 			}
 		})
 
-		$scope.prove = function() {
-			$scope.proved = true;
+		$scope.checkAnswers = function() {
+			$scope.answersChecked = true;
 			for (var i = 0; i < $scope.questions.length; ++i) {
 				$scope.questions[i].wrong = ($scope.questions[i].answer != $scope.questions[i].correct);
 			};

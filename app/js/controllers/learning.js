@@ -37,7 +37,7 @@ angular.module('tradity').
 					2: 'Es wird in die Sieger vom Öko-Siegel investiert.'
 				},
 				right: 1
-			}
+			},
 			//LOW_INTEREST-RATES
 			{
 				catalog: 'low-interest-rates',
@@ -68,7 +68,7 @@ angular.module('tradity').
 					2: 'Investmentfonds werden staatlich überwarcht.'
 				},
 				right: 1
-			}
+			},
 			{
 				catalog: 'low-interest-rates',
 				description: 'Was ist eine Alternative zu Investmentfonds, die das Kapital ähnlich anlegt? ',
@@ -90,7 +90,7 @@ angular.module('tradity').
 				link: 'https://www.verbraucherzentrale-niedersachsen.de/link1811491A.html',
 				show: false,
 				achievement: 'LEARNING_GREEN_INVESTMENTS'
-			}
+			},
 			{
 				id: 'low-interest-rates',
 				name: '	Niedrigzinsen',

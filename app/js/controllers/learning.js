@@ -43,15 +43,15 @@ angular.module('tradity').
 				catalog: 'low-interest-rates',
 				description: 'Worin besteht das Problem?',
 				answers: [
-					{ id: 0, text: 'Weil die Zinsen, die man z. B. bei Tages- oder Festgeld bekommt so niedrig sind, ist die Inflation so hoch.' },
-					{ id: 1, text: 'Da die Zinsen, die man bei sicheren Geldanlagen wie Tages- oder Festgeld erhält, niedriger sind als die Preissteigerungsrate (Inflation), "verliert" man effektiv Geld.' },
-					{ id: 2, text: 'Da die Inflationsrate höher ist, als die Zinsen, die man bei "sicheren" Geldanlageformen erhält, "verliert" man effektiv Geld. Hinzukommt, dass das Zinsniveau im Verhältnis zu anderen Anlageformen deutlich niedriger ist als es "gewöhnlich" der Fall ist.' }
+					{ id: 0, text: 'Weil die Zinsen, die man z. B. bei Tages- oder Festgeld bekommt so niedrig sind, ist die Inflation so hoch.' },
+					{ id: 1, text: 'Da die Zinsen, die man bei sicheren Geldanlagen wie Tages- oder Festgeld erhält, niedriger sind als die Preissteigerungsrate (Inflation), „verliert“ man effektiv Geld.' },
+					{ id: 2, text: 'Da die Inflationsrate höher ist als die Zinsen, die man bei „sicheren“ Geldanlageformen erhält, „verliert“ man effektiv Geld. Hinzu kommt, dass das Zinsniveau im Verhältnis zu anderen Anlageformen deutlich niedriger ist, als es „gewöhnlich“ der Fall ist.' }
 				],
 				correct: 2
 			},
 			{
 				catalog: 'low-interest-rates',
-				description: 'Welche Anlageprodukte bieten sich als "Inflationsschutz" an?',
+				description: 'Welche Anlageprodukte bieten sich als „Inflationsschutz“ an?',
 				answers: [
 					{ id: 0, text: 'Sparanlagen' },
 					{ id: 1, text: 'Sachwerte' },
@@ -65,7 +65,7 @@ angular.module('tradity').
 				answers: [
 					{ id: 0, text: 'Bereits bei niedrigerem Kapital ist eine Streuung (Diversifikation) möglich.' },
 					{ id: 1, text: 'Investmentfonds erzielen generell höhere Renditen als einzelne Aktien.' },
-					{ id: 2, text: 'Investmentfonds werden staatlich überwarcht.' }
+					{ id: 2, text: 'Investmentfonds werden staatlich überwacht.' }
 				],
 				correct: 0
 			},

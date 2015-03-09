@@ -87,7 +87,7 @@ angular.module('tradity').
 				name: 'Grüne Geldanlage',
 				description: 'Umwelt- und Klimaschutz fängt bei jedem zu Hause an, das ist klar. Aber ein großer Teil der Emissionen geht von Unternehmen aus. Wie kann man mit Investments ethische, nachhaltige und grüne Unternehmen fördern? Zielgerichtete „grüne“ Geldanlagen können hierbei eine wichtige Rolle spielen. Doch Achtung: Grün ist nicht gleich grün.',
 				requirements: [],
-				link: 'http://www.verbraucherzentrale-niedersachsen.de/link1811491A.html',
+				link: 'https://www.verbraucherzentrale-niedersachsen.de/link1811491A.html',
 				show: false,
 				achievement: 'LEARNING_GREEN_INVESTMENTS'
 			}

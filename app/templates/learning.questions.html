@@ -6,8 +6,8 @@
 	<h2>{{question.name}}</h2>
 	<div class="info">{{question.description}}</div>
 	<div class="questions">
-		<div class="item" ng-repeat="(key, answer) in question.answers | orderBy:'Math.random()'">
-			<input type="radio" ng-model="question.answer" value="{{key}}"> {{answer}}<br>
+		<div class="item" ng-repeat="answer in question.answers | orderBy:'orderIndex'">
+			<input type="radio" ng-model="question.answer" value="{{answer.id}}"> {{answer.text}}<br>
 		</div>
 	</div>
 </div>

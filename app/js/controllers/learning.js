@@ -11,72 +11,72 @@ angular.module('tradity').
 			{
 				catalog: 'green-investments',
 				description: 'Was bedeutet das „Best-in-Class“-Prinzip bei nachhaltigen Anlagen? ',
-				answers: {
-					0: 'Es werden die klassenbesten Schüler in Entwicklungsländern mit einem Stipendium gefördert, damit sie weiter zur Schule gehen können.',
-					1: 'Die Anbieter suchen Firmen aus, die in ihrer Branche in Sachen Umwelt- und/oder Sozialstandards eine Vorreiterrolle einnehmen. Keine Branche wird von vorneherein ausgeschlossen, auch Wirtschaftszweige wie die Atom- oder die Rüstungsindustrie können mit in einem Portfolio landen.',
-					2: 'Es wird in die Sieger vom Öko-Siegel investiert.'
-				},
+				answers: [
+					{ id: 0, text: 'Es werden die klassenbesten Schüler in Entwicklungsländern mit einem Stipendium gefördert, damit sie weiter zur Schule gehen können.' },
+					{ id: 1, text: 'Die Anbieter suchen Firmen aus, die in ihrer Branche in Sachen Umwelt- und/oder Sozialstandards eine Vorreiterrolle einnehmen. Keine Branche wird von vorneherein ausgeschlossen, auch Wirtschaftszweige wie die Atom- oder die Rüstungsindustrie können mit in einem Portfolio landen.' },
+					{ id: 2, text: 'Es wird in die Sieger vom Öko-Siegel investiert.' }
+				],
 				correct: 1
 			},
 			{
 				catalog: 'green-investments',
 				description: 'Welche Eigenschaften sind bei „grünen“ Anlagen garantiert?',
-				answers: {
-					0: 'CO²-neutral und ohne Genpflanzen',
-					1: 'Ausschließlich Verwendung nachwachsender Rohstoffe und Fairtrade',
-					2: 'keine – die Bezeichnung ist nicht rechtlich geschützt'
-				},
+				answers: [
+					{ id: 0, text: 'CO²-neutral und ohne Genpflanzen' },
+					{ id: 1, text: 'Ausschließlich Verwendung nachwachsender Rohstoffe und Fairtrade' },
+					{ id: 2, text: 'keine – die Bezeichnung ist nicht rechtlich geschützt' }
+				],
 				correct: 2
 			},
 			{
 				catalog: 'green-investments',
 				description: 'Aus welchen drei Komponenten besteht das sogenannte „Magische Dreieck“ bei Investments?',
-				answers: {
-					0: 'Preis, Leistung, Gebühren',
-					1: 'Rendite, Risiko und Verfügbarkeit',
-					2: 'Qualität, Marktlage, Nachrichten'
-				},
+				answers: [
+					{ id: 0, text: 'Preis, Leistung, Gebühren' },
+					{ id: 1, text: 'Rendite, Risiko und Verfügbarkeit' },
+					{ id: 2, text: 'Qualität, Marktlage, Nachrichten' }
+				],
 				correct: 1
 			},
 			//LOW_INTEREST-RATES
 			{
 				catalog: 'low-interest-rates',
 				description: 'Worin besteht das Problem?',
-				answers: {
-					0: 'Weil die Zinsen, die man z. B. bei Tages- oder Festgeld bekommt so niedrig sind, ist die Inflation so hoch.',
-					1: 'Da die Zinsen, die man bei sicheren Geldanlagen wie Tages- oder Festgeld erhält, niedriger sind als die Preissteigerungsrate (Inflation), "verliert" man effektiv Geld.',
-					2: 'Da die Inflationsrate höher ist, als die Zinsen, die man bei "sicheren" Geldanlageformen erhält, "verliert" man effektiv Geld. Hinzukommt, dass das Zinsniveau im Verhältnis zu anderen Anlageformen deutlich niedriger ist als es "gewöhnlich" der Fall ist.	'
-				},
+				answers: [
+					{ id: 0, text: 'Weil die Zinsen, die man z. B. bei Tages- oder Festgeld bekommt so niedrig sind, ist die Inflation so hoch.' },
+					{ id: 1, text: 'Da die Zinsen, die man bei sicheren Geldanlagen wie Tages- oder Festgeld erhält, niedriger sind als die Preissteigerungsrate (Inflation), "verliert" man effektiv Geld.' },
+					{ id: 2, text: 'Da die Inflationsrate höher ist, als die Zinsen, die man bei "sicheren" Geldanlageformen erhält, "verliert" man effektiv Geld. Hinzukommt, dass das Zinsniveau im Verhältnis zu anderen Anlageformen deutlich niedriger ist als es "gewöhnlich" der Fall ist.' }
+				],
 				correct: 2
 			},
 			{
 				catalog: 'low-interest-rates',
 				description: 'Welche Anlageprodukte bieten sich als "Inflationsschutz" an?',
-				answers: {
-					0: 'Sparanlagen',
-					1: 'Sachwerte',
-					2: 'Staatsanleihen'
-				},
+				answers: [
+					{ id: 0, text: 'Sparanlagen' },
+					{ id: 1, text: 'Sachwerte' },
+					{ id: 2, text: 'Staatsanleihen' }
+				],
 				correct: 1
 			},
 			{
 				catalog: 'low-interest-rates',
 				description: 'Welchen Vorteil bieten Investmentfonds gegenüber einzelnen Aktien? ',
-				answers: {
-					0: 'Bereits bei niedrigerem Kapital ist eine Streuung (Diversifikation) möglich.',
-					1: 'Investmentfonds erzielen generell höhere Renditen als einzelne Aktien.',
-					2: 'Investmentfonds werden staatlich überwarcht.'
-				},
+				answers: [
+					{ id: 0, text: 'Bereits bei niedrigerem Kapital ist eine Streuung (Diversifikation) möglich.' },
+					{ id: 1, text: 'Investmentfonds erzielen generell höhere Renditen als einzelne Aktien.' },
+					{ id: 2, text: 'Investmentfonds werden staatlich überwarcht.' }
+				],
 				correct: 0
 			},
 			{
 				catalog: 'low-interest-rates',
 				description: 'Was ist eine Alternative zu Investmentfonds, die das Kapital ähnlich anlegt? ',
-				answers: {
-					0: 'ETFs (Exchange Traded Funds)',
-					1: 'Offene Immoblienfonds',
-					2: 'Futures'
-				},
+				answers: [
+					{ id: 0, text: 'ETFs (Exchange Traded Funds)' },
+					{ id: 1, text: 'Offene Immoblienfonds' },
+					{ id: 2, text: 'Futures' }
+				],
 				correct: 0
 			}
 		];
@@ -107,7 +107,12 @@ angular.module('tradity').
 		$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
 			if (toParams.id) {
 				$scope.questions = [];
+				
 				for (var i = 0; i < $scope.learningQuestions.length; ++i) {
+					var answers = $scope.learningQuestions[i].answers;
+					for (var j = 0; j < answers.length; ++j)
+						answers[j].orderIndex = Math.random();
+					
 					if ($scope.learningQuestions[i].catalog == toParams.id)
 						$scope.questions.push($scope.learningQuestions[i]);
 				};

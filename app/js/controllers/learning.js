@@ -10,13 +10,13 @@ angular.module('tradity').
 			//GREEN_INVESTMENTS
 			{
 				catalog: 'green-investments',
-				description: 'Aus welchen drei Komponenten besteht das sogenannte „Magische Dreieck“ bei Investments?',
+				description: 'Was bedeutet das „Best-in-Class“-Prinzip bei nachhaltigen Anlagen? ',
 				answers: {
-					0: 'Preis, Leistung, Gebühren',
-					1: 'Rendite, Risiko und Verfügbarkeit',
-					2: 'Qualität, Marktlage, Nachrichten'
+					0: 'Es werden die klassenbesten Schüler in Entwicklungsländern mit einem Stipendium gefördert, damit sie weiter zur Schule gehen können.',
+					1: 'Die Anbieter suchen Firmen aus, die in ihrer Branche in Sachen Umwelt- und/oder Sozialstandards eine Vorreiterrolle einnehmen. Keine Branche wird von vorneherein ausgeschlossen, auch Wirtschaftszweige wie die Atom- oder die Rüstungsindustrie können mit in einem Portfolio landen.',
+					2: 'Es wird in die Sieger vom Öko-Siegel investiert.'
 				},
-				right: 1
+				correct: 1
 			},
 			{
 				catalog: 'green-investments',
@@ -26,17 +26,17 @@ angular.module('tradity').
 					1: 'Ausschließlich Verwendung nachwachsender Rohstoffe und Fairtrade',
 					2: 'keine – die Bezeichnung ist nicht rechtlich geschützt'
 				},
-				right: 2
+				correct: 2
 			},
 			{
 				catalog: 'green-investments',
-				description: 'Was bedeutet das „Best-in-Class“-Prinzip bei nachhaltigen Anlagen? ',
+				description: 'Aus welchen drei Komponenten besteht das sogenannte „Magische Dreieck“ bei Investments?',
 				answers: {
-					0: 'Es werden die klassenbesten Schüler in Entwicklungsländern mit einem Stipendium gefördert, damit sie weiter zur Schule gehen können.',
-					1: 'Die Anbieter suchen Firmen aus, die in ihrer Branche in Sachen Umwelt- und/oder Sozialstandards eine Vorreiterrolle einnehmen. Keine Branche wird von vorneherein ausgeschlossen, auch Wirtschaftszweige wie die Atom- oder die Rüstungsindustrie können mit in einem Portfolio landen.',
-					2: 'Es wird in die Sieger vom Öko-Siegel investiert.'
+					0: 'Preis, Leistung, Gebühren',
+					1: 'Rendite, Risiko und Verfügbarkeit',
+					2: 'Qualität, Marktlage, Nachrichten'
 				},
-				right: 1
+				correct: 1
 			},
 			//LOW_INTEREST-RATES
 			{
@@ -47,7 +47,7 @@ angular.module('tradity').
 					1: 'Da die Zinsen, die man bei sicheren Geldanlagen wie Tages- oder Festgeld erhält, niedriger sind als die Preissteigerungsrate (Inflation), "verliert" man effektiv Geld.',
 					2: 'Da die Inflationsrate höher ist, als die Zinsen, die man bei "sicheren" Geldanlageformen erhält, "verliert" man effektiv Geld. Hinzukommt, dass das Zinsniveau im Verhältnis zu anderen Anlageformen deutlich niedriger ist als es "gewöhnlich" der Fall ist.	'
 				},
-				right: 3
+				correct: 2
 			},
 			{
 				catalog: 'low-interest-rates',
@@ -57,7 +57,7 @@ angular.module('tradity').
 					1: 'Sachwerte',
 					2: 'Staatsanleihen'
 				},
-				right: 2
+				correct: 1
 			},
 			{
 				catalog: 'low-interest-rates',
@@ -67,7 +67,7 @@ angular.module('tradity').
 					1: 'Investmentfonds erzielen generell höhere Renditen als einzelne Aktien.',
 					2: 'Investmentfonds werden staatlich überwarcht.'
 				},
-				right: 1
+				correct: 0
 			},
 			{
 				catalog: 'low-interest-rates',
@@ -77,7 +77,7 @@ angular.module('tradity').
 					1: 'Offene Immoblienfonds',
 					2: 'Futures'
 				},
-				right: 1
+				correct: 0
 			}
 		];
 
@@ -107,7 +107,7 @@ angular.module('tradity').
 		$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
 			if (toParams.id) {
 				$scope.questions = [];
-				for (var i = $scope.learningQuestions.length - 1; i >= 0; i--) {
+				for (var i = 0; i < $scope.learningQuestions.length; ++i) {
 					if ($scope.learningQuestions[i].catalog == toParams.id)
 						$scope.questions.push($scope.learningQuestions[i]);
 				};
@@ -116,8 +116,8 @@ angular.module('tradity').
 
 		$scope.prove = function() {
 			$scope.proved = true;
-			for (var i = $scope.questions.length - 1; i >= 0; i--) {
-				$scope.questions[i].wrong = ($scope.questions[i].answer != $scope.questions[i].right);
+			for (var i = 0; i < $scope.questions.length; ++i) {
+				$scope.questions[i].wrong = ($scope.questions[i].answer != $scope.questions[i].correct);
 			};
 		}
 	});

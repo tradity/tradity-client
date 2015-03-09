@@ -16,6 +16,9 @@ touch app/js/controllers/adminSchools.js
 touch app/js/controllers/adminStatistics.js
 touch app/js/controllers/adminUserDetails.js
 
+command -v bower 2>/dev/null || export PATH="node_modules/bower/bin:$PATH"
+command -v grunt 2>/dev/null || export PATH="node_modules/grunt-cli/bin:$PATH"
+
 echo "var TRADITY_BUILD_STAMP = 'TDYC$(date +%s)-$(git rev-parse HEAD)';" > app/js/buildstamp.js && \
 npm --quiet install && \
 npm --quiet update && \

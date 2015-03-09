@@ -73,7 +73,7 @@
 					<li ng-repeat="item in ownUser.schools"><a ui-sref="game.group({schoolid: item.path})">{{item.name}}</a></li>
 				</ul>
 			</li>
-			<li ng-show="ownUser.schools.length <= 1">
+			<li ng-show="ownUser.schools.length == 1">
 				<a ui-sref="game.group({schoolid: ownUser.schools[0].path})" ng-class="{active: ('*.group.*' | includedByState)}">
 					<i class="fa fa-users"></i>
 					<span class="dark nav-block-title">{{ownUser.schools[0].name}}</span>
@@ -120,18 +120,15 @@
 					<span class="dark nav-block-title" translate>Ranking</span>
 				</a>
 			</li>
-			
-			<!-- temporarily disabled -->
-			<!--li>
-				<a ui-sref=".learning.catalog" ng-class="{active: ('game.learning.catalog' | isState)}" >
-					<i class="fa fa-graduation-cap"></i>
-					<span class="dark nav-block-title">Learning</span>
-				</a>
-			</li-->
 			<li>
 				<a ui-sref=".profile.achievements.categories({userId: ownUser.name})" ng-class="{active: ('game.profile.achievements.categories' | isState)}" >
 					<i class="fa fa-graduation-cap"></i>
 					<span class="dark nav-block-title" translate>Achievements</span>
+				</a>
+			</li>
+			<li>
+				<a ui-sref=".learning.catalog" ng-class="{active: ('game.learning.catalog' | isState)}" >
+					<i class="fa fa-graduation-cap"></i>
 				</a>
 			</li>
 		  </ul>
@@ -155,7 +152,9 @@
 <div class="container content">
 	<div id="legalHolder" class="pull-right">
 		<div id="legal">
-			<a target="_blank" href="https://boersenspiel.tradity.de/impressum/" translate>Imprint</a> | <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/" target="_blank" translate>Terms &amp; Privacy</a>
+			<a target="_blank" href="https://boersenspiel.tradity.de/impressum/" translate>Imprint</a>
+			<a href="https://boersenspiel.tradity.de/teilnahmebedingungen/" target="_blank" translate>Terms &amp; Privacy</a>
+			<a href="https://github.com/tradity/tradity-client" target="_blank">Tradity ist Open Source!</a>
 		</div>
 	</div>
 	<div ng-hide="loadState" ui-view></div>

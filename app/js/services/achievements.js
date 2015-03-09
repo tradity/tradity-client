@@ -12,7 +12,40 @@
  * Factory
  */
 angular.module('tradity')
-	.factory('achievements', function ($q) {
-		return {
+	.factory('achievements', function ($q, socket) {
+		var achievements = {
+			_list: null
 		};
+		
+		var handleAchievementList = function(data) {
+			if (data.code != 'list-all-achievements-success') {
+				achievements._list = null;
+				
+				return socket.once('self-info').then(function() {
+					return achievements.list();
+				});
+			}
+			
+			return achievements._list = data.result;
+		};
+		
+		socket.on('list-all-achievements', handleAchievementList);
+		achievements._list = null;
+		
+		achievements.list = function() {
+			if (achievements._list)
+				return $q.when(achievements._list);
+			
+			return achievements._list = socket.emit('list-all-achievements').then(handleAchievementList);
+		};
+		
+		achievements.listClientAchievements = function() {
+			return achievements.list().then(function(achievements) {
+				return achievements.filter(function(ach) {
+					return ach.isClientAchievement;
+				});
+			});
+		};
+		
+		return achievements;
 	});

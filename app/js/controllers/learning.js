@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('LearningCtrl', function($scope, $stateParams, $state, socket) {
+	controller('LearningCtrl', function($scope, $stateParams, $state, socket, achievements) {
 		$scope.learningQuestions = [
 			//GREEN_INVESTMENTS
 			{
@@ -81,7 +81,7 @@ angular.module('tradity').
 			}
 		];
 
-		$scope.learningcatalog = [
+		$scope.learningCatalog = [
 			{
 				id: 'green-investments',
 				name: 'Grüne Geldanlage',
@@ -89,7 +89,8 @@ angular.module('tradity').
 				requirements: [],
 				link: 'https://www.verbraucherzentrale-niedersachsen.de/link1811491A.html',
 				show: false,
-				achievement: 'LEARNING_GREEN_INVESTMENTS'
+				achievementName: 'LEARNING_GREEN_INVESTMENTS',
+				achievement: null
 			},
 			{
 				id: 'low-interest-rates',
@@ -98,7 +99,8 @@ angular.module('tradity').
 				requirements: [],
 				link: 'https://www.vzsh.de/link1128833A.html',
 				show: false,
-				achievement: 'LEARNING_LOW_INTEREST_RATES'
+				achievementName: 'LEARNING_LOW_INTEREST_RATES',
+				achievement: null
 			}
 		];
 
@@ -124,5 +126,15 @@ angular.module('tradity').
 			for (var i = 0; i < $scope.questions.length; ++i) {
 				$scope.questions[i].wrong = ($scope.questions[i].answer != $scope.questions[i].correct);
 			};
-		}
+		};
+		
+		achievements.listClientAchievements().then(function(clientAchievementList) {
+			var learningCatalogByAchievement = {};
+			for (var i = 0; i < $scope.learningCatalog.length; ++i)
+				learningCatalogByAchievement[$scope.learningCatalog[i].achievementName] = $scope.learningCatalog[i];
+			
+			for (var i = 0; i < clientAchievementList.length; ++i)
+				if (learningCatalogByAchievement[clientAchievementList[i].name])
+					learningCatalogByAchievement[clientAchievementList[i].name].achievement = clientAchievementList[i];
+		});
 	});

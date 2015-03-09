@@ -2,8 +2,11 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <h1>Lektionen</h1>
-<div ng-repeat="catalog in learningcatalog">
-	<h2><a ng-click="catalog.show = !catalog.show" href="">{{catalog.name}}</a><span class="xp">{{catalog.xp}} XP</span></h2>
+<div ng-repeat="catalog in learningCatalog">
+	<h2>
+		<a ng-click="catalog.show = !catalog.show" href="">{{catalog.name}}</a>
+		<span class="xp">{{catalog.achievement.xp}} XP</span>
+	</h2>
 	<div ng-show="catalog.show">
 		<p>{{catalog.description}}</p>
 		<div class="btn-group">

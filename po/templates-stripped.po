@@ -12,6 +12,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
+#: app/templates/options.html:84
+msgid "(Less information)"
+msgstr "(Ausblenden)"
+
+#: app/templates/options.html:83
+msgid "(More information)"
+msgstr "Mehr Informationen"
+
 #: app/templates/game.html:38
 msgid "<a title=\"Search\"><i></i></a>"
 msgstr "<a title=\"Suche\"><i></i></a>"
@@ -19,6 +27,64 @@ msgstr "<a title=\"Suche\"><i></i></a>"
 #: app/templates/game.html:41
 msgid "<a title=\"Watchlist\"><i></i></a>"
 msgstr "<a title=\"Watchlist\"><i></i></a>"
+
+#: app/templates/options.html:140
+msgid "<input value=\"Reset user\" id=\"options-reset\">"
+msgstr "<input value=\"Benutzer zurücksetzen\" id=\"options-reset\">"
+
+#: app/templates/options.html:35
+msgid "<input value=\"Use Gravatar\">"
+msgstr "<input value=\"Gravatar verwenden\">"
+
+#: app/templates/options.html:115
+msgid "<input placeholder=\"Day\" id=\"birthdayd\">"
+msgstr "<input placeholder=\"Tag\" id=\"birthdayd\">"
+
+#: app/templates/options.html:118
+msgid "<input placeholder=\"Month\" id=\"birthdaym\">"
+msgstr "<input placeholder=\"Monat\" id=\"birthdaym\">"
+
+#: app/templates/options.html:121
+msgid "<input placeholder=\"Year\" id=\"birthdayy\">"
+msgstr "<input placeholder=\"Jahr\" id=\"birthdayy\">"
+
+#: app/templates/options.html:139
+msgid "<input value=\"Save\" id=\"options-sb\">"
+msgstr "<input value=\"Speichern\" id=\"options-sb\">"
+
+#: app/templates/options.html:70
+msgid "<input placeholder=\"Schule\" id=\"schoolname\">"
+msgstr "<input placeholder=\"School\" id=\"schoolname\">"
+
+#: app/templates/options.html:64
+msgid "<input placeholder=\"Last name\" id=\"fam_name\">"
+msgstr "<input placeholder=\"Nachname\" id=\"fam_name\">"
+
+#: app/templates/options.html:60
+msgid "<input placeholder=\"First name\" id=\"giv_name\">"
+msgstr "<input placeholder=\"Vorname\" id=\"giv_name\">"
+
+#: app/templates/options.html:72
+msgid "<input placeholder=\"Klasse\" id=\"schoolclass\">"
+msgstr "<input placeholder=\"Class\" id=\"schoolclass\">"
+
+#: app/templates/options.html:107
+msgid "<input placeholder=\"Street\" id=\"street\">"
+msgstr "<input placeholder=\"Straße, Hausnr.\" id=\"street\">"
+
+#: app/templates/options.html:109
+msgid "<input placeholder=\"City\" id=\"town\">"
+msgstr "<input placeholder=\"Stadt\" id=\"town\">"
+
+#: app/templates/options.html:108
+msgid "<input placeholder=\"Zip code\" id=\"zipcode\">"
+msgstr "<input placeholder=\"PLZ\" id=\"zipcode\">"
+
+#: app/templates/options.html:129
+msgid "<textarea id=\"desc\" placeholder=\"Tell us about you\"></textarea>"
+msgstr ""
+"<textarea id=\"desc\" placeholder=\"Erzähl uns, was dich ausmacht\"></"
+"textarea>"
 
 #: app/templates/game.html:19
 msgid "Account"
@@ -28,9 +94,21 @@ msgstr "Konto"
 msgid "Achievements"
 msgstr "Errungenschaften"
 
+#: app/templates/options.html:106
+msgid "Address"
+msgstr "Adresse"
+
+#: app/templates/options.html:113
+msgid "Birth date"
+msgstr "Geburtsdatum"
+
 #: app/templates/options.html:50
 msgid "Delayed order history"
 msgstr "Verzögerung deiner Orderhistorie"
+
+#: app/templates/options.html:81
+msgid "Do you want to receive achievements for daily activity?"
+msgstr "Möchtest du Achievements für tägliches Einloggen erhalten?"
 
 #: app/templates/options.html:22
 msgid "E-mail address"
@@ -47,6 +125,11 @@ msgstr "Spiel"
 #: app/templates/game.html:156
 msgid "Imprint"
 msgstr "Impressum"
+
+#: app/templates/options.html:132
+#, fuzzy
+msgid "Invite user"
+msgstr "Benutzer einladen"
 
 #: app/templates/options.html:63
 msgid "Last name"
@@ -108,6 +191,10 @@ msgstr "Rangliste"
 msgid "Repeat password"
 msgstr "Passwort wiederholen"
 
+#: app/templates/options.html:128
+msgid "Short description"
+msgstr "Kurzbeschreibung"
+
 #: app/templates/game.html:146
 msgid "Support"
 msgstr "Hilfe"
@@ -133,8 +220,37 @@ msgid "Username"
 msgstr "Benutzername"
 
 #: app/templates/options.html:51 app/templates/options.html:76
+#: app/templates/options.html:82
 msgid "Yes"
 msgstr "Ja"
+
+#: app/templates/options.html:86
+msgid ""
+"You can – if you agree – receive achievements for being active on multiple "
+"days in a row.\n"
+"We take the protection of your personal data seriously:\n"
+"<br>\n"
+"All information regarding your activity log will be stored encrypted by your "
+"password\n"
+"only. Unfortunately, this also means that using the “forgot password” option "
+"will require\n"
+"you to start gathering activity entries anew.\n"
+"<br>\n"
+"After {{DLAValidityDays}} days your activity log will be cleared and cannot "
+"be used for\n"
+"gaining achievements any longer.\n"
+"<br>\n"
+"Currently your activity log contains the following entries:"
+msgstr ""
+"Du kannst, wenn du möchtest, Achievements dafür erhalten, eine bestimmte "
+"Anzahl von Tagennacheinander aktiv zu sein. Dabei nehmen wir den Schutz "
+"deiner persönlichen Daten ernst:<br />An welchen Tagen du aktiv warst, wird "
+"nur mit deinem Passwort verschlüsselt gespeichert.Das bedeutet leider auch, "
+"dass, wenn du die „Passwort vergessen“-Funktion verwendest, duneu anfangen "
+"musst, Aktivität zu sammeln.<br />Nach {{DLAValidityDays}} Tagen werden "
+"deine Aktivitätseinträge gelöscht und können nicht mehrfür Achievements "
+"verwendet werden.<br />Zur Zeit hast du Aktivität für folgende Tage "
+"gesammelt und gespeichert:"
 
 #: app/templates/feed.html:113
 msgid ""
@@ -161,3 +277,9 @@ msgstr "Deine Gruppe"
 #: app/templates/game.html:108
 msgid "Your portfolio"
 msgstr "Dein Depot"
+
+#~ msgid "Kurzbeschreibung"
+#~ msgstr "Short description"
+
+#~ msgid "User einladen"
+#~ msgstr "Invite user"

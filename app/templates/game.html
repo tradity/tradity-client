@@ -22,7 +22,7 @@
 				</li>
 				<li class="info">
 					<a ui-sref="game.profile.overview({userId: ownUser.name})">
-						<h2 class="title">Gesamt­vermögen</h2>
+						<h2 class="title" translate>Total assets</h2>
 						<span class="depot-wert">{{ownUser.totalvalue / 10000 | currency}}</span>
 					</a>
 				</li>
@@ -35,11 +35,11 @@
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="desktop-only search-btn" ng-show="!search">
-					<a ng-click="showSearch()" href="" title="Search" class="icon" translate><i class="fa fa-search"></i></a>
+				<li class="desktop-only search-btn" ng-show="!search" translate>
+					<a ng-click="showSearch()" href="" title="Search" class="icon"><i class="fa fa-search"></i></a>
 				</li>
-				<li>
-					<a ui-sref="game.depot.watchlist" class="icon" title="Watchlist" translate><i class="fa fa-eye"></i></a>
+				<li translate>
+					<a ui-sref="game.depot.watchlist" class="icon" title="Watchlist"><i class="fa fa-eye"></i></a>
 				</li>
 				<!-- temporarily disabled -->
 				<!--li>
@@ -82,7 +82,7 @@
 			<li ng-show="ownUser.schools.length == 0" class="menu-item">
 				<a ui-sref="game.groupOverview" accesskey="g" title="ALT+SHIFT+G">
 					<i class="fa fa-users"></i>
-					<span class="dark nav-block-title">Deine Gruppe</span>
+					<span class="dark nav-block-title" translate>Your Group</span>
 				</a>
 			</li-->
 			<!--li ng-show="ownUser.topLevelSchool" class="menu-item">
@@ -129,7 +129,7 @@
 			<li>
 				<a ui-sref=".learning.catalog" ng-class="{active: ('game.learning.catalog' | isState)}" >
 					<i class="fa fa-graduation-cap"></i>
-					<span class="dark nav-block-title">Lektionen</span>
+					<span class="dark nav-block-title" translate>Lessons</span>
 				</a>
 			</li>
 		  </ul>
@@ -137,7 +137,7 @@
 			<li>
 				<a ui-sref=".options" accesskey="o" title="ALT+SHIFT+O" ng-class="{active: ('game.options' | isState)}">
 					<i class="fa fa-wrench"></i>
-					<span class="dark nav-block-title">Einstellungen</span>
+					<span class="dark nav-block-title" translate>Options</span>
 				</a>
 			</li>
 			<li>
@@ -155,7 +155,7 @@
 		<div id="legal">
 			<a target="_blank" href="https://boersenspiel.tradity.de/impressum/" translate>Imprint</a>
 			<a href="https://boersenspiel.tradity.de/teilnahmebedingungen/" target="_blank" translate>Terms &amp; Privacy</a>
-			<a href="https://github.com/tradity/tradity-client" target="_blank">Tradity ist Open Source!</a>
+			<a href="https://github.com/tradity/tradity-client" target="_blank" translate>Tradity is Open Source!</a>
 		</div>
 	</div>
 	<div ng-hide="loadState" ui-view></div>

@@ -12,16 +12,67 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: app/templates/game.html
+#: app/templates/game.html:38
+msgid "<a title=\"Search\"><i></i></a>"
+msgstr "<a title=\"Suche\"><i></i></a>"
+
+#: app/templates/game.html:41
+msgid "<a title=\"Watchlist\"><i></i></a>"
+msgstr "<a title=\"Watchlist\"><i></i></a>"
+
+#: app/templates/game.html:19
 msgid "Account"
 msgstr "Konto"
 
-#: app/templates/game.html
+#: app/templates/game.html:126
+msgid "Achievements"
+msgstr "Errungenschaften"
+
+#: app/templates/game.html:156
+msgid "Imprint"
+msgstr "Impressum"
+
+#: app/templates/game.html:132
+msgid "Lessons"
+msgstr "Lektionen"
+
+#: app/templates/game.html:169
+msgid "Loading"
+msgstr "Laden…"
+
+#: app/templates/game.html:67
+msgid "News"
+msgstr "Neuigkeiten"
+
+#: app/templates/game.html:140
+msgid "Options"
+msgstr "Einstellungen"
+
+#: app/templates/game.html:120
+msgid "Ranking"
+msgstr "Rangliste"
+
+#: app/templates/game.html:146
+msgid "Support"
+msgstr "Hilfe"
+
+#: app/templates/game.html:157
+msgid "Terms &amp; Privacy"
+msgstr "AGB &amp; Datenschutz"
+
+#: app/templates/game.html:25
 msgid "Total assets"
 msgstr "Gesamtvermögen"
 
-#: app/templates/feed.html
-#, fuzzy
+#: app/templates/game.html:114
+msgid "Trade"
+msgstr "Trade"
+
+#: app/templates/game.html:158
+msgid "Tradity is Open Source!"
+msgstr "Tradity ist Open Source!"
+
+#: app/templates/feed.html:113
 msgid ""
 "You changed\n"
 "<span>your gain provision from {{message.oldwprov}}&nbsp;% to {{message."
@@ -38,3 +89,11 @@ msgstr ""
 "\t\t\t\t\t\t\t\t\t<span>deine Verlustprovision von {{message.oldlprov}}&nbsp;"
 "% auf {{message.newlprov}}&nbsp;%</span>\n"
 "\t\t\t\t\t\t\t\t\tgeändert."
+
+#: app/templates/game.html:85
+msgid "Your Group"
+msgstr "Deine Gruppe"
+
+#: app/templates/game.html:108
+msgid "Your portfolio"
+msgstr "Dein Depot"

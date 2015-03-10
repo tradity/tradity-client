@@ -47,5 +47,11 @@ angular.module('tradity')
 			});
 		};
 		
+		achievements.markAsDone = function(name) {
+			return socket.emit('achievement', { name: name }).then(function(data) {
+				return data.code == 'achievement-success';
+			});
+		};
+		
 		return achievements;
 	});

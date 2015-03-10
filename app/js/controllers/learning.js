@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('LearningCtrl', function($scope, $stateParams, $state, socket, achievements) {
+	controller('LearningCtrl', function($scope, $stateParams, $state, $rootScope, socket, achievements) {
 		$scope.learningQuestions = [
 			//GREEN_INVESTMENTS
 			{
@@ -94,7 +94,7 @@ angular.module('tradity').
 			},
 			{
 				id: 'low-interest-rates',
-				name: '	Niedrigzinsen',
+				name: 'Niedrigzinsen',
 				description: 'Für Verbraucher, die ihr Geld möglichst sicher anlegen wollen, stellt sich die Situation derzeit düster dar. Stecken sie ihr Geld in sichere Anlageformen wie Sparbuch, Tagesgeld und Festgeld, bekommen sie dafür kaum Zinsen. Erste Banken verlangen sogar schon einen Negativzins. Das bedeutet, Sparer bekommen keine Zinsen, sie müssen dafür bezahlen, dass sie Geld anlegen. Wie soll man sein Geld heute noch anlegen?',
 				requirements: [],
 				link: 'https://www.vzsh.de/link1128833A.html',
@@ -105,10 +105,15 @@ angular.module('tradity').
 		];
 
 		$scope.questions = [];
+		$scope.catalogEntry = null;
 
 		$scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
 			if (toParams.id) {
 				$scope.questions = [];
+				
+				for (var i = 0; i < $scope.learningCatalog.length; ++i)
+					if ($scope.learningCatalog[i].id == toParams.id)
+						$scope.catalogEntry = $scope.learningCatalog[i];
 				
 				for (var i = 0; i < $scope.learningQuestions.length; ++i) {
 					var answers = $scope.learningQuestions[i].answers;
@@ -123,9 +128,16 @@ angular.module('tradity').
 
 		$scope.checkAnswers = function() {
 			$scope.answersChecked = true;
+			var madeAchievement = true;
+			
 			for (var i = 0; i < $scope.questions.length; ++i) {
 				$scope.questions[i].wrong = ($scope.questions[i].answer != $scope.questions[i].correct);
+				madeAchievement = madeAchievement && !$scope.questions[i].wrong;
 			};
+			
+			if (madeAchievement) {
+				achievements.markAsDone($scope.catalogEntry.achievementName);
+			}
 		};
 		
 		achievements.listClientAchievements().then(function(clientAchievementList) {

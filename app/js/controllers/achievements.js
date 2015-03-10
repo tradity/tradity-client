@@ -47,6 +47,12 @@ angular.module('tradity').
 				achievements: 0,
 				achieved: 0,
 			},
+			'LEARNING': {
+				name: "Lektionen",
+				description: "Was hast du schon bei Tradity gelernt?",
+				achievements: 0,
+				achieved: 0,
+			},
 		};
 		
 		for (var i in $scope.categories)
@@ -106,30 +112,16 @@ angular.module('tradity').run(function($rootScope) {
 	'TRADE_COUNT_50': 'Mache 50 Trades.',
 	'TRADE_COUNT_100': 'Mache 100 Trades.',
 	'TRADE_COUNT_250': 'Mache 250 Trades.',
-	'o.we': 'Gib eine Order am Wochenende auf.',
-	'o.mo10uhr': 'Gib eine Order am Montag vor 10 Uhr auf.',
-	't.10uhr5': 'Führe 5 Trades vor 10 Uhr aus.',
-	't.uhr19': 'Führe 1 Trade nach 10 Uhr aus.',
-	't.fruhr19': 'Führe 1 Trade nach 19 Uhr am Freitag aus.',
 	'TRADE_VOLUME_25K': 'Führe 1 Trade mit mehr als 25.000 € Volumen aus.',
 	'TRADE_STOCKNAME_AZ': 'Trade ein Wertpapier, das mit A und eines, das mit Z beginnt.',
 	'TRADE_RESELL_1H': 'Kaufe und verkaufe ein Wertpapier innerhalb von einer Stunde.',
 	'TRADE_RESELL_10D': 'Kaufe und verkaufe ein Wertpapier erst nach 10 Tagen.',
 	'TRADE_SPLIT_BUY': 'Kaufe ein Wertpapier, das du bereits im Depot hast.',
 	'TRADE_SPLIT_SELL': 'Verkaufe einen Teil eines Wertpapieres aus deinem Depot.',
-	't.buylimit': 'Führe eine Buy Limit Order aus.',
-	't.buystop': 'Führe eine Buy Stop Order aus.',
-	't.selllimit': 'Führe eine Sell Limit Order aus.',
-	't.sellstop': 'Führe eine Sell Stop Order aus.',
-	'd.plus1': 'Mache heute insgesamt Plus.',
-	'd.plus3row': 'Mache an drei aufeinanderfolgenden Tagen Plus (ohne Wochenende).',
-	'd.plus5row': 'Mache an fünf aufeinanderfolgenden Tagen Plus (ohne Wochenende).',
-	'w.plus1': 'Habe am Ende der Woche Plus.',
 	'TRADE_FOLLOWER_COUNT_1': 'Führe 1 Followertrade aus (kaufe ein Leaderpapier).',
 	'TRADE_FOLLOWER_COUNT_5': 'Führe 5 Followertrades aus.',
 	'TRADE_FOLLOWER_COUNT_25': 'Führe 25 Followertrades aus.',
 	'TRADE_FOLLOWER_COUNT_50': 'Führe 50 Followertrades aus.',
-	't.ftop10': 'Führe 1 Followertrade aus, bei dem du ein Leaderpapier kaufst, dass in den Top 10 ist.',
 	'COMMENT_COUNT_1_1': 'Mache 1 Kommentar.',
 	'COMMENT_COUNT_5_2': 'Mache 5 Kommentare in 2 verschiedenen Feeds.',
 	'COMMENT_COUNT_15_10': 'Mache 15 Kommentare in 10 verschiedenen Feeds.',
@@ -148,7 +140,6 @@ angular.module('tradity').run(function($rootScope) {
 	'REFERRAL_COUNT_100': 'Lade 100 Personen über deinen Referrallink ein. Diese müssen sich anschließend registrieren und mind. 1 Trade machen.',
 	'REFERRAL_COUNT_222': 'Lade 222 Personen über deinen Referrallink ein. Diese müssen sich anschließend registrieren und mind. 1 Trade machen.',
 	'LEADER_PROFILE_IMAGE': 'Lade ein Profilbild hoch.',
-	'e.followme1': 'Fordere 1 Person auf, dir zu folgen',
 	'LEADER_WPROV_CHANGE': 'Ändere deine Gewinnprovision.',
 	'LEADER_LPROV_CHANGE': 'Ändere deine Verlustprovision.',
 	'LEADER_DESC_CHANGE': 'Schreibe eine Kurzbeschreibung über dich.',
@@ -170,6 +161,8 @@ angular.module('tradity').run(function($rootScope) {
 	'DAILY_LOGIN_DAYS_17': 'Sei 17 Tage nacheinander angemeldet.',
 	'DAILY_LOGIN_DAYS_18': 'Sei 18 Tage nacheinander angemeldet.',
 	'DAILY_LOGIN_DAYS_19': 'Sei 19 Tage nacheinander angemeldet.',
-	'DAILY_LOGIN_DAYS_20': 'Sei 20 Tage nacheinander angemeldet.'
+	'DAILY_LOGIN_DAYS_20': 'Sei 20 Tage nacheinander angemeldet.',
+	'LEARNING_GREEN_INVESTMENTS': 'Grüne Geldanlage',
+	'LEARNING_LOW_INTEREST_RATES': 'Niedrigzinsen'
 };
 });

@@ -12,6 +12,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
+#: app/templates/profile.overview.html:75
+msgid "# Follower"
+msgstr "Followerzahl"
+
 #: app/templates/options.html:84
 msgid "(Less information)"
 msgstr "(Ausblenden)"
@@ -27,6 +31,10 @@ msgstr "<a title=\"Suche\"><i></i></a>"
 #: app/templates/game.html:41
 msgid "<a title=\"Watchlist\"><i></i></a>"
 msgstr "<a title=\"Watchlist\"><i></i></a>"
+
+#: app/templates/profile.html:16
+msgid "<i></i> watch"
+msgstr "<i></i> Watchen"
 
 #: app/templates/options.html:140
 msgid "<input value=\"Reset user\" id=\"options-reset\">"
@@ -47,6 +55,10 @@ msgstr "<input placeholder=\"Monat\" id=\"birthdaym\">"
 #: app/templates/options.html:121
 msgid "<input placeholder=\"Year\" id=\"birthdayy\">"
 msgstr "<input placeholder=\"Jahr\" id=\"birthdayy\">"
+
+#: app/templates/profile.pinboard.html:9
+msgid "<input value=\"Send comment\">"
+msgstr "<input value=\"Kommentieren\">"
 
 #: app/templates/options.html:139
 msgid "<input value=\"Save\" id=\"options-sb\">"
@@ -86,17 +98,37 @@ msgstr ""
 "<textarea id=\"desc\" placeholder=\"Erzähl uns, was dich ausmacht\"></"
 "textarea>"
 
+#: app/templates/profile.pinboard.html:7
+msgid "<textarea placeholder=\"Comment on this trader\"></textarea>"
+msgstr "<textarea placeholder=\"Was sagst du zu diesem Trader?\"></textarea>"
+
 #: app/templates/game.html:19
 msgid "Account"
 msgstr "Konto"
 
-#: app/templates/game.html:126
+#: app/templates/game.html:126 app/templates/profile.html:27
 msgid "Achievements"
 msgstr "Errungenschaften"
 
 #: app/templates/options.html:106
 msgid "Address"
 msgstr "Adresse"
+
+#: app/templates/profile.overview.html:36
+msgid "All-time"
+msgstr "seit Beginn"
+
+#: app/templates/profile.history.html:20
+msgid "Amount"
+msgstr "Menge"
+
+#: app/templates/profile.overview.html:69
+msgid "As leader"
+msgstr "als Leader"
+
+#: app/templates/profile.overview.html:42
+msgid "Asset charts"
+msgstr "Vermögensentwicklung"
 
 #: app/templates/options.html:113
 msgid "Birth date"
@@ -106,9 +138,17 @@ msgstr "Geburtsdatum"
 msgid "Close"
 msgstr "Schließen"
 
+#: app/templates/profile.history.html:19
+msgid "Date"
+msgstr "Datum"
+
 #: app/templates/options.html:50
 msgid "Delayed order history"
 msgstr "Verzögerung deiner Orderhistorie"
+
+#: app/templates/profile.pinboard.html:24
+msgid "Delete"
+msgstr "Löschen"
 
 #: app/templates/options.html:81
 msgid "Do you want to receive achievements for daily activity?"
@@ -117,6 +157,10 @@ msgstr "Möchtest du Achievements für tägliches Einloggen erhalten?"
 #: app/templates/options.html:22
 msgid "E-mail address"
 msgstr "E-Mail-Adresse"
+
+#: app/templates/profile.pinboard.html:23
+msgid "Edit"
+msgstr "Bearbeiten"
 
 #: app/templates/options.html:59
 msgid "First name"
@@ -150,6 +194,10 @@ msgstr "Laden…"
 msgid "May your name be published?"
 msgstr "Soll dein Klarname veröffentlich werden?"
 
+#: app/templates/profile.history.html:18
+msgid "Name"
+msgstr "Name"
+
 #: app/templates/game.html:8
 msgid "Navigation"
 msgstr "Navigation"
@@ -178,25 +226,53 @@ msgstr "Einstellungen"
 msgid "Or (instead of uploading):"
 msgstr "Oder (statt Hochladen):"
 
+#: app/templates/profile.history.html:6 app/templates/profile.html:28
+msgid "Order history"
+msgstr "Orderhistorie"
+
 #: app/templates/options.html:69
 msgid "Organization / School"
 msgstr "Institution / Schule"
+
+#: app/templates/profile.html:26
+msgid "Overview"
+msgstr "Übersicht"
 
 #: app/templates/options.html:16
 msgid "Password"
 msgstr "Passwort"
 
+#: app/templates/profile.overview.html:27
+msgid "Performance"
+msgstr "Performance"
+
 #: app/templates/options.html:55
 msgid "Personal information"
 msgstr "Privates"
+
+#: app/templates/profile.html:29
+msgid "Pinboard"
+msgstr "Pinnwand"
 
 #: app/templates/dialogs/wait.html:6
 msgid "Please wait"
 msgstr "Bitte Warten"
 
+#: app/templates/profile.history.html:21
+msgid "Price"
+msgstr "Preis"
+
 #: app/templates/options.html:31
 msgid "Profile image"
 msgstr "Profilbild"
+
+#: app/templates/profile.overview.html:16
+msgid "Provision"
+msgstr "Provision"
+
+#: app/templates/profile.overview.html:7
+msgid "Rank"
+msgstr "Rang"
 
 #: app/templates/game.html:120
 msgid "Ranking"
@@ -206,7 +282,7 @@ msgstr "Rangliste"
 msgid "Repeat password"
 msgstr "Passwort wiederholen"
 
-#: app/templates/options.html:128
+#: app/templates/options.html:128 app/templates/profile.overview.html:22
 msgid "Short description"
 msgstr "Kurzbeschreibung"
 
@@ -218,7 +294,15 @@ msgstr "Hilfe"
 msgid "Terms &amp; Privacy"
 msgstr "AGB &amp; Datenschutz"
 
-#: app/templates/game.html:25
+#: app/templates/profile.overview.html:55
+msgid "Today"
+msgstr "Heute"
+
+#: app/templates/profile.overview.html:48
+msgid "Total"
+msgstr "Gesamt"
+
+#: app/templates/game.html:25 app/templates/profile.overview.html:12
 msgid "Total assets"
 msgstr "Gesamtvermögen"
 
@@ -226,13 +310,25 @@ msgstr "Gesamtvermögen"
 msgid "Trade"
 msgstr "Trade"
 
+#: app/templates/profile.history.html:23
+msgid "Trade total"
+msgstr "Bilanz"
+
 #: app/templates/game.html:158
 msgid "Tradity is Open Source!"
 msgstr "Tradity ist Open Source!"
 
+#: app/templates/profile.history.html:22
+msgid "Transaction fees"
+msgstr "Transaktionsgebühren"
+
 #: app/templates/options.html:12
 msgid "Username"
 msgstr "Benutzername"
+
+#: app/templates/profile.overview.html:62
+msgid "Week"
+msgstr "Woche"
 
 #: app/templates/dialogs/confirm.html:12 app/templates/options.html:51
 #: app/templates/options.html:76 app/templates/options.html:82
@@ -292,6 +388,18 @@ msgstr "Deine Gruppe"
 #: app/templates/game.html:108
 msgid "Your portfolio"
 msgstr "Dein Depot"
+
+#: app/templates/profile.html:17
+msgid "invest"
+msgstr "Investieren"
+
+#: app/templates/profile.overview.html:89
+msgid "received Provision"
+msgstr "erh. Provision"
+
+#: app/templates/profile.overview.html:82
+msgid "sold shares"
+msgstr "verk. Anteile"
 
 #: app/templates/dialogs/wait.html:13
 msgid "{{progress}}&nbsp;% vollständig"

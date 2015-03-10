@@ -3,7 +3,7 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div id="history">
 	<div class="options-field">
-		<h2>Orderhistorie</h2>
+		<h2 translate>Order history</h2>
 		<div class="table-wrapper">
 			<table class="transaction-history table table-bordered">
 				<colgroup>
@@ -15,12 +15,12 @@
 					<col class="column-6-7">
 				</colgroup>
 				<tr>
-					<th>Name</th>
-					<th>Datum</th>
-					<th>Anzahl</th>
-					<th>Preis</th>
-					<th>Transaktionskosten</th>
-					<th>Bilanz</th>
+					<th translate>Name</th>
+					<th translate>Date</th>
+					<th translate>Amount</th>
+					<th translate>Price</th>
+					<th translate>Transaction fees</th>
+					<th translate>Trade total</th>
 				</tr>
 				<tr ng-repeat="order in orders">
 					<td class="{{order.ordertype}}" title="{{order.stocktextid}}"><a class="text-link" ui-sref="game.tradeDetails({tradeId: order.orderid})">{{order.stockname}}</a></td>

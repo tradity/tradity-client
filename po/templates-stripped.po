@@ -82,6 +82,10 @@ msgstr "<input placeholder=\"Jahr\" id=\"birthdayy\">"
 msgid "<input value=\"Send comment\">"
 msgstr "<input value=\"Kommentieren\">"
 
+#: app/templates/chat.html:7
+msgid "<input value=\"Send\">"
+msgstr "<input value=\"Senden\">"
+
 #: app/templates/options.html:139
 msgid "<input value=\"Save\" id=\"options-sb\">"
 msgstr "<input value=\"Speichern\" id=\"options-sb\">"
@@ -133,6 +137,10 @@ msgstr ""
 "&nbsp;€ \n"
 " Verlustprovision: {{result.lprov_sum / 10000 | number:2}}&nbsp;€"
 "\"><a>{{result.stockname}}</a></span>"
+
+#: app/templates/chat.html:6
+msgid "<textarea placeholder=\"Message\"></textarea>"
+msgstr "<textarea placeholder=\"Nachricht\"></textarea>"
 
 #: app/templates/options.html:129
 msgid "<textarea id=\"desc\" placeholder=\"Tell us about you\"></textarea>"

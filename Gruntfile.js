@@ -501,7 +501,7 @@ module.exports = function (grunt) {
 				for (var j = 0; j < po.items.length; ++j)
 					distanceMatrix[i][j] = new Levenshtein(
 						rm.unMarkup(stripTabs(pot.items[i].msgid)),
-						po.items[i].msgid).distance;
+						po.items[j].msgid).distance;
 			}
 			
 			var m = new munkres.Munkres();

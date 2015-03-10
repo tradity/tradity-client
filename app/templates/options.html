@@ -9,71 +9,71 @@
 					<div class="col-sm-12"><h2>Account</h2></div>
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label for="name">Benutzername</label>
+							<label for="name" translate>Username</label>
 							<input type="text" ng-model="name" placeholder="Benutzername" id="name" class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="password">Passwort</label>
+							<label for="password" translate>Password</label>
 							<input type="password" ng-model="password" placeholder="Passwort" id="password" class="form-control">
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label for="email">E-Mail</label>
+							<label for="email" translate>E-mail address</label>
 							<input type="email" ng-model="email" placeholder="E-Mail" id="email" class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="password_check">Passwort Wiederholung</label>
+							<label for="password_check" translate>Repeat password</label>
 							<input type="password" ng-model="password_check" placeholder="Passwort" id="password_check" class="form-control">
 						</div>
 					</div>
 					<div class="col-sm-6">
-						<h2>Profilbild</h2>
+						<h2 translate>Profile image</h2>
 						<img id="profile-picture" width="200px" ng-show="ownUser.profilepic" ng-src="{{ownUser.profilepic}}" alt="">
 						<input type="file" id="profileimage" class="options-input" accept="image/png,image/jpeg,image/gif"><br/>
-						Oder (statt Hochladen):<br/>
-						<input type="button" ng-click="useGravatar()" ng-show="ownUser.email_verif != 0 && ownUser.email" class="btn btn-primary" value="Gravatar verwenden" />
+						<span translate>Or (instead of uploading):</span> <br />
+						<input translate type="button" ng-click="useGravatar()" ng-show="ownUser.email_verif != 0 && ownUser.email" class="btn btn-primary" value="Use Gravatar" />
 					</div>
 				</div>
 			<!--</tab>
 			<tab heading="Spiel">-->
-				<h2>Spiel</h2>
+				<h2 translate>Game</h2>
 				<div class="form-group">
-					<label for="provision">Gewinnprovision deiner Follower ({{serverConfig.minWProvision}} % – {{serverConfig.maxWProvision}} %)</label>
+					<label for="provision"><span>Your followers’ gain provision</span> ({{serverConfig.minWProvision}} % – {{serverConfig.maxWProvision}} %)</label>
 					<input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="form-control" min="{{serverConfig.minWProvision}}" max="{{serverConfig.maxWProvision}}" step="1">
 				</div>
 				<div class="form-group">
-					<label for="provision">Verlustprovision deiner Follower ({{serverConfig.minLProvision}} % – {{serverConfig.maxLProvision}} %)</label>
+					<label for="provision"><span>Your followers’ loss provision</span> ({{serverConfig.minLProvision}} % – {{serverConfig.maxLProvision}} %)</label>
 					<input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="form-control" min="{{serverConfig.minLProvision}}" max="{{serverConfig.maxLProvision}}" step="1">
 				</div>
 				<div class="form-group">
-					<label for="delayorderhist">Verzögerung deiner Orderhistorie </label><br/>
-					<input type="checkbox" ng-model="delayorderhist" id="delayorderhist"> Ja
+					<label for="delayorderhist" translate>Delayed order history</label><br/>
+					<input type="checkbox" ng-model="delayorderhist" id="delayorderhist"> <span translate>Yes</span>
 				</div>
 			<!--</tab>
 			<tab heading="Privates">-->
-				<h2>Privates</h2>
+				<h2 translate>Personal information</h2>
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label for="giv_name">Vorname</label>
-							<input type="text" ng-model="giv_name" placeholder="Vorname" id="giv_name" class="form-control">
+							<label for="giv_name" translate>First name</label>
+							<input translate type="text" ng-model="giv_name" placeholder="First name" id="giv_name" class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="fam_name">Nachname</label>
-							<input type="text" ng-model="fam_name" placeholder="Nachname" id="fam_name" class="form-control">
+							<label for="fam_name" translate>Last name</label>
+							<input translate type="text" ng-model="fam_name" placeholder="Last name" id="fam_name" class="form-control">
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label for="schoolname">Institution / Schule</label>
-							<input type="text" ng-init="loadSearch()" ng-model="schoolname" placeholder="Schule" id="schoolname" class="form-control">
-							<input id="schoolname_none" ng-model="schoolname_none" type="checkbox"> Keine Gruppe
-							<input type="text" ng-model="schoolclass" placeholder="Klasse" id="schoolclass" class="form-control">
+							<label for="schoolname" translate>Organization / School</label>
+							<input translate type="text" ng-init="loadSearch()" ng-model="schoolname" placeholder="Schule" id="schoolname" class="form-control">
+							<input id="schoolname_none" ng-model="schoolname_none" type="checkbox"> <span translate>No group</span>
+							<input translate type="text" ng-model="schoolclass" placeholder="Klasse" id="schoolclass" class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="realnamepublish">Soll dein Klarname veröffentlicht werden?</label><br/>
-							<input type="checkbox" ng-model="realnamepublish" id="realnamepublish"> Ja
+							<label for="realnamepublish" translate>May your name be published?</label><br/>
+							<input type="checkbox" ng-model="realnamepublish" id="realnamepublish"> <span translate>Yes</span>
 						</div>
 					</div>
 				</div>

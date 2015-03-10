@@ -28,9 +28,29 @@ msgstr "Konto"
 msgid "Achievements"
 msgstr "Errungenschaften"
 
+#: app/templates/options.html:50
+msgid "Delayed order history"
+msgstr "Verzögerung deiner Orderhistorie"
+
+#: app/templates/options.html:22
+msgid "E-mail address"
+msgstr "E-Mail-Adresse"
+
+#: app/templates/options.html:59
+msgid "First name"
+msgstr "Vorname"
+
+#: app/templates/options.html:40
+msgid "Game"
+msgstr "Spiel"
+
 #: app/templates/game.html:156
 msgid "Imprint"
 msgstr "Impressum"
+
+#: app/templates/options.html:63
+msgid "Last name"
+msgstr "Nachname"
 
 #: app/templates/game.html:132
 msgid "Lessons"
@@ -40,17 +60,53 @@ msgstr "Lektionen"
 msgid "Loading"
 msgstr "Laden…"
 
+#: app/templates/options.html:75
+msgid "May your name be published?"
+msgstr "Soll dein Klarname veröffentlich werden?"
+
+#: app/templates/game.html:8
+msgid "Navigation"
+msgstr "Navigation"
+
 #: app/templates/game.html:67
 msgid "News"
 msgstr "Neuigkeiten"
+
+#: app/templates/options.html:71
+msgid "No group"
+msgstr "Keine Gruppe"
 
 #: app/templates/game.html:140
 msgid "Options"
 msgstr "Einstellungen"
 
+#: app/templates/options.html:34
+msgid "Or (instead of uploading):"
+msgstr "Oder (statt Hochladen):"
+
+#: app/templates/options.html:69
+msgid "Organization / School"
+msgstr "Institution / Schule"
+
+#: app/templates/options.html:16
+msgid "Password"
+msgstr "Passwort"
+
+#: app/templates/options.html:55
+msgid "Personal information"
+msgstr "Privates"
+
+#: app/templates/options.html:31
+msgid "Profile image"
+msgstr "Profilbild"
+
 #: app/templates/game.html:120
 msgid "Ranking"
 msgstr "Rangliste"
+
+#: app/templates/options.html:26
+msgid "Repeat password"
+msgstr "Passwort wiederholen"
 
 #: app/templates/game.html:146
 msgid "Support"
@@ -71,6 +127,14 @@ msgstr "Trade"
 #: app/templates/game.html:158
 msgid "Tradity is Open Source!"
 msgstr "Tradity ist Open Source!"
+
+#: app/templates/options.html:12
+msgid "Username"
+msgstr "Benutzername"
+
+#: app/templates/options.html:51 app/templates/options.html:76
+msgid "Yes"
+msgstr "Ja"
 
 #: app/templates/feed.html:113
 msgid ""

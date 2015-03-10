@@ -169,6 +169,10 @@ msgstr "Vermögensentwicklung"
 msgid "Asset overview"
 msgstr "Übersicht"
 
+#: app/js/services/achievements.js:38
+msgid "Be active for %1&nbsp;days in a row."
+msgstr "Sei an %1 aufeinanderfolgenden Tagen angemeldet."
+
 #: app/templates/depot.transactionlog.html:28
 msgid "Bid­ price"
 msgstr "Bidpreis"
@@ -177,9 +181,33 @@ msgstr "Bidpreis"
 msgid "Birth date"
 msgstr "Geburtsdatum"
 
+#: app/js/services/achievements.js:23
+msgid "Buy and sell shares 10&nbsp;days apart."
+msgstr "Kaufe und verkaufe ein Wertpapier erst nach 10&nbsp;Tagen."
+
+#: app/js/services/achievements.js:22
+msgid "Buy and sell shares of a stock within 1&nbsp;hour"
+msgstr "Kaufe und verkaufe ein Wertpapier innerhalb von einer Stunde."
+
 #: app/templates/depot.listing.html:32
 msgid "Buy price"
 msgstr "Bidpreis"
+
+#: app/js/services/achievements.js:24
+msgid "Buy shares of a stock which already is in your depot."
+msgstr "Kaufe ein Wertpapier, das du bereits im Depot hast."
+
+#: app/js/services/achievements.js:35
+msgid "Change your gain provision."
+msgstr "Ändere deine Gewinnprovision."
+
+#: app/js/services/achievements.js:36
+msgid "Change your loss provision."
+msgstr "Ändere deine Verlustprovision."
+
+#: app/js/services/achievements.js:31
+msgid "Chat with %1&nbsp;persons."
+msgstr "Führe einen Chat mit %1&nbsp;Leuten."
 
 #: app/templates/dialogs/error.html:12
 msgid "Close"
@@ -221,6 +249,10 @@ msgstr "E-Mail-Adresse"
 msgid "Edit"
 msgstr "Bearbeiten"
 
+#: app/js/services/achievements.js:20
+msgid "Execute a trade with a volume of more than 25,000&nbsp;€."
+msgstr "Führe 1 Trade mit mehr als 25.000&nbsp;€ Volumen aus."
+
 #: app/templates/options.html:59
 msgid "First name"
 msgstr "Vorname"
@@ -233,6 +265,10 @@ msgstr "Followerstatistik"
 msgid "Game"
 msgstr "Spiel"
 
+#: app/js/services/achievements.js:39
+msgid "Green investments"
+msgstr "Grüne Geldanlage"
+
 #: app/templates/depot.html:9 app/templates/depot.listing.html:6
 msgid "Held shares"
 msgstr "Wertpapiere in Besitz"
@@ -240,6 +276,22 @@ msgstr "Wertpapiere in Besitz"
 #: app/templates/game.html:156
 msgid "Imprint"
 msgstr "Impressum"
+
+#: app/js/services/achievements.js:33
+msgid ""
+"Invite %1&nbsp;persons using your referral link. They have to register and "
+"perform at least one trade."
+msgstr ""
+"Lade %1&nbsp;Personen über deinen Referrallink ein. Diese müssen sich "
+"anschließend registrieren und mind. 1 Trade machen."
+
+#: app/js/services/achievements.js:32
+msgid ""
+"Invite 1&nbsp;person using your referral link. They have to register and "
+"perform at least one trade."
+msgstr ""
+"Lade 1 Person über deinen Referrallink ein. Diese muss sich anschließend "
+"registrieren und mind. 1 Trade machen."
 
 #: app/templates/options.html:132
 msgid "Invite user"
@@ -260,6 +312,10 @@ msgstr "Lektionen"
 #: app/templates/game.html:169
 msgid "Loading"
 msgstr "Laden…"
+
+#: app/js/services/achievements.js:40
+msgid "Low interest rates"
+msgstr "Niedrigzinsen"
 
 #: app/templates/depot.transactions.html:19
 msgid "Market/Stop/Limit"
@@ -333,6 +389,18 @@ msgstr "Empfänger"
 msgid "Payer"
 msgstr "Zahler"
 
+#: app/js/services/achievements.js:27
+msgid "Perform %1&nbsp;follower trades."
+msgstr "Führe %1&nbsp;Followertrades durch."
+
+#: app/js/services/achievements.js:19
+msgid "Perform %1&nbsp;trades"
+msgstr "Führe %1&nbsp;Trades durch."
+
+#: app/js/services/achievements.js:26
+msgid "Perform 1&nbsp;follower trade (invest into another user)."
+msgstr "Führe 1&nbsp;Followertrade aus (kaufe ein Leaderpapier)."
+
 #: app/templates/depot.listing.html:24 app/templates/depot.watchlist.html:20
 #: app/templates/profile.overview.html:27
 msgid "Performance"
@@ -388,6 +456,10 @@ msgstr "Entfernen"
 msgid "Repeat password"
 msgstr "Passwort wiederholen"
 
+#: app/js/services/achievements.js:25
+msgid "Sell only a part of the shares of a stock in your depot."
+msgstr "Verkaufe nur einen Teil eines Wertpapieres aus deinem Depot."
+
 #: app/templates/options.html:128 app/templates/profile.overview.html:22
 msgid "Short description"
 msgstr "Kurzbeschreibung"
@@ -432,6 +504,12 @@ msgstr "Gesamtvermögen"
 msgid "Trade"
 msgstr "Trade"
 
+#: app/js/services/achievements.js:21
+msgid ""
+"Trade a stock whose name begine with “A” and another one whose begins with "
+"“Z”"
+msgstr "Handle ein Wertpapier, das mit „A“ und eines, das mit „Z“ beginnt."
+
 #: app/templates/depot.transactions.html:59
 #: app/templates/profile.history.html:23
 msgid "Trade total"
@@ -454,6 +532,10 @@ msgstr "Transaktionshistorie"
 msgid "Transaction type"
 msgstr "Transaktionstyp"
 
+#: app/js/services/achievements.js:34
+msgid "Upload a profile picture."
+msgstr "Lade ein Profilbild hoch."
+
 #: app/templates/options.html:12
 msgid "Username"
 msgstr "Benutzername"
@@ -466,6 +548,22 @@ msgstr "Wert"
 #: app/templates/depot.overview.html:89 app/templates/profile.overview.html:62
 msgid "Week"
 msgstr "Woche"
+
+#: app/js/services/achievements.js:30
+msgid "Write %1&nbsp;comments in %2&nbsp;different feeds."
+msgstr "Mache %1&nbsp;Kommentare in %2&nbsp;verschiedenen Feeds."
+
+#: app/js/services/achievements.js:28
+msgid "Write 1&nbsp;comments."
+msgstr "Mache 1&nbsp;Kommentar."
+
+#: app/js/services/achievements.js:29
+msgid "Write 5&nbsp;comments in a single feed."
+msgstr "Mache 5&nbsp;Kommentare im selben Feed."
+
+#: app/js/services/achievements.js:37
+msgid "Write a short description of yourself."
+msgstr "Schreibe eine Kurzbeschreibung über dich."
 
 #: app/templates/dialogs/confirm.html:12 app/templates/options.html:51
 #: app/templates/options.html:76 app/templates/options.html:82
@@ -542,6 +640,9 @@ msgstr "verk. Anteile"
 #: app/templates/dialogs/wait.html:13
 msgid "{{progress}}&nbsp;% vollständig"
 msgstr "{{progress}}&nbsp;% completer"
+
+#~ msgid "Perform %1&nbsp;follower trades (invest into another user)."
+#~ msgstr "Führe %1&nbsp;Followertrades aus."
 
 #~ msgid "Kurzbeschreibung"
 #~ msgstr "Short description"

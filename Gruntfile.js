@@ -22,7 +22,10 @@ module.exports = function (grunt) {
 		nggettext_extract: {
 			pot: {
 				files: {
-					'po/templates.pot': ['<%= yeoman.app %>/**/*.html'],
+					'po/templates.pot': [
+						'<%= yeoman.app %>/**/*.html',
+						'<%= yeoman.app %>/js/**/*.js'
+					],
 				}
 			}
 		},

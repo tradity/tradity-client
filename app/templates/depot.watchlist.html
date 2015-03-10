@@ -3,7 +3,7 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div id="watchlist">
 	<div class="options-field">
-		<h2>Leader und Wertpapiere in deiner Watchlist</h2>
+		<h2 translate>Leader and stocks in your watchlist</h2>
 		<div class="table-wrapper">
 			<table class="owned-trades table table-bordered">
 				<colgroup>
@@ -16,17 +16,17 @@
 				<tr>
 					<th></th>
 					<th></th>
-					<th colspan="2">Preis</th>
-					<th colspan="2" style="background-color: rgba(0, 0, 0, 0)">Performance</th>
+					<th colspan="2" translate>Price</th>
+					<th colspan="2" style="background-color: rgba(0, 0, 0, 0)" translate>Performance</th>
 					<th></th>
 				</tr>
 				<tr>
-					<th>Name</th>
-					<th>Datum</th>
-					<th>Start</th>
-					<th>Aktuell</th>
-					<th>Gesamt</th>
-					<th>Heute</th>
+					<th translate>Name</th>
+					<th translate>Date</th>
+					<th translate>Start value</th>
+					<th translate>Current</th>
+					<th translate>Total</th>
+					<th translate>Today</th>
 					<th></th>
 				</tr>
 				<tr ng-repeat="entry in watchlist">
@@ -43,7 +43,7 @@
 					<td ng-class="{pos: watchlistPerformYesterday > 0, neg: watchlistPerformYesterday < 0}">
 						{{ watchlistPerformYesterday = (entry.bid - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}} %
 					</td>
-					<td class="trade-td text-center"><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Löschen" style="cursor: pointer"><i class="fa fa-minus-circle"></i> </a></td>
+					<td class="trade-td text-center" translate><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Remove" style="cursor: pointer"><i class="fa fa-minus-circle"></i> </a></td>
 				</tr>
 			</table>
 		</div>

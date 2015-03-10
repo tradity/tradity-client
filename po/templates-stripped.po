@@ -12,9 +12,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
+#: app/templates/depot.overview.html:107
 #: app/templates/profile.overview.html:75
-msgid "# Follower"
+msgid "# Followers"
 msgstr "Followerzahl"
+
+#: app/templates/depot.transactionlog.html:29
+msgid "# shares"
+msgstr "# Anteile"
 
 #: app/templates/options.html:84
 msgid "(Less information)"
@@ -23,6 +28,10 @@ msgstr "(Ausblenden)"
 #: app/templates/options.html:83
 msgid "(More information)"
 msgstr "Mehr Informationen"
+
+#: app/templates/depot.watchlist.html:46
+msgid "<a title=\"Remove\"><i></i> </a>"
+msgstr "<a title=\"Entfernen\"><i></i></a>"
 
 #: app/templates/game.html:38
 msgid "<a title=\"Search\"><i></i></a>"
@@ -92,6 +101,26 @@ msgstr "<input placeholder=\"Stadt\" id=\"town\">"
 msgid "<input placeholder=\"Zip code\" id=\"zipcode\">"
 msgstr "<input placeholder=\"PLZ\" id=\"zipcode\">"
 
+#: app/templates/depot.transactionlog.html:26
+msgid "<span title=\"High Water Mark\">HWM</span>"
+msgstr "<span title=\"High Water Mark\">HWM</span>"
+
+#: app/templates/depot.transactionlog.html:27
+msgid "<span title=\"Low Water Mark\">LWM</span>"
+msgstr "<span title=\"Low Water Mark\">LWM</span>"
+
+#: app/templates/depot.listing.html:40
+msgid ""
+"<span tooltip=\"Gain provision: {{result.wprov_sum / 10000 | number:2}}&nbsp;"
+"€ \n"
+" Loss provision: {{result.lprov_sum / 10000 | number:2}}&nbsp;€"
+"\"><a>{{result.stockname}}</a></span>"
+msgstr ""
+"<span tooltip=\"Gewinnprovision: {{result.wprov_sum / 10000 | number:2}}"
+"&nbsp;€ \n"
+" Verlustprovision: {{result.lprov_sum / 10000 | number:2}}&nbsp;€"
+"\"><a>{{result.stockname}}</a></span>"
+
 #: app/templates/options.html:129
 msgid "<textarea id=\"desc\" placeholder=\"Tell us about you\"></textarea>"
 msgstr ""
@@ -102,7 +131,7 @@ msgstr ""
 msgid "<textarea placeholder=\"Comment on this trader\"></textarea>"
 msgstr "<textarea placeholder=\"Was sagst du zu diesem Trader?\"></textarea>"
 
-#: app/templates/game.html:19
+#: app/templates/depot.overview.html:18 app/templates/game.html:19
 msgid "Account"
 msgstr "Konto"
 
@@ -114,14 +143,20 @@ msgstr "Errungenschaften"
 msgid "Address"
 msgstr "Adresse"
 
-#: app/templates/profile.overview.html:36
+#: app/templates/depot.listing.html:34 app/templates/depot.overview.html:38
+#: app/templates/depot.overview.html:65 app/templates/profile.overview.html:36
 msgid "All-time"
 msgstr "seit Beginn"
 
+#: app/templates/depot.listing.html:31
+#: app/templates/depot.transactionlog.html:24
+#: app/templates/depot.transactions.html:21
+#: app/templates/depot.transactions.html:56
 #: app/templates/profile.history.html:20
 msgid "Amount"
 msgstr "Menge"
 
+#: app/templates/depot.overview.html:101
 #: app/templates/profile.overview.html:69
 msgid "As leader"
 msgstr "als Leader"
@@ -130,15 +165,35 @@ msgstr "als Leader"
 msgid "Asset charts"
 msgstr "Vermögensentwicklung"
 
+#: app/templates/depot.overview.html:32
+msgid "Asset overview"
+msgstr "Übersicht"
+
+#: app/templates/depot.transactionlog.html:28
+msgid "Bid­ price"
+msgstr "Bidpreis"
+
 #: app/templates/options.html:113
 msgid "Birth date"
 msgstr "Geburtsdatum"
+
+#: app/templates/depot.listing.html:32
+msgid "Buy price"
+msgstr "Bidpreis"
 
 #: app/templates/dialogs/error.html:12
 msgid "Close"
 msgstr "Schließen"
 
-#: app/templates/profile.history.html:19
+#: app/templates/depot.listing.html:33 app/templates/depot.watchlist.html:27
+msgid "Current"
+msgstr "Aktuell"
+
+#: app/templates/depot.listing.html:29
+#: app/templates/depot.transactionlog.html:19
+#: app/templates/depot.transactions.html:18
+#: app/templates/depot.transactions.html:55
+#: app/templates/depot.watchlist.html:25 app/templates/profile.history.html:19
 msgid "Date"
 msgstr "Datum"
 
@@ -149,6 +204,10 @@ msgstr "Verzögerung deiner Orderhistorie"
 #: app/templates/profile.pinboard.html:24
 msgid "Delete"
 msgstr "Löschen"
+
+#: app/templates/depot.overview.html:25
+msgid "Depot"
+msgstr "Depot"
 
 #: app/templates/options.html:81
 msgid "Do you want to receive achievements for daily activity?"
@@ -166,9 +225,17 @@ msgstr "Bearbeiten"
 msgid "First name"
 msgstr "Vorname"
 
+#: app/templates/depot.overview.html:59
+msgid "Following statistics"
+msgstr "Followerstatistik"
+
 #: app/templates/options.html:40
 msgid "Game"
 msgstr "Spiel"
+
+#: app/templates/depot.html:9 app/templates/depot.listing.html:6
+msgid "Held shares"
+msgstr "Wertpapiere in Besitz"
 
 #: app/templates/game.html:156
 msgid "Imprint"
@@ -182,6 +249,10 @@ msgstr "Benutzer einladen"
 msgid "Last name"
 msgstr "Nachname"
 
+#: app/templates/depot.watchlist.html:6
+msgid "Leader and stocks in your watchlist"
+msgstr "Leader und Wertpapiere in deiner Watchlist"
+
 #: app/templates/game.html:132
 msgid "Lessons"
 msgstr "Lektionen"
@@ -190,11 +261,18 @@ msgstr "Lektionen"
 msgid "Loading"
 msgstr "Laden…"
 
+#: app/templates/depot.transactions.html:19
+msgid "Market/Stop/Limit"
+msgstr "Market/Stop/Limit"
+
 #: app/templates/options.html:75
 msgid "May your name be published?"
 msgstr "Soll dein Klarname veröffentlich werden?"
 
-#: app/templates/profile.history.html:18
+#: app/templates/depot.listing.html:28
+#: app/templates/depot.transactions.html:17
+#: app/templates/depot.transactions.html:54
+#: app/templates/depot.watchlist.html:24 app/templates/profile.history.html:18
 msgid "Name"
 msgstr "Name"
 
@@ -226,6 +304,7 @@ msgstr "Einstellungen"
 msgid "Or (instead of uploading):"
 msgstr "Oder (statt Hochladen):"
 
+#: app/templates/depot.html:10 app/templates/depot.transactions.html:42
 #: app/templates/profile.history.html:6 app/templates/profile.html:28
 msgid "Order history"
 msgstr "Orderhistorie"
@@ -234,7 +313,11 @@ msgstr "Orderhistorie"
 msgid "Organization / School"
 msgstr "Institution / Schule"
 
-#: app/templates/profile.html:26
+#: app/templates/depot.transactionlog.html:21
+msgid "Or­der"
+msgstr "Or­der"
+
+#: app/templates/depot.html:8 app/templates/profile.html:26
 msgid "Overview"
 msgstr "Übersicht"
 
@@ -242,6 +325,15 @@ msgstr "Übersicht"
 msgid "Password"
 msgstr "Passwort"
 
+#: app/templates/depot.transactionlog.html:23
+msgid "Payee"
+msgstr "Empfänger"
+
+#: app/templates/depot.transactionlog.html:22
+msgid "Payer"
+msgstr "Zahler"
+
+#: app/templates/depot.listing.html:24 app/templates/depot.watchlist.html:20
 #: app/templates/profile.overview.html:27
 msgid "Performance"
 msgstr "Performance"
@@ -254,11 +346,17 @@ msgstr "Privates"
 msgid "Pinboard"
 msgstr "Pinnwand"
 
+#: app/templates/depot.transactions.html:6
+msgid "Planned orders"
+msgstr "Noch nicht ausgeführte Orders"
+
 #: app/templates/dialogs/wait.html:6
 msgid "Please wait"
 msgstr "Bitte Warten"
 
-#: app/templates/profile.history.html:21
+#: app/templates/depot.listing.html:23
+#: app/templates/depot.transactions.html:57
+#: app/templates/depot.watchlist.html:19 app/templates/profile.history.html:21
 msgid "Price"
 msgstr "Preis"
 
@@ -278,6 +376,14 @@ msgstr "Rang"
 msgid "Ranking"
 msgstr "Rangliste"
 
+#: app/templates/depot.transactionlog.html:25
+msgid "Reason"
+msgstr "Anlass"
+
+#: app/templates/depot.transactions.html:22
+msgid "Remove"
+msgstr "Entfernen"
+
 #: app/templates/options.html:26
 msgid "Repeat password"
 msgstr "Passwort wiederholen"
@@ -285,6 +391,18 @@ msgstr "Passwort wiederholen"
 #: app/templates/options.html:128 app/templates/profile.overview.html:22
 msgid "Short description"
 msgstr "Kurzbeschreibung"
+
+#: app/templates/depot.watchlist.html:26
+msgid "Start value"
+msgstr "Startwert"
+
+#: app/templates/depot.transactionlog.html:18
+msgid "Stock"
+msgstr "Wertpapier"
+
+#: app/templates/depot.transactions.html:20
+msgid "Stop/Limit value"
+msgstr "Stop-/Limit-Marke"
 
 #: app/templates/game.html:146
 msgid "Support"
@@ -294,22 +412,27 @@ msgstr "Hilfe"
 msgid "Terms &amp; Privacy"
 msgstr "AGB &amp; Datenschutz"
 
+#: app/templates/depot.listing.html:35 app/templates/depot.overview.html:45
+#: app/templates/depot.overview.html:77 app/templates/depot.watchlist.html:29
 #: app/templates/profile.overview.html:55
 msgid "Today"
 msgstr "Heute"
 
+#: app/templates/depot.overview.html:11 app/templates/depot.watchlist.html:28
 #: app/templates/profile.overview.html:48
 msgid "Total"
 msgstr "Gesamt"
 
-#: app/templates/game.html:25 app/templates/profile.overview.html:12
+#: app/templates/depot.overview.html:5 app/templates/game.html:25
+#: app/templates/profile.overview.html:12
 msgid "Total assets"
 msgstr "Gesamtvermögen"
 
-#: app/templates/game.html:114
+#: app/templates/depot.listing.html:36 app/templates/game.html:114
 msgid "Trade"
 msgstr "Trade"
 
+#: app/templates/depot.transactions.html:59
 #: app/templates/profile.history.html:23
 msgid "Trade total"
 msgstr "Bilanz"
@@ -318,15 +441,29 @@ msgstr "Bilanz"
 msgid "Tradity is Open Source!"
 msgstr "Tradity ist Open Source!"
 
+#: app/templates/depot.transactions.html:58
 #: app/templates/profile.history.html:22
 msgid "Transaction fees"
 msgstr "Transaktionsgebühren"
+
+#: app/templates/depot.html:12 app/templates/depot.transactionlog.html:6
+msgid "Transaction log"
+msgstr "Transaktionshistorie"
+
+#: app/templates/depot.transactionlog.html:20
+msgid "Transaction type"
+msgstr "Transaktionstyp"
 
 #: app/templates/options.html:12
 msgid "Username"
 msgstr "Benutzername"
 
-#: app/templates/profile.overview.html:62
+#: app/templates/depot.listing.html:30
+msgid "Value"
+msgstr "Wert"
+
+#: app/templates/depot.overview.html:121 app/templates/depot.overview.html:52
+#: app/templates/depot.overview.html:89 app/templates/profile.overview.html:62
 msgid "Week"
 msgstr "Woche"
 
@@ -397,6 +534,7 @@ msgstr "Investieren"
 msgid "received Provision"
 msgstr "erh. Provision"
 
+#: app/templates/depot.overview.html:114
 #: app/templates/profile.overview.html:82
 msgid "sold shares"
 msgstr "verk. Anteile"

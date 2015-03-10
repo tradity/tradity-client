@@ -3,7 +3,7 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div id="transactions">
 	<div class="options-field">
-		<h2>Noch nicht ausgeführte Transaktionen</h2>
+		<h2 translate>Planned orders</h2>
 		<div class="table-wrapper">
 			<table class="transaction-history table table-bordered">
 			<colgroup>
@@ -14,17 +14,17 @@
 				<col class="column-4">
 			</colgroup>
 				<tr>
-					<th>Name</th>
-					<th>Datum</th>
-					<th>Market/Stop/Limit</th>
-					<th>Stop/Limit Marke</th>
-					<th>Anzahl</th>
-					<th>Löschen</th>
+					<th translate>Name</th>
+					<th translate>Date</th>
+					<th translate>Market/Stop/Limit</th>
+					<th translate>Stop/Limit value</th>
+					<th translate>Amount</th>
+					<th translate>Remove</th>
 				</tr>
 				<tr ng-repeat="order in delayedOrders">
 					<td class="depot-{{order.buysell}}" title="{{order.query.stockid}}">
 						<span ng-show="order.query.leader"><a ui-sref="game.profile.overview({userId: order.query.leader})">{{order.query.dquerydata.name}}</a></span>
-						<span ng-hide="order.query.leader"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: order.query.stockid, amount: 0})">{{order.query.dquerydata.name}}</a<</span>
+						<span ng-hide="order.query.leader"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: order.query.stockid, amount: 0})">{{order.query.dquerydata.name}}</a></span>
 					</td>
 					<td>{{order.query.dquerydata.ordertime | date:'short'}}</td>
 					<td>{{order.query.dquerydata.xtype}}</td>
@@ -39,7 +39,7 @@
 		</div>
 	</div>
 	<div class="options-field">
-		<h2>Transaktionshistorie</h2>
+		<h2 translate>Order history</h2>
 		<div class="table-wrapper">
 			<table class="transaction-history table table-bordered">
 				<colgroup>
@@ -51,12 +51,12 @@
 					<col class="column-6-7">
 				</colgroup>
 				<tr>
-					<th>Name</th>
-					<th>Datum</th>
-					<th>Anzahl</th>
-					<th>Preis</th>
-					<th>Transaktionskosten</th>
-					<th>Bilanz</th>
+					<th translate>Name</th>
+					<th translate>Date</th>
+					<th translate>Amount</th>
+					<th translate>Price</th>
+					<th translate>Transaction fees</th>
+					<th translate>Trade total</th>
 				</tr>
 				<tr ng-repeat="order in orders">
 					<td class="{{order.ordertype}}" title="{{order.stocktextid}}">

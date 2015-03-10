@@ -1,7 +1,7 @@
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-<h1><a ui-sref="game.learning.catalog()"><i class="fa fa-angle-left"></i></a> Fragen</h1>
+<h1><a ui-sref="game.learning.catalog()"><i class="fa fa-angle-left"></i></a> <span translate>Questions</span></h1>
 <div class="question" ng-repeat="question in questions" ng-class="{wrong: question.wrong, answersChecked: answersChecked}">
 	<h2>{{question.name}}</h2>
 	<div class="info">{{question.description}}</div>
@@ -12,4 +12,4 @@
 	</div>
 </div>
 
-<a class="btn btn-success" ng-click="checkAnswers()">Prüfen</a>
+<a class="btn btn-success" ng-click="checkAnswers()" translate>Check answers</a>

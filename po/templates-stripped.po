@@ -30,6 +30,10 @@ msgstr "(Ausblenden)"
 msgid "(More information)"
 msgstr "Mehr Informationen"
 
+#: app/templates/error.404.html:4
+msgid "404 – Page not found"
+msgstr "404 – Seite nicht gefunden"
+
 #: app/templates/depot.watchlist.html:46
 msgid "<a title=\"Remove\"><i></i> </a>"
 msgstr "<a title=\"Entfernen\"><i></i></a>"
@@ -41,6 +45,14 @@ msgstr "<a title=\"Suche\"><i></i></a>"
 #: app/templates/game.html:41
 msgid "<a title=\"Watchlist\"><i></i></a>"
 msgstr "<a title=\"Watchlist\"><i></i></a>"
+
+#: app/templates/index.html:9
+msgid ""
+"<a id=\"register-btn\">Register</a><br>\n"
+"<span>or <a id=\"login-btn\">login</a></span>"
+msgstr ""
+"<a id=\"register-btn\">Registrieren</a><br>\n"
+"<span>oder <a id=\"login-btn\">Einloggen</a></span>"
 
 #: app/templates/profile.html:16
 msgid "<i></i> watch"
@@ -182,6 +194,10 @@ msgstr "Übersicht"
 msgid "Be active for %1&nbsp;days in a row."
 msgstr "Sei an %1 aufeinanderfolgenden Tagen angemeldet."
 
+#: app/templates/index.html:7
+msgid "Be part of the world’s first <b>Social Trading Stock Trading Game</b>"
+msgstr "Sei Teil des ersten <b>Social Trading Börsenspiels</b> der Welt"
+
 #: app/templates/depot.transactionlog.html:28
 msgid "Bid­ price"
 msgstr "Bidpreis"
@@ -217,6 +233,10 @@ msgstr "Ändere deine Verlustprovision."
 #: app/js/services/achievements.js:31
 msgid "Chat with %1&nbsp;persons."
 msgstr "Führe einen Chat mit %1&nbsp;Leuten."
+
+#: app/templates/learning.questions.html:15
+msgid "Check answers"
+msgstr "Überprüfen"
 
 #: app/templates/dialogs/error.html:12
 msgid "Close"
@@ -402,6 +422,10 @@ msgstr "Neuigkeiten"
 msgid "No"
 msgstr "Nein"
 
+#: app/templates/error.connection.html:4
+msgid "No Connection"
+msgstr "Keine Verbindung"
+
 #: app/templates/options.html:71
 msgid "No group"
 msgstr "Keine Gruppe"
@@ -554,6 +578,10 @@ msgstr "Profilbild erfolgreich hochgeladen!"
 msgid "Provision"
 msgstr "Provision"
 
+#: app/templates/learning.questions.html:4
+msgid "Questions"
+msgstr "Fragen"
+
 #: app/templates/profile.overview.html:7
 msgid "Rank"
 msgstr "Rang"
@@ -660,6 +688,13 @@ msgstr ""
 "Es gab beim Hochladen Deines Profilbilds leider technische Schwierigkeiten.\n"
 "Wende dich bitte an tech@tradity.de"
 
+#: app/js/controllers/main.js:168
+msgid ""
+"There was a technical problem – the tech team of Tradity has been informed."
+msgstr ""
+"Es gab ein technisches Problem – das Tech-Team von Tradity ist informiert "
+"worden."
+
 #: app/js/controllers/options.js:140 app/js/controllers/registration.js:66
 msgid "This e-mail address has already been taken"
 msgstr "Email bereits vorhanden"
@@ -720,6 +755,28 @@ msgstr "Transaktionshistorie"
 #: app/templates/depot.transactionlog.html:20
 msgid "Transaction type"
 msgstr "Transaktionstyp"
+
+#: app/templates/error.404.html:5
+msgid ""
+"Unfortunately, this page could not be found.\n"
+"You can just return to the <a>start page</a> and,\n"
+"if this problem persists, contact us about it at tech@tradity.de."
+msgstr ""
+"Leider wurde die Seite nicht gefunden.\n"
+"Geh doch einfach zur <a>Startseite</a> zurück und, wenn dieses Problem "
+"wieder auftritt, wende dich an uns unter tech@tradity.de."
+
+#: app/templates/error.connection.html:5
+msgid ""
+"Unfortunately, we could not connect to the game server :(\n"
+"<br>\n"
+"We are (probably) already working on the problem, but if you want to, you "
+"can write us an encouraging message at tech@tradity."
+msgstr ""
+"Leider konnten wir keine Verbindung zum Gameserver aufbauen :(\n"
+"<br/>\n"
+"Wir arbeiten wahrscheinlich schon dran, du kannst uns aber gerne unter "
+"tech@tradity.de eine aufmunternde Nachricht schreiben."
 
 #: app/js/controllers/trade.js:121
 msgid ""
@@ -858,6 +915,10 @@ msgstr "Dein Depot"
 #: app/js/controllers/group.js:146 app/js/controllers/options.js:58
 msgid "Your profile picture file is too large (maximum 3&nbsp;MB)"
 msgstr "Die Profilbilddatei ist leider zu groß (höchstens 3&nbsp;MB)"
+
+#: app/js/controllers/main.js:153
+msgid "Your tradity client version is, unfortunately, no longer supported."
+msgstr "Deine Tradity-Client-Version wird leider nicht mehr unterstützt."
 
 #: app/js/controllers/options.js:152 app/js/controllers/registration.js:81
 msgid "Your user name contains invalid characters!"

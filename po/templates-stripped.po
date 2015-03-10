@@ -102,6 +102,10 @@ msgstr "Adresse"
 msgid "Birth date"
 msgstr "Geburtsdatum"
 
+#: app/templates/dialogs/error.html:12
+msgid "Close"
+msgstr "Schließen"
+
 #: app/templates/options.html:50
 msgid "Delayed order history"
 msgstr "Verzögerung deiner Orderhistorie"
@@ -127,7 +131,6 @@ msgid "Imprint"
 msgstr "Impressum"
 
 #: app/templates/options.html:132
-#, fuzzy
 msgid "Invite user"
 msgstr "Benutzer einladen"
 
@@ -155,9 +158,17 @@ msgstr "Navigation"
 msgid "News"
 msgstr "Neuigkeiten"
 
+#: app/templates/dialogs/confirm.html:13
+msgid "No"
+msgstr "Nein"
+
 #: app/templates/options.html:71
 msgid "No group"
 msgstr "Keine Gruppe"
+
+#: app/templates/dialogs/notify.html:12
+msgid "OK"
+msgstr "OK"
 
 #: app/templates/game.html:140
 msgid "Options"
@@ -178,6 +189,10 @@ msgstr "Passwort"
 #: app/templates/options.html:55
 msgid "Personal information"
 msgstr "Privates"
+
+#: app/templates/dialogs/wait.html:6
+msgid "Please wait"
+msgstr "Bitte Warten"
 
 #: app/templates/options.html:31
 msgid "Profile image"
@@ -219,8 +234,8 @@ msgstr "Tradity ist Open Source!"
 msgid "Username"
 msgstr "Benutzername"
 
-#: app/templates/options.html:51 app/templates/options.html:76
-#: app/templates/options.html:82
+#: app/templates/dialogs/confirm.html:12 app/templates/options.html:51
+#: app/templates/options.html:76 app/templates/options.html:82
 msgid "Yes"
 msgstr "Ja"
 
@@ -277,6 +292,10 @@ msgstr "Deine Gruppe"
 #: app/templates/game.html:108
 msgid "Your portfolio"
 msgstr "Dein Depot"
+
+#: app/templates/dialogs/wait.html:13
+msgid "{{progress}}&nbsp;% vollständig"
+msgstr "{{progress}}&nbsp;% completer"
 
 #~ msgid "Kurzbeschreibung"
 #~ msgstr "Short description"

@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('TradeDetailsCtrl', function($scope, $stateParams, DEFAULT_PROFILE_IMG, socket) {
+	controller('TradeDetailsCtrl', function($scope, $stateParams, DEFAULT_PROFILE_IMG, socket, gettext) {
 		$scope.getTradeInfo = function() {
 			socket.emit('get-trade-info', {
 				tradeid: $stateParams.tradeId,
@@ -13,7 +13,7 @@ angular.module('tradity').
 			},
 			function(data) {
 				if (data.code == 'get-trade-info-notfound') {
-					alert('Trade existiert nicht');
+					notification(gettext('Could not find this trade'));
 				} else if (data.code == 'get-trade-info-success') {
 					$scope.trade = data.trade;
 					$scope.trade.price = Math.abs($scope.trade.money / $scope.trade.amount);

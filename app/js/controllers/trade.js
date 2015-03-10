@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('TradeCtrl', function($scope, $stateParams, $state, $location, socket, dialogs) {
+	controller('TradeCtrl', function($scope, $stateParams, $state, $location, socket, gettext, gettextCatalog, dialogs) {
 		$scope.amount = null;
 		$scope.value = null;
 		$scope.stockid = null;
@@ -30,9 +30,13 @@ angular.module('tradity').
 			if (!$scope.amount)
 				return;
 			if (!$scope.leader && !$scope.stockid)
-				return dialogs.error('Du musst ein Wertpapier auswählen!');
+				return dialogs.error(gettext('You need to choose a stock!'));
 				
-			var dlg = dialogs.confirm('Trade', 'Willst du ' + $scope.amount + ' ' + ($scope.amount > 1 ? 'Aktien' : 'Aktie') + ' von ' + $scope.stockname + ' ' + ($scope.sellbuy >= 0 ? 'kaufen' : 'verkaufen') + '?');
+			var dlg = dialogs.confirm(gettext('Trade'),
+				gettextCatalog.getString('Do you want to trade {{amount}} of {{stockname}}?', {
+					stockname: $scope.stockname,
+					amount: gettextCatalog.getPlural($scope.amount, 'share', 'shares')
+				}));
 
 			dlg.result.then(function(btn) {
 				/*if ($scope.stockid == 'US38259P5089')  {
@@ -61,7 +65,7 @@ angular.module('tradity').
 				var qtype = 'stock-buy';
 				if ($scope.xtype != 'market') {
 					if ($scope.xvalue == null)
-						return dialogs.error('Bitte geben Sie den Stop-/Limitwert als Zahl an');
+						return dialogs.error(gettext('Please enter a numerical stop/limit value'));
 					var fieldname = ($scope.amount >= 0) ^ ($scope.sellbuy < 0) ? 'ask' : 'bid';
 					var compar = !(($scope.xtype == 'limit') ^ ($scope.amount >= 0) ^ ($scope.sellbuy < 0)) ? '<' : '>';
 					
@@ -83,41 +87,41 @@ angular.module('tradity').
 				socket.emit(qtype, query, function(data) {
 					switch (data.code) {
 						case 'dquery-success':
-							var modal = dialogs.notify('tradity', 'Der Trade wird ausgeführt, sobald die angegebenen Bedingungen erfüllt sind.');
+							var modal = dialogs.notify('tradity', gettext('The trade will be executed as soon as the given conditions are fulfilled.'));
 							modal.result.then(function(btn) {
 								$state.go('game.depot.transactions');
 							});
 							break;
 						case 'stock-buy-success':
-							var modal = dialogs.notify('tradity', 'Trade erfolgreich!');
+							var modal = dialogs.notify('tradity', gettext('Successfully traded!'));
 							modal.result.then(function(btn) {
 								$state.go('game.depot.listing');
 							});
 							break;
 						case 'stock-buy-email-not-verif':
-							dialogs.error('tradity', 'Deine E-Mail muss bestätigt sein, um Followertrades zu machen!');
+							dialogs.error('tradity', gettext('You need to provide a verified e-mail address in order to be eligible for follower trades!'));
 							break;
 						case 'stock-buy-out-of-money':
-							dialogs.error('tradity', 'Nicht genügend Geld zum Trade!');
+							dialogs.error('tradity', gettext('You do not have enough leftover money for this trade!'));
 							break;
 						case 'stock-buy-single-paper-share-exceed':
-							dialogs.error('tradity', 'Dein Vermögen darf höchstens zu 50 % in ein einzelnes Wertpapier investiert sein!');
+							dialogs.error('tradity', gettext('Only 50\u00a0% of your assets may consist of a single stock!'));
 							break;
 						case 'stock-buy-not-enough-stocks':
-							dialogs.error('tradity', 'Nicht genug Wertpapiere');
+							dialogs.error('tradity', gettext('Not enough stocks!'));
 							break;
 						case 'stock-buy-autodelay-sxnotopen':
-							var modal = dialogs.notify('tradity', 'Der Trade wird ausgeführt, sobald der Handelsplatz öffnet');
+							var modal = dialogs.notify('tradity', gettext('The trade will be executed when the stock exchange opens'));
 							modal.result.then(function(btn) {
 								$state.go('game.depot.transactions');
 							});
 							break;
 						case 'stock-buy-over-pieces-limit':
 
-							dialogs.error('tradity', 'Leider übersteigt dein Trade die handelbare Menge für dieses Wertpapier!');
+							dialogs.error('tradity', gettext('Unfortunately, your trade exceeds the maximum tradable amount of this stock'));
 							break;
 						case 'stock-buy-stock-not-found':
-							dialogs.error('tradity', 'Wertpapier existiert nicht');
+							dialogs.error('tradity', gettext('This stock could not be found!'));
 							break;
 					}
 				});

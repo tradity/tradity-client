@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('MainCtrl', function($sce, chat, ranking, $feed, $user, $rootScope, $scope, $location, $state, $stateParams, socket, safestorage, dailyLoginAchievements, $http, $interval, $timeout, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
+	controller('MainCtrl', function($sce, chat, ranking, $feed, $user, $rootScope, $scope, $location, $state, $stateParams, socket, safestorage, dailyLoginAchievements, $http, $interval, $timeout, gettext, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
 		$scope.Math = Math;
 		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
 
@@ -150,7 +150,7 @@ angular.module('tradity').
 				$scope.version = data.versionInfo;
 			
 			if (socket.protocolVersion() < $scope.version.minimum)
-				notification('Deine Tradity-Clientversion wird leider nicht mehr unterstützt!');
+				notification(gettext('Your tradity client version is, unfortunately, no longer supported.'));
 			
 			$scope.ownUserRanking = ranking.getRanking(null, $scope.serverConfig.ranking || {}, null, null, true);
 			$scope.ownUserRanking.onRankingUpdated(function() {
@@ -165,6 +165,6 @@ angular.module('tradity').
 		});
 		
 		socket.on('internal-server-error', function() {
-			alert('Es gab leider einen Fehler – das Tech-Team von Tradity wurde informiert!');
+			notification(gettext('There was a technical problem – the tech team of Tradity has been informed.');
 		});
 	});

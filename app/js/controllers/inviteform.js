@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('InviteFormCtrl', function($scope, socket) {
+	controller('InviteFormCtrl', function($scope, socket, gettext) {
 		socket.emit('create-invite-link', {
 			schoolid: $scope.schoolid ? $scope.schoolid : null
 		}, function(data) {
@@ -21,16 +21,16 @@ angular.module('tradity').
 				}, function(data) {
 					switch (data.code) {
 						case 'create-invite-link-invalid-email':
-							notification('E-Mail-Adresse ungültig');
+							notification(gettext('Invalid e-mail addresss'));
 							break;
 						case 'create-invite-link-not-verif':
-							notification('Eigene E-Mail-Adresse nicht bestätigt');
+							notification(gettext('You have not verified your e-mail address'));
 							break;
 						case 'create-invite-link-failed':
-							notification('Einladungslink konnte nicht verschickt werden');
+							notification(gettext('Could not send invitation link'));
 							break;
 						case 'create-invite-link-success':
-							notification('Einladungslink wurde verschickt');
+							notification(gettext('Invitation link was sent successfully'), true);
 							break;
 					}
 				});

@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs) {
+	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs, gettext) {
 		$scope.lang = 'de'; // dummy
 
 		socket.on('get-own-options', function(data) {
@@ -52,15 +52,15 @@ angular.module('tradity').
 		$scope.handlePublishCode = function(code) {
 			switch (code) {
 				case 'publish-success':
-					alert('Profilbild erfolgreich hochgeladen!');
+					notification(gettext('Profile picture was uploaded successfully!'), true);
 					break;
 				case 'publish-quota-exceed':
-					alert('Die Profilbilddatei ist leider zu groß (höchstens 3 MB)');
+					notification(gettext('Your profile picture file is too large (maximum 3\u00a0MB)'));
 					break;
 				case 'publish-proxy-not-allowed':
 				case 'publish-inacceptable-role':
 				case 'publish-inacceptable-mime':
-					alert('Es gab beim Hochladen Deines Profilbilds leider technische Schwierigkeiten.\nWende dich bitte an tech@tradity.de');
+					notification(gettext('There was a technical problem uploading your profile picture.\nPlease turn to tech@tradity.de'));
 					break;
 			}
 		};
@@ -77,7 +77,7 @@ angular.module('tradity').
 			if (!$scope.password)       $scope.password = null;
 			
 			if ($scope.password_check != $scope.password)
-				return notification('Die Passwörter stimmen nicht überein');
+				return notification(gettext('The entered passwords do not match'));
 			
 			$scope.schoolname = $scope.schoolname_none ? '' : document.getElementById('schoolname').value;
 			var d = Date.UTC($scope.birthdayy, $scope.birthdaym-1, $scope.birthdayd);
@@ -137,41 +137,42 @@ angular.module('tradity').
 			}, function(data) {
 				switch (data.code) {
 					case 'reg-email-already-present':
-						alert('Email bereits vorhanden');
+						notification(gettext('This e-mail address has already been taken'));
 						break;
 					case 'reg-name-already-present':
-						alert('Benutzername bereits vergeben');
+						notification(gettext('This user name has already been taken'));
 						break;
 					case 'reg-unknown-school':
-						alert('Unbekannte Schule');
+						notification(gettext('The entered school has not been found'));
 						break;
 					case 'reg-too-short-pw':
-						alert('Das Passwort ist zu kurz');
+						notification(gettext('Your password is too short!'));
 						break;
 					case 'reg-name-invalid-char':
-						alert('Der Benutzername enthält unerlaubte Zeichen');
+						notification(gettext('Your user name contains invalid characters!'));
 						break;
 					case 'invalid-provision':
-						alert('Ungültige Provision');
+						notification(gettext('The entered provision value is invalid'));
+						break;
 				}
 			});
 		};
 		
 		$scope.resetUser = function() {
-			var dlg = dialogs.confirm('Options', 'Willst du dich wirklich resetten?');
+			var dlg = dialogs.confirm(gettext('Options'), gettext('Are you sure you want to reset?'));
 			dlg.result.then(function(btn) {
 				socket.emit('reset-user', null, function(data) {
 					if (data.code == 'reset-user-success')
-						alert('Reset erfolgreich!');
+						notification(gettext('Sucessfully reset user'), true);
 				});
 			})
 		};
 		
 		socket.on('change-options', function(data) {
 			if (data.code == 'reg-success') {
-				alert('Optionen erfolgreich gespeichert');
+				notification(gettext('Sucessfully saved options'), true);
 			} else if (data.code == 'reg-email-failed') {
-				alert('Aktivierungsmail konnte nicht versandt werden. Bitte an tech@tradity.de wenden');
+				notification(gettext('Could not send verification e-mail. Please turn to tech@tradity.de'));
 			}
 		});
 		

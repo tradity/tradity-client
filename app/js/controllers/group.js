@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('GroupCtrl', function($scope, $sce, $state, $stateParams, DEFAULT_GROUP_BANNER, socket) {
+	controller('GroupCtrl', function($scope, $sce, $state, $stateParams, gettext, gettextCatalog, DEFAULT_GROUP_BANNER, socket) {
 		$scope.school = { pendingMembers: [] };
 		$scope.selfIsSchoolAdmin = false;
 		$scope.selfIsSchoolMember = false;
@@ -85,7 +85,7 @@ angular.module('tradity').
 						if (/success$/.test(data.code)) 
 							$state.go('game.groupOverview');
 					});
-					notification("Gruppe verlassen");
+					notification(gettext('Left group'), true);
 					$scope.selfIsSchoolMember = false;
 					$scope.selfIsSchoolAdmin = false;
 				});
@@ -96,7 +96,7 @@ angular.module('tradity').
 			socket.emit('school-delete-comment', {
 				schoolid: $scope.schoolid,
 				commentid: comment.commentid
-			}, function() { alert('Ok!'); });
+			}, function() { notification(gettext('Ok!'), true); });
 		};
 
 		$scope.kickUser = function(user) {
@@ -107,7 +107,7 @@ angular.module('tradity').
 				schoolid: user.school,
 				uid: user.uid
 			}, function() {
-				alert('Ok!');
+				notification(gettext('Ok!'), true);
 			});
 		};
 
@@ -120,7 +120,7 @@ angular.module('tradity').
 				uid: user.uid,
 				status: 'admin'
 			}, function() {
-				alert('Ok!');
+				notification(gettext('Ok!'), true);
 			});
 		};
 
@@ -140,14 +140,14 @@ angular.module('tradity').
 				}, $scope.serverConfig, function(code) {
 					switch (code) {
 						case 'publish-success':
-							alert('Profilbild erfolgreich hochgeladen!');
+							notification(gettext('Sucessfully uploaded profile picture!'), true);
 							break;
 						case 'publish-quota-exceed':
-							alert('Die Profilbilddatei ist leider zu groß (höchstens 3 MB)');
+							notification(gettext('Your profile picture file is too large (maximum 3\u00a0MB)'));
 							break;
 						case 'publish-inacceptable-role':
 						case 'publish-inacceptable-mime':
-							alert('Es gab beim Hochladen Deines Profilbilds leider technische Schwierigkeiten.\nWende dich bitte an tech@tradity.de');
+							notification(gettext('There was a technical problem uploading your profile picture.\nPlease turn to tech@tradity.de'));
 							break;
 					}
 				});
@@ -157,7 +157,7 @@ angular.module('tradity').
 				schoolid: $scope.schoolid,
 				descpage: $scope.descpage
 			}, function() {
-				alert('Ok!');
+				notification(gettext('Ok!'), true);
 			});
 		};
 
@@ -167,7 +167,7 @@ angular.module('tradity').
 				uid: user.uid,
 				status: 'member'
 			}, function() {
-				alert('Ok!');
+				notification(gettext('Ok!'), true);
 			});
 		};
 
@@ -184,9 +184,9 @@ angular.module('tradity').
 				schoolpath: $scope.school.path + '/' + n.replace(/[^\w_-]/g, '-').replace(/-+/g, '-'),
 			}).then(function(data) {
 				if (data.code == 'create-school-success')
-					alert('Ok!');
+					notification(gettext('Ok!'), true);
 				else
-					alert('Fehler: ' + data.code);
+					notification(gettextCatalog.getString('Error: {{code}}', data));
 			});
 		};
 	});

@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('DepotCtrl', function($scope, $rootScope, socket) {
+	controller('DepotCtrl', function($scope, $rootScope, socket, gettext, gettextCatalog) {
 		var ownDepotOrUser = function() {
 			if (!$scope.ownUser)
 				return;
@@ -85,7 +85,7 @@ angular.module('tradity').
 				if (data.code == 'dquery-remove-success') {
 					socket.emit('dquery-list');
 				} else if (data.code == 'dquery-remove-notfound') {
-					alert('Order nicht gefunden. Möglicherweise wurde sie bereits ausgeführt.');
+					notification(gettext('Order not found. Possibly it has already been executed?'));
 				}
 			});
 		};
@@ -106,7 +106,9 @@ angular.module('tradity').
 			},
 			function(data) {
 				if (data.code == 'watchlist-remove-success') {
-					alert(entry.stockname + ' von der Watchlist entfernt');
+					notification(gettextCatalog.getString('{{stockname}} removed from the watchlist', {
+						stockname: entry.stockname
+					}), true);
 					$scope.showWatchlist(true);
 				}
 			});

@@ -165,6 +165,6 @@ angular.module('tradity').
 		});
 		
 		socket.on('internal-server-error', function() {
-			notification(gettext('There was a technical problem – the tech team of Tradity has been informed.');
+			notification(gettext('There was a technical problem – the tech team of Tradity has been informed.'));
 		});
 	});

@@ -18,7 +18,8 @@ msgstr ""
 msgid "# Followers"
 msgstr "Followerzahl"
 
-#: app/templates/depot.transactionlog.html:29
+#: app/templates/depot.transactionlog.html:29 app/templates/trade.html:59
+#: app/templates/tradeDetails.html:21
 msgid "# shares"
 msgstr "# Anteile"
 
@@ -66,6 +67,10 @@ msgstr "<input value=\"Benutzer zurücksetzen\" id=\"options-reset\">"
 msgid "<input value=\"Use Gravatar\">"
 msgstr "<input value=\"Gravatar verwenden\">"
 
+#: app/templates/trade.html:62
+msgid "<input placeholder=\"Amount\" id=\"amount\">"
+msgstr "<input placeholder=\"Menge\" id=\"amount\">"
+
 #: app/templates/options.html:115
 msgid "<input placeholder=\"Day\" id=\"birthdayd\">"
 msgstr "<input placeholder=\"Tag\" id=\"birthdayd\">"
@@ -78,13 +83,17 @@ msgstr "<input placeholder=\"Monat\" id=\"birthdaym\">"
 msgid "<input placeholder=\"Year\" id=\"birthdayy\">"
 msgstr "<input placeholder=\"Jahr\" id=\"birthdayy\">"
 
-#: app/templates/profile.pinboard.html:9
+#: app/templates/profile.pinboard.html:9 app/templates/tradeDetails.html:44
 msgid "<input value=\"Send comment\">"
 msgstr "<input value=\"Kommentieren\">"
 
 #: app/templates/chat.html:7
 msgid "<input value=\"Send\">"
 msgstr "<input value=\"Senden\">"
+
+#: app/templates/trade.html:104
+msgid "<input value=\"Perform trade\">"
+msgstr "<input value=\"Trade durchführen\">"
 
 #: app/templates/options.html:139
 msgid "<input value=\"Save\" id=\"options-sb\">"
@@ -106,6 +115,10 @@ msgstr "<input placeholder=\"Vorname\" id=\"giv_name\">"
 msgid "<input placeholder=\"Klasse\" id=\"schoolclass\">"
 msgstr "<input placeholder=\"Class\" id=\"schoolclass\">"
 
+#: app/templates/trade.html:13
+msgid "<input id=\"paper\" placeholder=\"Stock name\">"
+msgstr "<input id=\"paper\" placeholder=\"Wertpapiername\">"
+
 #: app/templates/options.html:107
 msgid "<input placeholder=\"Street\" id=\"street\">"
 msgstr "<input placeholder=\"Straße, Hausnr.\" id=\"street\">"
@@ -114,9 +127,32 @@ msgstr "<input placeholder=\"Straße, Hausnr.\" id=\"street\">"
 msgid "<input placeholder=\"City\" id=\"town\">"
 msgstr "<input placeholder=\"Stadt\" id=\"town\">"
 
+#: app/templates/trade.html:69
+msgid "<input placeholder=\"Buy price\" id=\"value\">"
+msgstr "<input placeholder=\"Kaufpreis\" id=\"value\">"
+
+#: app/templates/trade.html:95
+msgid "<input placeholder=\"Stop/limit price\" id=\"limit-stop\">"
+msgstr "<input placeholder=\"Stop-/Limit-Wert\" id=\"limit-stop\">"
+
 #: app/templates/options.html:108
 msgid "<input placeholder=\"Zip code\" id=\"zipcode\">"
 msgstr "<input placeholder=\"PLZ\" id=\"zipcode\">"
+
+#: app/templates/trade.html:45
+msgid ""
+"<span data-info=\"You can only trade the number of shares which were also "
+"traded in reality at the stock exchange. For example, if today only 1000 "
+"shares have been traded, you can sell or buy at most 1000 shares yourself. "
+"Notice that “penny stocks” often have significantly reduced liquidity.\"></"
+"span> Tradable amount"
+msgstr ""
+"<span data-info=\"Du kannst nur so viele Aktien kaufen, wie auch in der "
+"Realität an der Börse gehandelt wurden. Wurden an Tag X zum Beispiel nur "
+"1000 Stück der Aktie gehandelt, die du kaufen oder verkaufen willst, kannst "
+"du an diesem Tag maximal je 1000 Stück kaufen und verkaufen. Achte vor allem "
+"bei sogennanten „Pennystocks“ auf die Liquidität, da diese oft sehr gering "
+"ist.\"></span> Handelbare Stückzahl"
 
 #: app/templates/depot.transactionlog.html:26
 msgid "<span title=\"High Water Mark\">HWM</span>"
@@ -142,6 +178,10 @@ msgstr ""
 msgid "<textarea placeholder=\"Message\"></textarea>"
 msgstr "<textarea placeholder=\"Nachricht\"></textarea>"
 
+#: app/templates/tradeDetails.html:40
+msgid "<textarea placeholder=\"Comment on this trade\"></textarea>"
+msgstr "<textarea placeholder=\"Was sagst du zu diesem Trade?\"></textarea>"
+
 #: app/templates/options.html:129
 msgid "<textarea id=\"desc\" placeholder=\"Tell us about you\"></textarea>"
 msgstr ""
@@ -151,6 +191,22 @@ msgstr ""
 #: app/templates/profile.pinboard.html:7
 msgid "<textarea placeholder=\"Comment on this trader\"></textarea>"
 msgstr "<textarea placeholder=\"Was sagst du zu diesem Trader?\"></textarea>"
+
+#: app/templates/trade.html:33
+msgid ""
+"Ask price\n"
+"{{cur.ask / 10000 | number:3}}&nbsp;€"
+msgstr ""
+"Verkaufs&#xad;preis\n"
+"{{cur.ask / 10000 | number:3}}&nbsp;€"
+
+#: app/templates/trade.html:37
+msgid ""
+"Bid price\n"
+"{{cur.bid / 10000 | number:3}}&nbsp;€"
+msgstr ""
+"Kaufs&#xad;preis\n"
+"{{cur.ask / 10000 | number:3}}&nbsp;€"
 
 #: app/templates/depot.overview.html:18 app/templates/game.html:19
 msgid "Account"
@@ -177,7 +233,7 @@ msgstr "seit Beginn"
 #: app/templates/depot.transactionlog.html:24
 #: app/templates/depot.transactions.html:21
 #: app/templates/depot.transactions.html:56
-#: app/templates/profile.history.html:20
+#: app/templates/profile.history.html:20 app/templates/trade.html:55
 msgid "Amount"
 msgstr "Menge"
 
@@ -206,6 +262,10 @@ msgstr "Sei an %1 aufeinanderfolgenden Tagen angemeldet."
 msgid "Be part of the world’s first <b>Social Trading Stock Trading Game</b>"
 msgstr "Sei Teil des ersten <b>Social Trading Börsenspiels</b> der Welt"
 
+#: app/templates/search.html:61
+msgid "Bid price"
+msgstr "Bidpreis"
+
 #: app/templates/depot.transactionlog.html:28
 msgid "Bid­ price"
 msgstr "Bidpreis"
@@ -213,6 +273,10 @@ msgstr "Bidpreis"
 #: app/templates/options.html:113
 msgid "Birth date"
 msgstr "Geburtsdatum"
+
+#: app/templates/trade.html:81
+msgid "Buy"
+msgstr "Kaufen"
 
 #: app/js/services/achievements.js:23
 msgid "Buy and sell shares 10&nbsp;days apart."
@@ -229,6 +293,10 @@ msgstr "Bidpreis"
 #: app/js/services/achievements.js:24
 msgid "Buy shares of a stock which already is in your depot."
 msgstr "Kaufe ein Wertpapier, das du bereits im Depot hast."
+
+#: app/templates/trade.html:66
+msgid "Buy/Sell price"
+msgstr "Kaufs-/Verkaufspreis"
 
 #: app/js/services/achievements.js:35
 msgid "Change your gain provision."
@@ -287,6 +355,7 @@ msgstr "Aktuell"
 #: app/templates/depot.transactions.html:18
 #: app/templates/depot.transactions.html:55
 #: app/templates/depot.watchlist.html:25 app/templates/profile.history.html:19
+#: app/templates/tradeDetails.html:19
 msgid "Date"
 msgstr "Datum"
 
@@ -294,13 +363,17 @@ msgstr "Datum"
 msgid "Delayed order history"
 msgstr "Verzögerung deiner Orderhistorie"
 
-#: app/templates/profile.pinboard.html:24
+#: app/templates/profile.pinboard.html:24 app/templates/tradeDetails.html:56
 msgid "Delete"
 msgstr "Löschen"
 
 #: app/templates/depot.overview.html:25
 msgid "Depot"
 msgstr "Depot"
+
+#: app/templates/trade.html:79
+msgid "Do you want to buy or sell the chosen stock?"
+msgstr "Möchtest du kaufen oder verkaufen?"
 
 #: app/templates/options.html:81
 msgid "Do you want to receive achievements for daily activity?"
@@ -314,7 +387,7 @@ msgstr "Möchtest du {{amount}} von {{stockname}} handeln?"
 msgid "E-mail address"
 msgstr "E-Mail-Adresse"
 
-#: app/templates/profile.pinboard.html:23
+#: app/templates/profile.pinboard.html:23 app/templates/tradeDetails.html:55
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -335,6 +408,14 @@ msgstr "Vorname"
 msgid "Following statistics"
 msgstr "Followerstatistik"
 
+#: app/templates/trade.html:98
+msgid "Force trade"
+msgstr "Erzwingen"
+
+#: app/templates/trade.html:42
+msgid "Gain provision"
+msgstr "Gewinn&#xad;provision"
+
 #: app/templates/options.html:40
 msgid "Game"
 msgstr "Spiel"
@@ -343,9 +424,17 @@ msgstr "Spiel"
 msgid "Green investments"
 msgstr "Grüne Geldanlage"
 
+#: app/templates/search.html:31
+msgid "Groups"
+msgstr "Gruppen"
+
 #: app/templates/depot.html:9 app/templates/depot.listing.html:6
 msgid "Held shares"
 msgstr "Wertpapiere in Besitz"
+
+#: app/templates/trade.html:44
+msgid "ISIN"
+msgstr "ISIN"
 
 #: app/templates/game.html:156
 msgid "Imprint"
@@ -395,13 +484,33 @@ msgstr "Gruppe verlassen"
 msgid "Lessons"
 msgstr "Lektionen"
 
+#: app/templates/trade.html:90
+msgid "Limit"
+msgstr "Limit"
+
+#: app/templates/trade.html:24
+msgid "List less stocks"
+msgstr "Weniger Wertpapiere"
+
+#: app/templates/trade.html:23
+msgid "List more stocks"
+msgstr "Mehr Wertpapiere"
+
 #: app/templates/game.html:169
 msgid "Loading"
 msgstr "Laden…"
 
+#: app/templates/trade.html:43
+msgid "Loss provision"
+msgstr "Verlust&#xad;provision"
+
 #: app/js/services/achievements.js:40
 msgid "Low interest rates"
 msgstr "Niedrigzinsen"
+
+#: app/templates/trade.html:89
+msgid "Market"
+msgstr "Market"
 
 #: app/templates/depot.transactions.html:19
 msgid "Market/Stop/Limit"
@@ -411,10 +520,22 @@ msgstr "Market/Stop/Limit"
 msgid "May your name be published?"
 msgstr "Soll dein Klarname veröffentlich werden?"
 
+#: app/templates/search.html:40
+msgid "Members"
+msgstr "Mitglieder"
+
+#: app/templates/trade.html:18
+msgid "Most popular stocks"
+msgstr "Top-Wertpapiere"
+
 #: app/templates/depot.listing.html:28
 #: app/templates/depot.transactions.html:17
 #: app/templates/depot.transactions.html:54
 #: app/templates/depot.watchlist.html:24 app/templates/profile.history.html:18
+#: app/templates/search.html:16 app/templates/search.html:39
+#: app/templates/search.html:60 app/templates/trade.html:12
+#: app/templates/trade.html:31 app/templates/trade.html:32
+#: app/templates/tradeDetails.html:18
 msgid "Name"
 msgstr "Name"
 
@@ -450,6 +571,10 @@ msgstr "Nicht genug Wertpapiere!"
 msgid "OK"
 msgstr "OK"
 
+#: app/templates/trade.html:86
+msgid "Of which type is your order?"
+msgstr "Welchen Ordertyp soll deine Transaktion haben?"
+
 #: app/js/controllers/comment.js:14 app/js/controllers/comment.js:22
 #: app/js/controllers/feedblogs.js:33 app/js/controllers/feedblogs.js:44
 #: app/js/controllers/feedblogs.js:55 app/js/controllers/group.js:110
@@ -481,6 +606,10 @@ msgstr "Orderhistorie"
 #: app/js/controllers/depot.js:88
 msgid "Order not found. Possibly it has already been executed?"
 msgstr "Order nicht gefunden. Möglicherweise wurde sie bereits ausgeführt."
+
+#: app/templates/trade.html:85
+msgid "Order type"
+msgstr "Ordertyp"
 
 #: app/templates/options.html:69
 msgid "Organization / School"
@@ -571,6 +700,7 @@ msgstr "Bitte Warten"
 #: app/templates/depot.listing.html:23
 #: app/templates/depot.transactions.html:57
 #: app/templates/depot.watchlist.html:19 app/templates/profile.history.html:21
+#: app/templates/tradeDetails.html:22
 msgid "Price"
 msgstr "Preis"
 
@@ -610,9 +740,17 @@ msgstr "Entfernen"
 msgid "Repeat password"
 msgstr "Passwort wiederholen"
 
+#: app/templates/trade.html:82
+msgid "Sell"
+msgstr "Verkaufen"
+
 #: app/js/services/achievements.js:25
 msgid "Sell only a part of the shares of a stock in your depot."
 msgstr "Verkaufe nur einen Teil eines Wertpapieres aus deinem Depot."
+
+#: app/templates/search.html:62
+msgid "Sell price"
+msgstr "Verkaufspreis"
 
 #: app/templates/options.html:128 app/templates/profile.overview.html:22
 msgid "Short description"
@@ -626,9 +764,22 @@ msgstr "Sorry, etwas ging hier schief."
 msgid "Start value"
 msgstr "Startwert"
 
-#: app/templates/depot.transactionlog.html:18
+#: app/templates/depot.transactionlog.html:18 app/templates/trade.html:78
+#: app/templates/trade.html:8
 msgid "Stock"
 msgstr "Wertpapier"
+
+#: app/templates/trade.html:46
+msgid "Stock information"
+msgstr "Wertpapier&#xad;informationen"
+
+#: app/templates/search.html:50
+msgid "Stocks"
+msgstr "Wertpapiere"
+
+#: app/templates/trade.html:91
+msgid "Stop"
+msgstr "Stop"
 
 #: app/templates/depot.transactions.html:20
 msgid "Stop/Limit value"
@@ -727,9 +878,13 @@ msgid "Total"
 msgstr "Gesamt"
 
 #: app/templates/depot.overview.html:5 app/templates/game.html:25
-#: app/templates/profile.overview.html:12
+#: app/templates/profile.overview.html:12 app/templates/search.html:18
 msgid "Total assets"
 msgstr "Gesamtvermögen"
+
+#: app/templates/search.html:63
+msgid "Tradable amount"
+msgstr "Handelbare Menge"
 
 #: app/js/controllers/trade.js:35 app/templates/depot.listing.html:36
 #: app/templates/game.html:114
@@ -742,8 +897,12 @@ msgid ""
 "“Z”"
 msgstr "Handle ein Wertpapier, das mit „A“ und eines, das mit „Z“ beginnt."
 
+#: app/templates/tradeDetails.html:6
+msgid "Trade details"
+msgstr "Trade-Details"
+
 #: app/templates/depot.transactions.html:59
-#: app/templates/profile.history.html:23
+#: app/templates/profile.history.html:23 app/templates/tradeDetails.html:20
 msgid "Trade total"
 msgstr "Bilanz"
 
@@ -752,7 +911,8 @@ msgid "Tradity is Open Source!"
 msgstr "Tradity ist Open Source!"
 
 #: app/templates/depot.transactions.html:58
-#: app/templates/profile.history.html:22
+#: app/templates/profile.history.html:22 app/templates/trade.html:73
+#: app/templates/tradeDetails.html:23
 msgid "Transaction fees"
 msgstr "Transaktionsgebühren"
 
@@ -804,6 +964,10 @@ msgstr "Benutzer nicht gefunden. Hier läuft etwas falsch"
 msgid "Username"
 msgstr "Benutzername"
 
+#: app/templates/search.html:6
+msgid "Users"
+msgstr "Benutzer"
+
 #: app/templates/depot.listing.html:30
 msgid "Value"
 msgstr "Wert"
@@ -816,6 +980,10 @@ msgstr "Woche"
 #: app/js/controllers/registration.js:53
 msgid "Welcome to Tradity!"
 msgstr "Willkommen bei Tradity!"
+
+#: app/templates/trade.html:94
+msgid "What is the stop/limit price?"
+msgstr "Wo soll der Stop-/Limitwert liegen?"
 
 #: app/js/services/achievements.js:30
 msgid "Write %1&nbsp;comments in %2&nbsp;different feeds."
@@ -936,7 +1104,7 @@ msgstr "Der Benutzername enthält unerlaubte Zeichen!"
 msgid "invest"
 msgstr "Investieren"
 
-#: app/templates/profile.overview.html:89
+#: app/templates/profile.overview.html:89 app/templates/search.html:17
 msgid "received Provision"
 msgstr "erh. Provision"
 
@@ -958,6 +1126,9 @@ msgstr "{{progress}}&nbsp;% completer"
 #: app/js/controllers/depot.js:109
 msgid "{{stockname}} removed from the watchlist"
 msgstr "{{stockname}} von der Watchlist entfernt"
+
+#~ msgid "<span></span> Tradable amount"
+#~ msgstr "<span></span> Tradable amount"
 
 #~ msgid "Perform %1&nbsp;follower trades (invest into another user)."
 #~ msgstr "Führe %1&nbsp;Followertrades aus."

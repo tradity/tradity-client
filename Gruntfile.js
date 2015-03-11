@@ -475,9 +475,26 @@ module.exports = function (grunt) {
 		this.files.forEach(function(file) {
 			var pot = pofile.parse(grunt.file.read(file.src));
 			var rm = new remarkup.ReMarkup();
+			var knownMsgids = {};
 			
-			for (var i = 0; i < pot.items.length; ++i)
+			for (var i = 0; i < pot.items.length; ++i) {
 				pot.items[i].msgid = rm.unMarkup(stripTabs(pot.items[i].msgid));
+				
+				// remove duplicates
+				var prevItem = knownMsgids[pot.items[i].msgid];
+				if (prevItem) {
+					// merge with previous message
+					prevItem.references = prevItem.references.concat(pot.items[i].references);
+					prevItem.comments = prevItem.comments.concat(pot.items[i].comments);
+					prevItem.extractedComments = prevItem.extractedComments.concat(pot.items[i].extractedComments);
+					prevItem.obsolete = prevItem.obsolete && pot.items[i].obsolete;
+					prevItem.msgctxt = prevItem.msgctxt || pot.items[i].msgctxt;
+					prevItem.msgid_plural = prevItem.msgid_plural || pot.items[i].msgid_plural;
+					delete pot.items[i];
+				} else {
+					knownMsgids[pot.items[i].msgid] = pot.items[i];
+				}
+			}
 			
 			grunt.file.write(file.dest, pot.toString());
 		});

@@ -151,19 +151,19 @@
 					<span ng-show="message.wprovchanged && !message.lprovchanged" translate>
 						<a ui-sref="game.profile.overview({userId: message.srcusername})" class="feed-link">
 							{{message.srcusername}}
-						</a> has changed their gain provision from {{message.oldwprov}}&nbsp;% to {{message.newwprov}}&nbsp;%.
+						</a> has changed their commission on profits from {{message.oldwprov}}&nbsp;% to {{message.newwprov}}&nbsp;%.
 					</span>
 					<span ng-show="message.lprovchanged && !message.wprovchanged" translate>
 						<a ui-sref="game.profile.overview({userId: message.srcusername})" class="feed-link">
 							{{message.srcusername}}
-						</a> has changed their loss provision from {{message.oldlprov}}&nbsp;% to {{message.newlprov}}&nbsp;%.
+						</a> has changed their commission on losses from {{message.oldlprov}}&nbsp;% to {{message.newlprov}}&nbsp;%.
 					</span>
 					<span ng-show="message.bothchanged" translate>
 						<a ui-sref="game.profile.overview({userId: message.srcusername})" class="feed-link">
 							{{message.srcusername}}
 						</a> has changed
-						their gain provision from {{message.oldwprov}}&nbsp;% to {{message.newwprov}}&nbsp;% and
-						their loss provision from {{message.oldlprov}}&nbsp;% to {{message.newlprov}}&nbsp;%.
+						their commission on profits from {{message.oldwprov}}&nbsp;% to {{message.newwprov}}&nbsp;% and
+						their commission on losses from {{message.oldlprov}}&nbsp;% to {{message.newlprov}}&nbsp;%.
 					</span>
 				</div>
 			</div>
@@ -173,14 +173,14 @@
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'short'}}">{{vtime(message.time)}}</span>
 					<div>
 					<span ng-show="message.wprovchanged && !message.lprovchanged" translate>
-						You have changed your gain provision from {{message.oldwprov}}&nbsp;% to {{message.newwprov}}&nbsp;%.
+						You have changed your commission on profits from {{message.oldwprov}}&nbsp;% to {{message.newwprov}}&nbsp;%.
 					</span>
 					<span ng-show="message.lprovchanged && !message.wprovchanged" translate>
-						You have changed your loss provision from {{message.oldlprov}}&nbsp;% to {{message.newlprov}}&nbsp;%.
+						You have changed your commission on losses from {{message.oldlprov}}&nbsp;% to {{message.newlprov}}&nbsp;%.
 					</span>
 					<span ng-show="message.bothchanged" translate>
-						You have changed your gain provision from {{message.oldwprov}}&nbsp;% to {{message.newwprov}}&nbsp;% and
-						your loss provision from {{message.oldlprov}}&nbsp;% to {{message.newlprov}}&nbsp;%.
+						You have changed your commission on profits from {{message.oldwprov}}&nbsp;% to {{message.newwprov}}&nbsp;% and
+						your commission on losses from {{message.oldlprov}}&nbsp;% to {{message.newlprov}}&nbsp;%.
 					</span>
 					</div>
 				</div>

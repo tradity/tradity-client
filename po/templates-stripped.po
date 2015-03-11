@@ -24,6 +24,10 @@ msgstr "Follower&#xad;zahl"
 msgid "# shares"
 msgstr "# Anteile"
 
+#: app/templates/ranking.html:56
+msgid "(Commissions)"
+msgstr "(Provision)"
+
 #: app/templates/options.html:84
 msgid "(Less information)"
 msgstr "(Ausblenden)"
@@ -31,10 +35,6 @@ msgstr "(Ausblenden)"
 #: app/templates/options.html:83
 msgid "(More information)"
 msgstr "Mehr Informationen"
-
-#: app/templates/ranking.html:56
-msgid "(Provision)"
-msgstr "(Provision)"
 
 #: app/templates/inviteform.html:12
 msgid "(Right click + “Copy link”)"
@@ -175,10 +175,10 @@ msgid ""
 "<a>\n"
 "{{message.srcusername}}\n"
 "</a> has changed\n"
-"their gain provision from {{message.oldwprov}}&nbsp;% to {{message.newwprov}}"
-"&nbsp;% and\n"
-"their loss provision from {{message.oldlprov}}&nbsp;% to {{message.newlprov}}"
-"&nbsp;%."
+"their commission on profits from {{message.oldwprov}}&nbsp;% to {{message."
+"newwprov}}&nbsp;% and\n"
+"their commission on losses from {{message.oldlprov}}&nbsp;% to {{message."
+"newlprov}}&nbsp;%."
 msgstr ""
 "<a>\n"
 "{{message.srcusername}}\n"
@@ -188,29 +188,29 @@ msgstr ""
 "die eigene Verlustprovision von {{message.oldlprov}}&nbsp;% auf {{message."
 "newlprov}}&nbsp;%."
 
-#: app/templates/feed.html:151
-msgid ""
-"<a>\n"
-"{{message.srcusername}}\n"
-"</a> has changed their gain provision from {{message.oldwprov}}&nbsp;% to "
-"{{message.newwprov}}&nbsp;%."
-msgstr ""
-"<a>\n"
-"{{message.srcusername}}\n"
-"</a> hat die eigene Gewinnprovision von {{message.oldwprov}}&nbsp;% auf "
-"{{message.newwprov}}&nbsp;% geändert."
-
 #: app/templates/feed.html:156
 msgid ""
 "<a>\n"
 "{{message.srcusername}}\n"
-"</a> has changed their loss provision from {{message.oldlprov}}&nbsp;% to "
-"{{message.newlprov}}&nbsp;%."
+"</a> has changed their commission on losses from {{message.oldlprov}}&nbsp;% "
+"to {{message.newlprov}}&nbsp;%."
 msgstr ""
 "<a>\n"
 "{{message.srcusername}}\n"
 "</a> hat die eigene Verlustprovision von {{message.oldlprov}}&nbsp;% auf "
 "{{message.newlprov}}&nbsp;%."
+
+#: app/templates/feed.html:151
+msgid ""
+"<a>\n"
+"{{message.srcusername}}\n"
+"</a> has changed their commission on profits from {{message.oldwprov}}&nbsp;"
+"% to {{message.newwprov}}&nbsp;%."
+msgstr ""
+"<a>\n"
+"{{message.srcusername}}\n"
+"</a> hat die eigene Gewinnprovision von {{message.oldwprov}}&nbsp;% auf "
+"{{message.newwprov}}&nbsp;% geändert."
 
 #: app/templates/feed.html:213
 msgid ""
@@ -401,9 +401,9 @@ msgstr "<span title=\"Low Water Mark\">LWM</span>"
 
 #: app/templates/depot.listing.html:40
 msgid ""
-"<span tooltip=\"Gain provision: {{result.wprov_sum / 10000 | number:2}}&nbsp;"
-"€ \n"
-" Loss provision: {{result.lprov_sum / 10000 | number:2}}&nbsp;€"
+"<span tooltip=\"Commission on profits: {{result.wprov_sum / 10000 | "
+"number:2}}&nbsp;€ \n"
+" Commission on losses: {{result.lprov_sum / 10000 | number:2}}&nbsp;€"
 "\"><a>{{result.stockname}}</a></span>"
 msgstr ""
 "<span tooltip=\"Gewinnprovision: {{result.wprov_sum / 10000 | number:2}}"
@@ -607,6 +607,18 @@ msgstr ""
 msgid "Comment event was not found!"
 msgstr "Konnte kein Kommentarevent finden!"
 
+#: app/templates/trade.html:43
+msgid "Commission on losses"
+msgstr "Verlustprovision"
+
+#: app/templates/trade.html:42
+msgid "Commission on profits"
+msgstr "Gewinnprovision"
+
+#: app/templates/profile.overview.html:16
+msgid "Commissions"
+msgstr "Provision"
+
 #: app/templates/feed.html:290 app/templates/group.pinboard.html:47
 msgid "Continue reading…"
 msgstr "Weiterlesen…"
@@ -720,10 +732,6 @@ msgstr "Passwort vergessen?"
 #: app/templates/ranking.html:59
 msgid "Full name"
 msgstr "Voller Name"
-
-#: app/templates/trade.html:42
-msgid "Gain provision"
-msgstr "Gewinn&#xad;provision"
 
 #: app/templates/options.html:40
 msgid "Game"
@@ -881,10 +889,6 @@ msgstr "Laden…"
 #: app/templates/index.html:11 app/templates/login.html:24
 msgid "Login"
 msgstr "Login"
-
-#: app/templates/trade.html:43
-msgid "Loss provision"
-msgstr "Verlust&#xad;provision"
 
 #: app/js/services/achievements.js:40
 msgid "Low interest rates"
@@ -1129,10 +1133,6 @@ msgstr "Profilbild"
 msgid "Profile picture was uploaded successfully!"
 msgstr "Profilbild erfolgreich hochgeladen!"
 
-#: app/templates/profile.overview.html:16
-msgid "Provision"
-msgstr "Provision"
-
 #: app/templates/learning.questions.html:4
 msgid "Questions"
 msgstr "Fragen"
@@ -1148,6 +1148,10 @@ msgstr "Rangliste"
 #: app/templates/depot.transactionlog.html:25
 msgid "Reason"
 msgstr "Anlass"
+
+#: app/templates/profile.overview.html:89 app/templates/search.html:17
+msgid "Received commissions"
+msgstr "erh. Provision"
 
 #: app/templates/index.html:10 app/templates/registration.html:87
 msgid "Register"
@@ -1551,12 +1555,20 @@ msgstr ""
 "<span>{{message.stockname}}</span> <a translate-id=\"trade-link\">verkauft</"
 "a>."
 
+#: app/templates/feed.html:178
+msgid ""
+"You have changed your commission on losses from {{message.oldlprov}}&nbsp;% "
+"to {{message.newlprov}}&nbsp;%."
+msgstr ""
+"Du hast deine Verlustprovision von {{message.oldlprov}}&nbsp;% auf {{message."
+"newlprov}}&nbsp;% geändert."
+
 #: app/templates/feed.html:181
 msgid ""
-"You have changed your gain provision from {{message.oldwprov}}&nbsp;% to "
-"{{message.newwprov}}&nbsp;% and\n"
-"your loss provision from {{message.oldlprov}}&nbsp;% to {{message.newlprov}}"
-"&nbsp;%."
+"You have changed your commission on profits from {{message.oldwprov}}&nbsp;% "
+"to {{message.newwprov}}&nbsp;% and\n"
+"your commission on losses from {{message.oldlprov}}&nbsp;% to {{message."
+"newlprov}}&nbsp;%."
 msgstr ""
 "Du hast deine Gewinnprovision von {{message.oldwprov}}&nbsp;% auf {{message."
 "newwprov}}&nbsp;% unddeine Verlustprovision von {{message.oldlprov}}&nbsp;% "
@@ -1564,19 +1576,11 @@ msgstr ""
 
 #: app/templates/feed.html:175
 msgid ""
-"You have changed your gain provision from {{message.oldwprov}}&nbsp;% to "
-"{{message.newwprov}}&nbsp;%."
+"You have changed your commission on profits from {{message.oldwprov}}&nbsp;% "
+"to {{message.newwprov}}&nbsp;%."
 msgstr ""
 "Du hast deine Gewinnprovision von {{message.oldwprov}}&nbsp;% auf {{message."
 "newwprov}}&nbsp;% geändert."
-
-#: app/templates/feed.html:178
-msgid ""
-"You have changed your loss provision from {{message.oldlprov}}&nbsp;% to "
-"{{message.newlprov}}&nbsp;%."
-msgstr ""
-"Du hast deine Verlustprovision von {{message.oldlprov}}&nbsp;% auf {{message."
-"newlprov}}&nbsp;% geändert."
 
 #: app/templates/feed.html:204
 msgid ""
@@ -1662,10 +1666,6 @@ msgstr "Investieren"
 msgid "pinboard"
 msgstr "Pinnwand"
 
-#: app/templates/profile.overview.html:89 app/templates/search.html:17
-msgid "received Provision"
-msgstr "erh. Provision"
-
 #: app/js/controllers/trade.js:38
 msgid "share"
 msgid_plural "shares"
@@ -1708,6 +1708,12 @@ msgstr "{{stockname}} von der Watchlist entfernt"
 #: app/templates/inviteform.html:10
 msgid "… or use this link:"
 msgstr "… oder verwende diesen Link:"
+
+#~ msgid "Gain provision"
+#~ msgstr "Gewinn&#xad;provision"
+
+#~ msgid "Loss provision"
+#~ msgstr "Verlust&#xad;provision"
 
 #, fuzzy
 #~ msgid ""

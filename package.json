@@ -45,7 +45,7 @@
     "karma": "~0.10.9",
     "karma-ng-html2js-preprocessor": "~0.1.0",
     "grunt-contrib-less": "^0.11.0",
-    "remarkup": ">=0.0.4",
+    "remarkup": ">=0.0.5",
     "pofile": "~0.2.12",
     "levenshtein": "~1.0",
     "munkres-js": "*"

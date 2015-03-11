@@ -31,6 +31,14 @@ msgstr "(Ausblenden)"
 msgid "(More information)"
 msgstr "Mehr Informationen"
 
+#: app/templates/ranking.html:56
+msgid "(Provision)"
+msgstr "(Provision)"
+
+#: app/templates/ranking.html:90
+msgid "({{result.count}} Members, Top {{result.rankCount}})"
+msgstr "({{result.count}} Mitglieder, Top {{result.rankCount}})"
+
 #: app/templates/error.404.html:4
 msgid "404 – Page not found"
 msgstr "404 – Seite nicht gefunden"
@@ -42,6 +50,14 @@ msgstr "<a title=\"Entfernen\"><i></i></a>"
 #: app/templates/game.html:38
 msgid "<a title=\"Search\"><i></i></a>"
 msgstr "<a title=\"Suche\"><i></i></a>"
+
+#: app/templates/ranking.html:95
+msgid "<a title=\"Kick user\"><i></i></a>"
+msgstr "<a title=\"User kicken\"><i></i></a>"
+
+#: app/templates/ranking.html:96
+msgid "<a title=\"Promote user to admin\">A</a>"
+msgstr "<a title=\"User zum Admin befördern\">A</a>"
 
 #: app/templates/game.html:41
 msgid "<a title=\"Watchlist\"><i></i></a>"
@@ -58,6 +74,46 @@ msgstr ""
 #: app/templates/profile.html:16
 msgid "<i></i> watch"
 msgstr "<i></i> Watchen"
+
+#: app/templates/ranking.html:46
+msgid "<input placeholder=\"Search\">"
+msgstr "<input placeholder=\"Suche\">"
+
+#: app/templates/registration.html:73
+msgid "<input id=\"betakey\" placeholder=\"Beta key\">"
+msgstr "<input id=\"betakey\" placeholder=\"Betakey\">"
+
+#: app/templates/registration.html:33
+msgid "<input placeholder=\"E-mail address\">"
+msgstr "<input placeholder=\"E-Mail-Adresse\">"
+
+#: app/templates/registration.html:47
+msgid "<input placeholder=\"Last name\">"
+msgstr "<input placeholder=\"Nachname\">"
+
+#: app/templates/registration.html:44
+msgid "<input placeholder=\"First name\">"
+msgstr "<input placeholder=\"Vorname\">"
+
+#: app/templates/registration.html:30
+msgid "<input placeholder=\"User name\">"
+msgstr "<input placeholder=\"Benutzername\">"
+
+#: app/templates/registration.html:36
+msgid "<input placeholder=\"Password\">"
+msgstr "<input placeholder=\"Passwort\">"
+
+#: app/templates/registration.html:39
+msgid "<input placeholder=\"Repeat password\">"
+msgstr "<input placeholder=\"Passwort wiederholen\">"
+
+#: app/templates/registration.html:64
+msgid "<input id=\"schoolclass\" placeholder=\"(School class)\">"
+msgstr "<input id=\"schoolclass\" placeholder=\"(Schulklasse)\">"
+
+#: app/templates/registration.html:57
+msgid "<input id=\"schoolname\" placeholder=\"School\">"
+msgstr "<input id=\"schoolname\" placeholder=\"Schule\">"
 
 #: app/templates/options.html:140
 msgid "<input value=\"Reset user\" id=\"options-reset\">"
@@ -208,6 +264,10 @@ msgstr ""
 "Kaufs&#xad;preis\n"
 "{{cur.ask / 10000 | number:3}}&nbsp;€"
 
+#: app/templates/registration.html:42
+msgid "About yourself"
+msgstr "Über dich"
+
 #: app/templates/depot.overview.html:18 app/templates/game.html:19
 msgid "Account"
 msgstr "Konto"
@@ -216,6 +276,10 @@ msgstr "Konto"
 msgid "Achievements"
 msgstr "Errungenschaften"
 
+#: app/templates/ranking.html:60
+msgid "Actions"
+msgstr "Aktionen"
+
 #: app/js/controllers/profile.js:49
 msgid "Added user {{name}} to your watch list"
 msgstr "{{name}} zur Watchlist hinzugefügt"
@@ -223,6 +287,10 @@ msgstr "{{name}} zur Watchlist hinzugefügt"
 #: app/templates/options.html:106
 msgid "Address"
 msgstr "Adresse"
+
+#: app/templates/ranking.html:7
+msgid "All"
+msgstr "Alle"
 
 #: app/templates/depot.listing.html:34 app/templates/depot.overview.html:38
 #: app/templates/depot.overview.html:65 app/templates/profile.overview.html:36
@@ -404,6 +472,18 @@ msgstr "Führe 1 Trade mit mehr als 25.000&nbsp;€ Volumen aus."
 msgid "First name"
 msgstr "Vorname"
 
+#: app/templates/ranking.html:17
+msgid "Follower"
+msgstr "Follower"
+
+#: app/templates/ranking.html:62
+msgid "Follower valuation"
+msgstr "Followerbewertung"
+
+#: app/templates/ranking.html:61
+msgid "Follower ­performance"
+msgstr "Followerperformance"
+
 #: app/templates/depot.overview.html:59
 msgid "Following statistics"
 msgstr "Followerstatistik"
@@ -411,6 +491,10 @@ msgstr "Followerstatistik"
 #: app/templates/trade.html:98
 msgid "Force trade"
 msgstr "Erzwingen"
+
+#: app/templates/ranking.html:59
+msgid "Full name"
+msgstr "Voller Name"
 
 #: app/templates/trade.html:42
 msgid "Gain provision"
@@ -420,11 +504,19 @@ msgstr "Gewinn&#xad;provision"
 msgid "Game"
 msgstr "Spiel"
 
+#: app/templates/ranking.html:39
+msgid "Game start"
+msgstr "Spielbeginn"
+
 #: app/js/services/achievements.js:39
 msgid "Green investments"
 msgstr "Grüne Geldanlage"
 
-#: app/templates/search.html:31
+#: app/templates/ranking.html:58
+msgid "Group"
+msgstr "Gruppe"
+
+#: app/templates/ranking.html:10 app/templates/search.html:31
 msgid "Groups"
 msgstr "Gruppen"
 
@@ -432,9 +524,25 @@ msgstr "Gruppen"
 msgid "Held shares"
 msgstr "Wertpapiere in Besitz"
 
+#: app/templates/registration.html:88
+msgid "I already have an account!"
+msgstr "Ich bin bereits registriert!"
+
+#: app/templates/registration.html:79
+msgid "I have read and accepted the <a>TOS</a>."
+msgstr "Ich habe die <a>AGB</a> gelesen und akzeptiert."
+
 #: app/templates/trade.html:44
 msgid "ISIN"
 msgstr "ISIN"
+
+#: app/templates/registration.html:60
+msgid ""
+"If you take part in a local competition, please enter your class so we can\n"
+"send you a certificate and (possibly) prizes."
+msgstr ""
+"Falls du an einem Stadtwettbewerb teilnimmst, gib bitte deine Klasse an,\n"
+"sodass wir dir deine Urkunde und ggf. deinen Preis zukommen lassen können."
 
 #: app/templates/game.html:156
 msgid "Imprint"
@@ -471,6 +579,10 @@ msgstr "Benutzer einladen"
 #: app/templates/options.html:63
 msgid "Last name"
 msgstr "Nachname"
+
+#: app/templates/ranking.html:15
+msgid "Leader"
+msgstr "Leader"
 
 #: app/templates/depot.watchlist.html:6
 msgid "Leader and stocks in your watchlist"
@@ -520,7 +632,7 @@ msgstr "Market/Stop/Limit"
 msgid "May your name be published?"
 msgstr "Soll dein Klarname veröffentlich werden?"
 
-#: app/templates/search.html:40
+#: app/templates/ranking.html:18 app/templates/search.html:40
 msgid "Members"
 msgstr "Mitglieder"
 
@@ -532,10 +644,10 @@ msgstr "Top-Wertpapiere"
 #: app/templates/depot.transactions.html:17
 #: app/templates/depot.transactions.html:54
 #: app/templates/depot.watchlist.html:24 app/templates/profile.history.html:18
-#: app/templates/search.html:16 app/templates/search.html:39
-#: app/templates/search.html:60 app/templates/trade.html:12
-#: app/templates/trade.html:31 app/templates/trade.html:32
-#: app/templates/tradeDetails.html:18
+#: app/templates/ranking.html:54 app/templates/search.html:16
+#: app/templates/search.html:39 app/templates/search.html:60
+#: app/templates/trade.html:12 app/templates/trade.html:31
+#: app/templates/trade.html:32 app/templates/tradeDetails.html:18
 msgid "Name"
 msgstr "Name"
 
@@ -554,6 +666,10 @@ msgstr "Nein"
 #: app/templates/error.connection.html:4
 msgid "No Connection"
 msgstr "Keine Verbindung"
+
+#: app/templates/registration.html:70
+msgid "No Group"
+msgstr "Keine Gruppe"
 
 #: app/templates/options.html:71
 msgid "No group"
@@ -590,6 +706,10 @@ msgstr ""
 "Dein Vermögen darf höchstens zu 50&nbsp,% in ein einzelnes Wertpapier "
 "investiert sein!"
 
+#: app/templates/ranking.html:8
+msgid "Only ranking-enabled users"
+msgstr "Nur Rankingberechtigte"
+
 #: app/js/controllers/options.js:162 app/templates/game.html:140
 msgid "Options"
 msgstr "Einstellungen"
@@ -611,7 +731,7 @@ msgstr "Order nicht gefunden. Möglicherweise wurde sie bereits ausgeführt."
 msgid "Order type"
 msgstr "Ordertyp"
 
-#: app/templates/options.html:69
+#: app/templates/options.html:69 app/templates/registration.html:52
 msgid "Organization / School"
 msgstr "Institution / Schule"
 
@@ -663,6 +783,15 @@ msgstr "Pinnwand"
 #: app/templates/depot.transactions.html:6
 msgid "Planned orders"
 msgstr "Noch nicht ausgeführte Orders"
+
+#: app/templates/registration.html:53
+msgid ""
+"Please choose your school/university/group in order to ensure that\n"
+"you are eligible for prizes internal to your group (if there are any)."
+msgstr ""
+"Bitte wähle die Schule/Uni/Gruppe aus, an welcher du bist.\n"
+"So ist gewährleistet, dass du (sofern deine Schule/Uni/Gruppe\n"
+"einen eigenen Wettbewerb hat) gruppenintern gewinnberechtigt bist."
 
 #: app/js/controllers/registration.js:54
 msgid ""
@@ -720,7 +849,7 @@ msgstr "Provision"
 msgid "Questions"
 msgstr "Fragen"
 
-#: app/templates/profile.overview.html:7
+#: app/templates/profile.overview.html:7 app/templates/ranking.html:53
 msgid "Rank"
 msgstr "Rang"
 
@@ -731,6 +860,10 @@ msgstr "Rangliste"
 #: app/templates/depot.transactionlog.html:25
 msgid "Reason"
 msgstr "Anlass"
+
+#: app/templates/registration.html:87
+msgid "Register"
+msgstr "Registrieren"
 
 #: app/templates/depot.transactions.html:22
 msgid "Remove"
@@ -756,9 +889,25 @@ msgstr "Verkaufspreis"
 msgid "Short description"
 msgstr "Kurzbeschreibung"
 
+#: app/templates/ranking.html:42
+msgid "Since 1&nbsp;month ago"
+msgstr "Seit 1&nbsp;Monat"
+
+#: app/templates/ranking.html:41
+msgid "Since 1&nbsp;week ago"
+msgstr "Seit 1&nbsp;Woche"
+
+#: app/templates/ranking.html:40
+msgid "Since week begin"
+msgstr "Seit Wochenanfang"
+
 #: app/js/controllers/comment.js:60
 msgid "Sorry, something went wrong."
 msgstr "Sorry, etwas ging hier schief."
+
+#: app/templates/ranking.html:35
+msgid "Start time"
+msgstr "Startzeitpunkt"
 
 #: app/templates/depot.watchlist.html:26
 msgid "Start value"
@@ -825,6 +974,11 @@ msgstr "Die angegebenen Provisionen sind ungültig"
 msgid "The entered school has not been found"
 msgstr "Die angegebene Schule wurde nicht gefunden"
 
+#: app/templates/registration.html:43
+msgid "The following data is required to participate in the competition"
+msgstr ""
+"Diese Daten benötigen wir, damit du auch am Wettbewerb teilnehmen kannst."
+
 #: app/js/controllers/trade.js:90
 msgid ""
 "The trade will be executed as soon as the given conditions are fulfilled."
@@ -881,6 +1035,14 @@ msgstr "Gesamt"
 #: app/templates/profile.overview.html:12 app/templates/search.html:18
 msgid "Total assets"
 msgstr "Gesamtvermögen"
+
+#: app/templates/ranking.html:55
+msgid "Total change"
+msgstr "Gesamtänderung"
+
+#: app/templates/ranking.html:14
+msgid "Total gain"
+msgstr "Reingewinn"
 
 #: app/templates/search.html:63
 msgid "Tradable amount"
@@ -964,7 +1126,7 @@ msgstr "Benutzer nicht gefunden. Hier läuft etwas falsch"
 msgid "Username"
 msgstr "Benutzername"
 
-#: app/templates/search.html:6
+#: app/templates/ranking.html:9 app/templates/search.html:6
 msgid "Users"
 msgstr "Benutzer"
 
@@ -984,6 +1146,10 @@ msgstr "Willkommen bei Tradity!"
 #: app/templates/trade.html:94
 msgid "What is the stop/limit price?"
 msgstr "Wo soll der Stop-/Limitwert liegen?"
+
+#: app/templates/registration.html:15
+msgid "Why participate?"
+msgstr "Warum mitmachen?"
 
 #: app/js/services/achievements.js:30
 msgid "Write %1&nbsp;comments in %2&nbsp;different feeds."
@@ -1113,6 +1279,18 @@ msgid "share"
 msgid_plural "shares"
 msgstr[0] "Aktie"
 msgstr[1] "Aktien"
+
+#: app/templates/ranking.html:26
+msgid ""
+"since\n"
+"<span>{{spec.since | date:'short'}}</span><span>game start</span>\n"
+"until\n"
+"<span>{{spec.upto | date:'short'}}</span><span>now</span>"
+msgstr ""
+"von\n"
+"<span>{{spec.since | date:'short'}}</span><span>Spielbeginn</span>\n"
+"bis\n"
+"<span>{{spec.upto | date:'short'}}</span><span>jetzt</span>"
 
 #: app/templates/depot.overview.html:114
 #: app/templates/profile.overview.html:82

@@ -207,14 +207,6 @@ angular.module('tradity', [
 			templateUrl: 'templates/profile.achievements.list.html',
 			controller: 'AchievementsCtrl'
 		}).
-		state('game.faq', {
-			url: '/faq',
-			templateUrl: 'templates/faq.html'
-		}).
-		state('game.gettingstarted', {
-			url: '/gettingstarted',
-			templateUrl: 'templates/gettingstarted.html'
-		}).
 		state('admin', {
 			abstract: true,
 			url: '/admin',

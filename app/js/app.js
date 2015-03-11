@@ -211,10 +211,6 @@ angular.module('tradity', [
 			url: '/faq',
 			templateUrl: 'templates/faq.html'
 		}).
-		state('game.gettingstarted', {
-			url: '/gettingstarted',
-			templateUrl: 'templates/gettingstarted.html'
-		}).
 		state('admin', {
 			abstract: true,
 			url: '/admin',

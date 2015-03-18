@@ -40,15 +40,19 @@
 				<h2 translate>Game</h2>
 				<div class="form-group">
 					<label for="provision"><span>Your followers’ commission on profits</span> ({{serverConfig.minWProvision}} % – {{serverConfig.maxWProvision}} %)</label>
-					<input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="form-control" min="{{serverConfig.minWProvision}}" max="{{serverConfig.maxWProvision}}" step="1">
+					<input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="form-control" min="{{serverConfig.minWProvision}}" max="{{serverConfig.maxWProvision}}" step="1" />
 				</div>
 				<div class="form-group">
 					<label for="provision"><span>Your followers’ commission on losses</span> ({{serverConfig.minLProvision}} % – {{serverConfig.maxLProvision}} %)</label>
-					<input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="form-control" min="{{serverConfig.minLProvision}}" max="{{serverConfig.maxLProvision}}" step="1">
+					<input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="form-control" min="{{serverConfig.minLProvision}}" max="{{serverConfig.maxLProvision}}" step="1" />
 				</div>
 				<div class="form-group">
 					<label for="delayorderhist" translate>Delayed order history</label><br/>
-					<input type="checkbox" ng-model="delayorderhist" id="delayorderhist"> <span translate>Yes</span>
+					<input type="checkbox" ng-model="delayorderhist" id="delayorderhist" /> <span translate>Yes</span>
+				</div>
+				<div class="form-group">
+					<label for="lang" translate>Language</label>
+					<select id="lang" ng-model="lang" ng-options="language.id as language.name for language in serverConfig.languages"></select>
 				</div>
 			<!--</tab>
 			<tab heading="Privates">-->

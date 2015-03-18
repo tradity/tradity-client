@@ -5,9 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs, gettext) {
-		$scope.lang = 'de'; // dummy
-
+	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs, gettext, gettextCatalog) {
 		socket.on('get-own-options', function(data) {
 			if (!data.result)
 				return;
@@ -35,6 +33,7 @@ angular.module('tradity').
 			$scope.street = data.result.street;
 			$scope.zipcode = data.result.zipcode;
 			$scope.town = data.result.town;
+			$scope.lang = data.result.lang;
 			$scope.traditye = data.result.traditye&&true;
 			$scope.dla_optin = data.result.dla_optin&&true;
 			$scope.delayorderhist = data.result.delayorderhist;
@@ -115,6 +114,8 @@ angular.module('tradity').
 			if ($scope.dla_optin)
 				dailyLoginAchievements.submitToServer(true);
 			
+			gettextCatalog.setCurrentLanguage($scope.lang);
+			
 			socket.emit('change-options', {
 				name: $scope.name,
 				giv_name: $scope.giv_name,
@@ -130,6 +131,7 @@ angular.module('tradity').
 				street: $scope.street,
 				zipcode: $scope.zipcode,
 				town: $scope.town,
+				lang: $scope.lang,
 				schoolclass: $scope.schoolclass,
 				traditye: $scope.traditye,
 				dla_optin: $scope.dla_optin,

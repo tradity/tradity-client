@@ -278,6 +278,12 @@ angular.module('tradity', [
 		html5Mode(true).
 		hashPrefix('!');
 }).run(function($templateCache, gettextCatalog, $rootScope) {
+	$rootScope.$on('user-update', function(ev, data) {
+		console.log(data);
+		if (data.lang)
+			gettextCatalog.setCurrentLanguage(data.lang);
+	});
+	
 	gettextCatalog.setCurrentLanguage('de');
 	
 	$templateCache.put('/dialogs/error.html',   "<ng-include src=\"'templates/dialogs/error.html'\"></ng-include>");
@@ -296,5 +302,4 @@ angular.module('tradity', [
 
 	$rootScope.$on("$stateChangeSuccess", end);
 	$rootScope.$on("$stateChangeError", end);
-
 });

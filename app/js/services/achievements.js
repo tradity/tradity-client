@@ -86,7 +86,7 @@ angular.module('tradity')
 				if (achievements._texts[i].pattern == name)
 					return achievements._textsCached[name] = achievements._texts[i].text;
 				
-				var match = name.match(achievement._texts[i].pattern);
+				var match = name.match(achievements._texts[i].pattern);
 				if (!match)
 					continue;
 				

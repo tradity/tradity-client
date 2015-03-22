@@ -73,6 +73,10 @@
 					<div class="form-group" ng-show="serverConfig.betakeyRequired" translate>
 						<input ng-model="betakey" id="betakey" type="text" class="form-control" placeholder="Beta key">
 					</div>
+					<div class="form-group">
+						<label for="lang" translate>Language</label>
+						<select id="lang" ng-model="lang" ng-options="language.id as language.name for language in serverConfig.languages"></select>
+					</div>
 					<div class="checkbox">
 						<label>
 							<input type="checkbox" ng-model="agbread">

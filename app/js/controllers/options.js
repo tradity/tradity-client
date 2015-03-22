@@ -70,6 +70,10 @@ angular.module('tradity').
 				proxy: true
 			}, $scope.serverConfig, $scope.handlePublishCode);
 		};
+	
+		$scope.$watch('lang', function() {
+			gettextCatalog.setCurrentLanguage($scope.lang);
+		});
 		
 		$scope.changeOptions = function() {
 			if (!$scope.password_check) $scope.password_check = null;
@@ -113,8 +117,6 @@ angular.module('tradity').
 			
 			if ($scope.dla_optin)
 				dailyLoginAchievements.submitToServer(true);
-			
-			gettextCatalog.setCurrentLanguage($scope.lang);
 			
 			socket.emit('change-options', {
 				name: $scope.name,

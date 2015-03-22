@@ -17,8 +17,9 @@ angular.module('tradity').
 		$scope.deleteComment = function(comment) {
 			socket.emit('change-comment-text', {
 				commentid: comment.commentid,
-				comment: '<em>Dieser Kommentar wurde durch die Moderatoren gelöscht.</em>',
-				trustedhtml: true
+				comment: comment.comment,
+				trustedhtml: comment.trustedhtml,
+				cstate: 'mdeleted'
 			}, function() { notification(gettext('Ok!'), true); });
 		};
 		

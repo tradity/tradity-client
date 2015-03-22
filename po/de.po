@@ -615,7 +615,7 @@ msgstr "Gewinnprovision"
 msgid "Commissions"
 msgstr "Provision"
 
-#: app/templates/feed.html:290 app/templates/group.pinboard.html:47
+#: app/templates/feed.html:290 app/templates/group.pinboard.html:48
 msgid "Continue reading…"
 msgstr "Weiterlesen…"
 
@@ -1328,6 +1328,11 @@ msgid ""
 msgstr ""
 "Es gab ein technisches Problem – das Tech-Team von Tradity ist informiert "
 "worden."
+
+#: app/templates/group.pinboard.html:35 app/templates/profile.pinboard.html:29
+#: app/templates/tradeDetails.html:61
+msgid "This comment has been removed."
+msgstr "Dieser Kommentar ist entfernt worden."
 
 #: app/js/controllers/options.js:144 app/js/controllers/registration.js:70
 msgid "This e-mail address has already been taken"

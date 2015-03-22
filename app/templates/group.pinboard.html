@@ -30,8 +30,9 @@
 							<a ng-click="deleteCommentSA(comment)" style="cursor: pointer" translate>Delete</a>
 						</span>
 					</div>
-					<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
-					<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
+					<span ng-show="comment.trustedhtml && !comment.isDeleted" ng-bind-html="comment.comment">{{comment.comment}}</span>
+					<span ng-hide="comment.trustedhtml || comment.isDeleted">{{comment.comment}}</span>
+					<span ng-show="comment.isDeleted"><em translate>This comment has been removed.</em></span>
 				</div>
 			</div>
 			<div ng-show="comment.excerpt">

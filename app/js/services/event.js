@@ -158,7 +158,9 @@ angular.module('tradity')
 					tradername: tn,
 					tradername_genitive: tn ? 'xszßXSZ'.indexOf(tn.charAt(tn.length-1)) == -1 ? tn + 's' : tn + '’' : null,
 					time: event.eventtime,
-					schoolpath: event.schoolpath
+					schoolpath: event.schoolpath,
+					cstate: event.cstate,
+					isDeleted: ['gdeleted', 'mdeleted'].indexOf(event.cstate) != -1
 				};
 			},
 			/**

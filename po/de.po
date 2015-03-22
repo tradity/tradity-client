@@ -34,7 +34,7 @@ msgstr "(Ausblenden)"
 
 #: app/templates/options.html:87
 msgid "(More information)"
-msgstr "Mehr Informationen"
+msgstr "(Mehr Informationen)"
 
 #: app/templates/inviteform.html:12
 msgid "(Right click + “Copy link”)"
@@ -537,13 +537,9 @@ msgstr "Sei an %1 aufeinanderfolgenden Tagen angemeldet."
 msgid "Be part of the world’s first <b>Social Trading Stock Trading Game</b>"
 msgstr "Sei Teil des ersten <b>Social Trading Börsenspiels</b> der Welt"
 
-#: app/templates/search.html:61
+#: app/templates/depot.transactionlog.html:28 app/templates/search.html:61
 msgid "Bid price"
-msgstr "Bidpreis"
-
-#: app/templates/depot.transactionlog.html:28
-msgid "Bid­ price"
-msgstr "Bidpreis"
+msgstr "Bid&#xad;preis"
 
 #: app/templates/options.html:117
 msgid "Birth date"
@@ -587,7 +583,7 @@ msgstr "Führe einen Chat mit %1&nbsp;Leuten."
 
 #: app/templates/learning.questions.html:15
 msgid "Check answers"
-msgstr "Überprüfen"
+msgstr "Antworten überprüfen"
 
 #: app/templates/groupOverview.html:7
 msgid "Choose your group"
@@ -1203,11 +1199,11 @@ msgstr "Sorry, etwas ging hier schief."
 
 #: app/templates/ranking.html:35
 msgid "Start time"
-msgstr "Startzeitpunkt"
+msgstr "Start&#xad;zeitpunkt"
 
 #: app/templates/depot.watchlist.html:26
 msgid "Start value"
-msgstr "Startwert"
+msgstr "Start&#xad;wert"
 
 #: app/templates/login.html:14
 msgid "Stay logged in?"
@@ -1236,7 +1232,7 @@ msgstr "Stop-/Limit-Marke"
 
 #: app/templates/group.html:71
 msgid "Sub-groups"
-msgstr "Untergruppen"
+msgstr "Unter&#xad;gruppen"
 
 #: app/js/controllers/registration.js:57
 msgid "Successful registration"
@@ -1702,8 +1698,8 @@ msgid "{{notification.srcusername}} wrote to your pinboard."
 msgstr "{{notification.srcusername}} hat auf deine Pinnwand geschrieben."
 
 #: app/templates/dialogs/wait.html:13
-msgid "{{progress}}&nbsp;% vollständig"
-msgstr "{{progress}}&nbsp;% completer"
+msgid "{{progress}}&nbsp;% completed"
+msgstr "{{progress}}&nbsp;% vollständig"
 
 #: app/js/controllers/depot.js:109
 msgid "{{stockname}} removed from the watchlist"
@@ -1712,6 +1708,9 @@ msgstr "{{stockname}} von der Watchlist entfernt"
 #: app/templates/inviteform.html:10
 msgid "… or use this link:"
 msgstr "… oder verwende diesen Link:"
+
+#~ msgid "Bid­ price"
+#~ msgstr "Bidpreis"
 
 #~ msgid "Gain provision"
 #~ msgstr "Gewinn&#xad;provision"

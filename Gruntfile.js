@@ -22,7 +22,7 @@ module.exports = function (grunt) {
 		nggettext_extract: {
 			pot: {
 				files: {
-					'po/templates.pot': [
+					'po/unstripped/templates.pot': [
 						'<%= yeoman.app %>/**/*.html',
 						'<%= yeoman.app %>/js/**/*.js'
 					],
@@ -36,7 +36,7 @@ module.exports = function (grunt) {
 					module: 'tradity'
 				},
 				files: {
-					'<%= yeoman.app %>/js/translations.js': ['po/*.po']
+					'<%= yeoman.app %>/js/translations.js': ['po/unstripped/*.po']
 				}
 			}
 		},
@@ -44,19 +44,19 @@ module.exports = function (grunt) {
 		unMarkupPo: {
 			files: {
 				src: [
-					'po/templates.pot'
+					'po/unstripped/templates.pot'
 				],
-				dest: 'po/templates-stripped.pot'
+				dest: 'po/templates.pot'
 			}
 		},
 		
 		reMarkupPo: {
 			files: {
 				src: [
-					'po/templates.pot',
-					'po/templates-stripped.po',
+					'po/unstripped/templates.pot',
+					'po/de.po',
 				],
-				dest: 'po/templates.po'
+				dest: 'po/unstripped/de.po'
 			}
 		},
 		

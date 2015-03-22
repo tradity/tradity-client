@@ -39,11 +39,11 @@
 			<tab heading="Spiel">-->
 				<h2 translate>Game</h2>
 				<div class="form-group">
-					<label for="provision"><span>Your followers’ commission on profits</span> ({{serverConfig.minWProvision}} % – {{serverConfig.maxWProvision}} %)</label>
+					<label for="provision"><span translate>Your followers’ commission on profits</span> ({{serverConfig.minWProvision}} % – {{serverConfig.maxWProvision}} %)</label>
 					<input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="form-control" min="{{serverConfig.minWProvision}}" max="{{serverConfig.maxWProvision}}" step="1" />
 				</div>
 				<div class="form-group">
-					<label for="provision"><span>Your followers’ commission on losses</span> ({{serverConfig.minLProvision}} % – {{serverConfig.maxLProvision}} %)</label>
+					<label for="provision"><span translate>Your followers’ commission on losses</span> ({{serverConfig.minLProvision}} % – {{serverConfig.maxLProvision}} %)</label>
 					<input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="form-control" min="{{serverConfig.minLProvision}}" max="{{serverConfig.maxLProvision}}" step="1" />
 				</div>
 				<div class="form-group">

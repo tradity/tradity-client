@@ -11,7 +11,7 @@
 			<a class="btn btn-default"><i ng-click="printRanking()" class="fa fa-print"></i></a>
 		</div>
 		<div class="btn-group">
-			<a ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='all'&& spec.includeProvision==false]"  class="btn" ui-sref=".({spec: csr({type: 'all', includeProvision: false})})" translate>Total gain</a>
+			<a ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='all'&& spec.includeProvision==false]"  class="btn" ui-sref=".({spec: csr({type: 'all', includeProvision: false})})" translate>Total profits</a>
 			<a ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='all'&& spec.includeProvision==true]" class="btn" ui-sref=".({spec: csr({type: 'all', includeProvision: true})})" translate>Leader</a>
 			<a ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='xp']"class="btn" ui-sref=".({spec: csr({type: 'xp'})})">XP</a>
 			<a  ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='follower']"class="btn" ui-sref=".({spec: csr({type: 'follower'})})" translate>Follower</a>

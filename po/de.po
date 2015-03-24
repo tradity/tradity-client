@@ -13,6 +13,7 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: /home/sqrt/src/sotrade/client\n"
 
 #: app/templates/depot.overview.html:107
 #: app/templates/profile.overview.html:75
@@ -316,13 +317,13 @@ msgstr "<input value=\"Kommentieren\">"
 msgid "<input value=\"Send\">"
 msgstr "<input value=\"Senden\">"
 
+#: app/templates/trade.html:104
+msgid "<input value=\"Execute trade\">"
+msgstr "<input value=\"Trade durchführen\">"
+
 #: app/templates/inviteform.html:8
 msgid "<input value=\"Invite\">"
 msgstr "<input value=\"Einladen\">"
-
-#: app/templates/trade.html:104
-msgid "<input value=\"Perform trade\">"
-msgstr "<input value=\"Trade durchführen\">"
 
 #: app/templates/group.html:50
 msgid "<input value=\"Save\">"
@@ -521,20 +522,12 @@ msgstr "Willst du dich wirklich zurücksetzen?"
 msgid "As leader"
 msgstr "als Leader"
 
-#: app/templates/profile.overview.html:42
-msgid "Asset charts"
-msgstr "Vermögens&#xad;entwicklung"
-
-#: app/templates/depot.overview.html:32
-msgid "Asset overview"
-msgstr "Übersicht"
-
 #: app/js/services/achievements.js:38
 msgid "Be active for %1&nbsp;days in a row."
 msgstr "Sei an %1 aufeinanderfolgenden Tagen angemeldet."
 
 #: app/templates/index.html:7
-msgid "Be part of the world’s first <b>Social Trading Stock Trading Game</b>"
+msgid "Be part of the world’s first <b>Social Trading Stock Market Game</b>"
 msgstr "Sei Teil des ersten <b>Social Trading Börsenspiels</b> der Welt"
 
 #: app/templates/depot.transactionlog.html:28 app/templates/search.html:61
@@ -569,13 +562,13 @@ msgstr "Kaufe ein Wertpapier, das du bereits im Depot hast."
 msgid "Buy/Sell price"
 msgstr "Kaufs-/Verkaufs&#xad;preis"
 
-#: app/js/services/achievements.js:35
-msgid "Change your gain provision."
-msgstr "Ändere deine Gewinnprovision."
-
 #: app/js/services/achievements.js:36
-msgid "Change your loss provision."
-msgstr "Ändere deine Verlustprovision."
+msgid "Change your commission on losses."
+msgstr "Ändere deine Verlustprovision"
+
+#: app/js/services/achievements.js:35
+msgid "Change your commission on profits."
+msgstr "Ändere deine Gewinnprovision"
 
 #: app/js/services/achievements.js:31
 msgid "Chat with %1&nbsp;persons."
@@ -593,13 +586,13 @@ msgstr "Wähle deine Gruppe aus"
 msgid "Close"
 msgstr "Schließen"
 
-#: app/js/controllers/comment.js:47
+#: app/js/controllers/comment.js:48
 msgid "Comment event was not found – something is wrong here!"
 msgstr ""
 "Kommentarevent nicht gefunden.\n"
 "Hier läuft etwas falsch."
 
-#: app/js/controllers/comment.js:39
+#: app/js/controllers/comment.js:40
 msgid "Comment event was not found!"
 msgstr "Konnte kein Kommentarevent finden!"
 
@@ -990,7 +983,7 @@ msgstr "OK"
 msgid "Of which type is your order?"
 msgstr "Welchen Ordertyp soll deine Transaktion haben?"
 
-#: app/js/controllers/comment.js:14 app/js/controllers/comment.js:22
+#: app/js/controllers/comment.js:14 app/js/controllers/comment.js:23
 #: app/js/controllers/feedblogs.js:33 app/js/controllers/feedblogs.js:44
 #: app/js/controllers/feedblogs.js:55 app/js/controllers/group.js:110
 #: app/js/controllers/group.js:123 app/js/controllers/group.js:160
@@ -1038,7 +1031,8 @@ msgstr "Institution / Schule"
 msgid "Or­der"
 msgstr "Or­der"
 
-#: app/templates/depot.html:8 app/templates/profile.html:26
+#: app/templates/depot.html:8 app/templates/depot.overview.html:32
+#: app/templates/profile.html:26
 msgid "Overview"
 msgstr "Übersicht"
 
@@ -1057,6 +1051,10 @@ msgstr "Zahler"
 #: app/templates/group.html:80
 msgid "Pending members"
 msgstr "Noch nicht bestätigte Mitglieder"
+
+#: app/templates/depot.transactions.html:6
+msgid "Pending orders"
+msgstr "Noch nicht ausgeführte Orders"
 
 #: app/js/services/achievements.js:27
 msgid "Perform %1&nbsp;follower trades."
@@ -1082,10 +1080,6 @@ msgstr "Privates"
 #: app/templates/group.html:23 app/templates/profile.html:29
 msgid "Pinboard"
 msgstr "Pinnwand"
-
-#: app/templates/depot.transactions.html:6
-msgid "Planned orders"
-msgstr "Noch nicht ausgeführte Orders"
 
 #: app/templates/registration.html:53
 msgid ""
@@ -1208,7 +1202,7 @@ msgstr "Seit 1&nbsp;Woche"
 msgid "Since week begin"
 msgstr "Seit Wochenanfang"
 
-#: app/js/controllers/comment.js:60
+#: app/js/controllers/comment.js:61
 msgid "Sorry, something went wrong."
 msgstr "Sorry, etwas ging hier schief."
 
@@ -1367,7 +1361,7 @@ msgid "Total change"
 msgstr "Gesamt&#xad;änderung"
 
 #: app/templates/ranking.html:14
-msgid "Total gain"
+msgid "Total profits"
 msgstr "Rein&#xad;gewinn"
 
 #: app/templates/search.html:63
@@ -1483,9 +1477,9 @@ msgstr "Woche"
 
 #: app/templates/feed.html:12
 msgid ""
-"Welcome to Tradity – Germany’s first Social Trading Stock Trading Game! "
-"Start instantly and invest into other players or buy your own shares – You "
-"have 100,000&nbsp;€ starting money. The <a>help</a> can give you hints."
+"Welcome to Tradity – Germany’s first Social Trading Stock Market Game! Start "
+"instantly and invest into other players or buy your own shares – You have "
+"100,000&nbsp;€ starting money. The <a>help</a> can give you hints."
 msgstr ""
 "Willkommen bei Tradity – dem ersten Social Trading Börsenspiel Deutschlands! "
 "Leg gleich los und investiere in andere Spieler oder kaufe deine ersten "
@@ -1688,6 +1682,10 @@ msgstr "Dein Profilbild musst du als JPEG, PNG oder GIF hochladen"
 msgid "Your password is too short!"
 msgstr "Das Passwort ist zu kurz"
 
+#: app/templates/profile.overview.html:42
+msgid "Your performance"
+msgstr "Vermögens&#xad;entwicklung"
+
 #: app/templates/game.html:108
 msgid "Your portfolio"
 msgstr "Dein Depot"
@@ -1758,6 +1756,24 @@ msgstr "{{stockname}} von der Watchlist entfernt"
 #: app/templates/inviteform.html:10
 msgid "… or use this link:"
 msgstr "… oder verwende diesen Link:"
+
+#~ msgid "Asset charts"
+#~ msgstr "Vermögens&#xad;entwicklung"
+
+#~ msgid "Asset overview"
+#~ msgstr "Übersicht"
+
+#~ msgid "Change your gain provision."
+#~ msgstr "Ändere deine Gewinnprovision."
+
+#~ msgid "Change your loss provision."
+#~ msgstr "Ändere deine Verlustprovision."
+
+#~ msgid "Planned orders"
+#~ msgstr "Noch nicht ausgeführte Orders"
+
+#~ msgid "Total gain"
+#~ msgstr "Rein&#xad;gewinn"
 
 #~ msgid "Bid­ price"
 #~ msgstr "Bidpreis"

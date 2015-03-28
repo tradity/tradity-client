@@ -596,6 +596,8 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('build', [
 		'nggettext_extract',
+		'unMarkupPo',
+		'reMarkupPo',
 		'nggettext_compile',
 		'clean:dist',
 		'bower-install',

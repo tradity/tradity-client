@@ -335,6 +335,7 @@ module.exports = function (grunt) {
 						'img/{,*/}*.{webp}',
 						'fonts/{,*/}*',
 						'js/buildstamp.js',
+						'js/translations.js',
 						'js/jit/**/*'
 					]
 				}, {

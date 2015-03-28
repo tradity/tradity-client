@@ -9,12 +9,12 @@ angular.module('tradity', [
 	'ui.bootstrap',
 	'ui.keypress',
 	'ui.event',
-	'pascalprecht.translate',
+	'gettext',
 	'dialogs.main',
 	'angular-md5',
 	'infinite-scroll',
 	'rt.debounce'
-]).config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider, $translateProvider) {
+]).config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider) {
 	/* Create custom angular-ui-router parameter types.
 	 * This is necessary since 0.2.12; Since then,
 	 * angular-ui-router encodes slashes in parameters. */
@@ -277,14 +277,15 @@ angular.module('tradity', [
 	$locationProvider.
 		html5Mode(true).
 		hashPrefix('!');
-	$translateProvider.
-		useStaticFilesLoader({
-			prefix: 'locale-',
-			suffix: '.json'
-		}).
-		fallbackLanguage(['en', 'de']).
-		preferredLanguage('de');
-}).run(['$templateCache','$rootScope',function($templateCache,$rootScope){
+}).run(function($templateCache, gettextCatalog, $rootScope) {
+	$rootScope.$on('user-update', function(ev, data) {
+		console.log(data);
+		if (data.lang)
+			gettextCatalog.setCurrentLanguage(data.lang);
+	});
+	
+	gettextCatalog.setCurrentLanguage('de');
+	
 	$templateCache.put('/dialogs/error.html',   "<ng-include src=\"'templates/dialogs/error.html'\"></ng-include>");
 	$templateCache.put('/dialogs/wait.html',    "<ng-include src=\"'templates/dialogs/wait.html'\"></ng-include>");
 	$templateCache.put('/dialogs/notify.html',  "<ng-include src=\"'templates/dialogs/notify.html'\"></ng-include>");
@@ -301,5 +302,4 @@ angular.module('tradity', [
 
 	$rootScope.$on("$stateChangeSuccess", end);
 	$rootScope.$on("$stateChangeError", end);
-
-}]);
+});

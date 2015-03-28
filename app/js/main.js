@@ -120,7 +120,7 @@ var fileemit = function(socket, input, evtype, template, serverconfig, callback)
 			if (/\.gif$/i.test(filename))   mime = 'image/gif';
 			
 			if (!mime) {
-				return alert('Dein Profilbild musst du als JPEG, PNG oder GIF hochladen');
+				return notification(gettext('Your need to upload your profile picture as a JPEG/PNG/GIF file'));
 			}
 			
 			var reader = new FileReader();
@@ -130,10 +130,10 @@ var fileemit = function(socket, input, evtype, template, serverconfig, callback)
 			reader.onload = function() { 
 				var buf = reader.result;
 				if (!buf)
-					return alert('Konnte Profilbild nicht laden');
+					return notification(gettext('Could not upload profile picture'));
 					
 				if (serverconfig && reader.result.byteLength > serverconfig.fsdb.userquota)
-					return alert('Die Profilbilddatei ist leider zu groß (höchstens 3 MB)');
+					return notification('Your profile picture file is too large (maximum 3\u00a0MB)');
 				
 				goPublish(buf);
 			};

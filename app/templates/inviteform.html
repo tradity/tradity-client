@@ -3,12 +3,12 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <form ng-controller="InviteFormCtrl" ng-submit="createInviteLink()" class="pure-form pure-form-stacked">
 	<div>
-		Per E-Mail:
-		<textarea ng-model="inviteemails" id="inviteemails" placeholder="Füge hier E-Mail-Adressen ein, an die du Einladungen verschicken willst" class="form-control"></textarea>
-		<input type="submit" value="Einladen" class="btn btn-sm btn-default">
+		<span translate>Via E-Mail:</span>
+		<translate><textarea ng-model="inviteemails" id="inviteemails" placeholder="Enter e-mail addresses here to which you want to send out invitations" class="form-control"></textarea></translate>
+		<translate><input type="submit" value="Invite" class="btn btn-sm btn-default"></translate>
 		<br />
-		oder benutze diesen Link:
+		<span translate>… or use this link:</span>
 		<span id="invitelink" class="options-input pure-input-1"><a ng-href="{{invitelink}}">{{invitelink || '…'}}</a></span>
-		<i>(Rechtsklick + Link kopieren)</i>
+		<i translate>(Right click + “Copy link”)</i>
 	</div>
 </form>

@@ -3,8 +3,8 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div id="chat" class="main-content">
 	<form ng-submit="send(comment)" class="pure-form pure-form-stacked main-comment comment-form">
-		<textarea ng-model="comment" ui-keypress="{13:'send(comment)'}" class="options-input comment-textarea pure-input-1" placeholder="Nachricht"></textarea>
-		<input type="submit" class="click-button comment-button btn btn-default" value="Senden">
+		<translate><textarea ng-model="comment" ui-keypress="{13:'send(comment)'}" class="options-input comment-textarea pure-input-1" placeholder="Message"></textarea></translate>
+		<translate><input type="submit" class="click-button comment-button btn btn-default" value="Send"></translate>
 	</form>
 	<div class="chat-item" ng-repeat="message in chat.messages | orderBy:'-time'" ng-class="{me: message.uid == ownUser.id}">
 		<img src="{{message.profilepic || 'img/profile.svg'}}" class="chat-image">

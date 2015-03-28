@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('NotificationsCtrl', function($scope, $rootScope, $stateParams, $state, $feed, socket, $timeout) {
+	controller('NotificationsCtrl', function($scope, $rootScope, $stateParams, $state, $feed, socket, $timeout, achievements) {
 		$scope.show = false;
 		$scope.notifications = [];
 		$scope.count = 0;
@@ -22,7 +22,7 @@ angular.module('tradity').
 		$scope.add = function(notification) {
 
 			if (notification.type == 'achievement') {
-				notification.name = $rootScope.achievementTexts[notification.achname];
+				notification.name = achievements.lookupText(notification.achname);
 				if ($scope.isIn($scope.notifications,notification.achname))
 					return false;
 			}

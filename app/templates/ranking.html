@@ -4,57 +4,62 @@
 <div id="stats" class="main-content ranking" infinite-scroll="loadMore()" infinite-scroll-distance="2">
 	<div id="tabs">
 		<div class="btn-group pull-right">
-			<a class="btn btn-default" ng-hide="spec.includeAll" ui-sref=".({spec: csr({includeAll: true})})">Alle</a>
-			<a class="btn btn-default" ng-show="spec.includeAll" ui-sref=".({spec: csr({includeAll: false})})">Nur Rankingberechtigte</a>
-			<a class="btn btn-default" ng-hide="spec.showUsers" ui-sref=".({spec: csr({showUsers: true})})">Benutzer</a>
-			<a class="btn btn-default" ng-show="spec.showUsers" ui-sref=".({spec: csr({showUsers: false})})">Gruppen</a>
+			<a class="btn btn-default" ng-hide="spec.includeAll" ui-sref=".({spec: csr({includeAll: true})})" translate>All</a>
+			<a class="btn btn-default" ng-show="spec.includeAll" ui-sref=".({spec: csr({includeAll: false})})" translate>Only ranking-enabled users</a>
+			<a class="btn btn-default" ng-hide="spec.showUsers" ui-sref=".({spec: csr({showUsers: true})})" translate>Users</a>
+			<a class="btn btn-default" ng-show="spec.showUsers" ui-sref=".({spec: csr({showUsers: false})})" translate>Groups</a>
 			<a class="btn btn-default"><i ng-click="printRanking()" class="fa fa-print"></i></a>
 		</div>
 		<div class="btn-group">
-			<a ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='all'&& spec.includeProvision==false]"  class="btn" ui-sref=".({spec: csr({type: 'all', includeProvision: false})})">Reingewinn</a>
-			<a ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='all'&& spec.includeProvision==true]" class="btn" ui-sref=".({spec: csr({type: 'all', includeProvision: true})})">Leader</a>
+			<a ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='all'&& spec.includeProvision==false]"  class="btn" ui-sref=".({spec: csr({type: 'all', includeProvision: false})})" translate>Total profits</a>
+			<a ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='all'&& spec.includeProvision==true]" class="btn" ui-sref=".({spec: csr({type: 'all', includeProvision: true})})" translate>Leader</a>
 			<a ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='xp']"class="btn" ui-sref=".({spec: csr({type: 'xp'})})">XP</a>
-			<a  ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='follower']"class="btn" ui-sref=".({spec: csr({type: 'follower'})})">Follower</a>
-			<a  ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='administrative']"class="btn" ng-show="isAdmin || selfIsSchoolAdmin" ui-sref=".({spec: csr({type: 'administrative'})})">Mitglieder</a>
+			<a  ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='follower']"class="btn" ui-sref=".({spec: csr({type: 'follower'})})" translate>Follower</a>
+			<a  ng-class="{false:'btn-default', true:'btn-success'}[spec.type=='administrative']"class="btn" ng-show="isAdmin || selfIsSchoolAdmin" ui-sref=".({spec: csr({type: 'administrative'})})" translate>Members</a>
 		</div>
 
 		<hr/>
 
-<div class="input-group" ng-show="spec.type == 'all' || spec.type == 'follower'">
-	<input type="text" class="form-control" placeholder="suche">
-	<div class="input-group-btn">
-		<div class="btn btn-default">
-			von <span ng-show="spec.since">{{spec.since | date:'short'}}</span><span ng-hide="spec.since">Spielbeginn</span> bis <span ng-show="spec.upto">{{spec.upto | date:'short'}}</span><span ng-hide="spec.upto">Jetzt</span>
+		<div class="input-group" ng-show="spec.type == 'all' || spec.type == 'follower'">
+			<input type="text" class="form-control" placeholder="suche">
+			<div class="input-group-btn">
+				<div class="btn btn-default" translate>
+					since
+					<span ng-show="spec.since">{{spec.since | date:'short'}}</span><span ng-hide="spec.since">game start</span>
+					until
+					<span ng-show="spec.upto">{{spec.upto | date:'short'}}</span><span ng-hide="spec.upto">now</span>
+				</div>
+			</div>
+			<div class="input-group-btn">
+				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+					<translate>Start time</translate>
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu dropdown-menu-right" role="menu">
+					<li><a ui-sref=".({spec: csr({since: null, upto: null})})" translate>Game start</a></li>
+					<li><a ui-sref=".({spec: csr({since: 'weekstart'})})" translate>Since week begin</a></li>
+					<li><a ui-sref=".({spec: csr({since: '1 week'})})" translate>Since 1&nbsp;week ago</a></li>
+					<li><a ui-sref=".({spec: csr({since: '1 month'})})" translate>Since 1&nbsp;month ago</a></li>
+				</ul>
+			</div>
 		</div>
-	</div>
-	<div class="input-group-btn">
-		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Startzeitpunkt <span class="caret"></span></button>
-		<ul class="dropdown-menu dropdown-menu-right" role="menu">
-			<li><a ui-sref=".({spec: csr({since: null, upto: null})})">Spielbeginn</a></li>
-			<li ui-sref=".({spec: csr({since: 'weekstart'})})"><a>Seit Wochenanfang</a></li>
-			<li ui-sref=".({spec: csr({since: '1 week'})})"><a>Seit 1 Woche</a></li>
-			<li ui-sref=".({spec: csr({since: '1 month'})})"><a>Seit 1 Monat</a></li>
-		</ul>
-	</div>
-</div>
-<input ng-hide="spec.type == 'all' || spec.type == 'follower'" type="text" class="form-control" placeholder="suche">
-		
-
-
+		<translate>
+			<input ng-hide="spec.type == 'all' || spec.type == 'follower'" type="text" class="form-control" placeholder="Search" />
+		</translate>
 		<div id="all">
 			<div class="table-wrapper">
 				<table class="ranking table table-bordered">
 					<tr>
-						<th ng-show="spec.showUsers">Rang</th>
-						<th ng-show="spec.showUsers">Name</th>
-						<th ng-show="spec.type == 'all'" colspan="2">Kursänderung</th>
-						<th ng-show="spec.type == 'all'">(Provision)</th>
+						<th ng-show="spec.showUsers" translate>Rank</th>
+						<th ng-show="spec.showUsers" translate>Name</th>
+						<th ng-show="spec.type == 'all'" colspan="2" translate>Total change</th>
+						<th ng-show="spec.type == 'all'" translate>(Commissions)</th>
 						<th ng-show="spec.type == 'xp'">XP</th>
-						<th>Schule</th>
-						<th ng-show="spec.type == 'administrative'" colspan="2">Vollname</th>
-						<th ng-show="spec.type == 'administrative'">Aktionen</th>
-						<th ng-show="spec.type == 'follower'">Follower­performance</th>
-						<th ng-show="spec.type == 'follower'">Follower­bewertung</th>
+						<th translate>Group</th>
+						<th ng-show="spec.type == 'administrative'" colspan="2" translate>Full name</th>
+						<th ng-show="spec.type == 'administrative'" translate>Actions</th>
+						<th ng-show="spec.type == 'follower'" translate>Follower ­performance</th>
+						<th ng-show="spec.type == 'follower'" translate>Follower valuation</th>
 					</tr>
 					<tr ng-repeat="result in rankingResult.get(spec.type) | filter: searchText | filter: resultDisplayFilter | limitTo:totalDisplayed"
 						ng-class="'rank-item rank-' + result.rank + (!result.hastraded ? ' newtrader' : '')">
@@ -82,13 +87,13 @@
 						<td style="text-align: right" ng-show="spec.type == 'xp'">{{result.xp | number:0}}</td>
 						<td>
 							<a ui-sref="game.group({schoolid: result.schoolpath})">{{result.schoolname}}</a>
-							<span ng-show="result.isSchoolEntry">({{result.count}} Spieler, Top {{result.rankCount}})</span>
+							<span ng-show="result.isSchoolEntry" translate>({{result.count}} Members, Top {{result.rankCount}})</span>
 						</td>
 						<td ng-show="spec.type == 'administrative'">{{result.giv_name}}</td>
 						<td ng-show="spec.type == 'administrative'">{{result.fam_name}}</td>
 						<td ng-show="spec.type == 'administrative'">
-							<a title="User kicken" ng-click="kickUser(result)"><i class="fa fa-minus-circle"></i></a>
-							<a title="User zu Admin befördern" ng-click="promoteUserToAdmin(result)">A</a>
+							<translate><a title="Kick user" ng-click="kickUser(result)"><i class="fa fa-minus-circle"></i></a></translate>
+							<translate><a title="Promote user to admin" ng-click="promoteUserToAdmin(result)">A</a></translate>
 						</td>
 						<td style="text-align: right" ng-show="spec.type == 'follower'">{{(result.fperf-1)*100 | number:2}} %</td>
 						<td style="text-align: right" ng-show="spec.type == 'follower'">{{(result.fperfval)*100000 | number:2}}</td>

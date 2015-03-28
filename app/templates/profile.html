@@ -13,8 +13,8 @@
 			<div ng-hide="user.isSelf">
 				<div class="btn-group">
 					<a ng-click="getUserInfo()" class="btn btn-sm btn-default"><i class="fa fa-refresh"></i></a>
-					<a ng-click="addToWatchlist()" class="btn btn-sm btn-default"><i class="fa fa-eye"></i> Watchen</a>
-					<a class="btn btn-success btn-sm" ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: '__LEADER_' + user.uid + '__', amount: 0})">Investieren</a>
+					<a ng-click="addToWatchlist()" class="btn btn-sm btn-default" translate><i class="fa fa-eye"></i> watch</a>
+					<a class="btn btn-success btn-sm" ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: '__LEADER_' + user.uid + '__', amount: 0})" translate>invest</a>
 					<!-- temporarily disabled -->
 					<!--a class="btn btn-default btn-sm" ui-sref="game.chat.user({userId: user.uid})">Nachricht</a-->
 				</div>
@@ -23,10 +23,10 @@
 		<nav class="navbar navbar-default" id="pagesubnav">
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li ng-class="{active: ('game.profile.overview' | isState)}"><a ui-sref=".overview">Generelles</a></li>
-					<li ng-class="{active: ('game.profile.achievements.categories' | isState)}"><a ui-sref=".achievements.categories">Errungenschaften</a></li>
-					<li ng-class="{active: ('**.history' | includedByState)}"><a ui-sref=".history">Orderhistorie</a></li>
-					<li  ng-class="{active: ('**.pinboard' | includedByState)}"><a ui-sref=".pinboard">Pinnwand</a></li>
+					<li ng-class="{active: ('game.profile.overview' | isState)}"><a ui-sref=".overview" translate>Overview</a></li>
+					<li ng-class="{active: ('game.profile.achievements.categories' | isState)}"><a ui-sref=".achievements.categories" translate>Achievements</a></li>
+					<li ng-class="{active: ('**.history' | includedByState)}"><a ui-sref=".history" translate>Order history</a></li>
+					<li  ng-class="{active: ('**.pinboard' | includedByState)}"><a ui-sref=".pinboard" translate>Pinboard</a></li>
 				</ul>
 			</div>
 		</nav>

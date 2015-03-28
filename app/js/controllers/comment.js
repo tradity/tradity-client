@@ -5,13 +5,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('CommentCtrl', function($scope, socket) {
+	controller('CommentCtrl', function($scope, socket, gettext) {
 		$scope.editComment = function(comment) {
 			socket.emit('change-comment-text', {
 				commentid: comment.commentid,
 				comment: prompt('Neuer Kommentartext: (Leerlassen zum Beibehalten)') || comment.comment,
 				trustedhtml: false
-			}, function() { alert('Ok!'); });
+			}, function() { notification(gettext('Ok!'), true); });
 		};
 
 		$scope.deleteComment = function(comment) {
@@ -20,7 +20,7 @@ angular.module('tradity').
 				comment: comment.comment,
 				trustedhtml: comment.trustedhtml,
 				cstate: 'mdeleted'
-			}, function() { alert('Ok!'); });
+			}, function() { notification(gettext('Ok!'), true); });
 		};
 		
 		$scope.sendComment = function() {
@@ -37,7 +37,7 @@ angular.module('tradity').
 			}
 			
 			if (!eventid)
-				return alert('Konnte kein Kommentarevent finden!');
+				return notification(gettext('Comment event was not found!'));
 
 			socket.emit('comment', {
 				eventid: eventid,
@@ -45,7 +45,7 @@ angular.module('tradity').
 				ishtml: $scope.ishtml
 			}, function(data) {
 				if (data.code == 'comment-notfound') {
-					alert('Kommentarevent nicht gefunden.\nHier läuft etwas falsch.');
+					notification(gettext('Comment event was not found – something is wrong here!'));
 				} else if (data.code == 'comment-success') {
 					var time = new Date();
 					$scope.comments.unshift({
@@ -58,7 +58,7 @@ angular.module('tradity').
 					$scope.comment = '';
 				} else if (data.code == 'format-error') {
 					console.log($scope);
-					alert('Sorry, etwas ging hier schief.');
+					notification(gettext('Sorry, something went wrong.'));
 				}
 			});
 		};

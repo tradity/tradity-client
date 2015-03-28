@@ -3,7 +3,7 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div id="listing">
 	<div class="options-field">
-		<h2>Wertpapiere in Besitz</h2>
+		<h2 translate>Held shares</h2>
 		<div class="table-wrapper">
 			<table class="owned-trades table table-bordered">
 				<colgroup>
@@ -20,24 +20,24 @@
 					<th></th>
 					<th></th>
 					<th></th>
-					<th colspan="2">Preis</th>
-					<th colspan="2">Performance</th>
+					<th colspan="2" translate>Price</th>
+					<th colspan="2" translate>Performance</th>
 					<th></th>
 				</tr>
 				<tr>
-					<th>Name</th>
-					<th>Datum</th>
-					<th>Wert</th>
-					<th>Anzahl</th>
-					<th>Einkauf</th>
-					<th>Aktuell</th>
-					<th>Gesamt</th>
-					<th>Heute</th>
-					<th>Trade</th>
+					<th translate>Name</th>
+					<th translate>Date</th>
+					<th translate>Value</th>
+					<th translate>Amount</th>
+					<th translate>Buy price</th>
+					<th translate>Current</th>
+					<th translate>All-time</th>
+					<th translate>Today</th>
+					<th translate>Trade</th>
 				</tr>
 				<tr ng-repeat="result in results">
 					<td>
-						<span tooltip="Gewinnprovision: {{result.wprov_sum / 10000 | number:2}} € &#x0a; Verlustprovision: {{result.lprov_sum / 10000 | number:2}} €" ng-show="result.leader"><a ui-sref="game.profile.overview({userId: result.leadername})">{{result.stockname}}</a></span>
+						<translate><span tooltip="Commission on profits: {{result.wprov_sum / 10000 | number:2}}&nbsp;€ &#x0a; Commission on losses: {{result.lprov_sum / 10000 | number:2}}&nbsp;€" ng-show="result.leader"><a ui-sref="game.profile.overview({userId: result.leadername})">{{result.stockname}}</a></span></translate>
 						<span ng-hide="result.leader">{{result.stockname}}</span>
 					</td>
 					<td>{{result.buytime * 1000 | date:'short'}}</td>

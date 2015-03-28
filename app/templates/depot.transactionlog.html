@@ -3,7 +3,7 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div id="history">
 	<div class="options-field">
-		<h2>Transaktionslog</h2>
+		<h2 translate>Transaction log</h2>
 		<div class="table-wrapper">
 			<table class="transaction-history table table-bordered">
 				<colgroup>
@@ -15,18 +15,18 @@
 					<col class="column-6-7">
 				</colgroup>
 				<tr>
-					<th>Wertpapier</th>
-					<th>Datum</th>
-					<th>Typ</th>
-					<th>Or­der</th>
-					<th>Zahler</th>
-					<th>Empfänger</th>
-					<th>Betrag</th>
-					<th>Anlass</th>
-					<th>HWM</th>
-					<th>LWM</th>
-					<th>Bid­preis</th>
-					<th>Akti­en­men­ge</th>
+					<th translate>Stock</th>
+					<th translate>Date</th>
+					<th translate>Transaction type</th>
+					<th translate>Or­der</th>
+					<th translate>Payer</th>
+					<th translate>Payee</th>
+					<th translate>Amount</th>
+					<th translate>Reason</th>
+					<th translate><span title="High Water Mark">HWM</span></th>
+					<th translate><span title="Low Water Mark">LWM</span></th>
+					<th translate>Bid price</th>
+					<th translate># shares</th>
 				</tr>
 				<tr ng-repeat="ta in transactions | orderBy: '-time'">
 					<td title="{{ta.stocktextid}}">

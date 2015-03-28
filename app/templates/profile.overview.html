@@ -4,27 +4,27 @@
 <div id="overview">
 	<div class="row">
 		<div class="col-sm-2">
-			<h3 class="title">Platz</h3>
+			<h3 class="title" translate>Rank</h3>
 			<span class="placement-number" ng-show="user.rank">{{user.rank}}</span>
 			<span class="placement-number" ng-hide="user.rank">–</span>
 		</div>
 		<div class="col-sm-2">
-			<h3 class="title">Vermögen</h3>
+			<h3 class="title" translate>Total assets</h3>
 			<span class="depot-value">{{user.totalvalue / 10000 | currency}}</span>
 		</div>
 		<div class="col-sm-2">
-			<h3 class="title">Provision</h3>
+			<h3 class="title" translate>Commissions</h3>
 			<span class="placement-number">{{user.wprovision}} % / {{user.lprovision}} %</span>
 			<br>
 			<span class="depot-value">({{user.prov_sum/10000 | currency}})</span>
 		</div>
 		<div class="col-sm-6">
-			<h3 class="title">Kurzbeschreibung</h3>
+			<h3 class="title" translate>Short description</h3>
 			<p>{{user.desc}}</p>
 		</div>
 	</div>
 	<div class="options-field">
-		<h2>Performance</h2>
+		<h2 translate>Performance</h2>
 		<div id="chart-wrap">
 			<div id="chart" class="jqplot-target chart-depot"></div>
 			<div class="container-center padding-top">
@@ -33,60 +33,60 @@
 					<button type="button" class="btn btn-primary" ng-model="drawMode" btn-radio="1">48 h</button>
 					<button type="button" class="btn btn-primary" ng-model="drawMode" btn-radio="2">7 d</button>
 					<button type="button" class="btn btn-primary" ng-model="drawMode" btn-radio="3">14 d</button>
-					<button type="button" class="btn btn-primary" ng-model="drawMode" btn-radio="4">seit Beginn</button>
+					<button type="button" class="btn btn-primary" ng-model="drawMode" btn-radio="4" translate>All-time</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<h2>Vermögensentwicklung</h2>
+	<h2 translate>Your performance</h2>
 
 	<div class="row">
 
 		<div class="col-sm-4">
 			<div class="item text-center" ng-class="{pos: performanceAll > 0, neg: performanceAll < 0}">
-				<b>Gesamt</b><br />
+				<b translate>Total</b><br />
 				{{ performanceAll = ((user.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
 			</div>
 		</div>
 
 		<div class="col-sm-4">
 			<div class="item text-center" ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
-				<b>Heute</b><br />
+				<b translate>Today</b><br />
 				{{( performanceToday = user.totalvalue / user.daystarttotalvalue - 1) * 100 | number:2}} %
 			</div>
 		</div>
 
 		<div class="col-sm-4">
 			<div class="item text-center" ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
-				<b>Woche</b><br />
+				<b translate>Week</b><br />
 				{{ performanceWeek = (user.totalvalue / user.weekstarttotalvalue - 1) * 100 | number:2}} %
 			</div>
 		</div>
 
 	</div>
 
-	<h2>als Leader</h2>
+	<h2 translate>As leader</h2>
 
 	<div class="row">
 
 		<div class="col-sm-4">
 			<div class="item text-center">
-				<b>Follower</b><br />
+				<b translate># Followers</b><br />
 				{{user.f_count}}
 			</div>
 		</div>
 
 		<div class="col-sm-4">
 			<div class="item text-center">
-				<b>verkaufte Anteile</b><br />
+				<b translate>sold shares</b><br />
 				{{user.f_amount}}
 			</div>
 		</div>
 
 		<div class="col-sm-4">
 			<div class="item text-center">
-				<b>erh. Provision</b><br />
+				<b translate>Received commissions</b><br />
 				{{user.prov_sum / 10000|currency}}
 			</div>
 		</div>

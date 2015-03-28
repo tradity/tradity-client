@@ -9,92 +9,96 @@
 					<div class="col-sm-12"><h2>Account</h2></div>
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label for="name">Benutzername</label>
+							<label for="name" translate>Username</label>
 							<input type="text" ng-model="name" placeholder="Benutzername" id="name" class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="password">Passwort</label>
+							<label for="password" translate>Password</label>
 							<input type="password" ng-model="password" placeholder="Passwort" id="password" class="form-control">
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label for="email">E-Mail</label>
+							<label for="email" translate>E-mail address</label>
 							<input type="email" ng-model="email" placeholder="E-Mail" id="email" class="form-control">
 						</div>
 						<div class="form-group">
-							<label for="password_check">Passwort Wiederholung</label>
+							<label for="password_check" translate>Repeat password</label>
 							<input type="password" ng-model="password_check" placeholder="Passwort" id="password_check" class="form-control">
 						</div>
 					</div>
 					<div class="col-sm-6">
-						<h2>Profilbild</h2>
+						<h2 translate>Profile image</h2>
 						<img id="profile-picture" width="200px" ng-show="ownUser.profilepic" ng-src="{{ownUser.profilepic}}" alt="">
 						<input type="file" id="profileimage" class="options-input" accept="image/png,image/jpeg,image/gif"><br/>
-						Oder (statt Hochladen):<br/>
-						<input type="button" ng-click="useGravatar()" ng-show="ownUser.email_verif != 0 && ownUser.email" class="btn btn-primary" value="Gravatar verwenden" />
+						<span translate>Or (instead of uploading):</span> <br />
+						<translate><input type="button" ng-click="useGravatar()" ng-show="ownUser.email_verif != 0 && ownUser.email" class="btn btn-primary" value="Use Gravatar" /></translate>
 					</div>
 				</div>
 			<!--</tab>
 			<tab heading="Spiel">-->
-				<h2>Spiel</h2>
+				<h2 translate>Game</h2>
 				<div class="form-group">
-					<label for="provision">Gewinnprovision deiner Follower ({{serverConfig.minWProvision}} % – {{serverConfig.maxWProvision}} %)</label>
-					<input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="form-control" min="{{serverConfig.minWProvision}}" max="{{serverConfig.maxWProvision}}" step="1">
+					<label for="provision"><span translate>Your followers’ commission on profits</span> ({{serverConfig.minWProvision}} % – {{serverConfig.maxWProvision}} %)</label>
+					<input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="form-control" min="{{serverConfig.minWProvision}}" max="{{serverConfig.maxWProvision}}" step="1" />
 				</div>
 				<div class="form-group">
-					<label for="provision">Verlustprovision deiner Follower ({{serverConfig.minLProvision}} % – {{serverConfig.maxLProvision}} %)</label>
-					<input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="form-control" min="{{serverConfig.minLProvision}}" max="{{serverConfig.maxLProvision}}" step="1">
+					<label for="provision"><span translate>Your followers’ commission on losses</span> ({{serverConfig.minLProvision}} % – {{serverConfig.maxLProvision}} %)</label>
+					<input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="form-control" min="{{serverConfig.minLProvision}}" max="{{serverConfig.maxLProvision}}" step="1" />
 				</div>
 				<div class="form-group">
-					<label for="delayorderhist">Verzögerung deiner Orderhistorie </label><br/>
-					<input type="checkbox" ng-model="delayorderhist" id="delayorderhist"> Ja
+					<label for="delayorderhist" translate>Delayed order history</label><br/>
+					<input type="checkbox" ng-model="delayorderhist" id="delayorderhist" /> <span translate>Yes</span>
+				</div>
+				<div class="form-group">
+					<label for="lang" translate>Language</label>
+					<select id="lang" ng-model="lang" ng-options="language.id as language.name for language in serverConfig.languages"></select>
 				</div>
 			<!--</tab>
 			<tab heading="Privates">-->
-				<h2>Privates</h2>
+				<h2 translate>Personal information</h2>
 				<div class="row">
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label for="giv_name">Vorname</label>
-							<input type="text" ng-model="giv_name" placeholder="Vorname" id="giv_name" class="form-control">
+							<label for="giv_name" translate>First name</label>
+							<translate><input type="text" ng-model="giv_name" placeholder="First name" id="giv_name" class="form-control"></translate>
 						</div>
 						<div class="form-group">
-							<label for="fam_name">Nachname</label>
-							<input type="text" ng-model="fam_name" placeholder="Nachname" id="fam_name" class="form-control">
+							<label for="fam_name" translate>Last name</label>
+							<translate><input type="text" ng-model="fam_name" placeholder="Last name" id="fam_name" class="form-control"></translate>
 						</div>
 					</div>
 					<div class="col-sm-6">
 						<div class="form-group">
-							<label for="schoolname">Institution / Schule</label>
-							<input type="text" ng-init="loadSearch()" ng-model="schoolname" placeholder="Schule" id="schoolname" class="form-control">
-							<input id="schoolname_none" ng-model="schoolname_none" type="checkbox"> Keine Gruppe
-							<input type="text" ng-model="schoolclass" placeholder="Klasse" id="schoolclass" class="form-control">
+							<label for="schoolname" translate>Organization / School</label>
+							<translate><input type="text" ng-init="loadSearch()" ng-model="schoolname" placeholder="Schule" id="schoolname" class="form-control"></translate>
+							<input id="schoolname_none" ng-model="schoolname_none" type="checkbox"> <span translate>No group</span>
+							<translate><input type="text" ng-model="schoolclass" placeholder="Klasse" id="schoolclass" class="form-control"></translate>
 						</div>
 						<div class="form-group">
-							<label for="realnamepublish">Soll dein Klarname veröffentlicht werden?</label><br/>
-							<input type="checkbox" ng-model="realnamepublish" id="realnamepublish"> Ja
+							<label for="realnamepublish" translate>May your name be published?</label><br/>
+							<input type="checkbox" ng-model="realnamepublish" id="realnamepublish"> <span translate>Yes</span>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="dla_optin">Möchtest du Achievements für tägliches Einloggen erhalten?</label><br/>
-					<input type="checkbox" ng-model="dla_optin" id="dla_optin"> Ja
-					<a ng-hide="show_dlainfo" ng-click="show_dlainfo = true">(Mehr Informationen)</a>
-					<a ng-show="show_dlainfo" ng-click="show_dlainfo = false">(Ausblenden)</a>
+					<label for="dla_optin" translate>Do you want to receive achievements for daily activity?</label><br/>
+					<input type="checkbox" ng-model="dla_optin" id="dla_optin"> <span translate>Yes</span>
+					<a ng-hide="show_dlainfo" ng-click="show_dlainfo = true" translate>(More information)</a>
+					<a ng-show="show_dlainfo" ng-click="show_dlainfo = false" translate>(Less information)</a>
 					<div ng-show="show_dlainfo">
-						<p>
-							Du kannst, wenn du möchtest, Achievements dafür erhalten, eine bestimmte Anzahl von Tagen
-							nacheinander aktiv zu sein. Dabei nehmen wir den Schutz deiner persönlichen Daten ernst:
+						<p translate>
+							You can – if you agree – receive achievements for being active on multiple days in a row.
+							We take the protection of your personal data seriously:
 							<br />
-							An welchen Tagen du aktiv warst, wird nur mit deinem Passwort verschlüsselt gespeichert.
-							Das bedeutet leider auch, dass, wenn du die „Passwort vergessen“-Funktion verwendest, du
-							neu anfangen musst, Aktivität zu sammeln.
+							All information regarding your activity log will be stored encrypted by your password
+							only. Unfortunately, this also means that using the “forgot password” option will require
+							you to start gathering activity entries anew.
 							<br />
-							Nach {{DLAValidityDays}} Tagen werden deine Aktivitätseinträge gelöscht und können nicht mehr
-							für Achievements verwendet werden.
+							After {{DLAValidityDays}} days your activity log will be cleared and cannot be used for
+							gaining achievements any longer.
 							<br />
-							Zur Zeit hast du Aktivität für folgende Tage gesammelt und gespeichert:
+							Currently your activity log contains the following entries:
 						<p>
 						<ul>
 							<li ng-repeat="day in dla_cert_days">{{day | date:'fullDate'}}</li>
@@ -103,41 +107,41 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-6">
-						<label for="street">Adresse</label>
-						<input type="text" ng-model="street" placeholder="Straße, Hausnr." id="street" class="form-control">
-						<input type="text" ng-model="zipcode" placeholder="PLZ" id="zipcode" class="form-control">
-						<input type="text" ng-model="town" placeholder="Stadt" id="town" class="form-control"><br>
+						<label for="street" translate>Address</label>
+						<translate><input type="text" ng-model="street" placeholder="Street" id="street" class="form-control"></translate>
+						<translate><input type="text" ng-model="zipcode" placeholder="Zip code" id="zipcode" class="form-control"></translate>
+						<translate><input type="text" ng-model="town" placeholder="City" id="town" class="form-control"></translate><br>
 					</div>
 					<div class="col-sm-6">
 						<div class="padding-left">
-							<label for="birthday">Geburtsdatum</label>
+							<label for="birthday" translate>Birth date</label>
 							<div class="pure-g">
-								<div class="pure-u-1-3"> 
-									<input type="number" ng-model="birthdayd" max="31" min="0" placeholder="Tag" id="birthdayd" class="form-control">
+								<div class="pure-u-1-3" translate>
+									<input type="number" ng-model="birthdayd" max="31" min="0" placeholder="Day" id="birthdayd" class="form-control">
 								</div>
-								<div class="pure-u-1-3"> 
-									<input type="number" ng-model="birthdaym" max="12" min="0" placeholder="Monat" id="birthdaym" class="form-control">
+								<div class="pure-u-1-3" translate>
+									<input type="number" ng-model="birthdaym" max="12" min="0" placeholder="Month" id="birthdaym" class="form-control">
 								</div>
-								<div class="pure-u-1-3">
-									<input type="number" ng-model="birthdayy" max="2015" min="0" placeholder="Jahr" id="birthdayy" class="form-control">
+								<div class="pure-u-1-3" translate>
+									<input type="number" ng-model="birthdayy" max="2015" min="0" placeholder="Year" id="birthdayy" class="form-control">
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<label for="desc">Kurzbeschreibung</label>
-				<textarea ng-model="desc" id="desc" placeholder="Erzähl uns, was dich ausmacht" class="form-control"></textarea>
+				<label for="desc" translate>Short description</label>
+				<translate><textarea ng-model="desc" id="desc" placeholder="Tell us about you" class="form-control"></textarea></translate>
 			<!--</tab>
 			<tab heading="Einladen">-->
-				<h2>User einladen</h2>
+				<h2 translate>Invite user</h2>
 				<ng-include src="'templates/inviteform.html'"></ng-include>
 			<!--</tab>
 		</tabset>-->
 	</form>
 	<hr/>
 	<div class="save">
-		<input type="submit" value="Speichern" id="options-sb" class="btn btn-primary" ng-click="changeOptions()">
-		<input type="button" ng-click="resetUser();" value="Benutzer zurücksetzen" id="options-reset" class="btn btn-primary" ng-show="serverConfig.resetAllowed || isAdmin">
+		<translate><input type="submit" value="Save" id="options-sb" class="btn btn-primary" ng-click="changeOptions()"></translate>
+		<translate><input type="button" ng-click="resetUser();" value="Reset user" id="options-reset" class="btn btn-primary" ng-show="serverConfig.resetAllowed || isAdmin"></translate>
 	</div>
 	<!-- ja das muss ich noch machen -->
 	

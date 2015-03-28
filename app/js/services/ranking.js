@@ -12,7 +12,7 @@
  * Factory
  */
 angular.module('tradity')
-	.factory('ranking', function (socket) {
+	.factory('ranking', function (socket, gettext) {
 		var Ranking = function(school, spec, rankifyOptions, resultFilters, noAutoFetch) {
 			this.school = school || null;
 			this.spec = spec;
@@ -52,7 +52,7 @@ angular.module('tradity')
 				_cache: 30
 			}, function(data) {
 				if (data.code != 'get-ranking-success')
-					return notification('Es gab ein Problem beim Laden der Rangliste!');
+					return notification(gettext('There was a problem while loading the current ranking!'));
 				
 				self.rawResults = self.filterRawResults(data.result);
 				

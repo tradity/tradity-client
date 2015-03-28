@@ -12,70 +12,84 @@
 		</div>
 		<div class="col-sm-4 info">
 			<div class="box">
-				<h2>Warum Mitmachen?</h2>
+				<h2 translate>Why participate?</h2>
 				<ul>
-					<li>Probiere Wirtschaft und Börse spielerisch aus</li>
-					<li>Handle mit fiktiven 100.000 € alle Aktien der Börse Frankfurt in Echtzeit</li>
-					<li>Triff kluge Entscheidungen und siege als bester Trader oder…</li>
-					<li>Lerne als Neuling von erfahreneren Mitspielern und werde bester Follower im Social Trading</li>
-					<li>Tausche dich mit deinen Freunden über Nachrichten und Entscheidungen in einer eigenen Gruppe aus</li>
-					<li>Gewinne in verschiedenen Kategorien und jede Woche wertvolle Preise</li>
+					<li translate>Try out economy and stock trading in a challenging game</li>
+					<li translate>Trade fictional 100,000&nbsp;€ with all stocks of the Börse Frankfurt in real-time</li>
+					<li translate>Make intelligent decisions and win as the best trader, or…</li>
+					<li translate>Learn from experienced players and become best follower with Social Trading</li>
+					<li translate>Talk about news and your decisions within your group</li>
+					<li translate>Win valuable prizes in various categories each week</li>
 				</ul>
 			</div>
 		</div>
 		<div class="col-sm-8 register">
 			<div class="row box">
 				<div class="col-sm-6">
-					<h2>Allgemein</h2>
-					<div class="form-group">
-						<input ng-model="name" type="text" class="form-control" placeholder="Benutzername">
+					<h2 translate>General information</h2>
+					<div class="form-group" translate>
+						<input ng-model="name" type="text" class="form-control" placeholder="User name">
 					</div>
-					<div class="form-group">
-						<input ng-model="email" type="email" class="form-control" placeholder="Emailadresse">
+					<div class="form-group" translate>
+						<input ng-model="email" type="email" class="form-control" placeholder="E-mail address">
 					</div>
-					<div class="form-group">
-						<input ng-model="password" type="password" class="form-control" placeholder="Passwort">
+					<div class="form-group" translate>
+						<input ng-model="password" type="password" class="form-control" placeholder="Password">
 					</div>
-					<div class="form-group">
-						<input ng-model="password_check" type="password" class="form-control" placeholder="Passwort wiederholen">
+					<div class="form-group" translate>
+						<input ng-model="password_check" type="password" class="form-control" placeholder="Repeat password">
 					</div>
-					<h2>Über Dich</h2>
-					<p>Diese Daten benötigen wir, damit du auch am Wettbewerb teilnehmen kannst.</p>
-					<div class="form-group">
-						<input ng-model="giv_name" type="text" class="form-control" placeholder="Vorname">
+					<h2 translate>About yourself</h2>
+					<p translate>The following data is required to participate in the competition</p>
+					<div class="form-group" translate>
+						<input ng-model="giv_name" type="text" class="form-control" placeholder="First name">
 					</div>
-					<div class="form-group">
-						<input ng-model="fam_name" type="text" class="form-control" placeholder="Nachname">
+					<div class="form-group" translate>
+						<input ng-model="fam_name" type="text" class="form-control" placeholder="Last name">
 					</div>
 				</div>
 				<div class="col-sm-6">
-					<h2>Institution / Schule</h2>
-					<p>Bitte wähle die Schule/Uni/Gruppe aus, an welcher du bist. So ist gewährleistet, dass du (sofern deine Schule/Uni/Gruppe einen eigenen Wettbewerb hat) gruppenintern gewinnberechtigt bist.</p>
-					<div class="form-group">
-						<input ng-model="schoolname" id="schoolname" type="text" class="form-control" placeholder="Schule">
+					<h2 translate>Organization / School</h2>
+					<p translate>
+						Please choose your school/university/group in order to ensure that
+						you are eligible for prizes internal to your group (if there are any).
+					</p>
+					<div class="form-group" translate>
+						<input ng-model="schoolname" id="schoolname" type="text" class="form-control" placeholder="School">
 					</div>
-					<p>Falls du an einem Stadtwettbewerb teilnimmst, gib bitte deine Klasse an, sodass wir dir deine Urkunde und ggf. deinen Preis zukommen lassen können</p>
-					<div class="form-group">
-						<input ng-model="schoolclass" id="schoolclass" type="text" class="form-control" placeholder="(Klasse)">
+					<p translate>
+						If you take part in a local competition, please enter your class so we can
+						send you a certificate and (possibly) prizes.
+					</p>
+					<div class="form-group" translate>
+						<input ng-model="schoolclass" id="schoolclass" type="text" class="form-control" placeholder="(School class)">
 					</div>
 					<div class="form-group">
 						<label for="schoolname_none">
-							<input ng-model="schoolname_none" id="schoolname_none" type="checkbox"> Keine Gruppe
+							<input ng-model="schoolname_none" id="schoolname_none" type="checkbox">
+							<translate>No Group</translate>
 						</label>
 					</div>
-					<div class="form-group" ng-show="serverConfig.betakeyRequired">
-						<input ng-model="betakey" id="betakey" type="text" class="form-control" placeholder="Betakey">
+					<div class="form-group" ng-show="serverConfig.betakeyRequired" translate>
+						<input ng-model="betakey" id="betakey" type="text" class="form-control" placeholder="Beta key">
+					</div>
+					<div class="form-group">
+						<label for="lang" translate>Language</label>
+						<select id="lang" ng-model="lang" ng-options="language.id as language.name for language in serverConfig.languages"></select>
 					</div>
 					<div class="checkbox">
 						<label>
-							<input type="checkbox" ng-model="agbread"> Ich habe die <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/">AGB</a> gelesen und akzeptiert.
+							<input type="checkbox" ng-model="agbread">
+							<translate>
+							I have read and accepted the <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/">TOS</a>.
+							</translate>
 						</label>
 					</div>
 				</div>
 				<div class="col-sm-12">
 					<div class="pull-right text-right">
-						<button ng-click="register()" type="submit" class="btn btn-primary btn-sm">Registrieren</button><br/>
-						<a ui-sref="index.login" id="gtlogin">Ich bin bereits registriert!</a>
+						<button ng-click="register()" type="submit" class="btn btn-primary btn-sm" translate>Register</button><br/>
+						<a ui-sref="index.login" id="gtlogin" translate>I already have an account!</a>
 					</div>
 				</div>
 				<div class="col-sm-12">

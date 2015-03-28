@@ -2,12 +2,14 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div id="groupOverview" class="main-content">
-	<h1>Gruppen</h1>
+	<h1 translate>Groups</h1>
 	<div ng-show="!ownUser.topLevelSchool">
-		<h2>Wähle deine Gruppe</h2>
+		<h2 translate>Choose your group</h2>
 		<form class="pure-form" id="rankingSearch">
-			<input type="search" ng-model="searchText" placeholder="Suche (deine Schule, Organisation, Institut)" class="pure-input">
-			Ist deine Gruppe hier nicht aufgeführt? <a ng-click="createNewSchool()">Gründe eine neue Gruppe!</a>
+			<translate>
+				<input type="search" ng-model="searchText" placeholder="Search (Your school/organization/group)" class="pure-input" />
+			</translate>
+			<span translate>Your group is not listed here? <a ng-click="createNewSchool()">Start a new one!</a></span>
 		</form>
 		<hr/>
 		<div class="table-wrapper">
@@ -17,8 +19,8 @@
 					<col class="rankcol-1" style="width: 10%">
 				</colgroup>
 				<tr>
-					<th>Name</th>
-					<th>Mitglieder</th>
+					<th translate>Name</th>
+					<th translate>Members</th>
 				</tr>
 				<tr ng-repeat="result in groups | filter: searchText ">
 					<td><a ui-sref="game.group({schoolid: result.path})">{{result.name}}</a></td>
@@ -28,7 +30,7 @@
 		</div>
 	</div>
 	<div ng-show="ownUser.topLevelSchool">
-		<h2>Deine Gruppen</h2>
+		<h2 translate>Your groups</h2>
 		<ul>
 			<li ng-repeat="item in ownUser.schools"><a ui-sref="game.group({schoolid: item.path})">{{item.name}}</a></li>
 		</ul>

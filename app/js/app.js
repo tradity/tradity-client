@@ -277,14 +277,13 @@ angular.module('tradity', [
 	$locationProvider.
 		html5Mode(true).
 		hashPrefix('!');
-}).run(function($templateCache, gettextCatalog, DEFAULT_LANGUAGE, $rootScope) {
+}).run(function($templateCache, languageManager, $rootScope) {
 	$rootScope.$on('user-update', function(ev, data) {
-		console.log(data);
-		if (data.lang)
-			gettextCatalog.setCurrentLanguage(data.lang);
+		if (data && data.lang)
+			languageManager.setCurrentLanguage(data.lang);
 	});
 	
-	gettextCatalog.setCurrentLanguage(DEFAULT_LANGUAGE);
+	languageManager.setCurrentLanguage(null);
 	
 	$templateCache.put('/dialogs/error.html',   "<ng-include src=\"'templates/dialogs/error.html'\"></ng-include>");
 	$templateCache.put('/dialogs/wait.html',    "<ng-include src=\"'templates/dialogs/wait.html'\"></ng-include>");

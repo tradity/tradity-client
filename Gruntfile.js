@@ -33,11 +33,18 @@ module.exports = function (grunt) {
 		nggettext_compile: {
 			all: {
 				options: {
-					module: 'tradity'
+					module: 'tradity',
+					format: 'json'
 				},
-				files: {
-					'<%= yeoman.app %>/js/translations.js': ['po/unstripped/*.po']
-				}
+				files: [
+					{
+						expand: true,
+						cwd: 'po/unstripped/',
+						src: ['*.po'],
+						dest: '<%= yeoman.app %>/js/jit/l10n',
+						ext: '.json'
+					}
+				]
 			}
 		},
 		
@@ -229,6 +236,7 @@ module.exports = function (grunt) {
 					src: [
 						'<%= yeoman.dist %>/templates/{,*/}*.html',
 						'<%= yeoman.dist %>/js/{,*/}*.js',
+						'<%= yeoman.dist %>/js/jit/l10n/*.json',
 						'<%= yeoman.dist %>/css/{,*/}*.css',
 						'<%= yeoman.dist %>/img/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
 						'<%= yeoman.dist %>/css/fonts/*'
@@ -335,7 +343,6 @@ module.exports = function (grunt) {
 						'img/{,*/}*.{webp}',
 						'fonts/{,*/}*',
 						'js/buildstamp.js',
-						'js/translations.js',
 						'js/jit/**/*'
 					]
 				}, {

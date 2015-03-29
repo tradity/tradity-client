@@ -5,9 +5,18 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('MainCtrl', function($sce, chat, ranking, $feed, $user, $rootScope, $scope, $location, $state, $stateParams, socket, safestorage, dailyLoginAchievements, $http, $interval, $timeout, gettext, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG) {
+	controller('MainCtrl', function($sce, chat, ranking, $feed, $user, $rootScope, $scope, $location,
+		$state, $stateParams, socket, safestorage, dailyLoginAchievements, $http, $interval, $timeout,
+		gettext, languageManager, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG)
+	{
 		$scope.Math = Math;
-		$scope.vtime = function(t) { return vagueTime.get({to: t, units: 's', lang: 'de'}); };
+		$scope.vtime = function(t) {
+			return vagueTime.get({
+				to: t,
+				units: 's',
+				lang: languageManager.getCurrentLanguage()
+			});
+		};
 
 		$scope.isAdmin = false;
 		$rootScope.ownUser = $scope.ownUser = $user;

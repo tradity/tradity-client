@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs, gettext, gettextCatalog) {
+	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs, gettext, languageManager) {
 		socket.on('get-own-options', function(data) {
 			if (!data.result)
 				return;
@@ -33,7 +33,8 @@ angular.module('tradity').
 			$scope.street = data.result.street;
 			$scope.zipcode = data.result.zipcode;
 			$scope.town = data.result.town;
-			$scope.lang = data.result.lang;
+			
+			$scope.lang = languageManager.setCurrentLanguage(data.result.lang);
 			$scope.traditye = data.result.traditye&&true;
 			$scope.dla_optin = data.result.dla_optin&&true;
 			$scope.delayorderhist = data.result.delayorderhist;
@@ -72,7 +73,7 @@ angular.module('tradity').
 		};
 	
 		$scope.$watch('lang', function() {
-			gettextCatalog.setCurrentLanguage($scope.lang);
+			languageManager.setCurrentLanguage($scope.lang);
 		});
 		
 		$scope.changeOptions = function() {
@@ -133,7 +134,7 @@ angular.module('tradity').
 				street: $scope.street,
 				zipcode: $scope.zipcode,
 				town: $scope.town,
-				lang: $scope.lang,
+				lang: languageManager.setCurrentLanguage($scope.lang),
 				schoolclass: $scope.schoolclass,
 				traditye: $scope.traditye,
 				dla_optin: $scope.dla_optin,

@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dialogs, safestorage, gettext, gettextCatalog, socket) {
+	controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dialogs, safestorage, gettext, languageManager, socket) {
 		$scope.school = $stateParams.schoolid;
 		$scope.schoolname_none = false;
 		$scope.traditye = 0;
@@ -16,7 +16,7 @@ angular.module('tradity').
 		$scope.schoolclass = '';
 		$scope.invitekey = $stateParams.inviteCode;
 		$scope.betakey = '';
-		$scope.lang = 'de';
+		$scope.lang = languageManager.getCurrentLanguage();
 		$scope.onLSResult = [
 			function() {
 				for (var i = 0; i < $scope.schoolList.length; ++i) {
@@ -36,7 +36,7 @@ angular.module('tradity').
 		};
 
 		$scope.$watch('lang', function() {
-			gettextCatalog.setCurrentLanguage($scope.lang);
+			languageManager.setCurrentLanguage($scope.lang);
 		});
 		
 		if ($scope.invitekey) {
@@ -115,7 +115,7 @@ angular.module('tradity').
 				street: $scope.street,
 				zipcode: $scope.zipcode,
 				town: $scope.town,
-				lang: $scope.lang,
+				lang: languageManager.setCurrentLanguage($scope.lang),
 				traditye: $scope.traditye,
 				dla_optin: $scope.dla_optin,
 				invitekey: $scope.invitekey

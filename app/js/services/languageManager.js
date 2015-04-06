@@ -17,6 +17,8 @@ angular.module('tradity')
 		
 		var LanguageManager = function() {
 			localStorage_.language = localStorage_.language || DEFAULT_LANGUAGE;
+			
+			this.gettextSetLanguage(localStorage_.language);
 		};
 
 		LanguageManager.asyncFiles = {
@@ -29,11 +31,18 @@ angular.module('tradity')
 			if (isChange) {
 				localStorage_.language = lang;
 			
-				gettextCatalog.setCurrentLanguage(localStorage_.language);
-				gettextCatalog.loadRemote(LanguageManager.asyncFiles[localStorage_.language]);
+				this.gettextSetLanguage(localStorage_.language);
 			}
 			
 			return localStorage_.language;
+		};
+		
+		LanguageManager.prototype.gettextSetLanguage = function(lang) {
+			gettextCatalog.setCurrentLanguage(lang);
+			
+			if (LanguageManager.asyncFiles[lang]) {
+				gettextCatalog.loadRemote(LanguageManager.asyncFiles[lang]);
+			}
 		};
 		
 		LanguageManager.prototype.getCurrentLanguage = function() {

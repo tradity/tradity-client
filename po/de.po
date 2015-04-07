@@ -50,7 +50,7 @@ msgid "404 – Page not found"
 msgstr "404 – Seite nicht gefunden"
 
 #: app/templates/depot.watchlist.html:46
-msgid "<a title=\"Remove\"><i></i> </a>"
+msgid "<a title=\"Remove\"><i></i></a>"
 msgstr "<a title=\"Entfernen\"><i></i></a>"
 
 #: app/templates/game.html:38
@@ -71,50 +71,29 @@ msgstr "<a title=\"Watchlist\"><i></i></a>"
 
 #: app/templates/feed.html:71
 msgid ""
-"<a translate-id=\"trader-link\">\n"
-"{{message.srcusername}}\n"
-"</a>\n"
-"has <a translate-id=\"trade-link\">bought</a> {{message.amount}}&nbsp;shares "
-"of\n"
-"<span>\n"
-"<a translate-id=\"leader-link\">{{message.stockname}}</a>\n"
-"</span>\n"
+"<a translate-id=\"trader-link\">{{message.srcusername}}</a> has <a translate-"
+"id=\"trade-link\">bought</a> {{message.amount}}&nbsp;shares of <span><a "
+"translate-id=\"leader-link\">{{message.stockname}}</a></span> "
 "<span>{{message.stockname}}</span>."
 msgstr ""
-"<a translate-id=\"trader-link\">\n"
-"{{message.srcusername}}\n"
-"</a>\n"
-"hat {{message.amount}}&nbsp;Anteile an\n"
-"<span>\n"
-"<a translate-id=\"leader-link\">{{message.stockname}}</a>\n"
-"</span>\n"
-"<span>{{message.stockname}}</span> <a translate-id=\"trade-link\">gekauft</"
-"a>."
+"<a translate-id=\"trader-link\">{{message.srcusername}}</a> hat {{message."
+"amount}}&nbsp;Anteile an <span><a translate-id=\"leader-link\">{{message."
+"stockname}}</a></span> <span>{{message.stockname}}</span> <a translate-id="
+"\"trade-link\">gekauft</a>."
 
 #: app/templates/feed.html:128
 msgid ""
-"<a translate-id=\"trader-link\">\n"
-"{{message.srcusername}}\n"
-"</a>\n"
-"has <a translate-id=\"trade-link\">bought</a> {{message.amount}}&nbsp;shares "
-"of you."
+"<a translate-id=\"trader-link\">{{message.srcusername}}</a> has <a translate-"
+"id=\"trade-link\">bought</a> {{message.amount}}&nbsp;shares of you."
 msgstr ""
-"<a translate-id=\"trader-link\">\n"
-"{{message.srcusername}}\n"
-"</a>\n"
-"hat {{message.amount}}&nbsp;Anteile an dir <a translate-id=\"trade-link"
-"\">gekauft</a>."
+"<a translate-id=\"trader-link\">{{message.srcusername}}</a> hat {{message."
+"amount}}&nbsp;Anteile an dir <a translate-id=\"trade-link\">gekauft</a>."
 
 #: app/templates/feed.html:87
 msgid ""
-"<a translate-id=\"trader-link\">\n"
-"{{message.srcusername}}\n"
-"</a>\n"
-"has <a translate-id=\"trade-link\">sold</a> {{message.amount}}&nbsp;shares "
-"of\n"
-"<span>\n"
-"<a translate-id=\"leader-link\">{{message.stockname}}</a>\n"
-"</span>\n"
+"<a translate-id=\"trader-link\">{{message.srcusername}}</a> has <a translate-"
+"id=\"trade-link\">sold</a> {{message.amount}}&nbsp;shares of <span><a "
+"translate-id=\"leader-link\">{{message.stockname}}</a></span> "
 "<span>{{message.stockname}}</span>."
 msgstr ""
 "<a translate-id=\"trader-link\">\n"
@@ -129,11 +108,8 @@ msgstr ""
 
 #: app/templates/feed.html:139
 msgid ""
-"<a translate-id=\"trader-link\">\n"
-"{{message.srcusername}}\n"
-"</a>\n"
-"has <a translate-id=\"trade-link\">sold</a> {{message.amount}}&nbsp;shares "
-"of you."
+"<a translate-id=\"trader-link\">{{message.srcusername}}</a> has <a translate-"
+"id=\"trade-link\">sold</a> {{message.amount}}&nbsp;shares of you."
 msgstr ""
 "<a translate-id=\"trader-link\">\n"
 "{{message.srcusername}}\n"
@@ -143,12 +119,9 @@ msgstr ""
 
 #: app/templates/feed.html:39
 msgid ""
-"<a translate-id=\"watcher-link\">\n"
-"{{message.srcusername}}\n"
-"</a> has put <a translate-id=\"watched-link\">\n"
-"{{message.targetname}}\n"
-"</a>\n"
-"onto their watch list."
+"<a translate-id=\"watcher-link\">{{message.srcusername}}</a> has put <a "
+"translate-id=\"watched-link\">{{message.targetname}}</a> onto their watch "
+"list."
 msgstr ""
 "<a translate-id=\"watcher-link\">\n"
 "{{message.srcusername}}\n"
@@ -159,11 +132,8 @@ msgstr ""
 
 #: app/templates/feed.html:192
 msgid ""
-"<a>\n"
-"{{message.srcusername}}\n"
-"</a>\n"
-"has changed their user name from “{{message.oldname}}” to “{{message."
-"newname}}”."
+"<a>{{message.srcusername}}</a> has changed their user name from “{{message."
+"oldname}}” to “{{message.newname}}”."
 msgstr ""
 "<a>\n"
 "{{message.srcusername}}\n"
@@ -173,13 +143,10 @@ msgstr ""
 
 #: app/templates/feed.html:161
 msgid ""
-"<a>\n"
-"{{message.srcusername}}\n"
-"</a> has changed\n"
-"their commission on profits from {{message.oldwprov}}&nbsp;% to {{message."
-"newwprov}}&nbsp;% and\n"
-"their commission on losses from {{message.oldlprov}}&nbsp;% to {{message."
-"newlprov}}&nbsp;%."
+"<a>{{message.srcusername}}</a> has changed their commission on profits from "
+"{{message.oldwprov}}&nbsp;% to {{message.newwprov}}&nbsp;% and their "
+"commission on losses from {{message.oldlprov}}&nbsp;% to {{message.newlprov}}"
+"&nbsp;%."
 msgstr ""
 "<a>\n"
 "{{message.srcusername}}\n"
@@ -191,10 +158,8 @@ msgstr ""
 
 #: app/templates/feed.html:156
 msgid ""
-"<a>\n"
-"{{message.srcusername}}\n"
-"</a> has changed their commission on losses from {{message.oldlprov}}&nbsp;% "
-"to {{message.newlprov}}&nbsp;%."
+"<a>{{message.srcusername}}</a> has changed their commission on losses from "
+"{{message.oldlprov}}&nbsp;% to {{message.newlprov}}&nbsp;%."
 msgstr ""
 "<a>\n"
 "{{message.srcusername}}\n"
@@ -203,10 +168,8 @@ msgstr ""
 
 #: app/templates/feed.html:151
 msgid ""
-"<a>\n"
-"{{message.srcusername}}\n"
-"</a> has changed their commission on profits from {{message.oldwprov}}&nbsp;"
-"% to {{message.newwprov}}&nbsp;%."
+"<a>{{message.srcusername}}</a> has changed their commission on profits from "
+"{{message.oldwprov}}&nbsp;% to {{message.newwprov}}&nbsp;%."
 msgstr ""
 "<a>\n"
 "{{message.srcusername}}\n"
@@ -214,10 +177,7 @@ msgstr ""
 "{{message.newwprov}}&nbsp;% geändert."
 
 #: app/templates/feed.html:213
-msgid ""
-"<a>\n"
-"{{message.srcusername}}\n"
-"</a> has reset their account."
+msgid "<a>{{message.srcusername}}</a> has reset their account."
 msgstr ""
 "<a>\n"
 "{{message.srcusername}}\n"
@@ -230,8 +190,8 @@ msgstr ""
 
 #: app/templates/index.html:9
 msgid ""
-"<a id=\"register-btn\">Register</a><br>\n"
-"<span>or <a id=\"login-btn\">Login</a></span>"
+"<a id=\"register-btn\">Register</a><br> <span>or <a id=\"login-btn\">Login</"
+"a></span>"
 msgstr ""
 "<a id=\"register-btn\">Registrieren</a><br>\n"
 "<span>oder <a id=\"login-btn\">Einloggen</a></span>"
@@ -444,24 +404,20 @@ msgstr ""
 "<textarea placeholder=\"Poste etwas in diesen Gruppenfeed!\"></textarea>"
 
 #: app/templates/trade.html:33
-msgid ""
-"Ask price\n"
-"{{cur.ask / 10000 | number:3}}&nbsp;€"
-msgstr ""
-"Verkaufs&#xad;preis\n"
-"{{cur.ask / 10000 | number:3}}&nbsp;€"
-
-#: app/templates/trade.html:37
-msgid ""
-"Bid price\n"
-"{{cur.bid / 10000 | number:3}}&nbsp;€"
+msgid "Ask price {{cur.ask / 10000 | number:3}}&nbsp;€"
 msgstr ""
 "Kaufs&#xad;preis\n"
 "{{cur.ask / 10000 | number:3}}&nbsp;€"
 
+#: app/templates/trade.html:37
+msgid "Bid price {{cur.bid / 10000 | number:3}}&nbsp;€"
+msgstr ""
+"Verkaufs&#xad;preis\n"
+"{{cur.ask / 10000 | number:3}}&nbsp;€"
+
 #: app/templates/feed.html:233
 msgid ""
-"A mail to “{{message.mailrecipient}}” for verification could not be sent.\n"
+"A mail to “{{message.mailrecipient}}” for verification could not be sent. "
 "Please go to <a>your options</a> and enter your current e-mail address."
 msgstr ""
 "Die Mail an „{{message.mailrecipient}}“ zur E-Mail-Bestätigung konnte nicht "
@@ -513,7 +469,7 @@ msgstr "seit Beginn"
 msgid "Amount"
 msgstr "Menge"
 
-#: app/js/controllers/options.js:166
+#: app/js/controllers/options.js:167
 msgid "Are you sure you want to reset?"
 msgstr "Willst du dich wirklich zurücksetzen?"
 
@@ -620,7 +576,7 @@ msgstr "Konnte Trade nicht finden"
 msgid "Could not send invitation link"
 msgstr "Konnte Einladungslink nicht versenden"
 
-#: app/js/controllers/options.js:179 app/js/controllers/registration.js:67
+#: app/js/controllers/options.js:180 app/js/controllers/registration.js:67
 msgid "Could not send verification e-mail. Please turn to tech@tradity.de"
 msgstr ""
 "Es gab beim Hochladen Deines Profilbilds leider technische Schwierigkeiten.\n"
@@ -777,9 +733,8 @@ msgstr "ISIN"
 
 #: app/templates/feed.html:21
 msgid ""
-"If you have any more questions regarding the game, you can write us\n"
-"an e-mail at <a>team@tradity.de</a> or\n"
-"post a question on <a>Facebook</a>.\n"
+"If you have any more questions regarding the game, you can write us an e-"
+"mail at <a>team@tradity.de</a> or post a question on <a>Facebook</a>. "
 "<span>Good luck!</span>"
 msgstr ""
 "Wenn du noch Fragen zum Spiel hast, kannst du uns an <a>team@tradity.de</"
@@ -787,7 +742,7 @@ msgstr ""
 
 #: app/templates/registration.html:60
 msgid ""
-"If you take part in a local competition, please enter your class so we can\n"
+"If you take part in a local competition, please enter your class so we can "
 "send you a certificate and (possibly) prizes."
 msgstr ""
 "Falls du an einem Stadtwettbewerb teilnimmst, gib bitte deine Klasse an,\n"
@@ -800,8 +755,8 @@ msgstr "Impressum"
 #: app/templates/feed.html:15
 msgid ""
 "In case you have not verified your e-mail address, please do so. Only then "
-"the entire functionality\n"
-"of Tradity is available to you and you will be eligible to receive prizes."
+"the entire functionality of Tradity is available to you and you will be "
+"eligible to receive prizes."
 msgstr ""
 "Falls Du Deine E-Mail-Adresse noch nicht bestätigt hast, tu das bitte.Erst "
 "dann sind alle Funktionen freigeschaltet und bist Du für die Preise diese "
@@ -1002,7 +957,7 @@ msgstr ""
 msgid "Only ranking-enabled users"
 msgstr "Nur Rankingberechtigte"
 
-#: app/js/controllers/options.js:166 app/templates/game.html:140
+#: app/js/controllers/options.js:167 app/templates/game.html:140
 msgid "Options"
 msgstr "Einstellungen"
 
@@ -1083,8 +1038,8 @@ msgstr "Pinnwand"
 
 #: app/templates/registration.html:53
 msgid ""
-"Please choose your school/university/group in order to ensure that\n"
-"you are eligible for prizes internal to your group (if there are any)."
+"Please choose your school/university/group in order to ensure that you are "
+"eligible for prizes internal to your group (if there are any)."
 msgstr ""
 "Bitte wähle die Schule/Uni/Gruppe aus, an welcher du bist.\n"
 "So ist gewährleistet, dass du (sofern deine Schule/Uni/Gruppe\n"
@@ -1138,7 +1093,7 @@ msgstr "Preis"
 msgid "Profile image"
 msgstr "Profilbild"
 
-#: app/js/controllers/options.js:54
+#: app/js/controllers/options.js:55
 msgid "Profile picture was uploaded successfully!"
 msgstr "Profilbild erfolgreich hochgeladen!"
 
@@ -1251,11 +1206,11 @@ msgstr "Erfolgreich registriert"
 msgid "Successfully traded!"
 msgstr "Trade erfolgreich!"
 
-#: app/js/controllers/options.js:170
+#: app/js/controllers/options.js:171
 msgid "Sucessfully reset user"
 msgstr "Benutzer erfolgreich zurückgesetzt!"
 
-#: app/js/controllers/options.js:177
+#: app/js/controllers/options.js:178
 msgid "Sucessfully saved options"
 msgstr "Einstellungen erfolgreich gespeichert"
 
@@ -1277,15 +1232,15 @@ msgstr ""
 msgid "Terms &amp; Privacy"
 msgstr "AGB &amp; Datenschutz"
 
-#: app/js/controllers/options.js:83 app/js/controllers/registration.js:98
+#: app/js/controllers/options.js:84 app/js/controllers/registration.js:98
 msgid "The entered passwords do not match"
 msgstr "Die eingegebenen Passwörter stimmen nicht überein"
 
-#: app/js/controllers/options.js:159
+#: app/js/controllers/options.js:160
 msgid "The entered provision value is invalid"
 msgstr "Die angegebenen Provisionen sind ungültig"
 
-#: app/js/controllers/options.js:150 app/js/controllers/registration.js:76
+#: app/js/controllers/options.js:151 app/js/controllers/registration.js:76
 msgid "The entered school has not been found"
 msgstr "Die angegebene Schule wurde nicht gefunden"
 
@@ -1308,15 +1263,15 @@ msgstr "Der Trade wird ausgeführt, sobald der Handelsplatz öffnet"
 msgid "There was a problem while loading the current ranking!"
 msgstr "Es gab ein Problem beim Laden der Rangliste"
 
-#: app/js/controllers/group.js:150 app/js/controllers/options.js:62
+#: app/js/controllers/group.js:150 app/js/controllers/options.js:63
 msgid ""
-"There was a technical problem uploading your profile picture.\n"
-"Please turn to tech@tradity.de"
+"There was a technical problem uploading your profile picture. Please turn to "
+"tech@tradity.de"
 msgstr ""
 "Es gab beim Hochladen Deines Profilbilds leider technische Schwierigkeiten.\n"
 "Wende dich bitte an tech@tradity.de"
 
-#: app/js/controllers/main.js:168
+#: app/js/controllers/main.js:177
 msgid ""
 "There was a technical problem – the tech team of Tradity has been informed."
 msgstr ""
@@ -1328,7 +1283,7 @@ msgstr ""
 msgid "This comment has been removed."
 msgstr "Dieser Kommentar ist entfernt worden."
 
-#: app/js/controllers/options.js:144 app/js/controllers/registration.js:70
+#: app/js/controllers/options.js:145 app/js/controllers/registration.js:70
 msgid "This e-mail address has already been taken"
 msgstr "Email bereits vorhanden"
 
@@ -1336,7 +1291,7 @@ msgstr "Email bereits vorhanden"
 msgid "This stock could not be found!"
 msgstr "Wertpapier existiert nicht"
 
-#: app/js/controllers/options.js:147 app/js/controllers/registration.js:73
+#: app/js/controllers/options.js:148 app/js/controllers/registration.js:73
 msgid "This user name has already been taken"
 msgstr "Benutzername bereits vergeben"
 
@@ -1420,9 +1375,9 @@ msgstr "Probiere Wirtschaft und Börse spielerisch aus"
 
 #: app/templates/error.404.html:5
 msgid ""
-"Unfortunately, this page could not be found.\n"
-"You can just return to the <a>start page</a> and,\n"
-"if this problem persists, contact us about it at tech@tradity.de."
+"Unfortunately, this page could not be found. You can just return to the "
+"<a>start page</a> and, if this problem persists, contact us about it at "
+"tech@tradity.de."
 msgstr ""
 "Leider wurde die Seite nicht gefunden.\n"
 "Geh doch einfach zur <a>Startseite</a> zurück und, wenn dieses Problem "
@@ -1430,10 +1385,9 @@ msgstr ""
 
 #: app/templates/error.connection.html:5
 msgid ""
-"Unfortunately, we could not connect to the game server :(\n"
-"<br>\n"
-"We are (probably) already working on the problem, but if you want to, you "
-"can write us an encouraging message at tech@tradity."
+"Unfortunately, we could not connect to the game server :( <br> We are "
+"(probably) already working on the problem, but if you want to, you can write "
+"us an encouraging message at tech@tradity."
 msgstr ""
 "Leider konnten wir keine Verbindung zum Gameserver aufbauen :(\n"
 "<br/>\n"
@@ -1530,20 +1484,13 @@ msgstr "Ja"
 #: app/templates/options.html:90
 msgid ""
 "You can – if you agree – receive achievements for being active on multiple "
-"days in a row.\n"
-"We take the protection of your personal data seriously:\n"
-"<br>\n"
+"days in a row. We take the protection of your personal data seriously: <br> "
 "All information regarding your activity log will be stored encrypted by your "
-"password\n"
-"only. Unfortunately, this also means that using the “forgot password” option "
-"will require\n"
-"you to start gathering activity entries anew.\n"
-"<br>\n"
-"After {{DLAValidityDays}} days your activity log will be cleared and cannot "
-"be used for\n"
-"gaining achievements any longer.\n"
-"<br>\n"
-"Currently your activity log contains the following entries:"
+"password only. Unfortunately, this also means that using the “forgot "
+"password” option will require you to start gathering activity entries anew. "
+"<br> After {{DLAValidityDays}} days your activity log will be cleared and "
+"cannot be used for gaining achievements any longer. <br> Currently your "
+"activity log contains the following entries:"
 msgstr ""
 "Du kannst, wenn du möchtest, Achievements dafür erhalten, eine bestimmte "
 "Anzahl von Tagennacheinander aktiv zu sein. Dabei nehmen wir den Schutz "
@@ -1562,11 +1509,8 @@ msgstr "Nicht genügend Geld zum Trade!"
 #: app/templates/feed.html:103
 msgid ""
 "You have <a translate-id=\"trade-link\">bought</a> {{message.amount}}&nbsp;"
-"shares of\n"
-"<span>\n"
-"<a translate-id=\"leader-link\">{{message.stockname}}</a>\n"
-"</span>\n"
-"<span>{{message.stockname}}</span>."
+"shares of <span><a translate-id=\"leader-link\">{{message.stockname}}</a></"
+"span> <span>{{message.stockname}}</span>."
 msgstr ""
 "Du hast {{message.amount}}&nbsp;Anteile an\n"
 "<span>\n"
@@ -1578,11 +1522,8 @@ msgstr ""
 #: app/templates/feed.html:115
 msgid ""
 "You have <a translate-id=\"trade-link\">sold</a> {{message.amount}}&nbsp;"
-"shares of\n"
-"<span>\n"
-"<a translate-id=\"leader-link\">{{message.stockname}}</a>\n"
-"</span>\n"
-"<span>{{message.stockname}}</span>."
+"shares of <span><a translate-id=\"leader-link\">{{message.stockname}}</a></"
+"span> <span>{{message.stockname}}</span>."
 msgstr ""
 "Du hast {{message.amount}}&nbsp;Anteile an\n"
 "<span>\n"
@@ -1602,12 +1543,11 @@ msgstr ""
 #: app/templates/feed.html:181
 msgid ""
 "You have changed your commission on profits from {{message.oldwprov}}&nbsp;% "
-"to {{message.newwprov}}&nbsp;% and\n"
-"your commission on losses from {{message.oldlprov}}&nbsp;% to {{message."
-"newlprov}}&nbsp;%."
+"to {{message.newwprov}}&nbsp;% and your commission on losses from {{message."
+"oldlprov}}&nbsp;% to {{message.newlprov}}&nbsp;%."
 msgstr ""
 "Du hast deine Gewinnprovision von {{message.oldwprov}}&nbsp;% auf {{message."
-"newwprov}}&nbsp;% unddeine Verlustprovision von {{message.oldlprov}}&nbsp;% "
+"newwprov}}&nbsp;% und deine Verlustprovision von {{message.oldlprov}}&nbsp;% "
 "auf {{message.newlprov}}&nbsp;% geändert."
 
 #: app/templates/feed.html:175
@@ -1678,7 +1618,7 @@ msgstr "Deine Gruppen"
 msgid "Your need to upload your profile picture as a JPEG/PNG/GIF file"
 msgstr "Dein Profilbild musst du als JPEG, PNG oder GIF hochladen"
 
-#: app/js/controllers/options.js:153 app/js/controllers/registration.js:79
+#: app/js/controllers/options.js:154 app/js/controllers/registration.js:79
 msgid "Your password is too short!"
 msgstr "Das Passwort ist zu kurz"
 
@@ -1690,15 +1630,15 @@ msgstr "Vermögens&#xad;entwicklung"
 msgid "Your portfolio"
 msgstr "Dein Depot"
 
-#: app/js/controllers/group.js:146 app/js/controllers/options.js:57
+#: app/js/controllers/group.js:146 app/js/controllers/options.js:58
 msgid "Your profile picture file is too large (maximum 3&nbsp;MB)"
 msgstr "Die Profilbilddatei ist leider zu groß (höchstens 3&nbsp;MB)"
 
-#: app/js/controllers/main.js:153
+#: app/js/controllers/main.js:162
 msgid "Your tradity client version is, unfortunately, no longer supported."
 msgstr "Deine Tradity-Client-Version wird leider nicht mehr unterstützt."
 
-#: app/js/controllers/options.js:156 app/js/controllers/registration.js:85
+#: app/js/controllers/options.js:157 app/js/controllers/registration.js:85
 msgid "Your user name contains invalid characters!"
 msgstr "Der Benutzername enthält unerlaubte Zeichen!"
 
@@ -1722,10 +1662,8 @@ msgstr[1] "Aktien"
 
 #: app/templates/ranking.html:26
 msgid ""
-"since\n"
-"<span>{{spec.since | date:'short'}}</span><span>game start</span>\n"
-"until\n"
-"<span>{{spec.upto | date:'short'}}</span><span>now</span>"
+"since <span>{{spec.since | date:'short'}}</span><span>game start</span> "
+"until <span>{{spec.upto | date:'short'}}</span><span>now</span>"
 msgstr ""
 "von\n"
 "<span>{{spec.since | date:'short'}}</span><span>Spielbeginn</span>\n"

@@ -482,7 +482,10 @@ module.exports = function (grunt) {
 		
 		this.files.forEach(function(file) {
 			var pot = pofile.parse(grunt.file.read(file.src));
-			var rm = new remarkup.ReMarkup();
+			var rm = new remarkup.ReMarkup({
+				additionalElementFilters: remarkup.ReMarkup.stripSpaces
+			});
+			
 			var knownMsgids = {};
 			
 			for (var i = 0; i < pot.items.length; ++i) {

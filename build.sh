@@ -23,9 +23,9 @@ set -e
 echo "var TRADITY_BUILD_STAMP = 'TDYC$(date +%s)-$(git rev-parse HEAD)';" > app/js/buildstamp.js
 npm --quiet install
 npm --quiet update
+bower -q install
+
 if [ x"$GRUNT_TRANSLATE_ONLY" = x"" ]; then
-	bower -q install
-	
 	grunt --no-color build doc || EXIT_CODE=$?
 
 	EXIT_CODE=$?
@@ -33,7 +33,7 @@ if [ x"$GRUNT_TRANSLATE_ONLY" = x"" ]; then
 	mkdir -p dist
 	[ -e dist/index.html ] || cp buildfail.html dist/index.html
 else
-	echo "Translations-only grunt build, no bower"
+	echo "Translations-only grunt build"
 	
 	grunt --no-color translate-extract
 

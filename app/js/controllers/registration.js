@@ -64,7 +64,7 @@ angular.module('tradity').
 					});
 					break;
 				case 'reg-email-failed':
-					$scope.alerts.push({ type: 'danger', msg: gettext('Could not send verification e-mail. Please turn to tech@tradity.de') });
+					$scope.alerts.push({ type: 'danger', msg: gettext('Could not send verification e-mail. Please turn to tech@tradity.de.') });
 					break;
 				case 'reg-email-already-present':
 					$scope.alerts.push({ type: 'danger', msg: gettext('This e-mail address has already been taken') });

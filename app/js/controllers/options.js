@@ -168,7 +168,7 @@ angular.module('tradity').
 			dlg.result.then(function(btn) {
 				socket.emit('reset-user', null, function(data) {
 					if (data.code == 'reset-user-success')
-						notification(gettext('Sucessfully reset user'), true);
+						notification(gettext('Sucessfully reset user!'), true);
 				});
 			})
 		};
@@ -177,7 +177,7 @@ angular.module('tradity').
 			if (data.code == 'reg-success') {
 				notification(gettext('Sucessfully saved options'), true);
 			} else if (data.code == 'reg-email-failed') {
-				notification(gettext('Could not send verification e-mail. Please turn to tech@tradity.de'));
+				notification(gettext('Could not send verification e-mail. Please turn to tech@tradity.de.'));
 			}
 		});
 		

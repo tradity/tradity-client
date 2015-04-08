@@ -576,9 +576,9 @@ msgid "Could not send invitation link"
 msgstr "Konnte Einladungslink nicht versenden"
 
 #: app/js/controllers/options.js:180 app/js/controllers/registration.js:67
-msgid "Could not send verification e-mail. Please turn to tech@tradity.de"
+msgid "Could not send verification e-mail. Please turn to tech@tradity.de."
 msgstr ""
-"Es gab beim Hochladen Deines Profilbilds leider technische Schwierigkeiten.\n"
+"Es gab beim Senden der Bestätigungsmail Probleme.\n"
 "Wende dich bitte an tech@tradity.de."
 
 #: app/js/main.js:133
@@ -1207,7 +1207,7 @@ msgid "Successfully traded!"
 msgstr "Trade erfolgreich!"
 
 #: app/js/controllers/options.js:171
-msgid "Sucessfully reset user"
+msgid "Sucessfully reset user!"
 msgstr "Benutzer erfolgreich zurückgesetzt!"
 
 #: app/js/controllers/options.js:178

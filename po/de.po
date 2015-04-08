@@ -3,15 +3,16 @@ msgstr ""
 "Project-Id-Version: Tradity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2015-04-08 16:39+0000\n"
 "Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"
-"Language-Team: Tradity-Tech-Team <tech@tradity.de>\n"
+"Language-Team: German <http://weblate.tradity.de/projects/tradity/tradity-"
+"client-master/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
-"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.3-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: /home/sqrt/src/sotrade/client\n"
 
@@ -354,11 +355,11 @@ msgstr ""
 
 #: app/templates/depot.transactionlog.html:26
 msgid "<span title=\"High Water Mark\">HWM</span>"
-msgstr "<span title=\"High Water Mark\">HWM</span>"
+msgstr "<span title=\"High-Water-Mark\">HWM</span>"
 
 #: app/templates/depot.transactionlog.html:27
 msgid "<span title=\"Low Water Mark\">LWM</span>"
-msgstr "<span title=\"Low Water Mark\">LWM</span>"
+msgstr "<span title=\"Low-Water-Mark\">LWM</span>"
 
 #: app/templates/depot.listing.html:40
 msgid ""
@@ -504,7 +505,7 @@ msgstr "Kaufe und verkaufe ein Wertpapier erst nach 10&nbsp;Tagen."
 
 #: app/js/services/achievements.js:22
 msgid "Buy and sell shares of a stock within 1&nbsp;hour"
-msgstr "Kaufe und verkaufe ein Wertpapier innerhalb von einer Stunde."
+msgstr "Kaufe und verkaufe ein Wertpapier innerhalb von einer Stunde"
 
 #: app/templates/depot.listing.html:32
 msgid "Buy price"
@@ -520,11 +521,11 @@ msgstr "Kaufs-/Verkaufs&#xad;preis"
 
 #: app/js/services/achievements.js:36
 msgid "Change your commission on losses."
-msgstr "Ändere deine Verlustprovision"
+msgstr "Ändere deine Verlustprovision."
 
 #: app/js/services/achievements.js:35
 msgid "Change your commission on profits."
-msgstr "Ändere deine Gewinnprovision"
+msgstr "Ändere deine Gewinnprovision."
 
 #: app/js/services/achievements.js:31
 msgid "Chat with %1&nbsp;persons."
@@ -544,9 +545,7 @@ msgstr "Schließen"
 
 #: app/js/controllers/comment.js:48
 msgid "Comment event was not found – something is wrong here!"
-msgstr ""
-"Kommentarevent nicht gefunden.\n"
-"Hier läuft etwas falsch."
+msgstr "Kommentarevent nicht gefunden – Hier läuft etwas falsch!"
 
 #: app/js/controllers/comment.js:40
 msgid "Comment event was not found!"
@@ -737,8 +736,9 @@ msgid ""
 "mail at <a>team@tradity.de</a> or post a question on <a>Facebook</a>. "
 "<span>Good luck!</span>"
 msgstr ""
-"Wenn du noch Fragen zum Spiel hast, kannst du uns an <a>team@tradity.de</"
-"a>eine E-Mail schreiben oder auf <a>Facebook</a> eine Frage posten."
+"Wenn du noch Fragen zum Spiel hast, kannst du uns an <a>team@tradity.de</a>"
+"eine E-Mail schreiben oder auf <a>Facebook</a> eine Frage posten. <span>Viel "
+"Erfolg!</span>"
 
 #: app/templates/registration.html:60
 msgid ""
@@ -972,7 +972,7 @@ msgstr "Orderhistorie"
 
 #: app/js/controllers/depot.js:88
 msgid "Order not found. Possibly it has already been executed?"
-msgstr "Order nicht gefunden. Möglicherweise wurde sie bereits ausgeführt."
+msgstr "Order nicht gefunden. Möglicherweise wurde sie bereits ausgeführt?"
 
 #: app/templates/trade.html:85
 msgid "Order type"
@@ -1017,7 +1017,7 @@ msgstr "Führe %1&nbsp;Followertrades durch."
 
 #: app/js/services/achievements.js:19
 msgid "Perform %1&nbsp;trades"
-msgstr "Führe %1&nbsp;Trades durch."
+msgstr "Führe %1&nbsp;Trades durch"
 
 #: app/js/services/achievements.js:26
 msgid "Perform 1&nbsp;follower trade (invest into another user)."
@@ -1056,7 +1056,7 @@ msgstr ""
 
 #: app/js/controllers/registration.js:96
 msgid "Please confirm that you have read the TOS"
-msgstr "Bitte bestätige, dass du die AGB gelesen hast."
+msgstr "Bitte bestätige, dass du die AGB gelesen hast"
 
 #: app/js/controllers/trade.js:68
 msgid "Please enter a numerical stop/limit value"
@@ -1064,15 +1064,15 @@ msgstr "Bitte geben Sie den Stop-/Limitwert als Zahl an"
 
 #: app/js/controllers/registration.js:100
 msgid "Please enter your name in order to be eligible for winning prizes"
-msgstr "Bitte gib deinen Namen an, damit du Gewinne erhalten kannst."
+msgstr "Bitte gib deinen Namen an, damit du Gewinne erhalten kannst"
 
 #: app/js/controllers/registration.js:102
 msgid "Please indicate which organization or school you belong to"
-msgstr "Bitte gib an, ob und welcher Gruppe du angehörst."
+msgstr "Bitte gib an, ob und welcher Gruppe du angehörst"
 
 #: app/js/controllers/registration.js:94
 msgid "Please provide an e-mail address"
-msgstr "Bitte gib deine E-Mail-Adresse an."
+msgstr "Bitte gib deine E-Mail-Adresse an"
 
 #: app/templates/dialogs/wait.html:6
 msgid "Please wait"
@@ -1216,7 +1216,7 @@ msgstr "Einstellungen erfolgreich gespeichert"
 
 #: app/js/controllers/group.js:143
 msgid "Sucessfully uploaded profile picture!"
-msgstr "Profilebild erfolgreich hochgeladen"
+msgstr "Profilebild erfolgreich hochgeladen!"
 
 #: app/templates/game.html:146
 msgid "Support"
@@ -1247,7 +1247,7 @@ msgstr "Die angegebene Schule wurde nicht gefunden"
 #: app/templates/registration.html:43
 msgid "The following data is required to participate in the competition"
 msgstr ""
-"Diese Daten benötigen wir, damit du auch am Wettbewerb teilnehmen kannst."
+"Diese Daten benötigen wir, damit du auch am Wettbewerb teilnehmen kannst"
 
 #: app/js/controllers/trade.js:90
 msgid ""
@@ -1261,7 +1261,7 @@ msgstr "Der Trade wird ausgeführt, sobald der Handelsplatz öffnet"
 
 #: app/js/services/ranking.js:55
 msgid "There was a problem while loading the current ranking!"
-msgstr "Es gab ein Problem beim Laden der Rangliste"
+msgstr "Es gab ein Problem beim Laden der Rangliste!"
 
 #: app/js/controllers/group.js:150 app/js/controllers/options.js:63
 msgid ""
@@ -1289,7 +1289,7 @@ msgstr "Email bereits vorhanden"
 
 #: app/js/controllers/trade.js:124
 msgid "This stock could not be found!"
-msgstr "Wertpapier existiert nicht"
+msgstr "Wertpapier existiert nicht!"
 
 #: app/js/controllers/options.js:148 app/js/controllers/registration.js:73
 msgid "This user name has already been taken"
@@ -1332,7 +1332,7 @@ msgstr "Trade"
 msgid ""
 "Trade a stock whose name begine with “A” and another one whose begins with "
 "“Z”"
-msgstr "Handle ein Wertpapier, das mit „A“ und eines, das mit „Z“ beginnt."
+msgstr "Handle ein Wertpapier, das mit „A“ und eines, das mit „Z“ beginnt"
 
 #: app/templates/tradeDetails.html:6
 msgid "Trade details"
@@ -1529,8 +1529,8 @@ msgstr ""
 "<span>\n"
 "<a translate-id=\"leader-link\">{{message.stockname}}</a>\n"
 "</span>\n"
-"<span>{{message.stockname}}</span> <a translate-id=\"trade-link\">verkauft</"
-"a>."
+"<span>{{message.stockname}}</span> <a translate-id=\"trade-link\""
+">verkauft</a>."
 
 #: app/templates/feed.html:178
 msgid ""
@@ -1620,7 +1620,7 @@ msgstr "Dein Profilbild musst du als JPEG, PNG oder GIF hochladen"
 
 #: app/js/controllers/options.js:154 app/js/controllers/registration.js:79
 msgid "Your password is too short!"
-msgstr "Das Passwort ist zu kurz"
+msgstr "Das Passwort ist zu kurz!"
 
 #: app/templates/profile.overview.html:42
 msgid "Your performance"
@@ -1644,7 +1644,7 @@ msgstr "Der Benutzername enthält unerlaubte Zeichen!"
 
 #: app/templates/group.html:85
 msgid "confirm"
-msgstr "bestätigen "
+msgstr "bestätigen"
 
 #: app/templates/profile.html:17
 msgid "invest"

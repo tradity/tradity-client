@@ -19,14 +19,29 @@ touch app/js/controllers/adminUserDetails.js
 command -v bower 2>/dev/null || export PATH="node_modules/bower/bin:$PATH"
 command -v grunt 2>/dev/null || export PATH="node_modules/grunt-cli/bin:$PATH"
 
-echo "var TRADITY_BUILD_STAMP = 'TDYC$(date +%s)-$(git rev-parse HEAD)';" > app/js/buildstamp.js && \
-npm --quiet install && \
-npm --quiet update && \
-bower -q install && \
-grunt --no-color build doc
-EXIT_CODE=$?
+set -e
+echo "var TRADITY_BUILD_STAMP = 'TDYC$(date +%s)-$(git rev-parse HEAD)';" > app/js/buildstamp.js
+npm --quiet install
+npm --quiet update
+if [ x"$GRUNT_TRANSLATE_ONLY" = x"" ]; then
+	bower -q install
+	
+	grunt --no-color build doc || EXIT_CODE=$?
 
-mkdir -p dist
-[ -e dist/index.html ] || cp buildfail.html dist/index.html
+	EXIT_CODE=$?
+
+	mkdir -p dist
+	[ -e dist/index.html ] || cp buildfail.html dist/index.html
+else
+	echo "Translations-only grunt build, no bower"
+	
+	grunt --no-color translate-extract
+
+	command -v msgmerge 2>/dev/null && [ -e po/templates.pot ] && (
+		for langfile in po/*.po; do
+			msgmerge --previous -U "$langfile" po/templates.pot
+		done
+	) || EXIT_CODE=$?
+fi
 
 exit $EXIT_CODE

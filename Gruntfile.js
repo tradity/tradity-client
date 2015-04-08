@@ -604,12 +604,20 @@ module.exports = function (grunt) {
 		'clean:doc',
 		'ngdocs'
 	]);
-
-	grunt.registerTask('build', [
+	
+	grunt.registerTask('translate-extract', [
 		'nggettext_extract',
 		'unMarkupPo',
+	]);
+	
+	grunt.registerTask('translate-build', [
 		'reMarkupPo',
 		'nggettext_compile',
+	]);
+
+	grunt.registerTask('build', [
+		'translate-extract',
+		'translate-build',
 		'clean:dist',
 		'bower-install',
 		'createconfig',

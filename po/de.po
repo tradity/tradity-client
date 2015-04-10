@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tradity\n"
-"Report-Msgid-Bugs-To: \n"
+"Report-Msgid-Bugs-To: tech@tradity.de\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2015-04-08 16:39+0000\n"
 "Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"

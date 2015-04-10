@@ -62,8 +62,9 @@ module.exports = function (grunt) {
 				src: [
 					'po/unstripped/templates.pot',
 					'po/de.po',
+					'po/fr.po'
 				],
-				dest: 'po/unstripped/de.po'
+				dest: 'po/unstripped'
 			}
 		},
 		
@@ -519,34 +520,39 @@ module.exports = function (grunt) {
 		
 		this.files.forEach(function(file) {
 			var pot = pofile.parse(grunt.file.read(file.src[0]));
-			var po  = pofile.parse(grunt.file.read(file.src[1]));
 			
-			var rm = new remarkup.ReMarkup();
-			
-			/* compute the levenshtein distances between all
-			 * unMarkupped .pot entries and the msgids
-			 * in the stripped .po file */
-			var distanceMatrix = [];
-			for (var i = 0; i < pot.items.length; ++i) {
-				distanceMatrix[i] = [];
-				var potMsgID = rm.unMarkup(stripTabs(pot.items[i].msgid));
+			for (var index = 1; index < file.src.length; ++index) {
+				var po  = pofile.parse(grunt.file.read(file.src[index]));
 				
-				for (var j = 0; j < po.items.length; ++j)
-					distanceMatrix[i][j] = new Levenshtein(potMsgID, po.items[j].msgid).distance;
-			}
-			
-			var m = new munkres.Munkres();
-			var indices = m.compute(distanceMatrix);
-		
-			for (var k = 0; k < indices.length; ++k) {
-				var ci = indices[k][0], cj = indices[k][1];
+				var rm = new remarkup.ReMarkup();
 				
-				po.items[cj].msgid = pot.items[ci].msgid;
-				for (var l = 0; l < po.items[cj].msgstr.length; ++l)
-					po.items[cj].msgstr[l] = rm.reMarkup(pot.items[ci].msgid, po.items[cj].msgstr[l]);
-			}
+				/* compute the levenshtein distances between all
+				 * unMarkupped .pot entries and the msgids
+				 * in the stripped .po file */
+				var distanceMatrix = [];
+				for (var i = 0; i < pot.items.length; ++i) {
+					distanceMatrix[i] = [];
+					var potMsgID = rm.unMarkup(stripTabs(pot.items[i].msgid));
+					
+					for (var j = 0; j < po.items.length; ++j)
+						distanceMatrix[i][j] = new Levenshtein(potMsgID, po.items[j].msgid).distance;
+				}
+				
+				var m = new munkres.Munkres();
+				var indices = m.compute(distanceMatrix);
 			
-			grunt.file.write(file.dest, po.toString());
+				for (var k = 0; k < indices.length; ++k) {
+					var ci = indices[k][0], cj = indices[k][1];
+					
+					po.items[cj].msgid = pot.items[ci].msgid;
+					for (var l = 0; l < po.items[cj].msgstr.length; ++l)
+						po.items[cj].msgstr[l] = rm.reMarkup(pot.items[ci].msgid, po.items[cj].msgstr[l]);
+				}
+				
+				var basename = file.src[index].split('/');
+				basename = basename[basename.length-1];
+				grunt.file.write(file.dest + '/' + basename, po.toString());
+			}
 		});
 	});
 	

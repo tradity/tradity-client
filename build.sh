@@ -1,21 +1,6 @@
 #!/bin/sh
 touch app/js/config.js
 
-# admin files which are not publicly available :/
-touch app/less/all/admin.less
-touch app/templates/admin.notifications.html
-touch app/templates/admin.schools.html
-touch app/templates/admin.userdetails.html
-touch app/templates/admin.statistics.html
-touch app/templates/admin.userlist.html
-touch app/templates/admin.html
-touch app/js/controllers/adminUserlist.js
-touch app/js/controllers/admin.js
-touch app/js/controllers/adminNotifications.js
-touch app/js/controllers/adminSchools.js
-touch app/js/controllers/adminStatistics.js
-touch app/js/controllers/adminUserDetails.js
-
 command -v bower 2>/dev/null || export PATH="node_modules/bower/bin:$PATH"
 command -v grunt 2>/dev/null || export PATH="node_modules/grunt-cli/bin:$PATH"
 

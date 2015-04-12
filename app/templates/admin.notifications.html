@@ -1,0 +1,17 @@
+<form ng-submit="submitNotification()" class="pure-form pure-form-stacked">
+	<div class="options-field">
+		<h2>Neue Feedbenachrichtigung</h2>		
+		<label for="content">Inhalt</label>
+		<textarea ng-model="content" id="content" class="pure-input-1"></textarea><br>
+		<div class="feed-important-item">
+			<div class="feed-entry-content" ng-bind-html="maybeHTMLizeContentSCE()">
+				{{maybeHTMLizeContent()}}
+			</div>
+		</div>		
+		<label for="ishtml">HTML</label><input type="checkbox" ng-model="ishtml" id="ishtml"><br>
+		<label for="sticky">Sticky</label><input type="checkbox" ng-model="sticky" id="sticky"><br>		
+		<input type="submit" value="Speichern" class="btn btn-default">
+		<a ng-click="unstickNotification()" class="btn btn-danger">Unstick all </a>
+	</div>
+</form>
+<br/>

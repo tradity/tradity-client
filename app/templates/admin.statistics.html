@@ -1,0 +1,103 @@
+<h2>Tickrate</h2>
+<div id="chart-wrap">
+	<label for="startTimespanOffsetDays">Startzeitoffset (d)</label><input type="number" ng-model="startTimespanOffsetDays" id="startTimespanOffsetDays" min="0" max="365" step="1" value="10" />;
+	<label for="startTimespanOffsetDays">Endzeitoffset (d)</label><input type="number" ng-model="endTimespanOffsetDays" id="endTimespanOffsetDays" min="-1" max="365" step="1" value="-1" />;
+	<a ng-click="loadTickStatistics()">Tick-Statistik laden</a>
+	<div id="chart" class="jqplot-target chart-depot"></div>
+</div>
+
+<div id="regchart-wrap">
+	<div id="regchart" class="jqplot-target chart-depot"></div>
+</div>
+
+<div id="server-bus-graph-wrap">
+	<div id="server-bus-graph" style="width: 80%; height: 500px; margin: auto 0"></div>
+</div>
+
+<div id="servers">
+	<div>
+		<label for="qctxDebug">QContext Debugging</label>
+		<input type="checkbox" ng-model="qctxDebug" id="qctxDebug">
+	</div>
+	<h2>Server</h2>
+	<a ng-click="reloadServers()">Reload</a>
+	<ul>
+		<li ng-repeat="srv in servers | orderBy: 'pid'" ng-class="{'server-readonly': srv.readonly}" class="server">
+			<h3 id="{{srv.bus.id}}">{{srv.pid}} at {{srv.hostname}}</h3>
+			
+			<ul>
+				<li>PID: {{srv.pid}} <span ng-show="srv.isBackgroundWorker">(Hintergrundprozess)</span></li>
+				<li>{{srv.connectionCount}} Verbindungen</li>
+				<li>Startzeit: {{srv.creationTime * 1000 | date:'short'}}</li>
+				<li>
+					Bus ({{srv.bus.id}}): {{srv.bus.msgCount}} Nachrichten ({{srv.bus.unanswered}} unbeantwortete Anfragen),
+					Log bei {{srv.bus.packetLogCount}} von {{srv.bus.packetLogLength}}
+				</li>
+				<li>{{srv.deadQueryCount}} Queries / {{srv.deadQueryLZMACount}} mit LZMA-Support / {{srv.deadQueryLZMAUsedCount}} mit LZMA</li>
+				<li>{{srv.dbstats.deadlockCount}} DB deadlocks, {{srv.dbstats.queryCount}} queries, {{srv.dbstats.writableNodes}} writable nodes</li>
+			</ul>
+			
+			<h4>Verbindungen</h4>
+			<table class="table table-bordered">
+				<tr>
+					<th>IP</th>
+					<th>User</th>
+					<th>LZMA</th>
+					<th>Queries (#LZMA)</th>
+					<th>Unbeantwortet</th>
+					<th>Letzer Info-Push</th>
+					<th>Letzes Event</th>
+					<th>Ver­bindungs­zeit­punkt</th>
+					<th>Protokollversion</th>
+				</tr>
+				<tr ng-repeat="client in srv.clients" ng-class="{'client-readonly': client.readonly, 'client-bustransport': client.ctx.isBusTransport}" class="client">
+					<td>
+						<span>{{client.ip}}</span>
+						<span ng-show="client.xrip != client.ip || client.xff != client.ip">
+							(<span title="X-Real-IP" ng-show="client.xrip != client.ip">{{client.xrip}}
+							<span ng-show="client.xrip != client.ip && client.xff != client.ip">, </span>
+							<span title="X-Forwarded-For" ng-show="client.xff != client.ip">{{client.xff}}</span>)
+						</span>
+					</td>
+					<td><a ui-sref="admin.userdetails({uid: client.user.uid})">{{client.user.name}} ({{client.user.uid}})</a></td>
+					<td>{{client.ctx.lzmaSupport}}</td>
+					<td>{{client.queryCount}} ({{client.queryLZMACount}} / {{client.queryLZMAUsedCount}})</td>
+					<td>{{client.unanswered}}</td>
+					<td>{{client.lastInfoPush | date:'short'}}</td>
+					<td>{{client.mostRecentEventTime * 1000 | date:'short'}}</td>
+					<td>{{client.connectTime | date:'short'}}</td>
+					<td>{{client.ctx.remoteProtocolVersion}}, {{client.ctx.remoteClientSoftware}}</td>
+				</tr>
+			</table>
+			
+			<h4 ng-show="qctxDebug">QContexts</h4>
+			<p ng-show="qctxDebug">
+				{{srv.allQContexts.length}} QContexts
+				<span ng-show="showQContexts[srv.pid]"><a ng-click="showQContexts[srv.pid] = false;">Ausblenden</a></span>
+				<span ng-hide="showQContexts[srv.pid]"><a ng-click="showQContexts[srv.pid] = true;">Einblenden</a></span>
+			</p>
+			<table class="table table-bordered" ng-show="qctxDebug && showQContexts[srv.pid]">
+				<tr>
+					<th>Erstellungszeit</th>
+					<th>DB-Queries gesamt</th>
+					<th>DB-Queries aktuell</th>
+					<th>Offene Verbindungen</th>
+					<th>Table Locks</th>
+				</tr>
+				<tr ng-repeat="ctx in srv.allQContexts | orderBy: 'openConnections.length + tableLocks.length'" class="client">
+					<td>{{ctx.creationTime | date:'short'}}</td>
+					<td>{{ctx.queryCount}}</td>
+					<td>{{ctx.incompleteQueryCount}}</td>
+					<td>
+						{{ctx.openConnections.length}}
+						<pre>{{ctx.openConnectionsJSON}}</pre>
+					</td>
+					<td>
+						{{ctx.tableLocks.length}}
+						<pre>{{ctx.tableLocksJSON}}</pre>
+					</td>
+				</tr>
+			</table>
+		</li>
+	</ul>
+</div>

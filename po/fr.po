@@ -11,7 +11,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-Basepath: /home/sqrt/src/sotrade/client\n"
+"X-Poedit-Basepath: ../\n"
 
 #: app/templates/depot.overview.html:107
 #: app/templates/profile.overview.html:75

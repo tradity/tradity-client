@@ -93,7 +93,7 @@ var fileemit = function(socket, input, evtype, template, serverconfig, callback)
 	var filename = null; 
 	var mime = null;
 	
-	var fail = function() { notification('Leider gab es ein technisches Problem beim Hochladen deiner Datei. :('); };
+	var fail = function() { notification(gettext('There was a technical problem uploading your profile picture.\nPlease turn to tech@tradity.de')); };
 	
 	try {
 		var goPublish = function(data) {
@@ -133,7 +133,7 @@ var fileemit = function(socket, input, evtype, template, serverconfig, callback)
 					return notification(gettext('Could not upload profile picture'));
 					
 				if (serverconfig && reader.result.byteLength > serverconfig.fsdb.userquota)
-					return notification('Your profile picture file is too large (maximum 3\u00a0MB)');
+					return notification(gettext('Your profile picture file is too large (maximum 3\u00a0MB)'));
 				
 				goPublish(buf);
 			};

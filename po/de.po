@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Tradity\n"
-"Report-Msgid-Bugs-To: tech@tradity.de\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-04-08 16:39+0000\n"
+"PO-Revision-Date: 2015-04-24 13:21+0100\n"
 "Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"
 "Language-Team: German <http://weblate.tradity.de/projects/tradity/tradity-"
 "client-master/de/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ../\n"
 
@@ -299,8 +299,8 @@ msgid "<input value=\"Upload\">"
 msgstr "<input value=\"Hochladen\">"
 
 #: app/templates/options.html:74
-msgid "<input placeholder=\"Schule\" id=\"schoolname\">"
-msgstr "<input placeholder=\"School\" id=\"schoolname\">"
+msgid "<input placeholder=\"School\" id=\"schoolname\">"
+msgstr "<input placeholder=\"Schule\" id=\"schoolname\">"
 
 #: app/templates/options.html:68
 msgid "<input placeholder=\"Last name\" id=\"fam_name\">"
@@ -311,8 +311,8 @@ msgid "<input placeholder=\"First name\" id=\"giv_name\">"
 msgstr "<input placeholder=\"Vorname\" id=\"giv_name\">"
 
 #: app/templates/options.html:76
-msgid "<input placeholder=\"Klasse\" id=\"schoolclass\">"
-msgstr "<input placeholder=\"Class\" id=\"schoolclass\">"
+msgid "<input placeholder=\"School class\" id=\"schoolclass\">"
+msgstr "<input placeholder=\"Klasse\" id=\"schoolclass\">"
 
 #: app/templates/trade.html:13
 msgid "<input id=\"paper\" placeholder=\"Stock name\">"
@@ -736,9 +736,9 @@ msgid ""
 "mail at <a>team@tradity.de</a> or post a question on <a>Facebook</a>. "
 "<span>Good luck!</span>"
 msgstr ""
-"Wenn du noch Fragen zum Spiel hast, kannst du uns an <a>team@tradity.de</a>"
-"eine E-Mail schreiben oder auf <a>Facebook</a> eine Frage posten. <span>Viel "
-"Erfolg!</span>"
+"Wenn du noch Fragen zum Spiel hast, kannst du uns an <a>team@tradity.de</"
+"a>eine E-Mail schreiben oder auf <a>Facebook</a> eine Frage posten. "
+"<span>Viel Erfolg!</span>"
 
 #: app/templates/registration.html:60
 msgid ""
@@ -1264,6 +1264,7 @@ msgid "There was a problem while loading the current ranking!"
 msgstr "Es gab ein Problem beim Laden der Rangliste!"
 
 #: app/js/controllers/group.js:150 app/js/controllers/options.js:63
+#: app/js/main.js:96
 msgid ""
 "There was a technical problem uploading your profile picture. Please turn to "
 "tech@tradity.de"
@@ -1529,8 +1530,8 @@ msgstr ""
 "<span>\n"
 "<a translate-id=\"leader-link\">{{message.stockname}}</a>\n"
 "</span>\n"
-"<span>{{message.stockname}}</span> <a translate-id=\"trade-link\""
-">verkauft</a>."
+"<span>{{message.stockname}}</span> <a translate-id=\"trade-link\">verkauft</"
+"a>."
 
 #: app/templates/feed.html:178
 msgid ""
@@ -1631,6 +1632,7 @@ msgid "Your portfolio"
 msgstr "Dein Depot"
 
 #: app/js/controllers/group.js:146 app/js/controllers/options.js:58
+#: app/js/main.js:136
 msgid "Your profile picture file is too large (maximum 3&nbsp;MB)"
 msgstr "Die Profilbilddatei ist leider zu groß (höchstens 3&nbsp;MB)"
 

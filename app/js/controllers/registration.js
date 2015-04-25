@@ -122,5 +122,5 @@ angular.module('tradity').
 			});
 		};
 		
-		useSchoolAC($scope, socket);
+		//useSchoolAC($scope, socket);
 	});

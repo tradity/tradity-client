@@ -182,7 +182,7 @@ angular.module('tradity').
 		});
 		
 		$scope.loadSearch = function() {
-			useSchoolAC($scope, socket);
+			//useSchoolAC($scope, socket);
 		}
 		
 	});

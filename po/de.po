@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Tradity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-04-24 20:42+0100\n"
+"PO-Revision-Date: 2015-04-25 08:13+0100\n"
 "Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"
 "Language-Team: German <http://weblate.tradity.de/projects/tradity/tradity-"
 "client-master/de/>\n"
@@ -314,10 +314,6 @@ msgstr "<input placeholder=\"Vorname\" id=\"giv_name\">"
 msgid "<input placeholder=\"School class\" id=\"schoolclass\">"
 msgstr "<input placeholder=\"Klasse\" id=\"schoolclass\">"
 
-#: app/templates/trade.html:24
-msgid "<input id=\"paper\" placeholder=\"Stock name\">"
-msgstr "<input id=\"paper\" placeholder=\"Wertpapiername\">"
-
 #: app/templates/options.html:111
 msgid "<input placeholder=\"Street\" id=\"street\">"
 msgstr "<input placeholder=\"Straße, Hausnr.\" id=\"street\">"
@@ -623,7 +619,7 @@ msgstr "Möchtest du kaufen oder verkaufen?"
 msgid "Do you want to receive achievements for daily activity?"
 msgstr "Möchtest du Achievements für tägliches Einloggen erhalten?"
 
-#: app/js/controllers/trade.js:37
+#: app/js/controllers/trade.js:39
 msgid "Do you want to trade {{amount}} of {{stockname}}?"
 msgstr "Möchtest du {{amount}} von {{stockname}} handeln?"
 
@@ -814,7 +810,7 @@ msgstr "Leader"
 msgid "Leader and stocks in your watchlist"
 msgstr "Leader und Wertpapiere in deiner Watchlist"
 
-#: app/js/controllers/trade.js:142
+#: app/js/controllers/trade.js:144
 msgid "Leader: %1"
 msgstr "Leader: %1"
 
@@ -892,7 +888,7 @@ msgstr "Top-Wertpapiere"
 #: app/templates/depot.watchlist.html:24 app/templates/groupOverview.html:22
 #: app/templates/profile.history.html:18 app/templates/ranking.html:54
 #: app/templates/search.html:16 app/templates/search.html:39
-#: app/templates/search.html:60 app/templates/trade.html:13
+#: app/templates/search.html:60 app/templates/trade.html:14
 #: app/templates/trade.html:46 app/templates/trade.html:47
 #: app/templates/tradeDetails.html:18
 msgid "Name"
@@ -926,7 +922,7 @@ msgstr "Keine Gruppe"
 msgid "No valid beta key was entered"
 msgstr "Beta-Schlüssel ungültig oder nicht angegeben"
 
-#: app/js/controllers/trade.js:112
+#: app/js/controllers/trade.js:114
 msgid "Not enough stocks!"
 msgstr "Nicht genug Wertpapiere!"
 
@@ -951,7 +947,7 @@ msgstr "Welchen Ordertyp soll deine Transaktion haben?"
 msgid "Ok!"
 msgstr "Ok!"
 
-#: app/js/controllers/trade.js:109
+#: app/js/controllers/trade.js:111
 msgid "Only 50&nbsp;% of your assets may consist of a single stock!"
 msgstr ""
 "Dein Vermögen darf höchstens zu 50&nbsp,% in ein einzelnes Wertpapier "
@@ -1062,7 +1058,7 @@ msgstr ""
 msgid "Please confirm that you have read the TOS"
 msgstr "Bitte bestätige, dass du die AGB gelesen hast"
 
-#: app/js/controllers/trade.js:69
+#: app/js/controllers/trade.js:71
 msgid "Please enter a numerical stop/limit value"
 msgstr "Bitte geben Sie den Stop-/Limitwert als Zahl an"
 
@@ -1186,6 +1182,10 @@ msgstr "Wert&#xad;papier"
 msgid "Stock information"
 msgstr "Wertpapier&#xad;informationen"
 
+#: app/templates/trade.html:25
+msgid "Stock name"
+msgstr "Wert&#xad;papier&#xad;name"
+
 #: app/templates/search.html:50
 msgid "Stocks"
 msgstr "Wert&#xad;papiere"
@@ -1206,7 +1206,7 @@ msgstr "Unter&#xad;gruppen"
 msgid "Successful registration"
 msgstr "Erfolgreich registriert"
 
-#: app/js/controllers/trade.js:97
+#: app/js/controllers/trade.js:99
 msgid "Successfully traded!"
 msgstr "Trade erfolgreich!"
 
@@ -1253,13 +1253,13 @@ msgid "The following data is required to participate in the competition"
 msgstr ""
 "Diese Daten benötigen wir, damit du auch am Wettbewerb teilnehmen kannst"
 
-#: app/js/controllers/trade.js:91
+#: app/js/controllers/trade.js:93
 msgid ""
 "The trade will be executed as soon as the given conditions are fulfilled."
 msgstr ""
 "Der Trade wird ausgeführt, sobald die angegebenen Bedingungen erfüllt sind."
 
-#: app/js/controllers/trade.js:115
+#: app/js/controllers/trade.js:117
 msgid "The trade will be executed when the stock exchange opens"
 msgstr "Der Trade wird ausgeführt, sobald der Handelsplatz öffnet"
 
@@ -1292,7 +1292,7 @@ msgstr "Dieser Kommentar ist entfernt worden."
 msgid "This e-mail address has already been taken"
 msgstr "Email bereits vorhanden"
 
-#: app/js/controllers/trade.js:125
+#: app/js/controllers/trade.js:127
 msgid "This stock could not be found!"
 msgstr "Wertpapier existiert nicht!"
 
@@ -1328,7 +1328,7 @@ msgstr "Rein&#xad;gewinn"
 msgid "Tradable amount"
 msgstr "Handel&#xad;bare Menge"
 
-#: app/js/controllers/trade.js:36 app/templates/depot.listing.html:36
+#: app/js/controllers/trade.js:38 app/templates/depot.listing.html:36
 #: app/templates/game.html:114
 msgid "Trade"
 msgstr "Trade"
@@ -1399,7 +1399,7 @@ msgstr ""
 "Wir arbeiten wahrscheinlich schon dran, du kannst uns aber gerne unter "
 "tech@tradity.de eine aufmunternde Nachricht schreiben."
 
-#: app/js/controllers/trade.js:122
+#: app/js/controllers/trade.js:124
 msgid ""
 "Unfortunately, your trade exceeds the maximum tradable amount of this stock"
 msgstr ""
@@ -1507,7 +1507,7 @@ msgstr ""
 "verwendet werden.<br />Zur Zeit hast du Aktivität für folgende Tage "
 "gesammelt und gespeichert:"
 
-#: app/js/controllers/trade.js:106
+#: app/js/controllers/trade.js:108
 msgid "You do not have enough leftover money for this trade!"
 msgstr "Nicht genügend Geld zum Trade!"
 
@@ -1587,11 +1587,11 @@ msgstr ""
 msgid "You have reset your account."
 msgstr "Du hast deinen Account zurückgesetzt."
 
-#: app/js/controllers/trade.js:34
+#: app/js/controllers/trade.js:36
 msgid "You need to choose a stock!"
 msgstr "Du musst ein Wertpapier auswählen!"
 
-#: app/js/controllers/trade.js:103
+#: app/js/controllers/trade.js:105
 msgid ""
 "You need to provide a verified e-mail address in order to be eligible for "
 "follower trades!"
@@ -1660,7 +1660,7 @@ msgstr "Investieren"
 msgid "pinboard"
 msgstr "Pinnwand"
 
-#: app/js/controllers/trade.js:39
+#: app/js/controllers/trade.js:41
 msgid "share"
 msgid_plural "shares"
 msgstr[0] "Aktie"
@@ -1700,6 +1700,9 @@ msgstr "{{stockname}} von der Watchlist entfernt"
 #: app/templates/inviteform.html:10
 msgid "… or use this link:"
 msgstr "… oder verwende diesen Link:"
+
+#~ msgid "<input id=\"paper\" placeholder=\"Stock name\">"
+#~ msgstr "<input id=\"paper\" placeholder=\"Wertpapiername\">"
 
 #~ msgid "Asset charts"
 #~ msgstr "Vermögens&#xad;entwicklung"

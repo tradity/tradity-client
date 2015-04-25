@@ -22,13 +22,11 @@
 							</a>
 						</script>
 						
-						<translate>
-						<input type="text" ng-model="stockname" id="paper" class="form-control" placeholder="Stock name"
+						<input type="text" ng-model="stockname" id="paper" class="form-control" placeholder="{{'Stock name'|translate}}"
 							typeahead="stock as stock.textName for stock in searchStocks($viewValue)"
 							typeahead-loading="showTradeThrobber" typeahead-min-length="3" typeahead-wait-ms="300"
 							typeahead-on-select="selectedStock($item, $model, $label)" typeahead-template-url="stockSearchEntry.html"
 							typeahead-editable="false" />
-						</translate>
 					</div>
 				</div>
 				<!--button ng-show="cur" ng-click="addToWatchlist()" class="click-button" style="margin: 0; line-height:30px; height: auto;"><span class="batch">&#xF179; </span></button-->

@@ -1184,7 +1184,7 @@ msgstr "Wertpapier&#xad;informationen"
 
 #: app/templates/trade.html:25
 msgid "Stock name"
-msgstr "Wert&#xad;papier&#xad;name"
+msgstr "Wertpapiername"
 
 #: app/templates/search.html:50
 msgid "Stocks"

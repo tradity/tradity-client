@@ -1,14 +1,23 @@
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-<form ng-controller="InviteFormCtrl" ng-submit="createInviteLink()" class="pure-form pure-form-stacked">
+<div ng-controller="InviteFormCtrl">
+<form ng-submit="createInviteLink()" class="pure-form pure-form-stacked">
 	<div>
 		<span translate>Via E-Mail:</span>
 		<translate><textarea ng-model="inviteemails" id="inviteemails" placeholder="Enter e-mail addresses here to which you want to send out invitations" class="form-control"></textarea></translate>
 		<translate><input type="submit" value="Invite" class="btn btn-sm btn-default"></translate>
 		<br />
 		<span translate>… or use this link:</span>
-		<span id="invitelink" class="options-input pure-input-1"><a ng-href="{{invitelink}}">{{invitelink || '…'}}</a></span>
-		<i translate>(Right click + “Copy link”)</i>
+		<span id="invitelink" class="options-input pure-input-1">
+			<span ng-show="invitelink">
+				<a ng-href="{{invitelink}}">{{invitelink}}</a>
+				<i translate>(Right click + “Copy link”)</i>
+			</span>
+			<span ng-hide="invitelink" translate>
+				[Loading invite link]
+			</span>
+		</span>
 	</div>
 </form>
+</div>

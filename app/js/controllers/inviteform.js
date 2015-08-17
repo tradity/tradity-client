@@ -21,7 +21,7 @@ angular.module('tradity').
 				}, function(data) {
 					switch (data.code) {
 						case 'create-invite-link-invalid-email':
-							notification(gettext('Invalid e-mail addresss'));
+							notification(gettext('Invalid e-mail address'));
 							break;
 						case 'create-invite-link-not-verif':
 							notification(gettext('You have not verified your e-mail address'));

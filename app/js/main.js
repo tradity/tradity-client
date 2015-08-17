@@ -33,62 +33,6 @@ var notification = function (text, icon) { // icon === true -> success
 	}, 3000);
 };
 
-var useSchoolAC = function($scope, socket) {
-	$scope.onLSResult = $scope.onLSResult || [];
-	$scope.schoolList = $scope.schoolList || [];
-	
-	socket.on('list-schools', function(result) {
-		$scope.schoolList = result.result;
-		$scope.schoolIndexByPath = {};
-		for (var i = 0; i < $scope.schoolList.length; ++i)
-			$scope.schoolIndexByPath[$scope.schoolList[i].path] = $scope.schoolList[i];
-		
-		for (var i = 0; i < $scope.schoolList.length; ++i) {
-			$scope.schoolList[i].getExtra = function() { return this.usercount + ' Personen'; };
-			
-			$scope.schoolList[i].getInputTextValue = function() { return this.name; };
-			$scope.schoolList[i].getEntryName = function() {
-				var sep = ' » '; // note that the spaces here are U+2009 (thin space) for compactness
-				var prefix = '';
-				
-				if (parentPath(this.path) != '/') {
-					var parent = $scope.schoolIndexByPath[parentPath(this.path)];
-					prefix = parent.getEntryName() + sep;
-				}
-				
-				return prefix + this.name;
-			};
-		}
-		
-		for (var i = 0; i < $scope.onLSResult.length; ++i)
-			$scope.onLSResult[i]();
-	}, $scope);
-	
-	socket.emit('list-schools', {_cache: 20});
-	
-	$scope.acFetcher = {
-		fetchAutoComplete: function(ac, s) {
-			var enter = function() {
-				ac.putData($scope.schoolList, s);
-			};
-			
-			if ($scope.schoolList.length)
-				enter();
-			else
-				$scope.onLSResult.push(enter);
-		},
-		submit: function(ac, data) {
-			$scope.schoolname = document.getElementById('schoolname').value = data.name;
-			$scope.school = data.id;
-		},
-		valuecreate: function(ac, data, element) {
-			if ($scope.prevschool && $scope.prevschool == data.id)
-				element.className += ' ac-prevschool';
-		}
-	};
-	$scope.ac = new AC('schoolname', $scope.acFetcher, false, 1, 1, null, true);
-};
-
 var fileemit = function(socket, input, evtype, template, serverconfig, callback) {
 	var filename = null; 
 	var mime = null;

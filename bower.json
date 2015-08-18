@@ -16,7 +16,6 @@
     "angular-md5": "*",
     "angular-debounce": "~1.0.1",
     "munkres-js": ">=1.1.1",
-    "ac.js": ">=0.0.4",
     "lzma-js": "https://github.com/nmrugg/LZMA-JS.git#daa9369a4ccdda4069c5c244dfa9922e231cd067",
     "jquery": "2.1.1",
     "ngInfiniteScroll": "~1.1.2",

@@ -6,8 +6,7 @@
 
 angular.module('tradity').
 	controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dialogs, safestorage, gettext, languageManager, socket) {
-		$scope.school = $stateParams.schoolid;
-		$scope.schoolname_none = false;
+		$scope.school = $stateParams.schoolid; // XXX
 		$scope.traditye = 0;
 		$scope.dla_optin = 0;
 		$scope.zipcode = '';
@@ -17,18 +16,6 @@ angular.module('tradity').
 		$scope.invitekey = $stateParams.inviteCode;
 		$scope.betakey = '';
 		$scope.lang = languageManager.getCurrentLanguage();
-		$scope.onLSResult = [
-			function() {
-				for (var i = 0; i < $scope.schoolList.length; ++i) {
-					var s = $scope.schoolList[i];
-					if (s.path == $scope.school || s.id == $scope.school || s.name == $scope.school) {
-						$scope.schoolname = document.getElementById('schoolname').value = s.name;
-						$scope.school = s.id;
-						break;
-					}
-				}
-			}
-		];
 		
 		$scope.alerts = [];
 		$scope.closeAlert = function(index) {
@@ -40,6 +27,7 @@ angular.module('tradity').
 		});
 		
 		if ($scope.invitekey) {
+			// XXX
 			socket.emit('get-invitekey-info', {
 				invitekey: $scope.invitekey
 			}, function(data) {
@@ -88,8 +76,6 @@ angular.module('tradity').
 		});
 		
 		$scope.register = function() {
-			$scope.schoolname = document.getElementById('schoolname').value;
-			
 			if (!$scope.email)
 				return $scope.alerts.push({ type: 'danger', msg: gettext('Please provide an e-mail address') });
 			if (!$scope.agbread)
@@ -98,7 +84,7 @@ angular.module('tradity').
 				return $scope.alerts.push({ type: 'danger', msg: gettext('The entered passwords do not match') });
 			if (!$scope.giv_name || !$scope.fam_name)
 				return $scope.alerts.push({ type: 'danger', msg: gettext('Please enter your name in order to be eligible for winning prizes') });
-			if (!$scope.schoolname_none && !$scope.schoolname)
+			if (!$scope.schoolname_none && !$scope.schoolname) // XXX
 				return $scope.alerts.push({ type: 'danger', msg: gettext('Please indicate which organization or school you belong to') });
 			
 			safestorage.setPassword($scope.password);
@@ -109,7 +95,7 @@ angular.module('tradity').
 				realnamepublish: $scope.realnamepublish,
 				password: $scope.password,
 				email: $scope.email,
-				school: $scope.schoolname ? ($scope.school ? $scope.school : $scope.schoolname) : null,
+				school: $scope.school,
 				schoolclass: $scope.schoolclass,
 				betakey: $scope.betakey,
 				street: $scope.street,
@@ -121,6 +107,4 @@ angular.module('tradity').
 				invitekey: $scope.invitekey
 			});
 		};
-		
-		useSchoolAC($scope, socket);
 	});

@@ -71,13 +71,11 @@
 					<div class="col-sm-6">
 						<div class="form-group">
 							<label for="schoolname" translate>Organization / School</label>
-							<translate><input type="text" ng-init="loadSearch()" ng-model="schoolname" placeholder="School" id="schoolname" class="form-control"></translate>
-							<input id="schoolname_none" ng-model="schoolname_none" type="checkbox"> <span translate>No group</span>
-							<translate><input type="text" ng-model="schoolclass" placeholder="School class" id="schoolclass" class="form-control"></translate>
+							<tradity-group-chooser school-id-model="school" school-class-model="schoolclass" prevschool-model="prevschool" />
 						</div>
 						<div class="form-group">
 							<label for="realnamepublish" translate>May your name be published?</label><br/>
-							<input type="checkbox" ng-model="realnamepublish" id="realnamepublish"> <span translate>Yes</span>
+							<input type="checkbox" ng-model="realnamepublish" id="realnamepublish" /> <span translate>Yes</span>
 						</div>
 					</div>
 				</div>

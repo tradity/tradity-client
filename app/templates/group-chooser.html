@@ -1,3 +1,6 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <script type="text/ng-template" id="groupChooserEntry.html">
 	<a style="display:block">
 		<span class="typeahead-left" bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
@@ -10,6 +13,8 @@
 	ng-model="school"
 	typeahead="entry as entry.displayName for entry in listGroups($viewValue)"
 	typeahead-min-length="2"
-	typeahead-on-select="selectedGroup($item, $model, $label)" typeahead-template-url="groupChooserEntry.html" />
+	typeahead-editable="true"
+	typeahead-select-on-exact="true"
+	typeahead-template-url="groupChooserEntry.html" />
 
 <input type="text" ng-model="schoolclass" placeholder="{{'School class'|translate}}" id="schoolclass" class="form-control" />

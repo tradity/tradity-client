@@ -22,8 +22,7 @@ angular.module('tradity').
 			$scope.password = null;
 			$scope.password_check = null;
 			$scope.email = data.result.email;
-			$scope.prevschool = data.result.school;
-			$scope.school = null;
+			$scope.school = data.result.school;
 			$scope.schoolclass = data.result.schoolclass;
 			$scope.desc = data.result.desc;
 			$scope.lprovision = data.result.lprovision;
@@ -155,6 +154,8 @@ angular.module('tradity').
 		socket.on('change-options', function(data) {
 			if (data.code == 'reg-success') {
 				notification(gettext('Sucessfully saved options'), true);
+				
+				socket.emit('get-own-options');
 			} else if (data.code == 'reg-email-failed') {
 				notification(gettext('Could not send verification e-mail. Please turn to tech@tradity.de.'));
 			}

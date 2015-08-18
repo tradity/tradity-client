@@ -9,7 +9,8 @@ angular.module('tradity').
 		return {
 			templateUrl: 'templates/group-chooser.html',
 			scope: { 
-				school: '=schoolModel',
+				school: '=?schoolModel',
+				schoolID: '=schoolIdModel',
 				schoolclass: '=schoolClassModel'
 			},
 			restrict: 'EA',
@@ -17,6 +18,27 @@ angular.module('tradity').
 				$scope.schoolList = $scope.schoolList || [];
 				$scope.schoolListDeferred = $q.defer();
 				$scope.schoolListPromise = $scope.schoolListDeferred.promise;
+				
+				$scope.setSchoolByIdentifier = function(identifier) {
+					if ($scope.school && $scope.school.schoolid == identifier)
+						return;
+					
+					$scope.schoolListPromise.then(function(schoolList) {
+						var currentMatchPriority = -1;
+						
+						for (var i = 0; i < schoolList.length; ++i) {
+							var school = schoolList[i];
+							var matchPriority = [school.name, school.path, school.schoolid].indexOf(identifier);
+							
+							if (matchPriority > currentMatchPriority) {
+								matchPriority = currentMatchPriority;
+								
+								$scope.school = school;
+								$scope.schoolID = school.schoolid;
+							}
+						}
+					});
+				};
 				
 				socket.on('list-schools', function(result) {
 					$scope.schoolList = result.result;
@@ -37,9 +59,6 @@ angular.module('tradity').
 							current = $scope.schoolIndexByPath[parentPath(current.path)];
 							entry.displayName = current.name + sep + entry.displayName;
 						}
-						
-						if (entry.id == $scope.prevschool)
-							$scope.school = entry;
 					}
 					
 					if ($scope.schoolListDeferred) {
@@ -48,20 +67,40 @@ angular.module('tradity').
 					}
 					
 					$scope.schoolListPromise = $q.when($scope.schoolList);
+					
+					$scope.setSchoolByIdentifier($scope.schoolID);
 				}, $scope);
+				
+				$scope.$watch('school', function(newValue, oldValue) {
+					if (!$scope.school) {
+						$scope.schoolID = null;
+						return;
+					}
+					
+					if (typeof $scope.school.schoolid !== 'undefined')
+						$scope.schoolID = $scope.school.schoolid;
+					else
+						$scope.schoolID = $scope.school;
+				});
+				
+				$scope.$watch('schoolID', function(newValue, oldValue) {
+					$scope.setSchoolByIdentifier(newValue);
+				});
 				
 				socket.emit('list-schools', {_cache: 20});
 				
 				$scope.listGroups = function(enteredText) {
 					return $scope.schoolListPromise.then(function(schoolList) {
 						return orderByFilter([{
-							displayName: gettextCatalog.getString('No Group')
-						}].concat(schoolList).filter(function(school) {
+							displayName: gettextCatalog.getString('No Group'),
+							schoolid: null,
+							sortingRank: +Infinity
+						}].concat(schoolList.filter(function(school) {
 							return school.displayName.indexOf(enteredText) != -1;
 						}).map(function(school) {
 							school.sortingRank = searchStringSimilarity(enteredText, school.displayName);
 							return school;
-						}), 'sortingRank', true);
+						})), 'sortingRank', true);
 					});
 				};
 			}

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Tradity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-08-17 23:32+0100\n"
+"PO-Revision-Date: 2015-09-06 05:22+0100\n"
 "Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"
 "Language-Team: German <http://weblate.tradity.de/projects/tradity/tradity-"
 "client-master/de/>\n"
@@ -205,7 +205,7 @@ msgstr "<i></i> Watchen"
 msgid "<input placeholder=\"Search\">"
 msgstr "<input placeholder=\"Suche\">"
 
-#: app/templates/registration.html:74
+#: app/templates/registration.html:65
 msgid "<input id=\"betakey\" placeholder=\"Beta key\">"
 msgstr "<input id=\"betakey\" placeholder=\"Betakey\">"
 
@@ -233,15 +233,7 @@ msgstr "<input placeholder=\"Passwort\">"
 msgid "<input placeholder=\"Repeat password\">"
 msgstr "<input placeholder=\"Passwort wiederholen\">"
 
-#: app/templates/registration.html:65
-msgid "<input id=\"schoolclass\" placeholder=\"(School class)\">"
-msgstr "<input id=\"schoolclass\" placeholder=\"(Schulklasse)\">"
-
-#: app/templates/registration.html:58
-msgid "<input id=\"schoolname\" placeholder=\"School\">"
-msgstr "<input id=\"schoolname\" placeholder=\"Schule\">"
-
-#: app/templates/options.html:144
+#: app/templates/options.html:142
 msgid "<input value=\"Reset user\" id=\"options-reset\">"
 msgstr "<input value=\"Benutzer zurücksetzen\" id=\"options-reset\">"
 
@@ -458,7 +450,7 @@ msgstr "seit Beginn"
 msgid "Amount"
 msgstr "Menge"
 
-#: app/js/controllers/options.js:146
+#: app/js/controllers/options.js:145
 msgid "Are you sure you want to reset?"
 msgstr "Willst du dich wirklich zurücksetzen?"
 
@@ -563,7 +555,7 @@ msgstr "Konnte Trade nicht finden"
 msgid "Could not send invitation link"
 msgstr "Konnte Einladungslink nicht versenden"
 
-#: app/js/controllers/options.js:159 app/js/controllers/registration.js:55
+#: app/js/controllers/options.js:160 app/js/controllers/registration.js:55
 msgid "Could not send verification e-mail. Please turn to tech@tradity.de."
 msgstr ""
 "Es gab beim Senden der Bestätigungsmail Probleme.\n"
@@ -697,7 +689,7 @@ msgstr "Gruppen&#xad;info"
 msgid "Group picture"
 msgstr "Gruppen&#xad;bild"
 
-#: app/templates/game.html:74 app/templates/groupOverview.html:5
+#: app/templates/game.html:72 app/templates/groupOverview.html:5
 #: app/templates/ranking.html:10 app/templates/search.html:31
 msgid "Groups"
 msgstr "Gruppen"
@@ -706,11 +698,11 @@ msgstr "Gruppen"
 msgid "Held shares"
 msgstr "Wertpapiere in Besitz"
 
-#: app/templates/registration.html:93
+#: app/templates/registration.html:84
 msgid "I already have an account!"
 msgstr "Ich bin bereits registriert!"
 
-#: app/templates/registration.html:84
+#: app/templates/registration.html:75
 msgid "I have read and accepted the <a>TOS</a>."
 msgstr "Ich habe die <a>AGB</a> gelesen und akzeptiert."
 
@@ -728,7 +720,7 @@ msgstr ""
 "a>eine E-Mail schreiben oder auf <a>Facebook</a> eine Frage posten. "
 "<span>Viel Erfolg!</span>"
 
-#: app/templates/registration.html:61
+#: app/templates/registration.html:58
 msgid ""
 "If you take part in a local competition, please enter your class so we can "
 "send you a certificate and (possibly) prizes."
@@ -736,7 +728,7 @@ msgstr ""
 "Falls du an einem Stadtwettbewerb teilnimmst, gib bitte deine Klasse an,\n"
 "sodass wir dir deine Urkunde und ggf. deinen Preis zukommen lassen können."
 
-#: app/templates/game.html:159
+#: app/templates/game.html:157
 msgid "Imprint"
 msgstr "Impressum"
 
@@ -786,7 +778,7 @@ msgstr "Benutzer einladen"
 msgid "Join group"
 msgstr "Team beitreten"
 
-#: app/templates/options.html:54 app/templates/registration.html:78
+#: app/templates/options.html:54 app/templates/registration.html:69
 msgid "Language"
 msgstr "Sprache (Language)"
 
@@ -817,7 +809,7 @@ msgstr ""
 msgid "Left group"
 msgstr "Gruppe verlassen"
 
-#: app/templates/game.html:135
+#: app/templates/game.html:133
 msgid "Lessons"
 msgstr "Lektionen"
 
@@ -833,7 +825,7 @@ msgstr "Weniger Wertpapiere"
 msgid "List more stocks"
 msgstr "Mehr Wertpapiere"
 
-#: app/templates/game.html:172
+#: app/templates/game.html:170
 msgid "Loading"
 msgstr "Laden…"
 
@@ -890,7 +882,7 @@ msgstr "Name"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: app/templates/game.html:70
+#: app/templates/game.html:68
 msgid "News"
 msgstr "Neuigkeiten"
 
@@ -902,7 +894,7 @@ msgstr "Nein"
 msgid "No Connection"
 msgstr "Keine Verbindung"
 
-#: app/templates/registration.html:71
+#: app/js/directives/groupChooser.js:95
 msgid "No Group"
 msgstr "Keine Gruppe"
 
@@ -945,7 +937,7 @@ msgstr ""
 msgid "Only ranking-enabled users"
 msgstr "Nur Rankingberechtigte"
 
-#: app/js/controllers/options.js:167 app/templates/game.html:143
+#: app/js/controllers/options.js:145 app/templates/game.html:141
 msgid "Options"
 msgstr "Einstellungen"
 
@@ -1016,7 +1008,7 @@ msgstr "Führe 1&nbsp;Followertrade aus (kaufe ein Leaderpapier)."
 msgid "Performance"
 msgstr "Performance"
 
-#: app/js/directives/groupChooser.js:29
+#: app/js/directives/groupChooser.js:51
 msgid "Person"
 msgid_plural "Persons"
 msgstr[0] "Person"
@@ -1087,7 +1079,7 @@ msgstr "Preis"
 msgid "Profile image"
 msgstr "Profilbild"
 
-#: app/js/controllers/options.js:53
+#: app/js/controllers/options.js:52
 msgid "Profile picture was uploaded successfully!"
 msgstr "Profilbild erfolgreich hochgeladen!"
 
@@ -1099,7 +1091,7 @@ msgstr "Fragen"
 msgid "Rank"
 msgstr "Rang"
 
-#: app/templates/game.html:123 app/templates/group.html:24
+#: app/templates/game.html:121 app/templates/group.html:24
 msgid "Ranking"
 msgstr "Rangliste"
 
@@ -1111,7 +1103,7 @@ msgstr "Anlass"
 msgid "Received commissions"
 msgstr "erh. Provision"
 
-#: app/templates/index.html:10 app/templates/registration.html:92
+#: app/templates/index.html:10 app/templates/registration.html:83
 msgid "Register"
 msgstr "Registrieren"
 
@@ -1123,11 +1115,11 @@ msgstr "Entfernen"
 msgid "Repeat password"
 msgstr "Passwort wiederholen"
 
-#: app/templates/group-chooser.html:9
+#: app/templates/group-chooser.html:12
 msgid "School"
 msgstr "Schule"
 
-#: app/templates/group-chooser.html:15
+#: app/templates/group-chooser.html:20
 msgid "School class"
 msgstr "Schulklasse"
 
@@ -1212,11 +1204,11 @@ msgstr "Erfolgreich registriert"
 msgid "Successfully traded!"
 msgstr "Trade erfolgreich!"
 
-#: app/js/controllers/options.js:150
+#: app/js/controllers/options.js:149
 msgid "Sucessfully reset user!"
 msgstr "Benutzer erfolgreich zurückgesetzt!"
 
-#: app/js/controllers/options.js:157
+#: app/js/controllers/options.js:156
 msgid "Sucessfully saved options"
 msgstr "Einstellungen erfolgreich gespeichert"
 
@@ -1224,7 +1216,7 @@ msgstr "Einstellungen erfolgreich gespeichert"
 msgid "Sucessfully uploaded profile picture!"
 msgstr "Profilebild erfolgreich hochgeladen!"
 
-#: app/templates/game.html:149
+#: app/templates/game.html:147
 msgid "Support"
 msgstr "Hilfe"
 
@@ -1234,19 +1226,19 @@ msgstr ""
 "Tausche dich mit deinen Freunden über Nachrichten und Entscheidungen in "
 "einer eigenen Gruppe aus"
 
-#: app/templates/game.html:160
+#: app/templates/game.html:158
 msgid "Terms &amp; Privacy"
 msgstr "AGB &amp; Datenschutz"
 
-#: app/js/controllers/options.js:82 app/js/controllers/registration.js:84
+#: app/js/controllers/options.js:81 app/js/controllers/registration.js:84
 msgid "The entered passwords do not match"
 msgstr "Die eingegebenen Passwörter stimmen nicht überein"
 
-#: app/js/controllers/options.js:139
+#: app/js/controllers/options.js:138
 msgid "The entered provision value is invalid"
 msgstr "Die angegebenen Provisionen sind ungültig"
 
-#: app/js/controllers/options.js:130 app/js/controllers/registration.js:64
+#: app/js/controllers/options.js:129 app/js/controllers/registration.js:64
 msgid "The entered school has not been found"
 msgstr "Die angegebene Schule wurde nicht gefunden"
 
@@ -1269,7 +1261,7 @@ msgstr "Der Trade wird ausgeführt, sobald der Handelsplatz öffnet"
 msgid "There was a problem while loading the current ranking!"
 msgstr "Es gab ein Problem beim Laden der Rangliste!"
 
-#: app/js/controllers/group.js:150 app/js/controllers/options.js:61
+#: app/js/controllers/group.js:150 app/js/controllers/options.js:60
 #: app/js/main.js:40
 msgid ""
 "There was a technical problem uploading your profile picture. Please turn to "
@@ -1290,7 +1282,7 @@ msgstr ""
 msgid "This comment has been removed."
 msgstr "Dieser Kommentar ist entfernt worden."
 
-#: app/js/controllers/options.js:124 app/js/controllers/registration.js:58
+#: app/js/controllers/options.js:123 app/js/controllers/registration.js:58
 msgid "This e-mail address has already been taken"
 msgstr "Email bereits vorhanden"
 
@@ -1298,7 +1290,7 @@ msgstr "Email bereits vorhanden"
 msgid "This stock could not be found!"
 msgstr "Wertpapier existiert nicht!"
 
-#: app/js/controllers/options.js:127 app/js/controllers/registration.js:61
+#: app/js/controllers/options.js:126 app/js/controllers/registration.js:61
 msgid "This user name has already been taken"
 msgstr "Benutzername bereits vergeben"
 
@@ -1330,8 +1322,8 @@ msgstr "Rein&#xad;gewinn"
 msgid "Tradable amount"
 msgstr "Handel&#xad;bare Menge"
 
-#: app/js/controllers/trade.js:35 app/templates/depot.listing.html:36
-#: app/templates/game.html:117
+#: app/js/controllers/trade.js:38 app/templates/depot.listing.html:36
+#: app/templates/game.html:115
 msgid "Trade"
 msgstr "Trade"
 
@@ -1358,7 +1350,7 @@ msgstr ""
 msgid "Trade total"
 msgstr "Bilanz"
 
-#: app/templates/game.html:161
+#: app/templates/game.html:159
 msgid "Tradity is Open Source!"
 msgstr "Tradity ist Open Source!"
 
@@ -1601,7 +1593,7 @@ msgstr ""
 "Bitte bestätige die „Bestätigungsmail“, um alle Funktionen freizuschalten "
 "und für die Preise gewinnberechtigt zu sein."
 
-#: app/templates/game.html:88
+#: app/templates/game.html:86
 msgid "Your Group"
 msgstr "Deine Gruppe"
 
@@ -1625,7 +1617,7 @@ msgstr "Deine Gruppen"
 msgid "Your need to upload your profile picture as a JPEG/PNG/GIF file"
 msgstr "Dein Profilbild musst du als JPEG, PNG oder GIF hochladen"
 
-#: app/js/controllers/options.js:133 app/js/controllers/registration.js:67
+#: app/js/controllers/options.js:132 app/js/controllers/registration.js:67
 msgid "Your password is too short!"
 msgstr "Das Passwort ist zu kurz!"
 
@@ -1633,11 +1625,11 @@ msgstr "Das Passwort ist zu kurz!"
 msgid "Your performance"
 msgstr "Vermögens&#xad;entwicklung"
 
-#: app/templates/game.html:111
+#: app/templates/game.html:109
 msgid "Your portfolio"
 msgstr "Dein Depot"
 
-#: app/js/controllers/group.js:146 app/js/controllers/options.js:56
+#: app/js/controllers/group.js:146 app/js/controllers/options.js:55
 #: app/js/main.js:80
 msgid "Your profile picture file is too large (maximum 3&nbsp;MB)"
 msgstr "Die Profilbilddatei ist leider zu groß (höchstens 3&nbsp;MB)"
@@ -1646,7 +1638,7 @@ msgstr "Die Profilbilddatei ist leider zu groß (höchstens 3&nbsp;MB)"
 msgid "Your tradity client version is, unfortunately, no longer supported."
 msgstr "Deine Tradity-Client-Version wird leider nicht mehr unterstützt."
 
-#: app/js/controllers/options.js:136 app/js/controllers/registration.js:73
+#: app/js/controllers/options.js:135 app/js/controllers/registration.js:73
 msgid "Your user name contains invalid characters!"
 msgstr "Der Benutzername enthält unerlaubte Zeichen!"
 

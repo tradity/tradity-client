@@ -1,3 +1,7 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
 <h2>Tickrate</h2>
 <div id="chart-wrap">
 	<label for="startTimespanOffsetDays">Startzeitoffset (d)</label><input type="number" ng-model="startTimespanOffsetDays" id="startTimespanOffsetDays" min="0" max="365" step="1" value="10" />;
@@ -33,7 +37,14 @@
 					Bus ({{srv.bus.id}}): {{srv.bus.msgCount}} Nachrichten ({{srv.bus.unanswered}} unbeantwortete Anfragen),
 					Log bei {{srv.bus.packetLogCount}} von {{srv.bus.packetLogLength}}
 				</li>
-				<li>{{srv.deadQueryCount}} Queries / {{srv.deadQueryLZMACount}} mit LZMA-Support / {{srv.deadQueryLZMAUsedCount}} mit LZMA</li>
+				<li>
+					<span>{{srv.deadQueryCount}} Queries</span> /
+					<span>{{srv.deadQueryCompressionInfo.supported.lzma}}</span> mit LZMA-Support /
+					<span>{{srv.deadQueryCompressionInfo.supported.s}}</span> mit Split-Support /
+					<span>{{srv.deadQueryCompressionInfo.used.lzma}}</span> mit LZMA /
+					<span>{{srv.deadQueryCompressionInfo.used.s}}</span> mit Split-Encoding /
+					<span>{{srv.deadQueryCompressionInfo.used.si}}</span> mit initialem Split-Encoding
+				</li>
 				<li>{{srv.dbstats.deadlockCount}} DB deadlocks, {{srv.dbstats.queryCount}} queries, {{srv.dbstats.writableNodes}} writable nodes</li>
 			</ul>
 			
@@ -61,7 +72,7 @@
 					</td>
 					<td><a ui-sref="admin.userdetails({uid: client.user.uid})">{{client.user.name}} ({{client.user.uid}})</a></td>
 					<td>{{client.ctx.lzmaSupport}}</td>
-					<td>{{client.queryCount}} ({{client.queryLZMACount}} / {{client.queryLZMAUsedCount}})</td>
+					<td>{{client.queryCount}} ({{client.queryCompressionInfo.supported.lzma}} / {{client.queryCompressionInfo.used.lzma}})</td>
 					<td>{{client.unanswered}}</td>
 					<td>{{client.lastInfoPush | date:'short'}}</td>
 					<td>{{client.mostRecentEventTime * 1000 | date:'short'}}</td>

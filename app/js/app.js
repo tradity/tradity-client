@@ -9,11 +9,11 @@ angular.module('tradity', [
 	'ui.bootstrap',
 	'ui.keypress',
 	'ui.event',
-	'gettext',
 	'dialogs.main',
 	'angular-md5',
 	'infinite-scroll',
-	'rt.debounce'
+	'rt.debounce',
+	'gettext' // override translate filter from dialogs.main, so this comes last
 ]).config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider) {
 	/* Create custom angular-ui-router parameter types.
 	 * This is necessary since 0.2.12; Since then,

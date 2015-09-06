@@ -22,10 +22,7 @@ angular.module('tradity').
 			$scope.password = null;
 			$scope.password_check = null;
 			$scope.email = data.result.email;
-			$scope.prevschool = data.result.school;
 			$scope.school = data.result.school;
-			$scope.schoolname = document.getElementById('schoolname').value = data.result.schoolname;
-			$scope.schoolname_none = (data.result.school == null);
 			$scope.schoolclass = data.result.schoolclass;
 			$scope.desc = data.result.desc;
 			$scope.lprovision = data.result.lprovision;
@@ -83,7 +80,6 @@ angular.module('tradity').
 			if ($scope.password_check != $scope.password)
 				return notification(gettext('The entered passwords do not match'));
 			
-			$scope.schoolname = $scope.schoolname_none ? '' : document.getElementById('schoolname').value;
 			var d = Date.UTC($scope.birthdayy, $scope.birthdaym-1, $scope.birthdayd);
 			if (!$scope.birthdayy)
 				d = null;
@@ -93,24 +89,6 @@ angular.module('tradity').
 				fileemit(socket, piFile, 'publish', {
 					role: 'profile.image',
 				}, $scope.serverConfig, $scope.handlePublishCode);
-			}
-			
-			var school;
-			if ((!$scope.schoolname && $scope.school) || $scope.schoolname_none) {
-				school = null;
-			} else {
-				var foundSNameInList = null;
-				for (var i = 0; i < $scope.schoolList.length; ++i) {
-					if ($scope.schoolList[i].name == $scope.schoolname) {
-						foundSNameInList = $scope.schoolList[i].id;
-						break;
-					}
-				}
-				
-				if (foundSNameInList)
-					school = foundSNameInList;
-				else
-					school = $scope.schoolname;
 			}
 			
 			if ($scope.password)
@@ -126,7 +104,8 @@ angular.module('tradity').
 				realnamepublish: $scope.realnamepublish,
 				password: $scope.password,
 				email: $scope.email,
-				school: school,
+				school: $scope.school,
+				schoolclass: $scope.schoolclass,
 				birthday: d,
 				desc: $scope.desc,
 				lprovision: $scope.lprovision,
@@ -135,7 +114,6 @@ angular.module('tradity').
 				zipcode: $scope.zipcode,
 				town: $scope.town,
 				lang: languageManager.setCurrentLanguage($scope.lang),
-				schoolclass: $scope.schoolclass,
 				traditye: $scope.traditye,
 				dla_optin: $scope.dla_optin,
 				delayorderhist: $scope.delayorderhist
@@ -176,13 +154,10 @@ angular.module('tradity').
 		socket.on('change-options', function(data) {
 			if (data.code == 'reg-success') {
 				notification(gettext('Sucessfully saved options'), true);
+				
+				socket.emit('get-own-options');
 			} else if (data.code == 'reg-email-failed') {
 				notification(gettext('Could not send verification e-mail. Please turn to tech@tradity.de.'));
 			}
 		});
-		
-		$scope.loadSearch = function() {
-			useSchoolAC($scope, socket);
-		}
-		
 	});

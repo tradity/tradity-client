@@ -16,15 +16,14 @@
     "angular-md5": "*",
     "angular-debounce": "~1.0.1",
     "munkres-js": ">=1.1.1",
-    "ac.js": ">=0.0.4",
-    "lzma-js": "https://github.com/nmrugg/LZMA-JS.git#daa9369a4ccdda4069c5c244dfa9922e231cd067",
+    "lzma-js": "https://github.com/nmrugg/LZMA-JS.git#28aaa8e66b2c093b9f24327407853e9db14e0414",
     "jquery": "2.1.1",
     "ngInfiniteScroll": "~1.1.2",
     "cytoscape": "~2.3.3",
     "asmcrypto": "~0.0.6",
     "angular-translate-loader-static-files": "~2.5.2",
     "open-sans-fontface": "~1.2.0",
-    "tradity-connection": ">=0.6.2"
+    "tradity-connection": ">=0.7.1"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

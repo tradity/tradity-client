@@ -9,9 +9,24 @@
 		<div class="row chose-paper">
 			<div class="col-sm-6 form-horizontal">
 				<div class="form-group">
-					<label class="col-sm-2 control-label" translate>Name</label>
-					<div class="col-sm-10" translate>
-						<input type="text" ng-model="stockname" id="paper" class="form-control" placeholder="Stock name" />
+					<label class="col-sm-2 control-label">
+						<img src="img/throbber.gif" alt="…" ng-show="showTradeThrobber" />
+						<span translate>Name</span>
+					</label>
+					<div class="col-sm-10">
+						<script type="text/ng-template" id="stockSearchEntry.html">
+							<a style="display:block">
+								<span class="typeahead-left" bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+								<span class="typeahead-right">{{match.model.extraInfo}}</span>
+								<span style="clear:both;display:block"></span>
+							</a>
+						</script>
+						
+						<input type="text" ng-model="stockname" id="paper" class="form-control" placeholder="{{'Stock name'|translate}}"
+							typeahead="stock as stock.textName for stock in searchStocks($viewValue)"
+							typeahead-loading="showTradeThrobber" typeahead-min-length="3" typeahead-wait-ms="300"
+							typeahead-on-select="selectedStock($item, $model, $label)" typeahead-template-url="stockSearchEntry.html"
+							typeahead-editable="false" />
 					</div>
 				</div>
 				<!--button ng-show="cur" ng-click="addToWatchlist()" class="click-button" style="margin: 0; line-height:30px; height: auto;"><span class="batch">&#xF179; </span></button-->

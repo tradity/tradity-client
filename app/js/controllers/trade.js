@@ -5,7 +5,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('TradeCtrl', function($scope, $stateParams, $state, $location, socket, gettext, gettextCatalog, dialogs) {
+	controller('TradeCtrl', function($scope, $stateParams, $state, $location, socket, gettext, gettextCatalog,
+		dialogs, orderByFilter, searchStringSimilarity)
+	{
 		$scope.amount = null;
 		$scope.value = null;
 		$scope.stockid = null;
@@ -21,6 +23,7 @@ angular.module('tradity').
 		$scope.results = [];
 		$scope.popularStocks = [];
 		$scope.showPopularStocks = false;
+		$scope.showTradeThrobber = false;
 
 		$scope.togglePopularStocks = function() {
 			$scope.showPopularStocks = !$scope.showPopularStocks;
@@ -127,39 +130,34 @@ angular.module('tradity').
 				});
 			});
 		};
-		var gotData;
-		$scope.acFetcher = {
-			fetchAutoComplete: function(ac, s) {
-				socket.emit('stock-search', {
-					name: s
-				}, function(data) {
-					if (data.code == 'stock-search-success') {
-						var suggestions = [];
-						for (var i in data.results) {
-							if (data.results[i].leader == $scope.ownUser.uid)
-								continue;
-							data.results[i].getEntryName = 
-							data.results[i].getInputTextValue = function() { return this.leader ? 'Leader: ' + this.leadername : this.name; };
-							data.results[i].getExtra = function() { return (parseInt(this.lastvalue / 100) / 100) + (this.exchange ? ' ' + this.exchange : ''); };
-							suggestions.push(data.results[i]);
-						}
-						$scope.results = suggestions;
-						ac.putData(suggestions, s);
-					}
-				});
-			},
-			submit: gotData = function(ac, data) {
-				document.getElementById('paper').value =
-				$scope.stockname = data.leader ? 'Leader: ' + data.leadername : data.name;
-				$scope.stockid = data.leader ? null : data.stockid;
-				$scope.leader = data.leader ? data.leader : null;
-				$scope.cur = data;
-				$scope.value = $scope.amount = null;
-			}, valuecreate: function(ac, data, element, focusHandlers) {
-				focusHandlers.push(function(ac, data, type) { if (type == 'focus') $scope.$apply(function(){gotData(ac, data);}); });
-			}
+		
+		$scope.searchStocks = function(stockname) {
+			return socket.emit('stock-search', {
+				name: stockname
+			}).then(function(data) {
+				if (data.code != 'stock-search-success')
+					throw new Error('Stock search failed with ' + data.code);
+				
+				return orderByFilter(data.results.filter(function(stock) {
+					return !stock.leader || stock.leader != $scope.ownUser.uid;
+				}).map(function(stock) {
+					stock.textName = stock.leader ? gettext('Leader: %1').replace(/%1/g, stock.leadername) : stock.name;
+					stock.extraInfo = (parseInt(stock.lastvalue / 100) / 100)
+						+ (stock.exchange ? '\u00a0' + stock.exchange : '');
+					stock.sortingRank = searchStringSimilarity(stockname, stock.textName);
+					return stock;
+				}), 'sortingRank', true);
+			});
 		};
-		$scope.ac = new AC('paper', $scope.acFetcher, false, 3, null, 'img/throbber.gif');
+		
+		$scope.selectedStock = function(stock) {
+			$scope.stockname = stock.leader ? stock.textName : stock.name;
+			$scope.stockid = stock.leader ? null : stock.stockid;
+			$scope.leader = stock.leader || null;
+			$scope.cur = stock;
+			$scope.value = $scope.amount = null;
+		};
+		
 		$scope.calcValue = function() {
 			if (!$scope.cur) return;
 			if ($scope.sellbuy == 1) {

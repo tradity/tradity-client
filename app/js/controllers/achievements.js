@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('AchievementsCtrl', function($scope, $rootScope, socket, $stateParams) {
+	controller('AchievementsCtrl', function($scope, $rootScope, socket, achievements, $stateParams) {
 		$scope.achievements = [];
 		
 		socket.emit('list-all-achievements', {

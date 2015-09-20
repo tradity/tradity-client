@@ -399,7 +399,7 @@ module.exports = function (grunt) {
 			lzma: {
 				files: {
 					'.tmp/lzma_worker.js': [
-						'<%= yeoman.app %>/bower_components/lzma-js/src/lzma_worker.js'
+						'<%= yeoman.app %>/bower_components/lzma/src/lzma_worker.js'
 					]
 				}
 			}

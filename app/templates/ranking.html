@@ -20,9 +20,9 @@
 
 		<hr/>
 
-		<div class="input-group" ng-show="spec.type == 'all' || spec.type == 'follower'">
-			<input type="text" class="form-control" placeholder="suche">
-			<div class="input-group-btn">
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="Search" ng-model="rankingSearchText" />
+			<div class="input-group-btn" ng-show="spec.type == 'all' || spec.type == 'follower'">
 				<div class="btn btn-default" translate>
 					since
 					<span ng-show="spec.since">{{spec.since | date:'short'}}</span><span ng-hide="spec.since">game start</span>
@@ -30,22 +30,21 @@
 					<span ng-show="spec.upto">{{spec.upto | date:'short'}}</span><span ng-hide="spec.upto">now</span>
 				</div>
 			</div>
-			<div class="input-group-btn">
-				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-					<translate>Start time</translate>
-					<span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu dropdown-menu-right" role="menu">
-					<li><a ui-sref=".({spec: csr({since: null, upto: null})})" translate>Game start</a></li>
-					<li><a ui-sref=".({spec: csr({since: 'weekstart'})})" translate>Since week begin</a></li>
-					<li><a ui-sref=".({spec: csr({since: '1 week'})})" translate>Since 1&nbsp;week ago</a></li>
-					<li><a ui-sref=".({spec: csr({since: '1 month'})})" translate>Since 1&nbsp;month ago</a></li>
-				</ul>
+			<div class="input-group-btn" ng-show="spec.type == 'all' || spec.type == 'follower'">
+				<div class="dropdown" dropdown>
+					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" dropdown-toggle aria-expanded="false">
+						<translate>Start time</translate>
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu dropdown-menu-right" role="menu">
+						<li><a ui-sref=".({spec: csr({since: null, upto: null})})" translate>Game start</a></li>
+						<li><a ui-sref=".({spec: csr({since: 'weekstart'})})" translate>Since week begin</a></li>
+						<li><a ui-sref=".({spec: csr({since: '1 week'})})" translate>Since 1&nbsp;week ago</a></li>
+						<li><a ui-sref=".({spec: csr({since: '1 month'})})" translate>Since 1&nbsp;month ago</a></li>
+					</ul>
+				</div>
 			</div>
 		</div>
-		<translate>
-			<input ng-hide="spec.type == 'all' || spec.type == 'follower'" type="text" class="form-control" placeholder="Search" />
-		</translate>
 		<div id="all">
 			<div class="table-wrapper">
 				<table class="ranking table table-bordered">
@@ -61,7 +60,7 @@
 						<th ng-show="spec.type == 'follower'" translate>Follower ­performance</th>
 						<th ng-show="spec.type == 'follower'" translate>Follower valuation</th>
 					</tr>
-					<tr ng-repeat="result in rankingResult.get(spec.type) | filter: searchText | filter: resultDisplayFilter | limitTo:totalDisplayed"
+					<tr ng-repeat="result in rankingResult.get(spec.type) | filter: rankingSearchText | filter: resultDisplayFilter | limitTo:totalDisplayed"
 						ng-class="'rank-item rank-' + result.rank + (!result.hastraded ? ' newtrader' : '')">
 						<td ng-show="spec.showUsers">
 							<span ng-show="result.isSchoolEntry"><i class="fa fa-users"></i></span>

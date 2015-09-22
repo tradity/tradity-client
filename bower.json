@@ -23,7 +23,8 @@
     "asmcrypto": "~0.0.6",
     "angular-translate-loader-static-files": "~2.5.2",
     "open-sans-fontface": "~1.2.0",
-    "tradity-connection": ">=0.7.1"
+    "tradity-connection": ">=0.7.2",
+    "visionmedia-debug": "~2.2.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",

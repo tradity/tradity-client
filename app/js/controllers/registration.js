@@ -84,8 +84,8 @@ angular.module('tradity').
 				return $scope.alerts.push({ type: 'danger', msg: gettext('The entered passwords do not match') });
 			if (!$scope.giv_name || !$scope.fam_name)
 				return $scope.alerts.push({ type: 'danger', msg: gettext('Please enter your name in order to be eligible for winning prizes') });
-			if (!$scope.schoolname_none && !$scope.schoolname) // XXX
-				return $scope.alerts.push({ type: 'danger', msg: gettext('Please indicate which organization or school you belong to') });
+			/*if (!$scope.schoolname_none && !$scope.schoolname) // XXX
+				return $scope.alerts.push({ type: 'danger', msg: gettext('Please indicate which organization or school you belong to') });*/
 			
 			safestorage.setPassword($scope.password);
 			socket.emit('register', {

@@ -96,7 +96,7 @@ angular.module('tradity').
 							schoolid: null,
 							sortingRank: +Infinity
 						}].concat(schoolList.filter(function(school) {
-							return school.displayName.indexOf(enteredText) != -1;
+							return school.displayName.toLowerCase().indexOf(String(enteredText).toLowerCase()) != -1;
 						}).map(function(school) {
 							school.sortingRank = searchStringSimilarity(enteredText, school.displayName);
 							return school;

@@ -40,8 +40,8 @@ angular.module('tradity')
 		return function(searchString, entryName) {
 			/* currently also from https://github.com/addaleax/autocomp */
 	
-			var a = entryName.toUpperCase().split(/\b/);
-			var b = searchString.toUpperCase().split(/\b/);
+			var a = String(entryName).toUpperCase().split(/\b/);
+			var b = String(searchString).toUpperCase().split(/\b/);
 			
 			for (var i = 0; i < a.length; ++i) a[i] = a[i].trim();
 			for (var i = 0; i < b.length; ++i) b[i] = b[i].trim();

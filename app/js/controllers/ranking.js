@@ -7,6 +7,18 @@
 angular.module('tradity').
 	controller('RankingCtrl', function($scope, $state, $stateParams, $timeout, ranking) {
 		$scope.totalDisplayed = 20;
+		$scope.customDatePopupStatus = {
+			since: false,
+			upto: false
+		};
+		
+		$scope.today = new Date();
+		
+		$scope.init = function() {
+			$scope.spec.since = null;
+			$scope.spec.upto = null;
+		}
+		
 
 		$scope.loadMore = function() {
 			$scope.totalDisplayed += 10;
@@ -84,4 +96,24 @@ angular.module('tradity').
 		$scope.$on('school-info-update', function() {
 			$scope.rankingResult.fetch();
 		});
+		
+		$scope.openDatePopup = function(type) {
+			if (type === 'since')
+				$scope.customDatePopupStatus = {
+					since: true,
+					upto: false
+				};
+			else if (type === 'upto')
+				$scope.customDatePopupStatus = {
+					since: false,
+					upto: true
+				};
+		}
+		
+		$scope.loadResult = function() {
+			$scope.rankingResult = ranking.getRanking($scope.school, $scope.spec, $scope.rankifyOptions,
+				[$scope.markSchoolAdmins]);
+		}
+		
+		$scope.init();
 	});

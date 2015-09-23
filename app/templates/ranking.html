@@ -23,26 +23,17 @@
 		<div class="input-group">
 			<input type="text" class="form-control" placeholder="Search" ng-model="rankingSearchText" />
 			<div class="input-group-btn" ng-show="spec.type == 'all' || spec.type == 'follower'">
-				<div class="btn btn-default" translate>
-					since
-					<span ng-show="spec.since">{{spec.since | date:'short'}}</span><span ng-hide="spec.since">game start</span>
-					until
-					<span ng-show="spec.upto">{{spec.upto | date:'short'}}</span><span ng-hide="spec.upto">now</span>
-				</div>
-			</div>
-			<div class="input-group-btn" ng-show="spec.type == 'all' || spec.type == 'follower'">
-				<div class="dropdown" dropdown>
-					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" dropdown-toggle aria-expanded="false">
-						<translate>Start time</translate>
-						<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu dropdown-menu-right" role="menu">
-						<li><a ui-sref=".({spec: csr({since: null, upto: null})})" translate>Game start</a></li>
-						<li><a ui-sref=".({spec: csr({since: 'weekstart'})})" translate>Since week begin</a></li>
-						<li><a ui-sref=".({spec: csr({since: '1 week'})})" translate>Since 1&nbsp;week ago</a></li>
-						<li><a ui-sref=".({spec: csr({since: '1 month'})})" translate>Since 1&nbsp;month ago</a></li>
-					</ul>
-				</div>
+				<!--<div class="btn btn-default" translate>-->
+					<span class="btn btn-default btn-distance" translate>since</span>
+					<input placeholder="game start" class="btn btn-default" ng-model="spec.since" 
+						max-date="spec.upto || today" show-weeks="true" class="well well-sm" 
+						is-open="customDatePopupStatus.since" datepicker-popup 
+						ng-click="openDatePopup('since')" ng-change="loadResult()"></input>
+      				<span class="btn btn-default" translate id="until-label">until</span>
+      				<input placeholder="now" class="btn btn-default" ng-model="spec.upto" 
+      					min-date="spec.since" max-date="today" show-weeks="true" class="well well-sm" 
+      					is-open="customDatePopupStatus.upto" datepicker-popup 
+      					ng-click="openDatePopup('upto')" ng-change="loadResult()"></input>
 			</div>
 		</div>
 		<div id="all">
@@ -100,6 +91,6 @@
 				</table>
 			</div>
 		</div>
-
+		
 	</div>
 </div>

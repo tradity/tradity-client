@@ -22,14 +22,14 @@
 
 		<div class="input-group">
 			<input type="text" class="form-control" placeholder="Search" ng-model="rankingSearchText" />
-			<div class="input-group-btn" ng-show="spec.type == 'all' || spec.type == 'follower'">
+			<div class="input-group-btn" ng-show="spec.type == 'all' || spec.type == 'follower'" translate>
 				<!--<div class="btn btn-default" translate>-->
-					<span class="btn btn-default btn-distance" translate>since</span>
+					<span class="btn btn-default btn-distance">since</span>
 					<input placeholder="game start" class="btn btn-default" ng-model="spec.since" 
 						max-date="spec.upto || today" show-weeks="true" class="well well-sm" 
 						is-open="customDatePopupStatus.since" datepicker-popup 
 						ng-click="openDatePopup('since')" ng-change="changeSpecAndReload({since: since})"></input>
-      				<span class="btn btn-default" translate id="until-label">until</span>
+      				<span class="btn btn-default" id="until-label">until</span>
       				<input placeholder="now" class="btn btn-default" ng-model="spec.upto" 
       					min-date="spec.since" max-date="today" show-weeks="true" class="well well-sm" 
       					is-open="customDatePopupStatus.upto" datepicker-popup 

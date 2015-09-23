@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Tradity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-09-06 05:22+0100\n"
+"PO-Revision-Date: 2015-09-23 21:18+0100\n"
 "Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"
 "Language-Team: German <http://weblate.tradity.de/projects/tradity/tradity-"
 "client-master/de/>\n"
@@ -26,7 +26,7 @@ msgstr "Follower&#xad;zahl"
 msgid "# shares"
 msgstr "# Anteile"
 
-#: app/templates/ranking.html:56
+#: app/templates/ranking.html:46
 msgid "(Commissions)"
 msgstr "(Provision)"
 
@@ -42,13 +42,21 @@ msgstr "(Mehr Informationen)"
 msgid "(Right click + “Copy link”)"
 msgstr "(Rechtsklick + „Link kopieren“)"
 
-#: app/templates/ranking.html:90
+#: app/templates/ranking.html:80
 msgid "({{result.count}} Members, Top {{result.rankCount}})"
 msgstr "({{result.count}} Mitglieder, Top {{result.rankCount}})"
 
 #: app/templates/error.404.html:4
 msgid "404 – Page not found"
 msgstr "404 – Seite nicht gefunden"
+
+#: app/templates/ranking.html:25
+msgid ""
+"<span>since</span> <input placeholder=\"game start\"> <span id=\"until-label"
+"\">until</span> <input placeholder=\"now\">"
+msgstr ""
+"<span>Von</span> <input placeholder=\"Spielbeginn\"> <span id=\"until-"
+"label\">bis</span> <input placeholder=\"jetzt\">"
 
 #: app/templates/depot.watchlist.html:46
 msgid "<a title=\"Remove\"><i></i></a>"
@@ -58,11 +66,11 @@ msgstr "<a title=\"Entfernen\"><i></i></a>"
 msgid "<a title=\"Search\"><i></i></a>"
 msgstr "<a title=\"Suche\"><i></i></a>"
 
-#: app/templates/ranking.html:95
+#: app/templates/ranking.html:85
 msgid "<a title=\"Kick user\"><i></i></a>"
 msgstr "<a title=\"User kicken\"><i></i></a>"
 
-#: app/templates/ranking.html:96
+#: app/templates/ranking.html:86
 msgid "<a title=\"Promote user to admin\">A</a>"
 msgstr "<a title=\"User zum Admin befördern\">A</a>"
 
@@ -200,10 +208,6 @@ msgstr ""
 #: app/templates/profile.html:16
 msgid "<i></i> watch"
 msgstr "<i></i> Watchen"
-
-#: app/templates/ranking.html:46
-msgid "<input placeholder=\"Search\">"
-msgstr "<input placeholder=\"Suche\">"
 
 #: app/templates/registration.html:65
 msgid "<input id=\"betakey\" placeholder=\"Beta key\">"
@@ -417,7 +421,7 @@ msgstr "Konto"
 msgid "Achievements"
 msgstr "Errungen&#xad;schaften"
 
-#: app/templates/ranking.html:60
+#: app/templates/ranking.html:50
 msgid "Actions"
 msgstr "Aktionen"
 
@@ -633,11 +637,11 @@ msgstr "Vorname"
 msgid "Follower"
 msgstr "Follower"
 
-#: app/templates/ranking.html:62
+#: app/templates/ranking.html:52
 msgid "Follower valuation"
 msgstr "Follower&#xad;bewertung"
 
-#: app/templates/ranking.html:61
+#: app/templates/ranking.html:51
 msgid "Follower ­performance"
 msgstr "Follower&#xad;performance"
 
@@ -653,17 +657,13 @@ msgstr "Erzwingen"
 msgid "Forgot password?"
 msgstr "Passwort vergessen?"
 
-#: app/templates/ranking.html:59
+#: app/templates/ranking.html:49
 msgid "Full name"
 msgstr "Voller Name"
 
 #: app/templates/options.html:40
 msgid "Game"
 msgstr "Spiel"
-
-#: app/templates/ranking.html:39
-msgid "Game start"
-msgstr "Spielbeginn"
 
 #: app/templates/registration.html:30
 msgid "General information"
@@ -677,7 +677,7 @@ msgstr "Zur Übergruppe gehen"
 msgid "Green investments"
 msgstr "Grüne Geldanlage"
 
-#: app/templates/ranking.html:58
+#: app/templates/ranking.html:48
 msgid "Group"
 msgstr "Gruppe"
 
@@ -870,7 +870,7 @@ msgstr "Top-Wertpapiere"
 #: app/templates/depot.transactions.html:17
 #: app/templates/depot.transactions.html:54
 #: app/templates/depot.watchlist.html:24 app/templates/groupOverview.html:22
-#: app/templates/profile.history.html:18 app/templates/ranking.html:54
+#: app/templates/profile.history.html:18 app/templates/ranking.html:44
 #: app/templates/search.html:16 app/templates/search.html:39
 #: app/templates/search.html:60 app/templates/trade.html:14
 #: app/templates/trade.html:46 app/templates/trade.html:47
@@ -1052,10 +1052,6 @@ msgstr "Bitte geben Sie den Stop-/Limitwert als Zahl an"
 msgid "Please enter your name in order to be eligible for winning prizes"
 msgstr "Bitte gib deinen Namen an, damit du Gewinne erhalten kannst"
 
-#: app/js/controllers/registration.js:88
-msgid "Please indicate which organization or school you belong to"
-msgstr "Bitte gib an, ob und welcher Gruppe du angehörst"
-
 #: app/js/controllers/registration.js:80
 msgid "Please provide an e-mail address"
 msgstr "Bitte gib deine E-Mail-Adresse an"
@@ -1087,7 +1083,7 @@ msgstr "Profilbild erfolgreich hochgeladen!"
 msgid "Questions"
 msgstr "Fragen"
 
-#: app/templates/profile.overview.html:7 app/templates/ranking.html:53
+#: app/templates/profile.overview.html:7 app/templates/ranking.html:43
 msgid "Rank"
 msgstr "Rang"
 
@@ -1139,25 +1135,9 @@ msgstr "Verkauf&#xad;spreis"
 msgid "Short description"
 msgstr "Kurzbeschreibung"
 
-#: app/templates/ranking.html:42
-msgid "Since 1&nbsp;month ago"
-msgstr "Seit 1&nbsp;Monat"
-
-#: app/templates/ranking.html:41
-msgid "Since 1&nbsp;week ago"
-msgstr "Seit 1&nbsp;Woche"
-
-#: app/templates/ranking.html:40
-msgid "Since week begin"
-msgstr "Seit Wochenanfang"
-
 #: app/js/controllers/comment.js:61
 msgid "Sorry, something went wrong."
 msgstr "Sorry, etwas ging hier schief."
-
-#: app/templates/ranking.html:35
-msgid "Start time"
-msgstr "Start&#xad;zeitpunkt"
 
 #: app/templates/depot.watchlist.html:26
 msgid "Start value"
@@ -1310,7 +1290,7 @@ msgstr "Gesamt"
 msgid "Total assets"
 msgstr "Gesamt&#xad;vermögen"
 
-#: app/templates/ranking.html:55
+#: app/templates/ranking.html:45
 msgid "Total change"
 msgstr "Gesamt&#xad;änderung"
 
@@ -1664,16 +1644,6 @@ msgid_plural "shares"
 msgstr[0] "Aktie"
 msgstr[1] "Aktien"
 
-#: app/templates/ranking.html:26
-msgid ""
-"since <span>{{spec.since | date:'short'}}</span><span>game start</span> "
-"until <span>{{spec.upto | date:'short'}}</span><span>now</span>"
-msgstr ""
-"von\n"
-"<span>{{spec.since | date:'short'}}</span><span>Spielbeginn</span>\n"
-"bis\n"
-"<span>{{spec.upto | date:'short'}}</span><span>jetzt</span>"
-
 #: app/templates/depot.overview.html:114
 #: app/templates/profile.overview.html:82
 msgid "sold shares"
@@ -1698,6 +1668,36 @@ msgstr "{{stockname}} von der Watchlist entfernt"
 #: app/templates/inviteform.html:11
 msgid "… or use this link:"
 msgstr "… oder verwende diesen Link:"
+
+#~ msgid "<input placeholder=\"Search\">"
+#~ msgstr "<input placeholder=\"Suche\">"
+
+#~ msgid "Game start"
+#~ msgstr "Spielbeginn"
+
+#~ msgid "Please indicate which organization or school you belong to"
+#~ msgstr "Bitte gib an, ob und welcher Gruppe du angehörst"
+
+#~ msgid "Since 1&nbsp;month ago"
+#~ msgstr "Seit 1&nbsp;Monat"
+
+#~ msgid "Since 1&nbsp;week ago"
+#~ msgstr "Seit 1&nbsp;Woche"
+
+#~ msgid "Since week begin"
+#~ msgstr "Seit Wochenanfang"
+
+#~ msgid "Start time"
+#~ msgstr "Start&#xad;zeitpunkt"
+
+#~ msgid ""
+#~ "since <span>{{spec.since | date:'short'}}</span><span>game start</span> "
+#~ "until <span>{{spec.upto | date:'short'}}</span><span>now</span>"
+#~ msgstr ""
+#~ "von\n"
+#~ "<span>{{spec.since | date:'short'}}</span><span>Spielbeginn</span>\n"
+#~ "bis\n"
+#~ "<span>{{spec.upto | date:'short'}}</span><span>jetzt</span>"
 
 #~ msgid "<input id=\"schoolclass\" placeholder=\"(School class)\">"
 #~ msgstr "<input id=\"schoolclass\" placeholder=\"(Schulklasse)\">"

@@ -13,12 +13,6 @@ angular.module('tradity').
 		};
 		
 		$scope.today = new Date();
-		
-		$scope.init = function() {
-			$scope.spec.since = null;
-			$scope.spec.upto = null;
-		}
-		
 
 		$scope.loadMore = function() {
 			$scope.totalDisplayed += 10;
@@ -108,12 +102,9 @@ angular.module('tradity').
 					since: false,
 					upto: true
 				};
-		}
+		};
 		
-		$scope.loadResult = function() {
-			$scope.rankingResult = ranking.getRanking($scope.school, $scope.spec, $scope.rankifyOptions,
-				[$scope.markSchoolAdmins]);
-		}
-		
-		$scope.init();
+		$scope.changeSpecAndReload = function(changes) {
+			$state.go('.', {spec: $scope.changedSpecRef(changes)});
+		};
 	});

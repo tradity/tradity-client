@@ -28,12 +28,12 @@
 					<input placeholder="game start" class="btn btn-default" ng-model="spec.since" 
 						max-date="spec.upto || today" show-weeks="true" class="well well-sm" 
 						is-open="customDatePopupStatus.since" datepicker-popup 
-						ng-click="openDatePopup('since')" ng-change="loadResult()"></input>
+						ng-click="openDatePopup('since')" ng-change="changeSpecAndReload({since: since})"></input>
       				<span class="btn btn-default" translate id="until-label">until</span>
       				<input placeholder="now" class="btn btn-default" ng-model="spec.upto" 
       					min-date="spec.since" max-date="today" show-weeks="true" class="well well-sm" 
       					is-open="customDatePopupStatus.upto" datepicker-popup 
-      					ng-click="openDatePopup('upto')" ng-change="loadResult()"></input>
+      					ng-click="openDatePopup('upto')" ng-change="changeSpecAndReload({upto: upto})"></input>
 			</div>
 		</div>
 		<div id="all">

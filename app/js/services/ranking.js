@@ -46,7 +46,7 @@ angular.module('tradity')
 			if (!self.school || (schoolid = self.school.id || self.school.schoolid || self.school.path))
 			socket.emit('get-ranking', {
 				since: self.spec.since ? self.spec.since.getTime() / 1000 : null,
-				upto:  self.spec.upto  ? self.spec.upto.getTime() / 1000 : null,
+				upto:  self.spec.upto  ? self.spec.upto .getTime() / 1000 : null,
 				schoolid: schoolid,
 				includeAll: self.spec.includeAll,
 				_cache: 30

@@ -62,7 +62,7 @@ module.exports = function (grunt) {
 				src: [
 					'po/unstripped/templates.pot',
 					'po/de.po',
-					'po/fr.po'
+					/* 'po/fr.po' */
 				],
 				dest: 'po/unstripped'
 			}

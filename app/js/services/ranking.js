@@ -235,10 +235,27 @@ angular.module('tradity')
 			return defaultDate;
 		};
 		
+		RankingProvider.uptoPrefix = 'up to ';
+		RankingProvider.uptoPrefixStrip = /^up to /;
 		RankingProvider.prototype.serializeSpec = function(spec) {
 			var specArray = [spec.type];
-			if (spec.since) specArray.push(spec.since.toDateString ? spec.since.toDateString() : spec.since);
-			if (spec.upto)  specArray.push(spec.upto .toDateString ? spec.upto .toDateString() : spec.upto);
+			
+			if (spec.since) {
+				var sinceStr = spec.since.toDateString ? spec.since.toDateString() : spec.since;
+				specArray.push(sinceStr);
+			}
+			
+			if (spec.upto) {
+				var uptoStr = spec.upto.toDateString ? spec.upto.toDateString() : spec.upto;
+				
+				/* if only `upto` is provided, prefix it so that the parser can
+				 * tell it from a `since`-only specification */
+				if (!spec.since)
+					uptoStr = RankingProvider.uptoPrefix + uptoStr;
+				
+				specArray.push(uptoStr);
+			}
+			
 			if (!spec.showGroups) specArray.push('nogroup');
 			if (!spec.showUsers)  specArray.push('nouser');
 			if (spec.includeProvision) specArray.push('wprov');
@@ -259,6 +276,11 @@ angular.module('tradity')
 				spec.type = 'all'; // default type
 			specArray.shift();
 			
+			/* if a prefix indicating `upto`-only specification is found,
+			 * strip it and don’t try to the `since` variable */
+			if (RankingProvider.uptoPrefixStrip.test(specArray[0]))
+				specArray[0] = specArray[0].replace(RankingProvider.uptoPrefixStrip, '');
+			else
 			if (spec.since = this.parseDateSpec(specArray[0], rankingCfg.since)) specArray.shift();
 			if (spec.upto  = this.parseDateSpec(specArray[0], rankingCfg.upto))  specArray.shift();
 			

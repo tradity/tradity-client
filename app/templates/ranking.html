@@ -64,38 +64,38 @@
 						ng-class="'rank-item rank-' + result.rank + (!result.hastraded ? ' newtrader' : '')">
 						<td ng-show="spec.showUsers">
 							<span ng-show="result.isSchoolEntry"><i class="fa fa-users"></i></span>
-							{{result.rank}}
+							{{::result.rank}}
 						</td>
-						<td ng-show="spec.showUsers" class="rank-name"><a ui-sref="game.profile.overview({userId: result.name})">{{result.name}}</a></td>
+						<td ng-show="spec.showUsers" class="rank-name"><a ui-sref="game.profile.overview({userId: result.name})">{{::result.name}}</a></td>
 						<td style="text-align: right" ng-show="spec.type == 'all'">
 							<span ng-show="result.hastraded">
-								{{(result.key - 1) * 100 | number:2}} %
+								{{::(result.key - 1) * 100 | number:2}} %
 							</span>
 							<span ng-hide="result.hastraded">–</span>
 						</td>
 						<td style="text-align: right" ng-show="spec.type == 'all'">
 							<span ng-show="result.hastraded">
-								{{(result.totalvalue - result.past_totalvalue) / 10000 | number:2}} €
+								{{::(result.totalvalue - result.past_totalvalue) / 10000 | number:2}} €
 							</span>
 							<span ng-hide="result.hastraded">–</span>
 						</td>
 						<td style="text-align: right" ng-show="spec.type == 'all'">
-							<span ng-show="result.hastraded">{{(result.prov_sum - result.past_prov_sum) / 10000 | number:2}} €</span>
+							<span ng-show="result.hastraded">{{::(result.prov_sum - result.past_prov_sum) / 10000 | number:2}} €</span>
 							<span ng-hide="result.hastraded">–</span>
 						</td>
-						<td style="text-align: right" ng-show="spec.type == 'xp'">{{result.xp | number:0}}</td>
+						<td style="text-align: right" ng-show="spec.type == 'xp'">{{::result.xp | number:0}}</td>
 						<td>
-							<a ui-sref="game.group({schoolid: result.schoolpath})">{{result.schoolname}}</a>
-							<span ng-show="result.isSchoolEntry" translate>({{result.count}} Members, Top {{result.rankCount}})</span>
+							<a ui-sref="game.group({schoolid: result.schoolpath})">{{::result.schoolname}}</a>
+							<span ng-show="result.isSchoolEntry" translate>({{::result.count}} Members, Top {{::result.rankCount}})</span>
 						</td>
-						<td ng-show="spec.type == 'administrative'">{{result.giv_name}}</td>
-						<td ng-show="spec.type == 'administrative'">{{result.fam_name}}</td>
+						<td ng-show="spec.type == 'administrative'">{{::result.giv_name}}</td>
+						<td ng-show="spec.type == 'administrative'">{{::result.fam_name}}</td>
 						<td ng-show="spec.type == 'administrative'">
 							<translate><a title="Kick user" ng-click="kickUser(result)"><i class="fa fa-minus-circle"></i></a></translate>
 							<translate><a title="Promote user to admin" ng-click="promoteUserToAdmin(result)">A</a></translate>
 						</td>
-						<td style="text-align: right" ng-show="spec.type == 'follower'">{{(result.fperf-1)*100 | number:2}} %</td>
-						<td style="text-align: right" ng-show="spec.type == 'follower'">{{(result.fperfval)*100000 | number:2}}</td>
+						<td style="text-align: right" ng-show="spec.type == 'follower'">{{::(result.fperf-1)*100 | number:2}} %</td>
+						<td style="text-align: right" ng-show="spec.type == 'follower'">{{::(result.fperfval)*100000 | number:2}}</td>
 					</tr>
 				</table>
 			</div>

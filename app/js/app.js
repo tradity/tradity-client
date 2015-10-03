@@ -51,12 +51,14 @@ angular.module('tradity', [
 		state('index.login', {
 			url: 'login',
 			templateUrl: 'templates/login.html',
-			controller: 'LoginCtrl'
+			controller: 'LoginCtrl',
+			controllerAs: 'login'
 		}).
 		state('index.loginverif', {
 			url: 'login/:emailVerifCode/:uid',
 			templateUrl: 'templates/login.html',
-			controller: 'LoginCtrl'
+			controller: 'LoginCtrl',
+			controllerAs: 'login'
 		}).
 		state('register', {
 			url: '/register',

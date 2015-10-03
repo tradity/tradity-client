@@ -195,7 +195,7 @@ angular.module('tradity').
 					if (data.code == 'stock-search-success') {
 						for (var i = 0; i < data.results.length; ++i) {
 							if (data.results[i].stockid == $scope.stockid) {
-							gotData($scope.ac, data.results[i]);
+							$scope.selectedStock(data.results[i]);
 							break;
 							}
 						}

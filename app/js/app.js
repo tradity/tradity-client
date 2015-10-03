@@ -63,18 +63,21 @@ angular.module('tradity', [
 		state('register', {
 			url: '/register',
 			templateUrl: 'templates/registration.html',
-			controller: 'RegistrationCtrl'
+			controller: 'RegistrationCtrl',
+			controllerAs: 'registration'
 		}).
 		//change to register/:inviteCode
 		state('invite', {
 			url: '/join/:inviteCode',
 			templateUrl: 'templates/registration.html',
-			controller: 'RegistrationCtrl'
+			controller: 'RegistrationCtrl',
+			controllerAs: 'registration'
 		}).
 		state('schoolregister', {
 			url: '/register/s{schoolid:SchoolID}',
 			templateUrl: 'templates/registration.html',
-			controller: 'RegistrationCtrl'
+			controller: 'RegistrationCtrl',
+			controllerAs: 'registration'
 		}).
 		state('game', {
 			abstract: true,

@@ -2,13 +2,12 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div class="container registration">
-
 	<div class="row">
 		<div class="col-sm-4">
 			<img class="logo" src="img/logo.png"/>
 		</div>
 		<div class="col-sm-12">
-			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+			<alert ng-repeat="alert in alerts" type="{{registration.alert.type}}" close="registration.closeAlert($index)">{{registration.alert.msg}}</alert>
 		</div>
 		<div class="col-sm-4 info">
 			<div class="box">
@@ -23,30 +22,29 @@
 				</ul>
 			</div>
 		</div>
-		<div class="col-sm-8 register">
-	
+		<div class="col-sm-8 register">	
 			<div class="row box">
 				<div class="col-sm-6">
 					<h2 translate>General information</h2>
 					<div class="form-group" translate>
-						<input ng-model="name" type="text" class="form-control" placeholder="User name">
+						<input ng-model="registration.name" type="text" class="form-control" placeholder="User name">
 					</div>
 					<div class="form-group" translate>
-						<input ng-model="email" type="email" class="form-control" placeholder="E-mail address">
+						<input ng-model="registration.email" type="email" class="form-control" placeholder="E-mail address">
 					</div>
 					<div class="form-group" translate>
-						<input ng-model="password" type="password" class="form-control" placeholder="Password">
+						<input ng-model="registration.password" type="password" class="form-control" placeholder="Password">
 					</div>
 					<div class="form-group" translate>
-						<input ng-model="password_check" type="password" class="form-control" placeholder="Repeat password">
+						<input ng-model="registration.password_check" type="password" class="form-control" placeholder="Repeat password">
 					</div>
 					<h2 translate>About yourself</h2>
 					<p translate>The following data is required to participate in the competition</p>
 					<div class="form-group" translate>
-						<input ng-model="giv_name" type="text" class="form-control" placeholder="First name">
+						<input ng-model="registration.giv_name" type="text" class="form-control" placeholder="First name">
 					</div>
 					<div class="form-group" translate>
-						<input ng-model="fam_name" type="text" class="form-control" placeholder="Last name">
+						<input ng-model="registration.fam_name" type="text" class="form-control" placeholder="Last name">
 					</div>
 				</div>
 				<div class="col-sm-6">
@@ -63,15 +61,15 @@
 						<tradity-group-chooser school-id-model="school" school-class-model="schoolclass" />
 					</div>
 					<div class="form-group" ng-show="serverConfig.betakeyRequired" translate>
-						<input ng-model="betakey" id="betakey" type="text" class="form-control" placeholder="Beta key">
+						<input ng-model="registration.betakey" id="betakey" type="text" class="form-control" placeholder="Beta key">
 					</div>
 					<div class="form-group">
 						<label for="lang" translate>Language</label>
-						<select id="lang" ng-model="lang" ng-options="language.id as language.name for language in serverConfig.languages"></select>
+						<select id="lang" ng-model="registration.lang" ng-options="language.id as language.name for language in serverConfig.languages"></select>
 					</div>
 					<div class="checkbox">
 						<label>
-							<input type="checkbox" ng-model="agbread">
+							<input type="checkbox" ng-model="registration.agbread">
 							<translate>
 							I have read and accepted the <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/">TOS</a>.
 							</translate>
@@ -80,7 +78,7 @@
 				</div>
 				<div class="col-sm-12">
 					<div class="pull-right text-right">
-						<button ng-click="register()" type="submit" class="btn btn-primary btn-sm" translate>Register</button><br/>
+						<button ng-click="registration.register()" type="submit" class="btn btn-primary btn-sm" translate>Register</button><br/>
 						<a ui-sref="index.login" id="gtlogin" translate>I already have an account!</a>
 					</div>
 					<br />

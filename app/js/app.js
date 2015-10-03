@@ -81,7 +81,8 @@ angular.module('tradity', [
 		state('game.feed', {
 			url: '/feed',
 			templateUrl: 'templates/feed.html',
-			controller: 'FeedCtrl'
+			controller: 'FeedCtrl',
+			controllerAs: 'feed'
 		}).
 		state('game.learning', {
 			url: '/learning',

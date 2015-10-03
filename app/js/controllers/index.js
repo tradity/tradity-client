@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('IndexCtrl', function(user,$state) {
+	controller('IndexCtrl', function(user, $state) {
 		user.me().then(function(){
 			$state.go('game.feed');
 		})

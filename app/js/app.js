@@ -46,7 +46,7 @@ angular.module('tradity', [
 		state('index', {
 			url: '/',
 			templateUrl: 'templates/index.html',
-			controller:'IndexCtrl'
+			controller: 'IndexCtrl'
 		}).
 		state('index.login', {
 			url: 'login',

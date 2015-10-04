@@ -1,7 +1,7 @@
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-<form ng-submit="login.login()" ng-hide="logging_in">
+<form ng-submit="login.login()" ng-hide="login.logging_in">
 	<alert ng-repeat="alert in alerts" type="{{login.alert.type}}" close="closeAlert($index)">{{login.alert.msg}}</alert>
 	<div class="form-group" translate>
 		<input type="text" ng-model="login.username" class="form-control" placeholder="User name" />
@@ -11,7 +11,7 @@
 	</div>
 	<div class="checkbox">
 		<label>
-			<input type="checkbox" ng-model="stayloggedin"> <translate>Stay logged in?</translate>
+			<input type="checkbox" ng-model="login.stayloggedin"> <translate>Stay logged in?</translate>
 		</label>
 	</div>
 	<br>

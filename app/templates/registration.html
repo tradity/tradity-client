@@ -7,7 +7,7 @@
 			<img class="logo" src="img/logo.png"/>
 		</div>
 		<div class="col-sm-12">
-			<alert ng-repeat="alert in alerts" type="{{registration.alert.type}}" close="registration.closeAlert($index)">{{registration.alert.msg}}</alert>
+			<alert ng-repeat="alert in registration.alerts" type="{{alert.type}}" close="registration.closeAlert($index)">{{alert.msg}}</alert>
 		</div>
 		<div class="col-sm-4 info">
 			<div class="box">

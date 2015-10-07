@@ -6,7 +6,7 @@
  		<a href="https://boersenspiel.tradity.de/whu-event/">
 			<img src="https://boersenspiel.tradity.de/wp-content/uploads/2015/03/TitelBild_Tradiy.png" style="width:100%" />
 		</a>
-		<div class="tutorial" ng-hide="displaymessages.length > 0">
+		<div class="tutorial" ng-hide="feed.displaymessages.length > 0">
 			<h2 translate>Welcome to Tradity!</h2>
 			<div class="text">
 				<p translate>
@@ -25,7 +25,7 @@
 				<span style="color: #ff5000;">Good luck!</span>
 			</div>
 		</div>
-		<div ng-repeat="message in displaymessages track by $index" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type" ng-show="message.type == 'mod-notification' || message">
+		<div ng-repeat="message in feed.displaymessages track by $index" class="feed-item feed-{{message.typePerson}}" ng-switch on="message.type" ng-show="message.type == 'mod-notification' || message">
 			<div ng-switch-when="mod-notification">
 				<div class="feed-entry-symbol"><i class="fa fa-bullhorn"></i></div>
 				<div class="feed-entry-content" ng-bind-html="message.content">

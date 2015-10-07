@@ -6,34 +6,35 @@
 
 angular.module('tradity').
 	controller('FeedCtrl', function($scope, $feed) {
-		$scope.displaymessages = [];
-		$scope.messageCount = 12;
+		var vm = this;
+		vm.displaymessages = [];
+		vm.messageCount = 12;
 		
-		$scope.displayFeed = function() {
-			$scope.displaymessages = $feed.items.sort(function(a, b) {
+		vm.displayFeed = function() {
+			vm.displaymessages = $feed.items.sort(function(a, b) {
 				if (b.sticky && !a.sticky) return +1;
 				if (!b.sticky && a.sticky) return -1;
 				return b.time - a.time;
-			}).slice(0, parseInt($scope.messageCount));
+			}).slice(0, parseInt(vm.messageCount));
 		};
 
-		$scope.lastScrollCheck = 0;
+		vm.lastScrollCheck = 0;
 		$(window).scroll(function(e) {
 			var now = new Date().getTime();
-			if (now - $scope.lastScrollCheck < 250)
+			if (now - vm.lastScrollCheck < 250)
 				return;
-			$scope.lastScrollCheck = now;
+			vm.lastScrollCheck = now;
 			
 			var d = document.documentElement;
-			if ((d.scrollTop + d.clientHeight)/(d.scrollHeight) > 0.7 && $scope.messageCount < $feed.items.length) {
-				$scope.messageCount /= 0.8;
-				$scope.$apply($scope.displayFeed);
+			if ((d.scrollTop + d.clientHeight)/(d.scrollHeight) > 0.7 && vm.messageCount < $feed.items.length) {
+				vm.messageCount /= 0.8;
+				$scope.$apply(vm.displayFeed);
 			}
 		});
 		
 		$feed.$on('change', function() {
-			$scope.displayFeed();
+			vm.displayFeed();
 		});
 		
-		$scope.displayFeed();
+		vm.displayFeed();
 	});

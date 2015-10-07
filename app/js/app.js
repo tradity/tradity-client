@@ -51,28 +51,33 @@ angular.module('tradity', [
 		state('index.login', {
 			url: 'login',
 			templateUrl: 'templates/login.html',
-			controller: 'LoginCtrl'
+			controller: 'LoginCtrl',
+			controllerAs: 'login'
 		}).
 		state('index.loginverif', {
 			url: 'login/:emailVerifCode/:uid',
 			templateUrl: 'templates/login.html',
-			controller: 'LoginCtrl'
+			controller: 'LoginCtrl',
+			controllerAs: 'login'
 		}).
 		state('register', {
 			url: '/register',
 			templateUrl: 'templates/registration.html',
-			controller: 'RegistrationCtrl'
+			controller: 'RegistrationCtrl',
+			controllerAs: 'registration'
 		}).
 		//change to register/:inviteCode
 		state('invite', {
 			url: '/join/:inviteCode',
 			templateUrl: 'templates/registration.html',
-			controller: 'RegistrationCtrl'
+			controller: 'RegistrationCtrl',
+			controllerAs: 'registration'
 		}).
 		state('schoolregister', {
 			url: '/register/s{schoolid:SchoolID}',
 			templateUrl: 'templates/registration.html',
-			controller: 'RegistrationCtrl'
+			controller: 'RegistrationCtrl',
+			controllerAs: 'registration'
 		}).
 		state('game', {
 			abstract: true,
@@ -81,7 +86,8 @@ angular.module('tradity', [
 		state('game.feed', {
 			url: '/feed',
 			templateUrl: 'templates/feed.html',
-			controller: 'FeedCtrl'
+			controller: 'FeedCtrl',
+			controllerAs: 'feed'
 		}).
 		state('game.learning', {
 			url: '/learning',

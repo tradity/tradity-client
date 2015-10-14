@@ -23,6 +23,9 @@ angular.module('tradity')
 					console.warn('Decompressed string does not match input', decompressed);
 					this.canCompress = false;
 				}
+			}).catch(function(e) {
+				console.warn('No compression available', e);
+				this.canCompress = false;
 			});
 		};
 		
@@ -34,8 +37,16 @@ angular.module('tradity')
 			
 			// some browsers have a limit of 2.5 million characters for localStorage
 			// feed data is rather well compressible, so LZMA level 3 should be just fine
-			lzma.compress(input, input.length > threshold * 4 ? 9 : 3, function(compressed) {
-				deferred.resolve('0x' + compressed.map(function(byte) { return (byte+256).toString(16).substr(-2); }).join(''));
+			lzma.compress(input, input.length > threshold * 4 ? 9 : 3, function(compressed, error) {
+				if (error)
+					return deferred.reject(error);
+				
+				// use Array.prototype.map, since compressed might be a typed array where
+				// map returns a typed array of the same kind (and is therefore unsuitable
+				// for returning strings)
+				deferred.resolve('0x' + Array.prototype.map.call(compressed, function(byte) {
+					return (byte+256).toString(16).substr(-2);
+				}).join(''));
 			});
 			
 			return deferred.promise;
@@ -65,7 +76,10 @@ angular.module('tradity')
 			var byteArray = input.substr(2).replace(/(..)/g, '$1:').split(':').slice(0, -1)
 				.map(function(s) { return parseInt(s, 16); });
 			
-			lzma.decompress(byteArray, function(decompressed) {
+			lzma.decompress(byteArray, function(decompressed, error) {
+				if (error)
+					return deferred.reject(error);
+				
 				deferred.resolve(decompressed);
 			});
 			

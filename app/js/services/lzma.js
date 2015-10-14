@@ -13,16 +13,31 @@
  */
 angular.module('tradity')
 	.factory('lzma', function () {
-		var lzma = null;
+		var workerURL = null;
+		var pool = [];
+		var counter = 0;
+		
 		try {
 			if (typeof LZMA != 'undefined' && typeof Blob != 'undefined' && typeof Uint8Array != 'undefined' && 
-				window.URL && window.URL.createObjectURL && lzma_worker_js)
+				window.URL && window.URL.createObjectURL && typeof lzma_worker_js != 'undefined' && lzma_worker_js)
 			{
-				lzma = new LZMA(URL.createObjectURL(new Blob([lzma_worker_js], {type: 'application/x-javascript'})));
+				workerURL = URL.createObjectURL(new Blob([lzma_worker_js], {type: 'application/x-javascript'}));
+				
+				while (pool.length < 2)
+					pool.push(new LZMA(workerURL));
 			}
 		} catch(e) {
 			console.error(e);
 		}
 		
-		return lzma;
+		return {
+			compress: function() {
+				counter++; counter %= pool.length;
+				return pool[counter].compress.apply(pool[counter], arguments);
+			},
+			decompress: function() {
+				counter++; counter %= pool.length;
+				return pool[counter].decompress.apply(pool[counter], arguments);
+			}
+		};
 	});

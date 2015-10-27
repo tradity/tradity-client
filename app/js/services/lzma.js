@@ -12,7 +12,7 @@
  * Factory
  */
 angular.module('tradity')
-	.factory('lzma', function () {
+	.factory('lzma', function ($q) {
 		var workerURL = null;
 		var pool = [];
 		var counter = 0;
@@ -30,14 +30,41 @@ angular.module('tradity')
 			console.error(e);
 		}
 		
+		var getInstance = function() {
+			counter++;
+			counter %= pool.length;
+			
+			return pool[counter];
+		};
+		
 		return {
-			compress: function() {
+			compress: function(input, mode) {
 				counter++; counter %= pool.length;
-				return pool[counter].compress.apply(pool[counter], arguments);
+				
+				var deferred = $q.defer();
+				
+				getInstance().compress(input, mode, function(res, err) {
+					if (err)
+						return deferred.reject(err);
+					
+					return deferred.resolve(res);
+				});
+				
+				return deferred.promise;
 			},
-			decompress: function() {
+			decompress: function(input) {
 				counter++; counter %= pool.length;
-				return pool[counter].decompress.apply(pool[counter], arguments);
+				
+				var deferred = $q.defer();
+				
+				getInstance().decompress(input, function(res, err) {
+					if (err)
+						return deferred.reject(err);
+					
+					return deferred.resolve(res);
+				});
+				
+				return deferred.promise;
 			}
 		};
 	});

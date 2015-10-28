@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dialogs, safestorage, gettext, languageManager, socket) {
+controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dialogs, safestorage, gettext, languageManager, asyncLoadJS, socket) {
 	var vm = this;
 	vm.validateStatus = {name: '', email: ''};
 	vm.school = $stateParams.schoolid; // XXX
@@ -22,21 +22,22 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 	var strengths = [
 		{
 			style: 'danger',
-			text: 'Too Weak'
+			text: gettext('Too Weak')
 		},
 		{
 			style: 'danger',
-			text: 'Too Weak'
+			text: gettext('Too Weak')
 		}, {
 			style: 'warning',
-			text: 'Weak'
+			text: gettext('Weak')
 		},
 		{
 			style: 'info',
-			text: 'Good'
-		}, {
+			text: gettext('Good')
+		},
+		{
 			style: 'success',
-			text: 'Excellent'
+			text: gettext('Excellent')
 		},
 	];
 
@@ -235,12 +236,16 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		});
 	}
 	
+	var zxcvbnLoaded = asyncLoadJS(['js/jit/zxcvbn.js']);
+	
 	$scope.$watch(function() {
 		return vm.password;
 	}, function(value) {
-		var result = zxcvbn(value || '');
-		vm.password_score = result.score || 1;
-		vm.password_style = strengths[result.score].style;
-		vm.password_text = strengths[result.score].text;
+		return zxcvbnLoaded.then(function() {
+			var result = zxcvbn(value || '');
+			vm.password_score = result.score || 1;
+			vm.password_style = strengths[result.score].style;
+			vm.password_text = strengths[result.score].text;
+		});
 	});
 });

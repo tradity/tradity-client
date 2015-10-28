@@ -41,51 +41,13 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		},
 	];
 
-	vm.surveys = [
-		{
-			group: 'Frage 1',
-			title: 'Wie würdest du dein Wissen zu finanziellen Themen beschreiben?',
-			items: ['Ich kenne mich bestens mit finanziellen Themen aus.',
-			'Ich weiß wenig über finanziellen Themen aus.',
-			'Ich kenne mich gut mit finanziellen Themen aus.',
-			'Ich habe keine Ahnung von finanziellen Themen aus.',
-			'Ich kenne mich mittelmäßig mit finanziellen Themen aus.',
-			'Kann ich nicht sagen.'
-				]
-		},
-		{
-			group: 'Frage 2',
-			title: 'Wie würdest du dein Wissen zu finanziellen Themen beschreiben?',
-			items: ['Ich kenne mich bestens mit finanziellen Themen aus.',
-			'Ich weiß wenig über finanziellen Themen aus.',
-			'Ich kenne mich gut mit finanziellen Themen aus.',
-			'Ich habe keine Ahnung von finanziellen Themen aus.',
-			'Ich kenne mich mittelmäßig mit finanziellen Themen aus.',
-			'Kann ich nicht sagen.'
-				]
-		}, {
-			group: 'Frage 3',
-			title: 'Wie würdest du dein Wissen zu finanziellen Themen beschreiben?',
-			items: ['Ich kenne mich bestens mit finanziellen Themen aus.',
-			'Ich weiß wenig über finanziellen Themen aus.',
-			'Ich kenne mich gut mit finanziellen Themen aus.',
-			'Ich habe keine Ahnung von finanziellen Themen aus.',
-			'Ich kenne mich mittelmäßig mit finanziellen Themen aus.',
-			'Kann ich nicht sagen.'
-				]
-		},
-		{
-			group: 'Frage 4',
-			title: 'Wie würdest du dein Wissen zu finanziellen Themen beschreiben?',
-			items: ['Ich kenne mich bestens mit finanziellen Themen aus.',
-			'Ich weiß wenig über finanziellen Themen aus.',
-			'Ich kenne mich gut mit finanziellen Themen aus.',
-			'Ich habe keine Ahnung von finanziellen Themen aus.',
-			'Ich kenne mich mittelmäßig mit finanziellen Themen aus.',
-			'Kann ich nicht sagen.'
-				]
-		},
-		];
+	vm.questionnaire = socket.emit('list-questionnaires').then(function(data) {
+		if (data.code != 'list-questionnaires-success')
+			return;
+		
+		// ugly, works for now
+		return vm.questionnaire = data.questionnaires[1];
+	});
 
 	vm.alerts = [];
 	vm.closeAlert = function(index) {
@@ -219,7 +181,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		socket.emit('validate-email', {
 			email: vm.email
 		}, function(data) {
-			vm.validateStatus.email = data.code;
+			vm.validateStatus.email = data.code != 'validate-email-valid';
 			console.info(data);
 			console.info(vm.validateStatus);
 		});
@@ -230,7 +192,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		socket.emit('validate-username', {
 			name: vm.name
 		}, function(data) {
-			vm.validateStatus.name = data.code;
+			vm.validateStatus.name = data.code != 'validate-username-valid';
 			console.info(data);
 			console.info(vm.validateStatus);
 		});

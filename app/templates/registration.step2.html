@@ -1,0 +1,49 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<div class="center-block">
+	<div class="row text-center">
+		<h1 translate>You are almost there!</h1>
+		<span translate>We just need to set up your account.</span>
+	</div>
+	<div class="row">
+		<div class="col-lg-6 col-lg-offset-3 text-center">
+			<div class="row">
+				<div class="form-group col-lg-6" translate>
+					<input ng-model="registration.giv_name" type="text" class="form-control input-lg" placeholder="First name" autofocus>
+				</div>
+				<div class="form-group col-lg-6" translate>
+					<input ng-model="registration.fam_name" type="text" class="form-control input-lg" placeholder="Last name">
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-lg-4" translate>
+					<select ng-model="registration.gender" class="form-control input-lg" placeholder="Gender">
+						<option ng-if="!registration.gender" value="" disabled>Gender</option>
+					</select>
+				</div>
+				<div class="form-group col-lg-4" translate>
+					<input ng-model="registration.birthday" type="text" class="form-control input-lg" placeholder="Birthday"
+					 class="well well-sm" 
+						 datepicker-popup 
+						ng-focus="console.info('test')">
+				</div>
+				<div class="form-group col-lg-4" translate>
+					<select class="form-control input-lg" id="lang" ng-model="registration.lang" ng-options="language.id as language.name for language in serverConfig.languages">
+						<option ng-if="!language" value="" disabled>- Language -</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group" translate>
+				<input ng-model="registration.group" type="text" class="form-control input-lg" placeholder="Group">
+			</div>
+			<div class="form-group" translate>
+				<input ng-model="registration.language" type="text" class="form-control input-lg" placeholder="(School class/Semester)">
+			</div>
+			<div class="form-group" translate>
+				<input class="btn btn-lg btn-block btn-primary" type="button" value="Off to the final step!" ui-sref="register.step3">
+			</div>
+
+		</div>
+	</div>
+</div>

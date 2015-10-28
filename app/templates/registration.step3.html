@@ -1,0 +1,41 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<div class="center-block">
+	<div class="row text-center">
+		<h1 translate>Wie gut ist deine finanzielle Bildung?</h1>
+		<p translate>Beantworte vier Fragen jetzt vor und nach dem Wettbewerb, um zu sehen, wie du dich über die Zeit entwickelst.</p>
+		<p translate>
+			Kreuze immer nur eine Antwortmöglichkeit an, es ist nämlich auch immer nur eine zutrefend ;)</p>
+		<p translate>
+			Viel Spasß! Danach kannst du im Wettbewerb loslegen!</p>
+	</div>
+	<div class="row">
+		<div class="col-lg-8 col-lg-offset-2 text-center"> ￼
+			<accordion close-others="false">
+				<accordion-group ng-repeat="s in registration.surveys" heading="{{ s.group }}" is-open="true">
+					<div class="row">
+						<div class="form-group" translate>
+							{{ s.title }}
+						</div>
+					</div>
+					<div class="row">
+						<div ng-repeat="i in s.items" class="form-group col-lg-6 text-left" translate>
+							<input type="checkbox"> {{ i }}
+						</div>
+					</div>
+				</accordion-group>
+			</accordion>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6 col-lg-offset-3 text-center">
+			<div class="form-group " translate>
+				<input class="btn btn-lg btn-block btn-primary" type="button" value="Let's go" ui-sref="register.step1">
+			</div>
+			<div class="form-group" translate>
+				<span>By creating an account you agree to our <a href="#">terms & conditions</a></span>
+			</div>
+		</div>
+	</div>
+</div>

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Tradity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-09-23 21:18+0100\n"
+"PO-Revision-Date: 2015-10-29 12:40+0100\n"
 "Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"
 "Language-Team: German <http://weblate.tradity.de/projects/tradity/tradity-"
 "client-master/de/>\n"
@@ -55,8 +55,8 @@ msgid ""
 "<span>since</span> <input placeholder=\"game start\"> <span id=\"until-label"
 "\">until</span> <input placeholder=\"now\">"
 msgstr ""
-"<span>Von</span> <input placeholder=\"Spielbeginn\"> <span id=\"until-"
-"label\">bis</span> <input placeholder=\"jetzt\">"
+"<span>Von</span> <input placeholder=\"Spielbeginn\"> <span id=\"until-label"
+"\">bis</span> <input placeholder=\"jetzt\">"
 
 #: app/templates/depot.watchlist.html:46
 msgid "<a title=\"Remove\"><i></i></a>"
@@ -406,7 +406,7 @@ msgid ""
 "Please go to <a>your options</a> and enter your current e-mail address."
 msgstr ""
 "Die Mail an „{{message.mailrecipient}}“ zur E-Mail-Bestätigung konnte nicht "
-"abgeschickt werden.Bitte gehe <a>zu deinen Einstellungen</a> und gib eine "
+"abgeschickt werden. Bitte gehe <a>zu deinen Einstellungen</a> und gib eine "
 "aktuelle E-Mail-Adresse an."
 
 #: app/templates/registration.html:43
@@ -738,8 +738,8 @@ msgid ""
 "the entire functionality of Tradity is available to you and you will be "
 "eligible to receive prizes."
 msgstr ""
-"Falls Du Deine E-Mail-Adresse noch nicht bestätigt hast, tu das bitte.Erst "
-"dann sind alle Funktionen freigeschaltet und bist Du für die Preise diese "
+"Falls du deine E-Mail-Adresse noch nicht bestätigt hast, tu das bitte.Erst "
+"dann sind alle Funktionen freigeschaltet und bist du für die Preise diese "
 "Staffel gewinnberechtigt."
 
 #: app/js/controllers/inviteform.js:24
@@ -1247,7 +1247,7 @@ msgid ""
 "There was a technical problem uploading your profile picture. Please turn to "
 "tech@tradity.de"
 msgstr ""
-"Es gab beim Hochladen Deines Profilbilds leider technische Schwierigkeiten.\n"
+"Es gab beim Hochladen deines Profilbilds leider technische Schwierigkeiten.\n"
 "Wende dich bitte an tech@tradity.de"
 
 #: app/js/controllers/main.js:177
@@ -1441,7 +1441,7 @@ msgstr "Wordpress&#xad;integration"
 
 #: app/js/services/achievements.js:30
 msgid "Write %1&nbsp;comments in %2&nbsp;different feeds."
-msgstr "Mache %1&nbsp;Kommentare in %2&nbsp;verschiedenen Feeds."
+msgstr "Mache %1&nbsp;Kommentare in %2&nbsp;verschiedenen Feeds/Pinnwänden."
 
 #: app/js/services/achievements.js:28
 msgid "Write 1&nbsp;comments."
@@ -1449,7 +1449,7 @@ msgstr "Mache 1&nbsp;Kommentar."
 
 #: app/js/services/achievements.js:29
 msgid "Write 5&nbsp;comments in a single feed."
-msgstr "Mache 5&nbsp;Kommentare im selben Feed."
+msgstr "Mache 5&nbsp;Kommentare im selben Feed/Pinnwand."
 
 #: app/js/services/achievements.js:37
 msgid "Write a short description of yourself."

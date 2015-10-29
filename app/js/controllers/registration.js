@@ -19,6 +19,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 	vm.betakey = '';
 	vm.lang = languageManager.getCurrentLanguage();
 	vm.password = '';
+	vm.genderIndex = null;
 	var strengths = [
 		{
 			style: 'danger',
@@ -47,6 +48,15 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		
 		// ugly, works for now
 		return vm.questionnaire = data.questionnaires[1];
+	});
+
+	// we work with the indexes in the gender array,
+	// since angular cannot handle stuff like “Third Gender”
+	vm.genders = socket.emit('list-genders').then(function(data) {
+		if (data.code != 'list-genders-success')
+			return;
+		
+		return vm.genders = data.genders;
 	});
 
 	vm.alerts = [];
@@ -172,7 +182,8 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 			lang: languageManager.setCurrentLanguage(vm.lang),
 			traditye: vm.traditye,
 			dla_optin: vm.dla_optin,
-			invitekey: vm.invitekey
+			invitekey: vm.invitekey,
+			gender: vm.genders.genders[vm.genderIndex]
 		});
 	};
 

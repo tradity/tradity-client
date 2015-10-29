@@ -18,8 +18,10 @@
 			</div>
 			<div class="row">
 				<div class="form-group col-lg-4" translate>
-					<select ng-model="registration.gender" class="form-control input-lg" placeholder="Gender">
-						<option ng-if="!registration.gender" value="" disabled>Gender</option>
+					<select ng-model="registration.genderIndex" class="form-control input-lg" placeholder="Gender">
+						<option ng-repeat="gender in registration.genders.genders" ng-value="{{$index}}">
+							{{registration.genders.translations[registration.lang][gender] || gender}}
+						</option>
 					</select>
 				</div>
 				<div class="form-group col-lg-4" translate>
@@ -30,7 +32,7 @@
 				</div>
 				<div class="form-group col-lg-4" translate>
 					<select class="form-control input-lg" id="lang" ng-model="registration.lang" ng-options="language.id as language.name for language in serverConfig.languages">
-						<option ng-if="!language" value="" disabled>- Language -</option>
+						<option ng-if="!registration.lang" value="" disabled>- Language -</option>
 					</select>
 				</div>
 			</div>

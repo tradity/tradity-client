@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dialogs, safestorage, gettext, languageManager, socket) {
+controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dialogs, safestorage, gettext, languageManager, asyncLoadJS, socket) {
 	var vm = this;
 	vm.validateStatus = {name: '', email: ''};
 	vm.school = $stateParams.schoolid; // XXX
@@ -19,72 +19,45 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 	vm.betakey = '';
 	vm.lang = languageManager.getCurrentLanguage();
 	vm.password = '';
+	vm.genderIndex = null;
 	var strengths = [
 		{
 			style: 'danger',
-			text: 'Too Weak'
+			text: gettext('Too Weak')
 		},
 		{
 			style: 'danger',
-			text: 'Too Weak'
+			text: gettext('Too Weak')
 		}, {
 			style: 'warning',
-			text: 'Weak'
+			text: gettext('Weak')
 		},
 		{
 			style: 'info',
-			text: 'Good'
-		}, {
+			text: gettext('Good')
+		},
+		{
 			style: 'success',
-			text: 'Excellent'
+			text: gettext('Excellent')
 		},
 	];
 
-	vm.surveys = [
-		{
-			group: 'Frage 1',
-			title: 'Wie würdest du dein Wissen zu finanziellen Themen beschreiben?',
-			items: ['Ich kenne mich bestens mit finanziellen Themen aus.',
-			'Ich weiß wenig über finanziellen Themen aus.',
-			'Ich kenne mich gut mit finanziellen Themen aus.',
-			'Ich habe keine Ahnung von finanziellen Themen aus.',
-			'Ich kenne mich mittelmäßig mit finanziellen Themen aus.',
-			'Kann ich nicht sagen.'
-				]
-		},
-		{
-			group: 'Frage 2',
-			title: 'Wie würdest du dein Wissen zu finanziellen Themen beschreiben?',
-			items: ['Ich kenne mich bestens mit finanziellen Themen aus.',
-			'Ich weiß wenig über finanziellen Themen aus.',
-			'Ich kenne mich gut mit finanziellen Themen aus.',
-			'Ich habe keine Ahnung von finanziellen Themen aus.',
-			'Ich kenne mich mittelmäßig mit finanziellen Themen aus.',
-			'Kann ich nicht sagen.'
-				]
-		}, {
-			group: 'Frage 3',
-			title: 'Wie würdest du dein Wissen zu finanziellen Themen beschreiben?',
-			items: ['Ich kenne mich bestens mit finanziellen Themen aus.',
-			'Ich weiß wenig über finanziellen Themen aus.',
-			'Ich kenne mich gut mit finanziellen Themen aus.',
-			'Ich habe keine Ahnung von finanziellen Themen aus.',
-			'Ich kenne mich mittelmäßig mit finanziellen Themen aus.',
-			'Kann ich nicht sagen.'
-				]
-		},
-		{
-			group: 'Frage 4',
-			title: 'Wie würdest du dein Wissen zu finanziellen Themen beschreiben?',
-			items: ['Ich kenne mich bestens mit finanziellen Themen aus.',
-			'Ich weiß wenig über finanziellen Themen aus.',
-			'Ich kenne mich gut mit finanziellen Themen aus.',
-			'Ich habe keine Ahnung von finanziellen Themen aus.',
-			'Ich kenne mich mittelmäßig mit finanziellen Themen aus.',
-			'Kann ich nicht sagen.'
-				]
-		},
-		];
+	vm.questionnaire = socket.emit('list-questionnaires').then(function(data) {
+		if (data.code != 'list-questionnaires-success')
+			return;
+		
+		// ugly, works for now
+		return vm.questionnaire = data.questionnaires[1];
+	});
+
+	// we work with the indexes in the gender array,
+	// since angular cannot handle stuff like “Third Gender”
+	vm.genders = socket.emit('list-genders').then(function(data) {
+		if (data.code != 'list-genders-success')
+			return;
+		
+		return vm.genders = data.genders;
+	});
 
 	vm.alerts = [];
 	vm.closeAlert = function(index) {
@@ -209,7 +182,8 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 			lang: languageManager.setCurrentLanguage(vm.lang),
 			traditye: vm.traditye,
 			dla_optin: vm.dla_optin,
-			invitekey: vm.invitekey
+			invitekey: vm.invitekey,
+			gender: vm.genders.genders[vm.genderIndex]
 		});
 	};
 
@@ -218,7 +192,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		socket.emit('validate-email', {
 			email: vm.email
 		}, function(data) {
-			vm.validateStatus.email = data.code;
+			vm.validateStatus.email = data.code != 'validate-email-valid';
 			console.info(data);
 			console.info(vm.validateStatus);
 		});
@@ -229,18 +203,22 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		socket.emit('validate-username', {
 			name: vm.name
 		}, function(data) {
-			vm.validateStatus.name = data.code;
+			vm.validateStatus.name = data.code != 'validate-username-valid';
 			console.info(data);
 			console.info(vm.validateStatus);
 		});
 	}
 	
+	var zxcvbnLoaded = asyncLoadJS(['js/jit/zxcvbn.js']);
+	
 	$scope.$watch(function() {
 		return vm.password;
 	}, function(value) {
-		var result = zxcvbn(value || '');
-		vm.password_score = result.score || 1;
-		vm.password_style = strengths[result.score].style;
-		vm.password_text = strengths[result.score].text;
+		return zxcvbnLoaded.then(function() {
+			var result = zxcvbn(value || '');
+			vm.password_score = result.score || 1;
+			vm.password_style = strengths[result.score].style;
+			vm.password_text = strengths[result.score].text;
+		});
 	});
 });

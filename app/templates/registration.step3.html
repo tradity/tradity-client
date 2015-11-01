@@ -26,30 +26,26 @@
 		</div>
 	</div>
 	<div class="row"></div>
-	<div class="row text-center">
-		<h1 translate>Wie gut ist deine finanzielle Bildung?</h1>
-		<p translate>Beantworte vier Fragen jetzt vor und nach dem Wettbewerb, um zu sehen, wie du dich über die Zeit entwickelst.</p>
-		<p translate>
-			Kreuze immer nur eine Antwortmöglichkeit an, es ist nämlich auch immer nur eine zutrefend ;)</p>
-		<p translate>
-			Viel Spasß! Danach kannst du im Wettbewerb loslegen!</p>
-	</div>
-	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2 text-center"> ￼
-			<accordion close-others="false">
-				<accordion-group ng-repeat="s in registration.surveys" heading="{{ s.group }}" is-open="true">
-					<div class="row">
-						<div class="form-group" translate>
-							{{ s.title }}
+	<!-- ok, I see that this is not the way ng-repeat is meant to be used, but…
+	     anyone a better idea? -->
+	<div class="row" ng-repeat="qn in [registration.questionnaire[registration.lang]]">
+		<div class="text-center" ng-bind-html="qn.qtext">
+		</div>
+		<div>
+			<div class="col-lg-8 col-lg-offset-2 text-center">
+				<accordion close-others="false">
+					<accordion-group ng-repeat="question in qn.questions" heading="# {{$index + 1}}" is-open="true">
+						<div class="row">
+							<div class="form-group" ng-bind-html="question.qtext"></div>
 						</div>
-					</div>
-					<div class="row">
-						<div ng-repeat="i in s.items" class="form-group col-lg-6 text-left" translate>
-							<input type="checkbox"> {{ i }}
+						<div class="row">
+							<div ng-repeat="answer in question.answers" class="form-group col-lg-6 text-left" translate>
+								<label><input type="radio"> <span ng-bind-html="answer.atext"></span></label>
+							</div>
 						</div>
-					</div>
-				</accordion-group>
-			</accordion>
+					</accordion-group>
+				</accordion>
+			</div>
 		</div>
 	</div>
 	<div class="row">

@@ -2,7 +2,7 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <form ng-submit="login.login()" ng-hide="login.logging_in">
-	<alert ng-repeat="alert in alerts" type="{{login.alert.type}}" close="closeAlert($index)">{{login.alert.msg}}</alert>
+	<alert ng-repeat="alert in login.alerts" type="{{login.alert.type}}" close="closeAlert($index)">{{login.alert.msg}}</alert>
 	<div class="form-group" translate>
 		<input type="text" ng-model="login.username" class="form-control" placeholder="User name" autofocus />
 	</div>

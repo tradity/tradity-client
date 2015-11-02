@@ -20,6 +20,8 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 	vm.lang = languageManager.getCurrentLanguage();
 	vm.password = '';
 	vm.genderIndex = null;
+	vm.startTime = Date.now();
+	vm.results = [];
 	var strengths = [
 		{
 			style: 'danger',
@@ -49,6 +51,29 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		// ugly, works for now
 		return vm.questionnaire = data.questionnaires[1];
 	});
+	
+	vm.saveQuestionnaire = function () {
+		var results = [];
+		for (var i = 0; i < vm.questionnaire.de.questions.length; i++) {
+			if (vm.results[i]) {
+				results.push({question: i + 1, answers: [{answer: vm.results[i]}]});
+			} else {
+				vm.alerts.push({
+					type: 'danger',
+					msg: gettext('Please answer all the questions')
+				});
+				return;
+			}
+		};
+		socket.emit('save-questionnaire', {
+			results: results,
+			questionnaire: vm.questionnaire.questionnaire_id,
+			fill_time: Date.now() - vm.startTime,
+			fill_language: vm.lang
+		}, function(data) {
+			//vm.validateStatus.name = data.code != 'validate-username-valid';
+		});
+	};
 
 	// we work with the indexes in the gender array,
 	// since angular cannot handle stuff like “Third Gender”

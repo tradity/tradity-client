@@ -1,0 +1,58 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<div class="center-block">
+	<div class="row reg-wizard col-lg-10 col-lg-offset-1">
+		<div class="col-xs-4 reg-wizard-step complete">
+			<div class="progress">
+				<div class="progress-bar"></div>
+			</div>
+			<a href="#" class="reg-wizard-dot"></a>
+			<div class="text-center reg-wizard-stepnum">STEP 1</div>
+		</div>
+		<div class="col-xs-4 reg-wizard-step complete">
+			<div class="progress">
+				<div class="progress-bar"></div>
+			</div>
+			<a href="#" class="reg-wizard-dot" ng-disabled></a>
+			<div class="text-center reg-wizard-stepnum ">STEP 2</div>
+		</div>
+		<div class="col-xs-4 reg-wizard-step active">
+			<div class="progress">
+				<div class="progress-bar"></div>
+			</div>
+			<a ui-sref="register.step3" class="reg-wizard-dot"></a>
+			<div class="text-center reg-wizard-stepnum ">STEP 3</div>
+		</div>
+	</div>
+	<div class="row"></div>
+	<!-- ok, I see that this is not the way ng-repeat is meant to be used, but…
+	     anyone a better idea? -->
+	<div class="row" ng-repeat="qn in [registration.questionnaire[registration.lang]]">
+		<div class="text-center" ng-bind-html="qn.qtext">
+		</div>
+		<div>
+			<div class="col-lg-8 col-lg-offset-2 text-center">
+				<accordion close-others="false">
+					<accordion-group ng-repeat="question in qn.questions" heading="# {{$index + 1}}" is-open="true">
+						<div class="row">
+							<div class="form-group" ng-bind-html="question.qtext"></div>
+						</div>
+						<div class="row">
+							<div ng-repeat="answer in question.answers" class="form-group col-lg-6 text-left" translate>
+								<label><input type="radio" value="{{answer.answer_id}}" name="question{{$parent.$index}}" ng-model="registration.results[$parent.$index]"> <span ng-bind-html="answer.atext"></span></label>
+							</div>
+						</div>
+					</accordion-group>
+				</accordion>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6 col-lg-offset-3 text-center">
+			<div class="form-group " translate>
+				<input class="btn btn-lg btn-block btn-primary" type="button" value="Let's go" ng-click="registration.saveQuestionnaire()">
+			</div>
+		</div>
+	</div>
+</div>

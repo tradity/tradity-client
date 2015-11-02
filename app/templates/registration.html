@@ -2,99 +2,18 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div class="container registration">
-	<div class="row">
+	<div class="row header">
 		<div class="col-sm-4">
-			<img class="logo" src="img/logo.png"/>
+			<div class="logo-container">
+			<img class="logo" src="img/logo.png" /></div>
 		</div>
-		<div class="col-sm-12">
-			<alert ng-repeat="alert in registration.alerts" type="{{alert.type}}" close="registration.closeAlert($index)">{{alert.msg}}</alert>
-		</div>
-		<div class="col-sm-4 info">
-			<div class="box">
-				<h2 translate>Why participate?</h2>
-				<ul>
-					<li translate>Try out economy and stock trading in a challenging game</li>
-					<li translate>Trade fictional 100,000&nbsp;€ with all stocks of the Börse Frankfurt in real-time</li>
-					<li translate>Make intelligent decisions and win as the best trader, or…</li>
-					<li translate>Learn from experienced players and become best follower with Social Trading</li>
-					<li translate>Talk about news and your decisions within your group</li>
-					<li translate>Win valuable prizes in various categories each week</li>
-				</ul>
-			</div>
-		</div>
-		<div class="col-sm-8 register">	
-			<div class="row box">
-				<div class="col-sm-6">
-					<h2 translate>General information</h2>
-					<div class="form-group" translate>
-						<input ng-model="registration.name" type="text" class="form-control" placeholder="User name" autofocus>
-					</div>
-					<div class="form-group" translate>
-						<input ng-model="registration.email" type="email" class="form-control" placeholder="E-mail address">
-					</div>
-					<div class="form-group" translate>
-						<input ng-model="registration.password" type="password" class="form-control" placeholder="Password">
-					</div>
-					<div class="form-group" translate>
-						<input ng-model="registration.password_check" type="password" class="form-control" placeholder="Repeat password">
-					</div>
-					<h2 translate>About yourself</h2>
-					<p translate>The following data is required to participate in the competition</p>
-					<div class="form-group" translate>
-						<input ng-model="registration.giv_name" type="text" class="form-control" placeholder="First name">
-					</div>
-					<div class="form-group" translate>
-						<input ng-model="registration.fam_name" type="text" class="form-control" placeholder="Last name">
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<h2 translate>Organization / School</h2>
-					<p translate>
-						Please choose your school/university/group in order to ensure that
-						you are eligible for prizes internal to your group (if there are any).
-					</p>
-					<p translate>
-						If you take part in a local competition, please enter your class so we can
-						send you a certificate and (possibly) prizes.
-					</p>
-					<div class="form-group">
-						<tradity-group-chooser school-id-model="school" school-class-model="schoolclass" />
-					</div>
-					<div class="form-group" ng-show="serverConfig.betakeyRequired" translate>
-						<input ng-model="registration.betakey" id="betakey" type="text" class="form-control" placeholder="Beta key">
-					</div>
-					<div class="form-group">
-						<label for="lang" translate>Language</label>
-						<select id="lang" ng-model="registration.lang" ng-options="language.id as language.name for language in serverConfig.languages"></select>
-					</div>
-					<div class="checkbox">
-						<label>
-							<input type="checkbox" ng-model="registration.agbread">
-							<translate>
-							I have read and accepted the <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/">TOS</a>.
-							</translate>
-						</label>
-					</div>
-				</div>
-				<div class="col-sm-12">
-					<div class="pull-right text-right">
-						<button ng-click="registration.register()" type="submit" class="btn btn-primary btn-sm" translate>Register</button><br/>
-						<a ui-sref="index.login" id="gtlogin" translate>I already have an account!</a>
-					</div>
-					<br />
-					<br />
-					<br />
-					<ng-include src="'templates/global-notice.html'"></ng-include>
-				</div>
-<!-- 				<div class="col-sm-12">
-					<h2>Lieber Tradity-User</h2>
-					<p>Leider haben wir derzeit gelegentlich Probleme bezüglich des Logins und anderer Aktivitäten auf Tradity. In der Regel bemerken wir das Problem schnell und beheben es, allerdings fehlen uns im Moment teilweise die Kapazitäten, um einigen technischen Schwierigkeiten auf den Grund zu gehen.</p>
-					<p>Insofern: Du kannst davon ausgehen, dass das nicht an dir und nicht an deinem Browser liegt, sondern an uns. Das tut uns Leid, wir arbeiten dran.</p>
-
-					<p>Du kannst dich über unser 
-					<a style="text-decoration:underline" class="text-link" href="https://podio.com/webforms/11423569/800467">alternatives Registrierformular</a> für Tradity registrieren. Du wirst nicht sofort spielen können – wir schreiben dir eine E-Mail, sobald du loslegen kannst.</p>
-				</div> -->
-			</div>
+		<div class="col-sm-8 text-right header-text">
+			<a href="#" class="header-link" translate>Let me see more about Tradity!</a>
+			<a href="#" class="header-link" translate>Login</a>
 		</div>
 	</div>
+	<form name="registration.form" novalidate>
+		<div class="row" ui-view>
+	</div>
+	</form>
 </div>

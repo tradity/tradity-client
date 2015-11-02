@@ -40,6 +40,7 @@ angular.module('tradity', [
 	when('/depot', '/depot/overview').
 	when('/ranking', '/ranking/all').
 	when('/admin', '/admin/userlist').
+	when('/register', '/register/step1').
 	otherwise('/error/404');
 
 	$stateProvider.
@@ -66,6 +67,25 @@ angular.module('tradity', [
 			controller: 'RegistrationCtrl',
 			controllerAs: 'registration'
 		}).
+		state('register.step1', {
+			url: '/step1',
+			templateUrl: 'templates/registration.step1.html',
+			// controller: 'RegistrationCtrl',
+			// controllerAs: 'step1'
+		}).
+		state('register.step2', {
+			url: '/step2',
+			templateUrl: 'templates/registration.step2.html',
+			// controller: 'RegistrationCtrl',
+			// controllerAs: 'registration'
+		}).
+		state('register.step3', {
+			url: '/step3',
+			templateUrl: 'templates/registration.step3.html',
+			// controller: 'RegistrationCtrl',
+			// controllerAs: 'registration'
+		}).
+		
 		//change to register/:inviteCode
 		state('invite', {
 			url: '/join/:inviteCode',
@@ -283,6 +303,7 @@ angular.module('tradity', [
 	$locationProvider.
 		html5Mode(true).
 		hashPrefix('!');
+		
 }).run(function($templateCache, languageManager, $rootScope) {
 	$rootScope.$on('user-update', function(ev, data) {
 		if (data && data.lang)

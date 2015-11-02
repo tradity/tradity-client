@@ -1,0 +1,1 @@
+../../bower_components/zxcvbn/dist/zxcvbn.js

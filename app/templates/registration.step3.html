@@ -7,22 +7,22 @@
 			<div class="progress">
 				<div class="progress-bar"></div>
 			</div>
-			<a href="#" class="reg-wizard-dot"></a>
-			<div class="text-center reg-wizard-stepnum">STEP 1</div>
-		</div>
-		<div class="col-xs-4 reg-wizard-step complete">
-			<div class="progress">
-				<div class="progress-bar"></div>
-			</div>
-			<a href="#" class="reg-wizard-dot" ng-disabled></a>
-			<div class="text-center reg-wizard-stepnum ">STEP 2</div>
+			<a ui-sref="register.step1" class="reg-wizard-dot"></a>
+			<div class="text-center reg-wizard-stepnum" translate>Step 1</div>
 		</div>
 		<div class="col-xs-4 reg-wizard-step active">
 			<div class="progress">
 				<div class="progress-bar"></div>
 			</div>
+			<a ui-sref="register.step2" class="reg-wizard-dot"></a>
+			<div class="text-center reg-wizard-stepnum" translate>Step 2</div>
+		</div>
+		<div class="col-xs-4 reg-wizard-step disabled">
+			<div class="progress">
+				<div class="progress-bar"></div>
+			</div>
 			<a ui-sref="register.step3" class="reg-wizard-dot"></a>
-			<div class="text-center reg-wizard-stepnum ">STEP 3</div>
+			<div class="text-center reg-wizard-stepnum" translate>Step 3</div>
 		</div>
 	</div>
 	<div class="row"></div>

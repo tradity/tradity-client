@@ -54,9 +54,10 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 	
 	vm.saveQuestionnaire = function () {
 		var results = [];
-		for (var i = 0; i < vm.questionnaire.de.questions.length; i++) {
+		var questions = vm.questionnaire[vm.lang].questions;
+		for (var i = 0; i < questions.length; i++) {
 			if (vm.results[i]) {
-				results.push({question: i + 1, answers: [{answer: vm.results[i]}]});
+				results.push({question: questions[i].question_id, answers: [{answer: parseInt(vm.results[i])}]});
 			} else {
 				vm.alerts.push({
 					type: 'danger',

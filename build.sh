@@ -1,8 +1,7 @@
 #!/bin/sh
 touch app/js/config.js
 
-command -v bower 2>/dev/null || export PATH="node_modules/bower/bin:$PATH"
-command -v grunt 2>/dev/null || export PATH="node_modules/grunt-cli/bin:$PATH"
+export PATH="node_modules/.bin:$PATH"
 
 set -e
 echo "var TRADITY_BUILD_STAMP = 'TDYC$(date +%s)-$(git rev-parse HEAD)';" > app/js/buildstamp.js

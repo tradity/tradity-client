@@ -29,7 +29,7 @@
 				<input name="password_check" ng-model="registration.password_check" type="password" class="form-control input-lg" placeholder="Repeat password" required popover="Re-enter your password" popover-trigger="focus" popover-placement="right" popover-animation="false">
 			</div>
 			<div class="form-group" translate>
-				<button class="btn btn-lg btn-block btn-primary" ui-sref="register.step2" ng-disabled="registration.validateStatus.email || registration.validateStatus.name">Create Account</button>
+				<button class="btn btn-lg btn-block btn-primary" ui-sref="register.step2" ng-disabled="registration.validateStatus.email || registration.validateStatus.name || (registration.password != registration.password_check)">Create Account</button>
 			</div>
 			<div class="form-group" translate>
 				<span class="agreement-text">By creating an account you agree to our <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/">terms &amp; conditions</a>.</span>

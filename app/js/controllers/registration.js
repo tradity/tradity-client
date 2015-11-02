@@ -191,6 +191,9 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		/*if (!vm.schoolname_none && !vm.schoolname) // XXX
 			return vm.alerts.push({ type: 'danger', msg: gettext('Please indicate which organization or school you belong to') });*/
 		
+		var d = Date.UTC($scope.birthdayy, $scope.birthdaym-1, $scope.birthdayd);
+		if (!$scope.birthdayy) d = null;
+		
 		safestorage.setPassword(vm.password);
 		socket.emit('register', {
 			name: vm.name,
@@ -209,7 +212,8 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 			traditye: vm.traditye,
 			dla_optin: vm.dla_optin,
 			invitekey: vm.invitekey,
-			gender: vm.genders.genders[vm.genderIndex]
+			gender: vm.genders.genders[vm.genderIndex],
+			birthday: d
 		});
 	};
 

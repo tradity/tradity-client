@@ -36,17 +36,23 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="form-group col-lg-4 " translate>
+				<div class="form-group col-lg-3 " translate>
 					<select ng-model="registration.genderIndex " class="form-control input-lg " placeholder="Gender ">
 						<option ng-repeat="gender in registration.genders.genders " ng-value="{{$index}} ">
 							{{registration.genders.translations[registration.lang][gender] || gender}}
 						</option>
 					</select>
 				</div>
-				<div class="form-group col-lg-4 " translate>
-					<input ng-model="registration.birthday " type="text " class="form-control input-lg " placeholder="Birthday " class="well well-sm " datepicker-popup ng-focus="console.info( 'test') ">
+				<div class="form-group col-lg-2 " translate>
+					<input ng-model="registration.birthdayd" type="text " class="form-control input-lg " placeholder="Day" class="well well-sm " datepicker-popup ng-focus="console.info( 'test') ">
 				</div>
-				<div class="form-group col-lg-4 " translate>
+				<div class="form-group col-lg-2 " translate>
+					<input ng-model="registration.birthdaym" type="text " class="form-control input-lg " placeholder="Month" class="well well-sm " datepicker-popup ng-focus="console.info( 'test') ">
+				</div>
+				<div class="form-group col-lg-2 " translate>
+					<input ng-model="registration.birthdayy" type="text " class="form-control input-lg " placeholder="Year" class="well well-sm " datepicker-popup ng-focus="console.info( 'test') ">
+				</div>
+				<div class="form-group col-lg-3 " translate>
 					<select class="form-control input-lg " id="lang " ng-model="registration.lang " ng-options="language.id as language.name for language in serverConfig.languages ">
 						<option ng-if="!registration.lang " value=" " disabled>- Language -</option>
 					</select>

@@ -118,7 +118,8 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 						msg: gettext('Successful registration')
 					});
 					user.fetch();
-					$state.go('game.feed');
+					if (vm.questionnaire) $state.go('register.step3');
+					else $state.go('game.feed');
 				});
 				break;
 			case 'reg-email-failed':
@@ -172,11 +173,11 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 				type: 'danger',
 				msg: gettext('Please provide an e-mail address')
 			});
-		if (!vm.agbread)
+		/*if (!vm.agbread)
 			return vm.alerts.push({
 				type: 'danger',
 				msg: gettext('Please confirm that you have read the TOS')
-			});
+			});*/
 		if (vm.password_check != vm.password)
 			return vm.alerts.push({
 				type: 'danger',
@@ -189,7 +190,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 			});
 		/*if (!vm.schoolname_none && !vm.schoolname) // XXX
 			return vm.alerts.push({ type: 'danger', msg: gettext('Please indicate which organization or school you belong to') });*/
-
+		
 		safestorage.setPassword(vm.password);
 		socket.emit('register', {
 			name: vm.name,

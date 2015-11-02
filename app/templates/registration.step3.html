@@ -40,7 +40,7 @@
 						</div>
 						<div class="row">
 							<div ng-repeat="answer in question.answers" class="form-group col-lg-6 text-left" translate>
-								<label><input type="radio" value="{{$index}}" name="question{{$parent.$index}}" ng-model="registration.results[$parent.$index]"> <span ng-bind-html="answer.atext"></span></label>
+								<label><input type="radio" value="{{answer.answer_id}}" name="question{{$parent.$index}}" ng-model="registration.results[$parent.$index]"> <span ng-bind-html="answer.atext"></span></label>
 							</div>
 						</div>
 					</accordion-group>

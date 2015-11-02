@@ -16,7 +16,8 @@
 		</div>
 	</div>
 	<form name="registration.form" novalidate>
+		<alert ng-repeat="alert in registration.alerts" type="{{registration.alert.type}}" close="closeAlert($index)">{{registration.alert.msg}}</alert>
 		<div class="row" ui-view>
-	</div>
+		</div>
 	</form>
 </div>

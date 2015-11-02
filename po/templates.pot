@@ -118,38 +118,36 @@ msgstr ""
 msgid "<a id=\"register-btn\">Register</a><br> <span>or <a id=\"login-btn\">Login</a></span>"
 msgstr ""
 
+#: app/templates/registration.step2.html:62
+msgid "<button>Off to the final step!</button>"
+msgstr ""
+
+#: app/templates/registration.step3.html:53
+msgid "<button>Let’s go</button>"
+msgstr ""
+
+#: app/templates/registration.step1.html:28
+msgid "<button>Create Account</button>"
+msgstr ""
+
 #: app/templates/profile.html:16
 msgid "<i></i> watch"
 msgstr ""
 
-#: app/templates/registration.step2.html:62
-msgid "<input>"
-msgstr ""
-
-#: app/templates/registration.step1.html:31
-msgid "<input value=\"Create Account\">"
-msgstr ""
-
-#: app/templates/registration.step3.html:53
-msgid "<input value=\"Let's go\">"
-msgstr ""
-
-#: app/templates/registration.step1.html:17
-msgid "<input placeholder=\"Email address\">"
+#: app/templates/registration.step1.html:14
+msgid "<input placeholder=\"Email address\" popover=\"Enter your email address\">"
 msgstr ""
 
 #: app/templates/registration.step1.html:11
-#: app/templates/login.html:6
-msgid "<input placeholder=\"User name\">"
+msgid "<input placeholder=\"User name\" popover=\"Enter your username\">"
 msgstr ""
 
-#: app/templates/registration.step1.html:22
-#: app/templates/login.html:9
-msgid "<input placeholder=\"Password\">"
+#: app/templates/registration.step1.html:19
+msgid "<input placeholder=\"Password\" popover=\"Enter your password\">"
 msgstr ""
 
-#: app/templates/registration.step1.html:28
-msgid "<input placeholder=\"Repeat password\">"
+#: app/templates/registration.step1.html:25
+msgid "<input placeholder=\"Repeat password\" popover=\"Re-enter your password\">"
 msgstr ""
 
 #: app/templates/registration.step2.html:59
@@ -200,6 +198,10 @@ msgstr ""
 msgid "<input placeholder=\"Year\" id=\"birthdayy\">"
 msgstr ""
 
+#: app/templates/login.html:9
+msgid "<input placeholder=\"Password\">"
+msgstr ""
+
 #: app/templates/groupOverview.html:9
 msgid "<input placeholder=\"Search (Your school/organization/group)\">"
 msgstr ""
@@ -242,6 +244,10 @@ msgstr ""
 msgid "<input placeholder=\"First name\" id=\"giv_name\">"
 msgstr ""
 
+#: app/templates/login.html:6
+msgid "<input placeholder=\"User name\">"
+msgstr ""
+
 #: app/templates/options.html:109
 msgid "<input placeholder=\"Street\" id=\"street\">"
 msgstr ""
@@ -262,16 +268,12 @@ msgstr ""
 msgid "<input placeholder=\"Zip code\" id=\"zipcode\">"
 msgstr ""
 
-#: app/templates/registration.step3.html:42
-msgid "<label><input> <span></span></label>"
-msgstr ""
-
 #: app/templates/registration.step2.html:39
-msgid "<select placeholder=\"Gender \"><option>{{registration.genders.translations[registration.lang][gender] || gender}}</option></select>"
+msgid "<select placeholder=\"Gender\"><option>{{registration.genders.translations[registration.lang][gender] || gender}}</option></select>"
 msgstr ""
 
-#: app/templates/registration.step1.html:34
-msgid "<span>By creating an account you agree to our <a>terms &amp; conditions</a></span>"
+#: app/templates/registration.step1.html:31
+msgid "<span>By creating an account you agree to our <a>terms &amp; conditions</a>.</span>"
 msgstr ""
 
 #: app/templates/trade.html:60

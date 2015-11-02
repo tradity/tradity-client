@@ -90,7 +90,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		vm.alerts.splice(index, 1);
 	};
 
-	$scope.$watch('lang', function() {
+	$scope.$watch(function() { return vm.lang }, function() {
 		languageManager.setCurrentLanguage(vm.lang);
 	});
 
@@ -219,24 +219,18 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 	};
 
 	vm.validateEmail = function() {
-		console.info("ename");
 		socket.emit('validate-email', {
 			email: vm.email
 		}, function(data) {
 			vm.validateStatus.email = data.code != 'validate-email-valid';
-			console.info(data);
-			console.info(vm.validateStatus);
 		});
 	}
 
 	vm.validateName = function() {
-		console.info("name");
 		socket.emit('validate-username', {
 			name: vm.name
 		}, function(data) {
 			vm.validateStatus.name = data.code != 'validate-username-valid';
-			console.info(data);
-			console.info(vm.validateStatus);
 		});
 	}
 	

@@ -5,7 +5,7 @@
     "angular": "1.4.x",
     "angular-ui-router": "~0.2.13",
     "angular-bootstrap": "0.13.x",
-    "angular-gettext": "~2.0.3",
+    "angular-gettext": "~2.1.2",
     "bootstrap": "3.3.x",
     "fontawesome": "4.1.0",
     "socket.io-client": ">=1.2.1",

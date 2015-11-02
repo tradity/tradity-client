@@ -37,20 +37,20 @@
 			</div>
 			<div class="row">
 				<div class="form-group col-lg-3 " translate>
-					<select ng-model="registration.genderIndex " class="form-control input-lg " placeholder="Gender ">
+					<select ng-model="registration.genderIndex " class="form-control input-lg " placeholder="Gender">
 						<option ng-repeat="gender in registration.genders.genders " ng-value="{{$index}} ">
 							{{registration.genders.translations[registration.lang][gender] || gender}}
 						</option>
 					</select>
 				</div>
 				<div class="form-group col-lg-2 " translate>
-					<input ng-model="registration.birthdayd" type="text " class="form-control input-lg " placeholder="Day" class="well well-sm " datepicker-popup ng-focus="console.info( 'test') ">
+					<input ng-model="registration.birthdayd" type="text " class="form-control input-lg " placeholder="Day" class="well well-sm " datepicker-popup>
 				</div>
 				<div class="form-group col-lg-2 " translate>
-					<input ng-model="registration.birthdaym" type="text " class="form-control input-lg " placeholder="Month" class="well well-sm " datepicker-popup ng-focus="console.info( 'test') ">
+					<input ng-model="registration.birthdaym" type="text " class="form-control input-lg " placeholder="Month" class="well well-sm " datepicker-popup>
 				</div>
 				<div class="form-group col-lg-2 " translate>
-					<input ng-model="registration.birthdayy" type="text " class="form-control input-lg " placeholder="Year" class="well well-sm " datepicker-popup ng-focus="console.info( 'test') ">
+					<input ng-model="registration.birthdayy" type="text " class="form-control input-lg " placeholder="Year" class="well well-sm " datepicker-popup>
 				</div>
 			</div>
 			<div class="form-group ">
@@ -60,7 +60,7 @@
 				<input ng-model="betakey" id="betakey" type="text" class="form-control" placeholder="Beta key">
 			</div>
 			<div class="form-group " translate>
-				<input class="btn btn-lg btn-block btn-primary " type="button " value="Off to the final step! " ng-click="registration.register()">
+				<button class="btn btn-lg btn-block btn-primary " ng-click="registration.register()">Off to the final step!</button>
 			</div>
 
 		</div>

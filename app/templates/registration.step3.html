@@ -39,7 +39,7 @@
 							<div class="form-group" ng-bind-html="question.qtext"></div>
 						</div>
 						<div class="row">
-							<div ng-repeat="answer in question.answers" class="form-group col-lg-6 text-left" translate>
+							<div ng-repeat="answer in question.answers" class="form-group col-lg-6 text-left">
 								<label><input type="radio" value="{{answer.answer_id}}" name="question{{$parent.$index}}" ng-model="registration.results[$parent.$index]"> <span ng-bind-html="answer.atext"></span></label>
 							</div>
 						</div>
@@ -51,7 +51,7 @@
 	<div class="row">
 		<div class="col-lg-6 col-lg-offset-3 text-center">
 			<div class="form-group " translate>
-				<input class="btn btn-lg btn-block btn-primary" type="button" value="Let's go" ng-click="registration.saveQuestionnaire()">
+				<button class="btn btn-lg btn-block btn-primary" ng-click="registration.saveQuestionnaire()">Let’s go</button>
 			</div>
 		</div>
 	</div>

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Tradity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-10-29 12:40+0100\n"
+"PO-Revision-Date: 2015-11-02 20:36+0100\n"
 "Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"
 "Language-Team: German <http://weblate.tradity.de/projects/tradity/tradity-"
 "client-master/de/>\n"
@@ -43,8 +43,8 @@ msgid "(Right click + “Copy link”)"
 msgstr "(Rechtsklick + „Link kopieren“)"
 
 #: app/templates/ranking.html:80
-msgid "({{result.count}} Members, Top {{result.rankCount}})"
-msgstr "({{result.count}} Mitglieder, Top {{result.rankCount}})"
+msgid "({{::result.count}} Members, Top {{::result.rankCount}})"
+msgstr "({{::result.count}} Mitglieder, Top {{::result.rankCount}})"
 
 #: app/templates/error.404.html:4
 msgid "404 – Page not found"
@@ -205,37 +205,61 @@ msgstr ""
 "<a id=\"register-btn\">Registrieren</a><br>\n"
 "<span>oder <a id=\"login-btn\">Einloggen</a></span>"
 
+#: app/templates/registration.step2.html:62
+msgid "<button>Off to the final step!</button>"
+msgstr "<button>Ab zum letzten Schritt!</button>"
+
+#: app/templates/registration.step3.html:53
+msgid "<button>Let’s go</button>"
+msgstr "<button>Los geht’s!</button>"
+
+#: app/templates/registration.step1.html:31
+msgid "<button>Create Account</button>"
+msgstr "<button>Account anlegen</button>"
+
 #: app/templates/profile.html:16
 msgid "<i></i> watch"
 msgstr "<i></i> Watchen"
 
-#: app/templates/registration.html:65
-msgid "<input id=\"betakey\" placeholder=\"Beta key\">"
-msgstr "<input id=\"betakey\" placeholder=\"Betakey\">"
-
-#: app/templates/registration.html:34
-msgid "<input placeholder=\"E-mail address\">"
+#: app/templates/registration.step1.html:17
+msgid "<input placeholder=\"Email address\">"
 msgstr "<input placeholder=\"E-Mail-Adresse\">"
 
-#: app/templates/registration.html:48
-msgid "<input placeholder=\"Last name\">"
-msgstr "<input placeholder=\"Nachname\">"
-
-#: app/templates/registration.html:45
-msgid "<input placeholder=\"First name\">"
-msgstr "<input placeholder=\"Vorname\">"
-
-#: app/templates/registration.html:31 app/templates/login.html:6
+#: app/templates/registration.step1.html:11 app/templates/login.html:6
 msgid "<input placeholder=\"User name\">"
 msgstr "<input placeholder=\"Benutzername\">"
 
-#: app/templates/registration.html:37 app/templates/login.html:9
+#: app/templates/registration.step1.html:22 app/templates/login.html:9
 msgid "<input placeholder=\"Password\">"
 msgstr "<input placeholder=\"Passwort\">"
 
-#: app/templates/registration.html:40
+#: app/templates/registration.step1.html:28
 msgid "<input placeholder=\"Repeat password\">"
 msgstr "<input placeholder=\"Passwort wiederholen\">"
+
+#: app/templates/registration.step2.html:59
+msgid "<input id=\"betakey\" placeholder=\"Beta key\">"
+msgstr "<input id=\"betakey\" placeholder=\"Betakey\">"
+
+#: app/templates/registration.step2.html:46
+msgid "<input placeholder=\"Day\">"
+msgstr "<input placeholder=\"Tag\">"
+
+#: app/templates/registration.step2.html:49
+msgid "<input placeholder=\"Month\">"
+msgstr "<input placeholder=\"Monat\">"
+
+#: app/templates/registration.step2.html:52
+msgid "<input placeholder=\"Year\">"
+msgstr "<input placeholder=\"Jahr\">"
+
+#: app/templates/registration.step2.html:34
+msgid "<input placeholder=\"Last name\">"
+msgstr "<input placeholder=\"Nachname\">"
+
+#: app/templates/registration.step2.html:31
+msgid "<input placeholder=\"First name\">"
+msgstr "<input placeholder=\"Vorname\">"
 
 #: app/templates/options.html:142
 msgid "<input value=\"Reset user\" id=\"options-reset\">"
@@ -321,6 +345,22 @@ msgstr "<input placeholder=\"Stop-/Limit-Wert\" id=\"limit-stop\">"
 #: app/templates/options.html:110
 msgid "<input placeholder=\"Zip code\" id=\"zipcode\">"
 msgstr "<input placeholder=\"PLZ\" id=\"zipcode\">"
+
+#: app/templates/registration.step2.html:39
+msgid ""
+"<select placeholder=\"Gender\"><option>{{registration.genders."
+"translations[registration.lang][gender] || gender}}</option></select>"
+msgstr ""
+"<select placeholder=\"Geschlecht\"><option>{{registration.genders."
+"translations[registration.lang][gender] || gender}}</option></select>"
+
+#: app/templates/registration.step1.html:34
+msgid ""
+"<span>By creating an account you agree to our <a>terms &amp; conditions</a></"
+"span>"
+msgstr ""
+"<span>Wenn du ein Benutzerkonto anlegst, erklärst du dich mit unseren "
+"<a>AGB</a> einverstanden</span>"
 
 #: app/templates/trade.html:60
 msgid ""
@@ -408,10 +448,6 @@ msgstr ""
 "Die Mail an „{{message.mailrecipient}}“ zur E-Mail-Bestätigung konnte nicht "
 "abgeschickt werden. Bitte gehe <a>zu deinen Einstellungen</a> und gib eine "
 "aktuelle E-Mail-Adresse an."
-
-#: app/templates/registration.html:43
-msgid "About yourself"
-msgstr "Über dich"
 
 #: app/templates/depot.overview.html:18 app/templates/game.html:19
 msgid "Account"
@@ -559,7 +595,7 @@ msgstr "Konnte Trade nicht finden"
 msgid "Could not send invitation link"
 msgstr "Konnte Einladungslink nicht versenden"
 
-#: app/js/controllers/options.js:160 app/js/controllers/registration.js:55
+#: app/js/controllers/options.js:160 app/js/controllers/registration.js:129
 msgid "Could not send verification e-mail. Please turn to tech@tradity.de."
 msgstr ""
 "Es gab beim Senden der Bestätigungsmail Probleme.\n"
@@ -625,6 +661,10 @@ msgstr "Bearbeiten"
 msgid "Error: {{code}}"
 msgstr "Fehler: {{code}}"
 
+#: app/js/controllers/registration.js:43
+msgid "Excellent"
+msgstr "Exzellent"
+
 #: app/js/services/achievements.js:20
 msgid "Execute a trade with a volume of more than 25,000&nbsp;€."
 msgstr "Führe 1 Trade mit mehr als 25.000&nbsp;€ Volumen aus."
@@ -665,13 +705,13 @@ msgstr "Voller Name"
 msgid "Game"
 msgstr "Spiel"
 
-#: app/templates/registration.html:30
-msgid "General information"
-msgstr "Allgemeines"
-
 #: app/templates/group.html:39
 msgid "Go to the parent group"
 msgstr "Zur Übergruppe gehen"
+
+#: app/js/controllers/registration.js:39
+msgid "Good"
+msgstr "Gut"
 
 #: app/js/services/achievements.js:39
 msgid "Green investments"
@@ -698,14 +738,6 @@ msgstr "Gruppen"
 msgid "Held shares"
 msgstr "Wertpapiere in Besitz"
 
-#: app/templates/registration.html:84
-msgid "I already have an account!"
-msgstr "Ich bin bereits registriert!"
-
-#: app/templates/registration.html:75
-msgid "I have read and accepted the <a>TOS</a>."
-msgstr "Ich habe die <a>AGB</a> gelesen und akzeptiert."
-
 #: app/templates/trade.html:59
 msgid "ISIN"
 msgstr "ISIN"
@@ -719,14 +751,6 @@ msgstr ""
 "Wenn du noch Fragen zum Spiel hast, kannst du uns an <a>team@tradity.de</"
 "a>eine E-Mail schreiben oder auf <a>Facebook</a> eine Frage posten. "
 "<span>Viel Erfolg!</span>"
-
-#: app/templates/registration.html:58
-msgid ""
-"If you take part in a local competition, please enter your class so we can "
-"send you a certificate and (possibly) prizes."
-msgstr ""
-"Falls du an einem Stadtwettbewerb teilnimmst, gib bitte deine Klasse an,\n"
-"sodass wir dir deine Urkunde und ggf. deinen Preis zukommen lassen können."
 
 #: app/templates/game.html:157
 msgid "Imprint"
@@ -778,7 +802,7 @@ msgstr "Benutzer einladen"
 msgid "Join group"
 msgstr "Team beitreten"
 
-#: app/templates/options.html:54 app/templates/registration.html:69
+#: app/templates/options.html:54
 msgid "Language"
 msgstr "Sprache (Language)"
 
@@ -798,13 +822,6 @@ msgstr "Leader und Wertpapiere in deiner Watchlist"
 msgid "Leader: %1"
 msgstr "Leader: %1"
 
-#: app/templates/registration.html:20
-msgid ""
-"Learn from experienced players and become best follower with Social Trading"
-msgstr ""
-"Lerne als Neuling von erfahreneren Mitspielern und werde bester Follower im "
-"Social Trading"
-
 #: app/js/controllers/group.js:88
 msgid "Left group"
 msgstr "Gruppe verlassen"
@@ -812,6 +829,10 @@ msgstr "Gruppe verlassen"
 #: app/templates/game.html:133
 msgid "Lessons"
 msgstr "Lektionen"
+
+#: app/templates/registration.html:14
+msgid "Let me see more about Tradity!"
+msgstr "Ich möchte mehr über Tradity wissen!"
 
 #: app/templates/trade.html:105
 msgid "Limit"
@@ -830,16 +851,13 @@ msgid "Loading"
 msgstr "Laden…"
 
 #: app/templates/index.html:11 app/templates/login.html:24
+#: app/templates/registration.html:15
 msgid "Login"
 msgstr "Login"
 
 #: app/js/services/achievements.js:40
 msgid "Low interest rates"
 msgstr "Niedrig&#xad;zinsen"
-
-#: app/templates/registration.html:19
-msgid "Make intelligent decisions and win as the best trader, or…"
-msgstr "Triff kluge Entscheidungen und siege als bester Trader oder…"
 
 #: app/templates/trade.html:104
 msgid "Market"
@@ -898,7 +916,7 @@ msgstr "Keine Verbindung"
 msgid "No Group"
 msgstr "Keine Gruppe"
 
-#: app/js/controllers/registration.js:70
+#: app/js/controllers/registration.js:159
 msgid "No valid beta key was entered"
 msgstr "Beta-Schlüssel ungültig oder nicht angegeben"
 
@@ -958,7 +976,7 @@ msgstr "Order nicht gefunden. Möglicherweise wurde sie bereits ausgeführt?"
 msgid "Order type"
 msgstr "Ordertyp"
 
-#: app/templates/options.html:73 app/templates/registration.html:53
+#: app/templates/options.html:73
 msgid "Organization / School"
 msgstr "Institution / Schule"
 
@@ -1022,16 +1040,11 @@ msgstr "Privates"
 msgid "Pinboard"
 msgstr "Pinnwand"
 
-#: app/templates/registration.html:54
-msgid ""
-"Please choose your school/university/group in order to ensure that you are "
-"eligible for prizes internal to your group (if there are any)."
-msgstr ""
-"Bitte wähle die Schule/Uni/Gruppe aus, an welcher du bist.\n"
-"So ist gewährleistet, dass du (sofern deine Schule/Uni/Gruppe\n"
-"einen eigenen Wettbewerb hat) gruppenintern gewinnberechtigt bist."
+#: app/js/controllers/registration.js:64
+msgid "Please answer all the questions"
+msgstr "Bitte beantworte alle Fragen"
 
-#: app/js/controllers/registration.js:46
+#: app/js/controllers/registration.js:114
 msgid ""
 "Please click on the link in the verification e-mail we just sent you in "
 "order to be able to use the full functionality of Tradity and be eligible "
@@ -1040,19 +1053,15 @@ msgstr ""
 "Bitte bestätige die „Bestätigungsmail“, um alle Funktionen freizuschalten "
 "und für die Preise gewinnberechtigt zu sein."
 
-#: app/js/controllers/registration.js:82
-msgid "Please confirm that you have read the TOS"
-msgstr "Bitte bestätige, dass du die AGB gelesen hast"
-
 #: app/js/controllers/trade.js:71
 msgid "Please enter a numerical stop/limit value"
 msgstr "Bitte geben Sie den Stop-/Limitwert als Zahl an"
 
-#: app/js/controllers/registration.js:86
+#: app/js/controllers/registration.js:190
 msgid "Please enter your name in order to be eligible for winning prizes"
 msgstr "Bitte gib deinen Namen an, damit du Gewinne erhalten kannst"
 
-#: app/js/controllers/registration.js:80
+#: app/js/controllers/registration.js:175
 msgid "Please provide an e-mail address"
 msgstr "Bitte gib deine E-Mail-Adresse an"
 
@@ -1099,7 +1108,7 @@ msgstr "Anlass"
 msgid "Received commissions"
 msgstr "erh. Provision"
 
-#: app/templates/index.html:10 app/templates/registration.html:83
+#: app/templates/index.html:10
 msgid "Register"
 msgstr "Registrieren"
 
@@ -1147,6 +1156,21 @@ msgstr "Start&#xad;wert"
 msgid "Stay logged in?"
 msgstr "Eingeloggt bleiben?"
 
+#: app/templates/registration.step2.html:11
+#: app/templates/registration.step3.html:11
+msgid "Step 1"
+msgstr "Schritt 1"
+
+#: app/templates/registration.step2.html:18
+#: app/templates/registration.step3.html:18
+msgid "Step 2"
+msgstr "Schritt 2"
+
+#: app/templates/registration.step2.html:25
+#: app/templates/registration.step3.html:25
+msgid "Step 3"
+msgstr "Schritt 3"
+
 #: app/templates/depot.transactionlog.html:18 app/templates/trade.html:8
 #: app/templates/trade.html:93
 msgid "Stock"
@@ -1176,7 +1200,7 @@ msgstr "Stop-/Limit-Marke"
 msgid "Sub-groups"
 msgstr "Unter&#xad;gruppen"
 
-#: app/js/controllers/registration.js:49
+#: app/js/controllers/registration.js:119
 msgid "Successful registration"
 msgstr "Erfolgreich registriert"
 
@@ -1200,17 +1224,11 @@ msgstr "Profilebild erfolgreich hochgeladen!"
 msgid "Support"
 msgstr "Hilfe"
 
-#: app/templates/registration.html:21
-msgid "Talk about news and your decisions within your group"
-msgstr ""
-"Tausche dich mit deinen Freunden über Nachrichten und Entscheidungen in "
-"einer eigenen Gruppe aus"
-
 #: app/templates/game.html:158
 msgid "Terms &amp; Privacy"
 msgstr "AGB &amp; Datenschutz"
 
-#: app/js/controllers/options.js:81 app/js/controllers/registration.js:84
+#: app/js/controllers/options.js:81 app/js/controllers/registration.js:185
 msgid "The entered passwords do not match"
 msgstr "Die eingegebenen Passwörter stimmen nicht überein"
 
@@ -1218,14 +1236,9 @@ msgstr "Die eingegebenen Passwörter stimmen nicht überein"
 msgid "The entered provision value is invalid"
 msgstr "Die angegebenen Provisionen sind ungültig"
 
-#: app/js/controllers/options.js:129 app/js/controllers/registration.js:64
+#: app/js/controllers/options.js:129 app/js/controllers/registration.js:147
 msgid "The entered school has not been found"
 msgstr "Die angegebene Schule wurde nicht gefunden"
-
-#: app/templates/registration.html:44
-msgid "The following data is required to participate in the competition"
-msgstr ""
-"Diese Daten benötigen wir, damit du auch am Wettbewerb teilnehmen kannst"
 
 #: app/js/controllers/trade.js:93
 msgid ""
@@ -1262,7 +1275,7 @@ msgstr ""
 msgid "This comment has been removed."
 msgstr "Dieser Kommentar ist entfernt worden."
 
-#: app/js/controllers/options.js:123 app/js/controllers/registration.js:58
+#: app/js/controllers/options.js:123 app/js/controllers/registration.js:135
 msgid "This e-mail address has already been taken"
 msgstr "Email bereits vorhanden"
 
@@ -1270,7 +1283,7 @@ msgstr "Email bereits vorhanden"
 msgid "This stock could not be found!"
 msgstr "Wertpapier existiert nicht!"
 
-#: app/js/controllers/options.js:126 app/js/controllers/registration.js:61
+#: app/js/controllers/options.js:126 app/js/controllers/registration.js:141
 msgid "This user name has already been taken"
 msgstr "Benutzername bereits vergeben"
 
@@ -1279,6 +1292,10 @@ msgstr "Benutzername bereits vergeben"
 #: app/templates/profile.overview.html:55
 msgid "Today"
 msgstr "Heute"
+
+#: app/js/controllers/registration.js:28 app/js/controllers/registration.js:32
+msgid "Too Weak"
+msgstr "Zu schwach"
 
 #: app/templates/depot.overview.html:11 app/templates/depot.watchlist.html:28
 #: app/templates/profile.overview.html:48
@@ -1317,14 +1334,6 @@ msgstr "Handle ein Wertpapier, das mit „A“ und eines, das mit „Z“ beginn
 msgid "Trade details"
 msgstr "Trade-Details"
 
-#: app/templates/registration.html:18
-msgid ""
-"Trade fictional 100,000&nbsp;€ with all stocks of the Börse Frankfurt in "
-"real-time"
-msgstr ""
-"Handle mit fiktiven 100.000&nbsp;€ alle Aktien der Börse Frankfurt in "
-"Echtzeit"
-
 #: app/templates/depot.transactions.html:59
 #: app/templates/profile.history.html:23 app/templates/tradeDetails.html:20
 msgid "Trade total"
@@ -1347,10 +1356,6 @@ msgstr "Transaktions&#xad;historie"
 #: app/templates/depot.transactionlog.html:20
 msgid "Transaction type"
 msgstr "Transaktions&#xad;typ"
-
-#: app/templates/registration.html:17
-msgid "Try out economy and stock trading in a challenging game"
-msgstr "Probiere Wirtschaft und Börse spielerisch aus"
 
 #: app/templates/error.404.html:5
 msgid ""
@@ -1403,6 +1408,14 @@ msgstr "Wert"
 msgid "Via E-Mail:"
 msgstr "Per E-Mail:"
 
+#: app/templates/registration.step1.html:7
+msgid "We just need to set up your account."
+msgstr "Wir müssen nur eben dein Benutzerkonto einrichten."
+
+#: app/js/controllers/registration.js:35
+msgid "Weak"
+msgstr "Schwach"
+
 #: app/templates/depot.overview.html:121 app/templates/depot.overview.html:52
 #: app/templates/depot.overview.html:89 app/templates/profile.overview.html:62
 msgid "Week"
@@ -1419,21 +1432,13 @@ msgstr ""
 "Aktien – Du hast 100.000&nbsp;€ Startkapital. Die <a>Hilfe</a> hilft dir "
 "weiter."
 
-#: app/js/controllers/registration.js:45 app/templates/feed.html:10
+#: app/js/controllers/registration.js:113 app/templates/feed.html:10
 msgid "Welcome to Tradity!"
 msgstr "Willkommen bei Tradity!"
 
 #: app/templates/trade.html:109
 msgid "What is the stop/limit price?"
 msgstr "Wo soll der Stop-/Limitwert liegen?"
-
-#: app/templates/registration.html:15
-msgid "Why participate?"
-msgstr "Warum mitmachen?"
-
-#: app/templates/registration.html:22
-msgid "Win valuable prizes in various categories each week"
-msgstr "Gewinne in verschiedenen Kategorien und jede Woche wertvolle Preise"
 
 #: app/templates/group.html:97
 msgid "Wordpress integration"
@@ -1459,6 +1464,10 @@ msgstr "Schreibe eine Kurzbeschreibung über dich."
 #: app/templates/options.html:78 app/templates/options.html:84
 msgid "Yes"
 msgstr "Ja"
+
+#: app/templates/registration.step1.html:6
+msgid "You are almost there!"
+msgstr "Du bist fast da!"
 
 #: app/templates/options.html:88
 msgid ""
@@ -1597,7 +1606,7 @@ msgstr "Deine Gruppen"
 msgid "Your need to upload your profile picture as a JPEG/PNG/GIF file"
 msgstr "Dein Profilbild musst du als JPEG, PNG oder GIF hochladen"
 
-#: app/js/controllers/options.js:132 app/js/controllers/registration.js:67
+#: app/js/controllers/options.js:132 app/js/controllers/registration.js:153
 msgid "Your password is too short!"
 msgstr "Das Passwort ist zu kurz!"
 
@@ -1618,7 +1627,7 @@ msgstr "Die Profilbilddatei ist leider zu groß (höchstens 3&nbsp;MB)"
 msgid "Your tradity client version is, unfortunately, no longer supported."
 msgstr "Deine Tradity-Client-Version wird leider nicht mehr unterstützt."
 
-#: app/js/controllers/options.js:135 app/js/controllers/registration.js:73
+#: app/js/controllers/options.js:135 app/js/controllers/registration.js:165
 msgid "Your user name contains invalid characters!"
 msgstr "Der Benutzername enthält unerlaubte Zeichen!"
 
@@ -1669,8 +1678,70 @@ msgstr "{{stockname}} von der Watchlist entfernt"
 msgid "… or use this link:"
 msgstr "… oder verwende diesen Link:"
 
-#~ msgid "<input placeholder=\"Search\">"
-#~ msgstr "<input placeholder=\"Suche\">"
+#~ msgid "About yourself"
+#~ msgstr "Über dich"
+
+#~ msgid "General information"
+#~ msgstr "Allgemeines"
+
+#~ msgid "I already have an account!"
+#~ msgstr "Ich bin bereits registriert!"
+
+#~ msgid "I have read and accepted the <a>TOS</a>."
+#~ msgstr "Ich habe die <a>AGB</a> gelesen und akzeptiert."
+
+#~ msgid ""
+#~ "If you take part in a local competition, please enter your class so we "
+#~ "can send you a certificate and (possibly) prizes."
+#~ msgstr ""
+#~ "Falls du an einem Stadtwettbewerb teilnimmst, gib bitte deine Klasse an,\n"
+#~ "sodass wir dir deine Urkunde und ggf. deinen Preis zukommen lassen können."
+
+#~ msgid ""
+#~ "Learn from experienced players and become best follower with Social "
+#~ "Trading"
+#~ msgstr ""
+#~ "Lerne als Neuling von erfahreneren Mitspielern und werde bester Follower "
+#~ "im Social Trading"
+
+#~ msgid "Make intelligent decisions and win as the best trader, or…"
+#~ msgstr "Triff kluge Entscheidungen und siege als bester Trader oder…"
+
+#~ msgid ""
+#~ "Please choose your school/university/group in order to ensure that you "
+#~ "are eligible for prizes internal to your group (if there are any)."
+#~ msgstr ""
+#~ "Bitte wähle die Schule/Uni/Gruppe aus, an welcher du bist.\n"
+#~ "So ist gewährleistet, dass du (sofern deine Schule/Uni/Gruppe\n"
+#~ "einen eigenen Wettbewerb hat) gruppenintern gewinnberechtigt bist."
+
+#~ msgid "Please confirm that you have read the TOS"
+#~ msgstr "Bitte bestätige, dass du die AGB gelesen hast"
+
+#~ msgid "Talk about news and your decisions within your group"
+#~ msgstr ""
+#~ "Tausche dich mit deinen Freunden über Nachrichten und Entscheidungen in "
+#~ "einer eigenen Gruppe aus"
+
+#~ msgid "The following data is required to participate in the competition"
+#~ msgstr ""
+#~ "Diese Daten benötigen wir, damit du auch am Wettbewerb teilnehmen kannst"
+
+#~ msgid ""
+#~ "Trade fictional 100,000&nbsp;€ with all stocks of the Börse Frankfurt in "
+#~ "real-time"
+#~ msgstr ""
+#~ "Handle mit fiktiven 100.000&nbsp;€ alle Aktien der Börse Frankfurt in "
+#~ "Echtzeit"
+
+#~ msgid "Try out economy and stock trading in a challenging game"
+#~ msgstr "Probiere Wirtschaft und Börse spielerisch aus"
+
+#~ msgid "Why participate?"
+#~ msgstr "Warum mitmachen?"
+
+#~ msgid "Win valuable prizes in various categories each week"
+#~ msgstr "Gewinne in verschiedenen Kategorien und jede Woche wertvolle Preise"
 
 #~ msgid "Game start"
 #~ msgstr "Spielbeginn"

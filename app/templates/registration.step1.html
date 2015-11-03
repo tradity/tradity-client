@@ -8,13 +8,13 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-6 col-lg-offset-3 text-center">
-			<div class="form-group" ng-class="{ 'has-error': step1.name.$invalid }" translate>
+			<div class="form-group" ng-class="{'has-error': registration.validateStatus.name}" translate>
 				<input name="name" ng-model="registration.name" type="text" class="form-control input-lg" 
 					placeholder="User name" required 
 					popover="Enter your username" popover-trigger="focus" popover-placement="right" popover-animation="false"
 					ng-blur="registration.validateName()">
 			</div>
-			<div class="form-group" ng-class="{ 'has-error': step1.email.$invalid && !step1.email.$pristine}" translate>
+			<div class="form-group" ng-class="{'has-error': registration.validateStatus.email}" translate>
 				<input name="email" ng-model="registration.email" type="email" class="form-control input-lg" placeholder="Email address" required 
 					popover="Enter your email address" popover-trigger="focus" popover-placement="right" popover-animation="false"
 					ng-blur="registration.validateEmail()">

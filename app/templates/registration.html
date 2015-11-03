@@ -8,11 +8,12 @@
 			<img class="logo" src="img/logo.png" /></div>
 		</div>
 		<div class="col-sm-8 text-right header-text">
-			<div class="button-group" style="display:inline">
-				<button ng-repeat="lang in serverConfig.languages" type="button" class="btn btn-primary" ng-model="registration.lang" btn-radio="lang.id" title="{{lang.name}}">{{lang.id | uppercase}}</button>
-			</div>
+			
 			<a href="https://tradity.de" class="header-link" translate>Let me see more about Tradity!</a>
 			<a ui-sref="index.login" class="header-link" translate>Login</a>
+			<div class="language-chooser">
+				<button ng-repeat="lang in serverConfig.languages" type="button" class="btn btn-sm btn-primary" ng-model="registration.lang" btn-radio="lang.id" title="{{lang.name}}">{{lang.id | uppercase}}</button>
+			</div>
 		</div>
 	</div>
 	<form name="registration.form" novalidate>

@@ -33,7 +33,7 @@ angular.module('tradity').
 		$scope.connectionLastRx = 0;
 		$scope.connectionCheck = function() {
 			var alive = function() {
-				if ($state.includes('error')) {
+				if ($state.includes('error.connection')) {
 					socket.reconnect();
 					$state.go('game.feed');
 				}

@@ -7,7 +7,10 @@
 angular.module('tradity').
 controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dialogs, safestorage, gettext, languageManager, asyncLoadJS, socket) {
 	var vm = this;
-	vm.validateStatus = {name: '', email: ''};
+	vm.validateStatus = {
+		name: '',
+		email: ''
+	};
 	vm.school = $stateParams.schoolid; // XXX
 	vm.traditye = 0;
 	vm.dla_optin = 0;
@@ -44,21 +47,34 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		},
 	];
 
+	var validationMsg = { // [code: msg]
+		'reg-invalid-email': gettext('Please enter your valid email'),
+		'reg-email-already-present': gettext('Email has been used to register with us'),
+		'reg-name-invalid-char': gettext('Username contains not-allowed characters'),
+		'reg-name-already-present': gettext('Username has been taken'),
+	};
+
 	vm.questionnaire = socket.emit('list-questionnaires').then(function(data) {
 		if (data.code != 'list-questionnaires-success')
 			return;
-		
+
 		// ugly, works for now
 		return vm.questionnaire = data.questionnaires[1];
 	});
-	
-	vm.saveQuestionnaire = function () {
+
+	vm.saveQuestionnaire = function() {
 		var results = [];
 		var questions = vm.questionnaire[vm.lang].questions;
 		for (var i = 0; i < questions.length; i++) {
 			if (vm.results[i]) {
-				results.push({question: questions[i].question_id, answers: [{answer: parseInt(vm.results[i])}]});
-			} else {
+				results.push({
+					question: questions[i].question_id,
+					answers: [{
+						answer: parseInt(vm.results[i])
+					}]
+				});
+			}
+			else {
 				vm.alerts.push({
 					type: 'danger',
 					msg: gettext('Please answer all the questions')
@@ -81,7 +97,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 	vm.genders = socket.emit('list-genders').then(function(data) {
 		if (data.code != 'list-genders-success')
 			return;
-		
+
 		return vm.genders = data.genders;
 	});
 
@@ -90,7 +106,9 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		vm.alerts.splice(index, 1);
 	};
 
-	$scope.$watch(function() { return vm.lang }, function() {
+	$scope.$watch(function() {
+		return vm.lang
+	}, function() {
 		languageManager.setCurrentLanguage(vm.lang);
 	});
 
@@ -191,10 +209,10 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 			});
 		/*if (!vm.schoolname_none && !vm.schoolname) // XXX
 			return vm.alerts.push({ type: 'danger', msg: gettext('Please indicate which organization or school you belong to') });*/
-		
-		var d = Date.UTC($scope.birthdayy, $scope.birthdaym-1, $scope.birthdayd);
+
+		var d = Date.UTC($scope.birthdayy, $scope.birthdaym - 1, $scope.birthdayd);
 		if (!$scope.birthdayy) d = null;
-		
+
 		safestorage.setPassword(vm.password);
 		socket.emit('register', {
 			name: vm.name,
@@ -223,6 +241,11 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 			email: vm.email
 		}, function(data) {
 			vm.validateStatus.email = data.code != 'validate-email-valid';
+			if (vm.validateStatus.email)
+				vm.alerts.push({
+					type: 'danger',
+					msg: validationMsg[data.code]
+				});
 		});
 	}
 
@@ -231,11 +254,16 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 			name: vm.name
 		}, function(data) {
 			vm.validateStatus.name = data.code != 'validate-username-valid';
+			if (vm.validateStatus.name)
+				vm.alerts.push({
+					type: 'danger',
+					msg: validationMsg[data.code]
+				});
 		});
 	}
-	
+
 	var zxcvbnLoaded = asyncLoadJS(['js/jit/zxcvbn.js']);
-	
+
 	$scope.$watch(function() {
 		return vm.password;
 	}, function(value) {

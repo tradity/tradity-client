@@ -45,11 +45,12 @@
 				</div>
 				<div class=" col-lg-6">
 					<div class="form-group" translate>
+						<div class="input-group">
 						<input ng-model="registration.birthday" type="text" class="form-control input-lg" placeholder="Birthday" 
 							datepicker-popup is-open="registration.datepickerOpened" ng-focus="registration.openDatepicker($event)">
-						<!--<span class="input-group-btn">-->
-      <!--          			<button type="button" class="btn btn-lg btn-default"><i class="glyphicon glyphicon-calendar"></i></button>-->
-      <!--        			</span>-->
+						<span class="input-group-btn">
+                			<button type="button" class="btn btn-lg btn-default" ng-focus="registration.openDatepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              			</span></div>
 					</div>
 				</div>
 

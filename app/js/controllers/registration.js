@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dialogs, safestorage, gettext, languageManager, asyncLoadJS, socket) {
+controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dialogs, safestorage, gettext, languageManager, asyncLoadJS, socket, user) {
 	var vm = this;
 	vm.validateStatus = {
 		name: '',
@@ -54,6 +54,12 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		'reg-name-invalid-char': gettext('Username contains not-allowed characters'),
 		'reg-name-already-present': gettext('Username has been taken'),
 	};
+
+	// possibly redirect to game feed when already logged in
+	user.me().then(function() {
+		$state.go('game.feed');
+	})
+
 
 	vm.questionnaire = socket.emit('list-questionnaires').then(function(data) {
 		if (data.code != 'list-questionnaires-success')
@@ -276,7 +282,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 			vm.password_text = strengths[result.score].text;
 		});
 	});
-	
+
 	vm.openDatepicker = function(event) {
 		vm.datepickerOpened = true;
 	};

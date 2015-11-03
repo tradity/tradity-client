@@ -25,6 +25,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 	vm.genderIndex = null;
 	vm.startTime = Date.now();
 	vm.results = [];
+	vm.datepickerOpened = false;
 	var strengths = [
 		{
 			style: 'danger',
@@ -210,8 +211,8 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		/*if (!vm.schoolname_none && !vm.schoolname) // XXX
 			return vm.alerts.push({ type: 'danger', msg: gettext('Please indicate which organization or school you belong to') });*/
 
-		var d = Date.UTC($scope.birthdayy, $scope.birthdaym - 1, $scope.birthdayd);
-		if (!$scope.birthdayy) d = null;
+		// var d = Date.UTC($scope.birthdayy, $scope.birthdaym - 1, $scope.birthdayd);
+		// if (!$scope.birthdayy) d = null;
 
 		safestorage.setPassword(vm.password);
 		socket.emit('register', {
@@ -232,7 +233,8 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 			dla_optin: vm.dla_optin,
 			invitekey: vm.invitekey,
 			gender: vm.genders.genders[vm.genderIndex],
-			birthday: d
+			// birthday: d
+			birthday: vm.birthday
 		});
 	};
 
@@ -274,4 +276,8 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 			vm.password_text = strengths[result.score].text;
 		});
 	});
+	
+	vm.openDatepicker = function(event) {
+		vm.datepickerOpened = true;
+	};
 });

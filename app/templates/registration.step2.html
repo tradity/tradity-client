@@ -31,29 +31,30 @@
 				<div class="form-group col-lg-6" translate>
 					<input ng-model="registration.giv_name" type="text" class="form-control input-lg" placeholder="First name" autofocus>
 				</div>
-				<div class="form-group col-lg-6 " translate>
+				<div class="form-group col-lg-6" translate>
 					<input ng-model="registration.fam_name" type="text" class="form-control input-lg" placeholder="Last name">
 				</div>
 			</div>
 			<div class="row">
-				<div class="form-group col-lg-3 " translate>
-					<select ng-model="registration.genderIndex " class="form-control input-lg " placeholder="Gender">
+				<div class="form-group col-lg-6" translate>
+					<select ng-model="registration.genderIndex " class="form-control input-lg" placeholder="Gender">
 						<option ng-repeat="gender in registration.genders.genders " ng-value="{{$index}} ">
 							{{registration.genders.translations[registration.lang][gender] || gender}}
 						</option>
 					</select>
 				</div>
-				<div class="form-group col-lg-3" translate>
-					<input ng-model="registration.birthdayd" type="number" max="31" min="0" class="form-control input-lg " placeholder="Birth day" class="well well-sm " datepicker-popup>
+				<div class=" col-lg-6">
+					<div class="form-group" translate>
+						<input ng-model="registration.birthday" type="text" class="form-control input-lg" placeholder="Birthday" 
+							datepicker-popup is-open="registration.datepickerOpened" ng-focus="registration.openDatepicker($event)">
+						<!--<span class="input-group-btn">-->
+      <!--          			<button type="button" class="btn btn-lg btn-default"><i class="glyphicon glyphicon-calendar"></i></button>-->
+      <!--        			</span>-->
+					</div>
 				</div>
-				<div class="form-group col-lg-3" translate>
-					<input ng-model="registration.birthdaym" type="number" max="12" min="0" class="form-control input-lg " placeholder="Birth month" class="well well-sm " datepicker-popup>
-				</div>
-				<div class="form-group col-lg-3" translate>
-					<input ng-model="registration.birthdayy" type="number" max="2015" min="0" class="form-control input-lg " placeholder="Birth year" class="well well-sm " datepicker-popup>
-				</div>
+
 			</div>
-			<div class="form-group ">
+			<div class="form-group">
 				<tradity-group-chooser school-id-model="school" school-class-model="schoolclass" />
 			</div>
 			<div class="form-group" ng-show="serverConfig.betakeyRequired" translate>

@@ -72,7 +72,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 			fill_time: Date.now() - vm.startTime,
 			fill_language: vm.lang
 		}, function(data) {
-			//vm.validateStatus.name = data.code != 'validate-username-valid';
+			if (data.code == 'save-questionnaire-success') $state.go('game.feed');
 		});
 	};
 

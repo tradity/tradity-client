@@ -7,7 +7,7 @@
 angular.module('tradity').
 	controller('SponsorsCtrl', function($scope, $rootScope, socket, $stateParams) {
 		$scope.sponsors = [
-			{
+/*			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/02/Tradity_EckernfoerderBank_Unterstuetzer.png',
 				link: 'https://www.eckernfoerder-bank.de/privatkunden.html',
 				schoolPathRegex: /^\/eckernfoerde(\/|$)/i,
@@ -24,53 +24,53 @@ angular.module('tradity').
 				link: 'http://www.fahrschule-tiedemann.de/',
 				schoolPathRegex: /^\/Schleswig(\/|$)/i,
 				group: true
-			},
+			},*/
 /*			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_FahrschuleSchneiderNMS.png',
 				link: 'http://www.fahrschule-nms.de/',
 				schoolPathRegex: /^\/Neumuenster(\/|$)/i,
 				group: true
 			},*/
-			{
-				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_VR-Bank-Niebuell.png',
-				link: 'https://www.vrbankniebuell.de/privatkunden.html',
-				schoolPathRegex: /^\/niebuell(\/|$)/i,
-				group: true
-			},
+			// {
+			// 	picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_VR-Bank-Niebuell.png',
+			// 	link: 'https://www.vrbankniebuell.de/privatkunden.html',
+			// 	schoolPathRegex: /^\/niebuell(\/|$)/i,
+			// 	group: true
+			// },
 /*			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRStormarn.png',
 				link: 'https://www.volksbank-stormarn.de/privatkunden.html',
 				schoolPathRegex: /^\/BadOldesloe(\/|$)/i,
 				group: true
 			},*/
-			{
-				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_Husumer-Volksbank.png',
-				link: 'https://www.husumer-volksbank.de/homepage.html',
-				schoolPathRegex: /^\/Husum(\/|$)/i,
-				group: true
-			},
-			{
+			// {
+			// 	picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_Husumer-Volksbank.png',
+			// 	link: 'https://www.husumer-volksbank.de/homepage.html',
+			// 	schoolPathRegex: /^\/Husum(\/|$)/i,
+			// 	group: true
+			// },
+/*			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_Nordseefahrschule-Husum.png',
 				link: 'http://www.nordseefahrschule.de/',
 				schoolPathRegex: /^\/Husum(\/|$)/i,
 				group: true
-			},
+			},*/
 /*			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/10/Boersenspiel_Tradity_Volksbank-Ahlen-Sassenberg-Warendorf_Unterstuetzer.png',
 				link: 'https://www.vbasw.de/homepage.html',
 				schoolPathRegex: /^\/sassenberg(\/|$)/i,
 				group: true
 			},*/
-			{
+/*			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Flatex_Unterstuetzer-e1403979869133.png',
 				link: 'https://www.flatex.de/',
 				group: true
-			},
-			{
+			},*/
+/*			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Logitech_Unterstuetzer-e1403979928493.png',
 				link: 'http://www.logitech.com/de-de/speakers-audio/home-pc-speakers',
 				group: true,
-			},
+			},*/
 			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/03/Boersenspiel_Tradity_Unterstuetzer_BoerseFrankfurt.png',
 				link: 'http://www.boerse-frankfurt.de/de/start#&reiter=vedesanleihe',

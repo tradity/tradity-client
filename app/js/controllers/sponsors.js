@@ -72,6 +72,26 @@ angular.module('tradity').
 				group: true,
 			},*/
 			{
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/03/Tradity_Boersenspiel_BAML.png',
+				link: '#',
+				group: true,
+			},
+			{
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/03/Tradity_Boersenspiel_Bertelsmann.png',
+				link: '#',
+				group: true,
+			},
+			{
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/03/Tradity_Boersenspiel_zeb.png',
+				link: '#',
+				group: true,
+			},
+			{
+				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/03/Tradity_Boersenspiel_WHU.png',
+				link: '#',
+				group: true,
+			},
+			{
 				picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/03/Boersenspiel_Tradity_Unterstuetzer_BoerseFrankfurt.png',
 				link: 'http://www.boerse-frankfurt.de/de/start#&reiter=vedesanleihe',
 				group: true,

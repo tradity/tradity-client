@@ -126,7 +126,7 @@ msgstr ""
 msgid "<button>Let’s go</button>"
 msgstr ""
 
-#: app/templates/registration.step1.html:28
+#: app/templates/registration.step1.html:31
 msgid "<button>Create Account</button>"
 msgstr ""
 
@@ -134,7 +134,7 @@ msgstr ""
 msgid "<i></i> watch"
 msgstr ""
 
-#: app/templates/registration.step1.html:14
+#: app/templates/registration.step1.html:17
 msgid "<input placeholder=\"Email address\" popover=\"Enter your email address\">"
 msgstr ""
 
@@ -142,11 +142,11 @@ msgstr ""
 msgid "<input placeholder=\"User name\" popover=\"Enter your username\">"
 msgstr ""
 
-#: app/templates/registration.step1.html:19
+#: app/templates/registration.step1.html:22
 msgid "<input placeholder=\"Password\" popover=\"Enter your password\">"
 msgstr ""
 
-#: app/templates/registration.step1.html:25
+#: app/templates/registration.step1.html:28
 msgid "<input placeholder=\"Repeat password\" popover=\"Re-enter your password\">"
 msgstr ""
 
@@ -155,15 +155,15 @@ msgid "<input id=\"betakey\" placeholder=\"Beta key\">"
 msgstr ""
 
 #: app/templates/registration.step2.html:46
-msgid "<input placeholder=\"Day\">"
+msgid "<input placeholder=\"Birth day\">"
 msgstr ""
 
 #: app/templates/registration.step2.html:49
-msgid "<input placeholder=\"Month\">"
+msgid "<input placeholder=\"Birth month\">"
 msgstr ""
 
 #: app/templates/registration.step2.html:52
-msgid "<input placeholder=\"Year\">"
+msgid "<input placeholder=\"Birth year\">"
 msgstr ""
 
 #: app/templates/registration.step2.html:34
@@ -272,7 +272,7 @@ msgstr ""
 msgid "<select placeholder=\"Gender\"><option>{{registration.genders.translations[registration.lang][gender] || gender}}</option></select>"
 msgstr ""
 
-#: app/templates/registration.step1.html:31
+#: app/templates/registration.step1.html:34
 msgid "<span>By creating an account you agree to our <a>terms &amp; conditions</a>.</span>"
 msgstr ""
 

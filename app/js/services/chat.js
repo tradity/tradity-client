@@ -47,7 +47,13 @@ angular.module('tradity')
 			socket.on('list-all-chats', function (data) {
 				self.onChats(data)
 			});
-			socket.emit('list-all-chats');
+			
+			// XXX
+			// addaleax: It is a BAD idea to send this out if we don’t know
+			// whether we’re logged in etc.
+			// this breaks cool registration stuff like registration links
+			// with pre-filled school data!
+			//socket.emit('list-all-chats');
 		}
 
 		Chats.prototype.add = function(event, chatid, members) {

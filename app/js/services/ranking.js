@@ -51,7 +51,7 @@ angular.module('tradity')
 				includeAll: self.spec.includeAll,
 				_cache: 30
 			}, function(data) {
-				if (data.code != 'get-ranking-success')
+				if (!/^(get-ranking-success|not-logged-in)$/.test(data.code))
 					return notification(gettext('There was a problem while loading the current ranking!'));
 				
 				self.rawResults = self.filterRawResults(data.result);

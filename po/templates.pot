@@ -139,7 +139,7 @@ msgid "<i></i> watch"
 msgstr ""
 
 #: app/templates/registration.step1.html:17
-msgid "<input placeholder=\"Email address\" popover=\"Enter your email address\">"
+msgid "<input placeholder=\"Email address\" popover=\"Please enter your uni email address if you're taking part in TradityU\">"
 msgstr ""
 
 #: app/templates/registration.step1.html:11
@@ -435,6 +435,10 @@ msgstr ""
 
 #: app/templates/groupOverview.html:7
 msgid "Choose your group"
+msgstr ""
+
+#: app/templates/group-chooser.html:20
+msgid "Class/Semester"
 msgstr ""
 
 #: app/templates/dialogs/error.html:12
@@ -1012,11 +1016,7 @@ msgid "Repeat password"
 msgstr ""
 
 #: app/templates/group-chooser.html:12
-msgid "School"
-msgstr ""
-
-#: app/templates/group-chooser.html:20
-msgid "School class"
+msgid "School/Uni"
 msgstr ""
 
 #: app/templates/trade.html:97

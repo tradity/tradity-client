@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Tradity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-11-05 21:09+0100\n"
+"PO-Revision-Date: 2015-11-05 21:20+0100\n"
 "Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"
 "Language-Team: German <http://weblate.tradity.de/projects/tradity/tradity-"
 "client-master/de/>\n"
@@ -231,10 +231,11 @@ msgstr "<i></i> Watchen"
 
 #: app/templates/registration.step1.html:17
 msgid ""
-"<input placeholder=\"Email address\" popover=\"Enter your email address\">"
+"<input placeholder=\"Email address\" popover=\"Please enter your uni email "
+"address if you're taking part in TradityU\">"
 msgstr ""
-"<input placeholder=\"E-Mail-Adresse\" popover=\"Gib deine E-Mail-Adresse an"
-"\">"
+"<input placeholder=\"E-Mail-Adresse\" popover=\"Gib deine E-Mail-Adresse an "
+"(ggf. von deiner Uni)\">"
 
 #: app/templates/registration.step1.html:11
 msgid "<input placeholder=\"User name\" popover=\"Enter your username\">"
@@ -569,6 +570,10 @@ msgstr "Antworten überprüfen"
 #: app/templates/groupOverview.html:7
 msgid "Choose your group"
 msgstr "Wähle deine Gruppe aus"
+
+#: app/templates/group-chooser.html:20
+msgid "Class/Semester"
+msgstr "Klasse/Semester"
 
 #: app/templates/dialogs/error.html:12
 msgid "Close"
@@ -1140,12 +1145,8 @@ msgid "Repeat password"
 msgstr "Passwort wiederholen"
 
 #: app/templates/group-chooser.html:12
-msgid "School"
-msgstr "Schule"
-
-#: app/templates/group-chooser.html:20
-msgid "School class"
-msgstr "Schulklasse"
+msgid "School/Uni"
+msgstr "Schule/Uni"
 
 #: app/templates/trade.html:97
 msgid "Sell"
@@ -1704,6 +1705,9 @@ msgstr "{{stockname}} von der Watchlist entfernt"
 #: app/templates/inviteform.html:11
 msgid "… or use this link:"
 msgstr "… oder verwende diesen Link:"
+
+#~ msgid "School class"
+#~ msgstr "Schulklasse"
 
 #~ msgid "<input placeholder=\"Day\">"
 #~ msgstr "<input placeholder=\"Tag\">"

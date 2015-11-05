@@ -118,7 +118,7 @@ msgstr ""
 msgid "<a id=\"register-btn\">Register</a><br> <span>or <a id=\"login-btn\">Login</a></span>"
 msgstr ""
 
-#: app/templates/registration.step2.html:62
+#: app/templates/registration.step2.html:64
 msgid "<button>Off to the final step!</button>"
 msgstr ""
 
@@ -128,6 +128,10 @@ msgstr ""
 
 #: app/templates/registration.step1.html:31
 msgid "<button>Create Account</button>"
+msgstr ""
+
+#: app/templates/registration.step2.html:47
+msgid "<div><input placeholder=\"Birthday\"> <span><button><i></i></button></span></div>"
 msgstr ""
 
 #: app/templates/profile.html:16
@@ -150,20 +154,8 @@ msgstr ""
 msgid "<input placeholder=\"Repeat password\" popover=\"Re-enter your password\">"
 msgstr ""
 
-#: app/templates/registration.step2.html:59
+#: app/templates/registration.step2.html:61
 msgid "<input id=\"betakey\" placeholder=\"Beta key\">"
-msgstr ""
-
-#: app/templates/registration.step2.html:46
-msgid "<input placeholder=\"Birth day\">"
-msgstr ""
-
-#: app/templates/registration.step2.html:49
-msgid "<input placeholder=\"Birth month\">"
-msgstr ""
-
-#: app/templates/registration.step2.html:52
-msgid "<input placeholder=\"Birth year\">"
 msgstr ""
 
 #: app/templates/registration.step2.html:34
@@ -483,7 +475,7 @@ msgid "Could not send invitation link"
 msgstr ""
 
 #: app/js/controllers/options.js:160
-#: app/js/controllers/registration.js:129
+#: app/js/controllers/registration.js:154
 msgid "Could not send verification e-mail. Please turn to tech@tradity.de."
 msgstr ""
 
@@ -534,7 +526,7 @@ msgid "Do you want to receive achievements for daily activity?"
 msgstr ""
 
 #: app/js/controllers/trade.js:39
-msgid "Do you want to trade {{amount}} of {{stockname}}?"
+msgid "Do you want to trade {{amount}} {{shares}} of {{stockname}}?"
 msgstr ""
 
 #: app/templates/options.html:22
@@ -547,6 +539,10 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
+#: app/js/controllers/registration.js:53
+msgid "Email has been used to register with us"
+msgstr ""
+
 #: app/js/controllers/feedblogs.js:36
 #: app/js/controllers/feedblogs.js:47
 #: app/js/controllers/feedblogs.js:57
@@ -554,7 +550,7 @@ msgstr ""
 msgid "Error: {{code}}"
 msgstr ""
 
-#: app/js/controllers/registration.js:43
+#: app/js/controllers/registration.js:47
 msgid "Excellent"
 msgstr ""
 
@@ -602,7 +598,7 @@ msgstr ""
 msgid "Go to the parent group"
 msgstr ""
 
-#: app/js/controllers/registration.js:39
+#: app/js/controllers/registration.js:43
 msgid "Good"
 msgstr ""
 
@@ -639,7 +635,7 @@ msgid "ISIN"
 msgstr ""
 
 #: app/templates/feed.html:21
-msgid "If you have any more questions regarding the game, you can write us an e-mail at <a>team@tradity.de</a> or post a question on <a>Facebook</a>. <span>Good luck!</span>"
+msgid "If you have any more questions regarding the game, you can write us an e-mail at <a>team@tradity.de</a> or post a question on Facebook. <span>Good luck!</span>"
 msgstr ""
 
 #: app/templates/game.html:157
@@ -694,7 +690,7 @@ msgstr ""
 msgid "Leader and stocks in your watchlist"
 msgstr ""
 
-#: app/js/controllers/trade.js:144
+#: app/js/controllers/trade.js:145
 msgid "Leader: %1"
 msgstr ""
 
@@ -706,7 +702,7 @@ msgstr ""
 msgid "Lessons"
 msgstr ""
 
-#: app/templates/registration.html:14
+#: app/templates/registration.html:12
 msgid "Let me see more about Tradity!"
 msgstr ""
 
@@ -728,7 +724,7 @@ msgstr ""
 
 #: app/templates/index.html:11
 #: app/templates/login.html:24
-#: app/templates/registration.html:15
+#: app/templates/registration.html:13
 msgid "Login"
 msgstr ""
 
@@ -799,11 +795,11 @@ msgstr ""
 msgid "No Group"
 msgstr ""
 
-#: app/js/controllers/registration.js:159
+#: app/js/controllers/registration.js:184
 msgid "No valid beta key was entered"
 msgstr ""
 
-#: app/js/controllers/trade.js:114
+#: app/js/controllers/trade.js:115
 msgid "Not enough stocks!"
 msgstr ""
 
@@ -833,7 +829,7 @@ msgstr ""
 msgid "Ok!"
 msgstr ""
 
-#: app/js/controllers/trade.js:111
+#: app/js/controllers/trade.js:112
 msgid "Only 50&nbsp;% of your assets may consist of a single stock!"
 msgstr ""
 
@@ -932,23 +928,27 @@ msgstr ""
 msgid "Pinboard"
 msgstr ""
 
-#: app/js/controllers/registration.js:64
+#: app/js/controllers/registration.js:87
 msgid "Please answer all the questions"
 msgstr ""
 
-#: app/js/controllers/registration.js:114
+#: app/js/controllers/registration.js:139
 msgid "Please click on the link in the verification e-mail we just sent you in order to be able to use the full functionality of Tradity and be eligible for winning the available prizes."
 msgstr ""
 
-#: app/js/controllers/trade.js:71
+#: app/js/controllers/trade.js:72
 msgid "Please enter a numerical stop/limit value"
 msgstr ""
 
-#: app/js/controllers/registration.js:190
+#: app/js/controllers/registration.js:215
 msgid "Please enter your name in order to be eligible for winning prizes"
 msgstr ""
 
-#: app/js/controllers/registration.js:175
+#: app/js/controllers/registration.js:52
+msgid "Please enter your valid email"
+msgstr ""
+
+#: app/js/controllers/registration.js:200
 msgid "Please provide an e-mail address"
 msgstr ""
 
@@ -1093,11 +1093,11 @@ msgstr ""
 msgid "Sub-groups"
 msgstr ""
 
-#: app/js/controllers/registration.js:119
+#: app/js/controllers/registration.js:144
 msgid "Successful registration"
 msgstr ""
 
-#: app/js/controllers/trade.js:99
+#: app/js/controllers/trade.js:100
 msgid "Successfully traded!"
 msgstr ""
 
@@ -1122,7 +1122,7 @@ msgid "Terms &amp; Privacy"
 msgstr ""
 
 #: app/js/controllers/options.js:81
-#: app/js/controllers/registration.js:185
+#: app/js/controllers/registration.js:210
 msgid "The entered passwords do not match"
 msgstr ""
 
@@ -1131,15 +1131,15 @@ msgid "The entered provision value is invalid"
 msgstr ""
 
 #: app/js/controllers/options.js:129
-#: app/js/controllers/registration.js:147
+#: app/js/controllers/registration.js:172
 msgid "The entered school has not been found"
 msgstr ""
 
-#: app/js/controllers/trade.js:93
+#: app/js/controllers/trade.js:94
 msgid "The trade will be executed as soon as the given conditions are fulfilled."
 msgstr ""
 
-#: app/js/controllers/trade.js:117
+#: app/js/controllers/trade.js:118
 msgid "The trade will be executed when the stock exchange opens"
 msgstr ""
 
@@ -1164,16 +1164,16 @@ msgid "This comment has been removed."
 msgstr ""
 
 #: app/js/controllers/options.js:123
-#: app/js/controllers/registration.js:135
+#: app/js/controllers/registration.js:160
 msgid "This e-mail address has already been taken"
 msgstr ""
 
-#: app/js/controllers/trade.js:127
+#: app/js/controllers/trade.js:128
 msgid "This stock could not be found!"
 msgstr ""
 
 #: app/js/controllers/options.js:126
-#: app/js/controllers/registration.js:141
+#: app/js/controllers/registration.js:166
 msgid "This user name has already been taken"
 msgstr ""
 
@@ -1185,8 +1185,8 @@ msgstr ""
 msgid "Today"
 msgstr ""
 
-#: app/js/controllers/registration.js:28
 #: app/js/controllers/registration.js:32
+#: app/js/controllers/registration.js:36
 msgid "Too Weak"
 msgstr ""
 
@@ -1263,7 +1263,7 @@ msgstr ""
 msgid "Unfortunately, we could not connect to the game server :( <br> We are (probably) already working on the problem, but if you want to, you can write us an encouraging message at tech@tradity."
 msgstr ""
 
-#: app/js/controllers/trade.js:124
+#: app/js/controllers/trade.js:125
 msgid "Unfortunately, your trade exceeds the maximum tradable amount of this stock"
 msgstr ""
 
@@ -1277,6 +1277,14 @@ msgstr ""
 
 #: app/templates/options.html:12
 msgid "Username"
+msgstr ""
+
+#: app/js/controllers/registration.js:54
+msgid "Username contains not-allowed characters"
+msgstr ""
+
+#: app/js/controllers/registration.js:55
+msgid "Username has been taken"
 msgstr ""
 
 #: app/templates/ranking.html:9
@@ -1296,7 +1304,7 @@ msgstr ""
 msgid "We just need to set up your account."
 msgstr ""
 
-#: app/js/controllers/registration.js:35
+#: app/js/controllers/registration.js:39
 msgid "Weak"
 msgstr ""
 
@@ -1311,7 +1319,7 @@ msgstr ""
 msgid "Welcome to Tradity – Germany’s first Social Trading Stock Market Game! Start instantly and invest into other players or buy your own shares – You have 100,000&nbsp;€ starting money. The <a>help</a> can give you hints."
 msgstr ""
 
-#: app/js/controllers/registration.js:113
+#: app/js/controllers/registration.js:138
 #: app/templates/feed.html:10
 msgid "Welcome to Tradity!"
 msgstr ""
@@ -1355,7 +1363,7 @@ msgstr ""
 msgid "You can – if you agree – receive achievements for being active on multiple days in a row. We take the protection of your personal data seriously: <br> All information regarding your activity log will be stored encrypted by your password only. Unfortunately, this also means that using the “forgot password” option will require you to start gathering activity entries anew. <br> After {{DLAValidityDays}} days your activity log will be cleared and cannot be used for gaining achievements any longer. <br> Currently your activity log contains the following entries:"
 msgstr ""
 
-#: app/js/controllers/trade.js:108
+#: app/js/controllers/trade.js:109
 msgid "You do not have enough leftover money for this trade!"
 msgstr ""
 
@@ -1399,7 +1407,7 @@ msgstr ""
 msgid "You need to choose a stock!"
 msgstr ""
 
-#: app/js/controllers/trade.js:105
+#: app/js/controllers/trade.js:106
 msgid "You need to provide a verified e-mail address in order to be eligible for follower trades!"
 msgstr ""
 
@@ -1428,7 +1436,7 @@ msgid "Your need to upload your profile picture as a JPEG/PNG/GIF file"
 msgstr ""
 
 #: app/js/controllers/options.js:132
-#: app/js/controllers/registration.js:153
+#: app/js/controllers/registration.js:178
 msgid "Your password is too short!"
 msgstr ""
 
@@ -1451,7 +1459,7 @@ msgid "Your tradity client version is, unfortunately, no longer supported."
 msgstr ""
 
 #: app/js/controllers/options.js:135
-#: app/js/controllers/registration.js:165
+#: app/js/controllers/registration.js:190
 msgid "Your user name contains invalid characters!"
 msgstr ""
 
@@ -1471,7 +1479,7 @@ msgstr ""
 msgid "pinboard"
 msgstr ""
 
-#: app/js/controllers/trade.js:41
+#: app/js/controllers/trade.js:42
 msgid "share"
 msgid_plural "shares"
 msgstr[0] ""

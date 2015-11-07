@@ -6,6 +6,10 @@
 <p>User mit 1+ Trades: {{tradeusers}} ({{100 * tradeusers / usercount |number:2}} %) (Gini-Koeffizient: {{tradeGini | number: 3}})</p>
 <p>User mit bestätigter E-Mail: {{verifusers}} ({{100 * verifusers / usercount |number:2}} %)</p>
 
+<form class="pure-form">
+	<button ng-click="exportEmailCSV()">E-Mail CSV exportieren</button>
+</form>
+
 <form class="pure-form" id="rankingSearch">
 	<input type="search" ng-model="searchText" placeholder="Suche" class="pure-input">
 	

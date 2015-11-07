@@ -49,29 +49,50 @@ angular.module('tradity').
 		}
 		
 		socket.on('list-all-users', function(data) {
-			if (data.code == 'list-all-users-success') {
-				$scope.userlist = data.results;
+			if (data.code != 'list-all-users-success')
+				return;
+		
+			$scope.userlist = data.results;
+			
+			$scope.usercount = 0;
+			$scope.tradeusers = 0;
+			$scope.tickusers = 0;
+			$scope.verifusers = 0;
+			
+			var tradedistr = [];
+			
+			for (var i = 0; i < $scope.userlist.length; ++i) {
+				var u = $scope.userlist[i];
+				++$scope.usercount;
+				if (u.emailverif) ++$scope.verifusers;
+				if (u.tradecount >= 1) ++$scope.tradeusers;
 				
-				$scope.usercount = 0;
-				$scope.tradeusers = 0;
-				$scope.tickusers = 0;
-				$scope.verifusers = 0;
-				
-				var tradedistr = [];
-				
-				for (var i = 0; i < $scope.userlist.length; ++i) {
-					var u = $scope.userlist[i];
-					++$scope.usercount;
-					if (u.emailverif) ++$scope.verifusers;
-					if (u.tradecount >= 1) ++$scope.tradeusers;
-					
-					tradedistr.push(u.tradecount);
-				}
-				
-				tradedistr.sort();
-				$scope.tradeGini = gini(tradedistr);
+				tradedistr.push(u.tradecount);
 			}
+			
+			tradedistr.sort();
+			$scope.tradeGini = gini(tradedistr);
 		}, $scope);
+		
+		$scope.exportEmailCSV = function() {
+			var quote = function(s) {
+				if (s == null)
+					return 'NULL';
+				return JSON.stringify(String(s));
+			};
+			
+			var csv = '"giv_name";"fam_name";"name";"registertime";"email";"name"\n' +
+			$scope.userlist.map(function(u) {
+				return [
+					quote(u.giv_name), quote(u.fam_name), quote(u.name),
+					parseInt(u.registertime) || 0, quote(u.email), quote(u.schoolpath)
+				].join(';');
+			}).join('\n') + '\n';
+			
+			var blob = new Blob([new TextEncoder().encode(csv)], {type: 'text/csv;charset=utf-8'});
+			var url = URL.createObjectURL(blob);
+			window.open(url, 'export_email_csv');
+		};
 		
 		socket.emit('list-all-users');
 		

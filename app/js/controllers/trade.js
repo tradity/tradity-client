@@ -36,9 +36,10 @@ angular.module('tradity').
 				return dialogs.error(gettext('You need to choose a stock!'));
 				
 			var dlg = dialogs.confirm(gettext('Trade'),
-				gettextCatalog.getString('Do you want to trade {{amount}} of {{stockname}}?', {
+				gettextCatalog.getString('Do you want to trade {{amount}} {{shares}} of {{stockname}}?', {
 					stockname: $scope.stockname,
-					amount: gettextCatalog.getPlural($scope.amount, 'share', 'shares')
+					amount: $scope.amount,
+					shares: gettextCatalog.getPlural($scope.amount, 'share', 'shares')
 				}));
 
 			dlg.result.then(function(btn) {

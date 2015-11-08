@@ -9,7 +9,7 @@
 	</a>
 </script>
 <div class="form-group">
-<input type="text" placeholder="{{'School'|translate}}" class="form-control input-lg"
+<input type="text" placeholder="{{'School/Uni'|translate}}" class="form-control input-lg"
 	ng-model="school"
 	typeahead="entry as entry.displayName for entry in listGroups($viewValue)"
 	typeahead-min-length="2"
@@ -17,5 +17,5 @@
 	typeahead-select-on-exact="true"
 	typeahead-template-url="groupChooserEntry.html"/></div>
 <div class="form-group">
-<input type="text" ng-model="schoolclass" placeholder="{{'School class'|translate}}" id="schoolclass" class="form-control input-lg" />
+<input type="text" ng-model="schoolclass" placeholder="{{'Class/Semester'|translate}}" id="schoolclass" class="form-control input-lg" />
 </div>

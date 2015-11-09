@@ -19,7 +19,7 @@
     "lzma": "https://github.com/addaleax/LZMA-JS.git#development-all",
     "jquery": "2.1.1",
     "ngInfiniteScroll": "1.2.x",
-    "cytoscape": "~2.3.3",
+    "cytoscape": "~2.5.0",
     "asmcrypto": "~0.0.6",
     "angular-translate-loader-static-files": "~2.5.2",
     "open-sans-fontface": "~1.2.0",

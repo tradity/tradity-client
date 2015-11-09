@@ -114,7 +114,7 @@ angular.module('tradity')
 						avg[additiveKeys[j]] = 0;
 					
 					var n = 0;
-					for (var i = 0; i < students.length && i < 5; ++i) {
+					for (var i = 0; i < students.length && i < Math.max(students.length / 2, 4); ++i) {
 						++n;
 						
 						avg.hastraded |= students[i].hastraded;

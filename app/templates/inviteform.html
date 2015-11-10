@@ -14,16 +14,20 @@
 					</span>
 			</div>
 		</div>
-		<span translate>… or use this link:</span>
-		<span id="invitelink" class="options-input pure-input-1">
-			<span ng-show="invitelink">
-				<a ng-href="{{invitelink}}">{{invitelink}}</a>
-				<i translate>(Right click + “Copy link”)</i>
-			</span>
-		<span ng-hide="invitelink" translate>
-				[Loading invite link]
-			</span>
-		</span>
+
+		<div class="form-group">
+			<label for="invitelink" translate>Via invite link:</label>
+			<div class="input-group input-group-lg" translate>
+				<input type="text" ng-model="invitelink" readonly id="invitelink" placeholder="Loading invite link..." class="form-control input-lg" popover="{{copyTooltip.msg}}" popover-placement="top" popover-is-open="copyTooltip.isOpen" popover-animation="false">
+				<span class="input-group-btn">
+					<button data-clipboard-target="#invitelink" type="button" class="btn btn-lg btn-default btn-copy" ng-blur="closeCopyTooltip()" >
+						<i class="glyphicon glyphicon-copy"></i>
+					</button>
+					</span>
+
+			</div>
+			<span class="help-block" translate>Copy this link and send it to someone who you want to invite</span>
+		</div>
 	</form>
 
 </div>

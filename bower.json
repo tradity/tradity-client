@@ -25,7 +25,8 @@
     "open-sans-fontface": "~1.2.0",
     "tradity-connection": ">=0.9.2",
     "visionmedia-debug": "~2.2.0",
-    "zxcvbn": "~4.0.1"
+    "zxcvbn": "~4.0.1",
+    "clipboard": "~1.5.3"
   },
   "devDependencies": {
     "angular-mocks": "1.4.x",

@@ -36,4 +36,20 @@ angular.module('tradity').
 				});
 			}
 		};
+		
+			$scope.copyTooltip = {isOpen: false, msg: ''};
+		
+		var clipboard = new Clipboard('.btn-copy');
+		
+		clipboard.on('success', function() {
+			$scope.copyTooltip.isOpen = true;
+			$scope.copyTooltip.msg = gettext('Copied!');
+		}).on('error', function() {
+			$scope.copyTooltip.isOpen = true;
+			$scope.copyTooltip.msg = gettext('Press Ctrl-C/⌘-C to copy');
+		});
+		
+		$scope.closeCopyTooltip = function() {
+			$scope.copyTooltip = {isOpen: false, msg: ''};
+		}
 	});

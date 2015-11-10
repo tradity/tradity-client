@@ -6,6 +6,7 @@
 
 angular.module('tradity').
 	controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs, gettext, languageManager) {
+		
 		socket.on('get-own-options', function(data) {
 			if (!data.result)
 				return;
@@ -162,4 +163,6 @@ angular.module('tradity').
 				notification(gettext('Could not send verification e-mail. Please turn to tech@tradity.de.'));
 			}
 		});
+		
+		
 	});

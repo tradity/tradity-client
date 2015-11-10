@@ -5,7 +5,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs, gettext, languageManager) {
+controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs, gettext, languageManager, $q) {
+	$scope.genders = socket.emit('list-genders', { _cache: 500 }).then(function(data) {
+		if (data.code != 'list-genders-success')
+			return;
+
+		return $scope.genders = data.genders;
+	});
 
 	socket.on('get-own-options', function(data) {
 		if (!data.result)
@@ -37,8 +43,12 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
 		$scope.dla_optin = data.result.dla_optin && true;
 		$scope.delayorderhist = data.result.delayorderhist;
 		
-		$scope.birthday = data.result.birthday;
-		$scope.gender = data.result.gender;
+		$scope.birthday = new Date(data.result.birthday * 1000);
+		
+		$scope.genderIndex = null;
+		$q.when($scope.genders).then(function(genders) {
+			$scope.genderIndex = genders.genders.indexOf(data.result.gender);
+		});
 
 		// if (data.result.birthday !== null) {
 		// 	var d = new Date(data.result.birthday);
@@ -65,13 +75,6 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
 				break;
 		}
 	};
-
-	$scope.genders = socket.emit('list-genders').then(function(data) {
-		if (data.code != 'list-genders-success')
-			return;
-
-		return $scope.genders = data.genders;
-	});
 
 	$scope.useGravatar = function() {
 		fileemit(socket, 'https://secure.gravatar.com/avatar/' + md5.createHash($scope.ownUser.email) + '?s=384', 'publish', {
@@ -108,8 +111,6 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
 		if ($scope.dla_optin)
 			dailyLoginAchievements.submitToServer(true);
 
-		console.info($scope.delayorderhist);
-
 		socket.emit('change-options', {
 			name: $scope.name,
 			giv_name: $scope.giv_name,
@@ -119,8 +120,8 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
 			email: $scope.email,
 			school: $scope.school,
 			schoolclass: $scope.schoolclass,
-			birthday: $scope.birthday,
-			gender: $scope.gender,
+			birthday: parseInt($scope.birthday.getTime()/1000),
+			gender: $scope.genders.genders[$scope.genderIndex],
 			desc: $scope.desc,
 			lprovision: $scope.lprovision,
 			wprovision: $scope.wprovision,

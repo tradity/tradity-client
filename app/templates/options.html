@@ -149,15 +149,15 @@
 					<div class="input-group">
 						<input ng-model="birthday" type="text" class="form-control input-lg" placeholder="Birthday" datepicker-popup is-open="datepickerOpened" ng-focus="openDatepicker($event)">
 						<span class="input-group-btn">
-                			<button type="button" class="btn btn-lg btn-default" ng-click="openDatepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              			</span></div>
+							<button type="button" class="btn btn-lg btn-default" ng-click="openDatepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+						</span></div>
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group" translate>
 					<label for="gender" translate>Gender</label>
-					<select ng-model="genderIndex " class="form-control input-lg" placeholder="Gender">
-						<option ng-repeat="gender in genders.genders " ng-value="{{$index}} ">
+					<select ng-model="genderIndex" class="form-control input-lg" placeholder="Gender">
+						<option ng-repeat="gender in genders.genders" ng-value="{{$index}}">
 							{{genders.translations[lang][gender] || gender}}
 						</option>
 					</select>

@@ -38,11 +38,11 @@
 				<div class="col-sm-6">
 					<input type="file" id="profileimage" class="options-input" accept="image/png,image/jpeg,image/gif">
 					<br/>
-					<span translate>Or (instead of uploading):</span>
-					<br />
-					<translate>
-						<input type="button" ng-click="useGravatar()" ng-show="ownUser.email_verif != 0 && ownUser.email" class="btn btn-primary" value="Use Gravatar" />
-					</translate>
+					
+					<div class="form-group" translate>
+						<label translate>Or (instead of uploading):</label>
+						<input type="button" ng-click="useGravatar()" ng-show="ownUser.email_verif != 0 && ownUser.email" class="btn btn-lg btn-default btn-block" value="Use Gravatar" />
+					</div>
 				</div>
 			</div>
 		</div>

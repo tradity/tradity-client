@@ -101,7 +101,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 
 	// we work with the indexes in the gender array,
 	// since angular cannot handle stuff like “Third Gender”
-	vm.genders = socket.emit('list-genders').then(function(data) {
+	vm.genders = socket.emit('list-genders', { _cache: 500 }).then(function(data) {
 		if (data.code != 'list-genders-success')
 			return;
 

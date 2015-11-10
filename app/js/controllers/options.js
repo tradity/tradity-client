@@ -120,6 +120,7 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
 			school: $scope.school,
 			schoolclass: $scope.schoolclass,
 			birthday: $scope.birthday,
+			gender: $scope.gender,
 			desc: $scope.desc,
 			lprovision: $scope.lprovision,
 			wprovision: $scope.wprovision,

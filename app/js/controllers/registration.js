@@ -136,8 +136,8 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 			case 'reg-success':
 				var modal = dialogs.notify(
 					gettext('Welcome to Tradity!'),
-					gettext('Please click on the link in the verification e-mail we just sent you in order to be able to use the full functionality of Tradity and be eligible for winning the available prizes.'));
-
+					// gettext('Please click on the link in the verification e-mail we just sent you in order to be able to use the full functionality of Tradity and be eligible for winning the available prizes.'));
+					gettext('Please remember to choose your school or uni as a group to be eligible for the prizes.'));
 				modal.result.then(function(btn) {
 					vm.alerts.push({
 						type: 'danger',

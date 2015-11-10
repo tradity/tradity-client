@@ -96,6 +96,8 @@ angular.module('tradity').
 			
 			if ($scope.dla_optin)
 				dailyLoginAchievements.submitToServer(true);
+				
+			console.info($scope.delayorderhist);
 			
 			socket.emit('change-options', {
 				name: $scope.name,

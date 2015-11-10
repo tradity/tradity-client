@@ -5,142 +5,199 @@
 	<form ng-submit="changeOptions()">
 		<!--<tabset vertical="true" type="pills">
 			<tab heading="Account">-->
-				<div class="row">
-					<div class="col-sm-12"><h2>Account</h2></div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="name" translate>Username</label>
-							<input type="text" ng-model="name" placeholder="Benutzername" id="name" class="form-control">
-						</div>
-						<div class="form-group">
-							<label for="password" translate>Password</label>
-							<input type="password" ng-model="password" placeholder="Passwort" id="password" class="form-control">
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="email" translate>E-mail address</label>
-							<input type="email" ng-model="email" placeholder="E-Mail" id="email" class="form-control">
-						</div>
-						<div class="form-group">
-							<label for="password_check" translate>Repeat password</label>
-							<input type="password" ng-model="password_check" placeholder="Passwort" id="password_check" class="form-control">
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<h2 translate>Profile image</h2>
-						<img id="profile-picture" width="200px" ng-show="ownUser.profilepic" ng-src="{{ownUser.profilepic}}" alt="">
-						<input type="file" id="profileimage" class="options-input" accept="image/png,image/jpeg,image/gif"><br/>
-						<span translate>Or (instead of uploading):</span> <br />
-						<translate><input type="button" ng-click="useGravatar()" ng-show="ownUser.email_verif != 0 && ownUser.email" class="btn btn-primary" value="Use Gravatar" /></translate>
+		<div class="row">
+			<div class="col-sm-12">
+				<h2>Account</h2></div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="name" translate>Username</label>
+					<input type="text" ng-model="name" placeholder="Benutzername" id="name" class="form-control input-lg">
+				</div>
+				<div class="form-group">
+					<label for="password" translate>Password</label>
+					<input type="password" ng-model="password" placeholder="Passwort" id="password" class="form-control input-lg">
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="email" translate>E-mail address</label>
+					<input type="email" ng-model="email" placeholder="E-Mail" id="email" class="form-control input-lg">
+				</div>
+				<div class="form-group">
+					<label for="password_check" translate>Repeat password</label>
+					<input type="password" ng-model="password_check" placeholder="Passwort" id="password_check" class="form-control input-lg">
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<h2 translate>Profile image</h2>
+				<div class="col-sm-6">
+					<div class="avatar-wrapper">
+						<img id="profile-picture" width="100%" ng-show="ownUser.profilepic" ng-src="{{ownUser.profilepic}}" alt="Avatar">
 					</div>
 				</div>
-			<!--</tab>
-			<tab heading="Spiel">-->
-				<h2 translate>Game</h2>
+				<div class="col-sm-6">
+					<input type="file" id="profileimage" class="options-input" accept="image/png,image/jpeg,image/gif">
+					<br/>
+					<span translate>Or (instead of uploading):</span>
+					<br />
+					<translate>
+						<input type="button" ng-click="useGravatar()" ng-show="ownUser.email_verif != 0 && ownUser.email" class="btn btn-primary" value="Use Gravatar" />
+					</translate>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<h2 translate>Game</h2></div>
+			<div class="col-sm-6">
 				<div class="form-group">
 					<label for="provision"><span translate>Your followers’ commission on profits</span> ({{serverConfig.minWProvision}} % – {{serverConfig.maxWProvision}} %)</label>
-					<input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="form-control" min="{{serverConfig.minWProvision}}" max="{{serverConfig.maxWProvision}}" step="1" />
+					<input type="number" ng-model="wprovision" placeholder="%" id="wprovision" class="form-control input-lg" min="{{serverConfig.minWProvision}}" max="{{serverConfig.maxWProvision}}" step="1" />
 				</div>
+			</div>
+			<div class="col-sm-6">
 				<div class="form-group">
 					<label for="provision"><span translate>Your followers’ commission on losses</span> ({{serverConfig.minLProvision}} % – {{serverConfig.maxLProvision}} %)</label>
-					<input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="form-control" min="{{serverConfig.minLProvision}}" max="{{serverConfig.maxLProvision}}" step="1" />
+					<input type="number" ng-model="lprovision" placeholder="%" id="lprovision" class="form-control input-lg" min="{{serverConfig.minLProvision}}" max="{{serverConfig.maxLProvision}}" step="1" />
 				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
 				<div class="form-group">
-					<label for="delayorderhist" translate>Delayed order history</label><br/>
-					<input type="checkbox" ng-model="delayorderhist" id="delayorderhist" /> <span translate>Yes</span>
+					<label for="delayorderhist" translate>Delayed order history</label>
+					<div class="checkbox">
+						<label translate>
+							<input type="checkbox" ng-model="delayorderhist" id="delayorderhist"> Yes
+						</label>
+					</div>
 				</div>
+			</div>
+			<div class="col-sm-6">
 				<div class="form-group">
 					<label for="lang" translate>Language</label>
-					<select id="lang" ng-model="lang" ng-options="language.id as language.name for language in serverConfig.languages"></select>
+					<select id="lang" ng-model="lang" class="form-control input-lg" ng-options="language.id as language.name for language in serverConfig.languages"></select>
 				</div>
-			<!--</tab>
+			</div>
+		</div>
+		<!--</tab>
 			<tab heading="Privates">-->
-				<h2 translate>Personal information</h2>
-				<div class="row">
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="giv_name" translate>First name</label>
-							<translate><input type="text" ng-model="giv_name" placeholder="First name" id="giv_name" class="form-control"></translate>
-						</div>
-						<div class="form-group">
-							<label for="fam_name" translate>Last name</label>
-							<translate><input type="text" ng-model="fam_name" placeholder="Last name" id="fam_name" class="form-control"></translate>
-						</div>
-					</div>
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label for="schoolname" translate>Organization / School</label>
-							<tradity-group-chooser school-id-model="school" school-class-model="schoolclass" prevschool-model="prevschool" />
-						</div>
-						<div class="form-group">
-							<label for="realnamepublish" translate>May your name be published?</label><br/>
-							<input type="checkbox" ng-model="realnamepublish" id="realnamepublish" /> <span translate>Yes</span>
-						</div>
-					</div>
+		<h2 translate>Personal information</h2>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="giv_name" translate>First name</label>
+					<translate>
+						<input type="text" ng-model="giv_name" placeholder="First name" id="giv_name" class="form-control input-lg">
+					</translate>
 				</div>
 				<div class="form-group">
-					<label for="dla_optin" translate>Do you want to receive achievements for daily activity?</label><br/>
-					<input type="checkbox" ng-model="dla_optin" id="dla_optin"> <span translate>Yes</span>
+					<label for="fam_name" translate>Last name</label>
+					<translate>
+						<input type="text" ng-model="fam_name" placeholder="Last name" id="fam_name" class="form-control input-lg">
+					</translate>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<tradity-group-chooser school-id-model="school" school-class-model="schoolclass" prevschool-model="prevschool" display-label="true" />
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="dla_optin" translate>Do you want to receive achievements for daily activity?</label>
+
+				<div class="checkbox">
+					<label translate>
+						<input type="checkbox" ng-model="dla_optin" id="dla_optin"> Yes
+					</label>
 					<a ng-hide="show_dlainfo" ng-click="show_dlainfo = true" translate>(More information)</a>
 					<a ng-show="show_dlainfo" ng-click="show_dlainfo = false" translate>(Less information)</a>
-					<div ng-show="show_dlainfo">
-						<p translate>
-							You can – if you agree – receive achievements for being active on multiple days in a row.
-							We take the protection of your personal data seriously:
-							<br />
-							All information regarding your activity log will be stored encrypted by your password
-							only. Unfortunately, this also means that using the “forgot password” option will require
-							you to start gathering activity entries anew.
-							<br />
-							After {{DLAValidityDays}} days your activity log will be cleared and cannot be used for
-							gaining achievements any longer.
-							<br />
-							Currently your activity log contains the following entries:
-						<p>
+				</div>
+
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="form-group">
+				<label for="realnamepublish" translate>May your name be published?</label>
+				<div class="checkbox">
+					<label translate>
+						<input type="checkbox" ng-model="realnamepublish" id="realnamepublish"> Yes
+					</label>
+				</div>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12" ng-show="show_dlainfo">
+				<p translate>
+					You can – if you agree – receive achievements for being active on multiple days in a row. We take the protection of your personal data seriously:
+					<br /> All information regarding your activity log will be stored encrypted by your password only. Unfortunately, this also means that using the “forgot password” option will require you to start gathering activity entries anew.
+					<br /> After {{DLAValidityDays}} days your activity log will be cleared and cannot be used for gaining achievements any longer.
+					<br /> Currently your activity log contains the following entries:
+					<p>
 						<ul>
 							<li ng-repeat="day in dla_cert_days">{{day | date:'fullDate'}}</li>
 						</ul>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-6">
-						<label for="street" translate>Address</label>
-						<translate><input type="text" ng-model="street" placeholder="Street" id="street" class="form-control"></translate>
-						<translate><input type="text" ng-model="zipcode" placeholder="Zip code" id="zipcode" class="form-control"></translate>
-						<translate><input type="text" ng-model="town" placeholder="City" id="town" class="form-control"></translate><br>
-					</div>
-					<div class="col-sm-6">
-						<div class="padding-left">
-							<label for="birthday" translate>Birth date</label>
-							<div class="pure-g">
-								<div class="pure-u-1-3" translate>
-									<input type="number" ng-model="birthdayd" max="31" min="0" placeholder="Day" id="birthdayd" class="form-control">
-								</div>
-								<div class="pure-u-1-3" translate>
-									<input type="number" ng-model="birthdaym" max="12" min="0" placeholder="Month" id="birthdaym" class="form-control">
-								</div>
-								<div class="pure-u-1-3" translate>
-									<input type="number" ng-model="birthdayy" max="2015" min="0" placeholder="Year" id="birthdayy" class="form-control">
-								</div>
-							</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6">
+				<label for="street" translate>Address</label>
+				<translate>
+					<input type="text" ng-model="street" placeholder="Street" id="street" class="form-control input-lg">
+				</translate>
+				<translate>
+					<input type="text" ng-model="zipcode" placeholder="Zip code" id="zipcode" class="form-control input-lg">
+				</translate>
+				<translate>
+					<input type="text" ng-model="town" placeholder="City" id="town" class="form-control input-lg">
+				</translate>
+				<br>
+			</div>
+			<div class="col-sm-6">
+				<div class="padding-left">
+					<label for="birthday" translate>Birth date</label>
+					<div class="pure-g">
+						<div class="pure-u-1-3" translate>
+							<input type="number" ng-model="birthdayd" max="31" min="0" placeholder="Day" id="birthdayd" class="form-control input-lg">
+						</div>
+						<div class="pure-u-1-3" translate>
+							<input type="number" ng-model="birthdaym" max="12" min="0" placeholder="Month" id="birthdaym" class="form-control input-lg">
+						</div>
+						<div class="pure-u-1-3" translate>
+							<input type="number" ng-model="birthdayy" max="2015" min="0" placeholder="Year" id="birthdayy" class="form-control input-lg">
 						</div>
 					</div>
 				</div>
-				<label for="desc" translate>Short description</label>
-				<translate><textarea ng-model="desc" id="desc" placeholder="Tell us about you" class="form-control"></textarea></translate>
-			<!--</tab>
+			</div>
+		</div>
+		<label for="desc" translate>Short description</label>
+		<translate>
+			<textarea ng-model="desc" id="desc" placeholder="Tell us about you" class="form-control input-lg"></textarea>
+		</translate>
+		<!--</tab>
 			<tab heading="Einladen">-->
-				<h2 translate>Invite user</h2>
-				<ng-include src="'templates/inviteform.html'"></ng-include>
-			<!--</tab>
+		<h2 translate>Invite user</h2>
+		<ng-include src="'templates/inviteform.html'"></ng-include>
+		<!--</tab>
 		</tabset>-->
 	</form>
 	<hr/>
-	<div class="save">
-		<translate><input type="submit" value="Save" id="options-sb" class="btn btn-primary" ng-click="changeOptions()"></translate>
-		<translate><input type="button" ng-click="resetUser();" value="Reset user" id="options-reset" class="btn btn-primary" ng-show="serverConfig.resetAllowed || isAdmin"></translate>
+	<div class="row">
+		<div class="col-lg-6 col-lg-offset-3">
+			<div class="form-group" translate>
+
+				<input type="submit" value="Save" id="options-sb" class="btn btn-lg btn-block btn-primary" ng-click="changeOptions()">
+			</div>
+			<div class="form-group" translate>
+				<input type="button" ng-click="resetUser();" value="Reset user" id="options-reset" class="btn btn-lg btn-block btn-danger" ng-show="serverConfig.resetAllowed || isAdmin">
+			</div>
+		</div>
 	</div>
-	<!-- ja das muss ich noch machen -->
-	
+</div>
+<!-- ja das muss ich noch machen -->
+
 </div>

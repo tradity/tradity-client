@@ -26,5 +26,25 @@
 
 	h2 {
 		margin-top:0px;
+		font-weight: bold;
+		color: @primary;
+	}
+	
+	.avatar-wrapper {
+		width:200px;
+		height:200px;
+	}
+	
+	.form-control:focus {
+		border-color: @secondary;
+		box-shadow: inset 0 1px 1px lighten(@secondary, 25%), 0 0 8px lighten(@secondary, 25%);
+	}
+	.btn-primary {
+		background-color: @secondary;
+		border-color: @secondary;
+	}
+	.btn-primary:hover{
+		background-color: darken(@secondary, 10%);
+		border-color: darken(@secondary, 10%);
 	}
 }

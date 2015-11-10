@@ -11,7 +11,8 @@ angular.module('tradity').
 			scope: { 
 				school: '=?schoolModel',
 				schoolID: '=schoolIdModel',
-				schoolclass: '=schoolClassModel'
+				schoolclass: '=schoolClassModel',
+				displaylabel: '=displayLabel',
 			},
 			restrict: 'EA',
 			controller: function($scope) {

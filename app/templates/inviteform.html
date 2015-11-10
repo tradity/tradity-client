@@ -2,22 +2,28 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div ng-controller="InviteFormCtrl">
-<form ng-submit="createInviteLink()" class="pure-form pure-form-stacked">
-	<div class="form-group">
-		<label for="inviteemails" translate>Via E-Mail:</label>
-		<translate><textarea ng-model="inviteemails" id="inviteemails" placeholder="Enter e-mail addresses here to which you want to send out invitations" class="form-control input-lg"></textarea></translate>
-		<translate><input type="submit" value="Invite" class="btn btn-sm btn-default"></translate>
-		<br />
+	<form ng-submit="createInviteLink()" class="pure-form pure-form-stacked">
+		<div class="form-group">
+			<label for="inviteemails" translate>Via E-Mail:</label>
+			<div class="input-group input-group-lg" translate>
+				<textarea ng-model="inviteemails" id="inviteemails" placeholder="Enter e-mail addresses here to which you want to send out invitations" class="form-control input-lg"></textarea>
+				<span class="input-group-btn">
+					<button type="submit" class="btn btn-lg btn-default">
+						<i class="glyphicon glyphicon-send"></i>
+					</button>
+					</span>
+			</div>
+		</div>
 		<span translate>… or use this link:</span>
 		<span id="invitelink" class="options-input pure-input-1">
 			<span ng-show="invitelink">
 				<a ng-href="{{invitelink}}">{{invitelink}}</a>
 				<i translate>(Right click + “Copy link”)</i>
 			</span>
-			<span ng-hide="invitelink" translate>
+		<span ng-hide="invitelink" translate>
 				[Loading invite link]
 			</span>
 		</span>
-	</div>
-</form>
+	</form>
+
 </div>

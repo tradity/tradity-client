@@ -27,9 +27,9 @@ angular.module('tradity').
 			$scope.desc = data.result.desc;
 			$scope.lprovision = data.result.lprovision;
 			$scope.wprovision = data.result.wprovision;
-			$scope.street = data.result.street;
-			$scope.zipcode = data.result.zipcode;
-			$scope.town = data.result.town;
+			$scope.street = data.result.street==='null'?'':data.result.street;
+			$scope.zipcode = data.result.zipcode==='null'?'':data.result.zipcode;
+			$scope.town = data.result.town === 'null'?'': data.result.town ;
 			
 			$scope.lang = languageManager.setCurrentLanguage(data.result.lang);
 			$scope.traditye = data.result.traditye&&true;

@@ -43,7 +43,7 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
 		$scope.dla_optin = data.result.dla_optin && true;
 		$scope.delayorderhist = data.result.delayorderhist;
 		
-		$scope.birthday = new Date(data.result.birthday * 1000);
+		$scope.birthday = new Date(data.result.birthday);
 		
 		$scope.genderIndex = null;
 		$q.when($scope.genders).then(function(genders) {
@@ -120,7 +120,7 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
 			email: $scope.email,
 			school: $scope.school,
 			schoolclass: $scope.schoolclass,
-			birthday: parseInt($scope.birthday.getTime()/1000),
+			birthday: $scope.birthday.getTime(),
 			gender: $scope.genders.genders[$scope.genderIndex],
 			desc: $scope.desc,
 			lprovision: $scope.lprovision,

@@ -26,7 +26,7 @@ angular.module('tradity')
 				{ pattern: 'TRADE_FOLLOWER_COUNT_1', text: gettext('Perform 1\u00a0follower trade (invest into another user).') },
 				{ pattern: /TRADE_FOLLOWER_COUNT_(\d+)/, text: gettext('Perform %1\u00a0follower trades.') },
 				{ pattern: 'COMMENT_COUNT_1_1', text: gettext('Write 1\u00a0comments.') },
-				{ pattern: 'COMMENT_COUNT_5_1', text: gettext('Write 5\u00a0comments in a single feed.') },
+				{ pattern: 'COMMENT_COUNT_3_1', text: gettext('Write 3\u00a0comments in a single feed.') },
 				{ pattern: /COMMENT_COUNT_(\d+)_(?!1$)(\d+)/, text: gettext('Write %1\u00a0comments in %2\u00a0different feeds.') },
 				{ pattern: /CHAT_PARTICIPANTS_(\d+)/, text: gettext('Chat with %1\u00a0persons.') },
 				{ pattern: 'REFERRAL_COUNT_1', text: gettext('Invite 1\u00a0person using your referral link. They have to register and perform at least one trade.') },
@@ -38,6 +38,11 @@ angular.module('tradity')
 				{ pattern: /DAILY_LOGIN_DAYS_(\d+)/, text: gettext('Be active for %1\u00a0days in a row.') },
 				{ pattern: 'LEARNING_GREEN_INVESTMENTS', text: gettext('Green investments') },
 				{ pattern: 'LEARNING_LOW_INTEREST_RATES', text: gettext('Low interest rates') }
+				{ pattern: 'LEARNING_WHAT_ARE_SHARES', text: gettext('What are shares?') }
+				{ pattern: 'LEARNING_TERMINOLOGY', text: gettext('Terminology in trading') }
+				{ pattern: 'LEARNING_OPPORTUNITIES_AND_RISKS', text: gettext('Opportunities and risks in trading') }
+				{ pattern: 'LEARNING_FUNDAMENTAL_ANALYSIS', text: gettext('Fundamental analysis') }
+				{ pattern: 'LEARNING_TECHNICAL_ANALYSIS', text: gettext('Technical analysis') }
 			],
 			_textsCached: {}
 		};

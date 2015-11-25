@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('AdminCtrl', function($scope, $stateParams, $state, safestorage, feed, socket) {
+	controller('AdminCtrl', function($scope, $stateParams, $state, safestorage, $feed, socket) {
 		$scope.$emit('makeadmin');
 		
 		$scope.impersonateUser = function(uid) {
@@ -14,9 +14,9 @@ angular.module('tradity').
 			}, function(data) {
 				if (data.code == 'impersonate-user-success') {
 					safestorage.clear();
-					feed.clearFull();
+					$feed.clearFull();
 					safestorage.check();
-					feed.fetch();
+					$feed.fetch();
 					$state.go('game.feed');
 				} else {
 					alert('Fehler: ' + data.code);

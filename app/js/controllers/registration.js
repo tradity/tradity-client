@@ -23,8 +23,6 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 	vm.lang = languageManager.getCurrentLanguage();
 	vm.password = '';
 	vm.genderIndex = null;
-	vm.startTime = Date.now();
-	vm.results = [];
 	vm.datepickerOpened = false;
 	var strengths = [
 		{
@@ -64,40 +62,10 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 	vm.questionnaire = socket.emit('list-questionnaires').then(function(data) {
 		if (data.code != 'list-questionnaires-success')
 			return;
-
+		
 		// ugly, works for now
 		return vm.questionnaire = data.questionnaires[1];
 	});
-
-	vm.saveQuestionnaire = function() {
-		var results = [];
-		var questions = vm.questionnaire[vm.lang].questions;
-		for (var i = 0; i < questions.length; i++) {
-			if (vm.results[i]) {
-				results.push({
-					question: questions[i].question_id,
-					answers: [{
-						answer: parseInt(vm.results[i])
-					}]
-				});
-			}
-			else {
-				vm.alerts.push({
-					type: 'danger',
-					msg: gettext('Please answer all the questions')
-				});
-				return;
-			}
-		};
-		socket.emit('save-questionnaire', {
-			results: results,
-			questionnaire: vm.questionnaire.questionnaire_id,
-			fill_time: Date.now() - vm.startTime,
-			fill_language: vm.lang
-		}, function(data) {
-			if (data.code == 'save-questionnaire-success') $state.go('game.feed');
-		});
-	};
 
 	// we work with the indexes in the gender array,
 	// since angular cannot handle stuff like “Third Gender”
@@ -144,8 +112,10 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 						msg: gettext('Successful registration')
 					});
 					user.fetch();
-					if (vm.questionnaire) $state.go('register.step3');
-					else $state.go('game.feed');
+					if (vm.questionnaire)
+						$state.go('survey', {questionnaire: vm.questionnaire.questionnaire_id});
+					else
+						$state.go('game.feed');
 				});
 				break;
 			case 'reg-email-failed':

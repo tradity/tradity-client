@@ -1,0 +1,51 @@
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<div class="center-block">
+	<!--
+		Showing the registration wizard with its step display would be
+		misleading here; The user already sent their registration data and
+		no changes are possible anymore.
+	-->
+	
+	<!-- ok, I see that this is not the way ng-repeat is meant to be used, but…
+	     anyone a better idea? -->
+	<div class="row" ng-repeat="qn in [survey.questionnaire[survey.lang]]">
+		<div class="text-center" ng-bind-html="qn.qtext">
+		</div>
+		<div>
+			<div class="col-lg-8 col-lg-offset-2 text-center">
+				<accordion close-others="false">
+					<accordion-group ng-repeat="question in qn.questions" heading="# {{$index + 1}}" is-open="true">
+						<div class="row">
+							<div class="form-group" ng-bind-html="question.qtext"></div>
+						</div>
+						<div class="row" ng-if="question.question_multiple_answers">
+							<div ng-repeat="answer in question.answers" class="form-group col-lg-6 text-left">
+							<label>
+								<input type="checkbox" name="question{{question.question_id}}-{{answer.answer_id}}" ng-model="survey.results[question.question_id][answer.answer_id]" ng-disabled="answer.answer_freetext">
+								<span questionnaire-answer-text="answer.atext" answer-freetext-model="survey.results[question.question_id][answer.answer_id+':freetext']"></span>
+							</label>
+							</div>
+						</div>
+						<div class="row" ng-if="!question.question_multiple_answers">
+							<div ng-repeat="answer in question.answers" class="form-group col-lg-6 text-left">
+							<label>
+								<input type="radio" value="{{answer.answer_id}}" name="question{{question.question_id}}" ng-model="survey.results[question.question_id][answer.answer_id]" ng-disabled="answer.answer_freetext">
+								<span questionnaire-answer-text="answer.atext" answer-freetext-model="survey.results[question.question_id][answer.answer_id+':freetext']"></span>
+							</label>
+							</div>
+						</div>
+					</accordion-group>
+				</accordion>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6 col-lg-offset-3 text-center">
+			<div class="form-group " translate>
+				<button class="btn btn-lg btn-block btn-primary" ng-click="survey.saveQuestionnaire()">Let’s go</button>
+			</div>
+		</div>
+	</div>
+</div>

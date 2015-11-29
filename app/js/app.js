@@ -79,11 +79,11 @@ angular.module('tradity', [
 			// controller: 'RegistrationCtrl',
 			// controllerAs: 'registration'
 		}).
-		state('register.step3', {
-			url: '/step3',
-			templateUrl: 'templates/registration.step3.html',
-			// controller: 'RegistrationCtrl',
-			// controllerAs: 'registration'
+		state('survey', {
+			url: '/survey/:questionnaire',
+			templateUrl: 'templates/survey.html',
+			controller: 'SurveyCtrl',
+			controllerAs: 'survey'
 		}).
 		
 		//change to register/:inviteCode

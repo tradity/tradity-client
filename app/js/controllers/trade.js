@@ -33,7 +33,7 @@ angular.module('tradity').
 			if (!$scope.amount)
 				return;
 			if (!$scope.leader && !$scope.stockid)
-				return dialogs.error(gettext('You need to choose a stock!'));
+				return dialogs.error('tradity', gettext('You need to choose a stock!'));
 				
 			var dlg = dialogs.confirm(gettext('Trade'),
 				gettextCatalog.getString('Do you want to trade {{amount}} {{shares}} of {{stockname}}?', {
@@ -69,7 +69,7 @@ angular.module('tradity').
 				var qtype = 'stock-buy';
 				if ($scope.xtype != 'market') {
 					if ($scope.xvalue == null)
-						return dialogs.error(gettext('Please enter a numerical stop/limit value'));
+						return dialogs.error('tradity', gettext('Please enter a numerical stop/limit value'));
 					var fieldname = ($scope.amount >= 0) ^ ($scope.sellbuy < 0) ? 'ask' : 'bid';
 					var compar = !(($scope.xtype == 'limit') ^ ($scope.amount >= 0) ^ ($scope.sellbuy < 0)) ? '<' : '>';
 					

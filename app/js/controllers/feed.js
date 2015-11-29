@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('FeedCtrl', function($scope, $feed) {
+	controller('FeedCtrl', function($scope, $feed, $state, socket) {
 		var vm = this;
 		vm.displaymessages = [];
 		vm.messageCount = 12;
@@ -37,4 +37,14 @@ angular.module('tradity').
 		});
 		
 		vm.displayFeed();
+			
+		vm.questionnaire = socket.emit('list-questionnaires', {
+			_cache: 60
+		}).then(function(data) {
+			if (data.code != 'list-questionnaires-success' || !data.isPersonalized)
+				return;
+			
+			if (Object.keys(data.questionnaires).length > 0)
+				$state.go('survey');
+		});
 	});

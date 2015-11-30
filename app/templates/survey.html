@@ -31,7 +31,7 @@
 						<div class="row" ng-if="!question.question_multiple_answers">
 							<div ng-repeat="answer in question.answers" class="form-group col-lg-6 text-left">
 							<label>
-								<input type="radio" value="{{answer.answer_id}}" name="question{{question.question_id}}" ng-model="survey.results[question.question_id][answer.answer_id]" ng-disabled="answer.answer_freetext">
+								<input type="radio" value="{{answer.answer_id}}" name="question{{question.question_id}}" ng-model="survey.results[question.question_id].choice" ng-disabled="answer.answer_freetext">
 								<span questionnaire-answer-text="answer.atext" answer-freetext-model="survey.results[question.question_id][answer.answer_id+':freetext']"></span>
 							</label>
 							</div>

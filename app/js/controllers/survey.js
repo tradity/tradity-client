@@ -48,13 +48,17 @@ controller('SurveyCtrl', function($scope, $stateParams, $state, gettext, languag
 		
 		for (var i = 0; i < questions.length; i++) {
 			var k = questions[i].question_id;
-			if (vm.results[k]) {
+			var result = vm.results[k];
+			if (result) {
+				if (result.choice) // radio buttons
+					result[result.choice] = true;
+				
 				results.push({
 					question: k,
 					// the keys of vm.results[i] are the answer identifiers
-					answers: Object.keys(vm.results[k]).filter(function(a) {
+					answers: Object.keys(result).filter(function(a) {
 						// remove 'false' or empty entries
-						return vm.results[k][a];
+						return result[a] && a != 'choice';
 					}).map(function(a) {
 						// strip possible :freetext suffix
 						a = a.replace(/:freetext$/, '');
@@ -84,6 +88,8 @@ controller('SurveyCtrl', function($scope, $stateParams, $state, gettext, languag
 		}, function(data) {
 			if (data.code == 'save-questionnaire-success')
 				$state.go('game.feed');
+			else
+				return dialogs.error('tradity', gettext('An error occurred during processing of the questionnaire\n' + JSON.stringify(data)));
 		});
 	};
 });

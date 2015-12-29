@@ -5,81 +5,81 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	controller('TradeCtrl', function($scope, $stateParams, $state, $location, socket, gettext, gettextCatalog,
-		dialogs, orderByFilter, searchStringSimilarity)
-	{
-		$scope.amount = null;
-		$scope.value = null;
-		$scope.stockid = null;
-		$scope.stockname = null;
-		$scope.leader = null;
-		$scope.cur = null;
-		$scope.xtype = 'market';
-		$scope.xvalue = '';
-		$scope.sellbuy = 1;
-		$scope.fee = 0;
-		$scope.forceNow = false;
-		$scope.isMarketOrder = true;
-		$scope.results = [];
-		$scope.popularStocks = [];
-		$scope.showPopularStocks = false;
-		$scope.showTradeThrobber = false;
+	controller('TradeCtrl', function($stateParams, $state, $location, socket, gettext, gettextCatalog,
+		dialogs, orderByFilter, searchStringSimilarity, config) {
+        var vm = this;
+		vm.amount = null;
+		vm.value = null;
+		vm.stockid = null;
+		vm.stockname = null;
+		vm.leader = null;
+		vm.cur = null;
+		vm.xtype = 'market';
+		vm.xvalue = '';
+		vm.sellbuy = 1;
+		vm.fee = 0;
+		vm.forceNow = false;
+		vm.isMarketOrder = true;
+		vm.results = [];
+		vm.popularStocks = [];
+		vm.showPopularStocks = false;
+		vm.showTradeThrobber = false;
 
-		$scope.togglePopularStocks = function() {
-			$scope.showPopularStocks = !$scope.showPopularStocks;
+		vm.togglePopularStocks = function() {
+			vm.showPopularStocks = !vm.showPopularStocks;
 		}
 
-		$scope.buy = function() {
-			if (!$scope.amount)
+		vm.buy = function() {
+			if (!vm.amount)
 				return;
-			if (!$scope.leader && !$scope.stockid)
+			if (!vm.leader && !vm.stockid)
 				return dialogs.error('tradity', gettext('You need to choose a stock!'));
 				
 			var dlg = dialogs.confirm(gettext('Trade'),
 				gettextCatalog.getString('Do you want to trade {{amount}} {{shares}} of {{stockname}}?', {
-					stockname: $scope.stockname,
-					amount: $scope.amount,
-					shares: gettextCatalog.getPlural($scope.amount, 'share', 'shares')
+					stockname: vm.stockname,
+					amount: vm.amount,
+					shares: gettextCatalog.getPlural(vm.amount, 'share', 'shares')
 				}));
 
 			dlg.result.then(function(btn) {
-				/*if ($scope.stockid == 'US38259P5089')  {
+				/*if (vm.stockid == 'US38259P5089')  {
 					$state.go('game.depot.listing');
 					return;
-				} else if ($scope.stockid = 'walkthrough') {
+				} else if (vm.stockid = 'walkthrough') {
 					$state.go('game.ranking.all');
 					return;
 				}*/
 
 				var query = {
-					amount: $scope.amount * $scope.sellbuy,
-					stockid: $scope.stockid,
-					leader: $scope.leader,
-					forceNow: $scope.forceNow,
+					amount: vm.amount * vm.sellbuy,
+					stockid: vm.stockid,
+					leader: vm.leader,
+					forceNow: vm.forceNow,
 					retainUntilCode: 'stock-buy-success',
 					dquerydata: { /* will be returned in the dquery-exec event */
-						xtype: $scope.xtype,
-						xvalue: parseFloat($scope.xvalue.replace(',', '.')),
-						name: $scope.stockname,
-						amount: $scope.amount * $scope.sellbuy,
+						xtype: vm.xtype,
+						xvalue: parseFloat(vm.xvalue.replace(',', '.')),
+						name: vm.stockname,
+						amount: vm.amount * vm.sellbuy,
 						delayedquery: true,
 						ordertime: new Date().getTime()
 					}
 				};
 				var qtype = 'stock-buy';
-				if ($scope.xtype != 'market') {
-					if ($scope.xvalue == null)
+				if (vm.xtype != 'market') {
+					if (vm.xvalue == null)
 						return dialogs.error('tradity', gettext('Please enter a numerical stop/limit value'));
-					var fieldname = ($scope.amount >= 0) ^ ($scope.sellbuy < 0) ? 'ask' : 'bid';
-					var compar = !(($scope.xtype == 'limit') ^ ($scope.amount >= 0) ^ ($scope.sellbuy < 0)) ? '<' : '>';
+					var fieldname = (vm.amount >= 0) ^ (vm.sellbuy < 0) ? 'ask' : 'bid';
+					var compar = !((vm.xtype == 'limit') ^ (vm.amount >= 0) ^ (vm.sellbuy < 0)) ? '<' : '>';
 					
 					var condition = '';
-					var stockid = $scope.stockid;
-					if (!$scope.leader)
-						condition = 'stock::' + $scope.stockid + '::exchange-open > 0 ∧ ';
+					var stockid = vm.stockid;
+					if (!vm.leader)
+						condition = 'stock::' + vm.stockid + '::exchange-open > 0 ∧ ';
 					else
-						stockid = '__LEADER_' + $scope.leader + '__';
-					condition += 'stock::' + stockid + '::' + fieldname + ' ' + compar + ' ' + (parseFloat($scope.xvalue.replace(',', '.')) * 10000);
+						stockid = '__LEADER_' + vm.leader + '__';
+					condition += 'stock::' + stockid + '::' + fieldname + ' ' + compar + ' ' + (parseFloat(vm.xvalue.replace(',', '.')) * 10000);
 					query.type = qtype;
 					query = {
 						condition: condition,
@@ -132,7 +132,7 @@ angular.module('tradity').
 			});
 		};
 		
-		$scope.searchStocks = function(stockname) {
+		vm.searchStocks = function(stockname) {
 			return socket.emit('stock-search', {
 				name: stockname
 			}).then(function(data) {
@@ -140,7 +140,7 @@ angular.module('tradity').
 					throw new Error('Stock search failed with ' + data.code);
 				
 				return orderByFilter(data.results.filter(function(stock) {
-					return !stock.leader || stock.leader != $scope.ownUser.uid;
+					return !stock.leader || stock.leader != vm.ownUser.uid;
 				}).map(function(stock) {
 					stock.textName = stock.leader ? gettext('Leader: %1').replace(/%1/g, stock.leadername) : stock.name;
 					stock.extraInfo = (parseInt(stock.lastvalue / 100) / 100)
@@ -151,83 +151,83 @@ angular.module('tradity').
 			});
 		};
 		
-		$scope.selectedStock = function(stock) {
-			$scope.stockname = stock.leader ? stock.textName : stock.name;
-			$scope.stockid = stock.leader ? null : stock.stockid;
-			$scope.leader = stock.leader || null;
-			$scope.cur = stock;
-			$scope.value = $scope.amount = null;
+		vm.selectedStock = function(stock) {
+			vm.stockname = stock.leader ? stock.textName : stock.name;
+			vm.stockid = stock.leader ? null : stock.stockid;
+			vm.leader = stock.leader || null;
+			vm.cur = stock;
+			vm.value = vm.amount = null;
 		};
 		
-		$scope.calcValue = function() {
-			if (!$scope.cur) return;
-			if ($scope.sellbuy == 1) {
-				$scope.value = String($scope.amount * ($scope.cur.ask / 10000)).replace('.', ',');
-			} else if ($scope.sellbuy == -1) {
-				$scope.value = String($scope.amount * ($scope.cur.bid / 10000)).replace('.', ',');
+		vm.calcValue = function() {
+			if (!vm.cur) return;
+			if (vm.sellbuy == 1) {
+				vm.value = String(vm.amount * (vm.cur.ask / 10000)).replace('.', ',');
+			} else if (vm.sellbuy == -1) {
+				vm.value = String(vm.amount * (vm.cur.bid / 10000)).replace('.', ',');
 			}
-			$scope.calcFee();
+			vm.calcFee();
 		};
-		$scope.calcAmount = function() {
-			if (!$scope.cur) return;
-			if ($scope.sellbuy == 1) {
-				$scope.amount = Math.floor(parseFloat($scope.value.replace(',', '.')) / ($scope.cur.ask / 10000));
-			} else if ($scope.sellbuy == -1) {
-				$scope.amount = Math.floor(parseFloat($scope.value.replace(',', '.')) / ($scope.cur.bid / 10000));
+		vm.calcAmount = function() {
+			if (!vm.cur) return;
+			if (vm.sellbuy == 1) {
+				vm.amount = Math.floor(parseFloat(vm.value.replace(',', '.')) / (vm.cur.ask / 10000));
+			} else if (vm.sellbuy == -1) {
+				vm.amount = Math.floor(parseFloat(vm.value.replace(',', '.')) / (vm.cur.bid / 10000));
 			}
-			$scope.calcFee();
+			vm.calcFee();
 		};
-		$scope.calcFee = function() {
-			$scope.fee = Math.max(Math.abs($scope.serverConfig.transactionFeePerc * parseFloat($scope.value.replace(',', '.'))), $scope.serverConfig.transactionFeeMin / 10000);
+		vm.calcFee = function() {
+			vm.fee = Math.max(Math.abs(config.server().transactionFeePerc * parseFloat(vm.value.replace(',', '.'))), config.server().transactionFeeMin / 10000);
 		};
 
 		if ($stateParams.sellbuy) {
 			if ($stateParams.sellbuy == 'sell') {
-				$scope.sellbuy = -1;
+				vm.sellbuy = -1;
 			} else if ($stateParams.sellbuy == 'buy') {
-				$scope.sellbuy = 1;
+				vm.sellbuy = 1;
 			}
-			$scope.stockid = $stateParams.stockId;
+			vm.stockid = $stateParams.stockId;
 
-			/*if ($scope.stockid != 'walkthrough') {*/
+			/*if (vm.stockid != 'walkthrough') {*/
 				socket.emit('stock-search', {
-					name: $scope.stockid
+					name: vm.stockid
 				}, function(data) {
 					if (data.code == 'stock-search-success') {
 						for (var i = 0; i < data.results.length; ++i) {
-							if (data.results[i].stockid == $scope.stockid) {
-							$scope.selectedStock(data.results[i]);
+							if (data.results[i].stockid == vm.stockid) {
+							vm.selectedStock(data.results[i]);
 							break;
 							}
 						}
-						$scope.amount = parseInt($stateParams.amount);
-						$scope.calcValue();
+						vm.amount = parseInt($stateParams.amount);
+						vm.calcValue();
 					}
 				});
 			/*} else {
 				console.log("sdfsdfdsfd")
-				$scope.stockname = 'google';
+				vm.stockname = 'google';
 
-				$scope.amount = 1;
-				$scope.ask = 4154500;
-				$scope.bid = 4133900;
-				$scope.lastvalue = 4139300;
-				$scope.name = 'Google';
+				vm.amount = 1;
+				vm.ask = 4154500;
+				vm.bid = 4133900;
+				vm.lastvalue = 4139300;
+				vm.name = 'Google';
 
-				$scope.cur = {
+				vm.cur = {
 					amount: 1,
 					ask: 4154500,
 					bid: 4133900,
 					lastvalue: 4139300,
 					name: 'Google',
 				}
-				$scope.amount = 1;
-				$scope.value = 1;
-				$scope.calcValue();
+				vm.amount = 1;
+				vm.value = 1;
+				vm.calcValue();
 			}*/
 		}
 		
 		socket.emit('list-popular-stocks', {_cache: 1800}, function(data) {
-			$scope.popularStocks = data.results;
+			vm.popularStocks = data.results;
 		});
 	});

@@ -4,13 +4,13 @@
 
 <div id="trade" class="main-content">
 
-	<form ng-submit="buy()" class="pure-form pure-form-stacked">
+	<form ng-submit="trade.buy()" class="pure-form pure-form-stacked">
 		<h2 translate>Stock</h2>
 		<div class="row chose-paper">
 			<div class="col-sm-6 form-horizontal">
 				<div class="form-group">
 					<label class="col-sm-2 control-label">
-						<img src="img/throbber.gif" alt="…" ng-show="showTradeThrobber" />
+						<img src="img/throbber.gif" alt="…" ng-show="trade.showTradeThrobber" />
 						<span translate>Name</span>
 					</label>
 					<div class="col-sm-10">
@@ -22,49 +22,49 @@
 							</a>
 						</script>
 						
-						<input type="text" ng-model="stockname" id="paper" class="form-control" placeholder="{{'Stock name'|translate}}"
-							typeahead="stock as stock.textName for stock in searchStocks($viewValue)"
-							typeahead-loading="showTradeThrobber" typeahead-min-length="3" typeahead-wait-ms="300"
-							typeahead-on-select="selectedStock($item, $model, $label)" typeahead-template-url="stockSearchEntry.html"
+						<input type="text" ng-model="trade.stockname" id="paper" class="form-control" placeholder="{{'Stock name'|translate}}"
+							typeahead="stock as stock.textName for stock in trade.searchStocks($viewValue)"
+							typeahead-loading="trade.showTradeThrobber" typeahead-min-length="3" typeahead-wait-ms="300"
+							typeahead-on-select="trade.selectedStock($item, $model, $label)" typeahead-template-url="stockSearchEntry.html"
 							typeahead-editable="false" autocomplete="off"/>
 					</div>
 				</div>
-				<!--button ng-show="cur" ng-click="addToWatchlist()" class="click-button" style="margin: 0; line-height:30px; height: auto;"><span class="batch">&#xF179; </span></button-->
+				<!--button ng-show="trade.cur" ng-click="trade.addToWatchlist()" class="click-button" style="margin: 0; line-height:30px; height: auto;"><span class="batch">&#xF179; </span></button-->
 				<h3 translate>Most popular stocks</h3>
-				<div ng-class="{hideMost: !showPopularStocks}">
+				<div ng-class="{hideMost: !trade.showPopularStocks}">
 					<ol class="popularstocks">
-						<li ng-repeat="stock in popularStocks"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: stock.stockid, amount: 0})">{{stock.stockname}}</a></li>
+						<li ng-repeat="stock in trade.popularStocks"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: stock.stockid, amount: 0})">{{trade.stock.stockname}}</a></li>
 					</ol>
-					<a class="trade-more" ng-click="togglePopularStocks()" ng-show="!showPopularStocks" translate>List more stocks</a>
-					<a class="trade-more" ng-click="togglePopularStocks()" ng-show="showPopularStocks" translate>List less stocks</a>
+					<a class="trade-more" ng-click="trade.togglePopularStocks()" ng-show="!trade.showPopularStocks" translate>List more stocks</a>
+					<a class="trade-more" ng-click="trade.togglePopularStocks()" ng-show="trade.showPopularStocks" translate>List less stocks</a>
 					<br/><br/>
 				</div>
 			</div>
 			<div class="col-sm-6">
-				<div class="options-field paper-preview-box padding-left" ng-show="cur"> 
+				<div class="options-field paper-preview-box padding-left" ng-show="trade.cur"> 
 					<table class="paper-preview f">
-						<tr ng-show="leader"><th translate>Name</th><td><a ui-sref="game.profile.overview({userId: cur.leadername})">{{stockname}}</a></td></tr>
-						<tr ng-hide="leader"><th translate>Name</th><td ng-show="cur">{{stockname}}</td></tr>
+						<tr ng-show="trade.leader"><th translate>Name</th><td><a ui-sref="game.profile.overview({userId: trade.cur.leadername})">{{trade.stockname}}</a></td></tr>
+						<tr ng-hide="trade.leader"><th translate>Name</th><td ng-show="trade.cur">{{trade.stockname}}</td></tr>
 						<tr class="buyprice" translate>
 							<th tooltip="The price at which you currently can buy shares at the stock exchange">Ask price</th>
-							<td ng-show="cur">{{cur.ask / 10000 | number:3}} €</td>
+							<td ng-show="trade.cur">{{trade.cur.ask / 10000 | number:3}} €</td>
 						</tr>
 						<tr translate>
 							<th tootlip="The price at which you currently can sell shares at the stock exchange">Bid price</th>
-							<td ng-show="cur">{{cur.bid / 10000 | number:3}} €</td>
+							<td ng-show="trade.cur">{{trade.cur.bid / 10000 | number:3}} €</td>
 						</tr>
-						<!-- <tr><th>Wert</th><td ng-show="cur">{{cur.lastvalue / 10000 | currency}}</td></tr> -->
-						<tr ng-show="leader"><th translate>Commission on profits</th><td ng-show="cur">{{cur.wprovision}} %</td></tr>
-						<tr ng-show="leader"><th translate>Commission on losses</th><td ng-show="cur">{{cur.lprovision}} %</td></tr>
-						<tr ng-hide="leader" class="isin"><th translate>ISIN</th><td ng-show="cur">{{cur.stockid}}</td></tr>
-						<tr ng-hide="leader"><th translate><span class="batch tooltip" data-info="You can only trade the number of shares which were also traded in reality at the stock exchange. For example, if today only 1000 shares have been traded, you can sell or buy at most 1000 shares yourself. Notice that “penny stocks” often have significantly reduced liquidity.">&#xF0AD;</span> Tradable amount</th><td ng-show="cur">{{cur.pieces}}</td></tr>
-						<tr ng-hide="leader"><th translate>Stock information</th><td ng-show="cur"><a target="_blank" ng-href="http://ariva.de/{{cur.stockid}}">http://ariva.de/{{cur.stockid}}</a></td></tr>
+						<!-- <tr><th>Wert</th><td ng-show="trade.cur">{{trade.cur.lastvalue / 10000 | currency}}</td></tr> -->
+						<tr ng-show="trade.leader"><th translate>Commission on profits</th><td ng-show="trade.cur">{{trade.cur.wprovision}} %</td></tr>
+						<tr ng-show="trade.leader"><th translate>Commission on losses</th><td ng-show="trade.cur">{{trade.cur.lprovision}} %</td></tr>
+						<tr ng-hide="trade.leader" class="isin"><th translate>ISIN</th><td ng-show="trade.cur">{{trade.cur.stockid}}</td></tr>
+						<tr ng-hide="trade.leader"><th translate><span class="batch tooltip" data-info="You can only trade the number of shares which were also traded in reality at the stock exchange. For example, if today only 1000 shares have been traded, you can sell or buy at most 1000 shares yourself. Notice that “penny stocks” often have significantly reduced liquidity.">&#xF0AD;</span> Tradable amount</th><td ng-show="trade.cur">{{trade.cur.pieces}}</td></tr>
+						<tr ng-hide="trade.leader"><th translate>Stock information</th><td ng-show="trade.cur"><a target="_blank" ng-href="http://ariva.de/{{trade.cur.stockid}}">http://ariva.de/{{trade.cur.stockid}}</a></td></tr>
 					</table>
 				</div>
 			</div>
 		</div>
 
-		<div class="row" ng-show="cur">
+		<div class="row" ng-show="trade.cur">
 			<hr/>
 			<div class="col-sm-6">
 				<h2 translate>Amount</h2>
@@ -72,46 +72,46 @@
 				<div class="form-group">
 					<label>
 						<span translate># shares</span>
-						<span ng-show="cur && sellbuy > 0">(Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSingleStockShare) / cur.ask)}})</span>
+						<span ng-show="trade.cur && trade.sellbuy > 0">(Max: {{Math.floor(Math.min(trade.ownUser.freemoney, trade.ownUser.totalvalue * trade.serverConfig.maxSingleStockShare) / trade.cur.ask)}})</span>
 					</label>
-					<translate><input type="number" ng-model="amount" ng-change="calcValue();" placeholder="Amount" id="amount" autocomplete="off" class="form-control" /></translate>
+					<translate><input type="number" ng-model="trade.amount" ng-change="trade.calcValue();" placeholder="Amount" id="amount" autocomplete="off" class="form-control" /></translate>
 				</div>
 				<div class="form-group">
 					<label>
 						<span translate>Buy/Sell price</span>
-						<span g-show="cur && sellbuy > 0">(Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSingleStockShare) / cur.ask) * cur.ask / 10000 | currency}})</span>
+						<span g-show="trade.cur && trade.sellbuy > 0">(Max: {{Math.floor(Math.min(trade.ownUser.freemoney, trade.ownUser.totalvalue * trade.serverConfig.maxSingleStockShare) / trade.cur.ask) * trade.cur.ask / 10000 | currency}})</span>
 					</label>
-					<translate><input type="text" ng-model="value" ng-change="calcAmount();" placeholder="Buy price" id="value" autocomplete="off" class="form-control" /></translate>
+					<translate><input type="text" ng-model="trade.value" ng-change="trade.calcAmount();" placeholder="Buy price" id="value" autocomplete="off" class="form-control" /></translate>
 				</div>
 				<!--<label class="trade-label">Kontostand<span class="batch tooltip" data-info="Kontostand vor Order +/- Kaufwert - Transaktionskosten = Kontostand nach Order"> &#xF0AD;</span></label>
-				1337 <span class="pos">350</span><span class="neg"> -{{fee | currency}}</span> = 1230 <br>-->
+				1337 <span class="pos">350</span><span class="neg"> -{{trade.fee | currency}}</span> = 1230 <br>-->
 				<b translate>Transaction fees</b>
-				{{fee | currency}}
+				{{trade.fee | currency}}
 			</div>
 
 			<div class="col-sm-6">
 				<h2 translate>Stock</h2>
 				<div class="trade-label-button" translate>Do you want to buy or sell the chosen stock?</div>
 				<div class="btn-group">
-					<button type="button" class="btn btn-primary" ng-model="sellbuy" btn-radio="1" translate>Buy</button>
-					<button type="button" class="btn btn-danger" ng-model="sellbuy" btn-radio="-1" translate>Sell</button>
+					<button type="button" class="btn btn-primary" ng-model="trade.sellbuy" btn-radio="1" translate>Buy</button>
+					<button type="button" class="btn btn-danger" ng-model="trade.sellbuy" btn-radio="-1" translate>Sell</button>
 				</div>
 				<div class="options-field" id="order-type"> 
 					<h2 translate>Order type</h2>
 					<div class="trade-label-button" translate>Of which type is your order?</div>
 
 					<div class="btn-group">
-						<button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'market'" translate>Market</button>
-						<button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'limit'" translate>Limit</button>
-						<button type="button" class="btn btn-primary" ng-model="xtype" btn-radio="'stop'" translate>Stop</button>
+						<button type="button" class="btn btn-primary" ng-model="trade.xtype" btn-radio="'market'" translate>Market</button>
+						<button type="button" class="btn btn-primary" ng-model="trade.xtype" btn-radio="'limit'" translate>Limit</button>
+						<button type="button" class="btn btn-primary" ng-model="trade.xtype" btn-radio="'stop'" translate>Stop</button>
 					</div>
-					<div ng-hide="xtype == 'market'">
+					<div ng-hide="trade.xtype == 'market'">
 						<label class="trade" for="limit-stop" translate>What is the stop/limit price?</label>
-						<translate><input type="text" ng-model="xvalue" placeholder="Stop/limit price" id="limit-stop" autocomplete="off" class="options-input mobile-full" /></translate>
+						<translate><input type="text" ng-model="trade.xvalue" placeholder="Stop/limit price" id="limit-stop" autocomplete="off" class="options-input mobile-full" /></translate>
 					</div>
-					<div ng-show="isAdmin">
+					<div ng-show="trade.isAdmin">
 						<label for="force-now" translate>Force trade</label>
-						<input type="checkbox" ng-model="forceNow" id="force-now" />
+						<input type="checkbox" ng-model="trade.forceNow" id="force-now" />
 					</div>
 				</div>
 			</div>

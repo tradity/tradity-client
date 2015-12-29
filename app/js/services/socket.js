@@ -55,7 +55,7 @@ angular.module('tradity')
 			logSrvCheck: function() { return document.cookie.indexOf('srvdevmode') != -1; },
 			lzma: lzma,
 			keyStorage: webKeyStorage,
-			q: $q,
+			Promise: $q,
 			clientSoftwareVersion: tradityClientVersion
 		});
 		

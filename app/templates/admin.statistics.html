@@ -34,8 +34,7 @@
 				<li>{{srv.connectionCount}} Verbindungen</li>
 				<li>Startzeit: {{srv.creationTime * 1000 | date:'short'}}</li>
 				<li>
-					Bus ({{srv.bus.id}}): {{srv.bus.msgCount}} Nachrichten ({{srv.bus.unanswered}} unbeantwortete Anfragen),
-					Log bei {{srv.bus.packetLogCount}} von {{srv.bus.packetLogLength}}
+					Bus ({{srv.bus.id}}): {{srv.bus.msgCount}} Nachrichten ({{srv.bus.unanswered}} unbeantwortete Anfragen)
 				</li>
 				<li>
 					<span>{{srv.deadQueryCount}} Queries</span> /

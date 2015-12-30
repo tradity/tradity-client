@@ -2,7 +2,8 @@
   "name": "tradity",
   "version": "0.6.1",
   "dependencies": {
-    "angular": "1.4.x",
+    "angular": "1.5.x",
+    "angular-sanitize": "1.5.x",
     "angular-ui-router": "~0.2.13",
     "angular-bootstrap": "0.14.x",
     "angular-gettext": "~2.1.2",
@@ -11,7 +12,6 @@
     "socket.io-client": ">=1.2.1",
     "angular-ui-utils-keypress": "angular-ui-utils#bower-keypress",
     "angular-ui-utils-event": "angular-ui-utils#bower-event",
-    "angular-sanitize": "1.4.x",
     "angular-dialog-service": "5.2.x",
     "angular-md5": "*",
     "angular-debounce": "~1.0.1",
@@ -30,5 +30,8 @@
   "devDependencies": {
     "angular-mocks": "1.4.x",
     "angular-scenario": "1.4.x"
+  },
+  "resolutions": {
+    "angular": "1.5.x"
   }
 }

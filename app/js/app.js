@@ -182,12 +182,14 @@ angular.module('tradity', [
 		state('game.trade', {
 			url: '/trade',
 			templateUrl: 'templates/trade.html',
-			controller: 'TradeCtrl'
+			controller: 'TradeCtrl',
+            controllerAs: 'trade'
 		}).
 		state('game.tradesellbuy', {
 			url: '/trade/:sellbuy/:stockId/:amount',
 			templateUrl: 'templates/trade.html',
-			controller: 'TradeCtrl'
+			controller: 'TradeCtrl',
+            controllerAs: 'trade'
 		}).
 		state('game.tradeDetails', {
 			url: '/trade/:tradeId',

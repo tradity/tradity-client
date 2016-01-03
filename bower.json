@@ -2,16 +2,16 @@
   "name": "tradity",
   "version": "0.6.1",
   "dependencies": {
-    "angular": "1.4.x",
+    "angular": "1.5.x",
+    "angular-sanitize": "1.5.x",
     "angular-ui-router": "~0.2.13",
-    "angular-bootstrap": "0.13.x",
+    "angular-bootstrap": "0.14.x",
     "angular-gettext": "~2.1.2",
     "bootstrap": "3.3.x",
     "fontawesome": "4.1.0",
     "socket.io-client": ">=1.2.1",
     "angular-ui-utils-keypress": "angular-ui-utils#bower-keypress",
     "angular-ui-utils-event": "angular-ui-utils#bower-event",
-    "angular-sanitize": "1.4.x",
     "angular-dialog-service": "5.2.x",
     "angular-md5": "*",
     "angular-debounce": "~1.0.1",
@@ -21,7 +21,6 @@
     "ngInfiniteScroll": "1.2.x",
     "cytoscape": "~2.5.0",
     "asmcrypto": "~0.0.6",
-    "angular-translate-loader-static-files": "~2.5.2",
     "open-sans-fontface": "~1.2.0",
     "tradity-connection": "^0.10.0",
     "visionmedia-debug": "~2.2.0",
@@ -33,7 +32,6 @@
     "angular-scenario": "1.4.x"
   },
   "resolutions": {
-    "angular-bootstrap": "0.13.x",
-    "angular": "1.4.x"
+    "angular": "1.5.x"
   }
 }

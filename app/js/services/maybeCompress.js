@@ -18,15 +18,15 @@ angular.module('tradity')
 			
 			// perform minimal self-test to make sure the compression enviroment works
 			var testString = 'Banana';
-			this.compress(testString, 5).then(this.decompress.bind(this)).then(function(decompressed) {
+			this.compress(testString, 5).then(this.decompress.bind(this)).then((function(decompressed) {
 				if (decompressed != testString) {
 					console.warn('Decompressed string does not match input', decompressed);
 					this.canCompress = false;
 				}
-			}).catch(function(e) {
+			}).bind(this)).catch((function(e) {
 				console.warn('No compression available', e);
 				this.canCompress = false;
-			});
+			}).bind(this));
 		};
 		
 		MaybeCompress.prototype.compress = function(input, threshold) {

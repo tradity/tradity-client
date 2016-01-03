@@ -7,20 +7,20 @@
 angular.module('tradity').
 	controller('CommentCtrl', function($scope, socket, gettext) {
 		$scope.editComment = function(comment) {
-			socket.emit('change-comment-text', {
+			return socket.emit('change-comment-text', {
 				commentid: comment.commentid,
 				comment: prompt('Neuer Kommentartext: (Leerlassen zum Beibehalten)') || comment.comment,
 				trustedhtml: false
-			}, function() { notification(gettext('Ok!'), true); });
+			}).then(function() { notification(gettext('Ok!'), true); });
 		};
 
 		$scope.deleteComment = function(comment) {
-			socket.emit('change-comment-text', {
+			return socket.emit('change-comment-text', {
 				commentid: comment.commentid,
 				comment: comment.comment,
 				trustedhtml: comment.trustedhtml,
 				cstate: 'mdeleted'
-			}, function() { notification(gettext('Ok!'), true); });
+			}.then(function() { notification(gettext('Ok!'), true); });
 		};
 		
 		$scope.sendComment = function() {
@@ -39,11 +39,11 @@ angular.module('tradity').
 			if (!eventid)
 				return notification(gettext('Comment event was not found!'));
 
-			socket.emit('comment', {
+			return socket.emit('comment', {
 				eventid: eventid,
 				comment: $scope.comment,
 				ishtml: $scope.ishtml
-			}, function(data) {
+			}).then(function(data) {
 				if (data.code == 'comment-notfound') {
 					notification(gettext('Comment event was not found – something is wrong here!'));
 				} else if (data.code == 'comment-success') {

@@ -20,7 +20,7 @@ angular.module('tradity').
 				comment: comment.comment,
 				trustedhtml: comment.trustedhtml,
 				cstate: 'mdeleted'
-			}.then(function() { notification(gettext('Ok!'), true); });
+			}).then(function() { notification(gettext('Ok!'), true); });
 		};
 		
 		$scope.sendComment = function() {

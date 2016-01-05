@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -21,7 +21,7 @@ angular.module('tradity')
 			this.chatid = chatid;
 			this.event = event;
 			this.messages = [];
-		}
+		};
 
 		Chat.prototype.add = function(content,profilepic,uid,time) {
 			if (!time || !uid || !content)
@@ -31,7 +31,7 @@ angular.module('tradity')
 				profilepic: profilepic || DEFAULT_PROFILE_IMG,
 				uid: uid,
 				time: time
-			})
+			});
 			$rootScope.$broadcast('getMessage');
 		};
 
@@ -42,10 +42,10 @@ angular.module('tradity')
 			this.chats = [];
 
 			socket.on('comment', function (data) {
-				self.onMessage(data)
+				self.onMessage(data);
 			});
 			socket.on('list-all-chats', function (data) {
-				self.onChats(data)
+				self.onChats(data);
 			});
 			
 			// XXX
@@ -54,10 +54,10 @@ angular.module('tradity')
 			// this breaks cool registration stuff like registration links
 			// with pre-filled school data!
 			//socket.emit('list-all-chats');
-		}
+		};
 
 		Chats.prototype.add = function(event, chatid, members) {
-			this.chats.push(new Chat(event, chatid, members))
+			this.chats.push(new Chat(event, chatid, members));
 			$rootScope.$broadcast('getChat');
 		};
 
@@ -66,10 +66,10 @@ angular.module('tradity')
 				var chat = this.getByEvent(event.baseeventid);
 				if (chat) {
 					chat.add(event.comment,event.profilepic,event.commenter,event.eventtime);
-				} else
-					throw new Error("chat not found")
+				} else {
+					throw new Error("chat not found");
+				}
 			}
-
 		};
 
 		Chats.prototype.onChats = function(data) {
@@ -78,15 +78,16 @@ angular.module('tradity')
 					data.chats[i].chatstartevent,
 					data.chats[i].chatid,
 					data.chats[i].members
-				)
-			};
+				);
+			}
 		};
 
 		Chats.prototype.getByEvent = function(event) {
 			for (var i = 0; i < this.chats.length; i++) {
 				if (this.chats[i].event == event)
 					return this.chats[i];
-			};
+			}
+			
 			return false;
 		};
 
@@ -94,9 +95,12 @@ angular.module('tradity')
 			for (var i = 0; i < this.chats.length; i++) {
 				if (this.chats[i].chatid == chatid)
 					return this.chats[i];
-			};
+			}
+			
 			return false;
 		};
 
 		return new Chats();
 	});
+
+})();

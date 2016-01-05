@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -20,7 +20,7 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
 		$scope.DLAValidityDays = config.server().DLAValidityDays;
 		$scope.show_dlainfo = false;
 		$scope.dla_cert_days = dailyLoginAchievements.getCertificates().map(function(cert) {
-			return new Date(cert.date)
+			return new Date(cert.date);
 		});
 		$scope.name = data.result.name;
 		$scope.giv_name = data.result.giv_name;
@@ -77,7 +77,7 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
 	};
 
 	$scope.useGravatar = function() {
-		fileemit(socket, 'https://secure.gravatar.com/avatar/' + md5.createHash($scope.ownUser.email) + '?s=384', 'publish', {
+		fileemit(socket, gettext, 'https://secure.gravatar.com/avatar/' + md5.createHash($scope.ownUser.email) + '?s=384', 'publish', {
 			role: 'profile.image',
 			proxy: true
 		}, $scope.serverConfig, $scope.handlePublishCode);
@@ -100,7 +100,7 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
 
 		var piFile = document.getElementById('profileimage').files[0];
 		if (piFile) {
-			fileemit(socket, piFile, 'publish', {
+			fileemit(socket, gettext, piFile, 'publish', {
 				role: 'profile.image',
 			}, $scope.serverConfig, $scope.handlePublishCode);
 		}
@@ -163,7 +163,7 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
 				if (data.code == 'reset-user-success')
 					notification(gettext('Sucessfully reset user!'), true);
 			});
-		})
+		});
 	};
 
 	socket.on('change-options', function(data) {
@@ -183,3 +183,5 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
 
 
 });
+
+})();

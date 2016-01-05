@@ -1,0 +1,22 @@
+{
+  "expr": true,
+  "immed": true,
+  "newcap": true,
+  "noarg": true,
+  "sub": true,
+  "boss": true,
+  "eqnull": true,
+  "strict": true,
+  "browser": true,
+  "globals": {
+    "angular": true,
+    "asmCrypto": true,
+    "$": true,
+    "TRADITY_BUILD_STAMP": true,
+    "SoTradeConnection": true,
+    "io": true,
+    "notification": true,
+    "console": true,
+    "propt": true
+  }
+}

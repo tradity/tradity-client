@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -95,7 +95,7 @@ angular.module('tradity').
 						srv.allQContexts.push(ctx);
 						for (var i = 0; i < ctx.childContexts.length; ++i)
 							recurseListQContexts(ctx.childContexts[i]);
-					}
+					}; // jshint ignore:line
 					
 					recurseListQContexts(srv.qcontexts);
 				}
@@ -141,7 +141,7 @@ angular.module('tradity').
 			var vcenter = (vmin + vmax) / 2;
 			var vdiff = (vmax - vcenter) * 1.30;
 			
-			if (!data || data.length == 0)
+			if (!data || data.length === 0)
 				return;
 
 			if ($scope.curPlot)
@@ -229,7 +229,7 @@ angular.module('tradity').
 			tmin *= 1000;
 			tmax *= 1000;
 			
-			if (!data || data.length == 0)
+			if (!data || data.length === 0)
 				return;
 
 			if ($scope.regPlot)
@@ -284,3 +284,5 @@ angular.module('tradity').
 			});
 		};
 	});
+
+})();

@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -19,10 +19,12 @@ angular.module('tradity')
 		var ownUserRanking;
 		
 		var parse = function(res) {
+			var user;
 			if (res.code == 'get-user-info-success')
-				var user = res.result;
+				user = res.result;
 			else
 				return false;
+			
 			if (user.parsed)
 				return user;
 			user.orders 		= res.orders 		|| [];
@@ -33,7 +35,7 @@ angular.module('tradity')
 				 (user.profilepic || config.DEFAULT_PROFILE_IMG));
 			user.parsed = true;
 			return user;
-		}
+		};
 
 		var updateUser = function(res) {
 			var user = parse(res);
@@ -57,7 +59,7 @@ angular.module('tradity')
 			
 			angular.extend($user, user);
 			$rootScope.$broadcast('user-update', $user);
-		}
+		};
 		
 		socket.on('self-info', updateUser);
 		socket.on('get-user-info', updateUser);
@@ -78,7 +80,7 @@ angular.module('tradity')
 				nohistory: true,
 				_cache: 20
 			});
-		}
+		};
 		fetchSelf();
 
 		return {
@@ -120,7 +122,7 @@ angular.module('tradity')
 						case 'login-email-not-verified':
 							return $q.reject('Emailadresse noch nicht bestätigt');
 					}
-				})
+				});
 			},
 			/**
 			 * @ngdoc method
@@ -128,7 +130,7 @@ angular.module('tradity')
 			 * @methodOf tradity.user
 			 */
 			logout:function() {
-				socket.emit('logout', function(data) {
+				return socket.emit('logout', function(data) {
 					safestorage.clear();
 					var $user = $rootScope.$new(true);
 					$rootScope.$broadcast('user-update', null);
@@ -169,7 +171,7 @@ angular.module('tradity')
 					_cache: 20
 				}).then(function(res) {
 					return parse(res);
-				})
+				});
 			 },
 			 /**
 			 * @ngdoc method
@@ -251,4 +253,6 @@ angular.module('tradity')
 	 */
 	.factory('$user', function (user) {
 		return user.scope;
-	})
+	});
+
+})();

@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -56,7 +56,7 @@ angular.module('tradity').
 						if ($scope.ownUser && e.adminid == $scope.ownUser.uid && e.status == 'admin') 
 							$scope.selfIsSchoolAdmin = true;
 					});
-				}
+				};
 				
 				checkAdmin();
 				$scope.$on('user-update', checkAdmin);
@@ -135,7 +135,7 @@ angular.module('tradity').
 		$scope.changeDescription = function() {
 			var bannerFile = document.getElementById('bannerupload').files[0];
 			if (bannerFile) {
-				fileemit(socket, bannerFile, 'school-publish-banner', {
+				fileemit(socket, gettext, bannerFile, 'school-publish-banner', {
 					schoolid: $scope.schoolid
 				}, $scope.serverConfig, function(code) {
 					switch (code) {
@@ -190,3 +190,5 @@ angular.module('tradity').
 			});
 		};
 	});
+
+})();

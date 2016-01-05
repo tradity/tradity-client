@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -18,13 +18,13 @@ angular.module('tradity')
 			if (!a) return b.length;
 			if (!b) return a.length;
 			
-			var matrix = [];
-			for (var i = 0; i <= b.length; ++i)
+			var matrix = [], i, j;
+			for (i = 0; i <= b.length; ++i)
 				matrix[i] = [i];
-			for (var j = 0; j <= a.length; ++j)
+			for (j = 0; j <= a.length; ++j)
 				matrix[0][j] = j;
-			for (var i = 1; i <= b.length; ++i) {
-				for (var j = 1; j <= a.length; ++j) {
+			for (i = 1; i <= b.length; ++i) {
+				for (j = 1; j <= a.length; ++j) {
 					if (b.charAt(i-1) == a.charAt(j-1)) {
 						matrix[i][j] = matrix[i-1][j-1];
 						continue;
@@ -43,12 +43,12 @@ angular.module('tradity')
 			var a = String(entryName).toUpperCase().split(/\b/);
 			var b = String(searchString).toUpperCase().split(/\b/);
 			
-			for (var i = 0; i < a.length; ++i) a[i] = a[i].trim();
-			for (var i = 0; i < b.length; ++i) b[i] = b[i].trim();
+			var i, j;
+			for (i = 0; i < a.length; ++i) a[i] = a[i].trim();
+			for (i = 0; i < b.length; ++i) b[i] = b[i].trim();
 			
 			/* remove empty strings from a, b */
 			{
-				var i;
 				while ((i = a.indexOf('')) != -1) a.splice(i, 1);
 				while ((i = b.indexOf('')) != -1) b.splice(i, 1);
 			}
@@ -62,16 +62,16 @@ angular.module('tradity')
 			
 			/* compute the similarities between the words and note them in a matrix */
 			var similarityMatrix = [];
-			for (var i = 0; i < a.length; ++i) {
+			
+			// computes log(sqrt(|a|·|b|)) / (dist(a, b)+1))
+			var lengthAdjustedLevenshtein = function(a, b) {
+				return Math.log(a.length * b.length) / 2 -
+					 Math.log(levenshtein(a, b) + 1.0);
+			};
+			for (i = 0; i < a.length; ++i) {
 				similarityMatrix[i] = [];
 				
-				for (var j = 0; j < b.length; ++j) {
-					// compute log(sqrt(|a|·|b|)) / (dist(a, b)+1))
-					var lengthAdjustedLevenshtein = function(a, b) {
-						return Math.log(a.length * b.length) / 2
-							 - Math.log(levenshtein(a, b) + 1.0);
-					}
-					
+				for (j = 0; j < b.length; ++j) {
 					var fullDistance = lengthAdjustedLevenshtein(a[i], b[j]);
 					
 					// it is quite likely that users entering “pea...” expect
@@ -97,17 +97,17 @@ angular.module('tradity')
 				var indices = m.compute(munkres.make_cost_matrix(similarityMatrix));
 				
 				for (var k = 0; k < indices.length; ++k) {
-					var i = indices[k][0], j = indices[k][1];
+					i = indices[k][0], j = indices[k][1];
 					totalSimilarity += similarityMatrix[i][j];
 				}
 			} else {
 				/* simply pick the available maximum of each row greedily */
 				var takenColumns = [];
-				for (var i = 0; i < similarityMatrix.length; ++i) {
+				for (i = 0; i < similarityMatrix.length; ++i) {
 					var row = similarityMatrix[i];
 					var maxColumn = -1;
 					
-					for (var j = 0; j < row.length; ++j) {
+					for (j = 0; j < row.length; ++j) {
 						if (takenColumns.indexOf(j) != -1)
 							continue;
 						if (maxColumn == -1 || row[j] > row[maxColumn])
@@ -122,3 +122,5 @@ angular.module('tradity')
 			return totalSimilarity;
 		};
 	});
+
+})();

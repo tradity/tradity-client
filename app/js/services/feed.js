@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -131,7 +131,7 @@ angular.module('tradity')
 				parsedEvent._origEvent = origEvent;
 				$feed.addEvent(parsedEvent);
 			}
-		}
+		};
 
 		socket.on('*', $feed.receiveEvent);
 		
@@ -157,7 +157,7 @@ angular.module('tradity')
 			 * feed scope access
 			 */
 			scope:$feed
-		}
+		};
 	})
 	/**
 	 * @ngdoc service
@@ -169,3 +169,4 @@ angular.module('tradity')
 		return feed.scope;
 	});
 
+})();

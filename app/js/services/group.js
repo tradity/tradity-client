@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -15,7 +15,7 @@ angular.module('tradity')
 	.factory('group', function ($q,socket) {
 		var parseGroup = function(data) {
 			return data;
-		}
+		};
 
 		return {
 			/**
@@ -32,8 +32,10 @@ angular.module('tradity')
 					lookfor: schoolid,
 					_cache: 30
 				}).then(function(data){
-					parseGroup(data)
-				})
+					return parseGroup(data);
+				});
 			},
 		};
-	})
+	});
+
+})();

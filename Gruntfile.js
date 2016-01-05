@@ -467,7 +467,7 @@ module.exports = function (grunt) {
 			
 			file.src.forEach(function(f) {
 				j += ('var ' + f.replace(/^(.*\/)?([^\/]+)$/, '$2').replace(/[^\w]/g, '_').replace(/_+/g, '_') + 
-					' = ' + JSON.stringify(grunt.file.read(f)));
+					' = ' + JSON.stringify(grunt.file.read(f)) + ';\n');
 			});
 			
 			grunt.file.write(file.dest, j);

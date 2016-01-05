@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -46,7 +46,7 @@ angular.module('tradity').
 			}
 			
 			return (2 * weightedSum) / (data.length * sum) - 1.0 - (1 / data.length);
-		}
+		};
 		
 		socket.on('list-all-users', function(data) {
 			if (data.code != 'list-all-users-success')
@@ -120,3 +120,5 @@ angular.module('tradity').
 			});
 		};
 	});
+
+})();

@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -27,7 +27,7 @@ angular.module('tradity').
 
 		vm.togglePopularStocks = function() {
 			vm.showPopularStocks = !vm.showPopularStocks;
-		}
+		};
 
 		vm.buy = function() {
 			if (!vm.amount)
@@ -89,15 +89,17 @@ angular.module('tradity').
 				}
 				
 				socket.emit(qtype, query, function(data) {
+					var modal;
+					
 					switch (data.code) {
 						case 'dquery-success':
-							var modal = dialogs.notify('tradity', gettext('The trade will be executed as soon as the given conditions are fulfilled.'));
+							modal = dialogs.notify('tradity', gettext('The trade will be executed as soon as the given conditions are fulfilled.'));
 							modal.result.then(function(btn) {
 								$state.go('game.depot.transactions');
 							});
 							break;
 						case 'stock-buy-success':
-							var modal = dialogs.notify('tradity', gettext('Successfully traded!'));
+							modal = dialogs.notify('tradity', gettext('Successfully traded!'));
 							modal.result.then(function(btn) {
 								$state.go('game.depot.listing');
 							});
@@ -115,7 +117,7 @@ angular.module('tradity').
 							dialogs.error('tradity', gettext('Not enough stocks!'));
 							break;
 						case 'stock-buy-autodelay-sxnotopen':
-							var modal = dialogs.notify('tradity', gettext('The trade will be executed when the stock exchange opens'));
+							modal = dialogs.notify('tradity', gettext('The trade will be executed when the stock exchange opens'));
 							modal.result.then(function(btn) {
 								$state.go('game.depot.transactions');
 							});
@@ -143,8 +145,8 @@ angular.module('tradity').
 					return !stock.leader || stock.leader != vm.ownUser.uid;
 				}).map(function(stock) {
 					stock.textName = stock.leader ? gettext('Leader: %1').replace(/%1/g, stock.leadername) : stock.name;
-					stock.extraInfo = (parseInt(stock.lastvalue / 100) / 100)
-						+ (stock.exchange ? '\u00a0' + stock.exchange : '');
+					stock.extraInfo = (parseInt(stock.lastvalue / 100) / 100) +
+						(stock.exchange ? '\u00a0' + stock.exchange : '');
 					stock.sortingRank = searchStringSimilarity(stockname, stock.textName);
 					return stock;
 				}), 'sortingRank', true);
@@ -231,3 +233,5 @@ angular.module('tradity').
 			vm.popularStocks = data.results;
 		});
 	});
+
+})();

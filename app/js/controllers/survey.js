@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -32,7 +32,7 @@ controller('SurveyCtrl', function($scope, $stateParams, $state, gettext, languag
 	
 	vm.questionnaires = socket.emit('list-questionnaires').then(function(data) {
 		if (data.code != 'list-questionnaires-success' ||
-		    Object.keys(data.questionnaires).length == 0)
+		    Object.keys(data.questionnaires).length === 0)
 			return $state.go('game.feed');
 		
 		var key = $stateParams.questionnaire ||
@@ -59,14 +59,14 @@ controller('SurveyCtrl', function($scope, $stateParams, $state, gettext, languag
 					answers: Object.keys(result).filter(function(a) {
 						// remove 'false' or empty entries
 						return result[a] && a != 'choice';
-					}).map(function(a) {
+					}).map(function(a) { // jshint ignore:line
 						// strip possible :freetext suffix
 						a = a.replace(/:freetext$/, '');
 						return {
 							answer: parseInt(a),
 							answer_freetext: vm.results[k][a + ':freetext'] || null
 						};
-					})
+					}) // jshint ignore:line
 				});
 			} else if (questions[i].question_multiple_answers) {
 				// it’s okay if the user did not enter anything
@@ -78,7 +78,7 @@ controller('SurveyCtrl', function($scope, $stateParams, $state, gettext, languag
 			} else {
 				return dialogs.error('tradity', gettext('Please answer all the questions'));
 			}
-		};
+		}
 		
 		socket.emit('save-questionnaire', {
 			results: results,
@@ -93,3 +93,5 @@ controller('SurveyCtrl', function($scope, $stateParams, $state, gettext, languag
 		});
 	};
 });
+
+})();

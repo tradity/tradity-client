@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -18,7 +18,7 @@ angular.module('tradity').
 				socket.emit('create-invite-link', {
 					email: emails[i],
 					schoolid: $scope.schoolid ? $scope.schoolid : null
-				}, function(data) {
+				}).then(function(data) {
 					switch (data.code) {
 						case 'create-invite-link-invalid-email':
 							notification(gettext('Invalid e-mail address'));
@@ -33,7 +33,7 @@ angular.module('tradity').
 							notification(gettext('Invitation link was sent successfully'), true);
 							break;
 					}
-				});
+				}); // jshint ignore:line
 			}
 		};
 		
@@ -51,5 +51,7 @@ angular.module('tradity').
 		
 		$scope.closeCopyTooltip = function() {
 			$scope.copyTooltip = {isOpen: false, msg: ''};
-		}
+		};
 	});
+
+})();

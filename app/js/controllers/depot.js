@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -14,7 +14,7 @@ angular.module('tradity').
 			for (var i in $scope.results) {
 				$scope.ownUser.depotvalue += parseInt($scope.results[i].total);
 			}
-		}
+		};
 
 		socket.on('list-own-depot', function(data) {
 			if (data.code == 'list-own-depot-success') {
@@ -116,3 +116,5 @@ angular.module('tradity').
 		
 		$scope.showWatchlist();
 	});
+
+})();

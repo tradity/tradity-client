@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -26,9 +26,9 @@ angular.module('tradity').
 		$scope.version = null;
 
 		$scope.toggleM = function() {
-			console.log('sdfs')
+			console.log('sdfs');
 			$('#pagenav').toggleClass('hidden-xs');
-		}
+		};
 		
 		$scope.connectionLastRx = 0;
 		$scope.connectionCheck = function() {
@@ -79,13 +79,13 @@ angular.module('tradity').
 
 		$scope.showSearch = function() {
 			$scope.search = true;
-		}
+		};
 
 		$scope.openSearch = function(query) {
 			$state.go('game.search', {
 				query: query
 			});
-		}
+		};
 
 		$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams) { 
 			if (toParams.query) {
@@ -96,7 +96,7 @@ angular.module('tradity').
 				$scope.search = false;
 				$scope.searchBarText = '';
 			}
-		})
+		});
 
 		$scope.$on('makeadmin', function() {
 			$scope.isAdmin = true;
@@ -177,3 +177,5 @@ angular.module('tradity').
 			notification(gettext('There was a technical problem – the tech team of Tradity has been informed.'));
 		});
 	});
+
+})();

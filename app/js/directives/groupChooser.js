@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -44,10 +44,12 @@ angular.module('tradity').
 				socket.on('list-schools', function(result) {
 					$scope.schoolList = result.result;
 					$scope.schoolIndexByPath = {};
-					for (var i = 0; i < $scope.schoolList.length; ++i)
+					var i;
+					
+					for (i = 0; i < $scope.schoolList.length; ++i)
 						$scope.schoolIndexByPath[$scope.schoolList[i].path] = $scope.schoolList[i];
 					
-					for (var i = 0; i < $scope.schoolList.length; ++i) {
+					for (i = 0; i < $scope.schoolList.length; ++i) {
 						var entry = $scope.schoolList[i];
 						entry.extraInfo = entry.usercount + '\u00a0' + gettextCatalog.getPlural(entry.usercount, 'Person', 'Persons');
 						
@@ -107,3 +109,5 @@ angular.module('tradity').
 			}
 		};
 	});
+
+})();

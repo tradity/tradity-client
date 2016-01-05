@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -56,7 +56,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 	// possibly redirect to game feed when already logged in
 	user.me().then(function() {
 		$state.go('game.feed');
-	})
+	});
 
 
 	vm.questionnaire = socket.emit('list-questionnaires').then(function(data) {
@@ -82,8 +82,8 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 	};
 
 	$scope.$watch(function() {
-		return vm.lang
-	}, function() {
+		return vm.lang;
+	}).then(function() {
 		languageManager.setCurrentLanguage(vm.lang);
 	});
 
@@ -225,7 +225,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 					msg: validationMsg[data.code]
 				});
 		});
-	}
+	};
 
 	vm.validateName = function() {
 		socket.emit('validate-username', {
@@ -238,7 +238,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 					msg: validationMsg[data.code]
 				});
 		});
-	}
+	};
 
 	var zxcvbnLoaded = asyncLoadJS(['js/jit/zxcvbn.js']);
 
@@ -257,3 +257,5 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 		vm.datepickerOpened = true;
 	};
 });
+
+})();

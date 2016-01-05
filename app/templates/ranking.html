@@ -48,7 +48,7 @@
 						<th translate>Group</th>
 						<th ng-show="spec.type == 'administrative'" colspan="2" translate>Full name</th>
 						<th ng-show="spec.type == 'administrative'" translate>Actions</th>
-						<th ng-show="spec.type == 'follower'" translate>Follower ­performance</th>
+						<th ng-show="spec.type == 'follower'" translate>Follower performance</th>
 						<th ng-show="spec.type == 'follower'" translate>Follower valuation</th>
 					</tr>
 					<tr ng-repeat="result in rankingResult.get(spec.type) | filter: rankingSearchText | filter: resultDisplayFilter | limitTo:totalDisplayed"

@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -43,12 +43,10 @@ angular.module('tradity')
 					return (byte+256).toString(16).substr(-2);
 				}).join('');
 			});
-			
-			return deferred.promise;
 		};
 		
 		MaybeCompress.prototype.decompress = function(input) {
-			if (input == '' || input == 'null' || input == null)
+			if (!input || input == 'null')
 				return $q.when(null);
 			
 			var encodingID = input.substr(0, 2);
@@ -74,3 +72,5 @@ angular.module('tradity')
 		
 		return new MaybeCompress();
 	});
+
+})();

@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -341,20 +341,21 @@ angular.module('tradity').
 			if (toParams.id) {
 				$scope.questions = [];
 				
-				for (var i = 0; i < $scope.learningCatalog.length; ++i)
+				var i;
+				for (i = 0; i < $scope.learningCatalog.length; ++i)
 					if ($scope.learningCatalog[i].id == toParams.id)
 						$scope.catalogEntry = $scope.learningCatalog[i];
 				
-				for (var i = 0; i < $scope.learningQuestions.length; ++i) {
+				for (i = 0; i < $scope.learningQuestions.length; ++i) {
 					var answers = $scope.learningQuestions[i].answers;
 					for (var j = 0; j < answers.length; ++j)
 						answers[j].orderIndex = Math.random();
 					
 					if ($scope.learningQuestions[i].catalog == toParams.id)
 						$scope.questions.push($scope.learningQuestions[i]);
-				};
+				}
 			}
-		})
+		});
 
 		$scope.checkAnswers = function() {
 			$scope.answersChecked = true;
@@ -363,7 +364,7 @@ angular.module('tradity').
 			for (var i = 0; i < $scope.questions.length; ++i) {
 				$scope.questions[i].wrong = ($scope.questions[i].answer != $scope.questions[i].correct);
 				madeAchievement = madeAchievement && !$scope.questions[i].wrong;
-			};
+			}
 			
 			if (madeAchievement) {
 				achievements.markAsDone($scope.catalogEntry.achievementName);
@@ -372,11 +373,15 @@ angular.module('tradity').
 		
 		achievements.listClientAchievements().then(function(clientAchievementList) {
 			var learningCatalogByAchievement = {};
-			for (var i = 0; i < $scope.learningCatalog.length; ++i)
+			
+			var i;
+			for (i = 0; i < $scope.learningCatalog.length; ++i)
 				learningCatalogByAchievement[$scope.learningCatalog[i].achievementName] = $scope.learningCatalog[i];
 			
-			for (var i = 0; i < clientAchievementList.length; ++i)
+			for (i = 0; i < clientAchievementList.length; ++i)
 				if (learningCatalogByAchievement[clientAchievementList[i].name])
 					learningCatalogByAchievement[clientAchievementList[i].name].achievement = clientAchievementList[i];
 		});
 	});
+
+})();

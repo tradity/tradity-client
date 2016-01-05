@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -45,7 +45,7 @@ angular.module('tradity').
 			var vcenter = (vmin + vmax) / 2;
 			var vdiff = (vmax - vcenter) * 1.30 + 1;
 
-			if (!data || data.length == 0)
+			if (!data || data.length === 0)
 				return;
 
 			if ($scope.curPlot)
@@ -100,3 +100,5 @@ angular.module('tradity').
 			});
 		};
 	});
+
+})();

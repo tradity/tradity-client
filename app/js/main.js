@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -33,7 +33,7 @@ var notification = function (text, icon) { // icon === true -> success
 	}, 3000);
 };
 
-var fileemit = function(socket, input, evtype, template, serverconfig, callback) {
+var fileemit = function(socket, gettext, input, evtype, template, serverconfig, callback) {
 	var filename = null; 
 	var mime = null;
 	
@@ -108,3 +108,5 @@ var escapeHTML = generateReplacer([
 	{ orig: /'/g, replace: '&#039;' },
 	{ orig: /"/g, replace: '&quot;' }
 ]);
+
+})();

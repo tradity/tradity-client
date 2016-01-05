@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -45,7 +45,7 @@ angular.module('tradity')
 				var typePerson = 'somebody';
 				var type = 'watch-add';
 				if (event.srcuser == $user.id) {
-					var typePerson = 'yourself';
+					typePerson = 'yourself';
 					type += '-self';
 				} else if (event.watcheduser == $user.id) {
 					type += '-me';
@@ -69,11 +69,11 @@ angular.module('tradity')
 			 * parse the 'trade' event
 			 */
 			trade:function(event) {
-				var typePerson = 'somebody';
+				var typePerson = 'somebody', type;
 				if (event.amount < 0) {
-					var type = 'trade-sell';
+					type = 'trade-sell';
 				} else {
-					var type = 'trade-buy';
+					type = 'trade-buy';
 				}
 				if (event.srcuser == $user.id) {
 					type += '-self';
@@ -173,12 +173,12 @@ angular.module('tradity')
 			 * parse the 'user-provchange' event
 			 */
 			userProvchange:function(event) {
-				var type = 'provchange';
+				var type = 'provchange', typePerson;
 				if (event.srcuser == $user.id) {
-					var typePerson = 'yourself';
+					typePerson = 'yourself';
 					type += '-self';
 				} else {
-					var typePerson = 'somebody';
+					typePerson = 'somebody';
 				}
 
 				// cleanup after legacy events
@@ -211,12 +211,12 @@ angular.module('tradity')
 			 * parse the 'user-namechange' event
 			 */
 			userNamechange:function(event) {
-				var type = 'namechange';
+				var type = 'namechange', typePerson;
 				if (event.srcuser == $user.id) {
-					var typePerson = 'yourself';
+					typePerson = 'yourself';
 					type += '-self';
 				} else {
-					var typePerson = 'somebody';
+					typePerson = 'somebody';
 				}
 				return {
 					type: type,
@@ -237,12 +237,14 @@ angular.module('tradity')
 			 * parse the 'user-reset' event
 			 */
 			userReset:function(event) {
-				var type = 'reset';
+				var type = 'reset', typePerson;
 				if (event.srcuser == $user.id) {
-					var typePerson = 'yourself';
+					typePerson = 'yourself';
 					type += '-self';
-				} else
-					var typePerson = 'somebody';
+				} else {
+					typePerson = 'somebody';
+				}
+				
 				return {
 					type: type,
 					typePerson: typePerson,
@@ -252,3 +254,5 @@ angular.module('tradity')
 			}
 		};
 	});
+
+})();

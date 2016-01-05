@@ -1,4 +1,4 @@
-'use strict';
+(function() { 'use strict';
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -77,7 +77,8 @@ angular.module('tradity')
 			var res = $.extend(true, [], this.rawResults); // deep copy (so user.rank does not get carried over)
 			res = res.filter(filter);
 			
-			for (var i = 0; i < res.length; ++i) {
+			var i,j;
+			for (i = 0; i < res.length; ++i) {
 				res[i].isSchoolEntry = false;
 				res[i].key = key(res[i]);
 			}
@@ -88,12 +89,13 @@ angular.module('tradity')
 					var students = [];
 					
 					$.each(res, function(i, e) {
-						if (e.schoolpath && (e.schoolpath == s.path || e.schoolpath.substr(0, s.path.length + 1) == s.path + '/')
-							&& !e.pending)
+						if (e.schoolpath &&
+							(e.schoolpath == s.path || e.schoolpath.substr(0, s.path.length + 1) == s.path + '/') &&
+							!e.pending)
 							students.push(e);
 					});
 					
-					if (students.length == 0)
+					if (students.length === 0)
 						return;
 					
 					students.sort(function(a, b) { return b.key - a.key; });
@@ -110,15 +112,15 @@ angular.module('tradity')
 						isSchoolEntry: true
 					};
 					
-					for (var j = 0; j < additiveKeys.length; ++j)
+					for (j = 0; j < additiveKeys.length; ++j)
 						avg[additiveKeys[j]] = 0;
 					
 					var n = 0;
-					for (var i = 0; i < students.length && i < Math.max(students.length / 2, 4); ++i) {
+					for (i = 0; i < students.length && i < Math.max(students.length / 2, 4); ++i) {
 						++n;
 						
 						avg.hastraded |= students[i].hastraded;
-						for (var j = 0; j < additiveKeys.length; ++j)
+						for (j = 0; j < additiveKeys.length; ++j)
 							avg[additiveKeys[j]] += students[i][additiveKeys[j]];
 					}
 					
@@ -126,7 +128,7 @@ angular.module('tradity')
 						avg.count = students.length;
 						avg.rankCount = n;
 						
-						for (var j = 0; j < additiveKeys.length; ++j)
+						for (j = 0; j < additiveKeys.length; ++j)
 							avg[additiveKeys[j]] /= n;
 						
 						avg.key = key(avg);
@@ -141,7 +143,7 @@ angular.module('tradity')
 			});
 			
 			var r = 1;
-			for (var i = 0; i < res.length; ++i)
+			for (i = 0; i < res.length; ++i)
 				if (!res[i].isSchoolEntry)
 					res[i].rank = r++;
 			
@@ -318,3 +320,5 @@ angular.module('tradity')
 		
 		return new RankingProvider();
 	});
+
+})();

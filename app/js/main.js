@@ -1,4 +1,4 @@
-(function() { 'use strict';
+'use strict'; // jshint ignore:line
 
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -108,5 +108,3 @@ var escapeHTML = generateReplacer([
 	{ orig: /'/g, replace: '&#039;' },
 	{ orig: /"/g, replace: '&quot;' }
 ]);
-
-})();

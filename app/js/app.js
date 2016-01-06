@@ -191,11 +191,6 @@ angular.module('tradity', [
 			controller: 'TradeCtrl',
             controllerAs: 'trade'
 		}).
-		state('game.tradeDetails', {
-			url: '/trade/:tradeId',
-			templateUrl: 'templates/tradeDetails.html',
-			controller: 'TradeDetailsCtrl'
-		}).
 		state('game.ranking', {
 			url: '/ranking/:spec',
 			templateUrl: 'templates/ranking.html',

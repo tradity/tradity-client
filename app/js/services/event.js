@@ -125,9 +125,7 @@ angular.module('tradity')
 			comment:function(event) {
 				var typePerson = 'somebody';
 				var type = 'comment';
-				if (event.baseeventtype == 'trade') {
-					type += '-trade';
-				} else if (event.baseeventtype == 'user-register') {
+				if (event.baseeventtype == 'user-register') {
 					type += '-pinboard';
 				} else if (event.baseeventtype == 'school-create') {
 					type += '-schoolpinboard';

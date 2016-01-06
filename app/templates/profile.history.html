@@ -23,7 +23,7 @@
 					<th translate>Trade total</th>
 				</tr>
 				<tr ng-repeat="order in orders">
-					<td class="{{order.ordertype}}" title="{{order.stocktextid}}"><a class="text-link" ui-sref="game.tradeDetails({tradeId: order.orderid})">{{order.stockname}}</a></td>
+					<td class="{{order.ordertype}}" title="{{order.stocktextid}}">{{order.stockname}}</td>
 					<td>{{order.buytime * 1000 | date:'short'}}</td>
 					<td>{{order.amount}}</td>
 					<td>{{order.price / 10000 | currency}}</td>

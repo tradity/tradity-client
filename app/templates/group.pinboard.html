@@ -14,7 +14,7 @@
 			<br/>
 		</form>
 
-		<div ng-repeat="comment in school.comments.concat(school.blogposts) | orderBy:'-time'" class="feed-item feed comment">
+		<div ng-repeat="comment in school.comments.concat(school.blogposts) | orderBy:'-time' | groupDeletedComments" class="feed-item feed comment">
 			<div ng-show="comment.comment">
 				<div class="feed-entry-symbol" style="background-image:url({{comment.profilepic}})" ng-class="{'no-image': !comment.profilepic }"></div>
 				<span class="feed-arrow"></span>

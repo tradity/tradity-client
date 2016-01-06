@@ -12,7 +12,7 @@ cache:
   directories:
     - node_modules
 before_install:
-  - export PATH=$HOME/.local/bin:./node_modules/.bin:$PATH
+  - export PATH="$HOME/.local/bin:./node_modules/.bin:$PATH"
   - export CXX="g++-4.8" CC="gcc-4.8"
 install:
   - npm install -g bower grunt-cli

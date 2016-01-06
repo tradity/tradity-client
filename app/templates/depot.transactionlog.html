@@ -38,9 +38,7 @@
 					<td>{{ta.time * 1000 | date:'short'}}</td>
 					<td>{{ta.typeText}}</td>
 					<td>
-						<span ng-show="ta.orderid">
-							<a class="text-link" ui-sref="game.tradeDetails({tradeId: ta.orderid})"># {{ta.orderid}}</a>
-						</span>
+						<span ng-show="ta.orderid"># {{ta.orderid}}</span>
 						<span ng-hide="ta.orderid">—</span>
 					</td>
 					<td>

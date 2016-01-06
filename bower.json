@@ -4,7 +4,7 @@
   "dependencies": {
     "angular": "1.5.x",
     "angular-sanitize": "1.5.x",
-    "angular-ui-router": "~0.2.13",
+    "angular-ui-router": "~0.2.14",
     "angular-bootstrap": "0.14.x",
     "angular-gettext": "~2.1.2",
     "bootstrap": "3.3.x",

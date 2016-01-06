@@ -72,7 +72,7 @@
 						<a ui-sref="game.profile.overview({userId: message.srcusername})" class="feed-link" translate-id="trader-link">
 							{{message.srcusername}}
 						</a>
-						has <a ui-sref="game.tradeDetails({tradeId: message.targetid})" class="feed-link" translate-id="trade-link" translate-id="trade-link">bought</a> {{message.amount}}&nbsp;shares of
+						has bought {{message.amount}}&nbsp;shares of
 						<span ng-show="message.leader">
 							<a ui-sref="game.profile.overview({userId: message.leader})" translate-id="leader-link">{{message.stockname}}</a>
 						</span>
@@ -88,7 +88,7 @@
 						<a ui-sref="game.profile.overview({userId: message.srcusername})" class="feed-link" translate-id="trader-link">
 							{{message.srcusername}}
 						</a>
-						has <a ui-sref="game.tradeDetails({tradeId: message.targetid})" class="feed-link" translate-id="trade-link">sold</a> {{message.amount}}&nbsp;shares of
+						has sold {{message.amount}}&nbsp;shares of
 						<span ng-show="message.leader">
 							<a ui-sref="game.profile.overview({userId: message.leader})" translate-id="leader-link">{{message.stockname}}</a>
 						</span>
@@ -101,7 +101,7 @@
 				<div class="feed-entry-content">
 					<span class="feed-time pull-right" title="{{message.time * 1000 | date:'short'}}">{{vtime(message.time)}}</span>
 					<translate>
-						You have <a ui-sref="game.tradeDetails({tradeId: message.targetid})" class="feed-link" translate-id="trade-link">bought</a> {{message.amount}}&nbsp;shares of
+						You have bought {{message.amount}}&nbsp;shares of
 						<span ng-show="message.leader">
 							<a ui-sref="game.profile.overview({userId: message.leader})" translate-id="leader-link">{{message.stockname}}</a>
 						</span>
@@ -113,7 +113,7 @@
 				<div class="feed-entry-symbol"><i class="fa fa-eur"></i></div>
 				<div class="feed-entry-content">
 					<translate>
-						You have <a ui-sref="game.tradeDetails({tradeId: message.targetid})" class="feed-link" translate-id="trade-link">sold</a> {{message.amount}}&nbsp;shares of
+						You have sold {{message.amount}}&nbsp;shares of
 						<span ng-show="message.leader">
 							<a ui-sref="game.profile.overview({userId: message.leader})" translate-id="leader-link">{{message.stockname}}</a>
 						</span>
@@ -129,7 +129,7 @@
 						<a ui-sref="game.profile.overview({userId: message.srcusername})" class="feed-link" translate-id="trader-link">
 							{{message.srcusername}}
 						</a>
-						has <a ui-sref="game.tradeDetails({tradeId: message.targetid})" class="feed-link" translate-id="trade-link">bought</a> {{message.amount}}&nbsp;shares of you.
+						has bought {{message.amount}}&nbsp;shares of you.
 					</translate>
 				</div>
 			</div>
@@ -140,7 +140,7 @@
 						<a ui-sref="game.profile.overview({userId: message.srcusername})" class="feed-link" translate-id="trader-link">
 							{{message.srcusername}}
 						</a>
-						has <a ui-sref="game.tradeDetails({tradeId: message.targetid})" class="feed-link" translate-id="trade-link">sold</a> {{message.amount}}&nbsp;shares of you.
+						has sold {{message.amount}}&nbsp;shares of you.
 					</translate>
 				</div>
 			</div>
@@ -245,19 +245,6 @@
 						<a ui-sref="game.profile.overview({userId: message.srcusername})">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ui-sref="game.profile.overview({userId: message.tradername})">{{message.tradername_genitive}}</a> <translate>pinboard</translate>
 					</div>
 					<a ui-sref="game.profile.pinboard({userId: message.tradername})">
-						<span ng-bind-html="message.comment">{{message.comment}}</span>
-					</a>
-				</div>
-			</div>
-			<div ng-if="message.type == 'comment-trade-self-me' || message.type == 'comment-trade-self-me' || message.type == 'comment-trade-me' || message.type == 'comment-trade'" class="comment">
-				<div class="feed-entry-symbol" style="background-image:url({{message.profilepic}})"></div>
-				<span class="feed-arrow"></span>
-				<div class="feed-entry-content">
-					<div class="feed-head">
-						<span class="feed-time pull-right" title="{{message.time * 1000 | date:'short'}}">{{vtime(message.time)}}</span>
-						<a ui-sref="game.profile.overview({userId: message.srcusername})">{{message.srcusername}}</a> <i class="fa fa-angle-right"></i> <a ui-sref="game.profile.overview({userId: message.tradername})">{{message.tradername_genitive}}</a> <a ui-sref="game.tradeDetails({tradeId: message.orderid})" translate>trade</a>
-					</div>
-					<a ui-sref="game.tradeDetails({tradeId: message.orderid})">
 						<span ng-bind-html="message.comment">{{message.comment}}</span>
 					</a>
 				</div>

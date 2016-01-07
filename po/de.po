@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Tradity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2016-01-05 03:35+0100\n"
+"PO-Revision-Date: 2016-01-07 03:40+0100\n"
 "Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"
 "Language-Team: German <http://weblate.tradity.de/projects/tradity/tradity-"
 "client-master/de/>\n"
@@ -42,6 +42,12 @@ msgstr "(Mehr Informationen)"
 msgid "({{::result.count}} Members, Top {{::result.rankCount}})"
 msgstr "({{::result.count}} Mitglieder, Top {{::result.rankCount}})"
 
+#: app/templates/group.pinboard.html:19 app/templates/profile.pinboard.html:17
+msgid "1 deleted comment not shown"
+msgid_plural "{{comment.trailingCount}} deleted comments not shown"
+msgstr[0] "1 entfernter Kommentar nicht angezeigt"
+msgstr[1] "{{comment.trailingCount}} entfernte Kommentare nicht angezeigt"
+
 #: app/templates/error.404.html:4
 msgid "404 – Page not found"
 msgstr "404 – Seite nicht gefunden"
@@ -76,30 +82,27 @@ msgstr "<a title=\"Watchlist\"><i></i></a>"
 
 #: app/templates/feed.html:71
 msgid ""
-"<a translate-id=\"trader-link\">{{message.srcusername}}</a> has <a translate-"
-"id=\"trade-link\">bought</a> {{message.amount}}&nbsp;shares of <span><a "
-"translate-id=\"leader-link\">{{message.stockname}}</a></span> "
-"<span>{{message.stockname}}</span>."
+"<a translate-id=\"trader-link\">{{message.srcusername}}</a> has bought "
+"{{message.amount}}&nbsp;shares of <span><a translate-id=\"leader-link"
+"\">{{message.stockname}}</a></span> <span>{{message.stockname}}</span>."
 msgstr ""
 "<a translate-id=\"trader-link\">{{message.srcusername}}</a> hat {{message."
 "amount}}&nbsp;Anteile an <span><a translate-id=\"leader-link\">{{message."
-"stockname}}</a></span> <span>{{message.stockname}}</span> <a translate-id="
-"\"trade-link\">gekauft</a>."
+"stockname}}</a></span> <span>{{message.stockname}}</span> gekauft."
 
 #: app/templates/feed.html:128
 msgid ""
-"<a translate-id=\"trader-link\">{{message.srcusername}}</a> has <a translate-"
-"id=\"trade-link\">bought</a> {{message.amount}}&nbsp;shares of you."
+"<a translate-id=\"trader-link\">{{message.srcusername}}</a> has bought "
+"{{message.amount}}&nbsp;shares of you."
 msgstr ""
 "<a translate-id=\"trader-link\">{{message.srcusername}}</a> hat {{message."
-"amount}}&nbsp;Anteile an dir <a translate-id=\"trade-link\">gekauft</a>."
+"amount}}&nbsp;Anteile an dir gekauft."
 
 #: app/templates/feed.html:87
 msgid ""
-"<a translate-id=\"trader-link\">{{message.srcusername}}</a> has <a translate-"
-"id=\"trade-link\">sold</a> {{message.amount}}&nbsp;shares of <span><a "
-"translate-id=\"leader-link\">{{message.stockname}}</a></span> "
-"<span>{{message.stockname}}</span>."
+"<a translate-id=\"trader-link\">{{message.srcusername}}</a> has sold "
+"{{message.amount}}&nbsp;shares of <span><a translate-id=\"leader-link"
+"\">{{message.stockname}}</a></span> <span>{{message.stockname}}</span>."
 msgstr ""
 "<a translate-id=\"trader-link\">\n"
 "{{message.srcusername}}\n"
@@ -108,19 +111,17 @@ msgstr ""
 "<span>\n"
 "<a translate-id=\"leader-link\">{{message.stockname}}</a>\n"
 "</span>\n"
-"<span>{{message.stockname}}</span> <a translate-id=\"trade-link\">verkauft</"
-"a>."
+"<span>{{message.stockname}}</span> verkauft."
 
 #: app/templates/feed.html:139
 msgid ""
-"<a translate-id=\"trader-link\">{{message.srcusername}}</a> has <a translate-"
-"id=\"trade-link\">sold</a> {{message.amount}}&nbsp;shares of you."
+"<a translate-id=\"trader-link\">{{message.srcusername}}</a> has sold "
+"{{message.amount}}&nbsp;shares of you."
 msgstr ""
 "<a translate-id=\"trader-link\">\n"
 "{{message.srcusername}}\n"
 "</a>\n"
-"hat {{message.amount}}&nbsp;Anteile an dir <a translate-id=\"trade-link"
-"\">verkauft</a>."
+"hat {{message.amount}}&nbsp;Anteile an dir verkauft."
 
 #: app/templates/feed.html:39
 msgid ""
@@ -619,7 +620,7 @@ msgstr "Gewinnprovision"
 msgid "Commissions"
 msgstr "Provision"
 
-#: app/templates/feed.html:290 app/templates/group.pinboard.html:48
+#: app/templates/feed.html:277 app/templates/group.pinboard.html:50
 msgid "Continue reading…"
 msgstr "Weiterlesen…"
 
@@ -630,10 +631,6 @@ msgstr "Kopiert!"
 #: app/templates/inviteform.html:29
 msgid "Copy this link and send it to someone who you want to invite"
 msgstr "Kopiere diesen Link und schicke ihn jemandem, den du einladen willst"
-
-#: app/js/controllers/tradeDetails.js:16
-msgid "Could not find this trade"
-msgstr "Konnte Trade nicht finden"
 
 #: app/js/controllers/inviteform.js:30
 msgid "Could not send invitation link"
@@ -670,8 +667,8 @@ msgstr "Datum"
 msgid "Delayed order history"
 msgstr "Verzögerung deiner Orderhistorie"
 
-#: app/templates/group.pinboard.html:27 app/templates/group.pinboard.html:30
-#: app/templates/profile.pinboard.html:24 app/templates/tradeDetails.html:56
+#: app/templates/group.pinboard.html:30 app/templates/group.pinboard.html:33
+#: app/templates/profile.pinboard.html:28 app/templates/tradeDetails.html:56
 msgid "Delete"
 msgstr "Löschen"
 
@@ -695,7 +692,7 @@ msgstr "Möchtest du {{amount}} {{shares}} von {{stockname}} handeln?"
 msgid "E-mail address"
 msgstr "E-Mail-Adresse"
 
-#: app/templates/group.pinboard.html:26 app/templates/profile.pinboard.html:23
+#: app/templates/group.pinboard.html:29 app/templates/profile.pinboard.html:27
 #: app/templates/tradeDetails.html:55
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -705,7 +702,7 @@ msgid "Email has been used to register with us"
 msgstr "Die E-Mail wurde bereits verwendet, um sich bei uns zu registrieren"
 
 #: app/js/controllers/feedblogs.js:36 app/js/controllers/feedblogs.js:47
-#: app/js/controllers/feedblogs.js:57 app/js/controllers/group.js:189
+#: app/js/controllers/feedblogs.js:57 app/js/controllers/group.js:191
 msgid "Error: {{code}}"
 msgstr "Fehler: {{code}}"
 
@@ -878,7 +875,7 @@ msgstr "Leader und Wertpapiere in deiner Watchlist"
 msgid "Leader: %1"
 msgstr "Leader: %1"
 
-#: app/js/controllers/group.js:88
+#: app/js/controllers/group.js:90
 msgid "Left group"
 msgstr "Gruppe verlassen"
 
@@ -994,10 +991,10 @@ msgstr "Welchen Ordertyp soll deine Transaktion haben?"
 
 #: app/js/controllers/comment.js:14 app/js/controllers/comment.js:23
 #: app/js/controllers/feedblogs.js:33 app/js/controllers/feedblogs.js:44
-#: app/js/controllers/feedblogs.js:55 app/js/controllers/group.js:110
-#: app/js/controllers/group.js:123 app/js/controllers/group.js:160
-#: app/js/controllers/group.js:170 app/js/controllers/group.js:187
-#: app/js/controllers/group.js:99
+#: app/js/controllers/feedblogs.js:55 app/js/controllers/group.js:101
+#: app/js/controllers/group.js:112 app/js/controllers/group.js:125
+#: app/js/controllers/group.js:162 app/js/controllers/group.js:172
+#: app/js/controllers/group.js:189
 msgid "Ok!"
 msgstr "Ok!"
 
@@ -1270,7 +1267,7 @@ msgstr "Benutzer erfolgreich zurückgesetzt!"
 msgid "Sucessfully saved options"
 msgstr "Einstellungen erfolgreich gespeichert"
 
-#: app/js/controllers/group.js:143
+#: app/js/controllers/group.js:145
 msgid "Sucessfully uploaded profile picture!"
 msgstr "Profilebild erfolgreich hochgeladen!"
 
@@ -1316,7 +1313,7 @@ msgstr "Der Trade wird ausgeführt, sobald der Handelsplatz öffnet"
 msgid "There was a problem while loading the current ranking!"
 msgstr "Es gab ein Problem beim Laden der Rangliste!"
 
-#: app/js/controllers/group.js:150 app/js/controllers/options.js:74
+#: app/js/controllers/group.js:152 app/js/controllers/options.js:74
 #: app/js/main.js:40
 msgid ""
 "There was a technical problem uploading your profile picture. Please turn to "
@@ -1332,7 +1329,6 @@ msgstr ""
 "Es gab ein technisches Problem – das Tech-Team von Tradity ist informiert "
 "worden."
 
-#: app/templates/group.pinboard.html:35 app/templates/profile.pinboard.html:29
 #: app/templates/tradeDetails.html:61
 msgid "This comment has been removed."
 msgstr "Dieser Kommentar ist entfernt worden."
@@ -1573,29 +1569,15 @@ msgstr "Nicht genügend Geld zum Trade!"
 
 #: app/templates/feed.html:103
 msgid ""
-"You have <a translate-id=\"trade-link\">bought</a> {{message.amount}}&nbsp;"
-"shares of <span><a translate-id=\"leader-link\">{{message.stockname}}</a></"
-"span> <span>{{message.stockname}}</span>."
+"You have bought {{message.amount}}&nbsp;shares of <span><a translate-id="
+"\"leader-link\">{{message.stockname}}</a></span> <span>{{message.stockname}}"
+"</span>."
 msgstr ""
 "Du hast {{message.amount}}&nbsp;Anteile an\n"
 "<span>\n"
 "<a translate-id=\"leader-link\">{{message.stockname}}</a>\n"
 "</span>\n"
-"<span>{{message.stockname}}</span> <a translate-id=\"trade-link\">gekauft</"
-"a>."
-
-#: app/templates/feed.html:115
-msgid ""
-"You have <a translate-id=\"trade-link\">sold</a> {{message.amount}}&nbsp;"
-"shares of <span><a translate-id=\"leader-link\">{{message.stockname}}</a></"
-"span> <span>{{message.stockname}}</span>."
-msgstr ""
-"Du hast {{message.amount}}&nbsp;Anteile an\n"
-"<span>\n"
-"<a translate-id=\"leader-link\">{{message.stockname}}</a>\n"
-"</span>\n"
-"<span>{{message.stockname}}</span> <a translate-id=\"trade-link\">verkauft</"
-"a>."
+"<span>{{message.stockname}}</span> gekauft."
 
 #: app/templates/feed.html:178
 msgid ""
@@ -1647,6 +1629,18 @@ msgstr ""
 msgid "You have reset your account."
 msgstr "Du hast deinen Account zurückgesetzt."
 
+#: app/templates/feed.html:115
+msgid ""
+"You have sold {{message.amount}}&nbsp;shares of <span><a translate-id="
+"\"leader-link\">{{message.stockname}}</a></span> <span>{{message.stockname}}"
+"</span>."
+msgstr ""
+"Du hast {{message.amount}}&nbsp;Anteile an\n"
+"<span>\n"
+"<a translate-id=\"leader-link\">{{message.stockname}}</a>\n"
+"</span>\n"
+"<span>{{message.stockname}}</span> verkauft."
+
 #: app/js/controllers/trade.js:36
 msgid "You need to choose a stock!"
 msgstr "Du musst ein Wertpapier auswählen!"
@@ -1695,7 +1689,7 @@ msgstr "Vermögens&#xad;entwicklung"
 msgid "Your portfolio"
 msgstr "Dein Depot"
 
-#: app/js/controllers/group.js:146 app/js/controllers/options.js:69
+#: app/js/controllers/group.js:148 app/js/controllers/options.js:69
 #: app/js/main.js:80
 msgid "Your profile picture file is too large (maximum 3&nbsp;MB)"
 msgstr "Die Profilbilddatei ist leider zu groß (höchstens 3&nbsp;MB)"
@@ -1731,10 +1725,6 @@ msgstr[1] "Aktien"
 msgid "sold shares"
 msgstr "verk. Anteile"
 
-#: app/templates/feed.html:258
-msgid "trade"
-msgstr "Trade"
-
 #: app/templates/notifications.html:21
 msgid "{{notification.srcusername}} wrote to your pinboard."
 msgstr "{{notification.srcusername}} hat auf deine Pinnwand geschrieben."
@@ -1746,6 +1736,12 @@ msgstr "{{progress}}&nbsp;% vollständig"
 #: app/js/controllers/depot.js:109
 msgid "{{stockname}} removed from the watchlist"
 msgstr "{{stockname}} von der Watchlist entfernt"
+
+#~ msgid "Could not find this trade"
+#~ msgstr "Konnte Trade nicht finden"
+
+#~ msgid "trade"
+#~ msgstr "Trade"
 
 #~ msgid "(Right click + “Copy link”)"
 #~ msgstr "(Rechtsklick + „Link kopieren“)"

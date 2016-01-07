@@ -13,6 +13,7 @@ angular.module('tradity', [
 	'angular-md5',
 	'infinite-scroll',
 	'rt.debounce',
+	'tradityFilters',
 	'gettext' // override translate filter from dialogs.main, so this comes last
 ]).config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider) {
 	/* Create custom angular-ui-router parameter types.

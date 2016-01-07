@@ -14,8 +14,11 @@
 			<br/>
 		</form>
 
-		<div ng-repeat="comment in school.comments.concat(school.blogposts) | orderBy:'-time' | groupDeletedComments" class="feed-item feed comment">
-			<div ng-show="comment.comment">
+		<div ng-repeat="comment in school.comments.concat(school.blogposts) | orderBy:'-time' | foldDeletedComments" class="feed-item feed comment">
+			<div ng-show="comment.isDeleted && comment.isHead">
+				<span translate translate-n="comment.trailingCount" translate-plural="{{comment.trailingCount}} deleted comments not shown">1 deleted comment not shown</span>
+			</div>
+			<div ng-show="comment.comment && !comment.isDeleted">
 				<div class="feed-entry-symbol" style="background-image:url({{comment.profilepic}})" ng-class="{'no-image': !comment.profilepic }"></div>
 				<span class="feed-arrow"></span>
 				<div class="feed-entry-content">
@@ -30,9 +33,8 @@
 							<a ng-click="deleteCommentSA(comment)" style="cursor: pointer" translate>Delete</a>
 						</span>
 					</div>
-					<span ng-show="comment.trustedhtml && !comment.isDeleted" ng-bind-html="comment.comment">{{comment.comment}}</span>
-					<span ng-hide="comment.trustedhtml || comment.isDeleted">{{comment.comment}}</span>
-					<span ng-show="comment.isDeleted"><em translate>This comment has been removed.</em></span>
+					<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
+					<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
 				</div>
 			</div>
 			<div ng-show="comment.excerpt">

@@ -12,21 +12,25 @@
 		</div>
 	</form>
 	
-	<div ng-repeat="comment in comments | orderBy:'-time'" class="feed-item feed comment">
-		<div class="feed-entry-symbol" style="background-image:url({{comment.profilepic}})" ng-class="{'no-image': !comment.profilepic }"></div>
-		<span class="feed-arrow"></span>
-		<div class="feed-entry-content">
-			<div class="feed-head">
-				<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'short'}}">{{vtime(comment.time)}}</span>
-				<a ui-sref="game.profile.overview({userId: comment.username})" class="text-link username">{{comment.username}}</a>
-				<span ng-show="isAdmin" class="actions">
-					<a ng-click="editComment(comment)" style="cursor: pointer" translate>Edit</a>
-					<a ng-click="deleteComment(comment)" style="cursor: pointer" translate>Delete</a>
-				</span>
+	<div ng-repeat="comment in comments | orderBy:'-time' | foldDeletedComments" class="feed-item feed comment">
+		<div ng-show="comment.isDeleted && comment.isHead">
+			<span translate translate-n="comment.trailingCount" translate-plural="{{comment.trailingCount}} deleted comments not shown">1 deleted comment not shown</span>
+		</div>
+		<div ng-show="comment.comment && !comment.isDeleted">
+			<div class="feed-entry-symbol" style="background-image:url({{comment.profilepic}})" ng-class="{'no-image': !comment.profilepic }"></div>
+			<span class="feed-arrow"></span>
+			<div class="feed-entry-content">
+				<div class="feed-head">
+					<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'short'}}">{{vtime(comment.time)}}</span>
+					<a ui-sref="game.profile.overview({userId: comment.username})" class="text-link username">{{comment.username}}</a>
+					<span ng-show="isAdmin" class="actions">
+						<a ng-click="editComment(comment)" style="cursor: pointer" translate>Edit</a>
+						<a ng-click="deleteComment(comment)" style="cursor: pointer" translate>Delete</a>
+					</span>
+				</div>
+				<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
+				<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
 			</div>
-			<span ng-show="comment.trustedhtml && !comment.isDeleted" ng-bind-html="comment.comment">{{comment.comment}}</span>
-			<span ng-hide="comment.trustedhtml || comment.isDeleted">{{comment.comment}}</span>
-			<span ng-show="comment.isDeleted"><em translate>This comment has been removed.</em></span>
 		</div>
 	</div>
 </div>

@@ -25,17 +25,19 @@ angular.module('tradity').
 		socket.emit('get-school-info', {
 			lookfor: $scope.schoolid,
 			_cache: 30
-		}, function(data) {
+		}).then(function(data) {
 			if (data.code == 'not-logged-in') {
-				socket.emit('school-exists', {
+				return socket.emit('school-exists', {
 					lookfor: $scope.schoolid,
 					_cache: 30
-				}, function(data) {
+				}).then(function(data) {
 					if (data.code == 'school-exists-success' && data.exists) {
 						$state.go('schoolregister', {schoolid: data.path});
 					}
 				});
-			} else if (data.code == 'get-school-info-success') {
+			}
+			
+			if (data.code == 'get-school-info-success') {
 				$.extend(true, $scope.school, data.result);
 				$scope.comments = $.extend(true, [], $scope.school.comments); // deep copy
 				$scope.descpage = $scope.school.descpage;

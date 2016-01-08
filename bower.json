@@ -7,6 +7,7 @@
     "angular-ui-router": "~0.2.14",
     "angular-bootstrap": "0.14.x",
     "angular-gettext": "~2.1.2",
+    "angular-events-calendar": "^1.0.0",
     "bootstrap": "3.3.x",
     "fontawesome": "4.1.0",
     "socket.io-client": ">=1.2.1",

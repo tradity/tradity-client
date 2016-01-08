@@ -14,6 +14,7 @@ angular.module('tradity', [
 	'infinite-scroll',
 	'rt.debounce',
 	'tradityFilters',
+	'eventsCalendar',
 	'gettext' // override translate filter from dialogs.main, so this comes last
 ]).config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider) {
 	/* Create custom angular-ui-router parameter types.
@@ -246,6 +247,11 @@ angular.module('tradity', [
 			url: '/statistics',
 			templateUrl: 'templates/admin.statistics.html',
 			controller: 'AdminStatisticsCtrl'
+		}).
+		state('admin.events', {
+			url: '/events',
+			templateUrl: 'templates/admin.events.html',
+			controller: 'AdminEventsCtrl'
 		}).
 		state('admin.notifications', {
 			url: '/notifications',

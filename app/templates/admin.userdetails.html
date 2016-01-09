@@ -4,43 +4,43 @@
 
 <h2>Allgemeine Informationen zu „<a ui-sref="game.profile.overview({userId: inspectuser.name})">{{inspectuser.name}}</a>“</h2>
 <p>
-	Mitglied seit {{inspectuser.registertime * 1000 | date:'short'}}, E-Mail: {{inspectuser.email}}
-	(<span ng-show="inspectuser.email_verif">bestätigt</span><span ng-hide="inspectuser.email_verif">nicht bestätigt</span>).
+  Mitglied seit {{inspectuser.registertime * 1000 | date:'short'}}, E-Mail: {{inspectuser.email}}
+  (<span ng-show="inspectuser.email_verif">bestätigt</span><span ng-hide="inspectuser.email_verif">nicht bestätigt</span>).
 </p>
 <p>
-	<a ng-click="impersonateUser(inspectuser.uid)" style="cursor: pointer">Account übernehmen</a>
+  <a ng-click="impersonateUser(inspectuser.uid)" style="cursor: pointer">Account übernehmen</a>
 </p>
 <h2>Schulen</h2>
 <table class="table table-bordered">
-	<tr>
-		<th colspan="2">ID</th>
-		<th>Name</th>
-	</tr>
-	<tr ng-repeat="school in inspectuser.schools">
-		<td>{{school.id}}</td>
-		<td><a ui-sref="game.group({schoolid: school.path})">{{school.path}}</a></td>
-		<td>{{school.name}}</td>
-	</tr>
+  <tr>
+    <th colspan="2">ID</th>
+    <th>Name</th>
+  </tr>
+  <tr ng-repeat="school in inspectuser.schools">
+    <td>{{school.id}}</td>
+    <td><a ui-sref="game.group({schoolid: school.path})">{{school.path}}</a></td>
+    <td>{{school.name}}</td>
+  </tr>
 </table>
 <h2>Follower</h2>
 <table class="table table-bordered">
-	<tr>
-		<th colspan="2">User</th>
-		<th>Menge</th>
-		<th colspan="3">Einkauf</th>
-		<th colspan="2">Gewinnprovision (HWM)</th>
-		<th colspan="2">Verlustprovision (LWM)</th>
-	</tr>
-	<tr ng-repeat="follower in followers">
-		<td>{{follower.name}}</td>
-		<td><a ui-sref=".({uid: entry.userid})">{{follower.userid}}</a></td>
-		<td>{{follower.amount}}</td>
-		<td>{{follower.buytime * 1000 | date:'short'}}</td>
-		<td>{{follower.buymoney / follower.amount / 10000 | number:3}} €</td>
-		<td>{{follower.buymoney / 10000 | number:3}} €</td>
-		<td>{{follower.wprov_sum / 10000 | number:3}} €</td>
-		<td>{{follower.provision_hwm / 10000 | number:3}} €</td>
-		<td>{{follower.lprov_sum / 10000 | number:3}} €</td>
-		<td>{{follower.provision_lwm / 10000 | number:3}} €</td>
-	</tr>
+  <tr>
+    <th colspan="2">User</th>
+    <th>Menge</th>
+    <th colspan="3">Einkauf</th>
+    <th colspan="2">Gewinnprovision (HWM)</th>
+    <th colspan="2">Verlustprovision (LWM)</th>
+  </tr>
+  <tr ng-repeat="follower in followers">
+    <td>{{follower.name}}</td>
+    <td><a ui-sref=".({uid: entry.userid})">{{follower.userid}}</a></td>
+    <td>{{follower.amount}}</td>
+    <td>{{follower.buytime * 1000 | date:'short'}}</td>
+    <td>{{follower.buymoney / follower.amount / 10000 | number:3}} €</td>
+    <td>{{follower.buymoney / 10000 | number:3}} €</td>
+    <td>{{follower.wprov_sum / 10000 | number:3}} €</td>
+    <td>{{follower.provision_hwm / 10000 | number:3}} €</td>
+    <td>{{follower.lprov_sum / 10000 | number:3}} €</td>
+    <td>{{follower.provision_lwm / 10000 | number:3}} €</td>
+  </tr>
 </table>

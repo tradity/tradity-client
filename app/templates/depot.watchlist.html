@@ -2,50 +2,50 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div id="watchlist">
-	<div class="options-field">
-		<h2 translate>Leader and stocks in your watchlist</h2>
-		<div class="table-wrapper">
-			<table class="owned-trades table table-bordered">
-				<colgroup>
-					<col class="column-2">
-					<col class="column-3">
-					<col class="column-4-5" span="2">
-					<col class="column-6-7" span="2">
-					<col class="column-8">
-				</colgroup>
-				<tr>
-					<th></th>
-					<th></th>
-					<th colspan="2" translate>Price</th>
-					<th colspan="2" style="background-color: rgba(0, 0, 0, 0)" translate>Performance</th>
-					<th></th>
-				</tr>
-				<tr>
-					<th translate>Name</th>
-					<th translate>Date</th>
-					<th translate>Start value</th>
-					<th translate>Current</th>
-					<th translate>Total</th>
-					<th translate>Today</th>
-					<th></th>
-				</tr>
-				<tr ng-repeat="entry in watchlist">
-					<td>
-						<span ng-show="entry.leader"><a ui-sref="game.profile.overview({userId: entry.username})">{{entry.stockname}}</a></span>
-						<span ng-hide="entry.leader">{{entry.stockname}}</span>
-					</td>
-					<td>{{entry.watchstarttime * 1000 | date:'short'}}</td>
-					<td>{{entry.watchstartvalue / 10000 | number:3}} €</td>
-					<td>{{entry.bid / 10000 | number:3}} €</td>
-					<td ng-class="{pos: watchlistPerformAll > 0, neg: watchlistPerformAll < 0}">
-						{{ watchlistPerformAll = (entry.bid - entry.watchstartvalue) / entry.watchstartvalue * 100 | number:2}} %
-					</td>
-					<td ng-class="{pos: watchlistPerformYesterday > 0, neg: watchlistPerformYesterday < 0}">
-						{{ watchlistPerformYesterday = (entry.bid - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}} %
-					</td>
-					<td class="trade-td text-center" translate><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Remove" style="cursor: pointer"><i class="fa fa-minus-circle"></i> </a></td>
-				</tr>
-			</table>
-		</div>
-	</div>
+  <div class="options-field">
+    <h2 translate>Leader and stocks in your watchlist</h2>
+    <div class="table-wrapper">
+      <table class="owned-trades table table-bordered">
+        <colgroup>
+          <col class="column-2">
+          <col class="column-3">
+          <col class="column-4-5" span="2">
+          <col class="column-6-7" span="2">
+          <col class="column-8">
+        </colgroup>
+        <tr>
+          <th></th>
+          <th></th>
+          <th colspan="2" translate>Price</th>
+          <th colspan="2" style="background-color: rgba(0, 0, 0, 0)" translate>Performance</th>
+          <th></th>
+        </tr>
+        <tr>
+          <th translate>Name</th>
+          <th translate>Date</th>
+          <th translate>Start value</th>
+          <th translate>Current</th>
+          <th translate>Total</th>
+          <th translate>Today</th>
+          <th></th>
+        </tr>
+        <tr ng-repeat="entry in watchlist">
+          <td>
+            <span ng-show="entry.leader"><a ui-sref="game.profile.overview({userId: entry.username})">{{entry.stockname}}</a></span>
+            <span ng-hide="entry.leader">{{entry.stockname}}</span>
+          </td>
+          <td>{{entry.watchstarttime * 1000 | date:'short'}}</td>
+          <td>{{entry.watchstartvalue / 10000 | number:3}} €</td>
+          <td>{{entry.bid / 10000 | number:3}} €</td>
+          <td ng-class="{pos: watchlistPerformAll > 0, neg: watchlistPerformAll < 0}">
+            {{ watchlistPerformAll = (entry.bid - entry.watchstartvalue) / entry.watchstartvalue * 100 | number:2}} %
+          </td>
+          <td ng-class="{pos: watchlistPerformYesterday > 0, neg: watchlistPerformYesterday < 0}">
+            {{ watchlistPerformYesterday = (entry.bid - entry.daystartvalue) / entry.daystartvalue * 100 | number:2}} %
+          </td>
+          <td class="trade-td text-center" translate><a ng-click="removeFromWatchlist(entry)" class="batch block-link trade" title="Remove" style="cursor: pointer"><i class="fa fa-minus-circle"></i> </a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>

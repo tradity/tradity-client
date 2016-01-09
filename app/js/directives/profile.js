@@ -5,12 +5,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-	directive('tradityProfile', function() {
-		return function(scope, element, attrs) {
-			//console.log(element);
-			attrs.$set('popover', 'popover-test');
-			attrs.$set('popover-trigger', 'mouseenter');
-		};
-	});
+  directive('tradityProfile', function() {
+    return function(scope, element, attrs) {
+      //console.log(element);
+      attrs.$set('popover', 'popover-test');
+      attrs.$set('popover-trigger', 'mouseenter');
+    };
+  });
 
 })();

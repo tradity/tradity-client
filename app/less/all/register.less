@@ -3,164 +3,164 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 .registration {
-	.box {
-		border: 1px solid #e7e7e7;
-		box-shadow: 0px -2px 0 0px @primary;
-		padding: 15px;
-	}
-	.box.row {
-		.col-sm-6 {
-			padding-top: 15px;
-		}
-		padding:0px;
-		margin-left: 0px;
-		margin-right: 0px;
-		margin-top: 15px;
-	}
-	h2 {
-		padding: 20px 0 0 0;
-		color: @secondary;
-		font-size: 40px;
-		// font-weight: bold;
-	}
-	h3 {
-		padding: 0px 0 15px 0;
-		color: @secondary;
-		font-size: 20px;
-		// font-weight: bold;
-	}
-	
-	.agreement-text {
-		font-size: 17px;
-		a {
-			text-decoration: underline;	
-		}
-		a:hover {
-			color: @secondary;
-		}
-	}
-	.header-text {
-		padding-top: 20px;
-		vertical-align: center;
-	}
-	.header-link {
-		font-size: 18px;
-		color: @primary	;
-		padding-left: 15px;
-	}
-	.header {
-		//border-bottom: solid 1px #666666;
-		box-shadow: 0 3px 2px -2px rgba(0, 0, 0, 0.5);
-	}	
-	.logo-container {
-		height: auto;
-		width: 200px;
-	}
-	.logo {
-		width: 100%;
-		padding: 0 0 10px 0;
-	}
-	
-	.language-chooser {
-		display: inline-block;
-	}
-	
-	.form-control:focus {
-		border-color: @secondary;
-		box-shadow: inset 0 1px 1px lighten(@secondary, 25%), 0 0 8px lighten(@secondary, 25%);
-	}
-	.btn-primary {
-		background-color: @secondary;
-		border-color: @secondary;
-	}
-	.btn-primary:hover{
-		background-color: darken(@secondary, 10%);
-		border-color: darken(@secondary, 10%);
-	}
-	.reg-wizard {
-		margin-top: 40px;
-		padding: 0 0 20px 0;
-		> .reg-wizard-step {
-			padding: 0;
-			position: relative;
-			+ .reg-wizard-step {}
-			.reg-wizard-stepnum {
-				margin-bottom: 5px;
-			}
-			> .reg-wizard-dot {
-				position: absolute;
-				width: 20px;
-				height: 20px;
-				display: block;
-				background: #ffffff;
-				top: 30px;
-				left: 50%;
-				margin-top: -15px;
-				margin-left: -15px;
-				border-radius: 50%;
-				border: 1px solid #cccccc;
-			}
-			> .reg-wizard-dot:after {
-				content: ' ';
-				width: 14px;
-				height: 14px;
-				background: @secondary;
-				border-radius: 50px;
-				position: absolute;
-				top: 2px;
-				left: 2px;
-			}
-			> .progress {
-				position: relative;
-				border-radius: 0px;
-				height: 8px;
-				box-shadow: none;
-				margin: 20px 0;
-				> .progress-bar {
-					width: 0px;
-					box-shadow: none;
-					background: @secondary;
-				}
-			}
-		}
-		> .reg-wizard-step.complete > .progress > .progress-bar {
-			width: 100%;
-		}
-		> .reg-wizard-step.active > .progress > .progress-bar {
-			width: 50%;
-		}
-		> .reg-wizard-step.active > .reg-wizard-dot:after {
-			background: @primary;
-		}
-		> .reg-wizard-step:first-child.active > .progress > .progress-bar {
-			width: 0%;
-		}
-		> .reg-wizard-step:last-child.active > .progress > .progress-bar {
-			width: 100%;
-		}
-		> .reg-wizard-step.disabled > .reg-wizard-dot {
-			background-color: #f5f5f5;
-		}
-		> .reg-wizard-step.disabled > .reg-wizard-dot:after {
-			opacity: 0;
-		}
-		> .reg-wizard-step.disabled a.reg-wizard-dot {
-			pointer-events: none;
-		}
-		> .reg-wizard-step:first-child > .progress {
-			left: 50%;
-			width: 50%;
-		}
-		> .reg-wizard-step:last-child > .progress {
-			width: 50%;
-		}
-	}
+    .box {
+        border: 1px solid #e7e7e7;
+        box-shadow: 0px -2px 0 0px @primary;
+        padding: 15px;
+    }
+    .box.row {
+        .col-sm-6 {
+            padding-top: 15px;
+        }
+        padding:0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 15px;
+    }
+    h2 {
+        padding: 20px 0 0 0;
+        color: @secondary;
+        font-size: 40px;
+        // font-weight: bold;
+    }
+    h3 {
+        padding: 0px 0 15px 0;
+        color: @secondary;
+        font-size: 20px;
+        // font-weight: bold;
+    }
+    
+    .agreement-text {
+        font-size: 17px;
+        a {
+            text-decoration: underline;    
+        }
+        a:hover {
+            color: @secondary;
+        }
+    }
+    .header-text {
+        padding-top: 20px;
+        vertical-align: center;
+    }
+    .header-link {
+        font-size: 18px;
+        color: @primary    ;
+        padding-left: 15px;
+    }
+    .header {
+        //border-bottom: solid 1px #666666;
+        box-shadow: 0 3px 2px -2px rgba(0, 0, 0, 0.5);
+    }    
+    .logo-container {
+        height: auto;
+        width: 200px;
+    }
+    .logo {
+        width: 100%;
+        padding: 0 0 10px 0;
+    }
+    
+    .language-chooser {
+        display: inline-block;
+    }
+    
+    .form-control:focus {
+        border-color: @secondary;
+        box-shadow: inset 0 1px 1px lighten(@secondary, 25%), 0 0 8px lighten(@secondary, 25%);
+    }
+    .btn-primary {
+        background-color: @secondary;
+        border-color: @secondary;
+    }
+    .btn-primary:hover{
+        background-color: darken(@secondary, 10%);
+        border-color: darken(@secondary, 10%);
+    }
+    .reg-wizard {
+        margin-top: 40px;
+        padding: 0 0 20px 0;
+        > .reg-wizard-step {
+            padding: 0;
+            position: relative;
+            + .reg-wizard-step {}
+            .reg-wizard-stepnum {
+                margin-bottom: 5px;
+            }
+            > .reg-wizard-dot {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                display: block;
+                background: #ffffff;
+                top: 30px;
+                left: 50%;
+                margin-top: -15px;
+                margin-left: -15px;
+                border-radius: 50%;
+                border: 1px solid #cccccc;
+            }
+            > .reg-wizard-dot:after {
+                content: ' ';
+                width: 14px;
+                height: 14px;
+                background: @secondary;
+                border-radius: 50px;
+                position: absolute;
+                top: 2px;
+                left: 2px;
+            }
+            > .progress {
+                position: relative;
+                border-radius: 0px;
+                height: 8px;
+                box-shadow: none;
+                margin: 20px 0;
+                > .progress-bar {
+                    width: 0px;
+                    box-shadow: none;
+                    background: @secondary;
+                }
+            }
+        }
+        > .reg-wizard-step.complete > .progress > .progress-bar {
+            width: 100%;
+        }
+        > .reg-wizard-step.active > .progress > .progress-bar {
+            width: 50%;
+        }
+        > .reg-wizard-step.active > .reg-wizard-dot:after {
+            background: @primary;
+        }
+        > .reg-wizard-step:first-child.active > .progress > .progress-bar {
+            width: 0%;
+        }
+        > .reg-wizard-step:last-child.active > .progress > .progress-bar {
+            width: 100%;
+        }
+        > .reg-wizard-step.disabled > .reg-wizard-dot {
+            background-color: #f5f5f5;
+        }
+        > .reg-wizard-step.disabled > .reg-wizard-dot:after {
+            opacity: 0;
+        }
+        > .reg-wizard-step.disabled a.reg-wizard-dot {
+            pointer-events: none;
+        }
+        > .reg-wizard-step:first-child > .progress {
+            left: 50%;
+            width: 50%;
+        }
+        > .reg-wizard-step:last-child > .progress {
+            width: 50%;
+        }
+    }
 }
 
 @media (min-width: @screen-sm-min) {
-	.registration .box.row {
-		margin-left: -15px;
-		margin-right: -15px;
-		margin-top: 0px;
-	}
+    .registration .box.row {
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-top: 0px;
+    }
 }

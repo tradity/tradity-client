@@ -2,15 +2,15 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div ng-repeat="achievement in category(categoryId) | orderBy: 'xp'" class="achievement-item" ng-class="{'no-desc': !category.description}" ng-show="achievement.xp != 0">
-	<img src="{{achievement.img}}" class="picture pull-left" ng-show="achievement.img">
-	<div class="icon" ng-hide="achievement.img">
-		<i class="fa fa-trophy"></i>
-	</div>
-	<div class="content">
-		<span class="xp">{{achievement.xp}} XP</span><h2>{{achievement.text}}</h2>
-		<p>{{achievement.description}}</p>
-	</div>
-	<div class="clearfix"></div>
-	<div class="achieved" ng-show="achievement.achieved"></div>
-	<div class="not achieved" ng-hide="achievement.achieved"></div>
+  <img src="{{achievement.img}}" class="picture pull-left" ng-show="achievement.img">
+  <div class="icon" ng-hide="achievement.img">
+    <i class="fa fa-trophy"></i>
+  </div>
+  <div class="content">
+    <span class="xp">{{achievement.xp}} XP</span><h2>{{achievement.text}}</h2>
+    <p>{{achievement.description}}</p>
+  </div>
+  <div class="clearfix"></div>
+  <div class="achieved" ng-show="achievement.achieved"></div>
+  <div class="not achieved" ng-hide="achievement.achieved"></div>
 </div>

@@ -2,39 +2,39 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div class="center-block">
-	<div class="row text-center">
-		<h2 translate>You are almost there!</h2>
-		<h3 translate>We just need to set up your account.</h3>
-	</div>
-	<div class="row">
-		<div class="col-lg-6 col-lg-offset-3 text-center">
-			<div class="form-group" ng-class="{'has-error': registration.validateStatus.name}" translate>
-				<input name="name" ng-model="registration.name" type="text" class="form-control input-lg" 
-					placeholder="User name" required 
-					popover="Enter your username" popover-trigger="focus" popover-placement="right" popover-animation="false"
-					ng-blur="registration.validateName()">
-			</div>
-			<div class="form-group" ng-class="{'has-error': registration.validateStatus.email}" translate>
-				<input name="email" ng-model="registration.email" type="email" class="form-control input-lg" placeholder="Email address" required 
-					popover="Please enter your uni email address if you're taking part in TradityU" popover-trigger="focus" popover-placement="right" popover-animation="false"
-					ng-blur="registration.validateEmail()">
-			</div>
-			<div class="form-group" ng-class="{ 'has-error': registration.form.password.$invalid }" translate>
-				<input name="password" ng-model="registration.password" type="password" class="form-control input-lg" placeholder="Password" required popover="Enter your password" popover-trigger="focus" popover-placement="right" popover-animation="false">
-			</div>
-			<div class="form-group" ng-hide="!registration.password">
-				<progressbar max="4" class="progress-striped" type="{{registration.password_style}}" value="registration.password_score"><span>{{registration.password_text}}</span></progressbar>
-			</div>
-			<div class="form-group" ng-class="{ 'has-error': registration.form.password_check.$invalid }" translate>
-				<input name="password_check" ng-model="registration.password_check" type="password" class="form-control input-lg" placeholder="Repeat password" required popover="Re-enter your password" popover-trigger="focus" popover-placement="right" popover-animation="false">
-			</div>
-			<div class="form-group" translate>
-				<button class="btn btn-lg btn-block btn-primary" ui-sref="register.step2" ng-disabled="registration.validateStatus.email || registration.validateStatus.name || (registration.password != registration.password_check)">Create Account</button>
-			</div>
-			<div class="form-group" translate>
-				<span class="agreement-text">By creating an account you agree to our <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/">terms &amp; conditions</a>.</span>
-			</div>
+  <div class="row text-center">
+    <h2 translate>You are almost there!</h2>
+    <h3 translate>We just need to set up your account.</h3>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3 text-center">
+      <div class="form-group" ng-class="{'has-error': registration.validateStatus.name}" translate>
+        <input name="name" ng-model="registration.name" type="text" class="form-control input-lg" 
+          placeholder="User name" required 
+          popover="Enter your username" popover-trigger="focus" popover-placement="right" popover-animation="false"
+          ng-blur="registration.validateName()">
+      </div>
+      <div class="form-group" ng-class="{'has-error': registration.validateStatus.email}" translate>
+        <input name="email" ng-model="registration.email" type="email" class="form-control input-lg" placeholder="Email address" required 
+          popover="Please enter your uni email address if you're taking part in TradityU" popover-trigger="focus" popover-placement="right" popover-animation="false"
+          ng-blur="registration.validateEmail()">
+      </div>
+      <div class="form-group" ng-class="{ 'has-error': registration.form.password.$invalid }" translate>
+        <input name="password" ng-model="registration.password" type="password" class="form-control input-lg" placeholder="Password" required popover="Enter your password" popover-trigger="focus" popover-placement="right" popover-animation="false">
+      </div>
+      <div class="form-group" ng-hide="!registration.password">
+        <progressbar max="4" class="progress-striped" type="{{registration.password_style}}" value="registration.password_score"><span>{{registration.password_text}}</span></progressbar>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error': registration.form.password_check.$invalid }" translate>
+        <input name="password_check" ng-model="registration.password_check" type="password" class="form-control input-lg" placeholder="Repeat password" required popover="Re-enter your password" popover-trigger="focus" popover-placement="right" popover-animation="false">
+      </div>
+      <div class="form-group" translate>
+        <button class="btn btn-lg btn-block btn-primary" ui-sref="register.step2" ng-disabled="registration.validateStatus.email || registration.validateStatus.name || (registration.password != registration.password_check)">Create Account</button>
+      </div>
+      <div class="form-group" translate>
+        <span class="agreement-text">By creating an account you agree to our <a href="https://boersenspiel.tradity.de/teilnahmebedingungen/">terms &amp; conditions</a>.</span>
+      </div>
 
-		</div>
-	</div>
+    </div>
+  </div>
 </div>

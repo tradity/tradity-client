@@ -2,56 +2,56 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div id="general" class="inner">
-	<div id="pinboard">
-		<form class="" ng-submit="sendComment()" ng-show="selfIsSchoolMember || selfIsSchoolAdmin || isAdmin" class="pure-form comment-form">
-			<translate><textarea ui-keypress="{13:'sendComment()'}" ng-model="comment" class="form-control" placeholder="Write a post in this group feed!"></textarea></translate>
-			
-			<translate><input type="submit" class="click-button comment-button btn btn-default pull-right" value="Send comment"></translate>
-			<div ng-show="isAdmin">
-				<label for="ishtml">HTML</label><input type="checkbox" ng-model="ishtml" id="ishtml">
-			</div>
-			<div class="clearfix"></div>
-			<br/>
-		</form>
+  <div id="pinboard">
+    <form class="" ng-submit="sendComment()" ng-show="selfIsSchoolMember || selfIsSchoolAdmin || isAdmin" class="pure-form comment-form">
+      <translate><textarea ui-keypress="{13:'sendComment()'}" ng-model="comment" class="form-control" placeholder="Write a post in this group feed!"></textarea></translate>
+      
+      <translate><input type="submit" class="click-button comment-button btn btn-default pull-right" value="Send comment"></translate>
+      <div ng-show="isAdmin">
+        <label for="ishtml">HTML</label><input type="checkbox" ng-model="ishtml" id="ishtml">
+      </div>
+      <div class="clearfix"></div>
+      <br/>
+    </form>
 
-		<div ng-repeat="comment in school.comments.concat(school.blogposts) | orderBy:'-time' | foldDeletedComments" class="feed-item feed comment">
-			<div ng-show="comment.isDeleted && comment.isHead">
-				<span translate translate-n="comment.trailingCount" translate-plural="{{comment.trailingCount}} deleted comments not shown">1 deleted comment not shown</span>
-			</div>
-			<div ng-show="comment.comment && !comment.isDeleted">
-				<div class="feed-entry-symbol" style="background-image:url({{comment.profilepic}})" ng-class="{'no-image': !comment.profilepic }"></div>
-				<span class="feed-arrow"></span>
-				<div class="feed-entry-content">
-					<div class="feed-head">
-						<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'short'}}">{{vtime(comment.time)}}</span>
-						<a ui-sref="game.profile.overview({userId: comment.username})" class="text-link username">{{comment.username}}</a>
-						<span ng-show="isAdmin" class="actions">
-							<a ng-click="editComment(comment)" style="cursor: pointer" translate>Edit</a>
-							<a ng-click="deleteComment(comment)" style="cursor: pointer" translate>Delete</a>
-						</span>
-						<span ng-show="selfIsSchoolAdmin && !isAdmin">
-							<a ng-click="deleteCommentSA(comment)" style="cursor: pointer" translate>Delete</a>
-						</span>
-					</div>
-					<span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
-					<span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
-				</div>
-			</div>
-			<div ng-show="comment.excerpt">
-				<div class="feed-entry-content">
-					<div class="feed-head">
-						<span class="feed-time pull-right" title="{{comment.time * 1000 | date:'short'}}">{{vtime(comment.time)}}</span>
-						<span><a ng-href="{{comment.link}}" class="feed-link" ng-bind-html="comment.title">{{comment.title}}</a></span>
-					</div>
-					<div ng-show="comment.excerpt" ng-bind-html="comment.excerpt">
-						{{comment.excerpt}}
-					</div>
-					<div>
-						<a ng-href="{{comment.link}}" class="feed-link" translate>Continue reading…</a>
-					</div>
-				</div>
-				<span ng-bind-html="comment.comment">{{comment.comment}}</span>
-			</div>
-		</div>
-	</div>
+    <div ng-repeat="comment in school.comments.concat(school.blogposts) | orderBy:'-time' | foldDeletedComments" class="feed-item feed comment">
+      <div ng-show="comment.isDeleted && comment.isHead">
+        <span translate translate-n="comment.trailingCount" translate-plural="{{comment.trailingCount}} deleted comments not shown">1 deleted comment not shown</span>
+      </div>
+      <div ng-show="comment.comment && !comment.isDeleted">
+        <div class="feed-entry-symbol" style="background-image:url({{comment.profilepic}})" ng-class="{'no-image': !comment.profilepic }"></div>
+        <span class="feed-arrow"></span>
+        <div class="feed-entry-content">
+          <div class="feed-head">
+            <span class="feed-time pull-right" title="{{comment.time * 1000 | date:'short'}}">{{vtime(comment.time)}}</span>
+            <a ui-sref="game.profile.overview({userId: comment.username})" class="text-link username">{{comment.username}}</a>
+            <span ng-show="isAdmin" class="actions">
+              <a ng-click="editComment(comment)" style="cursor: pointer" translate>Edit</a>
+              <a ng-click="deleteComment(comment)" style="cursor: pointer" translate>Delete</a>
+            </span>
+            <span ng-show="selfIsSchoolAdmin && !isAdmin">
+              <a ng-click="deleteCommentSA(comment)" style="cursor: pointer" translate>Delete</a>
+            </span>
+          </div>
+          <span ng-show="comment.trustedhtml" ng-bind-html="comment.comment">{{comment.comment}}</span>
+          <span ng-hide="comment.trustedhtml">{{comment.comment}}</span>
+        </div>
+      </div>
+      <div ng-show="comment.excerpt">
+        <div class="feed-entry-content">
+          <div class="feed-head">
+            <span class="feed-time pull-right" title="{{comment.time * 1000 | date:'short'}}">{{vtime(comment.time)}}</span>
+            <span><a ng-href="{{comment.link}}" class="feed-link" ng-bind-html="comment.title">{{comment.title}}</a></span>
+          </div>
+          <div ng-show="comment.excerpt" ng-bind-html="comment.excerpt">
+            {{comment.excerpt}}
+          </div>
+          <div>
+            <a ng-href="{{comment.link}}" class="feed-link" translate>Continue reading…</a>
+          </div>
+        </div>
+        <span ng-bind-html="comment.comment">{{comment.comment}}</span>
+      </div>
+    </div>
+  </div>
 </div>

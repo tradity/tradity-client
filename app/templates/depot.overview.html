@@ -2,126 +2,126 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div id="overview">
-	<h2 translate>Total assets</h2>
-	
-	<div class="row">
+  <h2 translate>Total assets</h2>
+  
+  <div class="row">
 
-		<div class="col-sm-4">
-			<div class="item text-center">
-				<b translate>Total</b><br/>
-				{{ownUser.totalvalue / 10000| currency}}
-			</div>
-		</div>
+    <div class="col-sm-4">
+      <div class="item text-center">
+        <b translate>Total</b><br/>
+        {{ownUser.totalvalue / 10000| currency}}
+      </div>
+    </div>
 
-		<div class="col-sm-4">
-			<div class="item text-center">
-				<b translate>Account</b><br/>
-				{{ownUser.freemoney / 10000 | currency}}
-			</div>
-		</div>
+    <div class="col-sm-4">
+      <div class="item text-center">
+        <b translate>Account</b><br/>
+        {{ownUser.freemoney / 10000 | currency}}
+      </div>
+    </div>
 
-		<div class="col-sm-4">
-			<div class="item text-center">
-				<b translate>Depot</b><br/>
-				{{ownUser.depotvalue / 10000 | currency}}
-			</div>
-		</div>
+    <div class="col-sm-4">
+      <div class="item text-center">
+        <b translate>Depot</b><br/>
+        {{ownUser.depotvalue / 10000 | currency}}
+      </div>
+    </div>
 
-	</div>
+  </div>
 
-	<h2 translate>Overview</h2>
+  <h2 translate>Overview</h2>
 
-	<div class="row">
+  <div class="row">
 
-		<div class="col-sm-4">
-			<div class="item text-center" ng-class="{pos: performanceAll > 0, neg: performanceAll < 0}">
-				<b translate>All-time</b><br/>
-				{{ performanceAll = ((ownUser.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
-			</div>
-		</div>
+    <div class="col-sm-4">
+      <div class="item text-center" ng-class="{pos: performanceAll > 0, neg: performanceAll < 0}">
+        <b translate>All-time</b><br/>
+        {{ performanceAll = ((ownUser.totalvalue / 10000) - 100000 ) / 1000 | number:2}} %
+      </div>
+    </div>
 
-		<div class="col-sm-4">
-			<div class="item text-center" ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
-				<b translate>Today</b><br/>
-				{{( performanceToday = ownUser.totalvalue / ownUser.daystarttotalvalue - 1) * 100 | number:2}} %
-			</div>
-		</div>
+    <div class="col-sm-4">
+      <div class="item text-center" ng-class="{pos: performanceToday > 0, neg: performanceToday < 0}">
+        <b translate>Today</b><br/>
+        {{( performanceToday = ownUser.totalvalue / ownUser.daystarttotalvalue - 1) * 100 | number:2}} %
+      </div>
+    </div>
 
-		<div class="col-sm-4">
-			<div class="item text-center" ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
-				<b translate>Week</b><br/>
-				{{ performanceWeek = (ownUser.totalvalue / ownUser.weekstarttotalvalue - 1) * 100 | number:2}} %
-			</div>
-		</div>
+    <div class="col-sm-4">
+      <div class="item text-center" ng-class="{pos: performanceWeek > 0, neg: performanceWeek < 0}">
+        <b translate>Week</b><br/>
+        {{ performanceWeek = (ownUser.totalvalue / ownUser.weekstarttotalvalue - 1) * 100 | number:2}} %
+      </div>
+    </div>
 
-	</div>
+  </div>
 
-	<h2 translate>Following statistics</h2>
+  <h2 translate>Following statistics</h2>
 
-	<div class="row">
+  <div class="row">
 
-		<div class="col-sm-4">
-			<div class="item text-center" ng-class="{pos: ownUser.totalfperf && fperfAll > 0, neg: ownUser.totalfperf && fperfAll < 0}">
-				<b translate>All-time</b><br/>
-				<span ng-show="ownUser.totalfperf">
-					{{ fperfAll = (ownUser.totalfperf-1) * 100 | number:2}} %
-				</span>
-				<span ng-hide="ownUser.totalfperf">
-					—
-				</span>
-			</div>
-		</div>
+    <div class="col-sm-4">
+      <div class="item text-center" ng-class="{pos: ownUser.totalfperf && fperfAll > 0, neg: ownUser.totalfperf && fperfAll < 0}">
+        <b translate>All-time</b><br/>
+        <span ng-show="ownUser.totalfperf">
+          {{ fperfAll = (ownUser.totalfperf-1) * 100 | number:2}} %
+        </span>
+        <span ng-hide="ownUser.totalfperf">
+          —
+        </span>
+      </div>
+    </div>
 
-		<div class="col-sm-4">
-			<div class="item text-center" ng-class="{pos: ownUser.dayfperf && fperfToday > 0, neg: ownUser.dayfperf && fperfToday < 0}">
-				<b translate>Today</b><br/>
-				<span ng-show="ownUser.dayfperf">
-					{{ fperfToday = (ownUser.dayfperf-1) * 100 | number:2}} %
-				</span>
-				<span ng-hide="ownUser.dayfperf">
-					—
-				</span>
-			</div>
-		</div>
+    <div class="col-sm-4">
+      <div class="item text-center" ng-class="{pos: ownUser.dayfperf && fperfToday > 0, neg: ownUser.dayfperf && fperfToday < 0}">
+        <b translate>Today</b><br/>
+        <span ng-show="ownUser.dayfperf">
+          {{ fperfToday = (ownUser.dayfperf-1) * 100 | number:2}} %
+        </span>
+        <span ng-hide="ownUser.dayfperf">
+          —
+        </span>
+      </div>
+    </div>
 
-		<div class="col-sm-4">
-			<div class="item text-center" ng-class="{pos: ownUser.weekfperf && fperfWeek > 0, neg: ownUser.weekfperf && fperfWeek < 0}">
-				<b translate>Week</b><br/>
-				<span ng-show="ownUser.weekfperf">
-					{{ fperfWeek = (ownUser.weekfperf-1) * 100 | number:2}} %
-				</span>
-				<span ng-hide="ownUser.weekfperf">
-					—
-				</span>
-			</div>
-		</div>
+    <div class="col-sm-4">
+      <div class="item text-center" ng-class="{pos: ownUser.weekfperf && fperfWeek > 0, neg: ownUser.weekfperf && fperfWeek < 0}">
+        <b translate>Week</b><br/>
+        <span ng-show="ownUser.weekfperf">
+          {{ fperfWeek = (ownUser.weekfperf-1) * 100 | number:2}} %
+        </span>
+        <span ng-hide="ownUser.weekfperf">
+          —
+        </span>
+      </div>
+    </div>
 
-	</div>
+  </div>
 
-	<h2 translate>As leader</h2>
+  <h2 translate>As leader</h2>
 
-	<div class="row">
+  <div class="row">
 
-		<div class="col-sm-4">
-			<div class="item text-center">
-				<b translate># Followers</b><br/>
-				{{ownUser.f_count}}
-			</div>
-		</div>
+    <div class="col-sm-4">
+      <div class="item text-center">
+        <b translate># Followers</b><br/>
+        {{ownUser.f_count}}
+      </div>
+    </div>
 
-		<div class="col-sm-4">
-			<div class="item text-center">
-				<b translate>sold shares</b><br/>
-				{{ownUser.f_amount}}
-			</div>
-		</div>
+    <div class="col-sm-4">
+      <div class="item text-center">
+        <b translate>sold shares</b><br/>
+        {{ownUser.f_amount}}
+      </div>
+    </div>
 
-		<div class="col-sm-4">
-			<div class="item text-center">
-				<b translate>Week</b><br/>
-				{{ownUser.wprov_sum / 10000|currency}} / {{ownUser.lprov_sum / 10000|currency}}
-			</div>
-		</div>
+    <div class="col-sm-4">
+      <div class="item text-center">
+        <b translate>Week</b><br/>
+        {{ownUser.wprov_sum / 10000|currency}} / {{ownUser.lprov_sum / 10000|currency}}
+      </div>
+    </div>
 
-	</div>
+  </div>
 </div>

@@ -3,55 +3,55 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 
 <table class="table table-bordered">
-	<tr>
-		<th colspan="3">ID</th>
-		<th colspan="2">Name</th>
-		<th># Mitglieder (bestätigt)</th>
-		<th></th>
-		<th>Zusammenführen (Master)</th>
-		<th>Zusammenführen (Sub)</th>
-	</tr>
-	<tr ng-repeat="entry in schoollist">
-		<td>{{entry.id}}</td>
-		<td><a ui-sref="game.group({schoolid: entry.path})">{{entry.path}}</a></td>
-		<td><a ng-click="rePathSchool(entry)">R</a></td>
-		<td>{{entry.name}}</td>
-		<td><a ng-click="renameSchool(entry)">R</a></td>
-		<td>{{entry.usercount}}</td>
-		<td><a ng-click="deleteSchool(entry)"><i class="fa fa-minus-circle"></i></a></td>
-		<td class="text-center"><a ng-click="setJoinMaster(entry)">M</a></td>
-		<td class="text-center"><a ng-click="setJoinSub(entry)">S</a></td>
-	</tr>
+  <tr>
+    <th colspan="3">ID</th>
+    <th colspan="2">Name</th>
+    <th># Mitglieder (bestätigt)</th>
+    <th></th>
+    <th>Zusammenführen (Master)</th>
+    <th>Zusammenführen (Sub)</th>
+  </tr>
+  <tr ng-repeat="entry in schoollist">
+    <td>{{entry.id}}</td>
+    <td><a ui-sref="game.group({schoolid: entry.path})">{{entry.path}}</a></td>
+    <td><a ng-click="rePathSchool(entry)">R</a></td>
+    <td>{{entry.name}}</td>
+    <td><a ng-click="renameSchool(entry)">R</a></td>
+    <td>{{entry.usercount}}</td>
+    <td><a ng-click="deleteSchool(entry)"><i class="fa fa-minus-circle"></i></a></td>
+    <td class="text-center"><a ng-click="setJoinMaster(entry)">M</a></td>
+    <td class="text-center"><a ng-click="setJoinSub(entry)">S</a></td>
+  </tr>
 </table>
 
 <hr/>
 <form ng-submit="createSchool()" class="pure-form pure-form-stacked">
-	<div>
-		<h2>Neue Schule/Gruppe</h2>
-		
-		<label for="name">Name</label>
-		<input type="text" ng-model="name" id="name">
-		
-		<label for="path">ID/Pfad (Leerlassen für Default)</label>
-		<input type="text" ng-model="path" id="path">
-		
-		<input type="submit" value="Erstellen">
-	</div>
+  <div>
+    <h2>Neue Schule/Gruppe</h2>
+    
+    <label for="name">Name</label>
+    <input type="text" ng-model="name" id="name">
+    
+    <label for="path">ID/Pfad (Leerlassen für Default)</label>
+    <input type="text" ng-model="path" id="path">
+    
+    <input type="submit" value="Erstellen">
+  </div>
 </form>
 <form ng-submit="joinSchools()" class="pure-form pure-form-stacked">
-	<div>
-		<h2>Schulen/Gruppen zusammenführen</h2>
-		
-		<label for="joinmaster">Master (Gruppenid)</label>
-		<input type="number" ng-model="joinmaster" id="joinmaster">
-		<label for="joinsub">Sub (Gruppenid)</label>
-		<input type="number" ng-model="joinsub" id="joinsub">
-		
-		<input type="submit" value="Zusammenführen">
-	</div>
+  <div>
+    <h2>Schulen/Gruppen zusammenführen</h2>
+    
+    <label for="joinmaster">Master (Gruppenid)</label>
+    <input type="number" ng-model="joinmaster" id="joinmaster">
+    <label for="joinsub">Sub (Gruppenid)</label>
+    <input type="number" ng-model="joinsub" id="joinsub">
+    
+    <input type="submit" value="Zusammenführen">
+  </div>
 </form>
 
 <div>
-	<h2>Wordpress-Integration</h2>
-	<ng-include src="'templates/feedblogs.html'"></ng-include>
+  <h2>Wordpress-Integration</h2>
+  <ng-include src="'templates/feedblogs.html'"></ng-include>
 </div>

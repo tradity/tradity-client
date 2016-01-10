@@ -16,7 +16,9 @@ angular.module('tradity', [
   'tradityFilters',
   'eventsCalendar',
   'gettext' // override translate filter from dialogs.main, so this comes last
-]).config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider) {
+]).config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider, $compileProvider) {
+  $compileProvider.debugInfoEnabled(document.cookie.indexOf('devmode') !== -1);
+  
   /* Create custom angular-ui-router parameter types.
    * This is necessary since 0.2.12; Since then,
    * angular-ui-router encodes slashes in parameters. */

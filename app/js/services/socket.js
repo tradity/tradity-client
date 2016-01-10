@@ -4,8 +4,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-var enterDevMode = function() { document.cookie = 'devmode=1;expires=Fri, 31 Dec 9999 23:59:59 GMT'; };
-var enterSrvDevMode = function() { document.cookie = 'srvdevmode=1;expires=Fri, 31 Dec 9999 23:59:59 GMT'; };
+window.enterDevMode = function() { document.cookie = 'devmode=1;expires=Fri, 31 Dec 9999 23:59:59 GMT'; };
+window.enterSrvDevMode = function() { document.cookie = 'srvdevmode=1;expires=Fri, 31 Dec 9999 23:59:59 GMT'; };
 
 /**
  * @ngdoc service
@@ -51,8 +51,8 @@ angular.module('tradity')
     var socket = new SoTradeConnection({
       connect: function() { return io.connect(API_HOST); },
       applyWrap: $rootScope.$apply.bind($rootScope),
-      logDevCheck: function() { return document.cookie.indexOf('devmode') != -1; },
-      logSrvCheck: function() { return document.cookie.indexOf('srvdevmode') != -1; },
+      logDevCheck: function() { return document.cookie.indexOf('devmode') !== -1; },
+      logSrvCheck: function() { return document.cookie.indexOf('srvdevmode') !== -1; },
       lzma: lzma,
       keyStorage: webKeyStorage,
       Promise: $q,

@@ -568,7 +568,7 @@ module.exports = function (grunt) {
       Object.keys(j).forEach(function(key) {
         var macroStyleKey = key.replace(/[A-Z]/g, function(m) { return '_' + m.toLowerCase(); }).toUpperCase();
         
-        s += '\t.constant("' + macroStyleKey + '", ' + JSON.stringify(j[key]) + ')\n';
+        s += '  .constant("' + macroStyleKey + '", ' + JSON.stringify(j[key]) + ')\n';
       });
       s += ';\n';
       

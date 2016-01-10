@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Tradity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2016-01-07 03:40+0100\n"
+"PO-Revision-Date: 2016-01-10 02:14+0100\n"
 "Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"
 "Language-Team: German <http://weblate.tradity.de/projects/tradity/tradity-"
 "client-master/de/>\n"
@@ -486,6 +486,10 @@ msgstr "Konto"
 msgid "Achievements"
 msgstr "Errungen&#xad;schaften"
 
+#: app/templates/admin.events.html:28
+msgid "Action"
+msgstr "Aktionen"
+
 #: app/templates/ranking.html:50
 msgid "Actions"
 msgstr "Aktionen"
@@ -667,8 +671,9 @@ msgstr "Datum"
 msgid "Delayed order history"
 msgstr "Verzögerung deiner Orderhistorie"
 
-#: app/templates/group.pinboard.html:30 app/templates/group.pinboard.html:33
-#: app/templates/profile.pinboard.html:28 app/templates/tradeDetails.html:56
+#: app/templates/admin.events.html:30 app/templates/group.pinboard.html:30
+#: app/templates/group.pinboard.html:33 app/templates/profile.pinboard.html:28
+#: app/templates/tradeDetails.html:56
 msgid "Delete"
 msgstr "Löschen"
 
@@ -692,8 +697,8 @@ msgstr "Möchtest du {{amount}} {{shares}} von {{stockname}} handeln?"
 msgid "E-mail address"
 msgstr "E-Mail-Adresse"
 
-#: app/templates/group.pinboard.html:29 app/templates/profile.pinboard.html:27
-#: app/templates/tradeDetails.html:55
+#: app/templates/admin.events.html:31 app/templates/group.pinboard.html:29
+#: app/templates/profile.pinboard.html:27 app/templates/tradeDetails.html:55
 msgid "Edit"
 msgstr "Bearbeiten"
 

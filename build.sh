@@ -7,8 +7,6 @@ set -e
 echo "var TRADITY_BUILD_STAMP = 'TDYC$(date +%s)-$(git rev-parse HEAD)';" > app/js/buildstamp.js
 npm --quiet install
 npm --quiet update
-bower -q install
-bower -q update
 
 if [ x"$GRUNT_TRANSLATE_ONLY" = x"" ]; then
   grunt --no-color build doc || EXIT_CODE=$?

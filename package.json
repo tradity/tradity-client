@@ -48,13 +48,21 @@
     "pofile": "~1.0.2",
     "remarkup": "0.0.7",
     "requirejs": "~2.1.11",
-    "time-grunt": "~0.2.1"
+    "time-grunt": "~0.2.1",
+    "rimraf": "latest",
+    "autoprefixer": "latest",
+    "cssmin": "latest",
+    "less": "latest",
+    "hashmark": "latest"
   },
   "engines": {
     "node": ">=0.8.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "lint": "jshint --config=.jshintrc --reporter=node_modules/jshint-stylish file.js",
+    "test": "grunt test",
+    "clean": "rimraf dist/* docs/*",
+    "build:css": "lessc app/less/main.less | autoprefixer -b 'last 1 version' | cssmin | hashmark -l 8 'dist/css/main.#.css'"
   },
   "dependencies": {
     "angular": "1.5.0-rc.0",

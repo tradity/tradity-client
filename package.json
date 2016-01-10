@@ -45,16 +45,17 @@
     "levenshtein": "~1.0",
     "load-grunt-tasks": "~0.2.0",
     "munkres-js": "*",
-    "pofile": "~1.0.2",
-    "remarkup": "~0.1.0",
     "requirejs": "~2.1.11",
     "time-grunt": "~0.2.1",
+    "remarkup-po": "latest",
     "rimraf": "latest",
+    "postcss-cli": "latest",
     "autoprefixer": "latest",
     "cssmin": "latest",
     "less": "latest",
     "hashmark": "latest",
-    "lite-server": "latest",
+    "browser-sync": "latest",
+    "connect-history-api-fallback": "latest",
     "parallelshell": "latest"
   },
   "engines": {
@@ -63,13 +64,15 @@
   "scripts": {
     "lint": "jshint --config=.jshintrc --reporter=node_modules/jshint-stylish file.js",
     "test": "npm run lint",
+    "unmarkup": "remarkup-po unmarkup po/unstripped/templates.pot > po/templates.pot",
+    "remarkup": "remarkup-po remarkup po/unstripped/templates.pot po/de.po > po/unstripped/de.po",
     "clean": "rimraf dist/* docs/*",
     "prebuild": "npm run clean",
     "build": "parallelshell 'npm run build:css' 'npm run build:js' 'npm run build:cp'",
-    "build:css": "lessc less/main.less | autoprefixer -b 'last 1 version' | cssmin > dist/main.css",
+    "build:css": "lessc less/main.less | postcss --use autoprefixer --autoprefixer.browsers 'last 1 version' | cssmin > dist/main.css",
     "build:js": "cp -r app/ dist/",
     "build:cp": "cp -r *.html *.txt *.ico fonts/ img/ scripts/ dist/",
-    "serve": "lite-server --baseDir './dist' --files 'dist/**/*'"
+    "serve": "browser-sync start --config bs-config.js"
   },
   "dependencies": {
     "angular": "1.5.0-rc.0",
@@ -92,7 +95,7 @@
     "asmcrypto": "https://github.com/vibornoff/asmcrypto.js.git#v0.0.6",
     "open-sans-fontface": "~1.2.0",
     "tradity-connection": "^0.10.0",
-    "debug": "~2.2.0",
+    "debug": "https://github.com/nhaesler/debug.git#100cf7e",
     "zxcvbn": "~4.0.1",
     "clipboard": "~1.5.3",
     "connect-modrewrite": "^0.7.5",

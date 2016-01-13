@@ -91,7 +91,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
     // XXX
     socket.emit('get-invitekey-info', {
       invitekey: vm.invitekey
-    }, function(data) {
+    }).then(function(data) {
       if (data.code == 'get-invitekey-info-success') {
         vm.email = data.result.email;
         vm.school = data.result.schoolid;

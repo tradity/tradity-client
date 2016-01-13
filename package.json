@@ -53,7 +53,8 @@
     "autoprefixer": "latest",
     "cssmin": "latest",
     "less": "latest",
-    "hashmark": "latest"
+    "hashmark": "latest",
+    "lite-server": "latest"
   },
   "engines": {
     "node": ">=0.8.0"
@@ -62,7 +63,8 @@
     "lint": "jshint --config=.jshintrc --reporter=node_modules/jshint-stylish file.js",
     "test": "grunt test",
     "clean": "rimraf dist/* docs/*",
-    "build:css": "lessc app/less/main.less | autoprefixer -b 'last 1 version' | cssmin | hashmark -l 8 'dist/css/main.#.css'"
+    "build:css": "lessc app/less/main.less | autoprefixer -b 'last 1 version' | cssmin | hashmark -l 8 'dist/css/main.#.css'",
+    "serve": "lite-server --baseDir ./dist"
   },
   "dependencies": {
     "angular": "1.5.0-rc.0",

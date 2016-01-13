@@ -83,7 +83,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 
   $scope.$watch(function() {
     return vm.lang;
-  }).then(function() {
+  }, function() {
     languageManager.setCurrentLanguage(vm.lang);
   });
 

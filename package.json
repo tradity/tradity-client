@@ -63,8 +63,8 @@
     "lint": "jshint --config=.jshintrc --reporter=node_modules/jshint-stylish file.js",
     "test": "grunt test",
     "clean": "rimraf dist/* docs/*",
-    "build:css": "lessc app/less/main.less | autoprefixer -b 'last 1 version' | cssmin | hashmark -l 8 'dist/css/main.#.css'",
-    "serve": "lite-server --baseDir ./dist"
+    "build:css": "lessc app/less/main.less | autoprefixer -b 'last 1 version' | cssmin | hashmark -l 8 'dist/css/main.{hash}.css'",
+    "serve": "lite-server --baseDir './dist' --files 'dist/**/*'"
   },
   "dependencies": {
     "angular": "1.5.0-rc.0",

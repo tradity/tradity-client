@@ -66,7 +66,7 @@
     "clean": "rimraf dist/* docs/*",
     "prebuild": "npm run clean",
     "build": "parallelshell 'npm run build:css' 'npm run build:js' 'npm run build:cp'",
-    "build:css": "lessc less/main.less | autoprefixer -b 'last 1 version' | cssmin > dist/css/main.css",
+    "build:css": "lessc less/main.less | autoprefixer -b 'last 1 version' | cssmin > dist/main.css",
     "build:js": "cp -r app/* dist/",
     "build:cp": "cp -r *.html *.txt *.ico fonts/ img/ scripts/ dist/",
     "serve": "lite-server --baseDir './dist' --files 'dist/**/*'"

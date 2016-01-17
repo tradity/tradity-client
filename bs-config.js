@@ -24,7 +24,7 @@ module.exports = {
     },
     "proxy": false,
     "port": 3000,
-    "middleware": false,
+    "middleware": require('connect-history-api-fallback')(),
     "serveStatic": [],
     "ghostMode": {
         "clicks": true,

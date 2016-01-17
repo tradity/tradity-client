@@ -48,7 +48,7 @@
         <li ng-show="isAdmin">
           <a ui-sref="admin.userlist" class="icon" title="Admin"><i class="fa fa-shield"></i></a>
         </li>
-        <li ng-include="'templates/notifications.html'" dropdown ng-controller="NotificationsCtrl"></li>
+        <li ng-include="'app/templates/notifications.html'" dropdown ng-controller="NotificationsCtrl"></li>
         <li><a ng-click="logout()" href="" class="icon"><i class="fa fa-sign-out"></i></a></li>
         <li><a ui-sref="game.profile.overview({userId: ownUser.name})" class="profilepicture" style="background-image:url({{ownUser.profilepic}});"></a></li>
       </ul>
@@ -59,7 +59,7 @@
   </div>
 </nav>
 <nav class="container navbar navbar-default hidden-xs" role="navigation" id="pagenav">
-  <ng-include src="'templates/global-notice.html'"></ng-include>
+  <ng-include src="'app/templates/global-notice.html'"></ng-include>
   <div class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
       <li>

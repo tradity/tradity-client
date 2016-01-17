@@ -56,7 +56,7 @@ controller('SurveyCtrl', function($scope, $stateParams, $state, gettext, languag
         results.push({
           question: k,
           // the keys of vm.results[i] are the answer identifiers
-          answers: Object.keys(result).filter(function(a) {
+          answers: Object.keys(result).filter(function(a) { // jshint ignore:line
             // remove 'false' or empty entries
             return result[a] && a != 'choice';
           }).map(function(a) { // jshint ignore:line

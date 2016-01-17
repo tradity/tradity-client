@@ -96,7 +96,7 @@ angular.module('tradity')
           continue;
         
         return achievements._textsCached[name] = achievements._texts[i].text
-          .replace(/%(\d+)/g, function(localMatch, index) {
+          .replace(/%(\d+)/g, function(localMatch, index) { // jshint ignore:line
             return match[parseInt(index)];
           }); // jshint ignore:line
       }

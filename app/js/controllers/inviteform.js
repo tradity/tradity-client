@@ -18,7 +18,7 @@ angular.module('tradity').
         socket.emit('create-invite-link', {
           email: emails[i],
           schoolid: $scope.schoolid ? $scope.schoolid : null
-        }).then(function(data) {
+        }).then(function(data) { // jshint ignore:line
           switch (data.code) {
             case 'create-invite-link-invalid-email':
               notification(gettext('Invalid e-mail address'));

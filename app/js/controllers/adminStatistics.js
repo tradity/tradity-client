@@ -88,7 +88,7 @@ angular.module('tradity').
           var srv = $scope.servers[i];
           srv.allQContexts = [];
           
-          var recurseListQContexts = function(ctx) {
+          var recurseListQContexts = function(ctx) { // jshint ignore:line
             ctx.openConnectionsJSON = JSON.stringify(ctx.openConnections);
             ctx.tableLocksJSON = JSON.stringify(ctx.tableLocks);
             

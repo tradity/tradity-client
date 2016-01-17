@@ -16,9 +16,9 @@
     <!-- endbuild -->
     
     <!-- buildstamp changes with every git commit -> not suitable for grunt-rev -->
-    <script type="text/javascript" src="js/buildstamp.js"></script>
+    <script type="text/javascript" src="app/js/buildstamp.js"></script>
     <!-- build:js({.tmp,app}) js/dependencies.js -->
-    <script type="text/javascript" src="js/vendor/piwik.js"></script>
+    <script type="text/javascript" src="scripts/piwik.js"></script>
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
@@ -36,82 +36,82 @@
     <script type="text/javascript" src="node_modules/visionmedia-debug/dist/debug.js"></script>
     <script type="text/javascript" src="node_modules/asmcrypto/asmcrypto.js"></script>
     <script type="text/javascript" src="node_modules/clipboard/dist/clipboard.min.js"></script>
-    <script type="text/javascript" src="js/vendor/angular-locale_de.js"></script>
-    <script type="text/javascript" src="js/vendor/vagueTime.min.js"></script>
-    <script type="text/javascript" src="js/vendor/angular-ui-utils-keypress.js"></script>
-    <script type="text/javascript" src="js/vendor/angular-ui-utils-event.js"></script>
-    <script type="text/javascript" src="js/vendor/jquery.jqplot.min.js"></script>
-    <script type="text/javascript" src="js/vendor/jqplot.highlighter.min.js"></script>
-    <script type="text/javascript" src="js/vendor/jqplot.cursor.min.js"></script>
-    <script type="text/javascript" src="js/vendor/jqplot.enhancedLegendRenderer.min.js"></script>
-    <script type="text/javascript" src="js/vendor/jqplot.dateAxisRenderer.min.js"></script>
-    <script type="text/javascript" src="js/vendor/jqplot.canvasAxisTickRenderer.min.js"></script>
-    <script type="text/javascript" src="js/vendor/jqplot.canvasTextRenderer.min.js"></script>
-    <script type="text/javascript" src="js/vendor/jquery.pointpoint.js"></script>
+    <script type="text/javascript" src="scripts/angular-locale_de.js"></script>
+    <script type="text/javascript" src="scripts/vagueTime.min.js"></script>
+    <script type="text/javascript" src="scripts/angular-ui-utils-keypress.js"></script>
+    <script type="text/javascript" src="scripts/angular-ui-utils-event.js"></script>
+    <script type="text/javascript" src="scripts/jquery.jqplot.min.js"></script>
+    <script type="text/javascript" src="scripts/jqplot.highlighter.min.js"></script>
+    <script type="text/javascript" src="scripts/jqplot.cursor.min.js"></script>
+    <script type="text/javascript" src="scripts/jqplot.enhancedLegendRenderer.min.js"></script>
+    <script type="text/javascript" src="scripts/jqplot.dateAxisRenderer.min.js"></script>
+    <script type="text/javascript" src="scripts/jqplot.canvasAxisTickRenderer.min.js"></script>
+    <script type="text/javascript" src="scripts/jqplot.canvasTextRenderer.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.pointpoint.js"></script>
     
-    <script type="text/javascript" src="js/lzma_worker.wrap.js"></script>
+    <script type="text/javascript" src="app/js/lzma_worker.wrap.js"></script>
 
     <script type="text/javascript" src="node_modules/tradity-connection/util.js"></script>
     <script type="text/javascript" src="node_modules/tradity-connection/sotrade-api.js"></script>
     <!-- endbuild -->
     
     <!-- build:js({.tmp,app}) js/scripts.js -->
-    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="app/js/main.js"></script>
 
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="app/js/app.js"></script>
+    <script type="text/javascript" src="app/js/config.js"></script>
 
-    <script type="text/javascript" src="js/controllers/main.js"></script>
-    <script type="text/javascript" src="js/controllers/inviteform.js"></script>
-    <script type="text/javascript" src="js/controllers/feedblogs.js"></script>
-    <script type="text/javascript" src="js/controllers/login.js"></script>
-    <script type="text/javascript" src="js/controllers/registration.js"></script>
-    <script type="text/javascript" src="js/controllers/survey.js"></script>
-    <script type="text/javascript" src="js/controllers/feed.js"></script>
-    <script type="text/javascript" src="js/controllers/options.js"></script>
-    <script type="text/javascript" src="js/controllers/depot.js"></script>
-    <script type="text/javascript" src="js/controllers/depotTransactionLog.js"></script>
-    <script type="text/javascript" src="js/controllers/trade.js"></script>
-    <script type="text/javascript" src="js/controllers/profile.js"></script>
-    <script type="text/javascript" src="js/controllers/profileOverview.js"></script>
-    <script type="text/javascript" src="js/controllers/ranking.js"></script>
-    <script type="text/javascript" src="js/controllers/group.js"></script>
-    <script type="text/javascript" src="js/controllers/groupOverview.js"></script>
-    <script type="text/javascript" src="js/controllers/admin.js"></script>
-    <script type="text/javascript" src="js/controllers/adminUserDetails.js"></script>
-    <script type="text/javascript" src="js/controllers/adminNotifications.js"></script>
-    <script type="text/javascript" src="js/controllers/adminSchools.js"></script>
-    <script type="text/javascript" src="js/controllers/adminUserlist.js"></script>
-    <script type="text/javascript" src="js/controllers/adminStatistics.js"></script>
-    <script type="text/javascript" src="js/controllers/adminEvents.js"></script>
-    <script type="text/javascript" src="js/controllers/index.js"></script>
-    <script type="text/javascript" src="js/controllers/comment.js"></script>
-    <script type="text/javascript" src="js/directives/profile.js"></script>
-    <script type="text/javascript" src="js/directives/groupChooser.js"></script>
-    <script type="text/javascript" src="js/filters/foldDeletedComments.js"></script>
-    <script type="text/javascript" src="js/controllers/search.js"></script>
-    <script type="text/javascript" src="js/controllers/chat.js"></script>
-    <script type="text/javascript" src="js/controllers/achievements.js"></script>
-    <script type="text/javascript" src="js/controllers/unknownEntity.js"></script>
-    <script type="text/javascript" src="js/controllers/notifications.js"></script>
-    <script type="text/javascript" src="js/controllers/learning.js"></script>
-    <script type="text/javascript" src="js/controllers/sponsors.js"></script>
-    <script type="text/javascript" src="js/services/searchStringSimilarity.js"></script>
-    <script type="text/javascript" src="js/services/achievements.js"></script>
-    <script type="text/javascript" src="js/services/chat.js"></script>
-    <script type="text/javascript" src="js/services/socket.js"></script>
-    <script type="text/javascript" src="js/services/user.js"></script>
-    <script type="text/javascript" src="js/services/ranking.js"></script>
-    <script type="text/javascript" src="js/services/safestorage.js"></script>
-    <script type="text/javascript" src="js/services/dailyLoginAchievements.js"></script>
-    <script type="text/javascript" src="js/services/config.js"></script>
-    <script type="text/javascript" src="js/services/languageManager.js"></script>
-    <script type="text/javascript" src="js/services/asyncLoadJS.js"></script>
-    <script type="text/javascript" src="js/services/feed.js"></script>
-    <script type="text/javascript" src="js/services/lzma.js"></script>
-    <script type="text/javascript" src="js/services/maybeCompress.js"></script>
-    <script type="text/javascript" src="js/services/event.js"></script>
-    <script type="text/javascript" src="js/services/group.js"></script>
+    <script type="text/javascript" src="app/js/controllers/main.js"></script>
+    <script type="text/javascript" src="app/js/controllers/inviteform.js"></script>
+    <script type="text/javascript" src="app/js/controllers/feedblogs.js"></script>
+    <script type="text/javascript" src="app/js/controllers/login.js"></script>
+    <script type="text/javascript" src="app/js/controllers/registration.js"></script>
+    <script type="text/javascript" src="app/js/controllers/survey.js"></script>
+    <script type="text/javascript" src="app/js/controllers/feed.js"></script>
+    <script type="text/javascript" src="app/js/controllers/options.js"></script>
+    <script type="text/javascript" src="app/js/controllers/depot.js"></script>
+    <script type="text/javascript" src="app/js/controllers/depotTransactionLog.js"></script>
+    <script type="text/javascript" src="app/js/controllers/trade.js"></script>
+    <script type="text/javascript" src="app/js/controllers/profile.js"></script>
+    <script type="text/javascript" src="app/js/controllers/profileOverview.js"></script>
+    <script type="text/javascript" src="app/js/controllers/ranking.js"></script>
+    <script type="text/javascript" src="app/js/controllers/group.js"></script>
+    <script type="text/javascript" src="app/js/controllers/groupOverview.js"></script>
+    <script type="text/javascript" src="app/js/controllers/admin.js"></script>
+    <script type="text/javascript" src="app/js/controllers/adminUserDetails.js"></script>
+    <script type="text/javascript" src="app/js/controllers/adminNotifications.js"></script>
+    <script type="text/javascript" src="app/js/controllers/adminSchools.js"></script>
+    <script type="text/javascript" src="app/js/controllers/adminUserlist.js"></script>
+    <script type="text/javascript" src="app/js/controllers/adminStatistics.js"></script>
+    <script type="text/javascript" src="app/js/controllers/adminEvents.js"></script>
+    <script type="text/javascript" src="app/js/controllers/index.js"></script>
+    <script type="text/javascript" src="app/js/controllers/comment.js"></script>
+    <script type="text/javascript" src="app/js/directives/profile.js"></script>
+    <script type="text/javascript" src="app/js/directives/groupChooser.js"></script>
+    <script type="text/javascript" src="app/js/filters/foldDeletedComments.js"></script>
+    <script type="text/javascript" src="app/js/controllers/search.js"></script>
+    <script type="text/javascript" src="app/js/controllers/chat.js"></script>
+    <script type="text/javascript" src="app/js/controllers/achievements.js"></script>
+    <script type="text/javascript" src="app/js/controllers/unknownEntity.js"></script>
+    <script type="text/javascript" src="app/js/controllers/notifications.js"></script>
+    <script type="text/javascript" src="app/js/controllers/learning.js"></script>
+    <script type="text/javascript" src="app/js/controllers/sponsors.js"></script>
+    <script type="text/javascript" src="app/js/services/searchStringSimilarity.js"></script>
+    <script type="text/javascript" src="app/js/services/achievements.js"></script>
+    <script type="text/javascript" src="app/js/services/chat.js"></script>
+    <script type="text/javascript" src="app/js/services/socket.js"></script>
+    <script type="text/javascript" src="app/js/services/user.js"></script>
+    <script type="text/javascript" src="app/js/services/ranking.js"></script>
+    <script type="text/javascript" src="app/js/services/safestorage.js"></script>
+    <script type="text/javascript" src="app/js/services/dailyLoginAchievements.js"></script>
+    <script type="text/javascript" src="app/js/services/config.js"></script>
+    <script type="text/javascript" src="app/js/services/languageManager.js"></script>
+    <script type="text/javascript" src="app/js/services/asyncLoadJS.js"></script>
+    <script type="text/javascript" src="app/js/services/feed.js"></script>
+    <script type="text/javascript" src="app/js/services/lzma.js"></script>
+    <script type="text/javascript" src="app/js/services/maybeCompress.js"></script>
+    <script type="text/javascript" src="app/js/services/event.js"></script>
+    <script type="text/javascript" src="app/js/services/group.js"></script>
     <!-- endbuild -->
     <script type="text/javascript">window.onload = function(){if(typeof angular=='undefined'){var a;(a=document.getElementById('scriptfail')).style.display='block';a.src='scriptfail.html';}};</script>
   </head>

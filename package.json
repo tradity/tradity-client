@@ -54,7 +54,8 @@
     "cssmin": "latest",
     "less": "latest",
     "hashmark": "latest",
-    "lite-server": "latest"
+    "lite-server": "latest",
+    "parallelshell": "latest"
   },
   "engines": {
     "node": ">=0.8.0"
@@ -64,9 +65,10 @@
     "test": "npm run lint",
     "clean": "rimraf dist/* docs/*",
     "prebuild": "npm run clean",
+    "build": "parallelshell 'npm run build:css' 'npm run build:js' 'npm run build:cp'",
     "build:css": "lessc less/main.less | autoprefixer -b 'last 1 version' | cssmin > dist/css/main.css",
     "build:js": "cp -r app/* dist/",
-    "cp": "cp -r *.html *.txt *.ico fonts/ img/ scripts/ dist/",
+    "build:cp": "cp -r *.html *.txt *.ico fonts/ img/ scripts/ dist/",
     "serve": "lite-server --baseDir './dist' --files 'dist/**/*'"
   },
   "dependencies": {

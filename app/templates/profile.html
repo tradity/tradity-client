@@ -5,7 +5,7 @@
   <div id="profile-user" class="profile">
     <div class="user-info">
       <img id="profile-picture" height="150px" ng-hide="!user.profilepic" class="profile-picture profile-box" ng-src="{{user.profilepic}}" >
-      <img id="profile-picture" ng-hide="user.profilepic" src="img/profile.svg" height="150px">
+      <img id="profile-picture" ng-hide="user.profilepic" src="../img/profile.svg" height="150px">
       <h2 class="name">
         {{user.giv_name}} <span class="nick">„{{user.name}}“</span> {{user.fam_name}}
         <a ng-show="isAdmin" ui-sref="admin.userdetails({uid: user.uid})" class="icon" title="admin"><i class="fa fa-shield"></i></a>

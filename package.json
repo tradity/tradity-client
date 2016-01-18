@@ -47,7 +47,7 @@
     "load-grunt-tasks": "~0.2.0",
     "munkres-js": "*",
     "pofile": "~1.0.2",
-    "remarkup": ">=0.0.7",
+    "remarkup": "0.0.7",
     "requirejs": "~2.1.11",
     "time-grunt": "~0.2.1"
   },

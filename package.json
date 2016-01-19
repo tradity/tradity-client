@@ -2,7 +2,7 @@
   "name": "tradity-client",
   "version": "0.7.0",
   "devDependencies": {
-    "angular-gettext-cli": "^1.0.6",
+    "angular-gettext-cli": ">= 1.0.7 < 2.0.0",
     "autoprefixer": "latest",
     "browser-sync": "latest",
     "connect-history-api-fallback": "latest",
@@ -60,14 +60,18 @@
     "time-grunt": "~0.2.1"
   },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=5.0.0"
   },
   "scripts": {
     "lint": "jshint --config=.jshintrc --reporter=node_modules/jshint-stylish file.js",
     "test": "npm run lint",
     "gettext-extract": "angular-gettext-cli --files '{app/**/*.html,app/js/**/*.js}' --dest po/unstripped/templates.pot",
+    "gettext-compile": "angular-gettext-cli --compile --files po/unstripped/de.po --dest app/js/jit/l10n/de.json --module tradity --format json",
     "unmarkup": "remarkup-po unmarkup po/unstripped/templates.pot > po/templates.pot",
     "remarkup": "remarkup-po remarkup po/unstripped/templates.pot po/de.po > po/unstripped/de.po",
+    "translate-extract": "npm run gettext-extract && npm run unmarkup",
+    "translate-build": "npm run remarkup && npm run gettext-compile",
+    "translate-cycle": "npm run translate-extract && npm run translate-build",
     "clean": "rimraf dist/ docs/ && mkdir dist/ docs/",
     "prebuild": "npm run clean",
     "build": "parallelshell 'npm run build:css' 'npm run build:js' 'npm run build:cp'",

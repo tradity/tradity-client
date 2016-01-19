@@ -68,7 +68,7 @@
     "gettext-extract": "angular-gettext-cli --files '{app/**/*.html,app/js/**/*.js}' --dest po/unstripped/templates.pot",
     "unmarkup": "remarkup-po unmarkup po/unstripped/templates.pot > po/templates.pot",
     "remarkup": "remarkup-po remarkup po/unstripped/templates.pot po/de.po > po/unstripped/de.po",
-    "clean": "rimraf dist/* docs/*",
+    "clean": "rimraf dist/ docs/ && mkdir dist/ docs/",
     "prebuild": "npm run clean",
     "build": "parallelshell 'npm run build:css' 'npm run build:js' 'npm run build:cp'",
     "build:css": "lessc less/main.less | postcss --use autoprefixer --autoprefixer.browsers 'last 1 version' | cssmin > dist/main.css",

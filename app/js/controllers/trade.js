@@ -142,7 +142,7 @@ angular.module('tradity').
           throw new Error('Stock search failed with ' + data.code);
         
         return orderByFilter(data.results.filter(function(stock) {
-          return !stock.leader || stock.leader != vm.ownUser.uid;
+          return !(stock.leader && vm.ownUser && stock.leader === vm.ownUser.uid);
         }).map(function(stock) {
           stock.textName = stock.leader ? gettext('Leader: %1').replace(/%1/g, stock.leadername) : stock.name;
           stock.extraInfo = (parseInt(stock.lastvalue / 100) / 100) +

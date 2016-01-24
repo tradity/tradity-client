@@ -60,6 +60,7 @@
             <tr ng-hide="trade.leader"><th translate><span class="batch tooltip" data-info="You can only trade the number of shares which were also traded in reality at the stock exchange. For example, if today only 1000 shares have been traded, you can sell or buy at most 1000 shares yourself. Notice that “penny stocks” often have significantly reduced liquidity.">&#xF0AD;</span> Tradable amount</th><td ng-show="trade.cur">{{trade.cur.pieces}}</td></tr>
             <tr ng-hide="trade.leader"><th translate>Stock information</th><td ng-show="trade.cur"><a target="_blank" ng-href="http://ariva.de/{{trade.cur.stockid}}">http://ariva.de/{{trade.cur.stockid}}</a></td></tr>
           </table>
+          <stock-comments stockinfo="trade.cur" autoload="true"></stock-comments>
         </div>
       </div>
     </div>

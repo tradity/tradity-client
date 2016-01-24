@@ -89,6 +89,7 @@
     "angular-events-calendar": "^1.0.0",
     "bootstrap": "3.3.x",
     "font-awesome": "4.5.0",
+    "nsPopover": "https://github.com/nohros/nsPopover.git#622a133b344b",
     "socket.io-client": ">=1.2.1",
     "angular-dialog-service": "https://github.com/m-e-conroy/angular-dialog-service.git#b6471bb",
     "angular-md5": "*",

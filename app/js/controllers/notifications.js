@@ -23,6 +23,11 @@ angular.module('tradity').
     $scope.add = function(notification) {
 
       if (notification.type == 'achievement') {
+        if (notification.achname === null) {
+          // this may happen when achievements get deleted in the database
+          return false;
+        }
+        
         notification.name = achievements.lookupText(notification.achname);
         if ($scope.isIn($scope.notifications,notification.achname))
           return false;

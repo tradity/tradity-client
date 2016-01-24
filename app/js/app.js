@@ -15,6 +15,7 @@ angular.module('tradity', [
   'rt.debounce',
   'tradityFilters',
   'eventsCalendar',
+  'nsPopover',
   'gettext' // override translate filter from dialogs.main, so this comes last
 ]).config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider, $compileProvider) {
   $compileProvider.debugInfoEnabled(document.cookie.indexOf('devmode') !== -1);

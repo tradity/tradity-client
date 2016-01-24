@@ -1,7 +1,22 @@
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-<div ng-repeat="comment in comments">
-  {{comment.Message}}
-  <hr/>
+<div class="popover bottom stock">
+   <div class="arrow"></div>
+   <h3 class="popover-title">
+      <a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: stockinfo.stocktextid, amount: 0})">{{stockinfo.stockname}}</a>
+   </h3>
+   <div class="popover-content">
+      <div ng-repeat="comment in comments" ng-show="comments.length > 0">
+        {{comment.Message}}
+        <hr/>
+      </div>
+      <div ng-show="comments.length == 0" translate>
+         Sorry, no comments on this stock so far.
+      </div>
+   </div>
+   
+  <div ng-hide="comments" class="loading text-center">
+    <i class="fa fa-cog fa-spin fa-3x"></i>
+  </div>
 </div>

@@ -76,7 +76,7 @@
             <span ng-show="message.leader">
               <a ui-sref="game.profile.overview({userId: message.leader})" translate-id="leader-link">{{message.stockname}}</a>
             </span>
-            <a stock isin="{{message.stocktextid}}" title="{{message.stockname}}" ng-hide="message.leader">{{message.stockname}}</span>.
+            <span ng-hide="message.leader"><stock stockinfo="message"></stock></span>.
           </translate>
         </div>
       </div>
@@ -92,7 +92,7 @@
             <span ng-show="message.leader">
               <a ui-sref="game.profile.overview({userId: message.leader})" translate-id="leader-link">{{message.stockname}}</a>
             </span>
-            <span ng-hide="message.leader">{{message.stockname}}</span>.
+            <span ng-hide="message.leader"><stock stockinfo="message"></stock></span>.
           </translate>
         </div>
       </div>
@@ -105,7 +105,7 @@
             <span ng-show="message.leader">
               <a ui-sref="game.profile.overview({userId: message.leader})" translate-id="leader-link">{{message.stockname}}</a>
             </span>
-            <span ng-hide="message.leader">{{message.stockname}}</span>.
+            <span ng-hide="message.leader"><stock stockinfo="message"></stock></span>.
           </translate>
         </div>
       </div>
@@ -117,7 +117,7 @@
             <span ng-show="message.leader">
               <a ui-sref="game.profile.overview({userId: message.leader})" translate-id="leader-link">{{message.stockname}}</a>
             </span>
-            <span ng-hide="message.leader">{{message.stockname}}</span>.
+            <span ng-hide="message.leader"><stock stockinfo="message"></stock></span>.
           </translate>
         </div>
       </div>

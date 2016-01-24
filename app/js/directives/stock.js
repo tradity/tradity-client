@@ -6,46 +6,34 @@
 angular.module('tradity').
   directive('stock', function($compile,stock) {
     function link(scope, element, attrs) {
-      scope.template = false;
-      var enter = function() {
-        stock.getComments(attrs.isin).then(function(comments) {
-          scope.comments = comments;
-          scope.template = 'templates/popover.stock.html';
-        });
-        
-        var el = $('.popover',this);
-        el.show();
-        var pos = $(this).offset();
-        var h = $(this).height();
-        var w = $(this).width();
-        var left = pos.left-(el.width()/2)+(w/2);
-        var top = pos.top+10+h;
-        var arrowOff = 0;
-        if(left < 0) {
-          arrowOff = left-(w/2);
-          el.offset({ top: top, left: 0 });
-          $('.arrow',el).css('margin-left', arrowOff);
-        } else {
-          el.offset({ top: top, left: left });
-        }
-        
-        element.unbind('mouseenter');
-        element.bind('mouseout', function() {
-          element.unbind('mouseout');
-          el.hide();
-          element.bind('mouseenter', enter);
-        });
-      };
+      var isin = scope.stockinfo.stocktextid;
       
-      element.bind('mouseenter', enter);
+      scope.fetchComments = function() {
+        if (!scope.comments && !scope.fetchingComments) {
+          scope.fetchingComments = true;
+          
+          stock.getComments(isin).then(function(comments) {
+            if (comments === null) {
+              comments = [];
+            }
+            
+            scope.comments = comments;
+          });
+        }
+      };
     }
     
     return {
       link: link,
-      templateUrl: 'templates/popover.html',
+      template: '<a ns-popover ns-popover-timeout="0.5" ' +
+        'ns-popover-template="templates/popover.stock.html" ' +
+        'ns-popover-trigger="mouseenter" ' +
+        'ns-popover-on-open="fetchComments()" ' +
+        'title="{{stockinfo.stocktextid}}" ' +
+        'ui-sref="game.tradesellbuy({sellbuy: \'buy\', stockId: stockinfo.stocktextid, amount: 0})"> ' +
+        '{{stockinfo.stockname}}</a>',
       scope:{
-        isin:'@',
-        title:'@'
+        stockinfo: '='
       }
     };
   });

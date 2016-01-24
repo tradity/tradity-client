@@ -78,7 +78,7 @@
     "build:css": "lessc less/main.less | postcss --use autoprefixer --autoprefixer.browsers 'last 1 version' | cssmin > dist/main.css",
     "build:js": "cp -r app/ dist/",
     "build:cp": "cp -r *.html *.txt *.ico fonts/ img/ scripts/ dist/",
-    "serve": "browser-sync start --config bs-config.js"
+    "start": "browser-sync start --config bs-config.js"
   },
   "dependencies": {
     "angular": "1.5.0-rc.0",

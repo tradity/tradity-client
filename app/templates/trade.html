@@ -33,7 +33,7 @@
         <h3 translate>Most popular stocks</h3>
         <div ng-class="{hideMost: !trade.showPopularStocks}">
           <ol class="popularstocks">
-            <li ng-repeat="stock in trade.popularStocks"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: stock.stockid, amount: 0})">{{trade.stock.stockname}}</a></li>
+            <li ng-repeat="stock in trade.popularStocks"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: stock.stockid, amount: 0})">{{stock.stockname}}</a></li>
           </ol>
           <a class="trade-more" ng-click="trade.togglePopularStocks()" ng-show="!trade.showPopularStocks" translate>List more stocks</a>
           <a class="trade-more" ng-click="trade.togglePopularStocks()" ng-show="trade.showPopularStocks" translate>List less stocks</a>

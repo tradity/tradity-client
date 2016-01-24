@@ -5,5 +5,5 @@
   "defaultProfileImg": "img/profile.svg",
   "defaultGroupBanner": "img/groupbanner.jpg",
   "defaultLanguage": "de",
-  "wikifolioAPI": "https://wfapi.tradity.de/api/v1"
+  "wikifolioApi": "https://wfapi.tradity.de/api/v1"
 }

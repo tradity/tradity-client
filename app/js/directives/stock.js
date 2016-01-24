@@ -6,20 +6,8 @@
 angular.module('tradity').
   directive('stock', function($compile,stock) {
     function link(scope, element, attrs) {
-      var isin = scope.stockinfo.stocktextid;
-      
-      scope.fetchComments = function() {
-        if (!scope.comments && !scope.fetchingComments) {
-          scope.fetchingComments = true;
-          
-          stock.getComments(isin).then(function(comments) {
-            if (comments === null) {
-              comments = [];
-            }
-            
-            scope.comments = comments;
-          });
-        }
+      scope.onOpen = function() {
+        scope.$broadcast('visible-popover');
       };
     }
     
@@ -28,7 +16,7 @@ angular.module('tradity').
       template: '<a ns-popover ns-popover-timeout="0.5" ' +
         'ns-popover-template="templates/popover.stock.html" ' +
         'ns-popover-trigger="mouseenter" ' +
-        'ns-popover-on-open="fetchComments()" ' +
+        'ns-popover-on-open="onOpen()" ' +
         'title="{{stockinfo.stocktextid}}" ' +
         'ui-sref="game.tradesellbuy({sellbuy: \'buy\', stockId: stockinfo.stocktextid, amount: 0})"> ' +
         '{{stockinfo.stockname}}</a>',

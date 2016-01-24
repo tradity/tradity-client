@@ -4,5 +4,6 @@
   "apiConnectTestPath": "/dynamic/ping",
   "defaultProfileImg": "img/profile.svg",
   "defaultGroupBanner": "img/groupbanner.jpg",
-  "defaultLanguage": "de"
+  "defaultLanguage": "de",
+  "wikifolioAPI": "https://wfapi.tradity.de/api/v1"
 }

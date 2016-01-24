@@ -12,12 +12,10 @@ angular.module('tradity')
    * # stock
    * Get stock info with the isin over different apis
    */
-  .factory('stock', function ($http) {
-    var wikifolioApiEndpoint = 'https://wfapi-test.tradity.de/api/v1';
-    
+  .factory('stock', function ($http, config) {
     return {
       getComments: function(isin) {
-        return $http.get(wikifolioApiEndpoint + '/comments?underlyingISIN=' + isin + '&limit=3').then(function(res) {
+        return $http.get(config.WIKIFOLIO_API + '/comments?underlyingISIN=' + isin + '&limit=3').then(function(res) {
           return res.data;
         }).catch(function(err) {
           console.log(err);

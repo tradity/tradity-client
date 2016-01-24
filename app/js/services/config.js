@@ -18,10 +18,11 @@
  * ```
  */
 angular.module('tradity')
-  .factory('config', function (API_HOST, DEFAULT_PROFILE_IMG, socket) {
+  .factory('config', function (API_HOST, DEFAULT_PROFILE_IMG, WIKIFOLIO_API, socket) {
     return {
       API_HOST: API_HOST,
       DEFAULT_PROFILE_IMG: DEFAULT_PROFILE_IMG,
+      WIKIFOLIO_API: WIKIFOLIO_API,
       server: function() { return socket.serverConfig || {}; }
     };
   });

@@ -6,11 +6,15 @@
 angular.module('tradity').
   directive('stockComments', function($compile,stock) {
     function link(scope, element, attrs) {
-      var isin = scope.stockinfo.stocktextid;
-      
       scope.fetchComments = function() {
-        if (!scope.comments && !scope.fetchingComments) {
-          scope.fetchingComments = true;
+        if (!scope.stockinfo || !scope.stockinfo.stocktextid) {
+          return;
+        }
+        
+        var isin = scope.stockinfo.stocktextid;
+      
+        if (scope.fetchingComments !== isin) {
+          scope.fetchingComments = isin;
           
           stock.getComments(isin).then(function(comments) {
             if (comments === null) {
@@ -23,13 +27,18 @@ angular.module('tradity').
       };
       
       scope.$on('visible-popover', scope.fetchComments);
+      
+      if (attrs.autoload !== 'false') {
+        scope.$watch('stockinfo.stocktextid', scope.fetchComments);
+      }
     }
     
     return {
       link: link,
       templateUrl: 'templates/stock.comments.html',
       scope:{
-        stockinfo: '='
+        stockinfo: '=',
+        autoload: '@'
       }
     };
   });

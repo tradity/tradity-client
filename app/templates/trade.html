@@ -16,7 +16,7 @@
           <div class="col-sm-10">
             <script type="text/ng-template" id="stockSearchEntry.html">
               <a style="display:block">
-                <span class="typeahead-left" bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+                <span class="typeahead-left" ng-bind-html="match.label | typeaheadHighlight:query"></span>
                 <span class="typeahead-right">{{match.model.extraInfo}}</span>
                 <span style="clear:both;display:block"></span>
               </a>
@@ -94,7 +94,7 @@
         <div class="form-group">
           <label>
             <span translate>Buy/Sell price</span>
-            <span g-show="trade.cur && trade.sellbuy > 0">(Max: {{Math.floor(Math.min(trade.ownUser.freemoney, trade.ownUser.totalvalue * trade.serverConfig.maxSingleStockShare) / trade.cur.ask) * trade.cur.ask / 10000 | currency}})</span>
+            <span ng-show="trade.cur && trade.sellbuy > 0">(Max: {{Math.floor(Math.min(trade.ownUser.freemoney, trade.ownUser.totalvalue * trade.serverConfig.maxSingleStockShare) / trade.cur.ask) * trade.cur.ask / 10000 | currency}})</span>
           </label>
           <translate><input type="text" ng-model="trade.value" ng-change="trade.calcAmount();" placeholder="Buy price" id="value" autocomplete="off" class="form-control" /></translate>
         </div>

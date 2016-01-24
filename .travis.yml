@@ -19,5 +19,4 @@ install:
   - npm update
   - npm run build
 script:
-# no tests so far
-  - jshint app/js/{.,controllers,directives,services}/*.js
+  - npm run lint

@@ -63,7 +63,7 @@
     "node": ">=5.0.0"
   },
   "scripts": {
-    "lint": "jshint --config=.jshintrc --reporter=node_modules/jshint-stylish file.js",
+    "lint": "jshint --config=.jshintrc --reporter=node_modules/jshint-stylish app/**/*.js",
     "test": "npm run lint",
     "gettext-extract": "angular-gettext-cli --files '{app/**/*.html,app/js/**/*.js}' --dest po/unstripped/templates.pot",
     "gettext-compile": "angular-gettext-cli --compile --files po/unstripped/de.po --dest app/js/jit/l10n/de.json --module tradity --format json",

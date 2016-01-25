@@ -57,7 +57,8 @@
     "remarkup-po": "latest",
     "requirejs": "~2.1.11",
     "rimraf": "latest",
-    "time-grunt": "~0.2.1"
+    "time-grunt": "~0.2.1",
+    "watch-run": "latest"
   },
   "engines": {
     "node": ">=5.0.0"
@@ -78,7 +79,11 @@
     "build:css": "lessc less/main.less | postcss --use autoprefixer --autoprefixer.browsers 'last 1 version' | cssmin > dist/main.css",
     "build:js": "cp -r app/ dist/",
     "build:cp": "cp -r *.html *.txt *.ico fonts/ img/ scripts/ dist/",
-    "start": "browser-sync start --config bs-config.js"
+    "watch": "parallelshell 'npm run watch:css' 'npm run watch:js' 'npm run watch:cp'",
+    "watch:css": "watch-run -p less/ npm run build:css",
+    "watch:js": "watch-run -p app/ npm run build:js",
+    "watch:cp": "watch-run -p '*.html, *.txt, *.ico, fonts/, img/, scripts/' npm run build:cp",
+    "start": "npm run build && parallelshell 'npm run watch' 'browser-sync start --config bs-config.js'"
   },
   "dependencies": {
     "angular": "1.5.0-rc.0",

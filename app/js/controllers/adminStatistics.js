@@ -54,7 +54,7 @@ angular.module('tradity').
     $scope.qctxDebug = false;
     
     // XXX fileref
-    asyncLoadJS(['js/jit/cytoscape.min.js']).then(function() {
+    asyncLoadJS(['/node_modules/cytoscape/dist/cytoscape.min.js']).then(function() {
       socket.on('get-server-statistics', function(data) {
         if (data.code != 'get-server-statistics-success')
           return;

@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/tradity/tradity-client.svg?style=flat&branch=master)](https://travis-ci.org/tradity/tradity-client?branch=master)
 [![Translation status](https://weblate.tradity.de/widgets/tradity/-/svg-badge.svg)](https://weblate.tradity.de/engage/tradity/?utm_source=widget)
+[![Dependency Status](https://david-dm.org/tradity/tradity-client.svg?style=flat)](https://david-dm.org/tradity/tradity-client)
+[![devDependency Status](https://david-dm.org/tradity/tradity-client/dev-status.svg?style=flat)](https://david-dm.org/tradity/tradity-client#info=devDependencies)
 
 Web client of the [Tradity](https://tradity.de/) stock trading game
 

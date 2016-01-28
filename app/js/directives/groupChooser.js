@@ -7,7 +7,7 @@
 angular.module('tradity').
   directive('tradityGroupChooser', function(socket, gettextCatalog, orderByFilter, searchStringSimilarity, $q) {
     return {
-      templateUrl: 'templates/group-chooser.html',
+      templateUrl: 'app/templates/group-chooser.html',
       scope: { 
         school: '=?schoolModel',
         schoolID: '=schoolIdModel',

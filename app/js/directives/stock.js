@@ -14,7 +14,7 @@ angular.module('tradity').
     return {
       link: link,
       template: '<a ns-popover ns-popover-timeout="0.5" ' +
-        'ns-popover-template="templates/popover.stock.html" ' +
+        'ns-popover-template="app/templates/popover.stock.html" ' +
         'ns-popover-trigger="mouseenter" ' +
         'ns-popover-on-open="onOpen()" ' +
         'title="{{stockinfo.stocktextid}}" ' +

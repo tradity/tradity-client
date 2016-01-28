@@ -38,7 +38,7 @@
     <div class="widget" ng-show="school.parentPath">
       <a ui-sref="game.group({schoolid: school.parentPath})" translate>Go to the parent group</a>
     </div>
-    <div class="widget promo vertical" ng-include="'templates/sponsors.html'">
+    <div class="widget promo vertical" ng-include="'app/templates/sponsors.html'">
     </div>
     <div class="widget schoolInfo">
       <h3 translate>Group information</h3>
@@ -90,13 +90,13 @@
     <div class="widget" ng-show="isAdmin || selfIsSchoolAdmin">
       <h3 translate>Invite users</h3>
       <div class="inner">
-        <ng-include src="'templates/inviteform.html'"></ng-include>
+        <ng-include src="'app/templates/inviteform.html'"></ng-include>
       </div>
     </div>
     <div class="widget" ng-show="isAdmin">
       <h3 translate>Wordpress integration</h3>
       <div class="inner">
-        <ng-include src="'templates/feedblogs.html'"></ng-include>
+        <ng-include src="'app/templates/feedblogs.html'"></ng-include>
       </div>
     </div>
   </div>

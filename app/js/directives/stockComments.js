@@ -35,7 +35,7 @@ angular.module('tradity').
     
     return {
       link: link,
-      templateUrl: 'templates/stock.comments.html',
+      templateUrl: 'app/templates/stock.comments.html',
       scope:{
         stockinfo: '=',
         autoload: '@'

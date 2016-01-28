@@ -18,17 +18,18 @@ angular.module('tradity')
     var counter = 0;
     
     try {
-      if (typeof LZMA != 'undefined' && typeof Blob != 'undefined' && typeof Uint8Array != 'undefined' && 
-        window.URL && window.URL.createObjectURL && typeof lzma_worker_js != 'undefined' && lzma_worker_js)
+      if (typeof LZMA !== 'undefined' && typeof Uint8Array !== 'undefined')
       {
-        workerURL = URL.createObjectURL(new Blob([lzma_worker_js], {type: 'application/x-javascript'}));
-        
-        while (pool.length < 2)
-          pool.push(new LZMA(workerURL));
+        while (pool.length < 2) {
+          pool.push(new LZMA('/node_modules/lzma/src/lzma_worker.js'));
+        }
       }
     } catch(e) {
       console.error(e);
     }
+    
+    if (pool.length === 0)
+      return null;
     
     var getInstance = function() {
       counter++;

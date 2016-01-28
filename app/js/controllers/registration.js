@@ -240,7 +240,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
     });
   };
 
-  var zxcvbnLoaded = asyncLoadJS(['js/jit/zxcvbn.js']);
+  var zxcvbnLoaded = asyncLoadJS(['/node_modules/zxcvbn/dist/zxcvbn.js']);
 
   $scope.$watch(function() {
     return vm.password;

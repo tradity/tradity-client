@@ -7,7 +7,7 @@
 angular.module('tradity').
   controller('TradeCtrl', function($stateParams, $state, $location, socket, gettext, gettextCatalog,
     dialogs, orderByFilter, searchStringSimilarity, config) {
-        var vm = this;
+    var vm = this;
     vm.amount = null;
     vm.value = null;
     vm.stockid = null;
@@ -88,7 +88,7 @@ angular.module('tradity').
           qtype = 'dquery';
         }
         
-        socket.emit(qtype, query, function(data) {
+        socket.emit(qtype, query).then(function(data) {
           var modal;
           
           switch (data.code) {
@@ -190,16 +190,16 @@ angular.module('tradity').
         vm.sellbuy = 1;
       }
       vm.stockid = $stateParams.stockId;
-
+    
       /*if (vm.stockid != 'walkthrough') {*/
         socket.emit('stock-search', {
           name: vm.stockid
-        }, function(data) {
-          if (data.code == 'stock-search-success') {
+        }).then(function(data) {
+          if (data.code === 'stock-search-success') {
             for (var i = 0; i < data.results.length; ++i) {
-              if (data.results[i].stockid == vm.stockid) {
-              vm.selectedStock(data.results[i]);
-              break;
+              if (data.results[i].stocktextid == vm.stockid) {
+                vm.selectedStock(data.results[i]);
+                break;
               }
             }
             vm.amount = parseInt($stateParams.amount);
@@ -229,7 +229,7 @@ angular.module('tradity').
       }*/
     }
     
-    socket.emit('list-popular-stocks', {_cache: 1800}, function(data) {
+    socket.emit('list-popular-stocks', {_cache: 1800}).then(function(data) {
       vm.popularStocks = data.results;
     });
   });

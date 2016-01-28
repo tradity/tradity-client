@@ -43,8 +43,8 @@
       <div class="col-sm-6">
         <div class="options-field paper-preview-box padding-left" ng-show="trade.cur"> 
           <table class="paper-preview f">
-            <tr ng-show="trade.leader"><th translate>Name</th><td><a ui-sref="game.profile.overview({userId: trade.cur.leadername})">{{trade.stockname}}</a></td></tr>
-            <tr ng-hide="trade.leader"><th translate>Name</th><td ng-show="trade.cur">{{trade.stockname}}</td></tr>
+            <tr ng-show="trade.leader"><th translate>Name</th><td><a ui-sref="game.profile.overview({userId: trade.cur.leadername})" translate>Leader: {{trade.cur.leadername}}</a></td></tr>
+            <tr ng-hide="trade.leader"><th translate>Name</th><td ng-show="trade.cur">{{trade.cur.stockname}}</td></tr>
             <tr class="buyprice" translate>
               <th tooltip="The price at which you currently can buy shares at the stock exchange">Ask price</th>
               <td ng-show="trade.cur">{{trade.cur.ask / 10000 | number:3}} €</td>

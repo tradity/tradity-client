@@ -3,7 +3,7 @@
   "version": "0.7.0",
   "devDependencies": {
     "angular-gettext-cli": "^1.0.7",
-    "angular-write-constants": "^1.0.1",
+    "angular-write-constants": "^1.0.2",
     "autoprefixer": "^6.3.1",
     "browser-sync": "^2.11.1",
     "connect-history-api-fallback": "^1.1.0",
@@ -40,7 +40,7 @@
     "build:css": "lessc less/main.less | postcss --use autoprefixer --autoprefixer.browsers 'last 1 version' | cssmin > dist/main.css",
     "build:js": "parallelshell 'npm run build:js:copy' 'npm run build:js:stamp' 'npm run build:js:config'",
     "build:js:copy": "cp -r app/ dist/",
-    "build:js:config": "touch app/js/config.local.json && angular-write-constants --module tradity app/js/config.global.json app/js/config.local.json > dist/app/js/config.js",
+    "build:js:config": "angular-write-constants --module tradity app/js/config.global.json app/js/config.local.json > dist/app/js/config.js",
     "build:js:stamp": "echo \"var TRADITY_BUILD_STAMP = 'TDYC$(date +%s)-$(git rev-parse HEAD)';\" > dist/app/js/buildstamp.js",
     "build:cp": "cp -r *.html *.txt *.ico fonts/ img/ scripts/ dist/",
     "watch": "parallelshell 'npm run watch:css' 'npm run watch:js' 'npm run watch:cp'",

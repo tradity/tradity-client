@@ -59,7 +59,7 @@
     "angular-sanitize": "1.5.0-rc.0",
     "angular-ui-bootstrap": "0.14.x",
     "angular-ui-router": "~0.2.14",
-    "asmcrypto": "vibornoff/asmcrypto.js#v0.0.6",
+    "asmcrypto.js": "vibornoff/asmcrypto.js#v0.0.6",
     "bootstrap": "3.3.x",
     "clipboard": "~1.5.3",
     "connect-modrewrite": "^0.7.5",

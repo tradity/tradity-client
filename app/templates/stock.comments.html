@@ -3,7 +3,7 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div>
   <div ng-repeat="comment in comments" ng-show="comments.length > 0">
-    {{comment.Message}}
+    <a ng-href="https://{{comment.Wikifolio.Url}}" target="_blank">{{comment.TraderName}}: {{comment.Message}}</a>
     <hr/>
   </div>
   <div ng-show="comments.length == 0" translate>

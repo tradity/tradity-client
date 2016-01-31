@@ -23,7 +23,6 @@
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Search" ng-model="rankingSearchText" />
       <div class="input-group-btn" ng-show="spec.type == 'all' || spec.type == 'follower'" translate>
-        <!--<div class="btn btn-default" translate>-->
           <span class="btn btn-default btn-distance">since</span>
           <input placeholder="game start" class="btn btn-default" ng-model="spec.since" 
             max-date="spec.upto || today" show-weeks="true" class="well well-sm" 

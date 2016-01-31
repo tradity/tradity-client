@@ -17,11 +17,11 @@ msgid "# Followers"
 msgstr ""
 
 #: app/templates/depot.transactionlog.html:29
-#: app/templates/trade.html:75
+#: app/templates/trade.html:89
 msgid "# shares"
 msgstr ""
 
-#: app/templates/ranking.html:46
+#: app/templates/ranking.html:45
 msgid "(Commissions)"
 msgstr ""
 
@@ -33,7 +33,7 @@ msgstr ""
 msgid "(More information)"
 msgstr ""
 
-#: app/templates/ranking.html:80
+#: app/templates/ranking.html:79
 msgid "({{::result.count}} Members, Top {{::result.rankCount}})"
 msgstr ""
 
@@ -48,10 +48,6 @@ msgstr[1] ""
 msgid "404 &#x2013; Page not found"
 msgstr ""
 
-#: app/templates/ranking.html:25
-msgid "<!--<div class=\"btn btn-default\" translate>--> <span>since</span> <input placeholder=\"game start\"> <span id=\"until-label\">until</span> <input placeholder=\"now\">"
-msgstr ""
-
 #: app/templates/depot.watchlist.html:46
 msgid "<a title=\"Remove\"><i></i></a>"
 msgstr ""
@@ -60,11 +56,11 @@ msgstr ""
 msgid "<a title=\"Search\"><i></i></a>"
 msgstr ""
 
-#: app/templates/ranking.html:85
+#: app/templates/ranking.html:84
 msgid "<a title=\"Kick user\"><i></i></a>"
 msgstr ""
 
-#: app/templates/ranking.html:86
+#: app/templates/ranking.html:85
 msgid "<a title=\"Promote user to admin\">A</a>"
 msgstr ""
 
@@ -184,7 +180,7 @@ msgstr ""
 msgid "<input id=\"realnamepublish\"> Yes"
 msgstr ""
 
-#: app/templates/trade.html:78
+#: app/templates/trade.html:92
 msgid "<input placeholder=\"Amount\" id=\"amount\">"
 msgstr ""
 
@@ -205,7 +201,7 @@ msgstr ""
 msgid "<input value=\"Send\">"
 msgstr ""
 
-#: app/templates/trade.html:120
+#: app/templates/trade.html:134
 msgid "<input value=\"Execute trade\">"
 msgstr ""
 
@@ -245,11 +241,11 @@ msgstr ""
 msgid "<input placeholder=\"City\" id=\"town\">"
 msgstr ""
 
-#: app/templates/trade.html:85
+#: app/templates/trade.html:99
 msgid "<input placeholder=\"Buy price\" id=\"value\">"
 msgstr ""
 
-#: app/templates/trade.html:111
+#: app/templates/trade.html:125
 msgid "<input placeholder=\"Stop/limit price\" id=\"limit-stop\">"
 msgstr ""
 
@@ -277,8 +273,12 @@ msgstr ""
 msgid "<span>By creating an account you agree to our <a>terms &amp; conditions</a>.</span>"
 msgstr ""
 
-#: app/templates/trade.html:60
+#: app/templates/trade.html:69
 msgid "<span data-info=\"You can only trade the number of shares which were also traded in reality at the stock exchange. For example, if today only 1000 shares have been traded, you can sell or buy at most 1000 shares yourself. Notice that &#x201C;penny stocks&#x201D; often have significantly reduced liquidity.\">&#xF0AD;</span> Tradable amount"
+msgstr ""
+
+#: app/templates/ranking.html:25
+msgid "<span>since</span> <input placeholder=\"game start\"> <span id=\"until-label\">until</span> <input placeholder=\"now\">"
 msgstr ""
 
 #: app/templates/depot.transactionlog.html:26
@@ -320,7 +320,7 @@ msgid "<th tooltip=\"The price at which you currently can buy shares at the stoc
 msgstr ""
 
 #: app/templates/trade.html:52
-msgid "<th>Bid price</th> <td>{{trade.cur.bid / 10000 | number:3}}&#xA0;&#x20AC;</td>"
+msgid "<th tooltip=\"The price at which you currently can sell shares at the stock exchange\">Bid price</th> <td>{{trade.cur.bid / 10000 | number:3}}&#xA0;&#x20AC;</td>"
 msgstr ""
 
 #: app/templates/feed.html:233
@@ -340,7 +340,7 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
-#: app/templates/ranking.html:50
+#: app/templates/ranking.html:49
 msgid "Actions"
 msgstr ""
 
@@ -372,7 +372,7 @@ msgstr ""
 #: app/templates/depot.transactions.html:21
 #: app/templates/depot.transactions.html:56
 #: app/templates/profile.history.html:20
-#: app/templates/trade.html:71
+#: app/templates/trade.html:85
 msgid "Amount"
 msgstr ""
 
@@ -406,7 +406,7 @@ msgstr ""
 msgid "Birthday"
 msgstr ""
 
-#: app/templates/trade.html:97
+#: app/templates/trade.html:111
 msgid "Buy"
 msgstr ""
 
@@ -426,7 +426,7 @@ msgstr ""
 msgid "Buy shares of a stock which already is in your depot."
 msgstr ""
 
-#: app/templates/trade.html:82
+#: app/templates/trade.html:96
 msgid "Buy/Sell price"
 msgstr ""
 
@@ -467,11 +467,11 @@ msgstr ""
 msgid "Comment event was not found!"
 msgstr ""
 
-#: app/templates/trade.html:58
+#: app/templates/trade.html:61
 msgid "Commission on losses"
 msgstr ""
 
-#: app/templates/trade.html:57
+#: app/templates/trade.html:58
 msgid "Commission on profits"
 msgstr ""
 
@@ -538,7 +538,7 @@ msgstr ""
 msgid "Depot"
 msgstr ""
 
-#: app/templates/trade.html:95
+#: app/templates/trade.html:109
 msgid "Do you want to buy or sell the chosen stock?"
 msgstr ""
 
@@ -587,11 +587,11 @@ msgstr ""
 msgid "Follower"
 msgstr ""
 
-#: app/templates/ranking.html:51
+#: app/templates/ranking.html:50
 msgid "Follower performance"
 msgstr ""
 
-#: app/templates/ranking.html:52
+#: app/templates/ranking.html:51
 msgid "Follower valuation"
 msgstr ""
 
@@ -599,7 +599,7 @@ msgstr ""
 msgid "Following statistics"
 msgstr ""
 
-#: app/templates/trade.html:114
+#: app/templates/trade.html:128
 msgid "Force trade"
 msgstr ""
 
@@ -607,7 +607,7 @@ msgstr ""
 msgid "Forgot password?"
 msgstr ""
 
-#: app/templates/ranking.html:49
+#: app/templates/ranking.html:48
 msgid "Full name"
 msgstr ""
 
@@ -635,7 +635,7 @@ msgstr ""
 msgid "Green investments"
 msgstr ""
 
-#: app/templates/ranking.html:48
+#: app/templates/ranking.html:47
 msgid "Group"
 msgstr ""
 
@@ -659,7 +659,7 @@ msgstr ""
 msgid "Held shares"
 msgstr ""
 
-#: app/templates/trade.html:59
+#: app/templates/trade.html:65
 msgid "ISIN"
 msgstr ""
 
@@ -723,6 +723,10 @@ msgstr ""
 msgid "Leader: %1"
 msgstr ""
 
+#: app/templates/trade.html:46
+msgid "Leader: {{trade.cur.leadername}}"
+msgstr ""
+
 #: app/js/controllers/group.js:90
 msgid "Left group"
 msgstr ""
@@ -735,7 +739,7 @@ msgstr ""
 msgid "Let me see more about Tradity!"
 msgstr ""
 
-#: app/templates/trade.html:106
+#: app/templates/trade.html:120
 msgid "Limit"
 msgstr ""
 
@@ -761,7 +765,7 @@ msgstr ""
 msgid "Low interest rates"
 msgstr ""
 
-#: app/templates/trade.html:105
+#: app/templates/trade.html:119
 msgid "Market"
 msgstr ""
 
@@ -793,7 +797,7 @@ msgstr ""
 #: app/templates/depot.watchlist.html:24
 #: app/templates/groupOverview.html:22
 #: app/templates/profile.history.html:18
-#: app/templates/ranking.html:44
+#: app/templates/ranking.html:43
 #: app/templates/search.html:16
 #: app/templates/search.html:39
 #: app/templates/search.html:60
@@ -839,7 +843,7 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-#: app/templates/trade.html:102
+#: app/templates/trade.html:116
 msgid "Of which type is your order?"
 msgstr ""
 
@@ -889,7 +893,7 @@ msgstr ""
 msgid "Order not found. Possibly it has already been executed?"
 msgstr ""
 
-#: app/templates/trade.html:101
+#: app/templates/trade.html:115
 msgid "Order type"
 msgstr ""
 
@@ -900,6 +904,7 @@ msgstr ""
 #: app/templates/depot.html:8
 #: app/templates/depot.overview.html:32
 #: app/templates/profile.html:26
+#: app/templates/trade.html:74
 msgid "Overview"
 msgstr ""
 
@@ -1013,7 +1018,7 @@ msgstr ""
 
 #: app/templates/game.html:31
 #: app/templates/profile.overview.html:7
-#: app/templates/ranking.html:43
+#: app/templates/ranking.html:42
 msgid "Rank"
 msgstr ""
 
@@ -1048,7 +1053,7 @@ msgstr ""
 msgid "School/Uni"
 msgstr ""
 
-#: app/templates/trade.html:98
+#: app/templates/trade.html:112
 msgid "Sell"
 msgstr ""
 
@@ -1094,12 +1099,12 @@ msgid "Step 3"
 msgstr ""
 
 #: app/templates/depot.transactionlog.html:18
+#: app/templates/trade.html:108
 #: app/templates/trade.html:8
-#: app/templates/trade.html:94
 msgid "Stock"
 msgstr ""
 
-#: app/templates/trade.html:61
+#: app/templates/trade.html:73
 msgid "Stock information"
 msgstr ""
 
@@ -1111,7 +1116,7 @@ msgstr ""
 msgid "Stocks"
 msgstr ""
 
-#: app/templates/trade.html:107
+#: app/templates/trade.html:121
 msgid "Stop"
 msgstr ""
 
@@ -1235,7 +1240,7 @@ msgstr ""
 msgid "Total assets"
 msgstr ""
 
-#: app/templates/ranking.html:45
+#: app/templates/ranking.html:44
 msgid "Total change"
 msgstr ""
 
@@ -1268,7 +1273,7 @@ msgstr ""
 
 #: app/templates/depot.transactions.html:58
 #: app/templates/profile.history.html:22
-#: app/templates/trade.html:89
+#: app/templates/trade.html:103
 msgid "Transaction fees"
 msgstr ""
 
@@ -1358,7 +1363,7 @@ msgstr ""
 msgid "What are shares?"
 msgstr ""
 
-#: app/templates/trade.html:110
+#: app/templates/trade.html:124
 msgid "What is the stop/limit price?"
 msgstr ""
 

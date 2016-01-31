@@ -22,8 +22,8 @@ angular.module('tradity')
     };
 
     LanguageManager.asyncFiles = {
-      'de': 'js/jit/l10n/de.json',
-      /* 'fr': 'js/jit/l10n/fr.json' */
+      'de': '/app/js/jit/l10n/de.json',
+      /* 'fr': '/app/js/jit/l10n/fr.json' */
     };
     
     LanguageManager.prototype.setCurrentLanguage = function(lang) {

@@ -70,7 +70,8 @@ angular.module('tradity', [
       url: '/register',
       templateUrl: 'app/templates/registration.html',
       controller: 'RegistrationCtrl',
-      controllerAs: 'registration'
+      controllerAs: 'registration',
+      abstract: true
     }).
     state('register.step1', {
       url: '/step1',

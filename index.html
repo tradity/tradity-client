@@ -11,13 +11,8 @@
     <meta name="description" content="Beim Börsenspiel Tradity bist du gefragt dein virtuelles Startkapital möglichst vielversprechend in Wertpapiere zu investieren.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     
-    <!-- build:css({.tmp,app}) css/main.css -->
     <link rel="stylesheet" href="main.css">
-    <!-- endbuild -->
-    
-    <!-- buildstamp changes with every git commit -> not suitable for grunt-rev -->
     <script type="text/javascript" src="app/js/buildstamp.js"></script>
-    <!-- build:js({.tmp,app}) js/dependencies.js -->
     <script type="text/javascript" src="scripts/piwik.js"></script>
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
@@ -52,9 +47,7 @@
 
     <script type="text/javascript" src="node_modules/tradity-connection/util.js"></script>
     <script type="text/javascript" src="node_modules/tradity-connection/sotrade-api.js"></script>
-    <!-- endbuild -->
     
-    <!-- build:js({.tmp,app}) js/scripts.js -->
     <script type="text/javascript" src="app/js/main.js"></script>
 
     <script type="text/javascript" src="app/js/app.js"></script>
@@ -114,7 +107,6 @@
     <script type="text/javascript" src="app/js/services/maybeCompress.js"></script>
     <script type="text/javascript" src="app/js/services/event.js"></script>
     <script type="text/javascript" src="app/js/services/group.js"></script>
-    <!-- endbuild -->
     <script type="text/javascript">window.onload = function(){if(typeof angular=='undefined'){var a;(a=document.getElementById('scriptfail')).style.display='block';a.src='scriptfail.html';}};</script>
   </head>
   <body ng-controller="MainCtrl">

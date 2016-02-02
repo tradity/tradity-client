@@ -11,14 +11,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
 
-#: app/templates/depot.overview.html:107
-#: app/templates/profile.overview.html:75
-msgid "# Followers"
-msgstr ""
-
-#: app/templates/depot.transactionlog.html:29
-#: app/templates/trade.html:89
-msgid "# shares"
+#: app/templates/ranking.html:79
+msgid "({{::result.count}} Members, Top {{::result.rankCount}})"
 msgstr ""
 
 #: app/templates/ranking.html:45
@@ -33,19 +27,26 @@ msgstr ""
 msgid "(More information)"
 msgstr ""
 
-#: app/templates/ranking.html:79
-msgid "({{::result.count}} Members, Top {{::result.rankCount}})"
+#: app/templates/notifications.html:21
+msgid "{{notification.srcusername}} wrote to your pinboard."
 msgstr ""
 
-#: app/templates/group.pinboard.html:19
-#: app/templates/profile.pinboard.html:17
-msgid "1 deleted comment not shown"
-msgid_plural "{{comment.trailingCount}} deleted comments not shown"
-msgstr[0] ""
-msgstr[1] ""
+#: app/templates/dialogs/wait.html:13
+msgid "{{progress}}&#xA0;% completed"
+msgstr ""
 
-#: app/templates/error.404.html:4
-msgid "404 &#x2013; Page not found"
+#: app/js/controllers/depot.js:109
+msgid "{{stockname}} removed from the watchlist"
+msgstr ""
+
+#: app/templates/depot.overview.html:107
+#: app/templates/profile.overview.html:75
+msgid "# Followers"
+msgstr ""
+
+#: app/templates/depot.transactionlog.html:29
+#: app/templates/trade.html:95
+msgid "# shares"
 msgstr ""
 
 #: app/templates/depot.watchlist.html:46
@@ -144,12 +145,12 @@ msgstr ""
 msgid "<input placeholder=\"User name\" popover=\"Enter your username\">"
 msgstr ""
 
-#: app/templates/registration.step1.html:22
-msgid "<input placeholder=\"Password\" popover=\"Enter your password\">"
-msgstr ""
-
 #: app/templates/registration.step1.html:28
 msgid "<input placeholder=\"Repeat password\" popover=\"Re-enter your password\">"
+msgstr ""
+
+#: app/templates/registration.step1.html:22
+msgid "<input placeholder=\"Password\" popover=\"Enter your password\">"
 msgstr ""
 
 #: app/templates/registration.step2.html:63
@@ -180,7 +181,7 @@ msgstr ""
 msgid "<input id=\"realnamepublish\"> Yes"
 msgstr ""
 
-#: app/templates/trade.html:92
+#: app/templates/trade.html:98
 msgid "<input placeholder=\"Amount\" id=\"amount\">"
 msgstr ""
 
@@ -201,7 +202,7 @@ msgstr ""
 msgid "<input value=\"Send\">"
 msgstr ""
 
-#: app/templates/trade.html:134
+#: app/templates/trade.html:140
 msgid "<input value=\"Execute trade\">"
 msgstr ""
 
@@ -241,11 +242,11 @@ msgstr ""
 msgid "<input placeholder=\"City\" id=\"town\">"
 msgstr ""
 
-#: app/templates/trade.html:99
+#: app/templates/trade.html:105
 msgid "<input placeholder=\"Buy price\" id=\"value\">"
 msgstr ""
 
-#: app/templates/trade.html:125
+#: app/templates/trade.html:131
 msgid "<input placeholder=\"Stop/limit price\" id=\"limit-stop\">"
 msgstr ""
 
@@ -273,7 +274,7 @@ msgstr ""
 msgid "<span>By creating an account you agree to our <a>terms &amp; conditions</a>.</span>"
 msgstr ""
 
-#: app/templates/trade.html:69
+#: app/templates/trade.html:74
 msgid "<span data-info=\"You can only trade the number of shares which were also traded in reality at the stock exchange. For example, if today only 1000 shares have been traded, you can sell or buy at most 1000 shares yourself. Notice that &#x201C;penny stocks&#x201D; often have significantly reduced liquidity.\">&#xF0AD;</span> Tradable amount"
 msgstr ""
 
@@ -315,12 +316,23 @@ msgstr ""
 msgid "<textarea placeholder=\"Write a post in this group feed!\"></textarea>"
 msgstr ""
 
-#: app/templates/trade.html:48
+#: app/templates/trade.html:53
 msgid "<th tooltip=\"The price at which you currently can buy shares at the stock exchange\">Ask price</th> <td>{{trade.cur.ask / 10000 | number:3}}&#xA0;&#x20AC;</td>"
 msgstr ""
 
-#: app/templates/trade.html:52
+#: app/templates/trade.html:57
 msgid "<th tooltip=\"The price at which you currently can sell shares at the stock exchange\">Bid price</th> <td>{{trade.cur.bid / 10000 | number:3}}&#xA0;&#x20AC;</td>"
+msgstr ""
+
+#: app/templates/group.pinboard.html:19
+#: app/templates/profile.pinboard.html:17
+msgid "1 deleted comment not shown"
+msgid_plural "{{comment.trailingCount}} deleted comments not shown"
+msgstr[0] ""
+msgstr[1] ""
+
+#: app/templates/error.404.html:4
+msgid "404 &#x2013; Page not found"
 msgstr ""
 
 #: app/templates/feed.html:233
@@ -372,7 +384,7 @@ msgstr ""
 #: app/templates/depot.transactions.html:21
 #: app/templates/depot.transactions.html:56
 #: app/templates/profile.history.html:20
-#: app/templates/trade.html:85
+#: app/templates/trade.html:91
 msgid "Amount"
 msgstr ""
 
@@ -406,7 +418,7 @@ msgstr ""
 msgid "Birthday"
 msgstr ""
 
-#: app/templates/trade.html:111
+#: app/templates/trade.html:117
 msgid "Buy"
 msgstr ""
 
@@ -426,7 +438,7 @@ msgstr ""
 msgid "Buy shares of a stock which already is in your depot."
 msgstr ""
 
-#: app/templates/trade.html:96
+#: app/templates/trade.html:102
 msgid "Buy/Sell price"
 msgstr ""
 
@@ -467,16 +479,20 @@ msgstr ""
 msgid "Comment event was not found!"
 msgstr ""
 
-#: app/templates/trade.html:61
+#: app/templates/trade.html:66
 msgid "Commission on losses"
 msgstr ""
 
-#: app/templates/trade.html:58
+#: app/templates/trade.html:63
 msgid "Commission on profits"
 msgstr ""
 
 #: app/templates/profile.overview.html:16
 msgid "Commissions"
+msgstr ""
+
+#: app/templates/group.html:85
+msgid "confirm"
 msgstr ""
 
 #: app/templates/feed.html:277
@@ -538,7 +554,7 @@ msgstr ""
 msgid "Depot"
 msgstr ""
 
-#: app/templates/trade.html:109
+#: app/templates/trade.html:115
 msgid "Do you want to buy or sell the chosen stock?"
 msgstr ""
 
@@ -599,7 +615,7 @@ msgstr ""
 msgid "Following statistics"
 msgstr ""
 
-#: app/templates/trade.html:128
+#: app/templates/trade.html:134
 msgid "Force trade"
 msgstr ""
 
@@ -659,10 +675,6 @@ msgstr ""
 msgid "Held shares"
 msgstr ""
 
-#: app/templates/trade.html:65
-msgid "ISIN"
-msgstr ""
-
 #: app/templates/feed.html:21
 msgid "If you have any more questions regarding the game, you can write us an e-mail at <a>team@tradity.de</a> or post a question on Facebook. <span>Good luck!</span>"
 msgstr ""
@@ -677,6 +689,10 @@ msgstr ""
 
 #: app/js/controllers/inviteform.js:24
 msgid "Invalid e-mail address"
+msgstr ""
+
+#: app/templates/profile.html:17
+msgid "invest"
 msgstr ""
 
 #: app/js/controllers/inviteform.js:33
@@ -699,6 +715,10 @@ msgstr ""
 msgid "Invite users"
 msgstr ""
 
+#: app/templates/trade.html:70
+msgid "ISIN"
+msgstr ""
+
 #: app/templates/group.html:34
 msgid "Join group"
 msgstr ""
@@ -719,12 +739,12 @@ msgstr ""
 msgid "Leader and stocks in your watchlist"
 msgstr ""
 
-#: app/js/controllers/trade.js:147
-msgid "Leader: %1"
+#: app/templates/trade.html:51
+msgid "Leader: {{trade.cur.leadername}}"
 msgstr ""
 
-#: app/templates/trade.html:46
-msgid "Leader: {{trade.cur.leadername}}"
+#: app/js/controllers/trade.js:147
+msgid "Leader: %1"
 msgstr ""
 
 #: app/js/controllers/group.js:90
@@ -739,15 +759,15 @@ msgstr ""
 msgid "Let me see more about Tradity!"
 msgstr ""
 
-#: app/templates/trade.html:120
+#: app/templates/trade.html:126
 msgid "Limit"
 msgstr ""
 
-#: app/templates/trade.html:39
+#: app/templates/trade.html:44
 msgid "List less stocks"
 msgstr ""
 
-#: app/templates/trade.html:38
+#: app/templates/trade.html:43
 msgid "List more stocks"
 msgstr ""
 
@@ -765,7 +785,7 @@ msgstr ""
 msgid "Low interest rates"
 msgstr ""
 
-#: app/templates/trade.html:119
+#: app/templates/trade.html:125
 msgid "Market"
 msgstr ""
 
@@ -787,7 +807,7 @@ msgstr ""
 msgid "Members: {{school.usercount}}"
 msgstr ""
 
-#: app/templates/trade.html:33
+#: app/templates/trade.html:38
 msgid "Most popular stocks"
 msgstr ""
 
@@ -802,8 +822,8 @@ msgstr ""
 #: app/templates/search.html:39
 #: app/templates/search.html:60
 #: app/templates/trade.html:14
-#: app/templates/trade.html:46
-#: app/templates/trade.html:47
+#: app/templates/trade.html:51
+#: app/templates/trade.html:52
 msgid "Name"
 msgstr ""
 
@@ -839,12 +859,12 @@ msgstr ""
 msgid "Not registered yet?"
 msgstr ""
 
-#: app/templates/dialogs/notify.html:12
-msgid "OK"
+#: app/templates/trade.html:122
+msgid "Of which type is your order?"
 msgstr ""
 
-#: app/templates/trade.html:116
-msgid "Of which type is your order?"
+#: app/templates/dialogs/notify.html:12
+msgid "OK"
 msgstr ""
 
 #: app/js/controllers/comment.js:14
@@ -882,6 +902,10 @@ msgstr ""
 msgid "Or (instead of uploading):"
 msgstr ""
 
+#: app/templates/depot.transactionlog.html:21
+msgid "Or&#xAD;der"
+msgstr ""
+
 #: app/templates/depot.html:10
 #: app/templates/depot.transactions.html:42
 #: app/templates/profile.history.html:6
@@ -893,18 +917,14 @@ msgstr ""
 msgid "Order not found. Possibly it has already been executed?"
 msgstr ""
 
-#: app/templates/trade.html:115
+#: app/templates/trade.html:121
 msgid "Order type"
-msgstr ""
-
-#: app/templates/depot.transactionlog.html:21
-msgid "Or&#xAD;der"
 msgstr ""
 
 #: app/templates/depot.html:8
 #: app/templates/depot.overview.html:32
 #: app/templates/profile.html:26
-#: app/templates/trade.html:74
+#: app/templates/trade.html:79
 msgid "Overview"
 msgstr ""
 
@@ -954,6 +974,10 @@ msgstr[1] ""
 
 #: app/templates/options.html:85
 msgid "Personal information"
+msgstr ""
+
+#: app/templates/feed.html:245
+msgid "pinboard"
 msgstr ""
 
 #: app/templates/group.html:23
@@ -1053,7 +1077,7 @@ msgstr ""
 msgid "School/Uni"
 msgstr ""
 
-#: app/templates/trade.html:112
+#: app/templates/trade.html:118
 msgid "Sell"
 msgstr ""
 
@@ -1065,9 +1089,20 @@ msgstr ""
 msgid "Sell price"
 msgstr ""
 
+#: app/js/controllers/trade.js:42
+msgid "share"
+msgid_plural "shares"
+msgstr[0] ""
+msgstr[1] ""
+
 #: app/templates/options.html:194
 #: app/templates/profile.overview.html:22
 msgid "Short description"
+msgstr ""
+
+#: app/templates/depot.overview.html:114
+#: app/templates/profile.overview.html:82
+msgid "sold shares"
 msgstr ""
 
 #: app/templates/stock.comments.html:9
@@ -1099,12 +1134,12 @@ msgid "Step 3"
 msgstr ""
 
 #: app/templates/depot.transactionlog.html:18
-#: app/templates/trade.html:108
+#: app/templates/trade.html:114
 #: app/templates/trade.html:8
 msgid "Stock"
 msgstr ""
 
-#: app/templates/trade.html:73
+#: app/templates/trade.html:78
 msgid "Stock information"
 msgstr ""
 
@@ -1116,7 +1151,7 @@ msgstr ""
 msgid "Stocks"
 msgstr ""
 
-#: app/templates/trade.html:121
+#: app/templates/trade.html:127
 msgid "Stop"
 msgstr ""
 
@@ -1190,14 +1225,14 @@ msgstr ""
 msgid "There was a problem while loading the current ranking!"
 msgstr ""
 
+#: app/js/controllers/main.js:177
+msgid "There was a technical problem &#x2013; the tech team of Tradity has been informed."
+msgstr ""
+
 #: app/js/controllers/group.js:152
 #: app/js/controllers/options.js:74
 #: app/js/main.js:40
 msgid "There was a technical problem uploading your profile picture. Please turn to tech@tradity.de"
-msgstr ""
-
-#: app/js/controllers/main.js:177
-msgid "There was a technical problem &#x2013; the tech team of Tradity has been informed."
 msgstr ""
 
 #: app/js/controllers/options.js:138
@@ -1273,7 +1308,7 @@ msgstr ""
 
 #: app/templates/depot.transactions.html:58
 #: app/templates/profile.history.html:22
-#: app/templates/trade.html:103
+#: app/templates/trade.html:109
 msgid "Transaction fees"
 msgstr ""
 
@@ -1363,7 +1398,7 @@ msgstr ""
 msgid "What are shares?"
 msgstr ""
 
-#: app/templates/trade.html:124
+#: app/templates/trade.html:130
 msgid "What is the stop/limit price?"
 msgstr ""
 
@@ -1447,16 +1482,16 @@ msgstr ""
 msgid "You need to provide a verified e-mail address in order to be eligible for follower trades!"
 msgstr ""
 
-#: app/templates/game.html:86
-msgid "Your Group"
-msgstr ""
-
 #: app/templates/options.html:60
 msgid "Your followers&#x2019; commission on losses"
 msgstr ""
 
 #: app/templates/options.html:54
 msgid "Your followers&#x2019; commission on profits"
+msgstr ""
+
+#: app/templates/game.html:86
+msgid "Your Group"
 msgstr ""
 
 #: app/templates/groupOverview.html:12
@@ -1497,39 +1532,4 @@ msgstr ""
 #: app/js/controllers/options.js:150
 #: app/js/controllers/registration.js:160
 msgid "Your user name contains invalid characters!"
-msgstr ""
-
-#: app/templates/group.html:85
-msgid "confirm"
-msgstr ""
-
-#: app/templates/profile.html:17
-msgid "invest"
-msgstr ""
-
-#: app/templates/feed.html:245
-msgid "pinboard"
-msgstr ""
-
-#: app/js/controllers/trade.js:42
-msgid "share"
-msgid_plural "shares"
-msgstr[0] ""
-msgstr[1] ""
-
-#: app/templates/depot.overview.html:114
-#: app/templates/profile.overview.html:82
-msgid "sold shares"
-msgstr ""
-
-#: app/templates/notifications.html:21
-msgid "{{notification.srcusername}} wrote to your pinboard."
-msgstr ""
-
-#: app/templates/dialogs/wait.html:13
-msgid "{{progress}}&#xA0;% completed"
-msgstr ""
-
-#: app/js/controllers/depot.js:109
-msgid "{{stockname}} removed from the watchlist"
 msgstr ""

@@ -21,7 +21,7 @@
                 <span style="clear:both;display:block"></span>
               </a>
             </script>
-            
+
             <input type="text" ng-model="trade.stockname" id="paper" class="form-control" placeholder="{{'Stock name'|translate}}"
               typeahead="stock as stock.textName for stock in trade.searchStocks($viewValue)"
               typeahead-loading="trade.showTradeThrobber" typeahead-min-length="3" typeahead-wait-ms="300"
@@ -29,55 +29,61 @@
               typeahead-editable="false" autocomplete="off"/>
           </div>
         </div>
+      </div>
         <!--button ng-show="trade.cur" ng-click="trade.addToWatchlist()" class="click-button" style="margin: 0; line-height:30px; height: auto;"><span class="batch">&#xF179; </span></button-->
-        <h3 translate>Most popular stocks</h3>
-        <div ng-class="{hideMost: !trade.showPopularStocks}">
-          <ol class="popularstocks">
-            <li ng-repeat="stock in trade.popularStocks"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: stock.stockid, amount: 0})">{{stock.stockname}}</a></li>
-          </ol>
-          <a class="trade-more" ng-click="trade.togglePopularStocks()" ng-show="!trade.showPopularStocks" translate>List more stocks</a>
-          <a class="trade-more" ng-click="trade.togglePopularStocks()" ng-show="trade.showPopularStocks" translate>List less stocks</a>
-          <br/><br/>
+      </div>
+      <div class="row">
+        <hr>
+        <div class="col-sm-6">
+          <h3 translate>Most popular stocks</h3>
+            <div ng-class="{hideMost: !trade.showPopularStocks}">
+              <ol class="popularstocks">
+                <li ng-repeat="stock in trade.popularStocks"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: stock.stockid, amount: 0})">{{stock.stockname}}</a></li>
+              </ol>
+              <a class="trade-more" ng-click="trade.togglePopularStocks()" ng-show="!trade.showPopularStocks" translate>List more stocks</a>
+              <a class="trade-more" ng-click="trade.togglePopularStocks()" ng-show="trade.showPopularStocks" translate>List less stocks</a>
+              <br/><br/>
+            </div>
+          </div>
+        <div class="col-sm-6 optimizeHeight">
+          <div class="options-field paper-preview-box padding-left" ng-show="trade.cur">
+            <table class="paper-preview f">
+              <tr ng-show="trade.leader"><th translate>Name</th><td><a ui-sref="game.profile.overview({userId: trade.cur.leadername})" translate>Leader: {{trade.cur.leadername}}</a></td></tr>
+              <tr ng-hide="trade.leader"><th translate>Name</th><td ng-show="trade.cur">{{trade.cur.stockname}}</td></tr>
+                <tr class="buyprice" translate>
+                  <th tooltip="The price at which you currently can buy shares at the stock exchange">Ask price</th>
+                  <td ng-show="trade.cur">{{trade.cur.ask / 10000 | number:3}} €</td>
+                </tr>
+                <tr translate>
+                  <th tooltip="The price at which you currently can sell shares at the stock exchange">Bid price</th>
+                  <td ng-show="trade.cur">{{trade.cur.bid / 10000 | number:3}} €</td>
+                </tr>
+              <!-- <tr><th>Wert</th><td ng-show="trade.cur">{{trade.cur.lastvalue / 10000 | currency}}</td></tr> -->
+              <tr ng-show="trade.leader">
+                <th translate>Commission on profits</th>
+                <td ng-show="trade.cur">{{trade.cur.wprovision}} %</td></tr>
+              <tr ng-show="trade.leader">
+                <th translate>Commission on losses</th>
+                <td ng-show="trade.cur">{{trade.cur.lprovision}} %</td>
+              </tr>
+              <tr ng-hide="trade.leader" class="isin">
+                <th translate>ISIN</th>
+                <td ng-show="trade.cur">{{trade.cur.stockid}}</td>
+              </tr>
+              <tr ng-hide="trade.leader">
+                <th translate><span class="batch tooltip" data-info="You can only trade the number of shares which were also traded in reality at the stock exchange. For example, if today only 1000 shares have been traded, you can sell or buy at most 1000 shares yourself. Notice that “penny stocks” often have significantly reduced liquidity.">&#xF0AD;</span> Tradable amount</th>
+                <td ng-show="trade.cur">{{trade.cur.pieces}}</td>
+              </tr>
+              <tr ng-hide="trade.leader">
+                <th translate>Stock information</th>
+                <td ng-show="trade.cur" class="align"><a target="_blank" ng-href="http://www.boerse-frankfurt.de/suchergebnisse?_search={{trade.cur.stockid}}" translate>Overview</a></td>
+              </tr>
+            </table>
+            <hr>
+            <stock-comments stockinfo="trade.cur" autoload="true"></stock-comments>
+          </div>
         </div>
       </div>
-      <div class="col-sm-6">
-        <div class="options-field paper-preview-box padding-left" ng-show="trade.cur"> 
-          <table class="paper-preview f">
-            <tr ng-show="trade.leader"><th translate>Name</th><td><a ui-sref="game.profile.overview({userId: trade.cur.leadername})" translate>Leader: {{trade.cur.leadername}}</a></td></tr>
-            <tr ng-hide="trade.leader"><th translate>Name</th><td ng-show="trade.cur">{{trade.cur.stockname}}</td></tr>
-            <tr class="buyprice" translate>
-              <th tooltip="The price at which you currently can buy shares at the stock exchange">Ask price</th>
-              <td ng-show="trade.cur">{{trade.cur.ask / 10000 | number:3}} €</td>
-            </tr>
-            <tr translate>
-              <th tooltip="The price at which you currently can sell shares at the stock exchange">Bid price</th>
-              <td ng-show="trade.cur">{{trade.cur.bid / 10000 | number:3}} €</td>
-            </tr>
-            <!-- <tr><th>Wert</th><td ng-show="trade.cur">{{trade.cur.lastvalue / 10000 | currency}}</td></tr> -->
-            <tr ng-show="trade.leader">
-              <th translate>Commission on profits</th>
-              <td ng-show="trade.cur">{{trade.cur.wprovision}} %</td></tr>
-            <tr ng-show="trade.leader">
-              <th translate>Commission on losses</th>
-              <td ng-show="trade.cur">{{trade.cur.lprovision}} %</td>
-            </tr>
-            <tr ng-hide="trade.leader" class="isin">
-              <th translate>ISIN</th>
-              <td ng-show="trade.cur">{{trade.cur.stockid}}</td>
-            </tr>
-            <tr ng-hide="trade.leader">
-              <th translate><span class="batch tooltip" data-info="You can only trade the number of shares which were also traded in reality at the stock exchange. For example, if today only 1000 shares have been traded, you can sell or buy at most 1000 shares yourself. Notice that “penny stocks” often have significantly reduced liquidity.">&#xF0AD;</span> Tradable amount</th>
-              <td ng-show="trade.cur">{{trade.cur.pieces}}</td>
-            </tr>
-            <tr ng-hide="trade.leader">
-              <th translate>Stock information</th>
-              <td ng-show="trade.cur"><a target="_blank" ng-href="http://www.boerse-frankfurt.de/suchergebnisse?_search={{trade.cur.stockid}}" translate>Overview</a></td>
-            </tr>
-          </table>
-          <stock-comments stockinfo="trade.cur" autoload="true"></stock-comments>
-        </div>
-      </div>
-    </div>
 
     <div class="row" ng-show="trade.cur">
       <hr/>
@@ -111,7 +117,7 @@
           <button type="button" class="btn btn-primary" ng-model="trade.sellbuy" btn-radio="1" translate>Buy</button>
           <button type="button" class="btn btn-danger" ng-model="trade.sellbuy" btn-radio="-1" translate>Sell</button>
         </div>
-        <div class="options-field" id="order-type"> 
+        <div class="options-field" id="order-type">
           <h2 translate>Order type</h2>
           <div class="trade-label-button" translate>Of which type is your order?</div>
 
@@ -135,4 +141,4 @@
     <div class="clearfix"></div>
   </form>
 </div>
-<div class="horizontal" ng-init="horizontal = true" ng-include="'app/templates/sponsors.html'"></div> 
+<div class="horizontal" ng-init="horizontal = true" ng-include="'app/templates/sponsors.html'"></div>

@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Tradity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2016-02-02 03:15+0100\n"
-"Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"
+"PO-Revision-Date: 2016-02-02 23:10+0000\n"
+"Last-Translator: Anna Henningsen <sqrt@entless.org>\n"
 "Language-Team: German <http://weblate.tradity.de/projects/tradity/tradity-"
 "client-master/de/>\n"
 "Language: de\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.8.4\n"
+"X-Generator: Weblate 2.5-dev\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: ..\n"
 
@@ -358,8 +358,8 @@ msgid ""
 "<label>Gender</label> <select placeholder=\"Gender\"><option>{{genders."
 "translations[lang][gender] || gender}}</option></select>"
 msgstr ""
-"<select placeholder=\"Geschlecht\"><option>{{genders.translations[lang]"
-"[gender] || gender}}</option></select>"
+"<label>Geschlecht</label> <select placeholder=\"Geschlecht\""
+"><option>{{genders.translations[lang][gender] || gender}}</option></select>"
 
 #: app/templates/options.html:42
 msgid ""
@@ -641,7 +641,7 @@ msgstr "Provision"
 
 #: app/templates/feed.html:277 app/templates/group.pinboard.html:50
 msgid "Continue reading&#x2026;"
-msgstr "Weiterlesen…"
+msgstr "Weiterlesen&#x2026;"
 
 #: app/js/controllers/inviteform.js:46
 msgid "Copied!"
@@ -819,9 +819,9 @@ msgid ""
 "mail at <a>team@tradity.de</a> or post a question on Facebook. <span>Good "
 "luck!</span>"
 msgstr ""
-"Wenn du noch Fragen zum Spiel hast, kannst du uns an <a>team@tradity.de</"
-"a>eine E-Mail schreiben oder auf <a>Facebook</a> eine Frage posten. "
-"<span>Viel Erfolg!</span>"
+"Wenn du noch Fragen zum Spiel hast, kannst du uns an <a>team@tradity.de</a>"
+"eine E-Mail schreiben oder auf Facebook eine Frage posten. <span>Viel "
+"Erfolg!</span>"
 
 #: app/templates/game.html:157
 msgid "Imprint"
@@ -1138,7 +1138,7 @@ msgstr "Bitte gib deine E-Mail-Adresse an"
 msgid ""
 "Please remember to choose your school or uni as a group to be eligible for "
 "the prizes."
-msgstr "Bitte gib deinen Namen an, damit du Gewinne erhalten kannst"
+msgstr "Bitte gib deinen Namen an, damit du Gewinne erhalten kannst."
 
 #: app/templates/dialogs/wait.html:6
 msgid "Please wait"
@@ -1306,7 +1306,7 @@ msgstr "Technische Analyse"
 
 #: app/js/services/achievements.js:42
 msgid "Terminology in trading"
-msgstr "Begriffe im Trading?"
+msgstr "Begriffe im Trading"
 
 #: app/templates/game.html:158
 msgid "Terms &amp; Privacy"
@@ -1473,7 +1473,7 @@ msgstr "Benutzer&#xad;name"
 
 #: app/js/controllers/registration.js:52
 msgid "Username contains not-allowed characters"
-msgstr "Der Benutzername enthält unerlaubte Zeichen!"
+msgstr "Der Benutzername enthält unerlaubte Zeichen"
 
 #: app/js/controllers/registration.js:53
 msgid "Username has been taken"

@@ -336,10 +336,6 @@ msgstr ""
 msgid "Achievements"
 msgstr ""
 
-#: app/templates/admin.events.html:28
-msgid "Action"
-msgstr ""
-
 #: app/templates/ranking.html:49
 msgid "Actions"
 msgstr ""
@@ -467,6 +463,10 @@ msgstr ""
 msgid "Comment event was not found!"
 msgstr ""
 
+#: app/templates/admin.events.html:31
+msgid "Comment: <span>{{ev.comment}}</span> by <a>{{ev.srcusername}}</a> on {{ev.baseeventtype}}:{{ev.baseeventid}} <span><a>(&#x2192; Profile of {{ev.tradername}})</a></span> <span><a>(&#x2192; Group {{message.schoolpath}})</a></span>"
+msgstr ""
+
 #: app/templates/trade.html:61
 msgid "Commission on losses"
 msgstr ""
@@ -527,7 +527,7 @@ msgstr ""
 msgid "Delayed order history"
 msgstr ""
 
-#: app/templates/admin.events.html:30
+#: app/templates/admin.events.html:44
 #: app/templates/group.pinboard.html:30
 #: app/templates/group.pinboard.html:33
 #: app/templates/profile.pinboard.html:28
@@ -554,7 +554,7 @@ msgstr ""
 msgid "E-mail address"
 msgstr ""
 
-#: app/templates/admin.events.html:31
+#: app/templates/admin.events.html:45
 #: app/templates/group.pinboard.html:29
 #: app/templates/profile.pinboard.html:27
 msgid "Edit"

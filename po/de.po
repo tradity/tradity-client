@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Tradity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2016-01-31 08:35+0100\n"
+"PO-Revision-Date: 2016-02-02 03:15+0100\n"
 "Last-Translator: Hauke Henningsen <sqrt@entless.org>\n"
 "Language-Team: German <http://weblate.tradity.de/projects/tradity/tradity-"
 "client-master/de/>\n"
@@ -492,10 +492,6 @@ msgstr "Konto"
 msgid "Achievements"
 msgstr "Errungen&#xad;schaften"
 
-#: app/templates/admin.events.html:28
-msgid "Action"
-msgstr "Aktionen"
-
 #: app/templates/ranking.html:49
 msgid "Actions"
 msgstr "Aktionen"
@@ -619,6 +615,18 @@ msgstr "Kommentarevent nicht gefunden – Hier läuft etwas falsch!"
 msgid "Comment event was not found!"
 msgstr "Konnte kein Kommentarevent finden!"
 
+#: app/templates/admin.events.html:31
+msgid ""
+"Comment: <span>{{ev.comment}}</span> by <a>{{ev.srcusername}}</a> on {{ev."
+"baseeventtype}}:{{ev.baseeventid}} <span><a>(&#x2192; Profile of {{ev."
+"tradername}})</a></span> <span><a>(&#x2192; Group {{message.schoolpath}})</"
+"a></span>"
+msgstr ""
+"Kommentar: <span>{{ev.comment}}</span> von <a>{{ev.srcusername}}</a> auf "
+"{{ev.baseeventtype}}:{{ev.baseeventid}} <span><a>(&#x2192; Profil von {{ev."
+"tradername}})</a></span> <span><a>(&#x2192; Gruppe {{message.schoolpath}})</"
+"a></span>"
+
 #: app/templates/trade.html:61
 msgid "Commission on losses"
 msgstr "Verlustprovision"
@@ -677,7 +685,7 @@ msgstr "Datum"
 msgid "Delayed order history"
 msgstr "Verzögerung deiner Orderhistorie"
 
-#: app/templates/admin.events.html:30 app/templates/group.pinboard.html:30
+#: app/templates/admin.events.html:44 app/templates/group.pinboard.html:30
 #: app/templates/group.pinboard.html:33 app/templates/profile.pinboard.html:28
 msgid "Delete"
 msgstr "Löschen"
@@ -702,7 +710,7 @@ msgstr "Möchtest du {{amount}} {{shares}} von {{stockname}} handeln?"
 msgid "E-mail address"
 msgstr "E-Mail-Adresse"
 
-#: app/templates/admin.events.html:31 app/templates/group.pinboard.html:29
+#: app/templates/admin.events.html:45 app/templates/group.pinboard.html:29
 #: app/templates/profile.pinboard.html:27
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -1746,6 +1754,9 @@ msgstr "{{progress}}&nbsp;% vollständig"
 #: app/js/controllers/depot.js:109
 msgid "{{stockname}} removed from the watchlist"
 msgstr "{{stockname}} von der Watchlist entfernt"
+
+#~ msgid "Action"
+#~ msgstr "Aktionen"
 
 #, fuzzy
 #~ msgid ""

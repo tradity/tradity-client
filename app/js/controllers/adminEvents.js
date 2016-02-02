@@ -12,26 +12,40 @@ angular.module('tradity').
     $scope.selectedDay = null;
     $scope.dayInfo = {};
     $scope.typeFilters = {};
+    $scope.globalTypeFilters = {
+      'comment': false
+    };
     
-    socket.emit('get-event-statistics').then(function(result) {
-      if (result.code !== 'get-event-statistics-success') {
-        return alert('Error get-event-statistics: ' + result.code);
-      }
-      
-      $scope.eventStatistics = result.result;
-      $scope.eventCounts = $scope.eventStatistics.map(function(e) {
-        var date = new Date(e.timeindex*1000);
-        e.date = date;
-        
-        $scope.lookupDay[date.toJSON()] = e;
-        return {
-          day: date,
-          count: e.nevents
-        };
+    $scope.activeFilters = function(obj) {
+      return Object.keys(obj).filter(function(type) {
+        return obj[type];
       });
-    });
+    };
     
-    $scope.$watch('selectedDay', function() {
+    $scope.loadEventStatistics = function() {
+      socket.emit('get-event-statistics', {
+        types: $scope.activeFilters($scope.globalTypeFilters),
+        _cache: 1800
+      }).then(function(result) {
+        if (result.code !== 'get-event-statistics-success') {
+          return alert('Error get-event-statistics: ' + result.code);
+        }
+        
+        $scope.eventStatistics = result.result;
+        $scope.eventCounts = $scope.eventStatistics.map(function(e) {
+          var date = new Date(e.timeindex*1000);
+          e.date = date;
+          
+          $scope.lookupDay[date.toJSON()] = e;
+          return {
+            day: date,
+            count: e.nevents
+          };
+        });
+      });
+    };
+    
+    $scope.loadIndividualDay = function() {
       if (!$scope.selectedDay || !new Date($scope.selectedDay).toJSON())
         return;
       
@@ -62,7 +76,11 @@ angular.module('tradity').
           }
         });
       });
-    });
+    };
+    
+    $scope.$watch('globalTypeFilters', $scope.loadEventStatistics, true);
+    $scope.$watch('globalTypeFilters', $scope.loadIndividualDay, true);
+    $scope.$watch('selectedDay', $scope.loadIndividualDay);
   });
 
 })();

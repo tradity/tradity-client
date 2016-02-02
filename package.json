@@ -44,9 +44,9 @@
     "build:js:stamp": "echo \"var TRADITY_BUILD_STAMP = 'TDYC$(date +%s)-$(git rev-parse HEAD)';\" > dist/app/js/buildstamp.js",
     "build:cp": "cp -r *.html *.txt *.ico fonts img scripts dist/",
     "watch": "parallelshell 'npm run watch:css' 'npm run watch:js' 'npm run watch:cp'",
-    "watch:css": "watch-run -p less/ npm run build:css",
-    "watch:js": "watch-run -p app/ npm run build:js",
-    "watch:cp": "watch-run -p '*.html, *.txt, *.ico, fonts/, img/, scripts/' npm run build:cp",
+    "watch:css": "watch-run -p 'less/**' npm run build:css",
+    "watch:js": "watch-run -p 'app/**' npm run build:js",
+    "watch:cp": "watch-run -p '*.html,*.txt,*.ico,fonts/**,img/**,scripts/**' npm run build:cp",
     "start": "npm run build && parallelshell 'npm run watch' 'browser-sync start --config bs-config.js'"
   },
   "dependencies": {

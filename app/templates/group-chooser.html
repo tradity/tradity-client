@@ -3,7 +3,7 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <script type="text/ng-template" id="groupChooserEntry.html">
   <a style="display:block">
-    <span class="typeahead-left" bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+    <span class="typeahead-left" ng-bind-html="match.label | typeaheadHighlight:query"></span>
     <span class="typeahead-right">{{match.model.extraInfo}}</span>
     <span style="clear:both;display:block"></span>
   </a>

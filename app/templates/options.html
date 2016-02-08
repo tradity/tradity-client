@@ -160,6 +160,7 @@
             <option ng-repeat="gender in genders.genders" ng-value="{{$index}}">
               {{genders.translations[lang][gender] || gender}}
             </option>
+            <option ng-value="null">Prefer not to say</option>
           </select>
         </div>
       </div>

@@ -1,5 +1,7 @@
 (function() { 'use strict';
 
+var undefined;
+
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
@@ -53,7 +55,7 @@ angular.module('tradity').
             var entry = $scope.schoolList[i];
             entry.extraInfo = entry.usercount + '\u00a0' + gettextCatalog.getPlural(entry.usercount, 'Person', 'Persons');
             
-            var sep = ' » '; // note that the spaces here are U+2009 (thin space) for compactness
+            var sep = '\u2009»\u2009'; // U+2009 THIN SPACE for compactness
             entry.displayName = entry.name;
             
             var current = entry;
@@ -76,7 +78,7 @@ angular.module('tradity').
         
         $scope.$watch('school', function(newValue, oldValue) {
           if (!$scope.school) {
-            $scope.schoolID = null;
+            $scope.schoolID = undefined;
             return;
           }
           

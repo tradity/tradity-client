@@ -49,7 +49,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
   var validationMsg = { // [code: msg]
     'reg-invalid-email': gettext('Please enter your valid email'),
     'reg-email-already-present': gettext('Email has been used to register with us'),
-    'reg-name-invalid-char': gettext('Username contains not-allowed characters'),
+    'reg-name-invalid-char': gettext('Username contains invalid characters!'),
     'reg-name-already-present': gettext('Username has been taken'),
   };
 
@@ -184,8 +184,16 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
         type: 'danger',
         msg: gettext('Please enter your name in order to be eligible for winning prizes')
       });
-    /*if (!vm.schoolname_none && !vm.schoolname) // XXX
-      return vm.alerts.push({ type: 'danger', msg: gettext('Please indicate which organization or school you belong to') });*/
+    if (!vm.school && vm.school !== null)
+      return vm.alerts.push({
+        type: 'danger',
+        msg: gettext('Please indicate which organization or school you belong to!')
+      });
+    if (isNaN(parseInt(vm.genderIndex)) && vm.genderIndex !== null)
+      return vm.alerts.push({
+        type: 'danger',
+        msg: gettext('Please indicate your gender or choose “Prefer not to say”.')
+      });
 
     // var d = Date.UTC($scope.birthdayy, $scope.birthdaym - 1, $scope.birthdayd);
     // if (!$scope.birthdayy) d = null;
@@ -208,7 +216,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
       traditye: vm.traditye,
       dla_optin: vm.dla_optin,
       invitekey: vm.invitekey,
-      gender: vm.genders.genders[vm.genderIndex],
+      gender: vm.genderIndex === null ? null : vm.genders.genders[vm.genderIndex],
       // birthday: d
       birthday: vm.birthday
     });

@@ -29,20 +29,21 @@
     <div class="col-lg-6 col-lg-offset-3 text-center">
       <div class="row">
         <div class="form-group col-lg-6" translate>
-          <input ng-model="registration.giv_name" type="text" class="form-control input-lg" placeholder="First name"
+          <input ng-model="registration.giv_name" type="text" class="form-control input-lg" placeholder="First name" required
           autofocus popover="Enter your first name" popover-trigger="focus" popover-placement="right" popover-animation="false">
         </div>
         <div class="form-group col-lg-6" translate>
-          <input ng-model="registration.fam_name" type="text" class="form-control input-lg" placeholder="Last name"
+          <input ng-model="registration.fam_name" type="text" class="form-control input-lg" placeholder="Last name" required
           popover="Enter your last name" popover-trigger="focus" popover-placement="right" popover-animation="false">
         </div>
       </div>
       <div class="row">
         <div class="form-group col-lg-6" translate>
-          <select ng-model="registration.genderIndex" class="form-control input-lg" placeholder="Gender">
+          <select ng-model="registration.genderIndex" required class="form-control input-lg" placeholder="Gender">
             <option ng-repeat="gender in registration.genders.genders" ng-value="{{$index}}">
               {{registration.genders.translations[registration.lang][gender] || gender}}
             </option>
+            <option ng-value="null">Prefer not to say</option>
           </select>
         </div>
         <div class=" col-lg-6">
@@ -51,20 +52,23 @@
             <input ng-model="registration.birthday" type="text" class="form-control input-lg" placeholder="Birthday" 
               datepicker-popup is-open="registration.datepickerOpened" ng-focus="registration.openDatepicker($event)">
             <span class="input-group-btn">
-                      <button type="button" class="btn btn-lg btn-default" ng-click="registration.openDatepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span></div>
+              <button type="button" class="btn btn-lg btn-default" ng-click="registration.openDatepicker($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span></div>
           </div>
         </div>
 
       </div>
       <div class="form-group">
-        <tradity-group-chooser school-id-model="school" school-class-model="schoolclass" />
+        <tradity-group-chooser school-id-model="registration.school" school-class-model="registration.schoolclass" />
       </div>
       <div class="form-group" ng-show="serverConfig.betakeyRequired" translate>
         <input ng-model="registration.betakey" id="betakey" type="text" class="form-control input-lg" placeholder="Beta key">
       </div>
-      <div class="form-group" translate>
-        <button class="btn btn-lg btn-block btn-primary " ng-click="registration.register()">Off to the final step!</button>
+      <div class="form-group">
+        <button class="btn btn-lg btn-block btn-primary " ng-click="registration.register()">
+          <span ng-show="registration.questionnaire" translate>Off to the final step!</span>
+          <span ng-hide="registration.questionnaire" translate>Let’s go!</span>
+        </button>
       </div>
 
     </div>

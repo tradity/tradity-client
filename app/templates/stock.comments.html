@@ -2,12 +2,21 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <div>
-  <div ng-repeat="comment in comments" ng-show="comments.length > 0">
-    <a ng-href="https://{{comment.Wikifolio.Url}}" target="_blank">{{comment.TraderName}}: {{comment.Message}}</a>
-    <hr/>
+  <div ng-show="comments.length > 0">
+    <blockquote class="wikifolioComments">
+      <div ng-repeat="comment in comments">
+        <a ng-href="https://{{comment.Wikifolio.Url}}" target="_blank">{{comment.TraderName}}: {{comment.Message}}</a>
+        <hr/>
+      </div>
+      <footer>by <a target="_blank" href="https://www.wikifolio.com"><img src="img/wikifoliologo.png"></a>  </footer>
+    </blockquote>
   </div>
   <div ng-show="comments.length == 0" translate>
-     Sorry, no comments on this stock so far.
+    <blockquote class="wikifolioComments">
+      <span>Sorry, no comments on this stock so far.</span>
+      <br />
+      <footer>by <a target="_blank" href="https://www.wikifolio.com"><img src="img/wikifoliologo.png"></a>  </footer>
+    </blockquote>
   </div>
 
   <div ng-hide="comments" class="loading text-center">

@@ -105,14 +105,14 @@
         <div class="form-group">
           <label>
             <span translate># shares</span>
-            <span ng-show="trade.cur && trade.sellbuy > 0">(Max: {{Math.floor(Math.min(trade.ownUser.freemoney, trade.ownUser.totalvalue * trade.serverConfig.maxSingleStockShare) / trade.cur.ask)}})</span>
+            <span ng-show="trade.cur && trade.sellbuy > 0">(Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSingleStockShare) / trade.cur.ask)}})</span>
           </label>
           <translate><input type="number" ng-model="trade.amount" ng-change="trade.calcValue();" placeholder="Amount" id="amount" autocomplete="off" class="form-control" /></translate>
         </div>
         <div class="form-group">
           <label>
             <span translate>Buy/Sell price</span>
-            <span ng-show="trade.cur && trade.sellbuy > 0">(Max: {{Math.floor(Math.min(trade.ownUser.freemoney, trade.ownUser.totalvalue * trade.serverConfig.maxSingleStockShare) / trade.cur.ask) * trade.cur.ask / 10000 | currency}})</span>
+            <span ng-show="trade.cur && trade.sellbuy > 0">(Max: {{Math.floor(Math.min(ownUser.freemoney, ownUser.totalvalue * serverConfig.maxSingleStockShare) / trade.cur.ask) * trade.cur.ask / 10000 | currency}})</span>
           </label>
           <translate><input type="text" ng-model="trade.value" ng-change="trade.calcAmount();" placeholder="Buy price" id="value" autocomplete="off" class="form-control" /></translate>
         </div>

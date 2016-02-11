@@ -1082,7 +1082,7 @@ msgstr ""
 msgid "Short description"
 msgstr ""
 
-#: app/templates/stock.comments.html:9
+#: app/templates/stock.comments.html:18
 msgid "Sorry, no comments on this stock so far."
 msgstr ""
 
@@ -1509,6 +1509,11 @@ msgstr ""
 #: app/js/controllers/options.js:150
 #: app/js/controllers/registration.js:160
 msgid "Your user name contains invalid characters!"
+msgstr ""
+
+#: app/templates/stock.comments.html:11
+#: app/templates/stock.comments.html:20
+msgid "by <a><img alt=\"Wikifolio\"></a>"
 msgstr ""
 
 #: app/templates/group.html:85

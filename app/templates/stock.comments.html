@@ -8,14 +8,18 @@
         <a ng-href="https://{{comment.Wikifolio.Url}}" target="_blank">{{comment.TraderName}}: {{comment.Message}}</a>
         <hr/>
       </div>
-      <footer>by <a target="_blank" href="https://www.wikifolio.com"><img src="img/wikifoliologo.png"></a>  </footer>
+      <footer translate>
+        by <a target="_blank" href="https://www.wikifolio.com"><img src="img/wikifoliologo.png" alt="Wikifolio" /></a>
+      </footer>
     </blockquote>
   </div>
-  <div ng-show="comments.length == 0" translate>
+  <div ng-show="comments.length == 0">
     <blockquote class="wikifolioComments">
-      <span>Sorry, no comments on this stock so far.</span>
+      <span translate>Sorry, no comments on this stock so far.</span>
       <br />
-      <footer>by <a target="_blank" href="https://www.wikifolio.com"><img src="img/wikifoliologo.png"></a>  </footer>
+      <footer translate>
+        by <a target="_blank" href="https://www.wikifolio.com"><img src="img/wikifoliologo.png" alt="Wikifolio" /></a>
+      </footer>
     </blockquote>
   </div>
 

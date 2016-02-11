@@ -121,7 +121,7 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
       school: $scope.school,
       schoolclass: $scope.schoolclass,
       birthday: $scope.birthday.getTime(),
-      gender: vm.genderIndex === null ? null : $scope.genders.genders[vm.genderIndex],
+      gender: $scope.genderIndex === null ? null : $scope.genders.genders[$scope.genderIndex],
       desc: $scope.desc,
       lprovision: $scope.lprovision,
       wprovision: $scope.wprovision,

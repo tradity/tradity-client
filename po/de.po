@@ -762,7 +762,7 @@ msgstr "Voller Name"
 
 #: app/js/services/achievements.js:44
 msgid "Fundamental analysis"
-msgstr "Fumdamentalanalyse"
+msgstr "Fundamentalanalyse"
 
 #: app/templates/options.html:51
 msgid "Game"

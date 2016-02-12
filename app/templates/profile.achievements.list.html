@@ -7,8 +7,9 @@
     <i class="fa fa-trophy"></i>
   </div>
   <div class="content">
-    <span class="xp">{{achievement.xp}} XP</span><h2>{{achievement.text}}</h2>
-    <p>{{achievement.description}}</p>
+    <span class="xp">{{achievement.xp}} XP</span>
+    <h2 ng-bind-html="achievement.text">{{achievement.text}}</h2>
+    <p ng-bind-html="achievement.description">{{achievement.description}}</p>
   </div>
   <div class="clearfix"></div>
   <div class="achieved" ng-show="achievement.achieved"></div>

@@ -23,7 +23,7 @@ directive('questionnaireAnswerText', ['$compile', function ($compile) {
 }]);
 
 angular.module('tradity').
-controller('SurveyCtrl', function($scope, $stateParams, $state, gettext, languageManager, dialogs, socket) {
+controller('SurveyCtrl', function($scope, $stateParams, $state, gettextCatalog, languageManager, dialogs, socket) {
   var vm = this;
   vm.lang = languageManager.getCurrentLanguage();
   vm.questionnaire = null;
@@ -76,7 +76,7 @@ controller('SurveyCtrl', function($scope, $stateParams, $state, gettext, languag
           answers: []
         });
       } else {
-        return dialogs.error('tradity', gettext('Please answer all the questions'));
+        return dialogs.error('tradity', gettextCatalog.getString('Please answer all the questions'));
       }
     }
     
@@ -89,7 +89,7 @@ controller('SurveyCtrl', function($scope, $stateParams, $state, gettext, languag
       if (data.code == 'save-questionnaire-success')
         $state.go('game.feed');
       else
-        return dialogs.error('tradity', gettext('An error occurred during processing of the questionnaire\n' + JSON.stringify(data)));
+        return dialogs.error('tradity', gettextCatalog.getString('An error occurred during processing of the questionnaire\n' + JSON.stringify(data)));
     });
   };
 });

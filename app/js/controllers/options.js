@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs, gettext, languageManager, $q) {
+controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginAchievements, config, dialogs, gettextCatalog, languageManager, $q) {
   $scope.genders = socket.emit('list-genders', { _cache: 500 }).then(function(data) {
     if (data.code != 'list-genders-success')
       return;
@@ -63,21 +63,21 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
   $scope.handlePublishCode = function(code) {
     switch (code) {
       case 'publish-success':
-        notification(gettext('Profile picture was uploaded successfully!'), true);
+        notification(gettextCatalog.getString('Profile picture was uploaded successfully!'), true);
         break;
       case 'publish-quota-exceed':
-        notification(gettext('Your profile picture file is too large (maximum 3 MB)'));
+        notification(gettextCatalog.getString('Your profile picture file is too large (maximum 3 MB)'));
         break;
       case 'publish-proxy-not-allowed':
       case 'publish-inacceptable-role':
       case 'publish-inacceptable-mime':
-        notification(gettext('There was a technical problem uploading your profile picture.\nPlease turn to tech@tradity.de'));
+        notification(gettextCatalog.getString('There was a technical problem uploading your profile picture.\nPlease turn to tech@tradity.de'));
         break;
     }
   };
 
   $scope.useGravatar = function() {
-    fileemit(socket, gettext, 'https://secure.gravatar.com/avatar/' + md5.createHash($scope.ownUser.email) + '?s=384', 'publish', {
+    fileemit(socket, gettextCatalog, 'https://secure.gravatar.com/avatar/' + md5.createHash($scope.ownUser.email) + '?s=384', 'publish', {
       role: 'profile.image',
       proxy: true
     }, $scope.serverConfig, $scope.handlePublishCode);
@@ -92,7 +92,7 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
     if (!$scope.password) $scope.password = null;
 
     if ($scope.password_check != $scope.password)
-      return notification(gettext('The entered passwords do not match'));
+      return notification(gettextCatalog.getString('The entered passwords do not match'));
 
     // var d = Date.UTC($scope.birthdayy, $scope.birthdaym - 1, $scope.birthdayd);
     // if (!$scope.birthdayy)
@@ -100,7 +100,7 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
 
     var piFile = document.getElementById('profileimage').files[0];
     if (piFile) {
-      fileemit(socket, gettext, piFile, 'publish', {
+      fileemit(socket, gettextCatalog, piFile, 'publish', {
         role: 'profile.image',
       }, $scope.serverConfig, $scope.handlePublishCode);
     }
@@ -135,45 +135,45 @@ controller('OptionsCtrl', function($scope, md5, socket, safestorage, dailyLoginA
     }, function(data) {
       switch (data.code) {
         case 'reg-email-already-present':
-          notification(gettext('This e-mail address has already been taken'));
+          notification(gettextCatalog.getString('This e-mail address has already been taken'));
           break;
         case 'reg-name-already-present':
-          notification(gettext('This user name has already been taken'));
+          notification(gettextCatalog.getString('This user name has already been taken'));
           break;
         case 'reg-unknown-school':
-          notification(gettext('The entered school has not been found'));
+          notification(gettextCatalog.getString('The entered school has not been found'));
           break;
         case 'reg-too-short-pw':
-          notification(gettext('Your password is too short!'));
+          notification(gettextCatalog.getString('Your password is too short!'));
           break;
         case 'reg-name-invalid-char':
-          notification(gettext('Your user name contains invalid characters!'));
+          notification(gettextCatalog.getString('Your user name contains invalid characters!'));
           break;
         case 'invalid-provision':
-          notification(gettext('The entered provision value is invalid'));
+          notification(gettextCatalog.getString('The entered provision value is invalid'));
           break;
       }
     });
   };
 
   $scope.resetUser = function() {
-    var dlg = dialogs.confirm(gettext('Options'), gettext('Are you sure you want to reset?'));
+    var dlg = dialogs.confirm(gettextCatalog.getString('Options'), gettextCatalog.getString('Are you sure you want to reset?'));
     dlg.result.then(function(btn) {
       socket.emit('reset-user', null, function(data) {
         if (data.code == 'reset-user-success')
-          notification(gettext('Sucessfully reset user!'), true);
+          notification(gettextCatalog.getString('Sucessfully reset user!'), true);
       });
     });
   };
 
   socket.on('change-options', function(data) {
     if (data.code == 'reg-success') {
-      notification(gettext('Sucessfully saved options'), true);
+      notification(gettextCatalog.getString('Sucessfully saved options'), true);
 
       socket.emit('get-own-options');
     }
     else if (data.code == 'reg-email-failed') {
-      notification(gettext('Could not send verification e-mail. Please turn to tech@tradity.de.'));
+      notification(gettextCatalog.getString('Could not send verification e-mail. Please turn to tech@tradity.de.'));
     }
   });
   

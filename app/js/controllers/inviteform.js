@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-  controller('InviteFormCtrl', function($scope, socket, gettext) {
+  controller('InviteFormCtrl', function($scope, socket, gettextCatalog) {
     socket.emit('create-invite-link', {
       schoolid: $scope.schoolid ? $scope.schoolid : null
     }, function(data) {
@@ -21,16 +21,16 @@ angular.module('tradity').
         }).then(function(data) { // jshint ignore:line
           switch (data.code) {
             case 'create-invite-link-invalid-email':
-              notification(gettext('Invalid e-mail address'));
+              notification(gettextCatalog.getString('Invalid e-mail address'));
               break;
             case 'create-invite-link-not-verif':
-              notification(gettext('You have not verified your e-mail address'));
+              notification(gettextCatalog.getString('You have not verified your e-mail address'));
               break;
             case 'create-invite-link-failed':
-              notification(gettext('Could not send invitation link'));
+              notification(gettextCatalog.getString('Could not send invitation link'));
               break;
             case 'create-invite-link-success':
-              notification(gettext('Invitation link was sent successfully'), true);
+              notification(gettextCatalog.getString('Invitation link was sent successfully'), true);
               break;
           }
         }); // jshint ignore:line
@@ -43,10 +43,10 @@ angular.module('tradity').
     
     clipboard.on('success', function() {
       $scope.copyTooltip.isOpen = true;
-      $scope.copyTooltip.msg = gettext('Copied!');
+      $scope.copyTooltip.msg = gettextCatalog.getString('Copied!');
     }).on('error', function() {
       $scope.copyTooltip.isOpen = true;
-      $scope.copyTooltip.msg = gettext('Press Ctrl-C/⌘-C to copy');
+      $scope.copyTooltip.msg = gettextCatalog.getString('Press Ctrl-C/⌘-C to copy');
     });
     
     $scope.closeCopyTooltip = function() {

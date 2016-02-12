@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-  controller('FeedblogsCtrl', function($scope, socket, gettext, gettextCatalog) {
+  controller('FeedblogsCtrl', function($scope, socket, gettextCatalog) {
     $scope.newblog = {
       bloguser: null,
       endpoint: null,
@@ -30,7 +30,7 @@ angular.module('tradity').
       
       return socket.emit('add-wordpress-feed', $scope.newblog).then(function(data) {
         if (data.code == 'add-wordpress-feed-success') {
-          notification(gettext('Ok!'), true);
+          notification(gettextCatalog.getString('Ok!'), true);
           socket.emit('list-wordpress-feeds');
         } else {
           notification(gettextCatalog.getString('Error: {{code}}', data));
@@ -41,7 +41,7 @@ angular.module('tradity').
     $scope.removeFeedblog = function(id) {
       return socket.emit('remove-wordpress-feed', { blogid: id }).then(function(data) {
         if (data.code == 'remove-wordpress-feed-success') {
-          notification(gettext('Ok!'), true);
+          notification(gettextCatalog.getString('Ok!'), true);
           socket.emit('list-wordpress-feeds');
         } else {
           notification(gettextCatalog.getString('Error: {{code}}', data));
@@ -52,7 +52,7 @@ angular.module('tradity').
     $scope.processBlogs = function() {
       socket.emit('process-wordpress-feed').then(function(data) {
         if (data.code == 'process-wordpress-feed-success')
-          notification(gettext('Ok!'), true);
+          notification(gettextCatalog.getString('Ok!'), true);
         else
           notification(gettextCatalog.getString('Error: {{code}}', data));
       });

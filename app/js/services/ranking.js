@@ -12,7 +12,7 @@
  * Factory
  */
 angular.module('tradity')
-  .factory('ranking', function (socket, gettext) {
+  .factory('ranking', function (socket, gettextCatalog) {
     var Ranking = function(school, spec, rankifyOptions, resultFilters, noAutoFetch) {
       this.school = school || null;
       this.spec = spec;
@@ -52,7 +52,7 @@ angular.module('tradity')
         _cache: 30
       }, function(data) {
         if (!/^(get-ranking-success|not-logged-in)$/.test(data.code))
-          return notification(gettext('There was a problem while loading the current ranking!'));
+          return notification(gettextCatalog.getString('There was a problem while loading the current ranking!'));
         
         self.rawResults = self.filterRawResults(data.result);
         

@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-  controller('DepotCtrl', function($scope, $rootScope, socket, gettext, gettextCatalog) {
+  controller('DepotCtrl', function($scope, $rootScope, socket, gettextCatalog) {
     var ownDepotOrUser = function() {
       if (!$scope.ownUser)
         return;
@@ -85,7 +85,7 @@ angular.module('tradity').
         if (data.code == 'dquery-remove-success') {
           socket.emit('dquery-list');
         } else if (data.code == 'dquery-remove-notfound') {
-          notification(gettext('Order not found. Possibly it has already been executed?'));
+          notification(gettextCatalog.getString('Order not found. Possibly it has already been executed?'));
         }
       });
     };

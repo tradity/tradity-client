@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-  controller('GroupCtrl', function($scope, $sce, $state, $stateParams, gettext, gettextCatalog, DEFAULT_GROUP_BANNER, socket) {
+  controller('GroupCtrl', function($scope, $sce, $state, $stateParams, gettextCatalog, DEFAULT_GROUP_BANNER, socket) {
     $scope.school = { pendingMembers: [] };
     $scope.selfIsSchoolAdmin = false;
     $scope.selfIsSchoolMember = false;
@@ -87,7 +87,7 @@ angular.module('tradity').
             if (/success$/.test(data.code)) 
               $state.go('game.groupOverview');
           });
-          notification(gettext('Left group'), true);
+          notification(gettextCatalog.getString('Left group'), true);
           $scope.selfIsSchoolMember = false;
           $scope.selfIsSchoolAdmin = false;
         });
@@ -98,7 +98,7 @@ angular.module('tradity').
       socket.emit('school-delete-comment', {
         schoolid: $scope.schoolid,
         commentid: comment.commentid
-      }, function() { notification(gettext('Ok!'), true); });
+      }, function() { notification(gettextCatalog.getString('Ok!'), true); });
     };
 
     $scope.kickUser = function(user) {
@@ -109,7 +109,7 @@ angular.module('tradity').
         schoolid: user.school,
         uid: user.uid
       }, function() {
-        notification(gettext('Ok!'), true);
+        notification(gettextCatalog.getString('Ok!'), true);
       });
     };
 
@@ -122,7 +122,7 @@ angular.module('tradity').
         uid: user.uid,
         status: 'admin'
       }, function() {
-        notification(gettext('Ok!'), true);
+        notification(gettextCatalog.getString('Ok!'), true);
       });
     };
 
@@ -137,19 +137,19 @@ angular.module('tradity').
     $scope.changeDescription = function() {
       var bannerFile = document.getElementById('bannerupload').files[0];
       if (bannerFile) {
-        fileemit(socket, gettext, bannerFile, 'school-publish-banner', {
+        fileemit(socket, gettextCatalog, bannerFile, 'school-publish-banner', {
           schoolid: $scope.schoolid
         }, $scope.serverConfig, function(code) {
           switch (code) {
             case 'publish-success':
-              notification(gettext('Sucessfully uploaded profile picture!'), true);
+              notification(gettextCatalog.getString('Sucessfully uploaded profile picture!'), true);
               break;
             case 'publish-quota-exceed':
-              notification(gettext('Your profile picture file is too large (maximum 3\u00a0MB)'));
+              notification(gettextCatalog.getString('Your profile picture file is too large (maximum 3\u00a0MB)'));
               break;
             case 'publish-inacceptable-role':
             case 'publish-inacceptable-mime':
-              notification(gettext('There was a technical problem uploading your profile picture.\nPlease turn to tech@tradity.de'));
+              notification(gettextCatalog.getString('There was a technical problem uploading your profile picture.\nPlease turn to tech@tradity.de'));
               break;
           }
         });
@@ -159,7 +159,7 @@ angular.module('tradity').
         schoolid: $scope.schoolid,
         descpage: $scope.descpage
       }, function() {
-        notification(gettext('Ok!'), true);
+        notification(gettextCatalog.getString('Ok!'), true);
       });
     };
 
@@ -169,7 +169,7 @@ angular.module('tradity').
         uid: user.uid,
         status: 'member'
       }, function() {
-        notification(gettext('Ok!'), true);
+        notification(gettextCatalog.getString('Ok!'), true);
       });
     };
 
@@ -186,7 +186,7 @@ angular.module('tradity').
         schoolpath: $scope.school.path + '/' + n.replace(/[^\w_-]/g, '-').replace(/-+/g, '-'),
       }).then(function(data) {
         if (data.code == 'create-school-success')
-          notification(gettext('Ok!'), true);
+          notification(gettextCatalog.getString('Ok!'), true);
         else
           notification(gettextCatalog.getString('Error: {{code}}', data));
       });

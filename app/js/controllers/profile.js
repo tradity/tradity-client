@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-  controller('ProfileCtrl', function($scope, user, $sce, $state, $stateParams, DEFAULT_PROFILE_IMG, socket, gettext, gettextCatalog) {
+  controller('ProfileCtrl', function($scope, user, $sce, $state, $stateParams, DEFAULT_PROFILE_IMG, socket, gettextCatalog) {
     $scope.values = [];
     $scope.userAchievements = [];
     $scope.user = null;
@@ -50,7 +50,7 @@ angular.module('tradity').
             name: $scope.user.name
           }), true);
         } else if (data.code == 'watchlist-add-notfound') {
-          notification(gettext('User not found – something went wrong here'));
+          notification(gettextCatalog.getString('User not found – something went wrong here'));
         }
       });
     };

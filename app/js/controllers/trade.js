@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-  controller('TradeCtrl', function($stateParams, $state, $location, socket, gettext, gettextCatalog,
+  controller('TradeCtrl', function($stateParams, $state, $location, socket, gettextCatalog,
     dialogs, orderByFilter, searchStringSimilarity, config) {
     var vm = this;
     vm.amount = null;
@@ -33,9 +33,9 @@ angular.module('tradity').
       if (!vm.amount)
         return;
       if (!vm.leader && !vm.stockid)
-        return dialogs.error('tradity', gettext('You need to choose a stock!'));
+        return dialogs.error('tradity', gettextCatalog.getString('You need to choose a stock!'));
         
-      var dlg = dialogs.confirm(gettext('Trade'),
+      var dlg = dialogs.confirm(gettextCatalog.getString('Trade'),
         gettextCatalog.getString('Do you want to trade {{amount}} {{shares}} of {{stockname}}?', {
           stockname: vm.stockname,
           amount: vm.amount,
@@ -69,7 +69,7 @@ angular.module('tradity').
         var qtype = 'stock-buy';
         if (vm.xtype != 'market') {
           if (vm.xvalue == null)
-            return dialogs.error('tradity', gettext('Please enter a numerical stop/limit value'));
+            return dialogs.error('tradity', gettextCatalog.getString('Please enter a numerical stop/limit value'));
           var fieldname = (vm.amount >= 0) ^ (vm.sellbuy < 0) ? 'ask' : 'bid';
           var compar = !((vm.xtype == 'limit') ^ (vm.amount >= 0) ^ (vm.sellbuy < 0)) ? '<' : '>';
           
@@ -93,41 +93,41 @@ angular.module('tradity').
           
           switch (data.code) {
             case 'dquery-success':
-              modal = dialogs.notify('tradity', gettext('The trade will be executed as soon as the given conditions are fulfilled.'));
+              modal = dialogs.notify('tradity', gettextCatalog.getString('The trade will be executed as soon as the given conditions are fulfilled.'));
               modal.result.then(function(btn) {
                 $state.go('game.depot.transactions');
               });
               break;
             case 'stock-buy-success':
-              modal = dialogs.notify('tradity', gettext('Successfully traded!'));
+              modal = dialogs.notify('tradity', gettextCatalog.getString('Successfully traded!'));
               modal.result.then(function(btn) {
                 $state.go('game.depot.listing');
               });
               break;
             case 'stock-buy-email-not-verif':
-              dialogs.error('tradity', gettext('You need to provide a verified e-mail address in order to be eligible for follower trades!'));
+              dialogs.error('tradity', gettextCatalog.getString('You need to provide a verified e-mail address in order to be eligible for follower trades!'));
               break;
             case 'stock-buy-out-of-money':
-              dialogs.error('tradity', gettext('You do not have enough leftover money for this trade!'));
+              dialogs.error('tradity', gettextCatalog.getString('You do not have enough leftover money for this trade!'));
               break;
             case 'stock-buy-single-paper-share-exceed':
-              dialogs.error('tradity', gettext('Only 50\u00a0% of your assets may consist of a single stock!'));
+              dialogs.error('tradity', gettextCatalog.getString('Only 50\u00a0% of your assets may consist of a single stock!'));
               break;
             case 'stock-buy-not-enough-stocks':
-              dialogs.error('tradity', gettext('Not enough stocks!'));
+              dialogs.error('tradity', gettextCatalog.getString('Not enough stocks!'));
               break;
             case 'stock-buy-autodelay-sxnotopen':
-              modal = dialogs.notify('tradity', gettext('The trade will be executed when the stock exchange opens'));
+              modal = dialogs.notify('tradity', gettextCatalog.getString('The trade will be executed when the stock exchange opens'));
               modal.result.then(function(btn) {
                 $state.go('game.depot.transactions');
               });
               break;
             case 'stock-buy-over-pieces-limit':
 
-              dialogs.error('tradity', gettext('Unfortunately, your trade exceeds the maximum tradable amount of this stock'));
+              dialogs.error('tradity', gettextCatalog.getString('Unfortunately, your trade exceeds the maximum tradable amount of this stock'));
               break;
             case 'stock-buy-stock-not-found':
-              dialogs.error('tradity', gettext('This stock could not be found!'));
+              dialogs.error('tradity', gettextCatalog.getString('This stock could not be found!'));
               break;
           }
         });
@@ -144,7 +144,7 @@ angular.module('tradity').
         return orderByFilter(data.results.filter(function(stock) {
           return !(stock.leader && vm.ownUser && stock.leader === vm.ownUser.uid);
         }).map(function(stock) {
-          stock.textName = stock.leader ? gettext('Leader: %1').replace(/%1/g, stock.leadername) : stock.name;
+          stock.textName = stock.leader ? gettextCatalog.getString('Leader: %1').replace(/%1/g, stock.leadername) : stock.name;
           stock.extraInfo = (parseInt(stock.lastvalue / 100) / 100) +
             (stock.exchange ? '\u00a0' + stock.exchange : '');
           stock.sortingRank = searchStringSimilarity(stockname, stock.textName);

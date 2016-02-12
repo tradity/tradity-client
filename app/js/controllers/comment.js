@@ -5,13 +5,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-  controller('CommentCtrl', function($scope, socket, gettext) {
+  controller('CommentCtrl', function($scope, socket, gettextCatalog) {
     $scope.editComment = function(comment) {
       return socket.emit('change-comment-text', {
         commentid: comment.commentid,
         comment: prompt('Neuer Kommentartext: (Leerlassen zum Beibehalten)') || comment.comment,
         trustedhtml: false
-      }).then(function() { notification(gettext('Ok!'), true); });
+      }).then(function() { notification(gettextCatalog.getString('Ok!'), true); });
     };
 
     $scope.deleteComment = function(comment) {
@@ -20,7 +20,7 @@ angular.module('tradity').
         comment: comment.comment,
         trustedhtml: comment.trustedhtml,
         cstate: 'mdeleted'
-      }).then(function() { notification(gettext('Ok!'), true); });
+      }).then(function() { notification(gettextCatalog.getString('Ok!'), true); });
     };
     
     $scope.sendComment = function() {
@@ -37,7 +37,7 @@ angular.module('tradity').
       }
       
       if (!eventid)
-        return notification(gettext('Comment event was not found!'));
+        return notification(gettextCatalog.getString('Comment event was not found!'));
 
       return socket.emit('comment', {
         eventid: eventid,
@@ -45,7 +45,7 @@ angular.module('tradity').
         ishtml: $scope.ishtml
       }).then(function(data) {
         if (data.code == 'comment-notfound') {
-          notification(gettext('Comment event was not found – something is wrong here!'));
+          notification(gettextCatalog.getString('Comment event was not found – something is wrong here!'));
         } else if (data.code == 'comment-success') {
           var time = new Date();
           $scope.comments.unshift({
@@ -58,7 +58,7 @@ angular.module('tradity').
           $scope.comment = '';
         } else if (data.code == 'format-error') {
           console.log($scope);
-          notification(gettext('Sorry, something went wrong.'));
+          notification(gettextCatalog.getString('Sorry, something went wrong.'));
         }
       });
     };

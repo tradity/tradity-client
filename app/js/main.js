@@ -33,11 +33,11 @@ var notification = function (text, icon) { // icon === true -> success
   }, 3000);
 };
 
-var fileemit = function(socket, gettext, input, evtype, template, serverconfig, callback) {
+var fileemit = function(socket, gettextCatalog, input, evtype, template, serverconfig, callback) {
   var filename = null; 
   var mime = null;
   
-  var fail = function() { notification(gettext('There was a technical problem uploading your profile picture.\nPlease turn to tech@tradity.de')); };
+  var fail = function() { notification(gettextCatalog.getString('There was a technical problem uploading your profile picture.\nPlease turn to tech@tradity.de')); };
   
   try {
     var goPublish = function(data) {
@@ -64,7 +64,7 @@ var fileemit = function(socket, gettext, input, evtype, template, serverconfig, 
       if (/\.gif$/i.test(filename))   mime = 'image/gif';
       
       if (!mime) {
-        return notification(gettext('Your need to upload your profile picture as a JPEG/PNG/GIF file'));
+        return notification(gettextCatalog.getString('Your need to upload your profile picture as a JPEG/PNG/GIF file'));
       }
       
       var reader = new FileReader();
@@ -74,10 +74,10 @@ var fileemit = function(socket, gettext, input, evtype, template, serverconfig, 
       reader.onload = function() { 
         var buf = reader.result;
         if (!buf)
-          return notification(gettext('Could not upload profile picture'));
+          return notification(gettextCatalog.getString('Could not upload profile picture'));
           
         if (serverconfig && reader.result.byteLength > serverconfig.fsdb.userquota)
-          return notification(gettext('Your profile picture file is too large (maximum 3\u00a0MB)'));
+          return notification(gettextCatalog.getString('Your profile picture file is too large (maximum 3\u00a0MB)'));
         
         goPublish(buf);
       };

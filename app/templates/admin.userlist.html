@@ -51,7 +51,7 @@
     <th ng-show="showComments">#Kommentare</th>
     <th ng-show="showLastComment">Letzter Kommentar</th>
     <th ng-show="showBirthday">Geburtsdatum</th>
-    <th ng-show="showSchool" colspan="3">Schule</th>
+    <th ng-show="showSchool" colspan="4">Schule</th>
     <th ng-show="showAddress" colspan="3">Adresse</th>
     <th ng-show="showProvision" colspan="2">Provision</th>
     <th ng-show="showDeletion">Löschzeitpunkt</th>
@@ -76,6 +76,7 @@
     <td ng-show="showBirthday">{{entry.birthday | date:'short'}}</td>
     <td ng-show="showSchool"><a ui-sref="game.group({schoolid: entry.schoolpath})">{{entry.schoolid}}</a></td>
     <td ng-show="showSchool"><a ui-sref="game.group({schoolid: entry.schoolpath})">{{entry.schoolpath}}</a></td>
+    <td ng-show="showSchool">{{entry.schoolclass}}</td>
     <td ng-show="showSchool">{{entry.pending}}</td>
     <td ng-show="showAddress">{{entry.zip}}</td>
     <td ng-show="showAddress">{{entry.town}}</td>

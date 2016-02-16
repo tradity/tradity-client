@@ -7,70 +7,30 @@
 angular.module('tradity').
   controller('SponsorsCtrl', function($scope, $rootScope, socket, $stateParams) {
     $scope.sponsors = [
-/*      {
+      {
         picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/02/Tradity_EckernfoerderBank_Unterstuetzer.png',
         link: 'https://www.eckernfoerder-bank.de/privatkunden.html',
         schoolPathRegex: /^\/eckernfoerde(\/|$)/i,
         group: true,
       },
       {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/02/Boersenspiel_Tradity_Unterstuetzer_FS-Christan-Sellhorn.png',
-        link: 'http://www.fahrschulesellhorn.de/',
-        schoolPathRegex: /^\/elmshorn(\/|$)/i,
-        group: true,
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_VR-Bank-Niebuell.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_VR-Bank-Niebuell.png',
+        schoolPathRegex: /^\/niebuell(\/|$)/i,
+        group: true
       },
       {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_Fahrschule-Tiedemann.png',
-        link: 'http://www.fahrschule-tiedemann.de/',
-        schoolPathRegex: /^\/Schleswig(\/|$)/i,
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-HP_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-HP_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/niebuell(\/|$)/i,
         group: true
-      },*/
-/*      {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_FahrschuleSchneiderNMS.png',
-        link: 'http://www.fahrschule-nms.de/',
-        schoolPathRegex: /^\/Neumuenster(\/|$)/i,
-        group: true
-      },*/
-      // {
-      //   picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_VR-Bank-Niebuell.png',
-      //   link: 'https://www.vrbankniebuell.de/privatkunden.html',
-      //   schoolPathRegex: /^\/niebuell(\/|$)/i,
-      //   group: true
-      // },
-/*      {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Logo_VRStormarn.png',
-        link: 'https://www.volksbank-stormarn.de/privatkunden.html',
-        schoolPathRegex: /^\/BadOldesloe(\/|$)/i,
-        group: true
-      },*/
-      // {
-      //   picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_Husumer-Volksbank.png',
-      //   link: 'https://www.husumer-volksbank.de/homepage.html',
-      //   schoolPathRegex: /^\/Husum(\/|$)/i,
-      //   group: true
-      // },
-/*      {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_Nordseefahrschule-Husum.png',
-        link: 'http://www.nordseefahrschule.de/',
+      },
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Unterstuetzer_Husumer-Volksbank.png',
+        link: 'https://www.husumer-volksbank.de/homepage.html',
         schoolPathRegex: /^\/Husum(\/|$)/i,
         group: true
-      },*/
-/*      {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/10/Boersenspiel_Tradity_Volksbank-Ahlen-Sassenberg-Warendorf_Unterstuetzer.png',
-        link: 'https://www.vbasw.de/homepage.html',
-        schoolPathRegex: /^\/sassenberg(\/|$)/i,
-        group: true
-      },*/
-/*      {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Flatex_Unterstuetzer-e1403979869133.png',
-        link: 'https://www.flatex.de/',
-        group: true
-      },*/
-/*      {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2014/06/Boersenspiel_Tradity_Logitech_Unterstuetzer-e1403979928493.png',
-        link: 'http://www.logitech.com/de-de/speakers-audio/home-pc-speakers',
-        group: true,
-      },*/
+      },
       {
         picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_Passau.png',
         link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_Passau.png',
@@ -78,40 +38,108 @@ angular.module('tradity').
         group: true,
       },
       {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_ACXIT-Capital-Partners.png',
-        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_ACXIT-Capital-Partners.png',
-        schoolPathRegex: /^\/muenchen(\/|$)/i,
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Autzen_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Autzen_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/schleswig(\/|$)/i,
         group: true,
       },
       {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_ACXIT-Capital-Partners.png',
-        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_ACXIT-Capital-Partners.png',
-        schoolPathRegex: /^\/whu(\/|$)/i,
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-Roeh_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-Roeh_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/schleswig(\/|$)/i,
         group: true,
       },
       {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_ACXIT-Capital-Partners.png',
-        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_ACXIT-Capital-Partners.png',
-        schoolPathRegex: /^\/unistgallen(\/|$)/i,
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/VR-Bank-Ostholstein_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/VR-Bank-Ostholstein_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/luetjenburg(\/|$)/i,
         group: true,
       },
       {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_Victoria-Partners.png',
-        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_Victoria-Partners.png',
-        schoolPathRegex: /^\/ebs(\/|$)/i,
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/VR-Bank-Heide_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/VR-Bank-Heide_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/heide(\/|$)/i,
         group: true,
       },
-/*      {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_Bertelsmann.png',
-        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_Bertelsmann.png',
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/VR-Bank-Altenburger-Land_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/VR-Bank-Altenburger-Land_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/altenburgerland(\/|$)/i,
         group: true,
-      },*/
-/*      {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_zeb.png',
-        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_zeb.png',
+      },      
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-Porzig_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-Porzig_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/altenburgerland(\/|$)/i,
         group: true,
       },
-*/      {
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Tomahaxx_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Tomahaxx_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/flensburg(\/|$)/i,
+        group: true,
+      },
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Suatec_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Suatec_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/schwarzenbek-geesthacht(\/|$)/i,
+        group: true,
+      },
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Raiffeisenbank-Lauenburg_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Raiffeisenbank-Lauenburg_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/ratzeburg(\/|$)/i,
+        group: true,
+      },
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/LTG.next_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/LTG.next_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/ratzeburg(\/|$)/i,
+        group: true,
+      },
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-Lomoth_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-Lomoth_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/ratzeburg(\/|$)/i,
+        group: true,
+      },
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/MTV-Vorsfelde_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/MTV-Vorsfelde_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/wolfsburg(\/|$)/i,
+        group: true,
+      },
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Mexxon_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Mexxon_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/bad-nauheim(\/|$)/i,
+        group: true,
+      },
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Haspa_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Haspa_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/hamburg(\/|$)/i,
+        group: true,
+      },
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-Kleber_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-Kleber_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/bad-oldesloe(\/|$)/i,
+        group: true,
+      },
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Expert_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Expert_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/husum(\/|$)/i,
+        group: true,
+      },
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Expert_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Expert_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/husum(\/|$)/i,
+        group: true,
+      },
+      {
         picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_WHU-Finance-Society.png',
         link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_WHU-Finance-Society.png',
         schoolPathRegex: /^\/whu(\/|$)/i,
@@ -152,18 +180,6 @@ angular.module('tradity').
         link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_BAML.png',
         group: true,
       },*/
-      {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Autzen_Tradity_Boersenspiel.png',
-        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Autzen_Tradity_Boersenspiel.png',
-        schoolPathRegex: /^\/schleswig(\/|$)/i,
-        group: true,
-      },
-      {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-Roeh_Tradity_Boersenspiel.png',
-        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-Roeh_Tradity_Boersenspiel.png',
-        schoolPathRegex: /^\/schleswig(\/|$)/i,
-        group: true,
-      },
       {
         picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_WHU.png',
         link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_WHU.png',

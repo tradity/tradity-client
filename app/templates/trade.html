@@ -142,7 +142,7 @@
             <label class="trade" for="limit-stop" translate>What is the stop/limit price?</label>
             <translate><input type="text" ng-model="trade.xvalue" placeholder="Stop/limit price" id="limit-stop" autocomplete="off" class="options-input mobile-full" /></translate>
           </div>
-          <div ng-show="trade.isAdmin">
+          <div ng-show="isAdmin">
             <label for="force-now" translate>Force trade</label>
             <input type="checkbox" ng-model="trade.forceNow" id="force-now" />
           </div>

@@ -54,7 +54,7 @@
     "angular-debounce": "~1.0.1",
     "angular-dialog-service": "m-e-conroy/angular-dialog-service#b6471bb",
     "angular-events-calendar": "^1.0.0",
-    "angular-gettext": "~2.2.1",
+    "angular-gettext": "addaleax/angular-gettext#development-all",
     "angular-md5": "*",
     "angular-sanitize": "1.5.0-rc.0",
     "angular-ui-bootstrap": "0.14.x",

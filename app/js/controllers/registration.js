@@ -189,11 +189,11 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
         type: 'danger',
         msg: gettextCatalog.getString('Please indicate which organization or school you belong to!')
       });
-    if (isNaN(parseInt(vm.genderIndex)) && vm.genderIndex !== null)
+    /*if (isNaN(parseInt(vm.genderIndex)) && vm.genderIndex !== null)
       return vm.alerts.push({
         type: 'danger',
         msg: gettextCatalog.getString('Please indicate your gender or choose “Prefer not to say”.')
-      });
+      });*/
 
     // var d = Date.UTC($scope.birthdayy, $scope.birthdaym - 1, $scope.birthdayd);
     // if (!$scope.birthdayy) d = null;

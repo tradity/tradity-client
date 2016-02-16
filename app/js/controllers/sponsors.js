@@ -159,6 +159,12 @@ angular.module('tradity').
         group: true,
       },
       {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-Roeh_Tradity_Boersenspiel.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Fahrschule-Roeh_Tradity_Boersenspiel.png',
+        schoolPathRegex: /^\/schleswig(\/|$)/i,
+        group: true,
+      },
+      {
         picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_WHU.png',
         link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_WHU.png',
         group: true,

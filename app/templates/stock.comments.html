@@ -5,7 +5,20 @@
   <div ng-show="comments.length > 0">
     <blockquote class="wikifolioComments">
       <div ng-repeat="comment in comments">
-        <a ng-href="https://{{comment.Wikifolio.Url}}" target="_blank">{{comment.TraderName}}: {{comment.Message}}</a>
+        <a ng-href="https://{{comment.Wikifolio.Url}}" target="_blank">
+          <span style="white-space-collapse: discard">
+            <!-- The reason for the weird comments here is basically
+                 that I have no idea how to remove the white space
+                 before the final „:“ with cool CSS tricks
+                 /addaleax
+                 -->
+            <translate>Comment by<span class="wikifolio-tradername">„{{comment.TraderName}}“</span></translate><!--
+            --><span class="wikifolio-short-desc" ng-show="comment.Wikifolio.ShortDescription"><!--
+            -->  (Wikifolio „{{comment.Wikifolio.ShortDescription}}“)<!--
+            --></span>:
+          </span>
+          <span class="wikifolio-message">{{comment.Message}}</span>
+        </a>
         <hr/>
       </div>
       <footer translate>

@@ -50,8 +50,8 @@ angular.module('tradity').
         group: true,
       },
       {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/VR-Bank-Ostholstein_Tradity_Boersenspiel.png',
-        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/VR-Bank-Ostholstein_Tradity_Boersenspiel.png',
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Banner_Tradity_Luetjenburg_2.png',
+        link: 'www.meine-vrbank.de',
         schoolPathRegex: /^\/luetjenburg(\/|$)/i,
         group: true,
       },
@@ -187,7 +187,7 @@ angular.module('tradity').
       },
       {
         picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Wikifolio_Tradity_Boersenspiel.png',
-        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Wikifolio_Tradity_Boersenspiel.png',
+        link: 'https://www.wikifolio.com/de/de/home',
         group: true,
       },
       {

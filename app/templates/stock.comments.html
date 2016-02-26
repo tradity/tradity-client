@@ -5,7 +5,7 @@
   <div ng-show="comments.length > 0">
     <blockquote class="wikifolioComments">
       <div ng-repeat="comment in comments">
-        <a ng-href="https://{{comment.Wikifolio.Url}}" target="_blank">
+        <a ng-href="https://{{comment.Wikifolio.Url}}?utm_source=tradity.de&utm_medium=landingpage&utm_content=wf-comment&utm_campaign={{embedder}}" target="_blank">
           <span style="white-space-collapse: discard">
             <!-- The reason for the weird comments here is basically
                  that I have no idea how to remove the white space
@@ -22,7 +22,7 @@
         <hr/>
       </div>
       <footer translate>
-        by <a target="_blank" href="https://www.wikifolio.com"><img src="img/wikifoliologo.png" alt="Wikifolio" /></a>
+        by <a target="_blank" href="https://www.wikifolio.com/de/de/home?utm_source=tradity.de&utm_medium=landingpage&utm_content=wf-logo&utm_campaign={{embedder}}"><img src="img/wikifoliologo.png" alt="Wikifolio" /></a>
       </footer>
     </blockquote>
   </div>

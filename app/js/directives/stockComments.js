@@ -38,7 +38,8 @@ angular.module('tradity').
       templateUrl: 'app/templates/stock.comments.html',
       scope:{
         stockinfo: '=',
-        autoload: '@'
+        autoload: '@',
+        embedder: '@'
       }
     };
   });

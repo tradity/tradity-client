@@ -187,7 +187,7 @@ angular.module('tradity').
       },
       {
         picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Wikifolio_Tradity_Boersenspiel.png',
-        link: 'https://www.wikifolio.com/de/de/home',
+        link: 'https://www.wikifolio.com/de/de/home?utm_source=tradity.de&utm_medium=landingpage&utm_content=wf-logo&utm_campaign=depot',
         group: true,
       },
       {

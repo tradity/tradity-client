@@ -63,7 +63,6 @@
     "bootstrap": "3.3.x",
     "clipboard": "~1.5.3",
     "connect-modrewrite": "^0.7.5",
-    "cytoscape": "~2.6.3",
     "debug": "nhaesler/debug#100cf7e",
     "font-awesome": "4.5.0",
     "jquery": "2.1.1",

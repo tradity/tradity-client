@@ -53,66 +53,6 @@ angular.module('tradity').
     $scope.showQContexts = {};
     $scope.qctxDebug = false;
     
-    // XXX fileref
-    asyncLoadJS(['/node_modules/cytoscape/dist/cytoscape.min.js']).then(function() {
-      socket.on('get-server-statistics', function(data) {
-        if (data.code != 'get-server-statistics-success')
-          return;
-        
-        $scope.servers = data.servers.map(function(srv) { return srv[0]; });
-        
-        graph = cytoscape({
-          container: document.getElementById('server-bus-graph'),
-          elements: $scope.servers[0].bus.busGraph.elements,
-          layout: { name: 'circle' },
-          style: cytoscape.stylesheet()
-            .selector('node')
-              .css({
-                'font-size': '8pt',
-                'content': 'data(id)'
-              })
-            .selector('edge')
-              .css({
-                'font-size': '8pt',
-                'content': 'data(weight)'
-              })
-        });
-        
-        graph.nodes().forEach(function(e) {
-          e.on('tap', function() {
-            $location.hash(e.data().id);
-          });
-        });
-        
-        for (var i = 0; $scope.qctxDebug && i < $scope.servers.length; ++i) {
-          var srv = $scope.servers[i];
-          srv.allQContexts = [];
-          
-          var recurseListQContexts = function(ctx) { // jshint ignore:line
-            ctx.openConnectionsJSON = JSON.stringify(ctx.openConnections);
-            ctx.tableLocksJSON = JSON.stringify(ctx.tableLocks);
-            
-            srv.allQContexts.push(ctx);
-            for (var i = 0; i < ctx.childContexts.length; ++i)
-              recurseListQContexts(ctx.childContexts[i]);
-          }; // jshint ignore:line
-          
-          recurseListQContexts(srv.qcontexts);
-        }
-      });
-      
-      $scope.reloadServers();
-    });
-    
-    $scope.reloadServers = function() {
-      socket.emit('get-server-statistics', {
-        qctxDebug: $scope.qctxDebug
-      });
-    };
-    
-    var reloadServersInterval = $interval($scope.reloadServers, 10000);
-    $scope.$on('$destroy', function() { $interval.cancel(reloadServersInterval); });
-
     $scope.$watch('startTimespanOffsetDays', function() { $scope.draw(); });
     $scope.$watch('endTimespanOffsetDays', function() { $scope.draw(); });
     

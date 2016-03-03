@@ -134,12 +134,6 @@ angular.module('tradity').
         group: true,
       },
       {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Expert_Tradity_Boersenspiel.png',
-        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2016/02/Expert_Tradity_Boersenspiel.png',
-        schoolPathRegex: /^\/husum(\/|$)/i,
-        group: true,
-      },
-      {
         picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_WHU-Finance-Society.png',
         link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_WHU-Finance-Society.png',
         schoolPathRegex: /^\/whu(\/|$)/i,
@@ -175,11 +169,11 @@ angular.module('tradity').
         schoolPathRegex: /^\/unistgallen(\/|$)/i,
         group: true,
       },
-/*      {
-        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_BAML.png',
-        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_BAML.png',
+      {
+        picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_ACXIT-Capital-Partners.png',
+        link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_ACXIT-Capital-Partners.png',
         group: true,
-      },*/
+      },
       {
         picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_WHU.png',
         link: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/11/Tradity_Boersenspiel_WHU.png',

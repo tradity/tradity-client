@@ -48,31 +48,33 @@ angular.module('tradity').
       return (2 * weightedSum) / (data.length * sum) - 1.0 - (1 / data.length);
     };
     
-    socket.on('list-all-users', function(data) {
-      if (data.code != 'list-all-users-success')
-        return;
-    
-      $scope.userlist = data.results;
+    $scope.listAllUsers = function() {
+      socket.get('/users').then(function(data) {
+        if (data.code != 'list-all-users-success')
+          return;
       
-      $scope.usercount = 0;
-      $scope.tradeusers = 0;
-      $scope.tickusers = 0;
-      $scope.verifusers = 0;
-      
-      var tradedistr = [];
-      
-      for (var i = 0; i < $scope.userlist.length; ++i) {
-        var u = $scope.userlist[i];
-        ++$scope.usercount;
-        if (u.emailverif) ++$scope.verifusers;
-        if (u.tradecount >= 1) ++$scope.tradeusers;
+        $scope.userlist = data.results;
         
-        tradedistr.push(u.tradecount);
-      }
-      
-      tradedistr.sort();
-      $scope.tradeGini = gini(tradedistr);
-    }, $scope);
+        $scope.usercount = 0;
+        $scope.tradeusers = 0;
+        $scope.tickusers = 0;
+        $scope.verifusers = 0;
+        
+        var tradedistr = [];
+        
+        for (var i = 0; i < $scope.userlist.length; ++i) {
+          var u = $scope.userlist[i];
+          ++$scope.usercount;
+          if (u.emailverif) ++$scope.verifusers;
+          if (u.tradecount >= 1) ++$scope.tradeusers;
+          
+          tradedistr.push(u.tradecount);
+        }
+        
+        tradedistr.sort();
+        $scope.tradeGini = gini(tradedistr);
+      });
+    };
     
     $scope.exportEmailCSV = function() {
       var quote = function(s) {
@@ -94,17 +96,18 @@ angular.module('tradity').
       window.open(url, 'export_email_csv');
     };
     
-    socket.emit('list-all-users');
+    $scope.listAllUsers();
     
     $scope.changeUserEMail = function(user) {
       var email = prompt('Geänderte E-Mail-Adresse: (leer lassen, um es bei „' + user.email + '“ zu belassen)') || user.email;
       var emailverif = confirm('E-Mail-Adresse bestätigt?');
-      socket.emit('change-user-email', {
-        uid: user.uid,
-        email: email,
-        emailverif: emailverif
-      }, function(data) {
-        socket.emit('list-all-users');
+      socket.put('/user/' + user.uid + '/email', {
+        data: {
+          email: email,
+          emailverif: emailverif
+        }
+      }).then(function(data) {
+        $scope.listAllUsers();
       });
     };
     
@@ -112,11 +115,9 @@ angular.module('tradity').
       if (!confirm('Wirklich User ' + user.uid + ' („' + user.name + '“) löschen?'))
         return;
       
-      socket.emit('delete-user', {
-        uid: user.uid
-      }, function(data) {
+      socket.delete('/user/' + user.uid).then(function(data) {
         alert('Ein User weniger… *schnief*');
-        socket.emit('list-all-users');
+        $scope.listAllUsers();
       });
     };
   });

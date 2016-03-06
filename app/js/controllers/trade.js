@@ -10,7 +10,7 @@ angular.module('tradity').
     var vm = this;
     vm.amount = null;
     vm.value = null;
-    vm.stockid = null;
+    vm.stocktextid = null;
     vm.stockname = null;
     vm.leader = null;
     vm.cur = null;
@@ -32,7 +32,7 @@ angular.module('tradity').
     vm.buy = function() {
       if (!vm.amount)
         return;
-      if (!vm.leader && !vm.stockid)
+      if (!vm.leader && !vm.stocktextid)
         return dialogs.error('tradity', gettextCatalog.getString('You need to choose a stock!'));
         
       var dlg = dialogs.confirm(gettextCatalog.getString('Trade'),
@@ -43,17 +43,17 @@ angular.module('tradity').
         }));
 
       dlg.result.then(function(btn) {
-        /*if (vm.stockid == 'US38259P5089')  {
+        /*if (vm.stocktextid == 'US38259P5089')  {
           $state.go('game.depot.listing');
           return;
-        } else if (vm.stockid = 'walkthrough') {
+        } else if (vm.stocktextid = 'walkthrough') {
           $state.go('game.ranking.all');
           return;
         }*/
 
         var query = {
           amount: vm.amount * vm.sellbuy,
-          stockid: vm.stockid,
+          stocktextid: vm.stocktextid,
           leader: vm.leader,
           forceNow: vm.forceNow,
           retainUntilCode: 'stock-buy-success',
@@ -66,7 +66,7 @@ angular.module('tradity').
             ordertime: new Date().getTime()
           }
         };
-        var qtype = 'stock-buy';
+        var url = '/trade';
         if (vm.xtype != 'market') {
           if (vm.xvalue == null)
             return dialogs.error('tradity', gettextCatalog.getString('Please enter a numerical stop/limit value'));
@@ -74,59 +74,55 @@ angular.module('tradity').
           var compar = !((vm.xtype == 'limit') ^ (vm.amount >= 0) ^ (vm.sellbuy < 0)) ? '<' : '>';
           
           var condition = '';
-          var stockid = vm.stockid;
+          var stocktextid = vm.stocktextid;
           if (!vm.leader)
-            condition = 'stock::' + vm.stockid + '::exchange-open > 0 ∧ ';
+            condition = 'stock::' + vm.stocktextid + '::exchange-open > 0 ∧ ';
           else
-            stockid = '__LEADER_' + vm.leader + '__';
-          condition += 'stock::' + stockid + '::' + fieldname + ' ' + compar + ' ' + (parseFloat(vm.xvalue.replace(',', '.')) * 10000);
-          query.type = qtype;
+            stocktextid = '__LEADER_' + vm.leader + '__';
+          condition += 'stock::' + stocktextid + '::' + fieldname + ' ' + compar + ' ' + (parseFloat(vm.xvalue.replace(',', '.')) * 10000);
+          query.type = 'StockTrade';
           query = {
             condition: condition,
             query: query
           };
-          qtype = 'dquery';
+          url = '/dqueries';
         }
         
-        socket.emit(qtype, query).then(function(data) {
+        socket.post(url, { data: query }).then(function(result) {
           var modal;
           
-          switch (data.code) {
-            case 'dquery-success':
-              modal = dialogs.notify('tradity', gettextCatalog.getString('The trade will be executed as soon as the given conditions are fulfilled.'));
-              modal.result.then(function(btn) {
-                $state.go('game.depot.transactions');
-              });
-              break;
-            case 'stock-buy-success':
-              modal = dialogs.notify('tradity', gettextCatalog.getString('Successfully traded!'));
-              modal.result.then(function(btn) {
-                $state.go('game.depot.listing');
-              });
-              break;
-            case 'stock-buy-email-not-verif':
+          if (result._success) {
+            modal = dialogs.notify('tradity', gettextCatalog.getString('Successfully traded!'));
+            modal.result.then(function(btn) {
+              $state.go('game.depot.transactions');
+            });
+            return;
+          }
+          
+          switch (result.identifier) {
+            case 'email-not-verif':
               dialogs.error('tradity', gettextCatalog.getString('You need to provide a verified e-mail address in order to be eligible for follower trades!'));
               break;
-            case 'stock-buy-out-of-money':
+            case 'out-of-money':
               dialogs.error('tradity', gettextCatalog.getString('You do not have enough leftover money for this trade!'));
               break;
-            case 'stock-buy-single-paper-share-exceed':
+            case 'single-paper-share-exceed':
               dialogs.error('tradity', gettextCatalog.getString('Only 50\u00a0% of your assets may consist of a single stock!'));
               break;
-            case 'stock-buy-not-enough-stocks':
+            case 'not-enough-stocks':
               dialogs.error('tradity', gettextCatalog.getString('Not enough stocks!'));
               break;
-            case 'stock-buy-autodelay-sxnotopen':
+            case 'autodelay-sxnotopen':
               modal = dialogs.notify('tradity', gettextCatalog.getString('The trade will be executed when the stock exchange opens'));
               modal.result.then(function(btn) {
                 $state.go('game.depot.transactions');
               });
               break;
-            case 'stock-buy-over-pieces-limit':
+            case 'over-pieces-limit':
 
               dialogs.error('tradity', gettextCatalog.getString('Unfortunately, your trade exceeds the maximum tradable amount of this stock'));
               break;
-            case 'stock-buy-stock-not-found':
+            case 'stock-not-found':
               dialogs.error('tradity', gettextCatalog.getString('This stock could not be found!'));
               break;
           }
@@ -135,13 +131,14 @@ angular.module('tradity').
     };
     
     vm.searchStocks = function(stockname) {
-      return socket.emit('stock-search', {
-        name: stockname
-      }).then(function(data) {
-        if (data.code != 'stock-search-success')
-          throw new Error('Stock search failed with ' + data.code);
+      return socket.get('/stocks/search', {
+        params: { name: stockname }
+      }).then(function(result) {
+        if (!result._success) {
+          throw new Error('Stock search failed with ' + JSON.stringify(result));
+        }
         
-        return orderByFilter(data.results.filter(function(stock) {
+        return orderByFilter(result.data.filter(function(stock) {
           return !(stock.leader && vm.ownUser && stock.leader === vm.ownUser.uid);
         }).map(function(stock) {
           stock.textName = stock.leader ? gettextCatalog.getString('Leader: %1').replace(/%1/g, stock.leadername) : stock.name;
@@ -155,7 +152,7 @@ angular.module('tradity').
     
     vm.selectedStock = function(stock) {
       vm.stockname = stock.leader ? stock.textName : stock.name;
-      vm.stockid = stock.leader ? null : stock.stockid;
+      vm.stocktextid = stock.leader ? null : stock.stocktextid;
       vm.leader = stock.leader || null;
       vm.cur = stock;
       vm.value = vm.amount = null;
@@ -189,16 +186,16 @@ angular.module('tradity').
       } else if ($stateParams.sellbuy == 'buy') {
         vm.sellbuy = 1;
       }
-      vm.stockid = $stateParams.stockId;
+      vm.stocktextid = $stateParams.stockId;
     
-      /*if (vm.stockid != 'walkthrough') {*/
-        socket.emit('stock-search', {
-          name: vm.stockid
-        }).then(function(data) {
-          if (data.code === 'stock-search-success') {
-            for (var i = 0; i < data.results.length; ++i) {
-              if (data.results[i].stocktextid == vm.stockid) {
-                vm.selectedStock(data.results[i]);
+      /*if (vm.stocktextid != 'walkthrough') {*/
+        socket.get('/stocks/search', {
+          params: { name: vm.stocktextid }
+        }).then(function(result) {
+          if (result._success) {
+            for (var i = 0; i < result.data.length; ++i) {
+              if (result.data[i].stocktextid == vm.stocktextid) {
+                vm.selectedStock(result.data[i]);
                 break;
               }
             }
@@ -229,8 +226,8 @@ angular.module('tradity').
       }*/
     }
     
-    socket.emit('list-popular-stocks', {_cache: 1800}).then(function(data) {
-      vm.popularStocks = data.results;
+    socket.get('/stocks/popular', { cache: true }).then(function(result) {
+      vm.popularStocks = result.data;
     });
   });
 

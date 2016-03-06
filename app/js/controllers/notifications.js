@@ -62,9 +62,7 @@ angular.module('tradity').
     $scope.seen = function (id) {
       if ($scope.notifications[id].seen === 0) {
         $scope.notifications[id].seen = 1;
-        socket.emit('mark-as-seen', {
-          eventid: $scope.notifications[id].eventid
-        });
+        socket.post('/events/' + $scope.notifications[id].eventid + '/seen');
         $scope.countUnseen();
       }
     };

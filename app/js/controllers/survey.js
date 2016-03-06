@@ -30,16 +30,17 @@ controller('SurveyCtrl', function($scope, $stateParams, $state, gettextCatalog, 
   vm.results = [];
   vm.startTime = Date.now();
   
-  vm.questionnaires = socket.emit('list-questionnaires').then(function(data) {
-    if (data.code != 'list-questionnaires-success' ||
-        Object.keys(data.questionnaires).length === 0)
+  vm.questionnaires = socket.get('/questionnaires').then(function(result) {
+    if (!result._success ||
+        Object.keys(result.data.questionnaires).length === 0) {
       return $state.go('game.feed');
+    }
     
     var key = $stateParams.questionnaire ||
-      Object.keys(data.questionnaires).sort()[0];
+      Object.keys(result.data.questionnaires).sort()[0];
     
-    vm.questionnaire = data.questionnaires[key];
-    return vm.questionnaires = data.questionnaires;
+    vm.questionnaire = result.data.questionnaires[key];
+    return vm.questionnaires = result.data.questionnaires;
   });
   
   vm.saveQuestionnaire = function() {
@@ -80,16 +81,17 @@ controller('SurveyCtrl', function($scope, $stateParams, $state, gettextCatalog, 
       }
     }
     
-    socket.emit('save-questionnaire', {
-      results: results,
-      questionnaire: vm.questionnaire.questionnaire_id,
-      fill_time: Date.now() - vm.startTime,
-      fill_language: vm.lang
-    }, function(data) {
-      if (data.code == 'save-questionnaire-success')
+    socket.post('/questionnaire/' + vm.questionnaire.questionnaire_id, {
+      data: {
+        results: results,
+        fill_time: Date.now() - vm.startTime,
+        fill_language: vm.lang
+      }
+    }).then(function(result) {
+      if (result._success)
         $state.go('game.feed');
       else
-        return dialogs.error('tradity', gettextCatalog.getString('An error occurred during processing of the questionnaire\n' + JSON.stringify(data)));
+        return dialogs.error('tradity', gettextCatalog.getString('An error occurred during processing of the questionnaire\n' + JSON.stringify(result)));
     });
   };
 });

@@ -41,15 +41,14 @@ angular.module('tradity').
     });
     
     $scope.addToWatchlist = function() {
-      socket.emit('watchlist-add', {
-        stockid: $scope.user.lstockid
-      },
-      function(data) {
-        if (data.code == 'watchlist-add-success') {
+      socket.post('/watchlist', {
+        data: { stockid: $scope.user.lstockid }
+      }).then(function(result) {
+        if (result._success) {
           notification(gettextCatalog.getString('Added user {{name}} to your watch list', {
             name: $scope.user.name
           }), true);
-        } else if (data.code == 'watchlist-add-notfound') {
+        } else if (result.identifier == 'stock-notfound') {
           notification(gettextCatalog.getString('User not found – something went wrong here'));
         }
       });

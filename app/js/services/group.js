@@ -13,8 +13,8 @@
  */
 angular.module('tradity')
   .factory('group', function ($q,socket) {
-    var parseGroup = function(data) {
-      return data;
+    var parseGroup = function(result) {
+      return result.data;
     };
 
     return {
@@ -28,11 +28,10 @@ angular.module('tradity')
        * get schoolinfo
        */
       get:function(schoolid) {
-        return socket.emit('get-school-info', {
-          lookfor: schoolid,
-          _cache: 30
-        }).then(function(data){
-          return parseGroup(data);
+        return socket.get('/school', {
+          params: { lookfor: schoolid }
+        }).then(function(result){
+          return parseGroup(result);
         });
       },
     };

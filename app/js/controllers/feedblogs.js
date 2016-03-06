@@ -28,33 +28,35 @@ angular.module('tradity').
         curScope = curScope.$parent;
       }
       
-      return socket.emit('add-wordpress-feed', $scope.newblog).then(function(data) {
-        if (data.code == 'add-wordpress-feed-success') {
+      return socket.post('/wordpress/addFeed', {
+        data: $scope.newblog
+      }).then(function(result) {
+        if (result._success) {
           notification(gettextCatalog.getString('Ok!'), true);
-          socket.emit('list-wordpress-feeds');
+          $scope.listWordpressFeeds();
         } else {
-          notification(gettextCatalog.getString('Error: {{code}}', data));
+          notification(gettextCatalog.getString('Error: ') + JSON.stringify(data));
         }
       });
     };
     
     $scope.removeFeedblog = function(id) {
-      return socket.emit('remove-wordpress-feed', { blogid: id }).then(function(data) {
-        if (data.code == 'remove-wordpress-feed-success') {
+      return socket.delete('/wordpress/feeds/' + blogid).then(function(data) {
+        if (data._success) {
           notification(gettextCatalog.getString('Ok!'), true);
-          socket.emit('list-wordpress-feeds');
+          $scope.listWordpressFeeds();
         } else {
-          notification(gettextCatalog.getString('Error: {{code}}', data));
+          notification(gettextCatalog.getString('Error: ') + JSON.stringify(data));
         }
       });
     };
     
     $scope.processBlogs = function() {
-      socket.emit('process-wordpress-feed').then(function(data) {
-        if (data.code == 'process-wordpress-feed-success')
+      socket.post('/wordpress/processFeed').then(function(data) {
+        if (data._success)
           notification(gettextCatalog.getString('Ok!'), true);
         else
-          notification(gettextCatalog.getString('Error: {{code}}', data));
+          notification(gettextCatalog.getString('Error: ') + JSON.stringify(data));
       });
     };
   });

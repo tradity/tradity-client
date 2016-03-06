@@ -13,30 +13,27 @@ angular.module('tradity').
 
     $scope.search = function() {
       if ($scope.searchText.length !== 0) {
-        socket.emit('get-ranking', {
-          search: $scope.searchText,
-          includeAll: true,
-          _cache: 20
-        }).then(function(data) {
-          if (data.code == 'get-ranking-success')
-            $scope.users = data.result;
+        socket.get('/ranking', {
+          params: { search: $scope.searchText, includeAll: true }
+        }).then(function(result) {
+          if (result._success) {
+            $scope.users = result.data;
+          }
         });
         
         $scope.filter = $scope.searchText;
-        socket.emit('list-schools', { 
-          _cache: 60,
-          search: $scope.searchText,
-        }).then(function(schoollist) {
-          $scope.groups = schoollist.result;
+        socket.get('/schools', { 
+          params: { search: $scope.searchText }
+        }).then(function(result) {
+          $scope.groups = result.data;
         });  
       }
 
       if ($scope.searchText.length > 2) 
-        socket.emit('stock-search', { 
-          _cache: 60,
-          name: $scope.searchText
-        }, function(stocklist) {
-          $scope.stocks = stocklist.results;
+        socket.get('/stocks/search', { 
+          params: { name: $scope.searchText }
+        }).then(function(result) {
+          $scope.stocks = result.data;
         });  
     };
     

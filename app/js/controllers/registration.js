@@ -47,10 +47,10 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
   ];
 
   var validationMsg = { // [code: msg]
-    'reg-invalid-email': gettextCatalog.getString('Please enter your valid email'),
-    'reg-email-already-present': gettextCatalog.getString('Email has been used to register with us'),
-    'reg-name-invalid-char': gettextCatalog.getString('Username contains invalid characters!'),
-    'reg-name-already-present': gettextCatalog.getString('Username has been taken'),
+    'email-invalid-email': gettextCatalog.getString('Please enter your valid email'),
+    'email-already-present': gettextCatalog.getString('Email has been used to register with us'),
+    'name-invalid-char': gettextCatalog.getString('Username contains invalid characters!'),
+    'name-already-present': gettextCatalog.getString('Username has been taken'),
   };
 
   // possibly redirect to game feed when already logged in
@@ -59,21 +59,21 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
   });
 
 
-  vm.questionnaire = socket.emit('list-questionnaires').then(function(data) {
-    if (data.code != 'list-questionnaires-success')
+  vm.questionnaire = socket.get('/questionnaires').then(function(result) {
+    if (!result._success)
       return;
     
     // ugly, works for now
-    return vm.questionnaire = data.questionnaires[1];
+    return vm.questionnaire = result.data.questionnaires[1];
   });
 
   // we work with the indexes in the gender array,
   // since angular cannot handle stuff like “Third Gender”
-  vm.genders = socket.emit('list-genders', { _cache: 500 }).then(function(data) {
-    if (data.code != 'list-genders-success')
+  vm.genders = socket.get('/genders', { cache: true }).then(function(result) {
+    if (!result._success)
       return;
 
-    return vm.genders = data.genders;
+    return vm.genders = result.data.genders;
   });
 
   vm.alerts = [];
@@ -89,18 +89,16 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
 
   if (vm.invitekey) {
     // XXX
-    socket.emit('get-invitekey-info', {
-      invitekey: vm.invitekey
-    }).then(function(data) {
-      if (data.code == 'get-invitekey-info-success') {
-        vm.email = data.result.email;
-        vm.school = data.result.schoolid;
+    socket.get('/invitekey' + vm.invitekey).then(function(result) {
+      if (result._success) {
+        vm.email = result.data.email;
+        vm.school = result.data.schoolid;
       }
     });
   }
 
-  socket.on('register', function(data) {
-    switch (data.code) {
+  $scope.registerResultHandler = function(data) {
+    switch (result.code) {
       case 'reg-success':
         var modal = dialogs.notify(
           gettextCatalog.getString('Welcome to Tradity!'),
@@ -161,7 +159,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
         });
         break;
     }
-  });
+  };
 
   vm.register = function() {
     if (!vm.email)
@@ -199,51 +197,49 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
     // if (!$scope.birthdayy) d = null;
 
     safestorage.setPassword(vm.password);
-    socket.emit('register', {
-      name: vm.name,
-      giv_name: vm.giv_name,
-      fam_name: vm.fam_name,
-      realnamepublish: vm.realnamepublish,
-      password: vm.password,
-      email: vm.email,
-      school: vm.school,
-      schoolclass: vm.schoolclass,
-      betakey: vm.betakey,
-      street: vm.street,
-      zipcode: vm.zipcode,
-      town: vm.town,
-      lang: languageManager.setCurrentLanguage(vm.lang),
-      traditye: vm.traditye,
-      dla_optin: vm.dla_optin,
-      invitekey: vm.invitekey,
-      gender: vm.genderIndex === null ? null : vm.genders.genders[vm.genderIndex],
-      // birthday: d
-      birthday: vm.birthday
-    });
+    socket.post('/register', {
+      data: {
+        name: vm.name,
+        giv_name: vm.giv_name,
+        fam_name: vm.fam_name,
+        realnamepublish: vm.realnamepublish,
+        password: vm.password,
+        email: vm.email,
+        school: vm.school,
+        schoolclass: vm.schoolclass,
+        betakey: vm.betakey,
+        street: vm.street,
+        zipcode: vm.zipcode,
+        town: vm.town,
+        lang: languageManager.setCurrentLanguage(vm.lang),
+        traditye: vm.traditye,
+        dla_optin: vm.dla_optin,
+        invitekey: vm.invitekey,
+        gender: vm.genderIndex === null ? null : vm.genders.genders[vm.genderIndex],
+        // birthday: d
+        birthday: vm.birthday
+      }
+    }).then($scope.registerResultHandler);
   };
 
   vm.validateEmail = function() {
-    socket.emit('validate-email', {
-      email: vm.email
-    }, function(data) {
-      vm.validateStatus.email = data.code != 'validate-email-valid';
+    socket.get('/validate-email/' + vm.email).then(function(result) {
+      vm.validateStatus.email = !result._success;
       if (vm.validateStatus.email)
         vm.alerts.push({
           type: 'danger',
-          msg: validationMsg[data.code]
+          msg: validationMsg['email-' + result.identifier]
         });
     });
   };
 
   vm.validateName = function() {
-    socket.emit('validate-username', {
-      name: vm.name
-    }, function(data) {
-      vm.validateStatus.name = data.code != 'validate-username-valid';
+    socket.get('/validate-username/' + vm.name).then(function(result) {
+      vm.validateStatus.name = !result._success;
       if (vm.validateStatus.name)
         vm.alerts.push({
           type: 'danger',
-          msg: validationMsg[data.code]
+          msg: validationMsg['name-' + result.identifier]
         });
     });
   };

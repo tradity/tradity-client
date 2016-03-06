@@ -38,7 +38,7 @@
           <h3 translate>Most popular stocks</h3>
             <div ng-class="{hideMost: !trade.showPopularStocks}">
               <ol class="popularstocks">
-                <li ng-repeat="stock in trade.popularStocks"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: stock.stockid, amount: 0})">{{stock.stockname}}</a></li>
+                <li ng-repeat="stock in trade.popularStocks"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: stock.stocktextid, amount: 0})">{{stock.stockname}}</a></li>
               </ol>
               <a class="trade-more" ng-click="trade.togglePopularStocks()" ng-show="!trade.showPopularStocks" translate>List more stocks</a>
               <a class="trade-more" ng-click="trade.togglePopularStocks()" ng-show="trade.showPopularStocks" translate>List less stocks</a>
@@ -80,7 +80,7 @@
               </tr>
               <tr ng-hide="trade.leader" class="isin">
                 <th translate>ISIN</th>
-                <td ng-show="trade.cur">{{trade.cur.stockid}}</td>
+                <td ng-show="trade.cur">{{trade.cur.stocktextid}}</td>
               </tr>
               <tr ng-hide="trade.leader">
                 <th><translate><span class="batch tooltip" data-info="You can only trade the number of shares which were also traded in reality at the stock exchange. For example, if today only 1000 shares have been traded, you can sell or buy at most 1000 shares yourself. Notice that “penny stocks” often have significantly reduced liquidity.">&#xF0AD;</span> Tradable amount</translate></th>
@@ -88,7 +88,7 @@
               </tr>
               <tr ng-hide="trade.leader">
                 <th><translate>Stock information</translate></th>
-                <td ng-show="trade.cur" class="align"><a target="_blank" ng-href="http://www.boerse-frankfurt.de/suchergebnisse?_search={{trade.cur.stockid}}" translate>Overview</a></td>
+                <td ng-show="trade.cur" class="align"><a target="_blank" ng-href="http://www.boerse-frankfurt.de/suchergebnisse?_search={{trade.cur.stocktextid}}" translate>Overview</a></td>
               </tr>
             </table>
             <hr>

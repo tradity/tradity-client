@@ -24,7 +24,7 @@
     "node": ">=5.0.0"
   },
   "scripts": {
-    "lint": "jshint --config=.jshintrc --reporter=node_modules/jshint-stylish app/**/*.js",
+    "lint": "jshint --config=.jshintrc --reporter=node_modules/jshint-stylish app/js/*.js app/js/*/*.js",
     "test": "npm run lint",
     "gettext-extract": "angular-gettext-cli --files '{app/**/*.html,app/js/**/*.js}' --dest po/unstripped/templates.pot",
     "gettext-compile": "angular-gettext-cli --compile --files po/unstripped/de.po --dest dist/app/js/jit/l10n/de.json --module tradity --format json",
@@ -71,8 +71,6 @@
     "ng-infinite-scroll": "1.2.x",
     "nsPopover": "nohros/nsPopover#622a133b344b",
     "open-sans-fontface": "~1.2.0",
-    "socket.io-client": "^1.4.5",
-    "tradity-connection": "^0.10.0",
     "zxcvbn": "^4.2.0"
   },
   "private": true,

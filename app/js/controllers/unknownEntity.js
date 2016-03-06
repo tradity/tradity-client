@@ -7,20 +7,16 @@
 angular.module('tradity').
   controller('UnknownEntityCtrl', function($scope, $stateParams, $state, socket) {
     var entity = $stateParams.entity.replace(/\/$/, ''); // strip trailing slash
-    socket.emit('school-exists', {
-      lookfor: entity,
-      _cache: 30
-    }, function(data) {
-      if (data.code == 'school-exists-success' && data.exists) {
-        $state.go('game.group', {schoolid: data.path});
+    socket.get('/school-exists', {
+      params: { lookfor: entity }
+    }).then(function(result) {
+      if (result._success && result.data.exists) {
+        $state.go('game.group', {schoolid: result.data.path});
       } else {
         var strippedEntity = entity.replace(/^\//, ''); // strip leading slash
         
-        socket.emit('get-user-info', {
-          lookfor: strippedEntity,
-          _cache: 30
-        }, function(data) {
-          if (data.code == 'get-user-info-success') {
+        socket.get('/user/' + strippedEntity).then(function(result) {
+          if (result._success) {
             $state.go('game.profile', {userId: strippedEntity});
           } else {
             $state.go('error.404');

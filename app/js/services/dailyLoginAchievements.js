@@ -23,7 +23,7 @@ angular.module('tradity')
      * @param {object} force force
      */
     DailyLoginAchievements.prototype.submitToServer = function(force) {
-      return socket.emit('get-own-options').then(function(data) {
+      return socket.get('/options').then(function(data) {
         var certs = safestorage.getEntry('dl_certificates') || [];
       
         if ((data.result && data.result.dla_optin) || force) {
@@ -31,8 +31,8 @@ angular.module('tradity')
           for (var i = 0; i < certs.length; ++i)
             serverCerts.push(certs[i].cert);
           
-          return socket.emit('dl-achievement', {
-            certs: serverCerts
+          return socket.post('/achievements/client/daily-login-submit', {
+            data: { certs: serverCerts }
           });
         }
       });
@@ -76,9 +76,9 @@ angular.module('tradity')
           return; // already have an certificate for today
       }
       
-      socket.emit('get-daily-login-certificate').then(function(data) {
-        if (data.cert) {
-          certs.push({cert: data.cert, date: today});
+      socket.get('/achievements/client/daily-login-cert').then(function(result) {
+        if (result.data) {
+          certs.push({cert: result.data, date: today});
           safestorage.setEntry('dl_certificates', certs);
         }
         

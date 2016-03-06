@@ -12,33 +12,38 @@ angular.module('tradity').
     $scope.schoollist = [];
     $scope.feedblogs = [];
     
-    socket.on('list-schools', function(data) {
-      $scope.schoollist = data.result;
-    }, $scope);
+    $scope.getSchools = function() {
+      socket.get('/schools').then(function(result) {
+        $scope.schoollist = result.data;
+      });
+    };
     
-    socket.emit('list-schools');
+    $scope.getSchools();
     
-    socket.on('list-wordpress-feeds', function(data) {
-      $scope.feedblogs = data.results;
-    }, $scope);
+    $scope.listWordpressFeeds = function() {
+      socket.get('/wordpress/feeds').then(function(result) {
+        $scope.feedblogs = result.data;
+      });
+    };
     
-    socket.emit('list-wordpress-feeds');
+    $scope.listWordpressFeeds();
     
     $scope.renameSchool = function(school) {
       var newname = prompt('Neuer Name für „' + school.name + '“');
       if (!newname)
         return;
       
-      socket.emit('rename-school', {
-        schoolid: school.id,
-        schoolname: newname
-      }, function(data) {
-        if (data.code == 'rename-school-success')
+      socket.put('/school/' + school.id + '/name', {
+        data: {
+          schoolname: newname
+        }
+      }).then(function(data) {
+        if (data._success)
           alert('Ok!');
         else
-          alert('Fehler: ' + data.code);
+          alert('Fehler: ' + JSON.stringify(data));
         
-        socket.emit('list-schools');
+        $scope.getSchools();
       });
     };
     
@@ -47,17 +52,18 @@ angular.module('tradity').
       if (!newpath)
         return;
       
-      socket.emit('rename-school', {
-        schoolid: school.id,
-        schoolname: school.name,
-        schoolpath: newpath
-      }, function(data) {
-        if (data.code == 'rename-school-success')
+      socket.put('/school/' + school.id + '/name', {
+        data: {
+          schoolname: school.name,
+          schoolpath: newpath
+        }
+      }).then(function(data) {
+        if (data._success)
           alert('Ok!');
         else
-          alert('Fehler: ' + data.code);
+          alert('Error: ' + JSON.stringify(data));
         
-        socket.emit('list-schools');
+        $scope.getSchools();
       });
     };
     
@@ -65,44 +71,40 @@ angular.module('tradity').
       if (!confirm('Wirklich Schule ' + school.id + ' („' + school.name + '“) löschen?'))
         return;
       
-      socket.emit('join-schools', {
-        masterschool: null,
-        subschool: school.id
-      }, function(data) {
-        if (data.code == 'join-schools-success')
+      socket.post('/school/null/merge/' + school.id).then(function(data) {
+        if (data._success)
           alert('Ok!');
         else
-          alert('Fehler: ' + data.code);
+          alert('Error: ' + JSON.stringify(data));
         
-        socket.emit('list-schools');
+        $scope.getSchools();
       });
     };
     
     $scope.joinSchools = function() {
-      socket.emit('join-schools', {
-        masterschool: parseInt($scope.joinmaster),
-        subschool: parseInt($scope.joinsub)
-      }, function(data) {
-        if (data.code == 'join-schools-success')
+      socket.post('/school/' + $scope.joinmaster + '/merge/' + $scope.joinsub).then(function(data) {
+        if (data._success)
           alert('Ok!');
         else
-          alert('Fehler: ' + data.code);
+          alert('Error: ' + JSON.stringify(data));
         
-        socket.emit('list-schools');
+        $scope.getSchools();
       });
     };
     
     $scope.createSchool = function() {
-      socket.emit('create-school', {
-        schoolname: $scope.name,
-        schoolpath: $scope.path
-      }, function(data) {
-        if (data.code == 'create-school-success')
+      socket.post('/school', {
+        data: {
+          schoolname: $scope.name,
+          schoolpath: $scope.path
+        }
+      }).then(function(data) {
+        if (data._success)
           alert('Ok!');
         else
-          alert('Fehler: ' + data.code);
+          alert('Error: ' + JSON.stringify(data));
         
-        socket.emit('list-schools');
+        $scope.getSchools();
       });
     };
     

@@ -55,7 +55,7 @@
       <h3 translate>Popular stocks</h3>
       <div class="inner">
         <ol class="popularstocks">
-          <li ng-repeat="stock in school.popularStocks"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: stock.stockid, amount: 0})">{{stock.stockname}}</a></li>
+          <li ng-repeat="stock in school.popularStocks"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: stock.stocktextid, amount: 0})">{{stock.stockname}}</a></li>
         </ol>
       </div>
     </div>

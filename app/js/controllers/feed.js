@@ -38,14 +38,13 @@ angular.module('tradity').
     
     vm.displayFeed();
       
-    vm.questionnaire = socket.emit('list-questionnaires', {
-      _cache: 60
-    }).then(function(data) {
-      if (data.code != 'list-questionnaires-success' || !data.isPersonalized)
+    vm.questionnaire = socket.get('/questionnaires', { cache: true }).then(function(result) {
+      if (!result._success || !result.data.isPersonalized)
         return;
       
-      if (Object.keys(data.questionnaires).length > 0)
+      if (Object.keys(result.data.questionnaires).length > 0) {
         $state.go('survey');
+      }
     });
   });
 

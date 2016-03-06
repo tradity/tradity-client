@@ -23,15 +23,17 @@ angular.module('tradity').
     };
     
     $scope.loadEventStatistics = function() {
-      socket.emit('get-event-statistics', {
-        types: $scope.activeFilters($scope.globalTypeFilters),
-        _cache: 1800
+      socket.get('/activity/events', {
+        params: {
+          types: $scope.activeFilters($scope.globalTypeFilters).join(',')
+        },
+        cache: true
       }).then(function(result) {
-        if (result.code !== 'get-event-statistics-success') {
-          return alert('Error get-event-statistics: ' + result.code);
+        if (!result._success) {
+          return alert('Error get-event-statistics: ' + JSON.stringify(result));
         }
         
-        $scope.eventStatistics = result.result;
+        $scope.eventStatistics = result.data;
         $scope.eventCounts = $scope.eventStatistics.map(function(e) {
           var date = new Date(e.timeindex*1000);
           e.date = date;
@@ -52,21 +54,22 @@ angular.module('tradity').
       var dayID = $scope.selectedDay.toJSON();
       $scope.dayInfo = $scope.lookupDay[dayID];
       
-      socket.emit('list-all-events', {
-        omitUidFilter: true,
-        includeDeletedComments: true,
-        since: parseInt($scope.selectedDay.getTime() / 1000),
-        upto: parseInt($scope.selectedDay.getTime() / 1000 + 86400),
-        _cache: 60
+      socket.get('/events', {
+        params: {
+          omitUidFilter: true,
+          includeDeletedComments: true,
+          since: parseInt($scope.selectedDay.getTime() / 1000),
+          upto: parseInt($scope.selectedDay.getTime() / 1000 + 86400),
+        }
       }).then(function(result) {
-        if (result.code !== 'list-all-events-success') {
-          return alert('Error list-all-events: ' + result.code);
+        if (!result._success) {
+          return alert('Error list-all-events: ' + JSON.stringify(result));
         }
         
-        $scope.lookupDay[dayID].events = result.results;
+        $scope.lookupDay[dayID].events = result.data;
         $scope.lookupDay[dayID].eventTypes = [];
         
-        result.results.forEach(function(ev) {
+        result.data.forEach(function(ev) {
           if (typeof $scope.typeFilters[ev.type] === 'undefined') {
             $scope.typeFilters[ev.type] = true;
           }

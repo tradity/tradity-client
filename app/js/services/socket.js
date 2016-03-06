@@ -4,9 +4,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-window.enterDevMode = function() { document.cookie = 'devmode=1;expires=Fri, 31 Dec 9999 23:59:59 GMT'; };
-window.enterSrvDevMode = function() { document.cookie = 'srvdevmode=1;expires=Fri, 31 Dec 9999 23:59:59 GMT'; };
-
 /**
  * @ngdoc service
  * @name tradity.socket
@@ -15,7 +12,7 @@ window.enterSrvDevMode = function() { document.cookie = 'srvdevmode=1;expires=Fr
  * Factory
  */
 angular.module('tradity')
-  .factory('socket', function ($rootScope, $q, API_HOST, lzma) {
+  .factory('socket', function ($rootScope, API_HOST, $http) {
     var webKeyStorage = {
       getKey: function() {
         var s = localStorage || window.localStorage;
@@ -48,18 +45,83 @@ angular.module('tradity')
     
     var tradityClientVersion = typeof TRADITY_BUILD_STAMP != 'undefined' ? TRADITY_BUILD_STAMP : 'TDYC0';
     
-    var socket = new SoTradeConnection({
-      connect: function() { return io.connect(API_HOST); },
-      applyWrap: $rootScope.$apply.bind($rootScope),
-      logDevCheck: function() { return document.cookie.indexOf('devmode') !== -1; },
-      logSrvCheck: function() { return document.cookie.indexOf('srvdevmode') !== -1; },
-      lzma: lzma,
-      keyStorage: webKeyStorage,
-      Promise: $q,
-      clientSoftwareVersion: tradityClientVersion
-    });
+    var $scope = $rootScope.$new(true);
+    
+    var socket = function(options, url, method) {
+      options = options || {};
+      
+      if (!options.url) {
+        options.url = url;
+      }
+      
+      var origURL = options.url;
+      
+      options.url = API_HOST + '/api/v1' + options.url;
+      
+      if (!options.method) {
+        options.method = method;
+      }
+      
+      options.headers = options.headers || {};
+      options.headers['Authorization'] = webKeyStorage.getKey();
+      
+      if (!options.json) {
+        options.responseType = 'json';
+      }
+      
+      socket.openQueries++;
+      socket.sent++;
+      return $http(options).then(function(response) {
+        return response;
+      }, function(error) {
+        if (error.status) {
+          return error;
+        }
+        
+        throw error;
+      }).then(function(response) {
+        socket.openQueries--;
+        socket.received++;
+        
+        var body = response.data || {};
+        
+        body._success = response.status >= 200 && response.status <= 299;
+        
+        if (body.key) {
+          webKeyStorage.setKey(body.key);
+        }
+        
+        if (body._success && origURL.match(/^\/config/)) {
+          socket.serverConfig = body.result;
+        }
+        
+        $rootScope.$emit(options.uri, body);
+        $rootScope.$emit(origURL, body);
+        $rootScope.$emit('socket:answer', {
+          request: options,
+          response: response,
+          result: body,
+          origURL: origURL
+        });
+        
+        return body;
+      });
+    };
+    
+    socket.openQueries = 0;
+    socket.sent = 0;
+    socket.received = 0;
+    socket.hasOpenQueries = function() {
+      return socket.openQueries > 0;
+    };
+    socket.serverConfig = {};
+    
+    socket.get    = function(url, opt) { return socket(opt, url, 'GET'); };
+    socket.post   = function(url, opt) { return socket(opt, url, 'POST'); };
+    socket.delete = function(url, opt) { return socket(opt, url, 'DELETE'); };
+    socket.update = function(url, opt) { return socket(opt, url, 'UPDATE'); };
+    socket.put    = function(url, opt) { return socket(opt, url, 'PUT'); };
     
     return socket;
   });
-
 })();

@@ -7,7 +7,7 @@
 angular.module('tradity').
   controller('DepotCtrl', function($scope, $rootScope, socket, gettextCatalog) {
     var ownDepotOrUser = function() {
-      if (!$scope.ownUser)
+      if (!$scope.ownUser || !$scope.ownUser.uid)
         return;
       
       $scope.ownUser.depotvalue = 0;
@@ -16,32 +16,15 @@ angular.module('tradity').
       }
     };
 
-    socket.on('list-own-depot', function(data) {
-      if (data.code == 'list-own-depot-success') {
+    socket.get('/depot').then(function(data) {
+      if (data._success) {
         $scope.results = data.results;
         ownDepotOrUser();
       }
-      if ($rootScope.walkthrough)
-        $scope.results.unshift({
-          stockname:'Google',
-          buytime:Math.abs(new Date().getTime()/1000),
-          ask: 9950819,
-          bid: 9924979,
-          buymoney: 10024231,
-          lastvalue: 9937899,
-          total: 9924979,
-          lprov_sum: -29777,
-          daystartvalue: 9924979,
-          amount: 1,
-          stockid:'walkthrough'
-        });
-    }, $scope);
+    });
 
-    socket.on('get-user-info', function(data) {
-      if (!data.result.isSelf)
-        return;
-
-      var orders = data.orders;
+    socket.get('/user/$self').then(function(result) {
+      var orders = result.orders;
       if (!orders)
         return;
 
@@ -57,59 +40,50 @@ angular.module('tradity').
         orders[i].price = (orders[i].money / orders[i].amount);
       }
       $scope.orders = orders;
-    }, $scope);
+    });
 
-    socket.on('dquery-list', function(data) {
-      $scope.delayedOrders = [];
-      for (var i = 0; i < data.results.length; ++i) {
-        var q = data.results[i];
-        if (q.query.type == 'stock-buy') {
-          q.buysell = q.query.amount < 0 ? 'sell' : 'buy';
-          q.amount = Math.abs(q.query.amount);
-          $scope.delayedOrders.push(q);
-        }
-      }
-    }, $scope);
-
-    $scope.$on('user-update', ownDepotOrUser);
-
-    socket.emit('get-user-info', { lookfor: '$self', _cache: 20 });
-    socket.emit('list-own-depot', { _cache: 20 });
-    socket.emit('dquery-list', { _cache: 20 });
-
-    $scope.removeDelayedOrder = function(id) {
-      socket.emit('dquery-remove', {
-        queryid: id
-      },
-      function(data) {
-        if (data.code == 'dquery-remove-success') {
-          socket.emit('dquery-list');
-        } else if (data.code == 'dquery-remove-notfound') {
-          notification(gettextCatalog.getString('Order not found. Possibly it has already been executed?'));
+    $scope.listDQueries = function() {
+      socket.get('/dqueries').then(function(result) {
+        $scope.delayedOrders = [];
+        for (var i = 0; i < result.data.length; ++i) {
+          var q = result.data[i];
+          if (q.query.type == 'stock-buy') {
+            q.buysell = q.query.amount < 0 ? 'sell' : 'buy';
+            q.amount = Math.abs(q.query.amount);
+            $scope.delayedOrders.push(q);
+          }
         }
       });
     };
     
-    socket.on('watchlist-show', function(data) {
-      if (data.code == 'watchlist-show-success') {
-        $scope.watchlist = data.results;
-      }
-    }, $scope);
+    $scope.listDQueries();
 
-    $scope.showWatchlist = function(nocache) {
-      socket.emit('watchlist-show', nocache ? null : { _cache: 20 });
+    $scope.removeDelayedOrder = function(id) {
+      socket.delete('/dqueries/' + id).then(function(result) {
+        if (result._success) {
+          $scope.listDQueries();
+        } else if (data.code == 404) {
+          notification(gettextCatalog.getString('Order not found. Possibly it has already been executed?'));
+        }
+      });
+    };
+
+    $scope.showWatchlist = function() {
+      socket.get('/watchlist').then(function(result) {
+        if (result._success) {
+          $scope.watchlist = result.data;
+        }
+      });
     };
     
     $scope.removeFromWatchlist = function(entry) {
-      socket.emit('watchlist-remove', {
-        stockid: entry.id
-      },
-      function(data) {
-        if (data.code == 'watchlist-remove-success') {
+      socket.delete('/watchlist' + entry.id).then(function(result) {
+        if (result._success) {
           notification(gettextCatalog.getString('{{stockname}} removed from the watchlist', {
             stockname: entry.stockname
           }), true);
-          $scope.showWatchlist(true);
+          
+          $scope.showWatchlist();
         }
       });
     };

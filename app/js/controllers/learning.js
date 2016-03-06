@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-  controller('LearningCtrl', function($scope, $stateParams, $state, $rootScope, socket, achievements) {
+  controller('LearningCtrl', function($scope, $stateParams, $state, $rootScope, achievements) {
     $scope.learningQuestions = [
       //GREEN_INVESTMENTS
       {

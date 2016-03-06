@@ -1,7 +1,7 @@
 {
   "_module": "tradity",
   "apiHost": "https://tradity.de:443",
-  "apiConnectTestPath": "/dynamic/ping",
+  "apiConnectTestPath": "/api/v1/ping",
   "defaultProfileImg": "img/profile.svg",
   "defaultGroupBanner": "img/groupbanner.jpg",
   "defaultLanguage": "de",

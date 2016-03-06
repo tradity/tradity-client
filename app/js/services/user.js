@@ -12,7 +12,7 @@
  * Factory
  */
 angular.module('tradity')
-  .factory('user', function ($q, socket, $state, ranking, $rootScope, config, $timeout, safestorage, dailyLoginAchievements) {
+  .factory('user', function ($q, socket, $state, ranking, $rootScope, config, $timeout, safestorage, dailyLoginAchievements, gettextCatalog) {
 
     var $user = $rootScope.$new(true);
     
@@ -20,8 +20,8 @@ angular.module('tradity')
     
     var parse = function(res) {
       var user;
-      if (res.code == 'get-user-info-success')
-        user = res.result;
+      if (res._success)
+        user = res.data;
       else
         return false;
       
@@ -61,11 +61,12 @@ angular.module('tradity')
       $rootScope.$broadcast('user-update', $user);
     };
     
-    socket.on('self-info', updateUser);
-    socket.on('get-user-info', updateUser);
+    $rootScope.$on('/user/$self', function(ev, result) {
+      return updateUser(result);
+    });
 
-    socket.on('*', function(data) {
-      if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
+    $rootScope.$on('socket:answer', function(ev, answer) {
+      if (answer.result.code === 'login-required' && !/\/events/.test(answer.request.url)) {
         $user = $rootScope.$new(true);
         
         $rootScope.$broadcast('user-update', null);
@@ -75,10 +76,9 @@ angular.module('tradity')
     });
 
     var fetchSelf = function() {
-      socket.emit('get-user-info', {
+      socket.get('/user/$self', {
         lookfor: '$self',
-        nohistory: true,
-        _cache: 20
+        params: { nohistory: true }
       });
     };
     fetchSelf();
@@ -105,23 +105,20 @@ angular.module('tradity')
        * try to login the user
        */
       login:function(username,password,stayloggedin) {
-        return socket.emit('login', {
-          name: username,
-          pw: password,
-          stayloggedin: stayloggedin
-        }).then(function(data) {
-          switch (data.code) {
-            case 'login-success':
-              fetchSelf();
-              $state.go('game.ranking.all');
-              break;
-            case 'login-badname':
-              return $q.reject('Benutzer „' + username + '“ existiert nicht');
-            case 'login-wrongpw':
-              return $q.reject('Falsches Passwort');
-            case 'login-email-not-verified':
-              return $q.reject('Emailadresse noch nicht bestätigt');
+        return socket.post('/login', {
+          data: {
+            name: username,
+            pw: password,
+            stayloggedin: stayloggedin
           }
+        }).then(function(result) {
+          if (result._success) {
+            fetchSelf();
+            $state.go('game.ranking.all');
+            return;
+          }
+          
+          return $q.reject(gettextCatalog.getString('Wrong username or password'));
         });
       },
       /**
@@ -130,7 +127,7 @@ angular.module('tradity')
        * @methodOf tradity.user
        */
       logout:function() {
-        return socket.emit('logout', function(data) {
+        return socket.post('/logout').then(function(result) {
           safestorage.clear();
           var $user = $rootScope.$new(true);
           $rootScope.$broadcast('user-update', null);
@@ -146,15 +143,13 @@ angular.module('tradity')
        * get the current user if loggedin
        */
       me:function(){
-        return socket.emit('get-user-info', {
-          lookfor: '$self',
-          nohistory: true,
-          _cache: 20
-        }).then(function(data){
-          if (data.code == 'get-user-info-success')
+        return socket.get('/user/$self', {
+          params: { nohistory: true }
+        }).then(function(result){
+          if (result._success)
             return $user;
           else
-            return $q.reject(data.code);
+            return $q.reject(result);
         });
       },
       /**
@@ -166,10 +161,7 @@ angular.module('tradity')
        * @description
        */
        get: function(username) {
-         return socket.emit('get-user-info', {
-          lookfor: username,
-          _cache: 20
-        }).then(function(res) {
+         return socket.get('/user/' + username).then(function(res) {
           return parse(res);
         });
        },

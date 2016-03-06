@@ -35,7 +35,7 @@ function stringToBytes(str) {
  * Factory
  */
 angular.module('tradity')
-  .factory('safestorage', function (socket) {
+  .factory('safestorage', function (socket, $rootScope) {
     var localStorage_ = typeof localStorage != 'undefined' ? localStorage : {};
     
     var SafeStorage = function() {
@@ -46,9 +46,10 @@ angular.module('tradity')
       self.encryptedStorage = null;
       self.hasLoadedRemoteData = false;
       
-      socket.on('get-own-options', function(data) {
-        if (data.result && data.result.clientstorage) {
-          self.encryptedStorage = new Uint8Array(data.result.clientstorage);
+      $rootScope.$on('/options', function(ev, result) {
+        if (result.data && result.data.clientstorage &&
+            result.data.clientstorage.data) {
+          self.encryptedStorage = new Uint8Array(result.data.clientstorage.data);
           
           if (localStorage_.ssKey)
             self.decrypt();
@@ -57,7 +58,7 @@ angular.module('tradity')
     };
     
     SafeStorage.prototype.check = function() {
-      return socket.emit('get-own-options');
+      return socket.get('/options');
     };
     
     SafeStorage.prototype.decrypt = function() {
@@ -132,8 +133,9 @@ angular.module('tradity')
         plaintext += ' '; // pad with spaces
       var encrypted = asmCrypto.AES_GCM.encrypt(stringToBytes(plaintext), key, iv);
       
-      return socket.emit('set-clientstorage', {
-        storage: uint8concat(iv, encrypted).buffer
+      return socket.put('/options/clientstorage', {
+        data: uint8concat(iv, encrypted).buffer,
+        json: false
       });
     };
     

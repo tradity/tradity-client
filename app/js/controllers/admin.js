@@ -9,17 +9,15 @@ angular.module('tradity').
     $scope.$emit('makeadmin');
     
     $scope.impersonateUser = function(uid) {
-      socket.emit('impersonate-user', {
-        uid: uid
-      }, function(data) {
-        if (data.code == 'impersonate-user-success') {
+      socket.post('/impersonate/' + uid).then(function(result) {
+        if (result._success) {
           safestorage.clear();
           $feed.clearFull();
           safestorage.check();
           $feed.fetch();
           $state.go('game.feed');
         } else {
-          alert('Fehler: ' + data.code);
+          alert('Error: ' + JSON.stringify(result));
         }
       });
     };

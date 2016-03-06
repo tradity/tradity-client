@@ -53,7 +53,7 @@
               {{( orderPerfYesterday = result.bid - result.daystartvalue)
             / result.daystartvalue * 100 | number:2}} %
           </td>
-          <td class="trade-td text-center"><a ui-sref="game.tradesellbuy({sellbuy: 'sell', stockId: result.stockid, amount: result.amount})" class="batch block-link trade"><i class="fa fa-bar-chart-o"></i></a></td>
+          <td class="trade-td text-center"><a ui-sref="game.tradesellbuy({sellbuy: 'sell', stockId: result.stocktextid, amount: result.amount})" class="batch block-link trade"><i class="fa fa-bar-chart-o"></i></a></td>
         </tr>
       </table>
     </div>

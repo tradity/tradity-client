@@ -47,26 +47,16 @@ angular.module('tradity')
       _textsCached: {}
     };
     
-    var handleAchievementList = function(data) {
-      if (data.code != 'list-all-achievements-success') {
-        achievements._list = null;
-        
-        return socket.once('self-info').then(function() {
-          return achievements.list();
-        });
-      }
-      
-      return achievements._list = data.result;
-    };
-    
-    socket.on('list-all-achievements', handleAchievementList);
     achievements._list = null;
     
     achievements.list = function() {
       if (achievements._list)
         return $q.when(achievements._list);
       
-      return achievements._list = socket.emit('list-all-achievements').then(handleAchievementList);
+      return achievements._list = socket.get('/achievements/list', { cache: true })
+        .then(function(result) {
+          return achievements._list = data.result;
+        });
     };
     
     achievements.listClientAchievements = function() {
@@ -78,8 +68,8 @@ angular.module('tradity')
     };
     
     achievements.markAsDone = function(name) {
-      return socket.emit('achievement', { name: name }).then(function(data) {
-        return data.code == 'achievement-success';
+      return socket.post('/achievements/client', { data: { name: name } }).then(function(result) {
+        return result._success;
       });
     };
     

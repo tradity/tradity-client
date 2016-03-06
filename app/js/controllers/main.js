@@ -22,8 +22,7 @@ angular.module('tradity').
     $rootScope.ownUser = $scope.ownUser = $user;
     $scope.loading = false;
     $scope.serverConfig = {};
-    $scope.hasOpenQueries = socket.hasOpenQueries.bind(socket);
-    $scope.version = null;
+    $scope.hasOpenQueries = socket.hasOpenQueries;
 
     $scope.toggleM = function() {
       console.log('sdfs');
@@ -34,7 +33,6 @@ angular.module('tradity').
     $scope.connectionCheck = function() {
       var alive = function() {
         if ($state.includes('error.connection')) {
-          socket.reconnect();
           $state.go('game.feed');
         }
       };
@@ -42,32 +40,25 @@ angular.module('tradity').
         $state.go('error.connection');
       };
       
-      var curRx = socket.rxPackets();
+      var curRx = socket.received;
       if (curRx > $scope.connectionLastRx) {
         $scope.connectionLastRx = curRx;
         return alive(); // everything okay
       }
       
       $scope.connectionLastRx = curRx;
-      socket.emit('ping', {
-        _expect_no_response: true
-      }, alive);
+      socket.get('/ping').then(function(result) {
+        if (result._success) {
+          alive();
+        }
+      });
       
       $timeout(function() {
-        if (socket.rxPackets() > $scope.connectionLastRx)
+        if (socket.received > $scope.connectionLastRx)
           return;
         
-        var connectTest = $http.get(API_HOST + API_CONNECT_TEST_PATH);
-        connectTest.success(alive);
-        connectTest.error(dead);
+        $http.get(API_HOST + API_CONNECT_TEST_PATH).then(alive, dead);
       }, 3000);
-      
-      $timeout(function() {
-        if (socket.rxPackets() > $scope.connectionLastRx)
-          return;
-        
-        socket.reconnect();
-      }, 10000);
     };
     
     $timeout($scope.connectionCheck, 3141);
@@ -100,11 +91,10 @@ angular.module('tradity').
 
     $scope.$on('makeadmin', function() {
       $scope.isAdmin = true;
-      socket.emit('set-debug-mode', { debugMode: true, __only_in_srv_dev_mode__: true });
     });
 
     $scope.$on('user-update', function() {
-      if (!$scope.ownUser) {
+      if (!$scope.ownUser || !$scope.ownUser.uid) {
         $scope.isAdmin = false;
         return;
       }
@@ -131,7 +121,7 @@ angular.module('tradity').
       $scope.eventIDs = {};
       $scope.messages = [];
       
-      socket.emit('logout', function(data) {
+      socket.post('/logout').then(function(data) {
         safestorage.clear();
         
         $scope.ownUser = null;
@@ -140,41 +130,39 @@ angular.module('tradity').
         $state.go('index.login');
       });
     };
-
-    socket.on('*', function(data) {
-      if (data.code == 'not-logged-in' && !/^fetch-events/.test(data['is-reply-to'])) {
-        $scope.ownUser = null;
+    
+    $rootScope.$on('socket:answer', function(ev, answer) {
+      // console.log('socket:answer -> ', answer);
+      if (answer.result.identifier === 'login-required' && !/^\/events/.test(answer.origURL)) {
+        $user = $rootScope.$new(true);
+        
+        $rootScope.$broadcast('user-update', null);
         if ($state.includes('game'))
           $state.go('index.login');
       }
-    }, $scope);
+    });
 
-
-    socket.on('server-config', function(data) {
-      var cfg = data.config;
+    socket.get('/config').then(function(result) {
+      var cfg = result.data;
       for (var k in cfg)
         $scope.serverConfig[k] = cfg[k];
       
-      if (data.versionInfo)
-        $scope.version = data.versionInfo;
-      
-      if (socket.protocolVersion() < $scope.version.minimum)
-        notification(gettextCatalog.getString('Your tradity client version is, unfortunately, no longer supported.'));
-      
       $scope.ownUserRanking = ranking.getRanking(null, $scope.serverConfig.ranking || {}, null, null, true);
       $scope.ownUserRanking.onRankingUpdated(function() {
-        if ($scope.ownUser)
+        if ($scope.ownUser && $scope.ownUser.uid)
           $scope.ownUser.rank = $scope.ownUserRanking.get('all').rankForUser($scope.ownUser.uid);
       });
       
       $scope.$on('user-update', function() {
-        if ($scope.ownUser)
+        if ($scope.ownUser && $scope.ownUser.uid)
           $scope.ownUserRanking.fetch();
       });
     });
     
-    socket.on('internal-server-error', function() {
-      notification(gettextCatalog.getString('There was a technical problem – the tech team of Tradity has been informed.'));
+    $rootScope.$on('socket:answer', function(ev, answer) {
+      if (answer.response.status >= 500) {
+        notification(gettextCatalog.getString('There was a technical problem – the tech team of Tradity has been informed.'));
+      }
     });
   });
 

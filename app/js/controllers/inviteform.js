@@ -6,31 +6,34 @@
 
 angular.module('tradity').
   controller('InviteFormCtrl', function($scope, socket, gettextCatalog) {
-    socket.emit('create-invite-link', {
-      schoolid: $scope.schoolid ? $scope.schoolid : null
-    }, function(data) {
-      $scope.invitelink = data.url;
+    var createInviteLinkURL = $scope.schoolid ?
+      '/school/' + $scope.schoolid + '/create-invitelink' :
+      '/create-invitelink';
+    
+    socket.post(createInviteLinkURL).then(function(result) {
+      $scope.invitelink = result.url;
     });
     
     $scope.createInviteLink = function() {
       var emails = $scope.inviteemails.split(/[\s,;]+/g);
       for (var i = 0; i < emails.length; ++i) {
-        socket.emit('create-invite-link', {
-          email: emails[i],
-          schoolid: $scope.schoolid ? $scope.schoolid : null
-        }).then(function(data) { // jshint ignore:line
-          switch (data.code) {
-            case 'create-invite-link-invalid-email':
+        socket.post(createInviteLinkURL, {
+          data: { email: emails[i] }
+        }).then(function(result) { // jshint ignore:line
+          if (result._success) {
+            notification(gettextCatalog.getString('Invitation link was sent successfully'), true);
+            return;
+          }
+          
+          switch (result.identifier) {
+            case 'invalid-email':
               notification(gettextCatalog.getString('Invalid e-mail address'));
               break;
-            case 'create-invite-link-not-verif':
+            case 'email-not-verified':
               notification(gettextCatalog.getString('You have not verified your e-mail address'));
               break;
-            case 'create-invite-link-failed':
+            default:
               notification(gettextCatalog.getString('Could not send invitation link'));
-              break;
-            case 'create-invite-link-success':
-              notification(gettextCatalog.getString('Invitation link was sent successfully'), true);
               break;
           }
         }); // jshint ignore:line

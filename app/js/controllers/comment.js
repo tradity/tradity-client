@@ -7,19 +7,21 @@
 angular.module('tradity').
   controller('CommentCtrl', function($scope, socket, gettextCatalog) {
     $scope.editComment = function(comment) {
-      return socket.emit('change-comment-text', {
-        commentid: comment.commentid,
-        comment: prompt('Neuer Kommentartext: (Leerlassen zum Beibehalten)') || comment.comment,
-        trustedhtml: false
+      return socket.put('/events/comments/' + comment.commentid, {
+        data: {
+          comment: prompt('Neuer Kommentartext: (Leerlassen zum Beibehalten)') || comment.comment,
+          trustedhtml: false
+        }
       }).then(function() { notification(gettextCatalog.getString('Ok!'), true); });
     };
 
     $scope.deleteComment = function(comment) {
-      return socket.emit('change-comment-text', {
-        commentid: comment.commentid,
-        comment: comment.comment,
-        trustedhtml: comment.trustedhtml,
-        cstate: 'mdeleted'
+      return socket.put('/events/comments/' + comment.commentid, {
+        data: {
+          comment: comment.comment,
+          trustedhtml: comment.trustedhtml,
+          cstate: 'mdeleted'
+        }
       }).then(function() { notification(gettextCatalog.getString('Ok!'), true); });
     };
     
@@ -39,14 +41,15 @@ angular.module('tradity').
       if (!eventid)
         return notification(gettextCatalog.getString('Comment event was not found!'));
 
-      return socket.emit('comment', {
-        eventid: eventid,
-        comment: $scope.comment,
-        ishtml: $scope.ishtml
+      return socket.post('/events/' + eventid + '/comments', {
+        data: {
+          comment: $scope.comment,
+          ishtml: $scope.ishtml
+        }
       }).then(function(data) {
-        if (data.code == 'comment-notfound') {
+        if (data.code == 404) {
           notification(gettextCatalog.getString('Comment event was not found – something is wrong here!'));
-        } else if (data.code == 'comment-success') {
+        } else if (data._success) {
           var time = new Date();
           $scope.comments.unshift({
             comment: $scope.comment,
@@ -56,8 +59,8 @@ angular.module('tradity').
             time: time.getTime() / 1000 - 1
           });
           $scope.comment = '';
-        } else if (data.code == 'format-error') {
-          console.log($scope);
+        } else {
+          console.log($scope, data);
           notification(gettextCatalog.getString('Sorry, something went wrong.'));
         }
       });

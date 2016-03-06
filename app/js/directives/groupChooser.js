@@ -1,7 +1,5 @@
 (function() { 'use strict';
 
-var undefined;
-
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
@@ -43,8 +41,8 @@ angular.module('tradity').
           });
         };
         
-        socket.on('list-schools', function(result) {
-          $scope.schoolList = result.result;
+        socket.get('/schools').then(function(result) {
+          $scope.schoolList = result.data;
           $scope.schoolIndexByPath = {};
           var i;
           
@@ -91,8 +89,6 @@ angular.module('tradity').
         $scope.$watch('schoolID', function(newValue, oldValue) {
           $scope.setSchoolByIdentifier(newValue);
         });
-        
-        socket.emit('list-schools', {_cache: 20});
         
         $scope.listGroups = function(enteredText) {
           return $scope.schoolListPromise.then(function(schoolList) {

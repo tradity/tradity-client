@@ -8,10 +8,8 @@ angular.module('tradity').
   controller('AchievementsCtrl', function($scope, $rootScope, socket, achievements, $stateParams) {
     $scope.achievements = [];
     
-    socket.emit('list-all-achievements', {
-      _cache: 1800
-    }, function(data) {
-      $scope.achievements = data.result;
+    socket.get('/achievements', { cache: true }).then(function(result) {
+      $scope.achievements = result.data;
       
       for (var i = 0; i < $scope.achievements.length; ++i) 
         $scope.achievements[i].text = achievements.lookupText($scope.achievements[i].name);

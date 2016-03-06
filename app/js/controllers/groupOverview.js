@@ -8,18 +8,16 @@ angular.module('tradity').
   controller('GroupOverviewCtrl', function($scope, $sce, $state, $stateParams, DEFAULT_GROUP_BANNER, socket) {
     $scope.groups = [];
 
-    socket.emit('list-schools', { 
-      _cache: 60
-    }, function(schoollist) {
-      $scope.groups = schoollist.result;
+    socket.get('/schools').then(function(result) {
+      $scope.groups = result.data;
     });
     
     $scope.createNewSchool = function () {
-      socket.emit('get-own-options', function(data) {
+      socket.get('/options').then(function(result) {
         var t = prompt("Deine Schule, Organisation, Institut");
-        data.result.school = t;
-        socket.emit('change-options', data.result);
+        result.data.school = t;
         $scope.selfIsSchoolMember = true;
+        return socket.put('/options', { data: result.data });
       });
     };
   });

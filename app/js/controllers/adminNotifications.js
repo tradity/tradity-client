@@ -19,16 +19,18 @@ angular.module('tradity').
     };
     
     $scope.submitNotification = function() {
-      socket.emit('notify-all', {
-        sticky: $scope.sticky,
-        content: $scope.maybeHTMLizeContent()
-      }, function(data) {
+      socket.post('/mod-notifications', {
+        body: {
+          sticky: $scope.sticky,
+          content: $scope.maybeHTMLizeContent()
+        }
+      }).then(function(data) {
         alert('Ok!');
       });
     };
     
     $scope.unstickNotification = function() {
-      socket.emit('notify-unstick-all', function(data) {
+      socket.post('/mod-notifications/unstick-all').then(function(data) {
         alert('Ok!');
       });
     };

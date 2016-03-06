@@ -13,40 +13,36 @@ angular.module('tradity').
     $scope.userlist = [];
     $scope.servers = [];
     
-    socket.on('get-ticks-statistics', function(data) {
-      if (data.code != 'get-ticks-statistics-success')
-        return;
-      
-      $scope.ticksStatistics = data.results.sort(function(a, b) { return a.timeindex - b.timeindex; });
-      $scope.ticksStatisticsΔ = [];
-      
-      for (var i = 0; i < $scope.ticksStatistics.length - 1; ++i) {
-        var a = $scope.ticksStatistics[i], b = $scope.ticksStatistics[i+1];
-        
-        var dt = b.timeindex - a.timeindex;
-        var tickdiff = Math.max(b.ticksum / b.tickcount - a.ticksum / a.tickcount, 0);
-        
-        tickdiff = tickdiff / (b.timeindex - a.timeindex);
-        
-        $scope.ticksStatisticsΔ.push({time: a.timeindex, tickdiff: tickdiff});
-      }
-      
-      $scope.draw();
-    }, $scope);
-    
     $scope.loadTickStatistics = function() {
-      socket.emit('get-ticks-statistics');
+      socket.get('/activity/ticks').then(function(result) {
+        if (!result._success)
+          return;
+        
+        $scope.ticksStatistics = result.data.sort(function(a, b) { return a.timeindex - b.timeindex; });
+        $scope.ticksStatisticsΔ = [];
+        
+        for (var i = 0; i < $scope.ticksStatistics.length - 1; ++i) {
+          var a = $scope.ticksStatistics[i], b = $scope.ticksStatistics[i+1];
+          
+          var dt = b.timeindex - a.timeindex;
+          var tickdiff = Math.max(b.ticksum / b.tickcount - a.ticksum / a.tickcount, 0);
+          
+          tickdiff = tickdiff / (b.timeindex - a.timeindex);
+          
+          $scope.ticksStatisticsΔ.push({time: a.timeindex, tickdiff: tickdiff});
+        }
+        
+        $scope.draw();
+      });
     };
     
-    socket.on('list-all-users', function(data) {
-      if (data.code == 'list-all-users-success') {
-        $scope.userlist = data.results;
+    socket.get('/users').then(function(result) {
+      if (data._success) {
+        $scope.userlist = result.data;
         
         $scope.drawRegistrations();
       }
-    }, $scope);
-    
-    socket.emit('list-all-users');
+    });
     
     var graph;
     

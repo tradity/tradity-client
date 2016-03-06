@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-  controller('GroupCtrl', function($scope, $sce, $state, $stateParams, gettextCatalog, DEFAULT_GROUP_BANNER, socket) {
+  controller('GroupCtrl', function($scope, $sce, $state, $stateParams, gettextCatalog, DEFAULT_GROUP_BANNER, socket, $q) {
     $scope.school = { pendingMembers: [] };
     $scope.selfIsSchoolAdmin = false;
     $scope.selfIsSchoolMember = false;
@@ -22,23 +22,21 @@ angular.module('tradity').
 
     $scope.schoolid = $stateParams.schoolid;
 
-    socket.emit('get-school-info', {
-      lookfor: $scope.schoolid,
-      _cache: 30
-    }).then(function(data) {
-      if (data.code == 'not-logged-in') {
-        return socket.emit('school-exists', {
-          lookfor: $scope.schoolid,
-          _cache: 30
-        }).then(function(data) {
-          if (data.code == 'school-exists-success' && data.exists) {
-            $state.go('schoolregister', {schoolid: data.path});
+    socket.get('/school', {
+      params: { lookfor: $scope.schoolid }
+    }).then(function(result) {
+      if (result.identifier == 'login-required') {
+        return socket.get('/school-exists', {
+          params: { lookfor: $scope.schoolid }
+        }).then(function(result) {
+          if (result._success && result.data.exists) {
+            $state.go('schoolregister', {schoolid: result.data.path});
           }
         });
       }
       
-      if (data.code == 'get-school-info-success') {
-        $.extend(true, $scope.school, data.result);
+      if (result._success) {
+        $.extend(true, $scope.school, result.data);
         $scope.comments = $.extend(true, [], $scope.school.comments); // deep copy
         $scope.descpage = $scope.school.descpage;
         $scope.schoolid = $scope.school.id;
@@ -72,43 +70,39 @@ angular.module('tradity').
     });
 
     $scope.enterTeam = function () {
-      socket.emit('get-own-options', function(data) {
-        data.result.school = $scope.schoolid;
-        socket.emit('change-options', data.result);
+      socket.get('/options').then(function(result) {
+        result.data.school = $scope.schoolid;
         $scope.selfIsSchoolMember = true;
+        return socket.put('/options', { data: result.data });
       });
     };
 
     $scope.leaveTeam = function () {
-      if (confirm("Willst du wirklich die Gruppe verlassen ?")) {
-        socket.emit('get-own-options', function(data) {
-          data.result.school = null;
-          socket.emit('change-options', data.result, function(data) {
-            if (/success$/.test(data.code)) 
-              $state.go('game.groupOverview');
-          });
-          notification(gettextCatalog.getString('Left group'), true);
-          $scope.selfIsSchoolMember = false;
-          $scope.selfIsSchoolAdmin = false;
+      if (!confirm("Willst du wirklich die Gruppe verlassen?"))
+        return;
+      
+      socket.get('/options').then(function(result) {
+        result.data.school = null;
+        socket.put('/options', { data: result.data }).then(function(data) {
+          if (data._success) 
+            $state.go('game.groupOverview');
         });
-      }
+        notification(gettextCatalog.getString('Left group'), true);
+        $scope.selfIsSchoolMember = false;
+        $scope.selfIsSchoolAdmin = false;
+      });
     };
 
     $scope.deleteCommentSA = function(comment) {
-      socket.emit('school-delete-comment', {
-        schoolid: $scope.schoolid,
-        commentid: comment.commentid
-      }, function() { notification(gettextCatalog.getString('Ok!'), true); });
+      socket.delete('/school/' + $scope.schoolid + '/comments/' + comment.commentid)
+        .then(function() { notification(gettextCatalog.getString('Ok!'), true); });
     };
 
     $scope.kickUser = function(user) {
       if (!confirm('Wirklich User „' + user.name + '“ aus der Gruppe „' + user.schoolname + '“ löschen?'))
         return;
 
-      socket.emit('school-kick-user', {
-        schoolid: user.school,
-        uid: user.uid
-      }, function() {
+      socket.delete('/school/' + user.school + '/members/' + user.uid).then(function() {
         notification(gettextCatalog.getString('Ok!'), true);
       });
     };
@@ -117,11 +111,9 @@ angular.module('tradity').
       if (!confirm('Wirklich User „' + user.name + '“ zum Admin der Gruppe „' + $scope.school.name + '“ machen?'))
         return;
 
-      socket.emit('school-change-member-status', {
-        schoolid: $scope.schoolid,
-        uid: user.uid,
-        status: 'admin'
-      }, function() {
+      socket.put('/school/' + $scope.schoolid + '/members/' + user.uid, {
+        data: { status: 'admin' }
+      }).then(function() {
         notification(gettextCatalog.getString('Ok!'), true);
       });
     };
@@ -137,38 +129,40 @@ angular.module('tradity').
     $scope.changeDescription = function() {
       var bannerFile = document.getElementById('bannerupload').files[0];
       if (bannerFile) {
-        fileemit(socket, gettextCatalog, bannerFile, 'school-publish-banner', {
-          schoolid: $scope.schoolid
-        }, $scope.serverConfig, function(code) {
-          switch (code) {
-            case 'publish-success':
-              notification(gettextCatalog.getString('Sucessfully uploaded profile picture!'), true);
-              break;
-            case 'publish-quota-exceed':
+        fileemit(socket, gettextCatalog, bannerFile, '/school/' + $scope.schoolid + '/banner',
+          { method: 'PUT' }, $scope.serverConfig, $q).then(function(result) {
+          if (result._success) {
+            notification(gettextCatalog.getString('Sucessfully uploaded profile picture!'), true);
+            return;
+          }
+          
+          switch(result.identifier) {
+            case 'quota-exceeded':
               notification(gettextCatalog.getString('Your profile picture file is too large (maximum 3\u00a0MB)'));
               break;
-            case 'publish-inacceptable-role':
-            case 'publish-inacceptable-mime':
+            case 'inacceptable-role':
+            case 'inacceptable-mime':
               notification(gettextCatalog.getString('There was a technical problem uploading your profile picture.\nPlease turn to tech@tradity.de'));
               break;
           }
         });
       }
 
-      socket.emit('school-change-description', {
-        schoolid: $scope.schoolid,
-        descpage: $scope.descpage
-      }, function() {
+      socket.put('/school/' + $scope.schoolid + '/description', {
+        data: {
+          descpage: $scope.descpage
+        }
+      }).then(function() {
         notification(gettextCatalog.getString('Ok!'), true);
       });
     };
 
     $scope.verifyMember = function(user) {
-      socket.emit('school-change-member-status', {
-        schoolid: $scope.schoolid,
-        uid: user.uid,
-        status: 'member'
-      }, function() {
+      socket.put('/school/' + $schope.schoolid + '/members/' + user.uid, {
+        data: {
+          status: 'member'
+        }
+      }).then(function() {
         notification(gettextCatalog.getString('Ok!'), true);
       });
     };
@@ -181,14 +175,16 @@ angular.module('tradity').
       if (!n.length)
         return;
 
-      socket.emit('create-school', {
-        schoolname: n,
-        schoolpath: $scope.school.path + '/' + n.replace(/[^\w_-]/g, '-').replace(/-+/g, '-'),
-      }).then(function(data) {
-        if (data.code == 'create-school-success')
+      socket.post('/school', {
+        body: {
+          schoolname: n,
+          schoolpath: $scope.school.path + '/' + n.replace(/[^\w_-]/g, '-').replace(/-+/g, '-'),
+        }
+      }).then(function(result) {
+        if (result._success)
           notification(gettextCatalog.getString('Ok!'), true);
         else
-          notification(gettextCatalog.getString('Error: {{code}}', data));
+          notification(gettextCatalog.getString('Error: ') + JSON.stringify(data));
       });
     };
   });

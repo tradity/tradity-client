@@ -33,7 +33,7 @@ var notification = function (text, icon) { // icon === true -> success
   }, 3000);
 };
 
-var fileemit = function(socket, gettextCatalog, input, evtype, template, serverconfig, callback) {
+var fileemit = function(socket, gettextCatalog, input, evtype, template, serverconfig, $q) {
   var filename = null; 
   var mime = null;
   
@@ -44,13 +44,13 @@ var fileemit = function(socket, gettextCatalog, input, evtype, template, serverc
       try {
         var encoded = data.buffer ? data.buffer : data;
         
-        template.content = encoded;
-        template.mime = template.mime || mime;
-        template.name = template.name || filename;
+        template.data = encoded;
+        template.headers = template.headers || {};
+        template.headers['Content-Type'] = template.mime || mime;
+        template.params = template.params || {};
+        template.params.name = template.name || filename;
         
-        socket.emit(evtype, template, function(data) {
-          callback(data.code);
-        });
+        return socket(template);
       } catch (e) {
         fail();
         throw e;
@@ -68,21 +68,23 @@ var fileemit = function(socket, gettextCatalog, input, evtype, template, serverc
       }
       
       var reader = new FileReader();
-    
-      reader.readAsArrayBuffer(input);
       
-      reader.onload = function() { 
-        var buf = reader.result;
-        if (!buf)
-          return notification(gettextCatalog.getString('Could not upload profile picture'));
+      return $q(function(resolve, reject) {
+        reader.readAsArrayBuffer(input);
+      
+        reader.onload = function() { 
+          var buf = reader.result;
+          if (!buf)
+            return notification(gettextCatalog.getString('Could not upload profile picture'));
+            
+          if (serverconfig && reader.result.byteLength > serverconfig.fsdb.userquota)
+            return notification(gettextCatalog.getString('Your profile picture file is too large (maximum 3\u00a0MB)'));
           
-        if (serverconfig && reader.result.byteLength > serverconfig.fsdb.userquota)
-          return notification(gettextCatalog.getString('Your profile picture file is too large (maximum 3\u00a0MB)'));
-        
-        goPublish(buf);
-      };
+          resolve(goPublish(buf));
+        };
+      });
     } else {
-      goPublish(input);
+      return goPublish(input);
     }
   } catch (e) {
     fail();

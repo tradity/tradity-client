@@ -12,23 +12,19 @@ angular.module('tradity').
     $scope.inspectuser = null;
     
     if ($scope.inspectuid !== null) {
-      socket.emit('get-followers', {
-        uid: $scope.inspectuid
-      }, function(data) {
-        if (data.code == 'get-followers-success') {
-          $scope.followers = data.results;
+      socket.get('/user/' + $scope.inspectuid + '/followers').then(function(result) {
+        if (data.result == 'get-followers-success') {
+          $scope.followers = result.data;
         }
       });
       
-      socket.emit('get-user-info', {
-        _cache: 60,
-        lookfor: $scope.inspectuid,
-        nohistory: true
-      }, function(data) {
-        if (data.code == 'get-user-info-success') {
-          $scope.inspectuser = data.result;
+      socket.get('/user/' + $scope.inspectuid, {
+        params: { nohistory: true }
+      }).then(function(result) {
+        if (result._success) {
+          $scope.inspectuser = result.data;
         } else {
-          alert('Fehler: ' + data.code);
+          alert('Error: ' + JSON.stringify(data));
         }
       });
     }

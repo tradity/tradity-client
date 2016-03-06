@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-  controller('LoginCtrl', function(user, $stateParams, $state, safestorage, socket) {
+  controller('LoginCtrl', function(user, $stateParams, $state, safestorage, socket, gettextCatalog) {
     var vm = this;
     vm.username = '';
     vm.password = '';
@@ -21,23 +21,27 @@ angular.module('tradity').
     });
 
     if ($stateParams.emailVerifCode && $stateParams.uid) {
-      socket.emit('emailverif', {
-        key: $stateParams.emailVerifCode,
-        uid: $stateParams.uid
-      }, function(data) {
-        switch (data.code) {
-          case 'login-success':
-            vm.alerts.push({ type: 'success', msg:'Emailadresse erfolgreich bestätigt'});
-            user.fetch();
-            $state.go('game.feed');
-            break;
-          case 'email-verify-already-verified':
+      socket.post('verify-email', {
+        data: {
+          key: $stateParams.emailVerifCode,
+          uid: $stateParams.uid
+        }
+      }).then(function(result) {
+        if (result._success) {
+          vm.alerts.push({ type: 'success', msg:'Emailadresse erfolgreich bestätigt'});
+          user.fetch();
+          $state.go('game.feed');
+          return;
+        }
+        
+        switch (data.identifier) {
+          case 'already-verified':
             vm.alerts.push({ type: 'danger', msg:'Emailadresse bereits bestätigt'});
             break;
-          case 'email-verify-other-already-verified':
+          case 'other-already-verified':
             vm.alerts.push({ type: 'danger', msg:'Jemand anderes hat diese Emailadresse bereits bestätigt'});
             break;
-          case 'email-verify-failure':
+          default:
             vm.alerts.push({ type: 'danger', msg:'Fehler beim Bestätigen der Emailadresse'});
             break;
         }
@@ -47,43 +51,37 @@ angular.module('tradity').
     vm.login = function() {
       vm.logging_in = true;
       safestorage.setPassword(vm.password);
-      socket.emit('login', {
-        name: vm.username,
-        pw: vm.password,
-        stayloggedin: vm.stayloggedin
-      }, function(data) {
-        vm.logging_in = false;
-        switch (data.code) {
-          case 'login-success':
-            user.fetch();
-            location.href = '/feed';
-            break;
-          case 'login-badname':
-            vm.alerts.push({ type: 'danger', msg:'Benutzer „' + vm.username + '“ existiert nicht'});
-            break;
-          case 'login-wrongpw':
-            vm.alerts.push({ type: 'danger', msg:'Falsches Passwort'});
-            break;
-          case 'login-email-not-verified':
-            vm.alerts.push({ type: 'danger', msg:'Emailadresse noch nicht bestätigt'});
-            break;
+      socket.post('/login', {
+        data: {
+          name: vm.username,
+          pw: vm.password,
+          stayloggedin: vm.stayloggedin
         }
+      }).then(function(result) {
+        vm.logging_in = false;
+        if (result._success) {
+          user.fetch();
+          location.href = '/feed';
+          return;
+        }
+        
+        vm.alerts.push({ type: 'danger', msg:gettextCatalog.getString('Wrong username or password')});
       });
     };
 
-    socket.on('password-reset', function(data) {
-      if (data.code == 'password-reset-success') {
-        vm.alerts.push({ type: 'success', msg:'Neues Passwort erfolgreich versandt'});
-      } else if (data.code == 'password-reset-failed') {
-        vm.alerts.push({ type: 'danger', msg:'Das neue Passwort konnte nicht versandt werden. Bitte an tech@tradity.de wenden'});
-      } else if (data.code == 'password-reset-notfound') {
-        vm.alerts.push({ type: 'danger', msg:'Benutzer „' + vm.username + '“ existiert nicht'});
-      }
-    });
-
     vm.passwordReset = function() {
-      socket.emit('password-reset', {
-        name: vm.username
+      return socket.post('/reset-password', {
+        data: {
+          name: vm.username
+        }
+      }).then(function(result) {
+        if (result._success) {
+          vm.alerts.push({ type: 'success', msg:'Neues Passwort erfolgreich versandt'});
+        } else if (data.code == 'user-not-found') {
+          vm.alerts.push({ type: 'danger', msg:'Benutzer „' + vm.username + '“ existiert nicht'});
+        } else {
+          vm.alerts.push({ type: 'danger', msg:'Das neue Passwort konnte nicht versandt werden. Bitte an tech@tradity.de wenden'});
+        }
       });
     };
   });

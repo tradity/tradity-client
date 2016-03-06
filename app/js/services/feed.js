@@ -27,7 +27,7 @@ angular.module('tradity')
     var localStorage_ = typeof localStorage != 'undefined' ? localStorage : {};
     var feedCacheVersion = 4;
 
-    var  $feed = $rootScope.$new(true);
+    var $feed = $rootScope.$new(true);
     
     $feed.fetch = function() {
       maybeCompress.decompress(localStorage_.feed).then(warnOnFail(function(lsFeedData_) {
@@ -57,10 +57,19 @@ angular.module('tradity')
           } catch(e) { console.error(e); }
         }
         
-        socket.emit('fetch-events', {
-          since: latestKnownEventTime,
-          count: null,
-          _expect_no_response: true
+        socket.get('/events', {
+          params: {
+            since: latestKnownEventTime,
+            count: null,
+          }
+        }).then(function(result) {
+          if (!result._success) {
+            return;
+          }
+          
+          for (var i = 0; i < result.data.length; ++i) {
+            $feed.receiveEvent(resut.data[i]);
+          }
         });
       }));
     };
@@ -132,11 +141,6 @@ angular.module('tradity')
         $feed.addEvent(parsedEvent);
       }
     };
-
-    socket.on('*', $feed.receiveEvent);
-    
-    /* allow the remote to clear bogus client caches */
-    socket.on('clear-feed-full', $feed.clearFull);
     
     $rootScope.$on('user-update', function(ev, $user) {
       if (!$user)

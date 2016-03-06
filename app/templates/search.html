@@ -63,8 +63,8 @@
           <th class="text-center" translate>Tradable amount</th>
         </tr>
         <tr ng-repeat="result in stocks">
-          <td ng-show="result.name"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: result.stockid, amount: 0})">{{result.name}}</a></td>
-          <td ng-show="result.leadername"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: result.stockid, amount: 0})">{{result.leadername}}</a></td>
+          <td ng-show="result.name"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: result.stocktextid, amount: 0})">{{result.name}}</a></td>
+          <td ng-show="result.leadername"><a ui-sref="game.tradesellbuy({sellbuy: 'buy', stockId: result.stocktextid, amount: 0})">{{result.leadername}}</a></td>
           <td class="text-center">{{result.ask / 10000 | number:3}} €</td>
           <td class="text-center">{{result.bid / 10000 | number:3}} €</td>
           <td class="text-center">{{result.pieces}}</td>

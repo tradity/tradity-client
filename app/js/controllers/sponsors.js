@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-  controller('SponsorsCtrl', function($scope, $rootScope, socket, $stateParams) {
+  controller('SponsorsCtrl', function($scope, $rootScope, $stateParams) {
     $scope.sponsors = [
       {
         picture: 'https://boersenspiel.tradity.de/wp-content/uploads/2015/02/Tradity_EckernfoerderBank_Unterstuetzer.png',

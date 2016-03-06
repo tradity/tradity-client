@@ -8,11 +8,11 @@ angular.module('tradity').
   controller('DepotTransactionLogCtrl', function($scope, socket) {
     $scope.transactions = [];
     
-    socket.emit('list-transactions', function(data) {
-      if (data.code != 'list-transactions-success')
+    socket.get('/transactions').then(function(result) {
+      if (!result._success)
         return;
       
-      $scope.transactions = data.results;
+      $scope.transactions = result.data;
       
       var transactionTypes = {
         'provision': 'Provision',

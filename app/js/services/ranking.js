@@ -34,27 +34,33 @@ angular.module('tradity')
     Ranking.prototype.fetch = function() {
       var self = this;
       
-      socket.emit('list-schools', { 
+      socket.get('/schools', { 
         _cache: 60,
-        parentPath: self.school ? self.school.path : null
-      }, function(schoollist) {
-        self.schools = schoollist.result;
+        params: self.school ? { parentPath: self.school.path } : {}
+      }, function(result) {
+        self.schools = result.data;
         self.updateRanking();
       });
       
       var schoolid;
-      if (!self.school || (schoolid = self.school.id || self.school.schoolid || self.school.path))
-      socket.emit('get-ranking', {
-        since: self.spec.since ? self.spec.since.getTime() / 1000 : null,
-        upto:  self.spec.upto  ? self.spec.upto .getTime() / 1000 : null,
-        schoolid: schoolid,
-        includeAll: self.spec.includeAll,
-        _cache: 30
-      }, function(data) {
-        if (!/^(get-ranking-success|not-logged-in)$/.test(data.code))
-          return notification(gettextCatalog.getString('There was a problem while loading the current ranking!'));
+      if (!self.school || (schoolid = self.school.schoolid || self.school.path))
+      socket.get('/ranking', {
+        params: {
+          since: self.spec.since ? self.spec.since.getTime() / 1000 : undefined,
+          upto:  self.spec.upto  ? self.spec.upto .getTime() / 1000 : undefined,
+          schoolid: schoolid,
+          includeAll: self.spec.includeAll
+        }
+      }).then(function(result) {
+        if (!result._success) {
+          if (result.code !== 401) {
+            notification(gettextCatalog.getString('There was a problem while loading the current ranking!'));
+          }
+          
+          return;
+        }
         
-        self.rawResults = self.filterRawResults(data.result);
+        self.rawResults = self.filterRawResults(result.data);
         
         self.updateRanking();
       });

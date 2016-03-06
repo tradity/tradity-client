@@ -47,7 +47,7 @@ angular.module('tradity').
         $scope.delayedOrders = [];
         for (var i = 0; i < result.data.length; ++i) {
           var q = result.data[i];
-          if (q.query.type == 'stock-buy') {
+          if (q.query.type == 'StockTrade') {
             q.buysell = q.query.amount < 0 ? 'sell' : 'buy';
             q.amount = Math.abs(q.query.amount);
             $scope.delayedOrders.push(q);

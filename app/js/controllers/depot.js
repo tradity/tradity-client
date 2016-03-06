@@ -16,9 +16,9 @@ angular.module('tradity').
       }
     };
 
-    socket.get('/depot').then(function(data) {
+    socket.get('/depot').then(function(result) {
       if (data._success) {
-        $scope.results = data.results;
+        $scope.results = result.data;
         ownDepotOrUser();
       }
     });

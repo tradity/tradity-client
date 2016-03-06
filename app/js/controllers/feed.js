@@ -46,6 +46,8 @@ angular.module('tradity').
         $state.go('survey');
       }
     });
+    
+    socket.get('/events');
   });
 
 })();

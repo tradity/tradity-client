@@ -49,11 +49,11 @@ angular.module('tradity').
     };
     
     $scope.listAllUsers = function() {
-      socket.get('/users').then(function(data) {
-        if (data.code != 'list-all-users-success')
+      socket.get('/users').then(function(result) {
+        if (!result._success)
           return;
       
-        $scope.userlist = data.results;
+        $scope.userlist = result.result;
         
         $scope.usercount = 0;
         $scope.tradeusers = 0;

@@ -135,24 +135,6 @@ angular.module('tradity', [
       templateUrl: 'app/templates/search.html',
       controller: 'SearchCtrl'
     }).
-    state('game.chats', {
-      url: '/chats/',
-      templateUrl: 'app/templates/chats.html',
-      controller: 'ChatCtrl'
-    }).
-    state('game.chat', {
-      url: '/chat',
-      templateUrl: 'app/templates/chat.html',
-      controller: 'ChatCtrl'
-    }).
-    state('game.chat.id', {
-      url: '/id/:id',
-      controller: 'ChatCtrl'
-    }).
-    state('game.chat.user', {
-      url: '/user/:userId',
-      controller: 'ChatCtrl'
-    }).
     state('game.options', {
       url: '/options',
       templateUrl: 'app/templates/options.html',

@@ -5,7 +5,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 angular.module('tradity').
-  controller('MainCtrl', function($sce, chat, ranking, $feed, $user, $rootScope, $scope, $location,
+  controller('MainCtrl', function($sce, ranking, $feed, $user, $rootScope, $scope, $location,
     $state, $stateParams, socket, safestorage, dailyLoginAchievements, $http, $interval, $timeout,
     gettextCatalog, languageManager, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG)
   {

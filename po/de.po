@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Tradity\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2016-02-17 23:22+0100\n"
+"PO-Revision-Date: 2016-03-06 21:20+0100\n"
 "Last-Translator: Anna Henningsen <sqrt@entless.org>\n"
 "Language-Team: German <http://weblate.tradity.de/projects/tradity/tradity-"
 "client-master/de/>\n"
@@ -492,7 +492,7 @@ msgstr "Errungen&#xad;schaften"
 msgid "Actions"
 msgstr "Aktionen"
 
-#: app/js/controllers/profile.js:49
+#: app/js/controllers/profile.js:48
 msgid "Added user {{name}} to your watch list"
 msgstr "{{name}} zur Watchlist hinzugefügt"
 
@@ -521,11 +521,11 @@ msgstr "seit Beginn"
 msgid "Amount"
 msgstr "Menge"
 
-#: app/js/controllers/survey.js:92
+#: app/js/controllers/survey.js:94
 msgid "An error occurred during processing of the questionnaire"
 msgstr "Beim Verarbeiten des Fragebogens trat ein Fehler auf"
 
-#: app/js/controllers/options.js:160
+#: app/js/controllers/options.js:176
 msgid "Are you sure you want to reset?"
 msgstr "Willst du dich wirklich zurücksetzen?"
 
@@ -603,15 +603,15 @@ msgstr "Klasse/Semester"
 msgid "Close"
 msgstr "Schließen"
 
-#: app/templates/stock.comments.html:9
+#: app/templates/stock.comments.html:15
 msgid "Comment by<span>&#x201E;{{comment.TraderName}}&#x201C;</span>"
 msgstr "Kommentar von <span>&#x201E;{{comment.TraderName}}&#x201C;</span>"
 
-#: app/js/controllers/comment.js:48
+#: app/js/controllers/comment.js:51
 msgid "Comment event was not found &#x2013; something is wrong here!"
 msgstr "Kommentarevent nicht gefunden – Hier läuft etwas falsch!"
 
-#: app/js/controllers/comment.js:40
+#: app/js/controllers/comment.js:42
 msgid "Comment event was not found!"
 msgstr "Konnte kein Kommentarevent finden!"
 
@@ -643,7 +643,7 @@ msgstr "Provision"
 msgid "Continue reading&#x2026;"
 msgstr "Weiterlesen…"
 
-#: app/js/controllers/inviteform.js:46
+#: app/js/controllers/inviteform.js:47
 msgid "Copied!"
 msgstr "Kopiert!"
 
@@ -651,17 +651,17 @@ msgstr "Kopiert!"
 msgid "Copy this link and send it to someone who you want to invite"
 msgstr "Kopiere diesen Link und schicke ihn jemandem, den du einladen willst"
 
-#: app/js/controllers/inviteform.js:30
+#: app/js/controllers/inviteform.js:34
 msgid "Could not send invitation link"
 msgstr "Konnte Einladungslink nicht versenden"
 
-#: app/js/controllers/options.js:176 app/js/controllers/registration.js:124
+#: app/js/controllers/registration.js:122
 msgid "Could not send verification e-mail. Please turn to tech@tradity.de."
 msgstr ""
 "Es gab beim Senden der Bestätigungsmail Probleme.\n"
 "Wende dich bitte an tech@tradity.de."
 
-#: app/js/main.js:77
+#: app/js/main.js:79
 msgid "Could not upload profile picture"
 msgstr "Konnte Profilbild nicht laden"
 
@@ -719,10 +719,10 @@ msgstr "Bearbeiten"
 msgid "Email has been used to register with us"
 msgstr "Die E-Mail wurde bereits verwendet, um sich bei uns zu registrieren"
 
-#: app/js/controllers/feedblogs.js:36 app/js/controllers/feedblogs.js:47
-#: app/js/controllers/feedblogs.js:57 app/js/controllers/group.js:191
-msgid "Error: {{code}}"
-msgstr "Fehler: {{code}}"
+#: app/js/controllers/feedblogs.js:38 app/js/controllers/feedblogs.js:49
+#: app/js/controllers/feedblogs.js:59 app/js/controllers/group.js:187
+msgid "Error:"
+msgstr "Fehler:"
 
 #: app/js/controllers/registration.js:45
 msgid "Excellent"
@@ -837,11 +837,11 @@ msgstr ""
 "dann sind alle Funktionen freigeschaltet und bist du für die Preise diese "
 "Staffel gewinnberechtigt."
 
-#: app/js/controllers/inviteform.js:24
+#: app/js/controllers/inviteform.js:28
 msgid "Invalid e-mail address"
 msgstr "Ungültige E-Mail-Adresse"
 
-#: app/js/controllers/inviteform.js:33
+#: app/js/controllers/inviteform.js:22
 msgid "Invitation link was sent successfully"
 msgstr "Einladungslink wurde verschickt"
 
@@ -889,7 +889,7 @@ msgstr "Leader"
 msgid "Leader and stocks in your watchlist"
 msgstr "Leader und Wertpapiere in deiner Watchlist"
 
-#: app/js/controllers/trade.js:147
+#: app/js/controllers/trade.js:144
 msgid "Leader: %1"
 msgstr "Leader: %1"
 
@@ -990,15 +990,15 @@ msgstr "Nein"
 msgid "No Connection"
 msgstr "Keine Verbindung"
 
-#: app/js/directives/groupChooser.js:100
+#: app/js/directives/groupChooser.js:96
 msgid "No Group"
 msgstr "Keine Gruppe"
 
-#: app/js/controllers/registration.js:154
+#: app/js/controllers/registration.js:152
 msgid "No valid beta key was entered"
 msgstr "Beta-Schlüssel ungültig oder nicht angegeben"
 
-#: app/js/controllers/trade.js:117
+#: app/js/controllers/trade.js:113
 msgid "Not enough stocks!"
 msgstr "Nicht genug Wertpapiere!"
 
@@ -1018,16 +1018,16 @@ msgstr "Welchen Ordertyp soll deine Transaktion haben?"
 msgid "Off to the final step!"
 msgstr "Ab zum letzten Schritt!"
 
-#: app/js/controllers/comment.js:14 app/js/controllers/comment.js:23
-#: app/js/controllers/feedblogs.js:33 app/js/controllers/feedblogs.js:44
-#: app/js/controllers/feedblogs.js:55 app/js/controllers/group.js:101
-#: app/js/controllers/group.js:112 app/js/controllers/group.js:125
-#: app/js/controllers/group.js:162 app/js/controllers/group.js:172
-#: app/js/controllers/group.js:189
+#: app/js/controllers/comment.js:15 app/js/controllers/comment.js:25
+#: app/js/controllers/feedblogs.js:35 app/js/controllers/feedblogs.js:46
+#: app/js/controllers/feedblogs.js:57 app/js/controllers/group.js:106
+#: app/js/controllers/group.js:117 app/js/controllers/group.js:156
+#: app/js/controllers/group.js:166 app/js/controllers/group.js:185
+#: app/js/controllers/group.js:98
 msgid "Ok!"
 msgstr "Ok!"
 
-#: app/js/controllers/trade.js:114
+#: app/js/controllers/trade.js:110
 msgid "Only 50&#xA0;% of your assets may consist of a single stock!"
 msgstr ""
 "Dein Vermögen darf höchstens zu 50&nbsp,% in ein einzelnes Wertpapier "
@@ -1041,7 +1041,7 @@ msgstr "Nur Rankingberechtigte"
 msgid "Opportunities and risks in trading"
 msgstr "Chancen und Risiken im Trading"
 
-#: app/js/controllers/options.js:160 app/templates/game.html:141
+#: app/js/controllers/options.js:176 app/templates/game.html:141
 msgid "Options"
 msgstr "Einstellungen"
 
@@ -1054,7 +1054,7 @@ msgstr "Oder (statt Hochladen):"
 msgid "Order history"
 msgstr "Orderhistorie"
 
-#: app/js/controllers/depot.js:88
+#: app/js/controllers/depot.js:66
 msgid "Order not found. Possibly it has already been executed?"
 msgstr "Order nicht gefunden. Möglicherweise wurde sie bereits ausgeführt?"
 
@@ -1108,7 +1108,7 @@ msgstr "Führe 1&nbsp;Followertrade aus (kaufe ein Leaderpapier)."
 msgid "Performance"
 msgstr "Performance"
 
-#: app/js/directives/groupChooser.js:56
+#: app/js/directives/groupChooser.js:54
 msgid "Person"
 msgid_plural "Persons"
 msgstr[0] "Person"
@@ -1122,15 +1122,15 @@ msgstr "Privates"
 msgid "Pinboard"
 msgstr "Pinnwand"
 
-#: app/js/controllers/survey.js:79
+#: app/js/controllers/survey.js:80
 msgid "Please answer all the questions"
 msgstr "Bitte beantworte alle Fragen"
 
-#: app/js/controllers/trade.js:72
+#: app/js/controllers/trade.js:73
 msgid "Please enter a numerical stop/limit value"
 msgstr "Bitte geben Sie den Stop-/Limitwert als Zahl an"
 
-#: app/js/controllers/registration.js:185
+#: app/js/controllers/registration.js:183
 msgid "Please enter your name in order to be eligible for winning prizes"
 msgstr "Bitte gib deinen Namen an, damit du Gewinne erhalten kannst"
 
@@ -1138,15 +1138,15 @@ msgstr "Bitte gib deinen Namen an, damit du Gewinne erhalten kannst"
 msgid "Please enter your valid email"
 msgstr "Bitte geben Sie den Stop-/Limitwert als Zahl an"
 
-#: app/js/controllers/registration.js:190
+#: app/js/controllers/registration.js:188
 msgid "Please indicate which organization or school you belong to!"
 msgstr "Bitte gib an, ob und welcher Gruppe du angehörst!"
 
-#: app/js/controllers/registration.js:170
+#: app/js/controllers/registration.js:168
 msgid "Please provide an e-mail address"
 msgstr "Bitte gib deine E-Mail-Adresse an"
 
-#: app/js/controllers/registration.js:108
+#: app/js/controllers/registration.js:106
 msgid ""
 "Please remember to choose your school or uni as a group to be eligible for "
 "the prizes."
@@ -1160,7 +1160,7 @@ msgstr "Bitte Warten"
 msgid "Popular stocks"
 msgstr "Top-Wertpapiere"
 
-#: app/js/controllers/inviteform.js:49
+#: app/js/controllers/inviteform.js:50
 msgid "Press Ctrl-C/&#x2318;-C to copy"
 msgstr "Drücke Strg-C/⌘-C um zu kopieren"
 
@@ -1173,10 +1173,6 @@ msgstr "Preis"
 #: app/templates/options.html:32
 msgid "Profile image"
 msgstr "Profilbild"
-
-#: app/js/controllers/options.js:66
-msgid "Profile picture was uploaded successfully!"
-msgstr "Profilbild erfolgreich hochgeladen!"
 
 #: app/templates/learning.questions.html:4
 msgid "Questions"
@@ -1231,11 +1227,11 @@ msgstr "Verkauf&#xad;spreis"
 msgid "Short description"
 msgstr "Kurzbeschreibung"
 
-#: app/templates/stock.comments.html:24
+#: app/templates/stock.comments.html:31
 msgid "Sorry, no comments on this stock so far."
 msgstr "Bisher keine Kommentare für dieses Wertpapier."
 
-#: app/js/controllers/comment.js:61
+#: app/js/controllers/comment.js:64
 msgid "Sorry, something went wrong."
 msgstr "Sorry, etwas ging hier schief."
 
@@ -1288,23 +1284,23 @@ msgstr "Stop-/Limit-Marke"
 msgid "Sub-groups"
 msgstr "Unter&#xad;gruppen"
 
-#: app/js/controllers/registration.js:112
+#: app/js/controllers/registration.js:110
 msgid "Successful registration"
 msgstr "Erfolgreich registriert"
 
-#: app/js/controllers/trade.js:102
+#: app/js/controllers/options.js:191
+msgid "Successfully saved options"
+msgstr "Einstellungen erfolgreich gespeichert"
+
+#: app/js/controllers/trade.js:95
 msgid "Successfully traded!"
 msgstr "Trade erfolgreich!"
 
-#: app/js/controllers/options.js:164
+#: app/js/controllers/options.js:180
 msgid "Sucessfully reset user!"
 msgstr "Benutzer erfolgreich zurückgesetzt!"
 
-#: app/js/controllers/options.js:171
-msgid "Sucessfully saved options"
-msgstr "Einstellungen erfolgreich gespeichert"
-
-#: app/js/controllers/group.js:145
+#: app/js/controllers/group.js:135 app/js/controllers/options.js:68
 msgid "Sucessfully uploaded profile picture!"
 msgstr "Profilebild erfolgreich hochgeladen!"
 
@@ -1324,33 +1320,27 @@ msgstr "Begriffe im Trading?"
 msgid "Terms &amp; Privacy"
 msgstr "AGB &amp; Datenschutz"
 
-#: app/js/controllers/options.js:95 app/js/controllers/registration.js:180
+#: app/js/controllers/options.js:103 app/js/controllers/registration.js:178
 msgid "The entered passwords do not match"
 msgstr "Die eingegebenen Passwörter stimmen nicht überein"
 
-#: app/js/controllers/options.js:153
+#: app/js/controllers/options.js:169
 msgid "The entered provision value is invalid"
 msgstr "Die angegebenen Provisionen sind ungültig"
 
-#: app/js/controllers/options.js:144 app/js/controllers/registration.js:142
+#: app/js/controllers/options.js:160 app/js/controllers/registration.js:140
 msgid "The entered school has not been found"
 msgstr "Die angegebene Schule wurde nicht gefunden"
 
-#: app/js/controllers/trade.js:96
-msgid ""
-"The trade will be executed as soon as the given conditions are fulfilled."
-msgstr ""
-"Der Trade wird ausgeführt, sobald die angegebenen Bedingungen erfüllt sind."
-
-#: app/js/controllers/trade.js:120
+#: app/js/controllers/trade.js:116
 msgid "The trade will be executed when the stock exchange opens"
 msgstr "Der Trade wird ausgeführt, sobald der Handelsplatz öffnet"
 
-#: app/js/services/ranking.js:55
+#: app/js/services/ranking.js:57
 msgid "There was a problem while loading the current ranking!"
 msgstr "Es gab ein Problem beim Laden der Rangliste!"
 
-#: app/js/controllers/group.js:152 app/js/controllers/options.js:74
+#: app/js/controllers/group.js:145 app/js/controllers/options.js:78
 #: app/js/main.js:40
 msgid ""
 "There was a technical problem uploading your profile picture. Please turn to "
@@ -1359,7 +1349,7 @@ msgstr ""
 "Es gab beim Hochladen deines Profilbilds leider technische Schwierigkeiten.\n"
 "Wende dich bitte an tech@tradity.de"
 
-#: app/js/controllers/main.js:177
+#: app/js/controllers/main.js:164
 msgid ""
 "There was a technical problem &#x2013; the tech team of Tradity has been "
 "informed."
@@ -1367,15 +1357,15 @@ msgstr ""
 "Es gab ein technisches Problem – das Tech-Team von Tradity ist informiert "
 "worden."
 
-#: app/js/controllers/options.js:138 app/js/controllers/registration.js:130
+#: app/js/controllers/options.js:154 app/js/controllers/registration.js:128
 msgid "This e-mail address has already been taken"
 msgstr "Email bereits vorhanden"
 
-#: app/js/controllers/trade.js:130
+#: app/js/controllers/trade.js:126
 msgid "This stock could not be found!"
 msgstr "Wertpapier existiert nicht!"
 
-#: app/js/controllers/options.js:141 app/js/controllers/registration.js:136
+#: app/js/controllers/options.js:157 app/js/controllers/registration.js:134
 msgid "This user name has already been taken"
 msgstr "Benutzername bereits vergeben"
 
@@ -1465,7 +1455,7 @@ msgstr ""
 "Wir arbeiten wahrscheinlich schon dran, du kannst uns aber gerne unter "
 "tech@tradity.de eine aufmunternde Nachricht schreiben."
 
-#: app/js/controllers/trade.js:127
+#: app/js/controllers/trade.js:123
 msgid ""
 "Unfortunately, your trade exceeds the maximum tradable amount of this stock"
 msgstr ""
@@ -1475,7 +1465,7 @@ msgstr ""
 msgid "Upload a profile picture."
 msgstr "Lade ein Profilbild hoch."
 
-#: app/js/controllers/profile.js:53
+#: app/js/controllers/profile.js:52
 msgid "User not found &#x2013; something went wrong here"
 msgstr "Benutzer nicht gefunden. Hier läuft etwas falsch"
 
@@ -1532,7 +1522,7 @@ msgstr ""
 "Aktien – Du hast 100.000&nbsp;€ Startkapital. Die <a>Hilfe</a> hilft dir "
 "weiter."
 
-#: app/js/controllers/registration.js:106 app/templates/feed.html:10
+#: app/js/controllers/registration.js:104 app/templates/feed.html:10
 msgid "Welcome to Tradity!"
 msgstr "Willkommen bei Tradity!"
 
@@ -1564,6 +1554,10 @@ msgstr "Mache 3&nbsp;Kommentare im selben Feed/Pinnwand."
 msgid "Write a short description of yourself."
 msgstr "Schreibe eine Kurzbeschreibung über dich."
 
+#: app/js/controllers/login.js:68 app/js/services/user.js:121
+msgid "Wrong username or password"
+msgstr "Nutzername oder Passwort falsch"
+
 #: app/templates/dialogs/confirm.html:12
 msgid "Yes"
 msgstr "Ja"
@@ -1593,7 +1587,7 @@ msgstr ""
 "verwendet werden.<br />Zur Zeit hast du Aktivität für folgende Tage "
 "gesammelt und gespeichert:"
 
-#: app/js/controllers/trade.js:111
+#: app/js/controllers/trade.js:107
 msgid "You do not have enough leftover money for this trade!"
 msgstr "Nicht genügend Geld zum Trade!"
 
@@ -1643,7 +1637,7 @@ msgstr ""
 "Du hast deinen Benutzernamen von {{message.oldwprov}}&nbsp;% auf {{message."
 "newwprov}}&nbsp;% geändert."
 
-#: app/js/controllers/inviteform.js:27
+#: app/js/controllers/inviteform.js:31
 msgid "You have not verified your e-mail address"
 msgstr "Eigene E-Mail-Adresse nicht bestätigt"
 
@@ -1675,7 +1669,7 @@ msgstr ""
 msgid "You need to choose a stock!"
 msgstr "Du musst ein Wertpapier auswählen!"
 
-#: app/js/controllers/trade.js:108
+#: app/js/controllers/trade.js:104
 msgid ""
 "You need to provide a verified e-mail address in order to be eligible for "
 "follower trades!"
@@ -1703,11 +1697,11 @@ msgstr "Deine Gruppe wird hier nicht aufgeführt? <a>Gründe eine neue!</a>"
 msgid "Your groups"
 msgstr "Deine Gruppen"
 
-#: app/js/main.js:67
+#: app/js/main.js:68
 msgid "Your need to upload your profile picture as a JPEG/PNG/GIF file"
 msgstr "Dein Profilbild musst du als JPEG, PNG oder GIF hochladen"
 
-#: app/js/controllers/options.js:147 app/js/controllers/registration.js:148
+#: app/js/controllers/options.js:163 app/js/controllers/registration.js:146
 msgid "Your password is too short!"
 msgstr "Das Passwort ist zu kurz!"
 
@@ -1719,20 +1713,16 @@ msgstr "Vermögens&#xad;entwicklung"
 msgid "Your portfolio"
 msgstr "Dein Depot"
 
-#: app/js/controllers/group.js:148 app/js/controllers/options.js:69
-#: app/js/main.js:80
+#: app/js/controllers/group.js:141 app/js/controllers/options.js:74
+#: app/js/main.js:82
 msgid "Your profile picture file is too large (maximum 3&#xA0;MB)"
 msgstr "Die Profilbilddatei ist leider zu groß (höchstens 3&nbsp;MB)"
 
-#: app/js/controllers/main.js:162
-msgid "Your tradity client version is, unfortunately, no longer supported."
-msgstr "Deine Tradity-Client-Version wird leider nicht mehr unterstützt."
-
-#: app/js/controllers/options.js:150 app/js/controllers/registration.js:160
+#: app/js/controllers/options.js:166 app/js/controllers/registration.js:158
 msgid "Your user name contains invalid characters!"
 msgstr "Der Benutzername enthält unerlaubte Zeichen!"
 
-#: app/templates/stock.comments.html:17 app/templates/stock.comments.html:26
+#: app/templates/stock.comments.html:33 app/templates/stock.comments.html:24
 msgid "by <a><img alt=\"Wikifolio\"></a>"
 msgstr "von <a><img alt=\"Wikifolio\"></a>"
 
@@ -1767,9 +1757,24 @@ msgstr "{{notification.srcusername}} hat auf deine Pinnwand geschrieben."
 msgid "{{progress}}&#xA0;% completed"
 msgstr "{{progress}}&nbsp;% vollständig"
 
-#: app/js/controllers/depot.js:109
+#: app/js/controllers/depot.js:82
 msgid "{{stockname}} removed from the watchlist"
 msgstr "{{stockname}} von der Watchlist entfernt"
+
+#~ msgid "Error: {{code}}"
+#~ msgstr "Fehler: {{code}}"
+
+#~ msgid "Profile picture was uploaded successfully!"
+#~ msgstr "Profilbild erfolgreich hochgeladen!"
+
+#~ msgid ""
+#~ "The trade will be executed as soon as the given conditions are fulfilled."
+#~ msgstr ""
+#~ "Der Trade wird ausgeführt, sobald die angegebenen Bedingungen erfüllt "
+#~ "sind."
+
+#~ msgid "Your tradity client version is, unfortunately, no longer supported."
+#~ msgstr "Deine Tradity-Client-Version wird leider nicht mehr unterstützt."
 
 #~ msgid "Comment by"
 #~ msgstr "Kommentar von"

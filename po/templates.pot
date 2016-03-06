@@ -484,7 +484,7 @@ msgstr ""
 msgid "Continue reading&#x2026;"
 msgstr ""
 
-#: app/js/controllers/inviteform.js:49
+#: app/js/controllers/inviteform.js:47
 msgid "Copied!"
 msgstr ""
 
@@ -492,7 +492,7 @@ msgstr ""
 msgid "Copy this link and send it to someone who you want to invite"
 msgstr ""
 
-#: app/js/controllers/inviteform.js:36
+#: app/js/controllers/inviteform.js:34
 msgid "Could not send invitation link"
 msgstr ""
 
@@ -674,11 +674,11 @@ msgstr ""
 msgid "In case you have not verified your e-mail address, please do so. Only then the entire functionality of Tradity is available to you and you will be eligible to receive prizes."
 msgstr ""
 
-#: app/js/controllers/inviteform.js:30
+#: app/js/controllers/inviteform.js:28
 msgid "Invalid e-mail address"
 msgstr ""
 
-#: app/js/controllers/inviteform.js:24
+#: app/js/controllers/inviteform.js:22
 msgid "Invitation link was sent successfully"
 msgstr ""
 
@@ -1004,7 +1004,7 @@ msgstr ""
 msgid "Popular stocks"
 msgstr ""
 
-#: app/js/controllers/inviteform.js:52
+#: app/js/controllers/inviteform.js:50
 msgid "Press Ctrl-C/&#x2318;-C to copy"
 msgstr ""
 
@@ -1432,7 +1432,7 @@ msgstr ""
 msgid "You have changed your user name from &#x201C;{{message.oldname}}&#x201D; to &#x201C;{{message.newname}}&#x201D;."
 msgstr ""
 
-#: app/js/controllers/inviteform.js:33
+#: app/js/controllers/inviteform.js:31
 msgid "You have not verified your e-mail address"
 msgstr ""
 

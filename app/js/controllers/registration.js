@@ -73,7 +73,7 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
     if (!result._success)
       return;
 
-    return vm.genders = result.data.genders;
+    return vm.genders = result.data;
   });
 
   vm.alerts = [];
@@ -97,62 +97,58 @@ controller('RegistrationCtrl', function($scope, $stateParams, $state, user, dial
     });
   }
 
-  $scope.registerResultHandler = function(data) {
-    switch (result.code) {
-      case 'reg-success':
-        var modal = dialogs.notify(
-          gettextCatalog.getString('Welcome to Tradity!'),
-          // gettextCatalog.getString('Please click on the link in the verification e-mail we just sent you in order to be able to use the full functionality of Tradity and be eligible for winning the available prizes.'));
-          gettextCatalog.getString('Please remember to choose your school or uni as a group to be eligible for the prizes.'));
-        modal.result.then(function(btn) {
-          vm.alerts.push({
-            type: 'danger',
-            msg: gettextCatalog.getString('Successful registration')
-          });
-          user.fetch();
-          if (vm.questionnaire)
-            $state.go('survey', {questionnaire: vm.questionnaire.questionnaire_id});
-          else
-            $state.go('game.feed');
-        });
-        break;
-      case 'reg-email-failed':
+  $scope.registerResultHandler = function(result) {
+    if (result._success) {
+      var modal = dialogs.notify(
+        gettextCatalog.getString('Welcome to Tradity!'),
+        // gettextCatalog.getString('Please click on the link in the verification e-mail we just sent you in order to be able to use the full functionality of Tradity and be eligible for winning the available prizes.'));
+        gettextCatalog.getString('Please remember to choose your school or uni as a group to be eligible for the prizes.'));
+      
+      return modal.result.then(function(btn) {
         vm.alerts.push({
           type: 'danger',
-          msg: gettextCatalog.getString('Could not send verification e-mail. Please turn to tech@tradity.de.')
+          msg: gettextCatalog.getString('Successful registration')
         });
-        break;
-      case 'reg-email-already-present':
+        user.fetch();
+        if (vm.questionnaire)
+          $state.go('survey', {questionnaire: vm.questionnaire.questionnaire_id});
+        else
+          $state.go('game.feed');
+      });
+    }
+    
+    switch (result.identifier) {
+      case 'email-already-present':
         vm.alerts.push({
           type: 'danger',
           msg: gettextCatalog.getString('This e-mail address has already been taken')
         });
         break;
-      case 'reg-name-already-present':
+      case 'name-already-present':
         vm.alerts.push({
           type: 'danger',
           msg: gettextCatalog.getString('This user name has already been taken')
         });
         break;
-      case 'reg-unknown-school':
+      case 'unknown-school':
         vm.alerts.push({
           type: 'danger',
           msg: gettextCatalog.getString('The entered school has not been found')
         });
         break;
-      case 'reg-too-short-pw':
+      case 'too-short-pw':
         vm.alerts.push({
           type: 'danger',
           msg: gettextCatalog.getString('Your password is too short!')
         });
         break;
-      case 'reg-beta-necessary':
+      case 'beta-necessary':
         vm.alerts.push({
           type: 'danger',
           msg: gettextCatalog.getString('No valid beta key was entered')
         });
         break;
-      case 'reg-name-invalid-char':
+      case 'name-invalid-char':
         vm.alerts.push({
           type: 'danger',
           msg: gettextCatalog.getString('Your user name contains invalid characters!')

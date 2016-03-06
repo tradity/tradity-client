@@ -56,7 +56,7 @@ angular.module('tradity').
           stocktextid: vm.stocktextid,
           leader: vm.leader,
           forceNow: vm.forceNow,
-          retainUntilCode: 'stock-buy-success',
+          retainUntilCode: 'success',
           dquerydata: { /* will be returned in the dquery-exec event */
             xtype: vm.xtype,
             xvalue: parseFloat(vm.xvalue.replace(',', '.')),
@@ -64,7 +64,8 @@ angular.module('tradity').
             amount: vm.amount * vm.sellbuy,
             delayedquery: true,
             ordertime: new Date().getTime()
-          }
+          },
+          type: 'StockTrade'
         };
         var url = '/trade';
         if (vm.xtype != 'market') {
@@ -80,7 +81,6 @@ angular.module('tradity').
           else
             stocktextid = '__LEADER_' + vm.leader + '__';
           condition += 'stock::' + stocktextid + '::' + fieldname + ' ' + compar + ' ' + (parseFloat(vm.xvalue.replace(',', '.')) * 10000);
-          query.type = 'StockTrade';
           query = {
             condition: condition,
             query: query

@@ -55,7 +55,7 @@ angular.module('tradity')
       
       return achievements._list = socket.get('/achievements/list', { cache: true })
         .then(function(result) {
-          return achievements._list = data.result;
+          return achievements._list = result.data;
         });
     };
     

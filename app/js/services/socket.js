@@ -65,7 +65,7 @@ angular.module('tradity')
       options.headers = options.headers || {};
       options.headers['Authorization'] = webKeyStorage.getKey();
       
-      if (!options.json) {
+      if (options.json) {
         options.responseType = 'json';
       }
       

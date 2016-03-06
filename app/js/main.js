@@ -49,6 +49,7 @@ var fileemit = function(socket, gettextCatalog, input, evtype, template, serverc
         template.headers['Content-Type'] = template.mime || mime;
         template.params = template.params || {};
         template.params.name = template.name || filename;
+        template.transformRequest = [];
         
         return socket(template);
       } catch (e) {
@@ -80,7 +81,7 @@ var fileemit = function(socket, gettextCatalog, input, evtype, template, serverc
           if (serverconfig && reader.result.byteLength > serverconfig.fsdb.userquota)
             return notification(gettextCatalog.getString('Your profile picture file is too large (maximum 3\u00a0MB)'));
           
-          resolve(goPublish(buf));
+          resolve(goPublish(new Uint8Array(buf)));
         };
       });
     } else {

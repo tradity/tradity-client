@@ -134,7 +134,11 @@ angular.module('tradity')
       var encrypted = asmCrypto.AES_GCM.encrypt(stringToBytes(plaintext), key, iv);
       
       return socket.put('/options/clientstorage', {
-        data: uint8concat(iv, encrypted).buffer,
+        data: uint8concat(iv, encrypted),
+        transformRequest: [],
+        headers: {
+          'Content-Type': 'application/octet-stream'
+        },
         json: false
       });
     };

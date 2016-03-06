@@ -7,7 +7,6 @@
 angular.module('tradityFilters', []).
   filter('foldDeletedComments', function() {
     return function(input) {
-      console.log('fold', input && input.length, input && input.deletedCommentsAreFolded);
       if (!input || !input.length)
         return input;
       

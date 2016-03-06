@@ -6,11 +6,9 @@
 
 angular.module('tradity').
   controller('InviteFormCtrl', function($scope, socket, gettextCatalog) {
-    var createInviteLinkURL = $scope.schoolid ?
-      '/school/' + $scope.schoolid + '/create-invitelink' :
-      '/create-invitelink';
-    
-    socket.post(createInviteLinkURL).then(function(result) {
+    socket.post('/create-invitelink', {
+      params: $scope.schoolid ? { schoolid: $scope.schoolid } : {}
+    }).then(function(result) {
       $scope.invitelink = result.url;
     });
     

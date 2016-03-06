@@ -500,7 +500,7 @@ msgstr ""
 msgid "Could not send verification e-mail. Please turn to tech@tradity.de."
 msgstr ""
 
-#: app/js/main.js:78
+#: app/js/main.js:79
 msgid "Could not upload profile picture"
 msgstr ""
 
@@ -972,7 +972,7 @@ msgstr ""
 msgid "Please answer all the questions"
 msgstr ""
 
-#: app/js/controllers/trade.js:72
+#: app/js/controllers/trade.js:73
 msgid "Please enter a numerical stop/limit value"
 msgstr ""
 
@@ -1476,7 +1476,7 @@ msgstr ""
 msgid "Your groups"
 msgstr ""
 
-#: app/js/main.js:67
+#: app/js/main.js:68
 msgid "Your need to upload your profile picture as a JPEG/PNG/GIF file"
 msgstr ""
 
@@ -1495,7 +1495,7 @@ msgstr ""
 
 #: app/js/controllers/group.js:141
 #: app/js/controllers/options.js:74
-#: app/js/main.js:81
+#: app/js/main.js:82
 msgid "Your profile picture file is too large (maximum 3&#xA0;MB)"
 msgstr ""
 

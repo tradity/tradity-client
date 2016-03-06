@@ -68,7 +68,7 @@ angular.module('tradity')
           }
           
           for (var i = 0; i < result.data.length; ++i) {
-            $feed.receiveEvent(resut.data[i]);
+            $feed.receiveEvent(result.data[i]);
           }
         });
       }));

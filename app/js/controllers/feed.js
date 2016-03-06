@@ -47,7 +47,7 @@ angular.module('tradity').
       }
     });
     
-    socket.get('/events');
+    $feed.fetch();
   });
 
 })();

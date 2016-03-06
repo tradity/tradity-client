@@ -17,7 +17,7 @@ angular.module('tradity').
     };
 
     socket.get('/depot').then(function(result) {
-      if (data._success) {
+      if (result._success) {
         $scope.results = result.data;
         ownDepotOrUser();
       }

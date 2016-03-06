@@ -67,7 +67,7 @@ angular.module('tradity')
 
     $rootScope.$on('socket:answer', function(ev, answer) {
       if (answer.result.code === 'login-required' && !/\/events/.test(answer.request.url)) {
-        $user = $rootScope.$new(true);
+        $user.uid = null;
         
         $rootScope.$broadcast('user-update', null);
         if ($state.includes('game'))

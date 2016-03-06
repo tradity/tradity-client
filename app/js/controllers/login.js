@@ -77,7 +77,7 @@ angular.module('tradity').
       }).then(function(result) {
         if (result._success) {
           vm.alerts.push({ type: 'success', msg:'Neues Passwort erfolgreich versandt'});
-        } else if (data.code == 'user-not-found') {
+        } else if (result.identifier == 'user-not-found') {
           vm.alerts.push({ type: 'danger', msg:'Benutzer „' + vm.username + '“ existiert nicht'});
         } else {
           vm.alerts.push({ type: 'danger', msg:'Das neue Passwort konnte nicht versandt werden. Bitte an tech@tradity.de wenden'});

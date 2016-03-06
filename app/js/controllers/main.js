@@ -133,7 +133,7 @@ angular.module('tradity').
     
     $rootScope.$on('socket:answer', function(ev, answer) {
       // console.log('socket:answer -> ', answer);
-      if (answer.result.identifier === 'login-required' && !/^\/events/.test(answer.origURL)) {
+      if (answer.result.identifier === 'login-required') {
         $user = $rootScope.$new(true);
         
         $rootScope.$broadcast('user-update', null);

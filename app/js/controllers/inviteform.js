@@ -9,7 +9,7 @@ angular.module('tradity').
     socket.post('/create-invitelink', {
       params: $scope.schoolid ? { schoolid: $scope.schoolid } : {}
     }).then(function(result) {
-      $scope.invitelink = result.url;
+      $scope.invitelink = result.data.url;
     });
     
     $scope.createInviteLink = function() {

@@ -22,7 +22,7 @@ angular.module('tradity')
         var cookie = document.cookie.split(';');
         for (var i = 0; i < cookie.length; ++i) {
           var c = cookie[i].trim().split('=');
-          if (c[0].toLowerCase() == 'key')
+          if (c[0].toLowerCase() == 'sotradekey')
             return c[1];
         }
         
@@ -35,9 +35,9 @@ angular.module('tradity')
           s['sotradekey'] = k;
         
         if (this.getKey() != k)
-          document.cookie = 'key=' + k + '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
+          document.cookie = 'sotradekey=' + k + '; expires=Fri, 31 Dec 9999 23:59:59 GMT';
         else
-          document.cookie = 'key=; expires=Thu, 01 Jan 1970 00:00:01 GMT';
+          document.cookie = 'sotradekey=; expires=Thu, 01 Jan 1970 00:00:01 GMT';
         
         return k;
       }

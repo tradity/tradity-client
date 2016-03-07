@@ -53,7 +53,7 @@ angular.module('tradity').
         if (!result._success)
           return;
       
-        $scope.userlist = result.result;
+        $scope.userlist = result.data;
         
         $scope.usercount = 0;
         $scope.tradeusers = 0;

@@ -37,7 +37,7 @@ angular.module('tradity').
     };
     
     socket.get('/users').then(function(result) {
-      if (data._success) {
+      if (result._success) {
         $scope.userlist = result.data;
         
         $scope.drawRegistrations();

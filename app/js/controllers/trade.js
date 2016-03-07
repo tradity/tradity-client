@@ -106,7 +106,7 @@ angular.module('tradity').
             case 'out-of-money':
               dialogs.error('tradity', gettextCatalog.getString('You do not have enough leftover money for this trade!'));
               break;
-            case 'single-paper-share-exceed':
+            case 'single-paper-share-exceeded':
               dialogs.error('tradity', gettextCatalog.getString('Only 50\u00a0% of your assets may consist of a single stock!'));
               break;
             case 'not-enough-stocks':

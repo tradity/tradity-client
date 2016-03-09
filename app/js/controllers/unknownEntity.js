@@ -15,7 +15,9 @@ angular.module('tradity').
       } else {
         var strippedEntity = entity.replace(/^\//, ''); // strip leading slash
         
-        socket.get('/user/' + strippedEntity).then(function(result) {
+        socket.get('/user/' + strippedEntity, {
+          params: { nohistory: true }
+        }).then(function(result) {
           if (result._success) {
             $state.go('game.profile', {userId: strippedEntity});
           } else {

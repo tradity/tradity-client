@@ -20,7 +20,7 @@ angular.module('tradity').
     
     $scope.submitNotification = function() {
       socket.post('/mod-notifications', {
-        body: {
+        data: {
           sticky: $scope.sticky,
           content: $scope.maybeHTMLizeContent()
         }

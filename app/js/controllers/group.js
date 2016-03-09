@@ -176,7 +176,7 @@ angular.module('tradity').
         return;
 
       socket.post('/school', {
-        body: {
+        data: {
           schoolname: n,
           schoolpath: $scope.school.path + '/' + n.replace(/[^\w_-]/g, '-').replace(/-+/g, '-'),
         }

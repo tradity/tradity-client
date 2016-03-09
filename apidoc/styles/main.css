@@ -1,0 +1,47 @@
+body {
+  font-family: sans-serif;
+}
+
+.apidoc-container {
+  width: 80%;
+  max-width: 1000px;
+  min-width: 340px;
+  margin: auto;
+  border: 1px solid grey;
+  padding: 10px;
+}
+
+code {
+  background-color: #f0f0f0;
+  padding: 2px;
+}
+
+table, tr, td, th {
+  border: 1px solid grey;
+  margin: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+th {
+  background-color: lightgreen;
+}
+
+.schema-display {
+  margin-top: 10px;
+  margin-left: 3em;
+}
+
+button {
+  padding: 4px;
+  background-color: #3030ff;
+  color: white;
+  border: 1px solid grey;
+  border-radius: 3px;
+}
+
+.no-required-login-note, .required-access-note, .notes {
+  background-color: #ffd0b0;
+  padding: 4px;
+}

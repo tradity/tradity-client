@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="tradity-apidoc">
+  <head>
+    <meta charset="utf-8">
+    <title>Tradity API docs</title>
+    
+    <link rel="stylesheet" href="styles/main.css" />
+    <script type="text/javascript" src="/node_modules/marked/lib/marked.js"></script>
+    <script type="text/javascript" src="/node_modules/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/node_modules/angular-marked/dist/angular-marked.min.js"></script>
+    
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/controllers/overview.js"></script>
+  </head>
+  <body>
+    <div ng-controller="APIDocCtrl as apidoc">
+      <ng-include src="'templates/overview.html'"></ng-include>
+    </div>
+  </body>
+</html>

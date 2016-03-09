@@ -1,0 +1,71 @@
+<div class="apidoc-container">
+<h1>{{apidoc.title}}</h1>
+<div class="apidoc">
+  <div ng-repeat="endpoint in apidoc.listing | orderBy:'info.url[0]' track by $index" ng-init="info = endpoint.info">
+    <h2>
+      <span ng-click="endpoint._displayed = !endpoint._displayed">
+        <span ng-repeat="url in info.url" class="url">
+          {{url}}
+        </span>
+        (<span ng-repeat="method in info.methods" class="method">
+          <code>{{method}}</code>
+        </span>)
+      </span>
+    </h2>
+    <div ng-show="endpoint._displayed">
+      <p ng-if="info.requiredAccess" class="required-access-note">
+        This request type requires special access (<code>{{info.requiredAccess}}</code>).
+      </p>
+      <p ng-if="!info.requiredLogin" class="no-required-login-note">
+        This request type can be invoked without set <code>Authorization</code> headers.
+      </p>
+      <p class="description" marked="info.description"></p>
+      <div class="properties" ng-show="info.schema && info.schema.properties">
+        <table>
+          <tr>
+            <th>Property</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+          <tr ng-repeat="(key, definition) in info.schema.properties">
+            <td><code>{{key}}</code></td>
+            <td>
+              <span class="type"><code>{{definition.type}}</code></span>
+              <span ng-show="!info.schema.required || info.schema.required.indexOf(key) === -1">
+                (optional)
+              </span>
+            </td>
+            <td>
+              <p class="description" marked="definition.description"></p>
+              <p class="notes" marked="definition.notes" ng-if="definition.notes"></p>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p class="notes" marked="info.notes" ng-if="definition.notes"></p>
+      <div ng-show="info.returns" class="return-values">
+        Possible return values:
+        <table>
+          <tr>
+            <th>HTTP Status (<code>.code</code>)</th>
+            <th><code>.identifier</code></th>
+          </tr>
+          <tr ng-repeat="rv in info.returns">
+            <td>{{rv.code}}</td>
+            <td>
+              <span ng-if="rv.identifier"><code>{{rv.identifier}}</code></span>
+              <span ng-if="!rv.identifier">—</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div ng-show="info.schema" class="schema-display">
+        <button ng-click="info._showSchema = !info._showSchema">Show JSON schema</button>
+        <div ng-show="info._showSchema">
+          <pre>{{info.schema | json}}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

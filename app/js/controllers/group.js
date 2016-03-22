@@ -39,7 +39,7 @@ angular.module('tradity').
         $.extend(true, $scope.school, result.data);
         $scope.comments = $.extend(true, [], $scope.school.comments); // deep copy
         $scope.descpage = $scope.school.descpage;
-        $scope.schoolid = $scope.school.id;
+        $scope.schoolid = $scope.school.schoolid;
         $scope.feedblogs = $scope.school.feedblogs;
         if (!$scope.school.banner)
           $scope.school.banner = DEFAULT_GROUP_BANNER;

@@ -64,6 +64,21 @@ angular.module('tradity')
     $rootScope.$on('/user/$self', function(ev, result) {
       return updateUser(result);
     });
+    
+    var fetchSelf = function(noCache) {
+      var params = {
+        nohistory: true,
+      };
+      
+      if (noCache) {
+        params.noCache = true;
+      }
+      
+      socket.get('/user/$self', {
+        lookfor: '$self',
+        params: params
+      });
+    };
 
     $rootScope.$on('socket:answer', function(ev, answer) {
       if (answer.result.code === 'login-required' && !/\/events/.test(answer.request.url)) {
@@ -73,14 +88,12 @@ angular.module('tradity')
         if ($state.includes('game'))
           $state.go('index.login');
       }
+      
+      if (answer.result.repush) {
+        fetchSelf(true);
+      }
     });
 
-    var fetchSelf = function() {
-      socket.get('/user/$self', {
-        lookfor: '$self',
-        params: { nohistory: true }
-      });
-    };
     fetchSelf();
 
     return {

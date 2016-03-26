@@ -234,6 +234,11 @@ angular.module('tradity', [
       templateUrl: 'app/templates/admin.statistics.html',
       controller: 'AdminStatisticsCtrl'
     }).
+    state('admin.sranking', {
+      url: '/sustainability-ranking',
+      templateUrl: 'app/templates/admin.sranking.html',
+      controller: 'adminSustainabilityRankingCtrl'
+    }).
     state('admin.events', {
       url: '/events',
       templateUrl: 'app/templates/admin.events.html',

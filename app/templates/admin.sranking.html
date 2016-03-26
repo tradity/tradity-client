@@ -1,0 +1,21 @@
+School path: <input type="text" ng-model="schoolpath" placeholder="/…">
+<button ng-click="loadSRanking()">Go!</button>
+
+<table class="table table-bordered">
+  <tr>
+    <th>UID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Total value</th>
+    <th>Score thingy</th>
+    <th>Multiplied score thingy</th>
+  <tr>
+  <tr ng-repeat="entry in sranking | orderBy:'overallScore':true ">
+    <td>{{entry.uid}}</td>
+    <td>{{entry.name}}</td>
+    <td>{{entry.email}}</td>
+    <td>{{entry.totalvalue / 10000.0 | currency}}</td>
+    <td>{{entry.totalscore | number:3}}</td>
+    <td>{{entry.overallScore * 100 | number:3}}&nbsp;%</td>
+  </tr>
+</tr>

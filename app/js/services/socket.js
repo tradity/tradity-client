@@ -92,7 +92,7 @@ angular.module('tradity')
         }
         
         if (body._success && origURL.match(/^\/config/)) {
-          socket.serverConfig = body.result;
+          socket.serverConfig = body.data;
         }
         
         $rootScope.$emit(options.uri, body);

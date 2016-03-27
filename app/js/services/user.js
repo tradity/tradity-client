@@ -31,7 +31,7 @@ angular.module('tradity')
       user.pinboard     = res.pinboard     || [];
       user.values     = res.values     || [];
       user.achievements   = res.achievements   || [];
-      user.profilepic = (config.server().protocol + '://' + config.server().hostname  +
+      user.profilepic = (config.server().protocol + '://' + config.server().hostname +
          (user.profilepic || config.DEFAULT_PROFILE_IMG));
       user.parsed = true;
       return user;

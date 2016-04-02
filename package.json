@@ -50,14 +50,14 @@
     "start": "npm run build && parallelshell 'npm run watch' 'browser-sync start --config bs-config.js'"
   },
   "dependencies": {
-    "angular": "1.5.0-rc.0",
+    "angular": "1.5.3",
     "angular-debounce": "~1.0.1",
     "angular-dialog-service": "m-e-conroy/angular-dialog-service#b6471bb",
     "angular-events-calendar": "^1.0.0",
     "angular-gettext": "addaleax/angular-gettext#development-all",
     "angular-marked": "^1.0.1",
     "angular-md5": "*",
-    "angular-sanitize": "1.5.0-rc.0",
+    "angular-sanitize": "1.5.3",
     "angular-ui-bootstrap": "0.14.x",
     "angular-ui-router": "~0.2.14",
     "asmcrypto.js": "vibornoff/asmcrypto.js#v0.0.6",

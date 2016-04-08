@@ -18,6 +18,8 @@
     "remarkup-po": "^0.1.2",
     "requirejs": "^2.1.11",
     "rimraf": "^2.5.1",
+    "typescript": "^1.8.9",
+    "typings": "^0.7.11",
     "watch-run": "^1.2.4"
   },
   "engines": {
@@ -47,7 +49,9 @@
     "watch:css": "watch-run -p 'less/**' npm run build:css",
     "watch:js": "watch-run -p 'app/**' npm run build:js",
     "watch:cp": "watch-run -p '*.html,*.txt,*.ico,fonts/**,img/**,scripts/**' npm run build:cp",
-    "start": "npm run build && parallelshell 'npm run watch' 'browser-sync start --config bs-config.js'"
+    "start": "npm run build && parallelshell 'npm run watch' 'browser-sync start --config bs-config.js'",
+    "typings": "typings",
+    "tsc": "tsc -p . -w"
   },
   "dependencies": {
     "angular": "1.5.3",
@@ -72,6 +76,7 @@
     "ng-infinite-scroll": "1.2.x",
     "nsPopover": "nohros/nsPopover#622a133b344b",
     "open-sans-fontface": "~1.2.0",
+    "systemjs": "^0.19.25",
     "zxcvbn": "^4.2.0"
   },
   "private": true,

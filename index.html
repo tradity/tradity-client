@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     
     <link rel="stylesheet" href="main.css">
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script type="text/javascript" src="app/js/buildstamp.js"></script>
     <script type="text/javascript" src="scripts/piwik.js"></script>
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
@@ -45,7 +46,16 @@
     <script type="text/javascript" src="scripts/jquery.pointpoint.js"></script>
     
     <script type="text/javascript" src="app/js/main.js"></script>
+    
+    <script>
+        System.config({
+            baseURL: '/app'
+        });
 
+        System.import('app.module.js');
+    </script>
+    
+    <!--
     <script type="text/javascript" src="app/js/app.js"></script>
     <script type="text/javascript" src="app/js/config.js"></script>
 
@@ -102,6 +112,7 @@
     <script type="text/javascript" src="app/js/services/maybeCompress.js"></script>
     <script type="text/javascript" src="app/js/services/event.js"></script>
     <script type="text/javascript" src="app/js/services/group.js"></script>
+    -->
     <script type="text/javascript">window.onload = function(){if(typeof angular=='undefined'){var a;(a=document.getElementById('scriptfail')).style.display='block';a.src='scriptfail.html';}};</script>
   </head>
   <body ng-controller="MainCtrl">

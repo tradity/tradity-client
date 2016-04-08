@@ -6,3 +6,4 @@ docs
 *.log
 bower_components
 .DS_Store
+typings

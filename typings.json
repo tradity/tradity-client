@@ -1,0 +1,5 @@
+{
+  "ambientDependencies": {
+    "angular": "registry:dt/angular#1.5.0+20160328125810"
+  }
+}

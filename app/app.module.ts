@@ -325,4 +325,6 @@ angular.module('tradity', [
   $rootScope.$on("$stateChangeError", end);
 });
 
+angular.bootstrap(document.documentElement, ['tradity']);
+
 })();

@@ -181,7 +181,7 @@ msgstr ""
 msgid "<input placeholder=\"Amount\" id=\"amount\">"
 msgstr ""
 
-#: app/templates/login.html:9
+#: app/login/login.component.html:9
 msgid "<input placeholder=\"Password\">"
 msgstr ""
 
@@ -226,7 +226,7 @@ msgstr ""
 msgid "<input id=\"invitelink\" placeholder=\"Loading invite link...\" popover=\"{{copyTooltip.msg}}\"> <span><button><i></i></button></span>"
 msgstr ""
 
-#: app/templates/login.html:6
+#: app/login/login.component.html:6
 msgid "<input placeholder=\"User name\">"
 msgstr ""
 
@@ -619,7 +619,7 @@ msgstr ""
 msgid "Force trade"
 msgstr ""
 
-#: app/templates/login.html:20
+#: app/login/login.component.html:20
 msgid "Forgot password?"
 msgstr ""
 
@@ -779,8 +779,8 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
+#: app/login/login.component.html:24
 #: app/templates/index.html:11
-#: app/templates/login.html:24
 #: app/templates/registration.html:13
 msgid "Login"
 msgstr ""
@@ -859,7 +859,7 @@ msgstr ""
 msgid "Not enough stocks!"
 msgstr ""
 
-#: app/templates/login.html:21
+#: app/login/login.component.html:21
 msgid "Not registered yet?"
 msgstr ""
 
@@ -1125,7 +1125,7 @@ msgstr ""
 msgid "Start value"
 msgstr ""
 
-#: app/templates/login.html:14
+#: app/login/login.component.html:14
 msgid "Stay logged in?"
 msgstr ""
 
@@ -1228,10 +1228,6 @@ msgstr ""
 
 #: app/js/services/ranking.js:57
 msgid "There was a problem while loading the current ranking!"
-msgstr ""
-
-#: app/js/controllers/main.js:164
-msgid "There was a technical problem &#x2013; the tech team of Tradity has been informed."
 msgstr ""
 
 #: app/js/controllers/group.js:145
@@ -1427,7 +1423,6 @@ msgstr ""
 msgid "Write a short description of yourself."
 msgstr ""
 
-#: app/js/controllers/login.js:68
 #: app/js/services/user.js:134
 msgid "Wrong username or password"
 msgstr ""

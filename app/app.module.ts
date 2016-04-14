@@ -1,23 +1,32 @@
-(function() { 'use strict';
-
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-angular.module('tradity', [
-  'ui.router',
-  'ui.bootstrap',
-  'ui.keypress',
-  'ui.event',
-  'dialogs.main',
-  'angular-md5',
-  'infinite-scroll',
-  'rt.debounce',
-  'tradityFilters',
-  'eventsCalendar',
-  'nsPopover',
-  'gettext' // override translate filter from dialogs.main, so this comes last
-]).config(function($stateProvider, $urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider, $compileProvider) {
+import TradityComponent from './app.component';
+import LoginComponent from './login/login.component';
+
+angular
+  .module('tradity', [
+    'ngComponentRouter',
+    'ui.bootstrap',
+    'ui.keypress',
+    'ui.event',
+    'dialogs.main',
+    'angular-md5',
+    'infinite-scroll',
+    'rt.debounce',
+    //'tradityFilters',
+    'eventsCalendar',
+    'nsPopover',
+    'gettext' // override translate filter from dialogs.main, so this comes last
+  ])
+  //.config(configure)
+  //.run(run)
+  .value('$routerRootComponent', 'tradity')
+  .component('tradity', new TradityComponent())
+  .component('login', new LoginComponent());
+
+function configure($urlRouterProvider, $urlMatcherFactoryProvider, $locationProvider, $compileProvider) {
   $compileProvider.debugInfoEnabled(document.cookie.indexOf('devmode') !== -1);
   
   /* Create custom angular-ui-router parameter types.
@@ -48,6 +57,7 @@ angular.module('tradity', [
   when('/register', '/register/step1').
   otherwise('/error/404');
 
+  /*
   $stateProvider.
     state('index', {
       url: '/',
@@ -294,15 +304,16 @@ angular.module('tradity', [
       url:'{entity:GenericEntityID}',
       controller: 'UnknownEntityCtrl'
     });
+    */
 
   $locationProvider.
     html5Mode(true).
     hashPrefix('!');
-    
-}).run(function($templateCache, languageManager, $rootScope) {
+}
+
+function run($templateCache, languageManager, $rootScope) {
   $rootScope.$on('user-update', function(ev, data) {
-    if (data && data.lang)
-      languageManager.setCurrentLanguage(data.lang);
+    if (data && data.lang) languageManager.setCurrentLanguage(data.lang);
   });
   
   languageManager.setCurrentLanguage(null);
@@ -323,8 +334,6 @@ angular.module('tradity', [
 
   $rootScope.$on("$stateChangeSuccess", end);
   $rootScope.$on("$stateChangeError", end);
-});
+}
 
 angular.bootstrap(document.documentElement, ['tradity']);
-
-})();

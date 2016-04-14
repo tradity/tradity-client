@@ -12,12 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     
     <link rel="stylesheet" href="main.css">
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script type="text/javascript" src="node_modules/systemjs/dist/system.src.js"></script>
     <script type="text/javascript" src="app/js/buildstamp.js"></script>
     <script type="text/javascript" src="scripts/piwik.js"></script>
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
-    <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="node_modules/@angular/router/angular1/angular_1_router.js"></script>
     <script type="text/javascript" src="node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-gettext/dist/angular-gettext.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
@@ -49,10 +49,11 @@
     
     <script>
         System.config({
+            defaultJSExtensions: true,
             baseURL: '/app'
         });
 
-        System.import('app.module.js');
+        System.import('app.module');
     </script>
     
     <!--
@@ -115,11 +116,12 @@
     -->
     <script type="text/javascript">window.onload = function(){if(typeof angular=='undefined'){var a;(a=document.getElementById('scriptfail')).style.display='block';a.src='scriptfail.html';}};</script>
   </head>
-  <body ng-controller="MainCtrl">
-    <div id="view" ui-view>
+  <body>
+    <tradity></tradity>
+    <!--<div id="view" ui-view>
       <p class="text-center" id="js-notice">Javascript muss in deinem Browser aktiviert sein, um Tradity zu benutzen.</p>
       <script type="text/javascript">document.getElementById('js-notice').style.display='none';</script>
-    </div>
+    </div>-->
     <iframe style="width:100%;height:100%;display:none;border:none;position:fixed" id="scriptfail" src="data:text/plain,"></iframe>
   </body>
 </html>

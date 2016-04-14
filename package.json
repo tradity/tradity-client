@@ -54,6 +54,7 @@
     "tsc": "tsc -p . -w"
   },
   "dependencies": {
+    "@angular/router": "^0.2.0",
     "angular": "1.5.3",
     "angular-debounce": "~1.0.1",
     "angular-dialog-service": "m-e-conroy/angular-dialog-service#b6471bb",

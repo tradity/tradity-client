@@ -1,11 +1,15 @@
-(function() { 'use strict';
-
 /* This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-angular.module('tradity').
-  controller('MainCtrl', function($sce, ranking, $feed, $user, $rootScope, $scope, $location,
+export default class TradityComponent {
+    template = '<ng-outlet></ng-outlet>';
+    $routeConfig = [
+      {path: '/login/...', name: 'Login', component: 'login', useAsDefault: true}
+    ];
+}
+
+function TradityController($sce, ranking, $feed, $user, $rootScope, $scope, $location,
     $state, $stateParams, socket, safestorage, dailyLoginAchievements, $http, $interval, $timeout,
     gettextCatalog, languageManager, API_HOST, API_CONNECT_TEST_PATH, DEFAULT_PROFILE_IMG)
   {
@@ -164,6 +168,4 @@ angular.module('tradity').
         notification(gettextCatalog.getString('There was a technical problem – the tech team of Tradity has been informed.'));
       }
     });
-  });
-
-})();
+  }

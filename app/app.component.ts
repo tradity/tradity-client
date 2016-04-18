@@ -2,6 +2,27 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { Component } from 'angular2/core';
+import { HTTP_PROVIDERS } from 'angular2/http';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import 'rxjs/Rx'; // load the full rxjs
+import { LoginComponent } from './login/login.component';
+
+@Component({
+  selector: 'tradity',
+  template: '<router-outlet></router-outlet>',
+  directives: [ROUTER_DIRECTIVES],
+  providers: [
+    HTTP_PROVIDERS,
+    ROUTER_PROVIDERS
+  ]
+})
+@RouteConfig([
+  {path: '/login', name: 'Login', component: LoginComponent}
+])
+export class AppComponent {}
+
+/*
 export default class TradityComponent {
     template = '<ng-outlet></ng-outlet>';
     $routeConfig = [
@@ -169,3 +190,4 @@ function TradityController($sce, ranking, $feed, $user, $rootScope, $scope, $loc
       }
     });
   }
+*/

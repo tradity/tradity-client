@@ -12,9 +12,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     
     <link rel="stylesheet" href="main.css">
+    <script type="text/javascript" src="node_modules/es6-shim/es6-shim.min.js"></script>
+    <script type="text/javascript" src="node_modules/systemjs/dist/system-polyfills.js"></script>
+    <script type="text/javascript" src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>   
+
+    <script type="text/javascript" src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script type="text/javascript" src="node_modules/systemjs/dist/system.src.js"></script>
+    <script type="text/javascript" src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script type="text/javascript" src="node_modules/angular2/bundles/angular2.dev.js"></script>
+    <script type="text/javascript" src="node_modules/angular2/bundles/router.dev.js"></script>
+    <script type="text/javascript" src="node_modules/angular2/bundles/http.dev.js"></script>
     <script type="text/javascript" src="app/js/buildstamp.js"></script>
     <script type="text/javascript" src="scripts/piwik.js"></script>
+    <!--
     <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
     <script type="text/javascript" src="node_modules/@angular/router/angular1/angular_1_router.js"></script>
@@ -44,16 +54,21 @@
     <script type="text/javascript" src="scripts/jqplot.canvasAxisTickRenderer.min.js"></script>
     <script type="text/javascript" src="scripts/jqplot.canvasTextRenderer.min.js"></script>
     <script type="text/javascript" src="scripts/jquery.pointpoint.js"></script>
+    -->
     
     <script type="text/javascript" src="app/js/main.js"></script>
     
     <script>
-        System.config({
-            defaultJSExtensions: true,
-            baseURL: '/app'
-        });
-
-        System.import('app.module');
+      System.config({
+        packages: {        
+          app: {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+      System.import('app/main')
+        .then(null, console.error.bind(console));
     </script>
     
     <!--
@@ -113,8 +128,8 @@
     <script type="text/javascript" src="app/js/services/maybeCompress.js"></script>
     <script type="text/javascript" src="app/js/services/event.js"></script>
     <script type="text/javascript" src="app/js/services/group.js"></script>
-    -->
     <script type="text/javascript">window.onload = function(){if(typeof angular=='undefined'){var a;(a=document.getElementById('scriptfail')).style.display='block';a.src='scriptfail.html';}};</script>
+    -->
   </head>
   <body>
     <tradity></tradity>

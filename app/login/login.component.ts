@@ -2,6 +2,20 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { Component, OnInit } from 'angular2/core';
+
+@Component({
+  selector: 'tradity-login',
+  templateUrl: 'app/login/login.component.html'
+})
+export class LoginComponent implements OnInit {
+  constructor() { }
+
+  ngOnInit() { }
+
+}
+
+/*
 export default class LoginComponent {
   templateUrl = 'app/login/login.component.html';
 }
@@ -86,3 +100,4 @@ function LoginController(user, $stateParams, $state, safestorage, socket, gettex
     });
   };
 }
+*/

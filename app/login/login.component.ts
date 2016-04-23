@@ -9,6 +9,7 @@ import { MdButton } from '@angular2-material/button';
 @Component({
   selector: 'tradity-login',
   templateUrl: 'app/login/login.component.html',
+  styleUrls: ['app/login/login.component.css'],
   directives: [MD_INPUT_DIRECTIVES, MdButton]
 })
 export class LoginComponent implements OnInit {

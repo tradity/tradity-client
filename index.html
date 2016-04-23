@@ -11,7 +11,7 @@
     <meta name="description" content="Beim Börsenspiel Tradity bist du gefragt dein virtuelles Startkapital möglichst vielversprechend in Wertpapiere zu investieren.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     
-    <link rel="stylesheet" href="main.css">
+    <!--<link rel="stylesheet" href="main.css">-->
     <script type="text/javascript" src="node_modules/es6-shim/es6-shim.min.js"></script>
     <script type="text/javascript" src="node_modules/systemjs/dist/system-polyfills.js"></script>
     <script type="text/javascript" src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>   
@@ -64,7 +64,25 @@
           app: {
             format: 'register',
             defaultExtension: 'js'
+          },
+          '@angular2-material/core': {
+            format: 'cjs',
+            defaultExtension: 'js',
+            main: 'core.js'
+          },
+          '@angular2-material/input': {
+            format: 'cjs',
+            defaultExtension: 'js',
+            main: 'input.js'
+          },
+          '@angular2-material/button': {
+            format: 'cjs',
+            defaultExtension: 'js',
+            main: 'button.js'
           }
+        },
+        map: {
+          '@angular2-material': 'node_modules/@angular2-material'
         }
       });
       System.import('app/main')

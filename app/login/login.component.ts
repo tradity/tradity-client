@@ -3,10 +3,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Component, OnInit } from 'angular2/core';
+import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
+import { MdButton } from '@angular2-material/button';
 
 @Component({
   selector: 'tradity-login',
-  templateUrl: 'app/login/login.component.html'
+  templateUrl: 'app/login/login.component.html',
+  directives: [MD_INPUT_DIRECTIVES, MdButton]
 })
 export class LoginComponent implements OnInit {
   constructor() { }

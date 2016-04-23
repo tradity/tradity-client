@@ -2,23 +2,8 @@
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <form (submit)="login()">
-  <div class="form-group" translate>
-    <input type="text" [(ngModel)]="username" class="form-control" placeholder="User name" autofocus />
-  </div>
-  <div class="form-group" translate>
-    <input type="password" placeholder="Password" [(ngModel)]="password" class="form-control" />
-  </div>
-  <div class="checkbox">
-    <label>
-      <input type="checkbox" [(ngModel)]="stayloggedin"><translate>Stay logged in?</translate>
-    </label>
-  </div>
-  <br>
-  <div class="pull-right">
-    <small>
-      <a class="text-link" (ng-click)="passwordReset()" style="cursor: pointer; margin-right: 20px;" translate>Forgot password?</a><br>
-      <a class="registerq" ui-sref="register.step1" translate>Not registered yet?</a>
-    </small>
-  </div>
-  <button type="submit" class="btn btn-primary btn-sm" translate>Login</button>
+  <img class="logo" src="/img/logo.png">
+  <md-input [type]="text" placeholder="User name" [(ngModel)]="username" autofocus></md-input>
+  <md-input [type]="password" placeholder="Password" [(ngModel)]="password"></md-input>
+  <button md-raised-button type="submit" translate>Login</button>
 </form>

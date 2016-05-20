@@ -2,9 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Component } from 'angular2/core';
-import { HTTP_PROVIDERS } from 'angular2/http';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import { Component } from '@angular/core';
+import { HTTP_PROVIDERS } from '@angular/http';
+import { ROUTER_DIRECTIVES, Routes, Router } from '@angular/router';
 import 'rxjs/Rx'; // load the full rxjs
 import { LoginComponent } from './login/login.component';
 
@@ -13,14 +13,15 @@ import { LoginComponent } from './login/login.component';
   template: '<router-outlet></router-outlet>',
   directives: [ROUTER_DIRECTIVES],
   providers: [
-    HTTP_PROVIDERS,
-    ROUTER_PROVIDERS
+    HTTP_PROVIDERS
   ]
 })
-@RouteConfig([
-  {path: '/login', name: 'Login', component: LoginComponent}
+@Routes([
+  {path: '/login', component: LoginComponent}
 ])
-export class AppComponent {}
+export class AppComponent {
+  constructor (private router: Router) {} // temporary workaround for angular bug
+}
 
 /*
 export default class TradityComponent {

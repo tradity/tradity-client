@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Component, OnInit } from 'angular2/core';
+import { Component, OnInit } from '@angular/core';
 import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
 import { MdButton } from '@angular2-material/button';
 
@@ -15,7 +15,9 @@ import { MdButton } from '@angular2-material/button';
 export class LoginComponent implements OnInit {
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log('initiate LoginComponent');
+  }
 
 }
 

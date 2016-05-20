@@ -58,33 +58,8 @@
     
     <script type="text/javascript" src="app/js/main.js"></script>
     
+    <script src="app/systemjs.config.js"></script>
     <script>
-      System.config({
-        packages: {        
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          },
-          '@angular2-material/core': {
-            format: 'cjs',
-            defaultExtension: 'js',
-            main: 'core.js'
-          },
-          '@angular2-material/input': {
-            format: 'cjs',
-            defaultExtension: 'js',
-            main: 'input.js'
-          },
-          '@angular2-material/button': {
-            format: 'cjs',
-            defaultExtension: 'js',
-            main: 'button.js'
-          }
-        },
-        map: {
-          '@angular2-material': 'node_modules/@angular2-material'
-        }
-      });
       System.import('app/main')
         .then(null, console.error.bind(console));
     </script>
@@ -150,7 +125,7 @@
     -->
   </head>
   <body>
-    <tradity></tradity>
+    <tradity>loading…</tradity>
     <!--<div id="view" ui-view>
       <p class="text-center" id="js-notice">Javascript muss in deinem Browser aktiviert sein, um Tradity zu benutzen.</p>
       <script type="text/javascript">document.getElementById('js-notice').style.display='none';</script>

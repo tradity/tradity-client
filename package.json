@@ -64,6 +64,8 @@
     "@angular2-material/button": "^2.0.0-alpha.4",
     "@angular2-material/core": "^2.0.0-alpha.4",
     "@angular2-material/input": "^2.0.0-alpha.4",
+    "@angular2-material/sidenav": "^2.0.0-alpha.4",
+    "@angular2-material/toolbar": "^2.0.0-alpha.4",
     "angular": "1.5.3",
     "angular-debounce": "~1.0.1",
     "angular-dialog-service": "m-e-conroy/angular-dialog-service#b6471bb",

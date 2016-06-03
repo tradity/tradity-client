@@ -7,6 +7,7 @@ import { HTTP_PROVIDERS } from '@angular/http';
 import { ROUTER_DIRECTIVES, Routes, Router } from '@angular/router';
 import 'rxjs/Rx'; // load the full rxjs
 import { LoginComponent } from './login/login.component';
+import { GameComponent } from './game.component';
 
 @Component({
   selector: 'tradity',
@@ -17,7 +18,8 @@ import { LoginComponent } from './login/login.component';
   ]
 })
 @Routes([
-  {path: '/login', component: LoginComponent}
+  {path: '/login', component: LoginComponent},
+  {path: '*', component: GameComponent}
 ])
 export class AppComponent {
   constructor (private router: Router) {} // temporary workaround for angular bug

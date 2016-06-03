@@ -29,7 +29,8 @@
   var ngMaterialPackageNames = [
     'core',
     'input',
-    'button'
+    'button',
+    'sidenav'
   ];
   
   ngMaterialPackageNames.forEach(function (pkgName) {

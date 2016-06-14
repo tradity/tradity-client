@@ -5,6 +5,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
 import { MdButton } from '@angular2-material/button';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'tradity-login',
@@ -13,10 +14,17 @@ import { MdButton } from '@angular2-material/button';
   directives: [MD_INPUT_DIRECTIVES, MdButton]
 })
 export class LoginComponent implements OnInit {
-  constructor() { }
+  username: string;
+  password: string;
+  
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     console.log('initiate LoginComponent');
+  }
+  
+  login() {
+    this.userService.login(this.username, this.password, false);
   }
 
 }

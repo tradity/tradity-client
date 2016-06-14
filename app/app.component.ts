@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { ROUTER_DIRECTIVES, Routes, Router } from '@angular/router';
 import 'rxjs/Rx'; // load the full rxjs
+
+import { ApiService } from './api.service';
+import { UserService } from './user.service';
+
 import { LoginComponent } from './login/login.component';
 import { GameComponent } from './game.component';
 
@@ -14,7 +18,9 @@ import { GameComponent } from './game.component';
   template: '<router-outlet></router-outlet>',
   directives: [ROUTER_DIRECTIVES],
   providers: [
-    HTTP_PROVIDERS
+    HTTP_PROVIDERS,
+    ApiService,
+    UserService
   ]
 })
 @Routes([

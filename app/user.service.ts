@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 import { ApiService } from './api.service';
 
@@ -10,9 +11,8 @@ export class UserService {
 
   constructor(private apiService: ApiService) { }
   
-  login(username: string, password: string, stayloggedin: boolean): boolean {
-    let ret = false;
-    this.apiService.post(
+  login(username: string, password: string, stayloggedin: boolean): Observable<Boolean> {
+    return this.apiService.post(
       '/login',
       {
         name: username,
@@ -21,12 +21,12 @@ export class UserService {
       }
     )
     .map(res => res.json())
-    .subscribe(res => {
+    .map((res) => {
       if (res.code === 200) {
-        ret = true;
-        this.apiService.setAuthToken(res.)
+        this.apiService.setAuthToken(res.key);
+        return true;
       }
+      return false;
     });
-    return ret;
   }
 }

@@ -4,31 +4,21 @@
 
 import { Component } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
-import { ROUTER_DIRECTIVES, Routes, Router } from '@angular/router';
 import 'rxjs/Rx'; // load the full rxjs
 
 import { ApiService } from './api.service';
 import { UserService } from './user.service';
 
-import { LoginComponent } from './login/login.component';
-import { GameComponent } from './game.component';
-
 @Component({
   selector: 'tradity',
   template: '<router-outlet></router-outlet>',
-  directives: [ROUTER_DIRECTIVES],
   providers: [
     HTTP_PROVIDERS,
     ApiService,
     UserService
   ]
 })
-@Routes([
-  {path: '/login', component: LoginComponent},
-  {path: '*', component: GameComponent}
-])
 export class AppComponent {
-  constructor (private router: Router) {} // temporary workaround for angular bug
 }
 
 /*

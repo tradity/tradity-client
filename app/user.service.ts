@@ -21,7 +21,7 @@ export class UserService {
       }
     )
     .map(res => res.json())
-    .map((res) => {
+    .map(res => {
       if (res.code === 200) {
         this.apiService.setAuthToken(res.key);
         return true;

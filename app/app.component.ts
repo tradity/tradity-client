@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Component } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { HTTP_PROVIDERS } from '@angular/http';
 import 'rxjs/Rx'; // load the full rxjs
 
@@ -12,6 +13,7 @@ import { UserService } from './user.service';
 @Component({
   selector: 'tradity',
   template: '<router-outlet></router-outlet>',
+  directives: [ROUTER_DIRECTIVES],
   providers: [
     HTTP_PROVIDERS,
     ApiService,

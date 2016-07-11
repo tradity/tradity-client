@@ -3,6 +3,7 @@ import { provideRouter, RouterConfig } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { GameComponent } from './game.component';
 import { ProfileComponent } from './profile.component';
+import { PortfolioComponent } from './portfolio.component';
 
 const routes: RouterConfig = [
   { path: 'login', component: LoginComponent },
@@ -10,7 +11,8 @@ const routes: RouterConfig = [
     path: '',
     component: GameComponent,
     children: [
-      { path: 'profile', component: ProfileComponent }
+      { path: 'profile', component: ProfileComponent },
+      { path: 'portfolio', component: PortfolioComponent }
     ]
   }
 ];

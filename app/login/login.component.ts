@@ -3,8 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
 import { MdButton } from '@angular2-material/button';
+
 import { UserService } from '../user.service';
 
 @Component({
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
   
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     console.log('initiate LoginComponent');
@@ -25,7 +27,7 @@ export class LoginComponent implements OnInit {
   
   login() {
     this.userService.login(this.username, this.password, false).subscribe(result => {
-      if (result) console.log("sucess");
+      if (result) this.router.navigateByUrl('portfolio');
     })
   }
 

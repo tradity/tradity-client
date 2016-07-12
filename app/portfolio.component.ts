@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PortfolioService } from './portfolio.service';
+import { StocksService } from './stocks.service';
 
 @Component({
   selector: 'tradity-portfolio',
   template: '',
-  providers: [PortfolioService]
+  providers: [StocksService]
 })
 export class PortfolioComponent implements OnInit {
-  constructor(private portfolioService: PortfolioService) { }
+  constructor(private stocksService: StocksService) { }
 
-  ngOnInit() { 
-    this.portfolioService.load();
+  ngOnInit() {
+    this.stocksService.loadPortfolio();
   }
 
 }

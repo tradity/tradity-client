@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 
 @Injectable()
-export class PortfolioService {
+export class StocksService {
   
   private _portfolio;
 
@@ -13,7 +13,7 @@ export class PortfolioService {
     return this._portfolio.asObservable();
   }
   
-  load(): void {
+  loadPortfolio(): void {
     this.apiService.get('/depot')
     .map(res => res.json())
     .subscribe(res => console.log(res));

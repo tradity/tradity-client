@@ -14,7 +14,7 @@ export class ApiService {
   }
   
   setAuthToken(token: string) {
-    this.options.headers['Authorization'] = token;
+    this.options.headers.append('Authorization', token);
   }
   
   get(url: string) : Observable<Response> {

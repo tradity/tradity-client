@@ -6,6 +6,7 @@ import { ApiService } from './api.service';
 export class StocksService {
   
   private _portfolio;
+  private _transactions;
 
   constructor(private apiService: ApiService) { }
   
@@ -13,8 +14,18 @@ export class StocksService {
     return this._portfolio.asObservable();
   }
   
+  get transactions() {
+    return this._transactions.asObservable();
+  }
+  
   loadPortfolio(): void {
     this.apiService.get('/depot')
+    .map(res => res.json())
+    .subscribe(res => console.log(res));
+  }
+  
+  loadTransactions(): void {
+    this.apiService.get('/transactions')
     .map(res => res.json())
     .subscribe(res => console.log(res));
   }

@@ -6,8 +6,6 @@ import { ApiService } from './api.service';
 
 @Injectable()
 export class UserService {
-  
-  private test;
 
   constructor(private apiService: ApiService) { }
   
@@ -24,9 +22,16 @@ export class UserService {
     .map(res => {
       if (res.code === 200) {
         this.apiService.setAuthToken(res.key);
+        this.getUser();
         return true;
       }
       return false;
     });
+  }
+  
+  getUser() {
+    this.apiService.get('/user/$self')
+    .map(res => res.json())
+    .subscribe(res => console.log(res));
   }
 }

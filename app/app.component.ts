@@ -21,6 +21,9 @@ import { UserService } from './user.service';
   ]
 })
 export class AppComponent {
+  
+  constructor(private userService: UserService) { }
+  
 }
 
 /*

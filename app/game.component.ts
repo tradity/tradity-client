@@ -4,14 +4,20 @@ import { MD_SIDENAV_DIRECTIVES } from '@angular2-material/sidenav';
 import { MdToolbar } from '@angular2-material/toolbar';
 import { MdButton } from '@angular2-material/button';
 
+import { UserService } from './user.service';
+
 @Component({
   selector: 'tradity-game',
   templateUrl: 'app/game.component.html',
   directives: [ROUTER_DIRECTIVES]
 })
 export class GameComponent implements OnInit {
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() { }
+  
+  logout() {
+    this.userService.logout();
+  }
 
 }

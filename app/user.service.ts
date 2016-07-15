@@ -34,6 +34,11 @@ export class UserService {
     });
   }
   
+  logout() {
+    localStorage.removeItem('authorizationToken');
+    this.apiService.delAuthToken();
+  }
+  
   getUser() {
     this.apiService.get('/user/$self')
     .map(res => res.json())

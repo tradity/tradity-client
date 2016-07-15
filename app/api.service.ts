@@ -13,8 +13,12 @@ export class ApiService {
     this.options = new RequestOptions({ headers: headers });
   }
   
-  setAuthToken(token: string) {
+  setAuthToken(token: string) : void {
     this.options.headers.append('Authorization', token);
+  }
+  
+  delAuthToken() : void {
+    this.options.headers.delete('Authorization');
   }
   
   get(url: string) : Observable<Response> {

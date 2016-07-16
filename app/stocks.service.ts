@@ -24,7 +24,7 @@ export class StocksService {
   loadPortfolio(): void {
     this.apiService.get('/depot')
     .map(res => res.json())
-    .subscribe(res => this._portfolio.next(res));
+    .subscribe(res => this._portfolio.next(res.data));
   }
   
   loadTransactions(): void {

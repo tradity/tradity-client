@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { StocksService } from './stocks.service';
 
@@ -8,9 +9,14 @@ import { StocksService } from './stocks.service';
   providers: [StocksService]
 })
 export class TransactionsComponent implements OnInit {
+  
+  transactions: Observable<any>;
+  
   constructor(private stocksService: StocksService) {}
 
-  ngOnInit() { 
+  ngOnInit() {
+    this.transactions = this.stocksService.transactions;
+    this.transactions.subscribe(val => console.log("received", val));
     this.stocksService.loadTransactions();
   }
 

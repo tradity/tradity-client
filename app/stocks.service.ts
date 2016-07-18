@@ -30,7 +30,7 @@ export class StocksService {
   loadTransactions(): void {
     this.apiService.get('/transactions')
     .map(res => res.json())
-    .subscribe(res => console.log(res));
+    .subscribe(res => this._transactions.next(res.data));
   }
 
 }

@@ -32,5 +32,10 @@ export class StocksService {
     .map(res => res.json())
     .subscribe(res => this._transactions.next(res.data));
   }
+  
+  search(id: string) {
+    this.apiService.get('/stocks/search')
+    .map(res => res.json());
+  }
 
 }

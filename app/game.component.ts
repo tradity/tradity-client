@@ -5,6 +5,7 @@ import { MdToolbar } from '@angular2-material/toolbar';
 import { MdButton } from '@angular2-material/button';
 
 import { UserService } from './user.service';
+import { SearchComponent } from './search.component';
 
 @Component({
   selector: 'tradity-game',

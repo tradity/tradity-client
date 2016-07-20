@@ -34,7 +34,7 @@ export class StocksService {
   }
   
   search(id: string) {
-    this.apiService.get('/stocks/search')
+    return this.apiService.get('/stocks/search')
     .map(res => res.json());
   }
 

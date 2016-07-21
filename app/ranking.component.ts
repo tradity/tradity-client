@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { RankingService } from './ranking.service';
 
@@ -8,9 +9,14 @@ import { RankingService } from './ranking.service';
   providers: [RankingService]
 })
 export class RankingComponent implements OnInit {
+  
+  ranking: Observable<any>;
+  
   constructor(private rankingService: RankingService) { }
 
-  ngOnInit() { 
+  ngOnInit() {
+    this.ranking = this.rankingService.ranking;
+    this.ranking.subscribe(val => console.log(val));
     this.rankingService.load();
   }
 

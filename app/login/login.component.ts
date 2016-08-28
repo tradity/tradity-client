@@ -4,16 +4,13 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
-import { MdButton } from '@angular2-material/button';
 
 import { UserService } from '../user.service';
 
 @Component({
   selector: 'tradity-login',
   templateUrl: 'app/login/login.component.html',
-  styleUrls: ['app/login/login.component.css'],
-  directives: [MD_INPUT_DIRECTIVES, MdButton]
+  styleUrls: ['app/login/login.component.css']
 })
 export class LoginComponent implements OnInit {
   username: string;

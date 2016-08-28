@@ -1,24 +1,9 @@
-<md-sidenav-layout class="demo-sidenav-layout">
-  <md-sidenav #start (open)="myinput.focus()" mode="side">
-    Start Side Drawer
-    <br>
-    <button md-button (click)="start.close()">Close</button>
-    <br>
-    <button md-button (click)="end.open()">Open End Side</button>
-    <br>
-    <button md-button
-            (click)="start.mode = (start.mode == 'push' ? 'over' : (start.mode == 'over' ? 'side' : 'push'))">Toggle Mode</button>
-    <div>Mode: {{start.mode}}</div>
-    <br>
-    <input #myinput>
-  </md-sidenav>
-  <nav>
-    <a [routerLink]="['/portfolio']">/portfolio</a>
-    <a [routerLink]="['/profile']">/profile</a>
-    <a [routerLink]="['/transactions']">/transactions</a>
-    <a [routerLink]="['/ranking']">/ranking</a>
-    <button (click)="logout()">logout</button>
-  </nav>
-  <tradity-search></tradity-search>
-  <router-outlet></router-outlet>
-</md-sidenav-layout>
+<nav>
+  <a [routerLink]="['/portfolio']">/portfolio</a>
+  <a [routerLink]="['/profile']">/profile</a>
+  <a [routerLink]="['/transactions']">/transactions</a>
+  <a [routerLink]="['/ranking']">/ranking</a>
+  <button (click)="logout()">logout</button>
+</nav>
+<tradity-search></tradity-search>
+<router-outlet></router-outlet>

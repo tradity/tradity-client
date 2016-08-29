@@ -7,6 +7,7 @@ import { SearchComponent } from './search.component';
 @Component({
   selector: 'tradity-game',
   templateUrl: 'app/game.component.html',
+  styleUrls: ['app/game.component.css'],
   directives: [ROUTER_DIRECTIVES]
 })
 export class GameComponent implements OnInit {

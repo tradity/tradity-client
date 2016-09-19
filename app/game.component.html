@@ -1,17 +1,16 @@
 <header>
-  <div id="nav-bar">
-    <nav>
-      <ul>
-        <li><a [routerLink]="['/portfolio']">/portfolio</a></li>
-        <li><a [routerLink]="['/profile']">/profile</a></li>
-        <li><a [routerLink]="['/transactions']">/transactions</a></li>
-        <li><a [routerLink]="['/ranking']">/ranking</a></li>
-        <!--<button (click)="logout()">logout</button>-->
-      </ul>
-    </nav>
+  <nav>
+    <span>toggle</span>
     <span>Tradity</span>
     <span>search</span>
-  </div>
+    <ul>
+      <li><a [routerLink]="['/portfolio']">/portfolio</a></li>
+      <li><a [routerLink]="['/profile']">/profile</a></li>
+      <li><a [routerLink]="['/transactions']">/transactions</a></li>
+      <li><a [routerLink]="['/ranking']">/ranking</a></li>
+      <!--<button (click)="logout()">logout</button>-->
+    </ul>
+  </nav>
   <hr>
 </header>
 <tradity-search></tradity-search>

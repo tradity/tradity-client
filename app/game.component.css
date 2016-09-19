@@ -1,7 +1,19 @@
-:host {
+nav {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 ul {
+  margin: 0;
+  padding: 0;
   list-style: none;
+  text-align: center;
+  width: 100%;
+  height: 0;
+  visibility: hidden;
+}
+
+li {
+  display: block;
 }

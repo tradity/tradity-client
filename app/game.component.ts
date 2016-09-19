@@ -11,6 +11,8 @@ import { SearchComponent } from './search.component';
   directives: [ROUTER_DIRECTIVES]
 })
 export class GameComponent implements OnInit {
+  private isMenuOpen = false;
+  
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() { }
@@ -18,6 +20,11 @@ export class GameComponent implements OnInit {
   logout() {
     this.userService.logout();
     this.router.navigateByUrl('login');
+  }
+  
+  toggleMenu() {
+    if (this.isMenuOpen) this.isMenuOpen = false;
+    else this.isMenuOpen = true; 
   }
 
 }

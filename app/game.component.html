@@ -1,9 +1,9 @@
 <header>
   <nav>
-    <span>toggle</span>
+    <span (click)="toggleMenu()">toggle</span>
     <span>Tradity</span>
     <span>search</span>
-    <ul>
+    <ul [class.menu-open]="isMenuOpen">
       <li><a [routerLink]="['/portfolio']">/portfolio</a></li>
       <li><a [routerLink]="['/profile']">/profile</a></li>
       <li><a [routerLink]="['/transactions']">/transactions</a></li>

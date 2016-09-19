@@ -2,6 +2,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 1rem;
 }
 
 ul {
@@ -30,4 +31,9 @@ li {
   background-color: #4a90e2;
   color: white;
   overflow: hidden;
+  padding: 1rem;
+}
+
+main {
+  padding: 1rem;
 }

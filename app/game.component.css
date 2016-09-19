@@ -14,6 +14,11 @@ ul {
   visibility: hidden;
 }
 
+ul.menu-open {
+  height: 100%;
+  visibility: visible;
+}
+
 li {
   display: block;
 }

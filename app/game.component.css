@@ -25,3 +25,8 @@ ul.menu-open {
 li {
   display: block;
 }
+
+#subheader {
+  background-color: #4a90e2;
+  color: white;
+}

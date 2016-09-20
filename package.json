@@ -19,7 +19,7 @@
     "requirejs": "^2.1.11",
     "rimraf": "^2.5.1",
     "typescript": "^1.8.10",
-    "typings": "^0.8.1",
+    "typings": "^1.3.3",
     "watch-run": "^1.2.4"
   },
   "engines": {
@@ -51,6 +51,7 @@
     "watch:cp": "watch-run -p '*.html,*.txt,*.ico,fonts/**,img/**,scripts/**' npm run build:cp",
     "start": "npm run build && parallelshell 'npm run watch' 'browser-sync start --config bs-config.js'",
     "typings": "typings",
+    "postinstall": "typings install",
     "tsc": "tsc -p . -w"
   },
   "dependencies": {

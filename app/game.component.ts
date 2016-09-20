@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { UserService } from './user.service';
 import { SearchComponent } from './search.component';
@@ -7,8 +7,7 @@ import { SearchComponent } from './search.component';
 @Component({
   selector: 'tradity-game',
   templateUrl: 'app/game.component.html',
-  styleUrls: ['app/game.component.css'],
-  directives: [ROUTER_DIRECTIVES]
+  styleUrls: ['app/game.component.css']
 })
 export class GameComponent implements OnInit {
   private isMenuOpen = false;

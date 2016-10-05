@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { ApiService } from './api.service';
 
 @Injectable()
 export class StocksService {
   
-  private _portfolio: Subject<any>;
-  private _transactions: Subject<any>;
+  private _portfolio: BehaviorSubject<any>;
+  private _transactions: BehaviorSubject<any>;
 
   constructor(private apiService: ApiService) { 
-    this._portfolio = Subject.create();
+    this._portfolio = BehaviorSubject.create();
   }
   
   get portfolio() {

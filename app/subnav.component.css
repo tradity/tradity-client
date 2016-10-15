@@ -1,0 +1,12 @@
+:host >>> ul {
+  list-style: none;
+  padding: 0;
+}
+
+:host >>> li {
+  display: inline;
+}
+
+:host >>> li:first-of-type {
+  background-color: orange;
+}

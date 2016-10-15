@@ -11,6 +11,7 @@ import { ProfileComponent } from './profile.component';
 import { PortfolioComponent } from './portfolio.component';
 import { TransactionsComponent } from './transactions.component';
 import { RankingComponent } from './ranking.component';
+import { SubnavComponent } from './subnav.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { RankingComponent } from './ranking.component';
       ProfileComponent,
       PortfolioComponent,
       TransactionsComponent,
-      RankingComponent
+      RankingComponent,
+      SubnavComponent
     ],
     imports: [
       BrowserModule,

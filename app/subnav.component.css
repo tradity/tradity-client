@@ -5,8 +5,17 @@
 
 :host >>> li {
   display: inline;
+  padding: 0.5rem;
+}
+
+:host >>> li a {
+  color: grey;
 }
 
 :host >>> li:first-of-type {
   background-color: orange;
+}
+
+:host >>> li:first-of-type a {
+  color: white;
 }

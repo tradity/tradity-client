@@ -10,7 +10,7 @@ export class StocksService {
   private _transactions: BehaviorSubject<any>;
 
   constructor(private apiService: ApiService) { 
-    this._portfolio = BehaviorSubject.create();
+    this._portfolio = new BehaviorSubject("");
   }
   
   get portfolio() {

@@ -9,7 +9,7 @@
   <tbody>
     <tr *ngFor="let entry of ranking | async">
       <td>{{entry.name}}</td>
-      <td>{{(entry.totalvalue - entry.past_totalvalue) / 10000}}&nbsp;€
+      <td>{{(entry.totalvalue - 1000000000) / 1000000000 * 100}}&nbsp;%
     </tr>
   </tbody>
 </table>

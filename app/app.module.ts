@@ -13,6 +13,7 @@ import { TransactionsComponent } from './transactions.component';
 import { RankingComponent } from './ranking.component';
 import { SubnavComponent } from './subnav.component';
 import { PositionsComponent } from './positions.component';
+import { TableComponent } from './table.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { PositionsComponent } from './positions.component';
       TransactionsComponent,
       RankingComponent,
       SubnavComponent,
-      PositionsComponent
+      PositionsComponent,
+      TableComponent
     ],
     imports: [
       BrowserModule,

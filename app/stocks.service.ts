@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
 
 import { ApiService } from './api.service';
 
 @Injectable()
 export class StocksService {
   
-  private _positions: BehaviorSubject<any>;
-  private _history: BehaviorSubject<any>;
+  private _positions: Subject<any>;
+  private _history: Subject<any>;
 
   constructor(private apiService: ApiService) { 
-    this._positions = new BehaviorSubject("");
+    this._positions = new Subject();
+    this._history = new Subject();
   }
   
   get positions() {

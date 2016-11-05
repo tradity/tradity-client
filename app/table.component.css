@@ -13,6 +13,7 @@
 :host >>> tr {
   display: flex;
   height: 3em;
+  margin-bottom: 1em;
   padding: 1em;
   background-color: lightgrey;
   justify-content: space-between;

@@ -1,0 +1,12 @@
+<table tradity-table>
+  <tr>
+    <th translate>Name</th>
+    <th translate>Amount</th>
+    <th translate>Remove</th>
+  </tr>
+  <tr *ngFor="let order of orders | async">
+    <td>{{order.stockname}}</td><!-- TODO: add sell/buy type -->
+    <td>{{(order.amount}}</td>
+    <td>X</td><!-- TODO: implement remove -->
+  </tr>
+</table>

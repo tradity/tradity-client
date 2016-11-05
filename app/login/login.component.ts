@@ -13,8 +13,9 @@ import { UserService } from '../user.service';
   styleUrls: ['app/login/login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username: string;
-  password: string;
+  private username: string;
+  private password: string;
+  private stayloggedin: boolean;
   
   constructor(private userService: UserService, private router: Router) { }
 
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
   
   login() {
-    this.userService.login(this.username, this.password, false).subscribe(result => {
+    this.userService.login(this.username, this.password, this.stayloggedin).subscribe(result => {
       if (result) this.router.navigateByUrl('portfolio');
     })
   }

@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile.component';
 import { PortfolioComponent } from './portfolio.component';
 import { TransactionsComponent } from './transactions.component';
 import { RankingComponent } from './ranking.component';
+import { PositionsComponent } from './positions.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,7 +16,13 @@ const appRoutes: Routes = [
     component: GameComponent,
     children: [
       { path: 'profile', component: ProfileComponent },
-      { path: 'portfolio', component: PortfolioComponent },
+      {
+        path: 'portfolio',
+        component: PortfolioComponent,
+        children: [
+          {path: 'positions', component: PositionsComponent}
+        ]
+      },
       { path: 'transactions', component: TransactionsComponent },
       { path: 'ranking', component: RankingComponent }
     ]

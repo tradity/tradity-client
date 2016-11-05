@@ -12,12 +12,8 @@ export class PortfolioComponent implements OnInit {
   
   portfolio: Observable<any>;
   
-  constructor(private stocksService: StocksService) { }
+  constructor() { }
 
-  ngOnInit() {
-    this.portfolio = this.stocksService.portfolio;
-    this.portfolio.subscribe(val => console.log("received", val));
-    this.stocksService.loadPortfolio();
-  }
+  ngOnInit() { }
 
 }

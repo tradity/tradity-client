@@ -4,5 +4,8 @@
 <form (ngSubmit)="login()">
   <input type="text" placeholder="User name" name="username" [(ngModel)]="username" autofocus />
   <input type="password" placeholder="Password" name="password" [(ngModel)]="password" />
+  <input type="checkbox" name="stayloggedin" [(ngModel)]="stayloggedin" />
   <button type="submit" translate>Log in</button>
+  <a href="#">Forgot Password?</a>
+  <a href="#">Registration</a>
 </form>

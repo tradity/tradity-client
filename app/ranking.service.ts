@@ -9,7 +9,7 @@ export class RankingService {
   private _ranking: Subject<any>;
 
   constructor(private apiService: ApiService) { 
-    this._ranking = Subject.create();
+    this._ranking = new Subject();
   }
   
   get ranking() {

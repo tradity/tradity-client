@@ -12,6 +12,7 @@ import { PortfolioComponent } from './portfolio.component';
 import { TransactionsComponent } from './transactions.component';
 import { RankingComponent } from './ranking.component';
 import { SubnavComponent } from './subnav.component';
+import { PositionsComponent } from './positions.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { SubnavComponent } from './subnav.component';
       PortfolioComponent,
       TransactionsComponent,
       RankingComponent,
-      SubnavComponent
+      SubnavComponent,
+      PositionsComponent
     ],
     imports: [
       BrowserModule,

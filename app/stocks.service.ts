@@ -6,25 +6,25 @@ import { ApiService } from './api.service';
 @Injectable()
 export class StocksService {
   
-  private _portfolio: BehaviorSubject<any>;
+  private _positions: BehaviorSubject<any>;
   private _transactions: BehaviorSubject<any>;
 
   constructor(private apiService: ApiService) { 
-    this._portfolio = new BehaviorSubject("");
+    this._positions = new BehaviorSubject("");
   }
   
   get portfolio() {
-    return this._portfolio.asObservable();
+    return this._positions.asObservable();
   }
   
   get transactions() {
     return this._transactions.asObservable();
   }
   
-  loadPortfolio(): void {
+  loadPositions(): void {
     this.apiService.get('/depot')
     .map(res => res.json())
-    .subscribe(res => this._portfolio.next(res.data));
+    .subscribe(res => this._positions.next(res.data));
   }
   
   loadTransactions(): void {

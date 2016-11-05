@@ -13,7 +13,7 @@ export class PositionsComponent implements OnInit {
   constructor(private stocksService: StocksService) { }
 
   ngOnInit() {
-    this.positions = this.stocksService.portfolio;
+    this.positions = this.stocksService.positions;
     this.stocksService.loadPositions();
   }
 }

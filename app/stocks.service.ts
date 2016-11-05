@@ -7,18 +7,18 @@ import { ApiService } from './api.service';
 export class StocksService {
   
   private _positions: BehaviorSubject<any>;
-  private _transactions: BehaviorSubject<any>;
+  private _history: BehaviorSubject<any>;
 
   constructor(private apiService: ApiService) { 
     this._positions = new BehaviorSubject("");
   }
   
-  get portfolio() {
+  get positions() {
     return this._positions.asObservable();
   }
   
-  get transactions() {
-    return this._transactions.asObservable();
+  get history() {
+    return this._history.asObservable();
   }
   
   loadPositions(): void {
@@ -27,10 +27,10 @@ export class StocksService {
     .subscribe(res => this._positions.next(res.data));
   }
   
-  loadTransactions(): void {
+  loadHistory(): void {
     this.apiService.get('/transactions')
     .map(res => res.json())
-    .subscribe(res => this._transactions.next(res.data));
+    .subscribe(res => this._history.next(res.data));
   }
   
   search(id: string) {

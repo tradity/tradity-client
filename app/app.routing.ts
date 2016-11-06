@@ -8,6 +8,7 @@ import { PortfolioComponent } from './portfolio.component';
 import { HistoryComponent } from './history.component';
 import { RankingComponent } from './ranking.component';
 import { PositionsComponent } from './positions.component';
+import { OrdersComponent } from './orders.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
         component: PortfolioComponent,
         children: [
           { path: 'positions', component: PositionsComponent },
-          { path: 'history', component: HistoryComponent }
+          { path: 'history', component: HistoryComponent },
+          { path: 'orders', component: OrdersComponent }
         ]
       },
       { path: 'ranking', component: RankingComponent }

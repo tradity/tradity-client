@@ -8,10 +8,12 @@ export class StocksService {
   
   private _positions: Subject<any>;
   private _history: Subject<any>;
+  private _orders: Subject<any>;
 
   constructor(private apiService: ApiService) { 
     this._positions = new Subject();
     this._history = new Subject();
+    this._orders = new Subject();
   }
   
   get positions() {
@@ -20,6 +22,10 @@ export class StocksService {
   
   get history() {
     return this._history.asObservable();
+  }
+
+  get orders() {
+    return this._orders.asObservable();
   }
   
   loadPositions(): void {
@@ -32,6 +38,12 @@ export class StocksService {
     this.apiService.get('/user/$self')
     .map(res => res.json())
     .subscribe(res => this._history.next(res.data));
+  }
+
+  loadOrders(): void {
+    this.apiService.get('/dqueries')
+    .map(res => res.json())
+    .subscribe(res => this._orders.next(res.data));
   }
   
   search(id: string) {

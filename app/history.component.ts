@@ -8,7 +8,7 @@ import { StocksService } from './stocks.service';
   template: '',
   providers: [StocksService]
 })
-export class historyComponent implements OnInit {
+export class HistoryComponent implements OnInit {
   
   history: Observable<any>;
   

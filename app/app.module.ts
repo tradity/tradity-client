@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { GameComponent } from './game.component';
 import { ProfileComponent } from './profile.component';
 import { PortfolioComponent } from './portfolio.component';
-import { TransactionsComponent } from './transactions.component';
+import { HistoryComponent } from './history.component';
 import { RankingComponent } from './ranking.component';
 import { SubnavComponent } from './subnav.component';
 import { PositionsComponent } from './positions.component';
@@ -22,7 +22,7 @@ import { TableComponent } from './table.component';
       GameComponent,
       ProfileComponent,
       PortfolioComponent,
-      TransactionsComponent,
+      HistoryComponent,
       RankingComponent,
       SubnavComponent,
       PositionsComponent,

@@ -14,6 +14,7 @@ import { RankingComponent } from './ranking.component';
 import { SubnavComponent } from './subnav.component';
 import { PositionsComponent } from './positions.component';
 import { TableComponent } from './table.component';
+import { OrdersComponent } from './orders.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { TableComponent } from './table.component';
       RankingComponent,
       SubnavComponent,
       PositionsComponent,
-      TableComponent
+      TableComponent,
+      OrdersComponent
     ],
     imports: [
       BrowserModule,

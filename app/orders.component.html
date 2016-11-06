@@ -9,7 +9,7 @@
   <tbody>
     <tr *ngFor="let order of orders | async">
       <td>{{order.stockname}}</td><!-- TODO: add sell/buy type -->
-      <td>{{(order.amount}}</td>
+      <td>{{order.amount}}</td>
       <td>X</td><!-- TODO: implement remove -->
     </tr>
   </tbody>

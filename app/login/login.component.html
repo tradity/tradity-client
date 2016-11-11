@@ -1,11 +1,14 @@
 <!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<h1>Welcome back</h1>
 <form (ngSubmit)="login()" tradity-form>
   <input type="text" placeholder="User name" name="username" [(ngModel)]="username" autofocus />
   <input type="password" placeholder="Password" name="password" [(ngModel)]="password" />
   <input type="checkbox" name="stayloggedin" [(ngModel)]="stayloggedin" />
   <button type="submit" translate>Log in</button>
-  <a href="#">Forgot Password?</a>
-  <a href="#">Registration</a>
 </form>
+<div class="bottom-links">
+  <a href="#">Forgot Password?</a><!--
+  --><a href="#">Registration</a>
+</div>

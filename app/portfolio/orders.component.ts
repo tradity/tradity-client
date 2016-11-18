@@ -5,7 +5,7 @@ import { StocksService } from '../stocks.service';
 
 @Component({
   selector: 'tradity-orders',
-  templateUrl: 'app/orders.component.html',
+  templateUrl: 'app/portfolio/orders.component.html',
   providers: [StocksService]
 })
 export class OrdersComponent implements OnInit {

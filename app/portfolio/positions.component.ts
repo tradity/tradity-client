@@ -5,7 +5,7 @@ import { StocksService } from '../stocks.service';
 
 @Component({
   selector: 'tradity-positions',
-  templateUrl: 'app/positions.component.html'
+  templateUrl: 'app/portfolio/positions.component.html'
 })
 export class PositionsComponent implements OnInit {
   positions: Observable<any>;

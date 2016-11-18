@@ -5,8 +5,7 @@ import { StocksService } from '../stocks.service';
 
 @Component({
   selector: 'tradity-history',
-  templateUrl: 'app/portfolio/history.component.html',
-  providers: [StocksService]
+  templateUrl: 'app/portfolio/history.component.html'
 })
 export class HistoryComponent implements OnInit {
   

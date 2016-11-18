@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { StocksService } from './stocks.service';
+import { StocksService } from '../stocks.service';
 
 @Component({
   selector: 'tradity-history',

@@ -7,6 +7,8 @@ import { routing, appRoutingProviders } from './app.routing';
 import { AppComponent } from './app.component';
 import { PortfolioModule } from './portfolio/portfolio.module';
 
+import { ApiService } from './api.service';
+import { StocksService } from './stocks.service';
 import { LoginComponent } from './login/login.component';
 import { GameComponent } from './game.component';
 import { ProfileComponent } from './profile.component';
@@ -33,7 +35,11 @@ import { FormComponent } from './form.component';
       routing,
       PortfolioModule
     ],
-    providers: [appRoutingProviders],
+    providers: [
+      appRoutingProviders,
+      ApiService,
+      StocksService
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

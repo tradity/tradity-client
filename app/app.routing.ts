@@ -4,11 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { GameComponent } from './game.component';
 import { ProfileComponent } from './profile.component';
-import { PortfolioComponent } from './portfolio.component';
-import { HistoryComponent } from './history.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { HistoryComponent } from './portfolio/history.component';
 import { RankingComponent } from './ranking.component';
-import { PositionsComponent } from './positions.component';
-import { OrdersComponent } from './orders.component';
+import { PositionsComponent } from './portfolio/positions.component';
+import { OrdersComponent } from './portfolio/orders.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },

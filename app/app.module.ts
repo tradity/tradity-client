@@ -5,16 +5,14 @@ import { HttpModule } from '@angular/http';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AppComponent } from './app.component';
+import { PortfolioModule } from './portfolio/portfolio.module';
+
 import { LoginComponent } from './login/login.component';
 import { GameComponent } from './game.component';
 import { ProfileComponent } from './profile.component';
-import { PortfolioComponent } from './portfolio.component';
-import { HistoryComponent } from './history.component';
 import { RankingComponent } from './ranking.component';
 import { SubnavComponent } from './subnav.component';
-import { PositionsComponent } from './positions.component';
 import { TableComponent } from './table.component';
-import { OrdersComponent } from './orders.component';
 import { FormComponent } from './form.component';
 
 @NgModule({
@@ -23,20 +21,17 @@ import { FormComponent } from './form.component';
       LoginComponent,
       GameComponent,
       ProfileComponent,
-      PortfolioComponent,
-      HistoryComponent,
       RankingComponent,
       SubnavComponent,
-      PositionsComponent,
       TableComponent,
-      OrdersComponent,
       FormComponent
     ],
     imports: [
       BrowserModule,
       FormsModule,
       HttpModule,
-      routing
+      routing,
+      PortfolioModule
     ],
     providers: [appRoutingProviders],
     bootstrap: [AppComponent],

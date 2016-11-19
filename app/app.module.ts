@@ -15,19 +15,13 @@ import { LoginModule } from './login/login.module';
 import { GameComponent } from './game.component';
 import { ProfileComponent } from './profile.component';
 import { RankingComponent } from './ranking.component';
-import { SubnavComponent } from './subnav.component';
-import { TableComponent } from './table.component';
-import { FormComponent } from './form.component';
 
 @NgModule({
     declarations: [
       AppComponent,
       GameComponent,
       ProfileComponent,
-      RankingComponent,
-      SubnavComponent,
-      TableComponent,
-      FormComponent
+      RankingComponent
     ],
     imports: [
       BrowserModule,

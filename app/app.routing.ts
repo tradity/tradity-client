@@ -14,10 +14,6 @@ const appRoutes: Routes = [
     component: GameComponent,
     children: [
       { path: 'profile', component: ProfileComponent },
-      {
-        path: 'portfolio',
-        component: PortfolioComponent
-      },
       { path: 'ranking', component: RankingComponent }
     ]
   }

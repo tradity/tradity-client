@@ -9,6 +9,8 @@ import { PortfolioModule } from './portfolio/portfolio.module';
 
 import { ApiService } from './api.service';
 import { StocksService } from './stocks.service';
+import { UserService } from './user.service';
+import { RankingService } from './ranking.service';
 import { LoginComponent } from './login/login.component';
 import { GameComponent } from './game.component';
 import { ProfileComponent } from './profile.component';
@@ -38,7 +40,9 @@ import { FormComponent } from './form.component';
     providers: [
       appRoutingProviders,
       ApiService,
-      StocksService
+      StocksService,
+      UserService,
+      RankingService
     ],
     bootstrap: [AppComponent],
 })

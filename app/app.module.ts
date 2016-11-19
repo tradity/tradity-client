@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AppComponent } from './app.component';
+import { GameModule } from './game/game.module';
 import { PortfolioModule } from './portfolio/portfolio.module';
 
 import { ApiService } from './api.service';
@@ -12,14 +13,12 @@ import { StocksService } from './stocks.service';
 import { UserService } from './user.service';
 import { RankingService } from './ranking.service';
 import { LoginModule } from './login/login.module';
-import { GameComponent } from './game.component';
 import { ProfileComponent } from './profile.component';
 import { RankingComponent } from './ranking.component';
 
 @NgModule({
     declarations: [
       AppComponent,
-      GameComponent,
       ProfileComponent,
       RankingComponent
     ],
@@ -29,7 +28,8 @@ import { RankingComponent } from './ranking.component';
       HttpModule,
       routing,
       LoginModule,
-      PortfolioModule
+      PortfolioModule,
+      GameModule
     ],
     providers: [
       appRoutingProviders,

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { UserService } from './user.service';
-import { SearchComponent } from './search.component';
+import { UserService } from '../user.service';
+import { SearchComponent } from '../search.component';
 
 @Component({
   selector: 'tradity-game',

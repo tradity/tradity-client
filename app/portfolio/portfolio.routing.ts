@@ -11,6 +11,7 @@ const portfolioRoutes: Routes = [
     path: 'portfolio',
     component: PortfolioComponent,
     children: [
+      { path: '', redirectTo: 'positions' },
       { path: 'positions', component: PositionsComponent },
       { path: 'history', component: HistoryComponent },
       { path: 'orders', component: OrdersComponent }

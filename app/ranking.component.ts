@@ -5,8 +5,7 @@ import { RankingService } from './ranking.service';
 
 @Component({
   selector: 'tradity-ranking',
-  templateUrl: 'app/ranking.component.html',
-  providers: [RankingService]
+  templateUrl: 'app/ranking.component.html'
 })
 export class RankingComponent implements OnInit {
   

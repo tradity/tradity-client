@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import { routing, appRoutingProviders } from './app.routing';
 import { AppComponent } from './app.component';
 import { GameModule } from './game/game.module';
-import { PortfolioModule } from './portfolio/portfolio.module';
 
 import { ApiService } from './api.service';
 import { StocksService } from './stocks.service';
@@ -28,7 +27,6 @@ import { RankingComponent } from './ranking.component';
       HttpModule,
       routing,
       LoginModule,
-      PortfolioModule,
       GameModule
     ],
     providers: [

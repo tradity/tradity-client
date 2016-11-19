@@ -7,11 +7,7 @@ import { ApiService } from './api.service';
 @Injectable()
 export class UserService {
 
-  constructor(private apiService: ApiService) { 
-    if (localStorage.getItem('authorizationToken')) {
-      this.apiService.setAuthToken(localStorage.getItem('authorizationToken'));
-    }
-  }
+  constructor(private apiService: ApiService) { }
   
   login(username: string, password: string, stayloggedin: boolean): Observable<Boolean> {
     return this.apiService.post(
@@ -25,7 +21,6 @@ export class UserService {
     .map(res => res.json())
     .map(res => {
       if (res.code === 200) {
-        localStorage.setItem('authorizationToken', res.key);
         this.apiService.setAuthToken(res.key);
         this.getUser();
         return true;
@@ -35,7 +30,6 @@ export class UserService {
   }
   
   logout() {
-    localStorage.removeItem('authorizationToken');
     this.apiService.delAuthToken();
   }
   

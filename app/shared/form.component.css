@@ -5,13 +5,18 @@
 
 :host >>> input {
   margin-bottom: 1rem;
-  border: 2px solid grey;
+  border: 1px solid #D8D8D8;
+  border-radius: 3px;
+  color: #170804;
+  font-size: 12px;
+  line-height: 18px;
 }
 
 :host >>> input[type=text],
 :host >>> input[type=password] {
   flex-basis: 100%;
-  height: 3rem;
+  padding: 1rem;
+  font-weight: 100;
 }
 
 :host >>> input[type=checkbox] {
@@ -29,7 +34,11 @@
 :host >>> button[type=submit] {
   flex-basis: 100%;
   height: 3rem;
-  background-color: lightgreen;
-  border-color: green;
+  background-color: rgba(241,89,42,0.95);
+  box-shadow: 0 2px 1px 0 #F1592A;
+  border: 1px solid rgba(241,89,42,0.97);
+  border-radius: 3px;
   color: white;
+  font-size: 16px;
+  line-height: 19px;
 }

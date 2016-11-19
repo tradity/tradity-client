@@ -6,8 +6,8 @@ import { SearchComponent } from '../search.component';
 
 @Component({
   selector: 'tradity-game',
-  templateUrl: 'app/game.component.html',
-  styleUrls: ['app/game.component.css']
+  templateUrl: 'app/game/game.component.html',
+  styleUrls: ['app/game/game.component.css']
 })
 export class GameComponent implements OnInit {
   private isMenuOpen = false;

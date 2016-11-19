@@ -5,22 +5,11 @@
 import { Component } from '@angular/core';
 import 'rxjs/Rx'; // load the full rxjs
 
-import { ApiService } from './api.service';
-import { UserService } from './user.service';
-
 @Component({
   selector: 'tradity',
-  template: '<router-outlet></router-outlet>',
-  providers: [
-    ApiService,
-    UserService
-  ]
+  template: '<router-outlet></router-outlet>'
 })
-export class AppComponent {
-  
-  constructor(private userService: UserService) { }
-  
-}
+export class AppComponent { }
 
 /*
 export default class TradityComponent {

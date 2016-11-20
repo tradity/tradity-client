@@ -22,6 +22,7 @@ angular.module('tradity')
       
       this.schools = [];
       this.rawResults = [];
+      this.rawResultsStringified = '[]';
       this.results = {};
       
       for (var type in this.rankifyOptions)
@@ -61,6 +62,7 @@ angular.module('tradity')
         }
         
         self.rawResults = self.filterRawResults(result.data);
+        self.rawResultsStringified = JSON.stringify(self.rawResults);
         
         self.updateRanking();
       });
@@ -79,8 +81,9 @@ angular.module('tradity')
       
       var filter = function(r) { return filter_ ? filter_(r, self.spec) : true; };
       var key    = function(r) { return key_(r, self.spec); };
-      
-      var res = $.extend(true, [], this.rawResults); // deep copy (so user.rank does not get carried over)
+
+      // deep copy (so user.rank does not get carried over)
+      var res = JSON.parse(this.rawResultsStringified);
       res = res.filter(filter);
       
       var i,j;

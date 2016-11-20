@@ -8,7 +8,7 @@ import { OrdersComponent } from './orders.component';
 
 const portfolioRoutes: Routes = [
   {
-    path: 'portfolio',
+    path: '',
     component: PortfolioComponent,
     children: [
       { path: '', redirectTo: 'positions' },

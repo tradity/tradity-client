@@ -6,7 +6,13 @@ import { GameComponent } from './game.component';
 const gameRoutes: Routes = [
   {
     path: '',
-    component: GameComponent
+    component: GameComponent,
+    children: [
+      {
+        path: 'portfolio',
+        loadChildren: 'app/portfolio/portfolio.module#PortfolioModule'
+      }
+    ]
   }
 ]
 

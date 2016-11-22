@@ -13,6 +13,7 @@
 }
 
 :host >>> input[type=text],
+:host >>> input[type=email],
 :host >>> input[type=password] {
   flex-basis: 100%;
   padding: 1rem;

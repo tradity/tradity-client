@@ -7,27 +7,3 @@
 [tradity-form] {
   margin: 0 3em;
 }
-
-.bottom-links {
-  display: flex;
-  width: 100vw;
-  position: absolute;
-  bottom: 0;
-}
-
-a {
-  display: inline-flex;
-  padding: 1.5rem;
-  flex-basis: 50vw;
-  justify-content: center;
-  background-color: rgba(23,8,4,0.1);
-  border-width: 1px 0 0 0;
-  border-style: solid;
-  border-color: rgba(23,8,4,0.2);
-  text-decoration: none;
-  color: rgba(23,8,4,0.4);
-}
-
-a:first-of-type {
-  border-right-width: 1px;
-}

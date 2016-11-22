@@ -3,6 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
   {
+    path: 'login',
+    loadChildren: 'app/login/login.module#LoginModule'
+  },
+  {
     path: 'register',
     loadChildren: 'app/registration/registration.module#RegistrationModule'
   },

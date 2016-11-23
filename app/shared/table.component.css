@@ -13,6 +13,7 @@
 :host >>> tr {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin: 0 0 10px 60px;
   position: relative;
   background-color: rgba(23,8,4,0.02);
@@ -64,7 +65,10 @@
   font-weight: normal;
 }
 
-:host >>> button {
-  display: inline-block;
-  align-self: center;
+:host >>> tr button {
+  margin: 20px 0;
+  padding: 6px 67px;
+  border: 1px solid #F1592A;
+  border-radius: 5px;
+  background-color: rgba(23,8,4,0.02);
 }

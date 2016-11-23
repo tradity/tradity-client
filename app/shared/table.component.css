@@ -12,20 +12,59 @@
 
 :host >>> tr {
   display: flex;
-  height: 3em;
-  margin-bottom: 1em;
-  padding: 1em;
-  background-color: lightgrey;
-  justify-content: space-between;
-  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 0 10px 60px;
+  position: relative;
+  background-color: rgba(23,8,4,0.02);
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 17px;
+  color: rgba(23,8,4,0.8);
+}
+
+:host >>> tr img {
+  position: absolute;
+  left: -60px;
+  border-radius: 50%;
+  margin-top: 5px;
 }
 
 :host >>> td {
-  display: none;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-basis: calc(50% - 40px);
+  padding: 10px 20px;
+  border-bottom: 2px solid rgba(23,8,4,0.1);
 }
 
-:host >>> td:nth-of-type(1),
+:host >>> td::before {
+  content: attr(data-desc);
+  margin-bottom: 3px;
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: normal;
+}
+
+:host >>> td:nth-of-type(1)::before,
+:host >>> td:nth-of-type(3)::before {
+  content: none;
+}
+
 :host >>> td:nth-of-type(2) {
+  display: none;
+}
+
+:host >>> td:nth-of-type(1)::after {
+  content: attr(data-subtext);
+  margin-top: 8px;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: normal;
+}
+
+:host >>> button {
   display: inline-block;
+  align-self: center;
 }

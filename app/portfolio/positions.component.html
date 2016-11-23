@@ -2,10 +2,10 @@
   <thead>
     <tr>
       <th>Stock</th>
+      <th>Value</th>
       <th>Total performance</th>
       <th>Performance today</th>
-      <th>Buy time</th>
-      <th>Value</th>
+      <!--<th>Buy time</th>-->
       <th>Amount</th>
       <th>Buy price</th>
       <th>Current price</th>
@@ -13,20 +13,22 @@
   </thead>
   <tbody>
     <tr *ngFor="let paper of positions | async">
-      <td>{{paper.stockname}}</td>
-      <td>
+      <img src="http://placehold.it/50x50">
+      <td data-desc="Stock" attr.data-subtext="{{paper.total / 10000 | number:'1.0-3'}} €">{{paper.stockname}}</td>
+      <td data-desc="Value">{{paper.total / 10000 | number:'1.0-3'}} €</td>
+      <td data-desc="Total performance">
         {{(paper.bid * paper.amount - paper.buymoney)
         / paper.buymoney * 100 | number:'1.0-2'}} %
       </td>
-      <td>
+      <td data-desc="Performance today">
         {{(paper.bid - paper.daystartvalue)
         / paper.daystartvalue * 100 | number:'1.0-2'}} %
       </td>
-      <td>{{paper.buytime * 1000 | date:'short'}}</td>
-      <td>{{paper.total / 10000 | number:'1.0-3'}} €</td>
-      <td>{{paper.amount}}</td>
-      <td>{{paper.buymoney / paper.amount / 10000 | number:'1.0-3'}} €</td>
-      <td>{{paper.bid / 10000 | number:'1.0-3'}} €</td>
+      <!--<td data-desc="Buy time">{{paper.buytime * 1000 | date:'short'}}</td>-->
+      <td data-desc="Amount">{{paper.amount}}</td>
+      <td data-desc="Buy price">{{paper.buymoney / paper.amount / 10000 | number:'1.0-3'}} €</td>
+      <td data-desc="Current price">{{paper.bid / 10000 | number:'1.0-3'}} €</td>
+      <button>Trade</button>
     </tr>
   </tbody>
 </table>

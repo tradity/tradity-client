@@ -4,10 +4,12 @@
     <span>Tradity</span>
     <span>search</span>
     <ul [class.menu-open]="isMenuOpen">
-      <li><a [routerLink]="['/portfolio']">/portfolio</a></li>
-      <li><a [routerLink]="['/profile']">/profile</a></li>
-      <li><a [routerLink]="['/transactions']">/transactions</a></li>
-      <li><a [routerLink]="['/ranking']">/ranking</a></li>
+      <li><a [routerLink]="['/dashboard']">Dashboard</a></li>
+      <li><a [routerLink]="['/portfolio']">Portfolio</a></li>
+      <li><a [routerLink]="['/profile']">Profile</a></li>
+      <li><a [routerLink]="['/trade']">Trade</a></li>
+      <li><a [routerLink]="['/ranking']">Leaderboard</a></li>
+      <li><a [routerLink]="['/education']">Education</a></li>
       <!--<button (click)="logout()">logout</button>-->
     </ul>
   </nav>

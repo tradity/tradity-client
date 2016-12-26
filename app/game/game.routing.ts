@@ -2,6 +2,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { GameComponent } from './game.component';
+import { StocksComponent } from './stocks.component';
 
 const gameRoutes: Routes = [
   {
@@ -11,6 +12,10 @@ const gameRoutes: Routes = [
       {
         path: 'portfolio',
         loadChildren: 'app/portfolio/portfolio.module#PortfolioModule'
+      },
+      {
+        path: 'stocks',
+        component: StocksComponent
       }
     ]
   }

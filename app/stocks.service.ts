@@ -9,11 +9,13 @@ export class StocksService {
   private _positions: Subject<any>;
   private _history: Subject<any>;
   private _orders: Subject<any>;
+  private _popularStocks: Subject<any>;
 
   constructor(private apiService: ApiService) { 
     this._positions = new Subject();
     this._history = new Subject();
     this._orders = new Subject();
+    this._popularStocks = new Subject();
   }
   
   get positions() {
@@ -26,6 +28,10 @@ export class StocksService {
 
   get orders() {
     return this._orders.asObservable();
+  }
+
+  get popularStocks() {
+    return this._popularStocks.asObservable();
   }
   
   loadPositions(): void {
@@ -44,6 +50,12 @@ export class StocksService {
     this.apiService.get('/dqueries')
     .map(res => res.json())
     .subscribe(res => this._orders.next(res.data));
+  }
+
+  loadPopularStocks(): void {
+    this.apiService.get('/stocks/popular')
+    .map(res => res.json())
+    .subscribe(res => this._popularStocks.next(res.data));
   }
   
   search(id: string) {

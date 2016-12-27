@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let paper of positions | async">
+    <tr *ngFor="let paper of positions | async" class="active">
       <img src="http://placehold.it/50x50">
       <td data-desc="Stock" attr.data-subtext="{{paper.total / 10000 | number:'1.0-3'}} €">{{paper.stockname}}</td>
       <td data-desc="Value">{{paper.total / 10000 | number:'1.0-3'}} €</td>

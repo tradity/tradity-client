@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { StocksComponent } from './stocks.component';
 import { StockDetailComponent } from './stock-detail.component';
+import { TradeComponent } from './trade.component';
 
 const gameRoutes: Routes = [
   {
@@ -12,6 +13,10 @@ const gameRoutes: Routes = [
   {
     path: ':isin',
     component: StockDetailComponent
+  },
+  {
+    path: ':isin/trade',
+    component: TradeComponent
   }
 ]
 

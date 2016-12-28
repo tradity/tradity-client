@@ -1,0 +1,32 @@
+<table tradity-table>
+  <thead>
+    <tr>
+      <th>Stock</th>
+      <th>ISIN</th>
+      <th>Ask price</th>
+      <th>Bid price</th>
+      <th>Tradable amount</th>
+      <th>Today high</th>
+      <th>Today low</th>
+      <th>Previous close</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--<tr *ngFor="let paper of positions | async" class="active">-->
+    <tr class="active">
+      <td data-desc="Stock" attr.data-subtext="US88160R1014">Tesla</td>
+      <td data-desc="ISIN">US88160R1014</td>
+      <td data-desc="Ask price">
+        171.70 €
+      </td>
+      <td data-desc="Bid price">
+        171.30 €
+      </td>
+      <td data-desc="Tradable amount">12,317 pc</td>
+      <td data-desc="Today high">173.45 €</td>
+      <td data-desc="Today low">169.56 €</td>
+      <td data-desc="Previous close">170.27 €</td>
+      <button>Trade</button>
+    </tr>
+  </tbody>
+</table>

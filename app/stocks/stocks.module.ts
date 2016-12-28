@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { SharedModule } from '../shared/shared.module';
+
 import { routing } from './stocks.routing';
 import { StocksComponent }   from './stocks.component';
-import { SharedModule } from '../shared/shared.module';
+import { StockDetailComponent } from './stock-detail.component';
 
 @NgModule({
   imports: [
@@ -12,7 +14,10 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   exports: [],
-  declarations: [StocksComponent],
+  declarations: [
+    StocksComponent,
+    StockDetailComponent
+  ],
   providers: [],
 })
 export class StocksModule { }

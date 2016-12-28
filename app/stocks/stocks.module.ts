@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { routing } from './stocks.routing';
 import { StocksComponent }   from './stocks.component';
 import { StockDetailComponent } from './stock-detail.component';
+import { TradeComponent } from './trade.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { StockDetailComponent } from './stock-detail.component';
   exports: [],
   declarations: [
     StocksComponent,
-    StockDetailComponent
+    StockDetailComponent,
+    TradeComponent
   ],
   providers: [],
 })

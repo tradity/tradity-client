@@ -17,7 +17,9 @@ export class LoginComponent implements OnInit {
   private password: string;
   private stayloggedin: boolean;
   
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { 
+    this.stayloggedin = false;
+  }
 
   ngOnInit() {
     console.log('initiate LoginComponent');

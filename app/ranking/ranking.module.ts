@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { routing } from './ranking.routing';
 import { RankingComponent }   from './ranking.component';
 import { AlltimeRankingComponent } from './alltime-ranking.component';
+import { WeeklyRankingComponent } from './weekly-ranking.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { AlltimeRankingComponent } from './alltime-ranking.component';
   exports: [],
   declarations: [
     RankingComponent,
-    AlltimeRankingComponent
+    AlltimeRankingComponent,
+    WeeklyRankingComponent
   ],
   providers: [],
 })

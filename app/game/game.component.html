@@ -3,15 +3,20 @@
     <span (click)="toggleMenu()">toggle</span>
     <span>Tradity</span>
     <span>search</span>
-    <ul [class.menu-open]="isMenuOpen">
-      <li><a [routerLink]="['/dashboard']">Dashboard</a></li>
-      <li><a [routerLink]="['/portfolio']">Portfolio</a></li>
-      <li><a [routerLink]="['/profile']">Profile</a></li>
-      <li><a [routerLink]="['/trade']">Trade</a></li>
-      <li><a [routerLink]="['/ranking']">Leaderboard</a></li>
-      <li><a [routerLink]="['/education']">Education</a></li>
+    <div [class.menu-open]="isMenuOpen">
+    <img src="https://placehold.it/81x81">
+    <h2>Pengu</h2>
+    <p>pengu@tradity.de</p>
+    <ul>
+      <li><a [routerLink]="['/dashboard']" routerLinkActive = "active">Dashboard</a></li>
+      <li><a [routerLink]="['/portfolio']" routerLinkActive = "active">Portfolio</a></li>
+      <li><a [routerLink]="['/profile']" routerLinkActive = "active">Profile</a></li>
+      <li><a [routerLink]="['/trade']" routerLinkActive = "active">Trade</a></li>
+      <li><a [routerLink]="['/ranking']" routerLinkActive = "active">Leaderboard</a></li>
+      <li><a [routerLink]="['/education']" routerLinkActive = "active">Education</a></li>
       <!--<button (click)="logout()">logout</button>-->
     </ul>
+    </div>
   </nav>
   <div id="subheader">
     <h3>Breadcrumb</h3>

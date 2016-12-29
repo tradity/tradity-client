@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { RankingComponent } from './ranking.component';
 import { AlltimeRankingComponent } from './alltime-ranking.component';
+import { WeeklyRankingComponent } from './weekly-ranking.component';
 
 const portfolioRoutes: Routes = [
   {
@@ -10,7 +11,8 @@ const portfolioRoutes: Routes = [
     component: RankingComponent,
     children: [
       { path: '', redirectTo: 'all' },
-      { path: 'all', component: AlltimeRankingComponent}
+      { path: 'all', component: AlltimeRankingComponent},
+      { path: 'weekly', component: WeeklyRankingComponent}
     ]
   }
 ]

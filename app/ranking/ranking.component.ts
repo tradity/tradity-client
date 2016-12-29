@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { RankingService } from './ranking.service';
+import { RankingService } from '../ranking.service';
 
 @Component({
   selector: 'tradity-ranking',
-  templateUrl: 'app/ranking.component.html'
+  templateUrl: 'app/ranking/ranking.component.html'
 })
 export class RankingComponent implements OnInit {
   

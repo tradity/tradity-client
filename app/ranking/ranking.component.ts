@@ -15,7 +15,6 @@ export class RankingComponent implements OnInit {
 
   ngOnInit() {
     this.ranking = this.rankingService.ranking;
-    this.ranking.subscribe(val => console.log(val));
     this.rankingService.load();
   }
 

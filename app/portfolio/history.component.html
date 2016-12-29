@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <!--<th>Date</th>-->
+      <th>Date</th>
       <th>Trade total</th>
       <th>Amount</th>
       <th>Price</th>
@@ -10,12 +10,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let order of orders | async">
-      <td>{{order.stockname}}</td><!-- TODO: add sell/buy type -->
-      <td>{{order.total}}</td>
-      <td>{{order.amount}}</td>
-      <td>{{order.price}}</td>
-      <td>{{order.fee}}</td>
+    <tr *ngFor="let order of history | async" class="active">
+      <img src="http://placehold.it/50x50">
+      <td data-desc="Stock" data-subtext="Sold at TODO">{{order.stockname}}</td>
+      <td data-desc="Date">Sold at TODO</td>
+      <td data-desc="Trade total">{{order.money / 10000}} €</td>
+      <td data-desc="Amount">{{order.amount}}</td>
+      <td data-desc="Price">{{order.money / order.amount / 10000}} €</td>
+      <td data-desc="Transaction fees">{{order.fee / 10000}} €</td>
     </tr>
   </tbody>
 </table>

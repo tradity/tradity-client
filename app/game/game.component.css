@@ -6,10 +6,18 @@ nav {
 }
 
 ul {
-  margin: 0;
-  padding: 0;
+  margin: 30px;
+  padding: 30px;
   list-style: none;
   text-align: center;
+  border-top: 1px solid #9B9B9B;
+}
+
+img {
+  border-radius: 40px;
+}
+
+nav div {
   width: 100%;
   transition: all 1s ease;
   height: 0;
@@ -17,14 +25,22 @@ ul {
   opacity: 0;
 }
 
-ul.menu-open {
+nav div.menu-open {
   height: 100vh;
+  margin-top: 5px;
+  padding-top: 10px;
+  text-align: center;
+  box-sizing: border-box;
   visibility: visible;
   opacity: 1;
 }
 
 li {
-  display: block;
+  display: block; 
+  color: #170804;
+  font-size: 16px;
+  text-align: center;
+  line-height: 32px;
 }
 
 #subheader {
@@ -36,4 +52,14 @@ li {
 
 main {
   padding: 20px;
+}
+
+li a {
+  text-decoration: none;
+  color: #170804;
+  text-align: center;
+}
+
+li a.active {
+  color: orangered;
 }

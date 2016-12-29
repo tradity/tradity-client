@@ -7,11 +7,9 @@
 :host >>> li {
   display: inline;
   margin-right: 10px;
-  padding: 3px 7px;
-  border-radius: 5px;
 }
 
-:host >>> li a {
+:host >>> a {
   color: #170804;
   font-size: 12px;
   font-weight: bold;
@@ -19,12 +17,12 @@
   letter-spacing: 2px;
   text-decoration: none;
   text-transform: uppercase;
+  padding: 3px 7px;
+  border-radius: 5px;
 }
 
-:host >>> li:first-of-type {
+:host >>> a.active {
   background-color: darkblue;
-}
-
-:host >>> li:first-of-type a {
   color: white;
 }
+

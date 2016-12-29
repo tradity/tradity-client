@@ -19,7 +19,8 @@ export class RankingService {
   load() {
     this.apiService.get('/ranking')
     .map(res => res.json())
-    .subscribe(res => this._ranking.next(res.data));
+    .map(res => res.data.sort((a, b) => b.totalvalue - a.totalvalue))
+    .subscribe(res => this._ranking.next(res));
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationStart } from '@angular/router';
 
 import { UserService } from '../user.service';
 import { SearchComponent } from '../search.component';
@@ -14,13 +14,18 @@ export class GameComponent implements OnInit {
   
   constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.router.events.subscribe(val => {
+    if (NavigationStart) this.isMenuOpen = false;
+    else this.isMenuOpen = true;
+    })
+   }
   
   logout() {
     this.userService.logout();
     this.router.navigateByUrl('login');
   }
-  
+
   toggleMenu() {
     if (this.isMenuOpen) this.isMenuOpen = false;
     else this.isMenuOpen = true; 

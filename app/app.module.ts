@@ -12,13 +12,11 @@ import { UserService } from './user.service';
 import { RankingService } from './ranking.service';
 import { LoginModule } from './login/login.module';
 import { ProfileComponent } from './profile.component';
-import { RankingComponent } from './ranking.component';
 
 @NgModule({
     declarations: [
       AppComponent,
-      ProfileComponent,
-      RankingComponent
+      ProfileComponent
     ],
     imports: [
       BrowserModule,

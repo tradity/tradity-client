@@ -15,6 +15,10 @@ const gameRoutes: Routes = [
       {
         path: 'stocks',
         loadChildren: 'app/stocks/stocks.module#StocksModule'
+      },
+      {
+        path: 'ranking',
+        loadChildren: 'app/ranking/ranking.module#RankingModule'
       }
     ]
   }

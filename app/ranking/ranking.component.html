@@ -1,17 +1,8 @@
-<table tradity-table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Group</th>
-      <th>Total performance</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let entry of ranking | async">
-      <img src="http://placehold.it/50x50">
-      <td data-desc="Name" attr.data-subtext="{{entry.schoolname}}">{{entry.name}}</td>
-      <td data-desc="Group">{{entry.schoolname}}</td>
-      <td data-desc="Total performance">{{entry.totalvalue / 1000000000 - 1 | percent}}
-    </tr>
-  </tbody>
-</table>
+<nav tradity-subnav>
+  <ul>
+    <li><a [routerLink]="['alltime']" routerLinkActive="active">All-time</a></li><!--
+    --><li><a [routerLink]="['weekly']" routerLinkActive="active">Weekly</a></li><!--
+    --><li><a [routerLink]="['schools']" routerLinkActive="active">Schools</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

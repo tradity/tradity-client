@@ -1,15 +1,18 @@
 <table tradity-table>
   <thead>
     <tr>
-      <th translate>Name</th>
-      <th translate>Amount</th>
-      <th translate>Remove</th>
+      <th>Name</th>
+      <th>Order time</th>
+      <th>Amount</th>
+      <th>Remove</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let order of orders | async">
-      <td>{{order.stockname}}</td><!-- TODO: add sell/buy type -->
-      <td>{{order.amount}}</td>
+      <img src="http://placehold.it/50x50">
+      <td attr.data-subtext="{{order.query.dquerydata.ordertime | date:'short'}}">{{order.query.dquerydata.name}}</td>
+      <td>{{order.query.dquerydata.ordertime | date:'short'}}</td>
+      <td>{{order.query.dquerydata.amount}}</td>
       <td>X</td><!-- TODO: implement remove -->
     </tr>
   </tbody>

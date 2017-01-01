@@ -12,16 +12,11 @@
     </tr>
   </thead>
   <tbody>
-    <!--<tr *ngFor="let paper of positions | async" class="active">-->
     <tr class="active">
-      <td data-desc="Stock" attr.data-subtext="US88160R1014">Tesla</td>
-      <td data-desc="ISIN">US88160R1014</td>
-      <td data-desc="Ask price">
-        171.70 €
-      </td>
-      <td data-desc="Bid price">
-        171.30 €
-      </td>
+      <td data-desc="Stock" attr.data-subtext="{{stock.stocktextid}}">{{stock.name}}</td>
+      <td data-desc="ISIN">{{stock.stocktextid}}</td>
+      <td data-desc="Ask price">{{stock.ask / 10000 | currency:'EUR':true}}</td>
+      <td data-desc="Bid price">{{stock.bid / 10000 | currency:'EUR':true}}</td>
       <td data-desc="Tradable amount">12,317 pc</td>
       <td data-desc="Today high">173.45 €</td>
       <td data-desc="Today low">169.56 €</td>

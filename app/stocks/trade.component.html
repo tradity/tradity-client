@@ -24,3 +24,12 @@
     </tr>
   </tbody>
 </table>
+<form tradity-form (ngSubmit)="trade()">
+  <input type="radio" name="sellbuy" value="buy" id="buy" [(ngModel)]="sellbuy" />
+  <label for="buy">Buy</label>
+  <input type="radio" name="sellbuy" value="sell" id="sell" [(ngModel)]="sellbuy" />
+  <label for="sell">Sell</label>
+  <input type="number" name="amount" [(ngModel)]="amount" />
+  <input type="number" name="value" [(ngModel)]="value" />
+  <button type="submit">Trade</button>
+</form>

@@ -11,16 +11,29 @@ import { StocksService } from '../stocks.service';
 export class TradeComponent implements OnInit, OnDestroy {
   private stockSubscription: Subscription;
   private stock = {};
+  private sellbuy: string;
+  private amount: number;
+  private value: number;
 
-  constructor(private stocksService: StocksService) { }
+  constructor(private stocksService: StocksService) {
+    this.sellbuy = 'buy';
+  }
 
   ngOnInit() {
-    this.stockSubscription = this.stocksService.stock('US88160R1014')
+    this.stockSubscription = this.stocksService.stock('DE000BASF111')
                              .subscribe(res => this.stock = res);
-    this.stocksService.loadStock('US88160R1014');
+    this.stocksService.loadStock('DE000BASF111');
   }
 
   ngOnDestroy() {
     this.stockSubscription.unsubscribe();
+  }
+
+  private trade() {
+    if (this.amount) {
+      this.stocksService.trade('DE000BASF111', this.amount).subscribe(res => {
+        if (res) alert('Successfully traded!');
+      })
+    }
   }
 }

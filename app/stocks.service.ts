@@ -75,6 +75,21 @@ export class StocksService {
       this._stocks[id].next(res);
     });
   }
+
+  trade(isin: string, amount: number): Observable<boolean> {
+    return this.apiService.post(
+      '/trade',
+      {
+        stocktextid: isin,
+        amount: amount
+      }
+    )
+    .map(res => res.json())
+    .map(res => {
+      if (res.code === 200) return true;
+      return false;
+    });
+  }
   
   search(id: string) {
     return this.apiService.get('/stocks/search')

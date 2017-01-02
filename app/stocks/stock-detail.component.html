@@ -6,9 +6,9 @@
       <th>Ask price</th>
       <th>Bid price</th>
       <th>Tradable amount</th>
-      <th>Today high</th>
+      <!--<th>Today high</th>
       <th>Today low</th>
-      <th>Previous close</th>
+      <th>Previous close</th>-->
     </tr>
   </thead>
   <tbody>
@@ -17,10 +17,10 @@
       <td data-desc="ISIN">{{stock.stocktextid}}</td>
       <td data-desc="Ask price">{{stock.ask / 10000 | currency:'EUR':true}}</td>
       <td data-desc="Bid price">{{stock.bid / 10000 | currency:'EUR':true}}</td>
-      <td data-desc="Tradable amount">12,317 pc</td>
-      <td data-desc="Today high">173.45 €</td>
+      <td data-desc="Tradable amount">{{stock.pieces}} pc</td>
+      <!--<td data-desc="Today high">173.45 €</td>
       <td data-desc="Today low">169.56 €</td>
-      <td data-desc="Previous close">170.27 €</td>
+      <td data-desc="Previous close">170.27 €</td>-->
       <button>Trade</button>
     </tr>
   </tbody>

@@ -16,7 +16,7 @@ export class TradeComponent implements OnInit, OnDestroy {
   private value: number;
 
   constructor(private stocksService: StocksService) {
-    this.sellbuy = 'buy';
+    this.sellbuy = '1';
   }
 
   ngOnInit() {
@@ -31,7 +31,7 @@ export class TradeComponent implements OnInit, OnDestroy {
 
   private trade() {
     if (this.amount) {
-      this.stocksService.trade('DE000BASF111', this.amount).subscribe(res => {
+      this.stocksService.trade('DE000BASF111', this.amount * Number(this.sellbuy)).subscribe(res => {
         if (res) alert('Successfully traded!');
       })
     }

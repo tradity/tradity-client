@@ -5,6 +5,7 @@
   padding: 12px;
 }
 
-:host.active {
+:host.active,
+:host:hover {
   border-color: #F1592A;
 }

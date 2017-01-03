@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, ContentChild} from '@angular/core';
 
 @Component({
   selector: 'tradity-container',
   styleUrls: ['app/shared/container.component.css'],
-  template: '<div>Control Button</div><ng-content></ng-content>'
+  template: '<ng-content></ng-content>'
 })
-export class ContainerComponent implements OnInit {
+export class ContainerComponent {  
+  @HostBinding('class.active') private isActive = false;
+
   constructor() { }
 
-  ngOnInit() { }
+  onToggle() {
+    this.isActive = this.isActive ? false : true;
+  }
 }

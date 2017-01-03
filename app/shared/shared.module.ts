@@ -5,6 +5,7 @@ import { SubnavComponent } from './subnav.component';
 import { TableComponent } from './table.component';
 import { BottomNavComponent } from './bottom-nav.component';
 import { ContainerComponent } from './container.component';
+import { ContainerControlComponent } from './container-control.component';
 
 @NgModule({
   imports: [],
@@ -13,14 +14,16 @@ import { ContainerComponent } from './container.component';
     SubnavComponent,
     TableComponent,
     BottomNavComponent,
-    ContainerComponent
+    ContainerComponent,
+    ContainerControlComponent
   ],
   declarations: [
     FormComponent,
     SubnavComponent,
     TableComponent,
     BottomNavComponent,
-    ContainerComponent
+    ContainerComponent,
+    ContainerControlComponent
   ],
   providers: [],
 })

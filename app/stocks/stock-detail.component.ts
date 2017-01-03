@@ -17,7 +17,6 @@ export class StockDetailComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.stockSubscription = this.stocksService.stock('US88160R1014')
                              .subscribe(res => this.stock = res);
-    this.stocksService.loadStock('US88160R1014');
   }
 
   ngOnDestroy() {

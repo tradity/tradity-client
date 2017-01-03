@@ -14,6 +14,5 @@ export class PositionsComponent implements OnInit {
 
   ngOnInit() {
     this.positions = this.stocksService.positions;
-    this.stocksService.loadPositions();
   }
 }

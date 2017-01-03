@@ -2,17 +2,6 @@
   display: none;
 }
 
-div {
-  display: block;
-  border: 1px solid #170804;
-  border-radius: 40px;
-  padding: 12px;
-}
-
-:host.active div {
-  border-color: #F1592A;
-}
-
 :host.active >>> table {
   display: block;
 }

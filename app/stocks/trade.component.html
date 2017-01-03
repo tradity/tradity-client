@@ -29,7 +29,7 @@
   <label for="buy">Buy</label>
   <input type="radio" name="sellbuy" value="-1" id="sell" [(ngModel)]="sellbuy" />
   <label for="sell">Sell</label>
-  <input type="number" name="amount" [(ngModel)]="amount" />
-  <input type="number" name="value" [(ngModel)]="value" />
+  <input type="number" name="amount" [(ngModel)]="amount" placeholder="Number of shares" />
+  <input type="number" name="value" [(ngModel)]="value" placeholder="Euros to be invested" />
   <button type="submit">Execute trade</button>
 </form>

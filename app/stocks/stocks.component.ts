@@ -14,7 +14,5 @@ export class StocksComponent implements OnInit {
 
   ngOnInit() {
     this.popularStocks = this.stocksService.popularStocks;
-    this.stocksService.loadPopularStocks();
-    this.popularStocks.subscribe(res => console.log(res));
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 
 import { ApiService } from './api.service';
@@ -7,38 +8,43 @@ import { ApiService } from './api.service';
 @Injectable()
 export class StocksService {
   
-  private _positions: Subject<any>;
-  private _history: Subject<any>;
-  private _orders: Subject<any>;
-  private _popularStocks: Subject<any>;
-  private _stocks: Array<Subject<any>>;
+  private _positions: BehaviorSubject<any>;
+  private _history: BehaviorSubject<any>;
+  private _orders: BehaviorSubject<any>;
+  private _popularStocks: BehaviorSubject<any>;
+  private _stocks: Array<BehaviorSubject<any>>;
 
   constructor(private apiService: ApiService) { 
-    this._positions = new Subject();
-    this._history = new Subject();
-    this._orders = new Subject();
-    this._popularStocks = new Subject();
+    this._positions = new BehaviorSubject([]);
+    this._history = new BehaviorSubject([]);
+    this._orders = new BehaviorSubject([]);
+    this._popularStocks = new BehaviorSubject([]);
     this._stocks = [];
   }
   
   get positions() {
+    this.loadPositions();
     return this._positions.asObservable();
   }
   
   get history() {
+    this.loadHistory();
     return this._history.asObservable();
   }
 
   get orders() {
+    this.loadOrders();
     return this._orders.asObservable();
   }
 
   get popularStocks() {
+    this.loadPopularStocks();
     return this._popularStocks.asObservable();
   }
 
   stock(isin: string): Observable<any> {
-    if (!this._stocks[isin]) this._stocks[isin] = new Subject();
+    this.loadStock(isin);
+    if (!this._stocks[isin]) this._stocks[isin] = new BehaviorSubject([]);
     return this._stocks[isin].asObservable();
   }
   
@@ -71,7 +77,7 @@ export class StocksService {
     .map(res => res.json().data[0])
     .subscribe(res => {
       let id = res.stocktextid;
-      if (!this._stocks[id]) this._stocks[id] = new Subject();
+      if (!this._stocks[id]) this._stocks[id] = new BehaviorSubject([]);
       this._stocks[id].next(res);
     });
   }

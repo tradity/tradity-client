@@ -16,8 +16,8 @@
       <td data-desc="Stock" attr.data-subtext="{{stock.stocktextid}}">{{stock.name}}</td>
       <td data-desc="ISIN">{{stock.stocktextid}}</td>
       <td data-desc="Tradable amount">{{stock.pieces}} pc</td>
-      <td data-desc="Ask price">{{stock.ask / 10000 | currency:'EUR'}}</td>
-      <td data-desc="Bid price">{{stock.bid / 10000 | currency:'EUR'}}</td>
+      <td data-desc="Ask price">{{stock.ask / 10000 | currency:'EUR':true}}</td>
+      <td data-desc="Bid price">{{stock.bid / 10000 | currency:'EUR':true}}</td>
       <!--<td data-desc="Today high">173.45 €</td>
       <td data-desc="Today low">169.56 €</td>
       <td data-desc="Previous close">170.27 €</td>-->
@@ -25,11 +25,13 @@
   </tbody>
 </table>
 <form tradity-form (ngSubmit)="trade()">
-  <input type="radio" name="sellbuy" value="1" id="buy" [(ngModel)]="sellbuy" />
+  <input type="radio" name="sellbuy" [value]="1" id="buy" [(ngModel)]="sellbuy" />
   <label for="buy">Buy</label>
-  <input type="radio" name="sellbuy" value="-1" id="sell" [(ngModel)]="sellbuy" />
+  <input type="radio" name="sellbuy" [value]="-1" id="sell" [(ngModel)]="sellbuy" />
   <label for="sell">Sell</label>
-  <input type="number" name="amount" [(ngModel)]="amount" placeholder="Number of shares" />
-  <input type="number" name="value" [(ngModel)]="value" placeholder="Euros to be invested" />
+  <input type="number" id="amount" name="amount" [(ngModel)]="amount" placeholder="Number of shares" />
+  <span>x <span [class.inactive]="sellbuy == -1">{{stock.ask / 10000 | currency:'EUR':true}} (Ask)</span> | <span [class.inactive]="sellbuy == 1">{{stock.bid / 10000 | currency:'EUR':true}} (Bid)</span> =</span>
+  <input type="number" id="value" name="value" [(ngModel)]="value" placeholder="Euros to be invested" />
+  <span>+ {{10 | currency:'EUR':true}} transaction fee</span>
   <button type="submit">Execute trade</button>
 </form>

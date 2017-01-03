@@ -1,0 +1,31 @@
+[tradity-form] input#amount + span {
+  display: block;
+  text-align: center;
+  margin: 0 auto 1rem;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 2px;
+  color: #170804;
+}
+
+[tradity-form] input#amount + span span.inactive {
+  color: rgba(23,8,4,0.2);
+}
+
+[tradity-form] input#value + span {
+  margin: -6px auto 20px;
+  text-align: center;
+  font-size: 10px;
+  line-height: 12px;
+  letter-spacing: 1px;
+  color: #170804;
+}
+
+[tradity-form] input[type=number] {
+  font-size: 16px;
+  font-weight: 100;
+  text-align: center;
+  line-height: 15px;
+  letter-spacing: 2px;
+  color: #170804;
+}

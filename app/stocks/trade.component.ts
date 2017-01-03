@@ -7,17 +7,18 @@ import { StocksService } from '../stocks.service';
 
 @Component({
   selector: 'tradity-trade',
-  templateUrl: 'app/stocks/trade.component.html'
+  templateUrl: 'app/stocks/trade.component.html',
+  styleUrls: ['app/stocks/trade.component.css']
 })
 export class TradeComponent implements OnInit, OnDestroy {
   private stockSubscription: Subscription;
   private stock: any;
-  private sellbuy: string;
+  private sellbuy: number;
   private amount: number;
   private value: number;
 
   constructor(private route: ActivatedRoute, private stocksService: StocksService) {
-    this.sellbuy = '1';
+    this.sellbuy = 1;
   }
 
   ngOnInit() {
@@ -32,7 +33,7 @@ export class TradeComponent implements OnInit, OnDestroy {
 
   private trade() {
     if (this.amount) {
-      this.stocksService.trade(this.stock.stocktextid, this.amount * Number(this.sellbuy)).subscribe(res => {
+      this.stocksService.trade(this.stock.stocktextid, this.amount * this.sellbuy).subscribe(res => {
         if (res) alert('Successfully traded!');
       })
     }

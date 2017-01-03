@@ -8,9 +8,6 @@ import { StocksService } from '../stocks.service';
   templateUrl: 'app/portfolio/portfolio.component.html'
 })
 export class PortfolioComponent implements OnInit {
-  
-  portfolio: Observable<any>;
-  
   constructor() { }
 
   ngOnInit() { }

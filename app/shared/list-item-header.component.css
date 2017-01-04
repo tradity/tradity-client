@@ -2,6 +2,15 @@
   display: flex;
   flex-basis: 100%;
   overflow: hidden;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 17px;
+}
+
+:host.big-letters {
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
 }
 
 span {
@@ -18,4 +27,10 @@ span {
   font-size: 12px;
   line-height: 15px;
   font-weight: normal;
+}
+
+:host.big-letters span >>> span:nth-of-type(2) {
+  margin-top: 0;
+  font-size: 16px;
+  line-height: 19px;
 }

@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 100%;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 17px;
+}

@@ -1,23 +1,22 @@
-<table tradity-table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Date</th>
-      <th>Trade total</th>
-      <th>Amount</th>
-      <th>Price</th>
-      <th>Transaction fees</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let order of history | async" class="active">
-      <img src="http://placehold.it/50x50">
-      <td data-desc="Stock" data-subtext="Sold at TODO">{{order.stockname}}</td>
-      <td data-desc="Date">Sold at TODO</td>
-      <td data-desc="Trade total">{{order.money / 10000}} €</td>
-      <td data-desc="Amount">{{order.amount}}</td>
-      <td data-desc="Price">{{order.money / order.amount / 10000}} €</td>
-      <td data-desc="Transaction fees">{{order.fee / 10000}} €</td>
-    </tr>
-  </tbody>
-</table>
+<tradity-li *ngFor="let order of history | async">
+  <img src="http://placehold.it/50x50">
+  <tradity-li-header>
+    <span left>{{order.stockname}}</span>
+    <span left>Sold at TODO</span>
+    <span right>{{order.money / 10000}} €</span>
+  </tradity-li-header>
+  <tradity-li-vl>
+    <tradity-li-vi>
+      <span>Amount</span>
+      <span>{{order.amount}}</span>
+    </tradity-li-vi>
+    <tradity-li-vi>
+      <span>Price</span>
+      <span>{{order.money / order.amount / 10000}} €</span>
+    </tradity-li-vi>
+    <tradity-li-vi>
+      <span>Transaction fees</span>
+      <span>{{order.fee / 10000}} €</span>
+    </tradity-li-vi>
+  </tradity-li-vl>
+</tradity-li>

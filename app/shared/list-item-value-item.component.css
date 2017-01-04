@@ -5,6 +5,7 @@
   justify-content: center;
   padding: 10px 20px;
   border-top: 2px solid rgba(23,8,4,0.1);
+  overflow: hidden;
 }
 
 :host >>> span:first-of-type {

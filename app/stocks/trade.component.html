@@ -1,29 +1,20 @@
-<table tradity-table class="single-row">
-  <thead>
-    <tr>
-      <th>Stock</th>
-      <th>ISIN</th>
-      <th>Tradable amount</th>
-      <th>Ask price</th>
-      <th>Bid price</th>
-      <!--<th>Today high</th>
-      <th>Today low</th>
-      <th>Previous close</th>-->
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td data-desc="Stock" attr.data-subtext="{{stock.stocktextid}}">{{stock.name}}</td>
-      <td data-desc="ISIN">{{stock.stocktextid}}</td>
-      <td data-desc="Tradable amount">{{stock.pieces}} pc</td>
-      <td data-desc="Ask price">{{stock.ask / 10000 | currency:'EUR':true}}</td>
-      <td data-desc="Bid price">{{stock.bid / 10000 | currency:'EUR':true}}</td>
-      <!--<td data-desc="Today high">173.45 €</td>
-      <td data-desc="Today low">169.56 €</td>
-      <td data-desc="Previous close">170.27 €</td>-->
-    </tr>
-  </tbody>
-</table>
+<tradity-li-header>
+  <span left>{{stock.name}}</span>
+  <span left>{{stock.stocktextid}}</span>
+  <span right>{{stock.pieces}} pc</span>
+</tradity-li-header>
+<tradity-li-vl>
+  <tradity-li-vi>
+    <span>Ask price</span>
+    <span>{{stock.ask / 10000 | currency:'EUR':true}}</span>
+  </tradity-li-vi>
+  <tradity-li-vi>
+    <span>Bid price</span>
+    <span>{{stock.bid / 10000 | currency:'EUR':true}}</span>
+  </tradity-li-vi>
+</tradity-li-vl>
+<!-- TODO: Today high, today low, previous close -->
+
 <form tradity-form (ngSubmit)="trade()">
   <input type="radio" name="sellbuy" [value]="1" id="buy" [(ngModel)]="sellbuy" />
   <label for="buy">Buy</label>

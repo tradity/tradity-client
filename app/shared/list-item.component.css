@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 10px 60px;
+  position: relative;
+  background-color: rgba(23,8,4,0.02);
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 17px;
+  color: rgba(23,8,4,0.8);
+}
+
+:host >>> img {
+  position: absolute;
+  left: -60px;
+  border-radius: 50%;
+  margin-top: 5px;
+}

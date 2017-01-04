@@ -1,19 +1,9 @@
-<table tradity-table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Order time</th>
-      <th>Amount</th>
-      <th>Remove</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let order of orders | async">
-      <img src="http://placehold.it/50x50">
-      <td attr.data-subtext="{{order.query.dquerydata.ordertime | date:'short'}}">{{order.query.dquerydata.name}}</td>
-      <td>{{order.query.dquerydata.ordertime | date:'short'}}</td>
-      <td>{{order.query.dquerydata.amount}}</td>
-      <td>X</td><!-- TODO: implement remove -->
-    </tr>
-  </tbody>
-</table>
+<tradity-li *ngFor="let order of orders | async">
+  <img src="http://placehold.it/50x50">
+  <tradity-li-header>
+    <span left>{{order.query.dquerydata.name}}</span>
+    <span left>{{order.query.dquerydata.ordertime | date:'short'}}</span>
+    <span right>{{order.query.dquerydata.amount}}</span>
+  </tradity-li-header>
+</tradity-li>
+<!-- TODO: implement canceling -->

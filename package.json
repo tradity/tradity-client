@@ -29,7 +29,7 @@
     "clean": "rimraf dist/ docs/ && mkdir -p docs/ dist/app/js/jit/l10n/",
     "prebuild": "npm run clean",
     "build": "parallelshell 'npm run build:js' 'npm run build:cp'",
-    "build:js": "cp -r app dist/ && (cd dist && ln -sf ../node_modules || true)",
+    "build:js": "cp -r app dist/",
     "build:cp": "cp -r *.html *.txt *.ico fonts img scripts apidoc dist/",
     "watch": "parallelshell 'npm run watch:js' 'npm run watch:cp'",
     "watch:js": "watch-run -p 'app/**' npm run build:js",

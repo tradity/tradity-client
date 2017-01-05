@@ -62,6 +62,19 @@ li {
   padding: 20px;
 }
 
+#subheader h2 {
+  margin: 8px 0 2px;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+#subheader h1 {
+  margin: 2px 0 8px;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 36px;
+}
+
 main {
   padding: 20px;
 }

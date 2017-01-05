@@ -49,6 +49,20 @@
         /* Support for IE. */
         font-feature-settings: 'liga';
       }
+
+      @font-face {
+        font-family: 'LatoLatinWeb';
+        src: url('fonts/LatoLatin-Regular.woff2') format('woff2'),
+            url('fonts/LatoLatin-Regular.woff') format('woff'),
+            url('fonts/LatoLatin-Regular.ttf') format('truetype');
+        font-style: normal;
+        font-weight: normal;
+        text-rendering: optimizeLegibility;
+      }
+
+      html {
+        font-family: 'LatoLatinWeb';
+      }
     </style>
     
     <script src="node_modules/core-js/client/shim.min.js"></script>

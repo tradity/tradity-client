@@ -19,6 +19,10 @@ const gameRoutes: Routes = [
       {
         path: 'ranking',
         loadChildren: 'app/ranking/ranking.module#RankingModule'
+      },
+      {
+        path: 'dashboard',
+        loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
       }
     ]
   }

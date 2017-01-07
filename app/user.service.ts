@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { ApiService } from './api.service';
 
 @Injectable()
 export class UserService {
+  private _ownUser: BehaviorSubject<any>;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService) {
+    this._ownUser = new BehaviorSubject([]);
+  }
   
   login(username: string, password: string, stayloggedin: boolean): Observable<Boolean> {
     return this.apiService.post(
@@ -22,7 +26,6 @@ export class UserService {
     .map(res => {
       if (res.code === 200) {
         this.apiService.setAuthToken(res.key);
-        this.getUser();
         return true;
       }
       return false;
@@ -32,10 +35,15 @@ export class UserService {
   logout() {
     this.apiService.delAuthToken();
   }
+
+  get ownUser() {
+    this.loadOwnUser();
+    return this._ownUser.asObservable();
+  }
   
-  getUser() {
+  loadOwnUser() {
     this.apiService.get('/user/$self?nohistory=true')
     .map(res => res.json())
-    .subscribe(res => console.log(res));
+    .subscribe(res => this._ownUser.next(res.data));
   }
 }

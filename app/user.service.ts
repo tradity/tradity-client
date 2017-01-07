@@ -34,7 +34,7 @@ export class UserService {
   }
   
   getUser() {
-    this.apiService.get('/user/$self')
+    this.apiService.get('/user/$self?nohistory=true')
     .map(res => res.json())
     .subscribe(res => console.log(res));
   }

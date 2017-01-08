@@ -1,0 +1,27 @@
+<header>
+  <nav>
+    <a role="button" (click)="toggleMenu()"><i class="material-icons">menu</i></a>
+    <span>Tradity</span>
+    <a [routerLink]="['/stocks']"><i class="material-icons">search</i></a>
+    <div [class.menu-open]="isMenuOpen">
+    <img src="https://placehold.it/81x81">
+    <h2>{{ownUser.name}}</h2>
+    <p>{{ownUser.email}}</p>
+    <ul>
+      <li><a [routerLink]="['/dashboard']" routerLinkActive = "active">Dashboard</a></li>
+      <li><a [routerLink]="['/portfolio']" routerLinkActive = "active">Portfolio</a></li>
+      <li><a [routerLink]="['/stocks']" routerLinkActive = "active">Stocks</a></li>
+      <li><a [routerLink]="['/ranking']" routerLinkActive = "active">Leaderboard</a></li>
+      <li><a [routerLink]="['/education']" routerLinkActive = "active">Education</a></li>
+      <li><a (click)="logout()" routerLinkActive = "active">Logout</a></li> 
+    </ul>
+    </div>
+  </nav>
+  <div id="subheader">
+    <h2>Breadcrumb</h2>
+    <h1>Heading</h1>
+  </div>
+</header>
+<main role="main">
+  <router-outlet></router-outlet>
+</main>

@@ -1,0 +1,9 @@
+:host {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+[tradity-form] {
+  margin: 0 3em;
+}

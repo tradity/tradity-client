@@ -1,0 +1,33 @@
+<tradity-li *ngFor="let paper of positions | async">
+  <img src="http://placehold.it/50x50">
+  <tradity-li-header>
+    <span left>{{paper.stockname}}</span>
+    <span left>{{paper.total / 10000 | number:'1.0-3'}} €</span>
+    <span right>
+      {{(paper.bid * paper.amount - paper.buymoney)
+      / paper.buymoney * 100 | number:'1.0-2'}} %
+    </span>
+  </tradity-li-header>
+  <tradity-li-vl>
+    <tradity-li-vi>
+      <span>Performance today</span>
+      <span>
+        {{(paper.bid - paper.daystartvalue)
+        / paper.daystartvalue * 100 | number:'1.0-2'}} %
+      </span>
+    </tradity-li-vi>
+    <tradity-li-vi>
+      <span>Amount</span>
+      <span>{{paper.amount}}</span>
+    </tradity-li-vi>
+    <tradity-li-vi>
+      <span>Buy price</span>
+      <span>{{paper.buymoney / paper.amount / 10000 | number:'1.0-3'}} €</span>
+    </tradity-li-vi>
+    <tradity-li-vi>
+      <span>Current price</span>
+      <span>{{paper.bid / 10000 | number:'1.0-3'}} €</span>
+    </tradity-li-vi>
+  </tradity-li-vl>
+</tradity-li>
+<!-- TODO: Show Buytime? -->

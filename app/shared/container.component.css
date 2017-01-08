@@ -1,0 +1,7 @@
+:host >>> tradity-li {
+  display: none;
+}
+
+:host.active >>> tradity-li {
+  display: flex;
+}

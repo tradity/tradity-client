@@ -1,0 +1,23 @@
+<input type="search" placeholder="Search for stock" [(ngModel)]="searchValue" (keyup)="search()">
+<tradity-li *ngFor="let paper of searchResult">
+  <img src="http://placehold.it/50x50">
+  <tradity-li-header>
+    <span left>{{paper.name}}</span>
+    <span left>{{paper.stocktextid}}</span>
+    <span right>{{paper.lastvalue / 10000 | currency:'EUR':true}}</span>
+  </tradity-li-header>
+</tradity-li>
+<tradity-container>
+  <tradity-container-control>Most traded</tradity-container-control>
+  <tradity-li *ngFor="let paper of popularStocks | async">
+    <img src="http://placehold.it/50x50">
+    <tradity-li-header>
+      <span left>{{paper['MIN(oh.stockname)']}}</span>
+      <span left>{{paper.stocktextid}}</span>
+      <span right>{{paper.bid / 10000 | currency:'EUR':true}}</span>
+    </tradity-li-header>
+  </tradity-li>
+</tradity-container>
+<tradity-container>
+  <tradity-container-control>Your favourites</tradity-container-control>
+</tradity-container>

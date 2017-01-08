@@ -1,0 +1,12 @@
+<h2>Sign Up</h2>
+<form (ngSubmit)="register()" tradity-form>
+  <input type="text" placeholder="User name" name="username" [(ngModel)]="username" autofocus />
+  <input type="email" placeholder="Email address" name="email" [(ngModel)]="email" />
+  <input type="password" placeholder="Password" name="password" [(ngModel)]="password" />
+  <input type="password" placeholder="Repeat password" name="passwordCheck" [(ngModel)]="passwordCheck" />
+  <button type="submit" translate>Sign up</button>
+</form>
+<tradity-bottom-nav>
+  <a href="#">Forgot Password?</a><!--
+  --><a [routerLink]="['/login']">Login</a>
+</tradity-bottom-nav>

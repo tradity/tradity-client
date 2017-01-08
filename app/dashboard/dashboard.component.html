@@ -1,0 +1,18 @@
+<ul>
+  <li>
+    <span>{{ownUser.totalvalue / 10000 | currency:'EUR':true}}</span>
+    <span>Total value</span>
+  </li>
+  <li>
+    <span>{{ownUser.freemoney / 10000 | currency:'EUR':true}}</span>
+    <span>Cash</span>
+  </li>
+  <li>
+    <span>{{(ownUser.totalvalue - ownUser.freemoney) / 10000 | currency:'EUR':true}}</span>
+    <span>Portfolio</span>
+  </li>
+  <li>
+    <span>27d 7h 4m</span>
+    <span>Time left</span>
+  </li>
+</ul>

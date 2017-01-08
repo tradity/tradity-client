@@ -1,0 +1,74 @@
+:host {
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+:host >>> input {
+  margin-bottom: 1rem;
+  border: 1px solid #D8D8D8;
+  border-radius: 3px;
+  color: #170804;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+:host >>> input[type=text],
+:host >>> input[type=email],
+:host >>> input[type=password],
+:host >>> input[type=number] {
+  flex-basis: 100%;
+  padding: 1rem;
+  font-weight: 100;
+}
+
+:host >>> input[type=checkbox] {
+  height: 2rem;
+  width: 2rem;
+  margin-right: 0.5rem;
+}
+
+:host >>> input[type=checkbox] + label {
+  display: inline-flex;
+  align-items: center;
+  height: 2rem;
+}
+
+:host >>> input[type=radio] {
+  position: absolute;
+  left: -10000px;
+}
+
+:host >>> input[type=radio] + label {
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 36px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  background-color: rgba(23,8,4,0.2);
+  display: inline-flex;
+  flex-basis: 50%;
+  padding: 26px 0;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+:host >>> input[type=radio] + label:first-of-type {
+  border-right: 1px solid white;
+  flex-basis: calc(50% - 1px);
+}
+
+:host >>> input[type=radio]:checked + label {
+  background-color: rgba(40,59,144,0.95);
+}
+
+:host >>> button[type=submit] {
+  flex-basis: 100%;
+  height: 3rem;
+  background-color: rgba(241,89,42,0.95);
+  box-shadow: 0 2px 1px 0 #F1592A;
+  border: 1px solid rgba(241,89,42,0.97);
+  border-radius: 3px;
+  color: white;
+  font-size: 16px;
+  line-height: 19px;
+}

@@ -1,5 +1,14 @@
+<input type="search" placeholder="Search for stock" [(ngModel)]="searchValue" (keyup)="search()">
+<tradity-li *ngFor="let paper of searchResult">
+  <img src="http://placehold.it/50x50">
+  <tradity-li-header>
+    <span left>{{paper.name}}</span>
+    <span left>{{paper.stocktextid}}</span>
+    <span right>{{paper.ask / 10000 | currency:'EUR':true}}</span>
+  </tradity-li-header>
+</tradity-li>
 <tradity-container>
-  <tradity-container-control>Control Button</tradity-container-control>
+  <tradity-container-control>Control Button TODO</tradity-container-control>
   <table tradity-table>
     <tbody>
       <tr *ngFor="let paper of popularStocks | async" class="active">

@@ -96,9 +96,9 @@ export class StocksService {
     });
   }
   
-  search(id: string) {
-    return this.apiService.get('/stocks/search')
-    .map(res => res.json());
+  search(id: string): Observable<any> {
+    return this.apiService.get('/stocks/search?name=' + id)
+    .map(res => res.json().data);
   }
 
 }

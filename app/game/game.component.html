@@ -2,7 +2,7 @@
   <nav>
     <span (click)="toggleMenu()"><i class="material-icons">menu</i></span>
     <span>Tradity</span>
-    <span><i class="material-icons">search</i></span>
+    <a [routerLink]="['/stocks']"><i class="material-icons">search</i></a>
     <div [class.menu-open]="isMenuOpen">
     <img src="https://placehold.it/81x81">
     <h2>{{ownUser.name}}</h2>

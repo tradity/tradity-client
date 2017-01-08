@@ -5,8 +5,8 @@
     <span><i class="material-icons">search</i></span>
     <div [class.menu-open]="isMenuOpen">
     <img src="https://placehold.it/81x81">
-    <h2>Pengu</h2>
-    <p>pengu@tradity.de</p>
+    <h2>{{ownUser.name}}</h2>
+    <p>{{ownUser.email}}</p>
     <ul>
       <li><a [routerLink]="['/dashboard']" routerLinkActive = "active">Dashboard</a></li>
       <li><a [routerLink]="['/portfolio']" routerLinkActive = "active">Portfolio</a></li>

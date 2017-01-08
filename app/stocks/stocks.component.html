@@ -9,14 +9,12 @@
 </tradity-li>
 <tradity-container>
   <tradity-container-control>Control Button TODO</tradity-container-control>
-  <table tradity-table>
-    <tbody>
-      <tr *ngFor="let paper of popularStocks | async" class="active">
-        <img src="http://placehold.it/50x50">
-        <td data-desc="Stock" attr.data-subtext="{{paper.stocktextid}}">{{paper['MIN(oh.stockname)']}}</td>
-        <td data-desc="ISIN">{{paper.stocktextid}}</td>
-        <td data-desc="Current price">{{paper.bid / 10000 | number:'1.0-3'}} €</td>
-      </tr>
-    </tbody>
-  </table>
+  <tradity-li *ngFor="let paper of popularStocks | async">
+    <img src="http://placehold.it/50x50">
+    <tradity-li-header>
+      <span left>{{paper['MIN(oh.stockname)']}}</span>
+      <span left>{{paper.stocktextid}}</span>
+      <span right>{{paper.bid / 10000 | currency:'EUR':true}}</span>
+    </tradity-li-header>
+  </tradity-li>
 </tradity-container>

@@ -5,12 +5,12 @@ nav {
   padding: 13px 20px;
 }
 
-nav span {
+nav a {
   display: inline-flex;
   align-items: center;
 }
 
-nav span:nth-of-type(2) {
+nav span:first-of-type {
   font-size: 24px;
   font-weight: 900;
   line-height: 29px;

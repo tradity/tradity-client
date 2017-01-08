@@ -8,7 +8,7 @@
     <span>Cash</span>
   </li>
   <li>
-    <span>87,000</span>
+    <span>{{(ownUser.totalvalue - ownUser.freemoney) / 10000 | currency:'EUR':true}}</span>
     <span>Portfolio</span>
   </li>
   <li>

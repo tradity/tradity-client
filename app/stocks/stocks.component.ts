@@ -5,7 +5,8 @@ import { StocksService } from '../stocks.service';
 
 @Component({
   selector: 'tradity-stocks',
-  templateUrl: 'app/stocks/stocks.component.html'
+  templateUrl: 'app/stocks/stocks.component.html',
+  styleUrls: ['app/stocks/stocks.component.css']
 })
 export class StocksComponent implements OnInit {
   searchValue: string;

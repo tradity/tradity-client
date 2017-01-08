@@ -1,6 +1,6 @@
 <header>
   <nav>
-    <span (click)="toggleMenu()"><i class="material-icons">menu</i></span>
+    <a role="button" (click)="toggleMenu()"><i class="material-icons">menu</i></a>
     <span>Tradity</span>
     <a [routerLink]="['/stocks']"><i class="material-icons">search</i></a>
     <div [class.menu-open]="isMenuOpen">

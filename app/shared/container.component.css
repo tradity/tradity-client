@@ -1,7 +1,7 @@
-:host >>> table {
+:host >>> tradity-li {
   display: none;
 }
 
-:host.active >>> table {
-  display: block;
+:host.active >>> tradity-li {
+  display: flex;
 }

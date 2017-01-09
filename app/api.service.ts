@@ -37,12 +37,10 @@ export class ApiService {
   }
   
   get(url: string) : Observable<Response> {
-    console.log('get request: ', url, ' headers: ', this.options.headers);
     return this.http.get(this.baseUrl + url, this.options).catch(this.handleError);
   }
   
   post(url: string, body: any) : Observable<Response> {
-    console.log('get request: ', url, ' headers: ', this.options.headers);
     return this.http.post(this.baseUrl + url, JSON.stringify(body), this.options).catch(this.handleError);
   }
 }

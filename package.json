@@ -28,14 +28,13 @@
     "test": "npm run lint",
     "clean": "rimraf dist/ docs/ && mkdir -p docs/ dist/app/js/jit/l10n/",
     "prebuild": "npm run clean",
-    "build": "parallelshell 'npm run build:js' 'npm run build:cp'",
+    "build": "parallelshell 'npm run build:js' 'npm run build:cp' 'tsc -p .'",
     "build:js": "cp -r app dist/",
     "build:cp": "cp -r *.html *.txt *.ico fonts img scripts apidoc dist/",
-    "watch": "parallelshell 'npm run watch:js' 'npm run watch:cp'",
+    "watch": "parallelshell 'npm run watch:js' 'npm run watch:cp' 'tsc -p . -w'",
     "watch:js": "watch-run -p 'app/**' npm run build:js",
     "watch:cp": "watch-run -p '*.html,*.txt,*.ico,fonts/**,img/**,scripts/**' npm run build:cp",
-    "start": "npm run build && parallelshell 'npm run watch' 'browser-sync start --config bs-config.js'",
-    "tsc": "tsc -p . -w"
+    "start": "npm run build && parallelshell 'npm run watch' 'browser-sync start --config bs-config.js'"
   },
   "dependencies": {
     "@angular/common": "2.1.x",

@@ -15,7 +15,9 @@
 module.exports = {
     "ui": false,
     "files": "dist/**/*",
-    "watchOptions": {},
+    "watchOptions": {
+        ignored: 'node_modules'
+    },
     "server": {
         baseDir: "dist",
         routes: {

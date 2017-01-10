@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Component } from '@angular/core';
-import 'rxjs/Rx'; // load the full rxjs
 
 @Component({
   selector: 'tradity',

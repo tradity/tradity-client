@@ -7,3 +7,11 @@
   font-weight: bold;
   line-height: 17px;
 }
+
+:host-context(tradity-li) {
+  display: none;
+}
+
+:host-context(tradity-li.expanded) {
+  display: flex;
+}

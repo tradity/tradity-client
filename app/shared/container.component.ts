@@ -1,4 +1,4 @@
-import { Component, HostBinding, ContentChild} from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'tradity-container',

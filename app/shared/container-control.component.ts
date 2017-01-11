@@ -1,4 +1,4 @@
-import { Component, HostListener, HostBinding, Output, EventEmitter } from '@angular/core';
+import { Component, HostListener, HostBinding } from '@angular/core';
 
 import { ContainerComponent } from './container.component';
 

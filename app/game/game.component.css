@@ -3,18 +3,20 @@ nav {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 13px 20px;
+  color: #170804;
 }
 
 nav a {
   display: inline-flex;
   align-items: center;
+  text-decoration: none;
+  color: #170804;
 }
 
 nav span:first-of-type {
   font-size: 24px;
   font-weight: 900;
   line-height: 29px;
-  color: #170804;
 }
 
 ul {

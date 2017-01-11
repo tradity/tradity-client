@@ -10,6 +10,7 @@ import { ListItemComponent } from './list-item.component';
 import { ListItemHeaderComponent } from './list-item-header.component';
 import { ListItemValueListComponent } from './list-item-value-list.component';
 import { ListItemValueItemComponent } from './list-item-value-item.component';
+import { ListItemActionListComponent, ListItemActionExpandDirective } from './list-item-action-list.component';
 
 @NgModule({
   imports: [],
@@ -23,7 +24,9 @@ import { ListItemValueItemComponent } from './list-item-value-item.component';
     ListItemComponent,
     ListItemHeaderComponent,
     ListItemValueListComponent,
-    ListItemValueItemComponent
+    ListItemValueItemComponent,
+    ListItemActionListComponent,
+    ListItemActionExpandDirective
   ],
   declarations: [
     FormComponent,
@@ -35,7 +38,9 @@ import { ListItemValueItemComponent } from './list-item-value-item.component';
     ListItemComponent,
     ListItemHeaderComponent,
     ListItemValueListComponent,
-    ListItemValueItemComponent
+    ListItemValueItemComponent,
+    ListItemActionListComponent,
+    ListItemActionExpandDirective
   ],
   providers: [],
 })

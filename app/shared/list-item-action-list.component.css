@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  flex-basis: 100%;
+  justify-content: space-around;
+}
+
+:host >>> a {
+  text-decoration: none;
+  color: rgba(23,8,4,0.8);
+}

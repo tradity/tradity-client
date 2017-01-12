@@ -14,6 +14,7 @@ import { ApiService } from './api.service';
 import { StocksService } from './stocks.service';
 import { UserService } from './user.service';
 import { RankingService } from './ranking.service';
+import { FeedService } from './feed.service';
 import { ProfileComponent } from './profile.component';
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ProfileComponent } from './profile.component';
       ApiService,
       StocksService,
       UserService,
-      RankingService
+      RankingService,
+      FeedService
     ],
     bootstrap: [AppComponent],
 })

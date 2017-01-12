@@ -14,7 +14,6 @@ import { ApiService } from './api.service';
 import { StocksService } from './stocks.service';
 import { UserService } from './user.service';
 import { RankingService } from './ranking.service';
-import { LoginModule } from './login/login.module';
 import { ProfileComponent } from './profile.component';
 
 @NgModule({
@@ -26,8 +25,7 @@ import { ProfileComponent } from './profile.component';
       BrowserModule,
       FormsModule,
       HttpModule,
-      routing,
-      LoginModule
+      routing
     ],
     providers: [
       appRoutingProviders,

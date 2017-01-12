@@ -6,6 +6,12 @@
     <span left>{{paper.stocktextid}}</span>
     <span right>{{paper.lastvalue / 10000 | currency:'EUR':true}}</span>
   </tradity-li-header>
+  <tradity-li-action-list>
+    <a role="button"><i class="material-icons">favorite</i></a>
+    <a [routerLink]="['/stocks/' + paper.stocktextid]"><i class="material-icons">arrow_forward</i></a>
+    <a [routerLink]="['/stocks/' + paper.stocktextid + '/trade']"><i class="material-icons">add</i></a>
+    <a [routerLink]="['/stocks/' + paper.stocktextid + '/trade']"><i class="material-icons">remove</i></a>
+  </tradity-li-action-list>
 </tradity-li>
 <tradity-container>
   <tradity-container-control>Most traded</tradity-container-control>
@@ -16,6 +22,12 @@
       <span left>{{paper.stocktextid}}</span>
       <span right>{{paper.bid / 10000 | currency:'EUR':true}}</span>
     </tradity-li-header>
+    <tradity-li-action-list>
+      <a role="button"><i class="material-icons">favorite</i></a>
+      <a [routerLink]="['/stocks/' + paper.stocktextid]"><i class="material-icons">arrow_forward</i></a>
+      <a [routerLink]="['/stocks/' + paper.stocktextid + '/trade']"><i class="material-icons">add</i></a>
+      <a [routerLink]="['/stocks/' + paper.stocktextid + '/trade']"><i class="material-icons">remove</i></a>
+    </tradity-li-action-list>
   </tradity-li>
 </tradity-container>
 <tradity-container>

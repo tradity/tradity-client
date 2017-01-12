@@ -7,7 +7,8 @@ import { StocksService } from '../stocks.service';
 
 @Component({
   selector: 'tradity-stock-detail',
-  templateUrl: 'app/stocks/stock-detail.component.html'
+  templateUrl: 'app/stocks/stock-detail.component.html',
+  styleUrls: ['app/stocks/stock-detail.component.css']
 })
 export class StockDetailComponent implements OnInit, OnDestroy {
   private stockSubscription: Subscription;

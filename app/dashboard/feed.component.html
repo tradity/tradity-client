@@ -1,6 +1,6 @@
 <tradity-li *ngFor="let event of events | async" [ngSwitch]="event.type">
   <img src="http://placehold.it/50x50">
-  <tradity-li-header>
+  <tradity-li-header class="no-right">
     <span left *ngSwitchCase="'trade-buy'">{{event.srcusername}} has bought {{event.amount}} shares of {{event.stockname}}</span>
     <span left *ngSwitchCase="'trade-sell'">{{event.srcusername}} has sold {{event.amount}} shares of {{event.stockname}}</span>
     <span left *ngSwitchCase="'trade-buy-self'">You have bought {{event.amount}} shares of {{event.stockname}}</span>

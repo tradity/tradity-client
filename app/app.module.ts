@@ -15,12 +15,10 @@ import { StocksService } from './stocks.service';
 import { UserService } from './user.service';
 import { RankingService } from './ranking.service';
 import { FeedService } from './feed.service';
-import { ProfileComponent } from './profile.component';
 
 @NgModule({
     declarations: [
-      AppComponent,
-      ProfileComponent
+      AppComponent
     ],
     imports: [
       BrowserModule,

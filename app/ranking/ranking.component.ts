@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-ranking',
-  templateUrl: 'app/ranking/ranking.component.html'
+  templateUrl: 'ranking.component.html'
 })
 export class RankingComponent implements OnInit {
   constructor() { }

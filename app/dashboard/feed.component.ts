@@ -4,8 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import { FeedService } from '../feed.service';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-feed',
-  templateUrl: 'app/dashboard/feed.component.html'
+  templateUrl: 'feed.component.html'
 })
 export class FeedComponent implements OnInit {
   private events: Observable<any>;

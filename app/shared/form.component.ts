@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: '[tradity-form]',
-  styleUrls: ['app/shared/form.component.css'],
+  styleUrls: ['form.component.css'],
   template: '<ng-content></ng-content>'
 })
 export class FormComponent implements OnInit {

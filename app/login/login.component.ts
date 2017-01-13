@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-login',
-  templateUrl: 'app/login/login.component.html',
-  styleUrls: ['app/login/login.component.css']
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.css']
 })
 export class LoginComponent implements OnInit {
   private username: string;

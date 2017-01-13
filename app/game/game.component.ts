@@ -6,9 +6,10 @@ import { UserService } from '../user.service';
 import { SearchComponent } from '../search.component';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-game',
-  templateUrl: 'app/game/game.component.html',
-  styleUrls: ['app/game/game.component.css']
+  templateUrl: 'game.component.html',
+  styleUrls: ['game.component.css']
 })
 export class GameComponent implements OnInit, OnDestroy {
   private isMenuOpen = false;

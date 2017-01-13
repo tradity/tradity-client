@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: '[tradity-table]',
-  styleUrls: ['app/shared/table.component.css'],
+  styleUrls: ['table.component.css'],
   template: '<ng-content></ng-content>'
 })
 export class TableComponent implements OnInit {

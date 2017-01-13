@@ -1,8 +1,9 @@
 import { Component, HostBinding } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-container',
-  styleUrls: ['app/shared/container.component.css'],
+  styleUrls: ['container.component.css'],
   template: '<ng-content></ng-content>'
 })
 export class ContainerComponent {  

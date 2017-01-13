@@ -4,8 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import { StocksService } from '../stocks.service';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-history',
-  templateUrl: 'app/portfolio/history.component.html'
+  templateUrl: 'history.component.html'
 })
 export class HistoryComponent implements OnInit {
   

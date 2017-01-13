@@ -4,8 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import { StocksService } from '../stocks.service';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-positions',
-  templateUrl: 'app/portfolio/positions.component.html'
+  templateUrl: 'positions.component.html'
 })
 export class PositionsComponent implements OnInit {
   positions: Observable<any>;

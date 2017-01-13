@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-li-header',
-  styleUrls: ['app/shared/list-item-header.component.css'],
+  styleUrls: ['list-item-header.component.css'],
   template: '<span><ng-content select="[left]"></ng-content></span><span><ng-content select="[right]"></ng-content></span>'
 })
 export class ListItemHeaderComponent {

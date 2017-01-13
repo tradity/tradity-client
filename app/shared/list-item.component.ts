@@ -1,9 +1,10 @@
 import { Component, HostBinding } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-li',
   template: '<ng-content></ng-content>',
-  styleUrls: ['app/shared/list-item.component.css']
+  styleUrls: ['list-item.component.css']
 })
 export class ListItemComponent {
   @HostBinding('class.expanded') isExpanded: boolean = false;

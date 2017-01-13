@@ -3,9 +3,10 @@ import { Component, HostListener, HostBinding } from '@angular/core';
 import { ContainerComponent } from './container.component';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-container-control',
   template: '<ng-content></ng-content>',
-  styleUrls: ['app/shared/container-control.component.css']
+  styleUrls: ['container-control.component.css']
 })
 export class ContainerControlComponent {
   @HostBinding('class.active') isActive: boolean = false;

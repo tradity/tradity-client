@@ -4,8 +4,9 @@ import { Observable } from 'rxjs/Observable';
 import { RankingService } from '../ranking.service';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-weekly-ranking',
-  templateUrl: 'app/ranking/weekly-ranking.component.html'
+  templateUrl: 'weekly-ranking.component.html'
 })
 export class WeeklyRankingComponent implements OnInit {
   private ranking: Observable<any>;

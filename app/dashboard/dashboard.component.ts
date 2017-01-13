@@ -4,9 +4,10 @@ import { Subscription } from 'rxjs/Subscription';
 import { UserService } from '../user.service';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-dashboard',
-  templateUrl: 'app/dashboard/dashboard.component.html',
-  styleUrls: ['app/dashboard/dashboard.component.css']
+  templateUrl: 'dashboard.component.html',
+  styleUrls: ['dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   private ownUserSubscription: Subscription;

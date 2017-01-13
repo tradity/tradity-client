@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: '[tradity-subnav]',
-  styleUrls: ['app/shared/subnav.component.css'],
+  styleUrls: ['subnav.component.css'],
   template: '<ng-content></ng-content>'
 })
 export class SubnavComponent implements OnInit {

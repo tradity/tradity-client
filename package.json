@@ -17,7 +17,7 @@
     "postcss-cli": "^2.4.1",
     "requirejs": "^2.1.11",
     "rimraf": "^2.5.1",
-    "typescript": "^2.0.2",
+    "typescript": "2.1.x",
     "watch-run": "^1.2.4"
   },
   "engines": {

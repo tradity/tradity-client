@@ -10,9 +10,9 @@
     "rootDir": ".",
     "outDir": "dist"
   },
-    "exclude": [
-        "node_modules",
-        "dist",
-        "typings"
-    ]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "typings"
+  ]
 }

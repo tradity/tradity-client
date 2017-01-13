@@ -6,9 +6,10 @@ import { Subscription } from 'rxjs/Subscription';
 import { StocksService } from '../stocks.service';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-trade',
-  templateUrl: 'app/stocks/trade.component.html',
-  styleUrls: ['app/stocks/trade.component.css']
+  templateUrl: 'trade.component.html',
+  styleUrls: ['trade.component.css']
 })
 export class TradeComponent implements OnInit, OnDestroy {
   private stockSubscription: Subscription;

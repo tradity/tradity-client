@@ -4,9 +4,10 @@ import { Observable } from 'rxjs/Observable';
 import { StocksService } from '../stocks.service';
 
 @Component({
+  moduleId: module.id,
   selector: 'tradity-stocks',
-  templateUrl: 'app/stocks/stocks.component.html',
-  styleUrls: ['app/stocks/stocks.component.css']
+  templateUrl: 'stocks.component.html',
+  styleUrls: ['stocks.component.css']
 })
 export class StocksComponent implements OnInit {
   searchValue: string;

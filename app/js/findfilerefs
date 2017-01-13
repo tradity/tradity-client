@@ -1,1 +1,0 @@
-egrep -R '[\s'"'"'"]((?:templates|img|css|js)\/[^\s'"'"'"]+)[\s'"'"'"]' .

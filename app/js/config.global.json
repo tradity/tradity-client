@@ -1,9 +1,0 @@
-{
-  "_module": "tradity",
-  "apiHost": "https://tradity.de:443",
-  "apiConnectTestPath": "/api/v1/ping",
-  "defaultProfileImg": "img/profile.svg",
-  "defaultGroupBanner": "img/groupbanner.jpg",
-  "defaultLanguage": "de",
-  "wikifolioApi": "https://wfapi.tradity.de/api/v1"
-}

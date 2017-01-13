@@ -3,7 +3,6 @@ import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { UserService } from '../user.service';
-import { SearchComponent } from '../search.component';
 
 @Component({
   moduleId: module.id,

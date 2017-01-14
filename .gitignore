@@ -1,9 +1,9 @@
 dist
+aot
+tmp
 cclient
 .tmp
 node_modules
 docs
 *.log
-bower_components
 .DS_Store
-typings

@@ -74,17 +74,22 @@
         font-family: 'LatoLatinWeb';
       }
     </style>
+    <script type="text/javascript" src="scripts/piwik.js"></script>
     
     <script src="node_modules/core-js/client/shim.min.js"></script>
     <script src="node_modules/zone.js/dist/zone.js"></script>
+    <!-- build:remove:prod -->
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script type="text/javascript" src="scripts/piwik.js"></script>
-    
+    <script src="node_modules/systemjs/dist/system.src.js"></script>    
     <script src="app/systemjs.config.js"></script>
     <script>
       System.import('app').catch(function (err) { console.error(err); });
     </script>
+    <!-- /build -->
+    <!-- build:remove:dev -->
+    <script>window.module = 'aot';</script>
+    <script defer src="build.js"></script>
+    <!-- /build -->
   </head>
   <body>
     <tradity>loading…</tradity>

@@ -17,7 +17,7 @@
     },
     packages: {
       app: {
-        main: './main.js',
+        main: './main.dev.js',
         defaultExtension: 'js'
       },
       rxjs: {

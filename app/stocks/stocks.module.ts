@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { routing } from './stocks.routing';
 import { StocksComponent }   from './stocks.component';
 import { StockDetailComponent } from './stock-detail.component';
 import { TradeComponent } from './trade.component';
@@ -13,8 +13,8 @@ import { TradeComponent } from './trade.component';
   imports: [
     CommonModule,
     FormsModule,
-    routing,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [],
   declarations: [

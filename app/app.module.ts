@@ -16,6 +16,10 @@ import { UserService } from './user.service';
 import { RankingService } from './ranking.service';
 import { FeedService } from './feed.service';
 
+import { LoginModule } from './login/login.module';
+import { RegistrationModule } from './registration/registration.module';
+import { GameModule } from './game/game.module';
+
 @NgModule({
     declarations: [
       AppComponent
@@ -24,7 +28,10 @@ import { FeedService } from './feed.service';
       BrowserModule,
       FormsModule,
       HttpModule,
-      routing
+      routing,
+      LoginModule,
+      RegistrationModule,
+      GameModule
     ],
     providers: [
       appRoutingProviders,

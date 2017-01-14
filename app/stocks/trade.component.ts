@@ -13,10 +13,10 @@ import { StocksService } from '../stocks.service';
 })
 export class TradeComponent implements OnInit, OnDestroy {
   private stockSubscription: Subscription;
-  private stock: any;
-  private sellbuy: number;
-  private amount: number;
-  private value: number;
+  stock: any;
+  sellbuy: number;
+  amount: number;
+  value: number;
 
   constructor(private route: ActivatedRoute, private stocksService: StocksService) {
     this.sellbuy = 1;
@@ -32,7 +32,7 @@ export class TradeComponent implements OnInit, OnDestroy {
     this.stockSubscription.unsubscribe();
   }
 
-  private trade() {
+  trade() {
     if (this.amount) {
       this.stocksService.trade(this.stock.stocktextid, this.amount * this.sellbuy).subscribe(res => {
         if (res) alert('Successfully traded!');

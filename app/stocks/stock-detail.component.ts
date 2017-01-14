@@ -13,7 +13,7 @@ import { StocksService } from '../stocks.service';
 })
 export class StockDetailComponent implements OnInit, OnDestroy {
   private stockSubscription: Subscription;
-  private stock = {};
+  stock: any = {};
 
   constructor(private route: ActivatedRoute, private stocksService: StocksService) { }
 

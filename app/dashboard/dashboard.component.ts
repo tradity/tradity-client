@@ -11,7 +11,7 @@ import { UserService } from '../user.service';
 })
 export class DashboardComponent implements OnInit, OnDestroy {
   private ownUserSubscription: Subscription;
-  private ownUser = {};
+  ownUser: any = {};
 
   constructor(private userService: UserService) { }
 

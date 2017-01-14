@@ -9,7 +9,7 @@ import { RankingService } from '../ranking.service';
   templateUrl: 'alltime-ranking.component.html'
 })
 export class AlltimeRankingComponent implements OnInit {
-  private ranking: Observable<any>;
+  ranking: Observable<any>;
 
   constructor(private rankingService: RankingService) { }
 

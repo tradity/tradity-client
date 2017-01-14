@@ -11,9 +11,9 @@ import { UserService } from '../user.service';
   styleUrls: ['game.component.css']
 })
 export class GameComponent implements OnInit, OnDestroy {
-  private isMenuOpen = false;
+  isMenuOpen = false;
   private ownUserSubscription: Subscription;
-  private ownUser = {};
+  ownUser: any = {};
   
   constructor(private userService: UserService, private router: Router) { }
 

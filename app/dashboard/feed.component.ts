@@ -9,7 +9,7 @@ import { FeedService } from '../feed.service';
   templateUrl: 'feed.component.html'
 })
 export class FeedComponent implements OnInit {
-  private events: Observable<any>;
+  events: Observable<any>;
 
   constructor(private feedService: FeedService) { }
 

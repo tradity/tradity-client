@@ -7,7 +7,7 @@ import { Component, HostBinding } from '@angular/core';
   template: '<ng-content></ng-content>'
 })
 export class ContainerComponent {  
-  @HostBinding('class.active') private isActive = false;
+  @HostBinding('class.active') isActive = false;
 
   constructor() { }
 

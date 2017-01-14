@@ -10,9 +10,9 @@ import { UserService } from '../user.service';
   styleUrls: ['login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private username: string;
-  private password: string;
-  private stayloggedin: boolean;
+  username: string;
+  password: string;
+  stayloggedin: boolean;
   
   constructor(private userService: UserService, private router: Router) { 
     this.stayloggedin = false;

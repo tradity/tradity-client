@@ -9,7 +9,7 @@ import { RankingService } from '../ranking.service';
   templateUrl: 'weekly-ranking.component.html'
 })
 export class WeeklyRankingComponent implements OnInit {
-  private ranking: Observable<any>;
+  ranking: Observable<any>;
 
   constructor(private rankingService: RankingService) { }
 

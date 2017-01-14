@@ -10,9 +10,10 @@
     "rootDir": ".",
     "outDir": "dist"
   },
+  "include": [
+    "app/**/*"
+  ],
   "exclude": [
-    "node_modules",
-    "dist",
-    "typings"
+    "app/main.prod.ts"
   ]
 }

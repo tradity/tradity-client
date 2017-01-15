@@ -30,7 +30,7 @@
 :host >>> textarea:-webkit-autofill,
 :host >>> select:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
-    -webkit-text-fill-color: red;
+    -webkit-text-fill-color: #170804;
 }
 
 :host >>> :placeholder-shown { font-weight: 100; }

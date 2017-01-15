@@ -31,6 +31,7 @@ const gameRoutes: Routes = [
         path: 'portfolio',
         component: PortfolioComponent,
         children: [
+          { path: '', redirectTo: 'positions', pathMatch: 'full'},
           { path: 'positions', component: PositionsComponent },
           { path: 'history', component: HistoryComponent },
           { path: 'orders', component: OrdersComponent }
@@ -40,6 +41,7 @@ const gameRoutes: Routes = [
         path: 'ranking',
         component: RankingComponent,
         children: [
+          { path: '', redirectTo: 'all', pathMatch: 'full'},
           { path: 'all', component: AlltimeRankingComponent},
           { path: 'weekly', component: WeeklyRankingComponent}
         ]

@@ -7,9 +7,6 @@
   margin-bottom: 1rem;
   border: 1px solid #D8D8D8;
   border-radius: 3px;
-  color: #170804;
-  font-size: 12px;
-  line-height: 18px;
 }
 
 :host >>> input[type=text],
@@ -17,9 +14,18 @@
 :host >>> input[type=password],
 :host >>> input[type=number] {
   flex-basis: 100%;
-  padding: 1rem;
-  font-weight: 100;
+  padding: 20px;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 2px;
+  color: #170804;
 }
+
+:host >>> :placeholder-shown { font-weight: 100; }
+:host >>> ::placeholder { font-weight: 100; }
+:host >>> ::-moz-placeholder { font-weight: 100; }
+:host >>> :-ms-input-placeholder { font-weight: 100; }
+:host >>> ::-webkit-input-placeholder { font-weight: 100; }
 
 :host >>> input[type=checkbox] {
   height: 2rem;

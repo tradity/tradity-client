@@ -4,7 +4,7 @@
 }
 
 :host >>> input {
-  margin-bottom: 1rem;
+  margin-bottom: 15px;
   border: 1px solid #D8D8D8;
   border-radius: 3px;
 }
@@ -28,15 +28,29 @@
 :host >>> ::-webkit-input-placeholder { font-weight: 100; }
 
 :host >>> input[type=checkbox] {
-  height: 2rem;
-  width: 2rem;
-  margin-right: 0.5rem;
+  position: absolute;
+  left: -10000px;
 }
 
 :host >>> input[type=checkbox] + label {
   display: inline-flex;
   align-items: center;
-  height: 2rem;
+  font-size: 12px;
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+
+:host >>> input[type=checkbox] + label::before {
+  content: "check_box_outline_blank";
+  font-family: "Material Icons";
+  font-size: 32px;
+  color: #D8D8D8;
+  margin: 0 6px 0 -3px;
+}
+
+:host >>> input[type=checkbox]:checked + label::before {
+  content: "check_box";
+  color: #F1592A;
 }
 
 :host >>> input[type=radio] {
@@ -69,6 +83,7 @@
 
 :host >>> button[type=submit] {
   flex-basis: 100%;
+  margin-top: 15px;
   height: 3rem;
   background-color: rgba(241,89,42,0.95);
   box-shadow: 0 2px 1px 0 #F1592A;

@@ -36,7 +36,7 @@
     "build:indexhtml": "htmlprocessor index.html -o dist/index.html",
     "build:js": "cp -r app dist/ && npm run build:symlink",
     "build:cp": "cp -r *.html *.txt *.ico fonts img scripts apidoc dist/",
-    "watch": "parallelshell 'npm run watch:js' 'npm run watch:cp' 'tsc -p tsconfig.dev.json -w'",
+    "watch": "parallelshell 'npm run watch:js' 'npm run watch:cp' 'tsc -p tsconfig.dev.json -w' 'npm run build:indexhtml -- -e dev'",
     "watch:js": "watch-run -p 'app/**' npm run build:js",
     "watch:cp": "watch-run -p '*.html,*.txt,*.ico,fonts/**,img/**,scripts/**' npm run build:cp",
     "start": "npm run build && parallelshell 'npm run watch' 'browser-sync start --config bs-config.js'"

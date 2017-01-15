@@ -3,18 +3,7 @@
   flex-direction: column;
 }
 
-input[type=search] {
-  width: 100%;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 15px;
-  color: #170804;
-  padding: 12px;
-  border-radius: 40px;
-  border: 1px solid #170804;
-}
-
 tradity-container,
-input[type=search] {
+tradity-stock-search {
   margin-bottom: 20px;
 }

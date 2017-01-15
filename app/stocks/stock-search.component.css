@@ -1,0 +1,14 @@
+input[type=search] {
+  width: 100%;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 15px;
+  color: #170804;
+  padding: 12px;
+  border-radius: 40px;
+  border: 1px solid #170804;
+}
+
+tradity-li:first-of-type {
+  margin-top: 10px;
+}

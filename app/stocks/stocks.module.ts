@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
 import { StocksComponent }   from './stocks.component';
+import { StockSearchComponent } from './stock-search.component';
 import { StockDetailComponent } from './stock-detail.component';
 import { TradeComponent } from './trade.component';
 
@@ -19,6 +20,7 @@ import { TradeComponent } from './trade.component';
   exports: [],
   declarations: [
     StocksComponent,
+    StockSearchComponent,
     StockDetailComponent,
     TradeComponent
   ],

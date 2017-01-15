@@ -1,3 +1,8 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
 input[type=search] {
   width: 100%;
   font-size: 12px;
@@ -7,4 +12,9 @@ input[type=search] {
   padding: 12px;
   border-radius: 40px;
   border: 1px solid #170804;
+}
+
+tradity-container,
+input[type=search] {
+  margin-bottom: 20px;
 }

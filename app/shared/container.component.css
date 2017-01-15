@@ -1,3 +1,7 @@
+:host.active >>> tradity-container-control {
+  margin-bottom: 10px;
+}
+
 :host >>> tradity-li {
   display: none;
 }

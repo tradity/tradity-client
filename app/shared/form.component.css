@@ -7,6 +7,7 @@
   margin-bottom: 15px;
   border: 1px solid #D8D8D8;
   border-radius: 3px;
+  outline: none;
 }
 
 :host >>> input[type=text],
@@ -19,6 +20,17 @@
   line-height: 15px;
   letter-spacing: 2px;
   color: #170804;
+}
+
+:host >>> input[type=text]:focus,
+:host >>> input[type=text]:hover,
+:host >>> input[type=email]:focus,
+:host >>> input[type=email]:hover,
+:host >>> input[type=password]:focus,
+:host >>> input[type=password]:hover,
+:host >>> input[type=number]:focus,
+:host >>> input[type=number]:hover {
+  border-color: #F1592A;
 }
 
 /*
@@ -58,6 +70,11 @@
   font-size: 32px;
   color: #D8D8D8;
   margin: 0 6px 0 -3px;
+}
+
+:host >>> input[type=checkbox]:focus + label::before,
+:host >>> input[type=checkbox]:hover + label::before {
+  color: #F1592A;
 }
 
 :host >>> input[type=checkbox]:checked + label::before {

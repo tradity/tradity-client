@@ -21,6 +21,18 @@
   color: #170804;
 }
 
+/*
+  Hack needed to get rid of Chrome's ugly form autofill colour,
+  which for some reason is an outstanding bug since 2008 -.-
+  https://bugs.chromium.org/p/chromium/issues/detail?id=46543
+*/
+:host >>> input:-webkit-autofill,
+:host >>> textarea:-webkit-autofill,
+:host >>> select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: red;
+}
+
 :host >>> :placeholder-shown { font-weight: 100; }
 :host >>> ::placeholder { font-weight: 100; }
 :host >>> ::-moz-placeholder { font-weight: 100; }

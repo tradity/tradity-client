@@ -4,7 +4,7 @@
   <input type="text" placeholder="User name" name="username" [(ngModel)]="username" autofocus />
   <input type="password" placeholder="Password" name="password" [(ngModel)]="password" />
   <input type="checkbox" name="stayloggedin" id="stayloggedin" [(ngModel)]="stayloggedin" /><label for="stayloggedin">Remember me</label>
-  <button type="submit" translate>Log in</button>
+  <button type="submit" [disabled]="!(username && password)">Log in</button>
 </form>
 <tradity-bottom-nav>
   <a href="#">Forgot Password?</a><!--

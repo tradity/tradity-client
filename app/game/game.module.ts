@@ -6,6 +6,7 @@ import { DashboardModule } from '../dashboard/dashboard.module';
 import { PortfolioModule } from '../portfolio/portfolio.module';
 import { RankingModule } from '../ranking/ranking.module';
 import { StocksModule } from '../stocks/stocks.module';
+import { GroupModule } from '../group/group.module';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { StocksModule } from '../stocks/stocks.module';
     DashboardModule,
     PortfolioModule,
     RankingModule,
-    StocksModule
+    StocksModule,
+    GroupModule
   ],
   exports: [],
   declarations: [GameComponent],

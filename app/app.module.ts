@@ -15,6 +15,7 @@ import { StocksService } from './stocks.service';
 import { UserService } from './user.service';
 import { RankingService } from './ranking.service';
 import { FeedService } from './feed.service';
+import { GroupService } from './group.service';
 
 import { LoginModule } from './login/login.module';
 import { RegistrationModule } from './registration/registration.module';
@@ -39,7 +40,8 @@ import { GameModule } from './game/game.module';
       StocksService,
       UserService,
       RankingService,
-      FeedService
+      FeedService,
+      GroupService
     ],
     bootstrap: [AppComponent],
 })

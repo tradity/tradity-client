@@ -18,6 +18,8 @@ import { StocksComponent } from '../stocks/stocks.component';
 import { StockDetailComponent } from '../stocks/stock-detail.component';
 import { TradeComponent } from '../stocks/trade.component';
 
+import { GroupComponent } from '../group/group.component';
+
 const gameRoutes: Routes = [
   {
     path: '',
@@ -57,6 +59,10 @@ const gameRoutes: Routes = [
       {
         path: 'stocks/:isin/trade',
         component: TradeComponent
+      },
+      {
+        path: 'group/:id',
+        component: GroupComponent
       }
     ]
   }

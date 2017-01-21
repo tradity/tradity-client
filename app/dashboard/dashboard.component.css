@@ -4,6 +4,7 @@ ul {
   flex-wrap: wrap;
   background-color: #2B2D38;
   padding: 10px 0;
+  margin: 0;
 }
 
 ul li {
@@ -31,4 +32,8 @@ ul li span:nth-of-type(2) {
   font-size: 10px;
   line-height: 12px;
   color: white;
+}
+
+tradity-feed {
+  margin: 20px;
 }

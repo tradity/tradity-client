@@ -6,7 +6,8 @@ import { FeedService } from '../feed.service';
 @Component({
   moduleId: module.id,
   selector: 'tradity-feed',
-  templateUrl: 'feed.component.html'
+  templateUrl: 'feed.component.html',
+  styles: [':host { display: flex; flex-direction: column; }']
 })
 export class FeedComponent implements OnInit {
   events: Observable<any>;

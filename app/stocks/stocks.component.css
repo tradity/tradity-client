@@ -1,6 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
+  padding: 20px;
 }
 
 tradity-container,

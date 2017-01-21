@@ -1,3 +1,7 @@
+[tradity-form] {
+  margin: 0 50px;
+}
+
 [tradity-form] input#amount + span {
   display: block;
   text-align: center;

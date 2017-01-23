@@ -7,6 +7,12 @@ input[type=search] {
   padding: 12px;
   border-radius: 40px;
   border: 1px solid #170804;
+  outline: none;
+}
+
+input[type=search]:hover,
+input[type=search]:focus {
+  border-color: #F1592A;
 }
 
 tradity-li:first-of-type {

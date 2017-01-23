@@ -9,9 +9,9 @@
     <p>{{ownUser.email}}</p>
     <ul>
       <li><a [routerLink]="['/dashboard']" routerLinkActive = "active">Dashboard</a></li>
-      <li><a [routerLink]="['/portfolio/positions']" routerLinkActive = "active">Portfolio</a></li>
+      <li><a [routerLink]="['/portfolio']" routerLinkActive = "active">Portfolio</a></li>
       <li><a [routerLink]="['/stocks']" routerLinkActive = "active">Stocks</a></li>
-      <li><a [routerLink]="['/ranking/all']" routerLinkActive = "active">Leaderboard</a></li>
+      <li><a [routerLink]="['/ranking']" routerLinkActive = "active">Leaderboard</a></li>
       <li><a [routerLink]="['/education']" routerLinkActive = "active">Education</a></li>
       <li><a (click)="logout()" routerLinkActive = "active">Logout</a></li> 
     </ul>

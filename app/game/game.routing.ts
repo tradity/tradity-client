@@ -13,6 +13,7 @@ import { OrdersComponent } from '../portfolio/orders.component';
 import { RankingComponent } from '../ranking/ranking.component';
 import { AlltimeRankingComponent } from '../ranking/alltime-ranking.component';
 import { WeeklyRankingComponent } from '../ranking/weekly-ranking.component';
+import { GroupRankingComponent } from '../ranking/group-ranking.component';
 
 import { StocksComponent } from '../stocks/stocks.component';
 import { StockDetailComponent } from '../stocks/stock-detail.component';
@@ -45,7 +46,8 @@ const gameRoutes: Routes = [
         children: [
           { path: '', redirectTo: 'all', pathMatch: 'full'},
           { path: 'all', component: AlltimeRankingComponent},
-          { path: 'weekly', component: WeeklyRankingComponent}
+          { path: 'weekly', component: WeeklyRankingComponent},
+          { path: 'groups', component: GroupRankingComponent}
         ]
       },
       {

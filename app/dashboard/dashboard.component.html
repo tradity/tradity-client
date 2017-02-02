@@ -1,19 +1,19 @@
-<ul>
-  <li>
+<tradity-vl>
+  <tradity-vl-li>
     <span>{{ownUser.totalvalue / 10000 | currency:'EUR':true}}</span>
     <span>Total value</span>
-  </li>
-  <li>
+  </tradity-vl-li>
+  <tradity-vl-li>
     <span>{{ownUser.freemoney / 10000 | currency:'EUR':true}}</span>
     <span>Cash</span>
-  </li>
-  <li>
+  </tradity-vl-li>
+  <tradity-vl-li>
     <span>{{(ownUser.totalvalue - ownUser.freemoney) / 10000 | currency:'EUR':true}}</span>
     <span>Portfolio</span>
-  </li>
-  <li>
+  </tradity-vl-li>
+  <tradity-vl-li>
     <span>27d 7h 4m</span>
     <span>Time left</span>
-  </li>
-</ul>
+  </tradity-vl-li>
+</tradity-vl>
 <tradity-feed></tradity-feed>

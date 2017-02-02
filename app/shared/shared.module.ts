@@ -11,6 +11,8 @@ import { ListItemHeaderComponent } from './list-item-header.component';
 import { ListItemValueListComponent } from './list-item-value-list.component';
 import { ListItemValueItemComponent } from './list-item-value-item.component';
 import { ListItemActionListComponent, ListItemActionExpandDirective } from './list-item-action-list.component';
+import { ValueListComponent } from './value-list.component';
+import { ValueListItemComponent } from './value-list-item.component';
 
 @NgModule({
   imports: [],
@@ -26,7 +28,9 @@ import { ListItemActionListComponent, ListItemActionExpandDirective } from './li
     ListItemValueListComponent,
     ListItemValueItemComponent,
     ListItemActionListComponent,
-    ListItemActionExpandDirective
+    ListItemActionExpandDirective,
+    ValueListComponent,
+    ValueListItemComponent
   ],
   declarations: [
     FormComponent,
@@ -40,7 +44,9 @@ import { ListItemActionListComponent, ListItemActionExpandDirective } from './li
     ListItemValueListComponent,
     ListItemValueItemComponent,
     ListItemActionListComponent,
-    ListItemActionExpandDirective
+    ListItemActionExpandDirective,
+    ValueListComponent,
+    ValueListItemComponent
   ],
   providers: [],
 })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { StocksService } from '../stocks.service';
+import { GameComponent } from '../game/game.component';
 
 @Component({
   moduleId: module.id,
@@ -12,9 +13,11 @@ import { StocksService } from '../stocks.service';
 export class StocksComponent implements OnInit {
   popularStocks: Observable<any>;
 
-  constructor(private stocksService: StocksService) { }
+  constructor(private stocksService: StocksService, private gameComponent: GameComponent) { }
 
   ngOnInit() {
+    this.gameComponent.heading2 = 'Stocks';
+    this.gameComponent.heading1 = 'Stock search';
     this.popularStocks = this.stocksService.popularStocks;
   }
 }

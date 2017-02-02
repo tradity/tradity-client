@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { GameComponent } from '../game/game.component';
+
 @Component({
   moduleId: module.id,
   selector: 'tradity-ranking',
@@ -7,8 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styles: [':host { display: flex; flex-direction: column; padding: 20px; }']
 })
 export class RankingComponent implements OnInit {
-  constructor() { }
+  constructor(private gameComponent: GameComponent) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.gameComponent.heading2 = 'Leaderboard';
+  }
 
 }

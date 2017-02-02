@@ -14,6 +14,8 @@ export class GameComponent implements OnInit, OnDestroy {
   isMenuOpen = false;
   private ownUserSubscription: Subscription;
   ownUser: any = {};
+  heading1: string = '';
+  heading2: string = '';
   
   constructor(private userService: UserService, private router: Router) { }
 

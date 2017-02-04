@@ -8,7 +8,8 @@ import { GroupService } from '../group.service';
 @Component({
   moduleId: module.id,
   selector: 'tradity-group',
-  templateUrl: 'group.component.html'
+  templateUrl: 'group.component.html',
+  styleUrls: ['group.component.css']
 })
 export class GroupComponent implements OnInit {
   private groupSubscription: Subscription;

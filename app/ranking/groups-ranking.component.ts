@@ -7,7 +7,7 @@ import { GameComponent } from '../game/game.component';
 @Component({
   moduleId: module.id,
   selector: 'tradity-group-ranking',
-  templateUrl: 'group-ranking.component.html'
+  templateUrl: 'groups-ranking.component.html'
 })
 export class GroupsRankingComponent implements OnInit {
   ranking: Observable<any>;

@@ -9,7 +9,7 @@ import { GameComponent } from '../game/game.component';
   selector: 'tradity-group-ranking',
   templateUrl: 'group-ranking.component.html'
 })
-export class GroupRankingComponent implements OnInit {
+export class GroupsRankingComponent implements OnInit {
   ranking: Observable<any>;
 
   constructor(private rankingService: RankingService, private gameComponent: GameComponent) { }

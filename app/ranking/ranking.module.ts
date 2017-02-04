@@ -7,7 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RankingComponent }   from './ranking.component';
 import { AlltimeRankingComponent } from './alltime-ranking.component';
 import { WeeklyRankingComponent } from './weekly-ranking.component';
-import { GroupRankingComponent } from './group-ranking.component';
+import { GroupsRankingComponent } from './groups-ranking.component';
 
 @NgModule({
   imports: [
@@ -20,7 +20,7 @@ import { GroupRankingComponent } from './group-ranking.component';
     RankingComponent,
     AlltimeRankingComponent,
     WeeklyRankingComponent,
-    GroupRankingComponent
+    GroupsRankingComponent
   ],
   providers: [],
 })

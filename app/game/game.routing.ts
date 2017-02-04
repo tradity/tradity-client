@@ -21,6 +21,7 @@ import { TradeComponent } from '../stocks/trade.component';
 
 import { GroupComponent } from '../group/group.component';
 import { GroupRankingComponent } from '../group/group-ranking.component';
+import { GroupFavouritesComponent } from '../group/group-favourites.component';
 
 const gameRoutes: Routes = [
   {
@@ -68,7 +69,8 @@ const gameRoutes: Routes = [
         component: GroupComponent,
         children: [
           { path: '', redirectTo: 'ranking', pathMatch: 'full' },
-          { path: 'ranking', component: GroupRankingComponent }
+          { path: 'ranking', component: GroupRankingComponent },
+          { path: 'favourites', component: GroupFavouritesComponent }
         ]
       }
     ]

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
 import { GroupService } from '../group.service';
+import { GameComponent } from '../game/game.component';
 
 @Component({
   moduleId: module.id,
@@ -15,11 +16,15 @@ export class GroupComponent implements OnInit {
   private groupSubscription: Subscription;
   group: any = {};
 
-  constructor(private route: ActivatedRoute, private groupService: GroupService) { }
+  constructor(private route: ActivatedRoute, private groupService: GroupService, private gameComponent: GameComponent) { }
 
   ngOnInit() {
+    this.gameComponent.heading2 = 'Group';
     this.groupSubscription = this.route.params
       .switchMap((params: Params) => this.groupService.getGroup(params['id']))
-      .subscribe(res => this.group = res);
+      .subscribe(res => {
+        this.group = res;
+        this.gameComponent.heading1 = res.name;
+      });
   }
 }

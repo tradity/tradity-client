@@ -20,6 +20,7 @@ import { StockDetailComponent } from '../stocks/stock-detail.component';
 import { TradeComponent } from '../stocks/trade.component';
 
 import { GroupComponent } from '../group/group.component';
+import { GroupRankingComponent } from '../group/group-ranking.component';
 
 const gameRoutes: Routes = [
   {
@@ -64,7 +65,11 @@ const gameRoutes: Routes = [
       },
       {
         path: 'group/:id',
-        component: GroupComponent
+        component: GroupComponent,
+        children: [
+          { path: '', redirectTo: 'ranking', pathMatch: 'full' },
+          { path: 'ranking', component: GroupRankingComponent }
+        ]
       }
     ]
   }

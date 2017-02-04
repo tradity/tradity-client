@@ -1,0 +1,8 @@
+<tradity-li *ngFor="let entry of parent.group.ranking">
+  <img src="http://placehold.it/50x50">
+  <tradity-li-header>
+    <span left>{{entry.name}}</span>
+    <span left>{{entry.schoolname}}</span>
+    <span right>{{entry.totalvalue / 1000000000 - 1 | percent}}</span>
+  </tradity-li-header>
+</tradity-li>

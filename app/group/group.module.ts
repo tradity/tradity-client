@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 import { GroupComponent } from './group.component';
+import { GroupRankingComponent } from './group-ranking.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,10 @@ import { GroupComponent } from './group.component';
     SharedModule
   ],
   exports: [],
-  declarations: [GroupComponent],
+  declarations: [
+    GroupComponent,
+    GroupRankingComponent
+  ],
   providers: [],
 })
 export class GroupModule { }

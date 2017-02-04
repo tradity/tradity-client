@@ -21,6 +21,20 @@ export class GroupService {
   loadGroup(id: string): void {
     this.apiService.get('/school/' + id)
     .map(res => res.json().data)
+    .zip(
+      this.apiService.get('/ranking?schoolid=' + id)
+      .map(res => res.json())
+      .map(res => res.data.sort((a, b) => b.totalvalue - a.totalvalue)),
+      (res1, res2) => {
+        res1["ranking"] = res2;
+
+        let totalValueSum = 0;
+        for (let user of res1.ranking) totalValueSum += user.totalvalue;
+        res1["avgtotalvalue"] = totalValueSum / res1.ranking.length;
+
+        return res1;
+      }
+    )
     .subscribe(res => {
       if (!this._groups[id]) this._groups[id] = new BehaviorSubject([]);
       this._groups[id].next(res);

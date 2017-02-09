@@ -23,7 +23,7 @@ export class ApiService {
       this.router.navigateByUrl('login');
       return Observable.throw('Login required');
     }
-    return Observable.throw('Unspecified api error');
+    return Observable.throw(error.json());
   }
   
   setAuthToken(token: string) : void {

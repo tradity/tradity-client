@@ -1,0 +1,20 @@
+<form (ngSubmit)="parent.register2()" tradity-form>
+  <input type="text" placeholder="Given name" name="givenName" [(ngModel)]="parent.givenName" autofocus />
+  <input type="text" placeholder="Surname" name="surname" [(ngModel)]="parent.surname" />
+  <!--
+  <select placeholder="City" name="city" [(ngModel)]="parent.city" (ngModelChange)="parent.loadSubGroups()">
+    <option [value]="null">
+    <option *ngFor="let city of parent.groupList" [value]="city.path">
+      {{city.name}}
+    </option>
+  </select>
+  <select placeholder="School" name="school" [(ngModel)]="parent.school" *ngIf="parent.city">
+    <option [value]="null">
+    <option *ngFor="let school of parent.subGroups" [value]="school.path">
+      {{school.name}}
+    </option>
+  </select>
+  <input type="text" placeholder="Class" name="class" [(ngModel)]="parent.class" *ngIf="parent.city && parent.school" />
+  -->
+  <button type="submit" [disabled]="!(parent.givenName && parent.surname)">Sign up</button>
+</form>

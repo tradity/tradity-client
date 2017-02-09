@@ -4,6 +4,6 @@
   flex-direction: column;
 }
 
-[tradity-form] {
+:host >>> [tradity-form] {
   margin: 0 3em;
 }

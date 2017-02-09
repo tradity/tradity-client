@@ -7,9 +7,16 @@ import { ApiService } from './api.service';
 @Injectable()
 export class GroupService {
   private _groups: Array<BehaviorSubject<any>>;
+  private _groupList: BehaviorSubject<any>;
 
   constructor(private apiService: ApiService) {
     this._groups = [];
+    this._groupList = new BehaviorSubject([]);
+  }
+
+  get groupList(): Observable<any> {
+    this.loadGroups();
+    return this._groupList.asObservable();
   }
 
   getGroup(id: string): Observable<any> {
@@ -39,5 +46,16 @@ export class GroupService {
       if (!this._groups[id]) this._groups[id] = new BehaviorSubject([]);
       this._groups[id].next(res);
     });
+  }
+
+  loadGroups() {
+    this.apiService.get('/schools')
+    .map(res => res.json().data)
+    .subscribe(res => this._groupList.next(res));
+  }
+
+  getSubGroups(path: string): Observable<any> {
+    return this.apiService.get('/schools?parentPath=' + path)
+           .map(res => res.json().data)
   }
 }

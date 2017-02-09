@@ -46,4 +46,19 @@ export class UserService {
     .map(res => res.json())
     .subscribe(res => this._ownUser.next(res.data));
   }
+
+  register(data: Object) {
+    return this.apiService.post(
+      '/register',
+      data
+    )
+    .map(res => res.json())
+    .map(res => {
+      if (res.code === 200) {
+        this.apiService.setAuthToken(res.key);
+        return true;
+      }
+      return false;
+    });
+  }
 }

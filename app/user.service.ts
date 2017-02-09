@@ -61,4 +61,12 @@ export class UserService {
       return false;
     });
   }
+
+  verifyEmail(emailVerifCode: string, uid: number) {
+    return this.apiService.post('/verify-email', {
+      uid: uid,
+      key: emailVerifCode
+    })
+    .map(res => res.json());
+  }
 }

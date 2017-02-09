@@ -7,6 +7,10 @@ const loginRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'login/:emailVerifCode/:uid',
+    component: LoginComponent
   }
 ]
 

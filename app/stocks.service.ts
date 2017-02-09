@@ -81,7 +81,7 @@ export class StocksService {
     });
   }
 
-  trade(isin: string, amount: number): Observable<boolean> {
+  trade(isin: string, amount: number): Observable<any> {
     return this.apiService.post(
       '/trade',
       {
@@ -89,11 +89,7 @@ export class StocksService {
         amount: amount
       }
     )
-    .map(res => res.json())
-    .map(res => {
-      if (res.code === 200) return true;
-      return false;
-    });
+    .map(res => res.json());
   }
   
   search(id: string): Observable<any> {

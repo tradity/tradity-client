@@ -39,9 +39,31 @@ export class TradeComponent implements OnInit, OnDestroy {
 
   trade() {
     if (this.amount) {
-      this.stocksService.trade(this.stock.stocktextid, this.amount * this.sellbuy).subscribe(res => {
-        if (res) alert('Successfully traded!');
-      })
+      this.stocksService.trade(this.stock.stocktextid, this.amount * this.sellbuy)
+      .subscribe(
+        res => {
+          if (res.code === 200) alert('Successfully traded!');
+        },
+        err => {
+          switch (err.identifier) {
+            case 'out-of-money':
+              alert('You do not have enough leftover money for this trade!');
+              break;
+            case 'single-paper-share-exceeded':
+              alert('Only 50% of your assets may consist of a single stock!');
+              break;
+            case 'not-enough-stocks':
+              alert('Not enough stocks!');
+              break;
+            case 'over-pieces-limit':
+              alert('Unfortunately, your trade exceeds the maximum tradable amount of this stock');
+              break;
+            case 'stock-not-found':
+              alert('This stock could not be found!');
+              break;
+          }
+        }
+      )
     }
   }
 }

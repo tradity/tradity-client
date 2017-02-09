@@ -41,7 +41,7 @@ export class FeedService {
             targetid: event.targetid,
             stocktextid: event.stocktextid,
             stockname: event.stockname,
-            time: event.eventtime,
+            time: event.eventtime * 1000,
             leader: event.leader,
             amount: Math.abs(event.amount)
           })

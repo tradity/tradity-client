@@ -8,7 +8,7 @@ import { GroupComponent } from './group.component';
   templateUrl: 'group-favourites.component.html'
 })
 export class GroupFavouritesComponent implements OnInit {
-  constructor(private parent: GroupComponent) { }
+  constructor(public parent: GroupComponent) { }
 
   ngOnInit() { }
 }

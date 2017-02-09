@@ -8,7 +8,7 @@ import { GroupComponent } from './group.component';
   templateUrl: 'group-ranking.component.html'
 })
 export class GroupRankingComponent implements OnInit {
-  constructor(private parent: GroupComponent) { }
+  constructor(public parent: GroupComponent) { }
 
   ngOnInit() { }
 }

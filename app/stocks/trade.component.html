@@ -20,9 +20,9 @@
   <label for="buy">Buy</label>
   <input type="radio" name="sellbuy" [value]="-1" id="sell" [(ngModel)]="sellbuy" />
   <label for="sell">Sell</label>
-  <input type="number" id="amount" name="amount" [(ngModel)]="amount" placeholder="Number of shares" />
+  <input type="number" id="amount" name="amount" [(ngModel)]="amount" placeholder="Number of shares" (ngModelChange)="calcValue()" />
   <span>x <span [class.inactive]="sellbuy == -1">{{stock.ask / 10000 | currency:'EUR':true}} (Ask)</span> | <span [class.inactive]="sellbuy == 1">{{stock.bid / 10000 | currency:'EUR':true}} (Bid)</span> =</span>
-  <input type="number" id="value" name="value" [(ngModel)]="value" placeholder="Euros to be invested" />
+  <input type="number" id="value" name="value" [(ngModel)]="value" placeholder="Euros to be invested" (ngModelChange)="calcAmount()" />
   <!--<span>+ {{10 | currency:'EUR':true}} transaction fee</span>-->
   <button type="submit">Execute trade</button>
 </form>

@@ -66,4 +66,22 @@ export class TradeComponent implements OnInit, OnDestroy {
       )
     }
   }
+
+  calcValue() {
+    if (this.sellbuy == 1) {
+      this.value = this.amount * (this.stock.ask / 10000);
+    } else if (this.sellbuy == -1) {
+      this.value = this.amount * (this.stock.bid / 10000);
+    }
+    //this.calcFee();
+  }
+
+  calcAmount() {
+    if (this.sellbuy == 1) {
+      this.amount = Math.floor(this.value / (this.stock.ask / 10000));
+    } else if (this.sellbuy == -1) {
+      this.amount = Math.floor(this.value / (this.stock.bid / 10000));
+    }
+    //this.calcFee();
+  }
 }

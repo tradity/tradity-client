@@ -16,9 +16,9 @@
 <!-- TODO: Today high, today low, previous close -->
 
 <form tradity-form (ngSubmit)="trade()">
-  <input type="radio" name="sellbuy" [value]="1" id="buy" [(ngModel)]="sellbuy" />
+  <input type="radio" name="sellbuy" [value]="1" id="buy" [(ngModel)]="sellbuy" (ngModelChange)="calcValue()" />
   <label for="buy">Buy</label>
-  <input type="radio" name="sellbuy" [value]="-1" id="sell" [(ngModel)]="sellbuy" />
+  <input type="radio" name="sellbuy" [value]="-1" id="sell" [(ngModel)]="sellbuy" (ngModelChange)="calcValue()" />
   <label for="sell">Sell</label>
   <input type="number" id="amount" name="amount" [(ngModel)]="amount" placeholder="Number of shares" (ngModelChange)="calcValue()" />
   <span>x <span [class.inactive]="sellbuy == -1">{{stock.ask / 10000 | currency:'EUR':true}} (Ask)</span> | <span [class.inactive]="sellbuy == 1">{{stock.bid / 10000 | currency:'EUR':true}} (Bid)</span> =</span>

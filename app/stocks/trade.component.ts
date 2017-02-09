@@ -68,6 +68,7 @@ export class TradeComponent implements OnInit, OnDestroy {
   }
 
   calcValue() {
+    if (!this.amount) return;
     if (this.sellbuy == 1) {
       this.value = this.amount * (this.stock.ask / 10000);
     } else if (this.sellbuy == -1) {

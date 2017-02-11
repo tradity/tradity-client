@@ -11,5 +11,20 @@
     <a [routerLink]="['/stocks/' + paper.stocktextid]" class="material-icons">info</a>
     <a [routerLink]="['/stocks/' + paper.stocktextid + '/trade']" class="material-icons">add</a>
     <a [routerLink]="['/stocks/' + paper.stocktextid + '/trade']" class="material-icons">remove</a>
+    <a role="button" tradity-action-expand class="material-icons"></a>
   </tradity-li-action-list>
+  <tradity-li-vl>
+    <tradity-li-vi>
+      <span>Ask price</span>
+      <span>{{paper.ask / 10000 | currency:'EUR':true}}</span>
+    </tradity-li-vi>
+    <tradity-li-vi>
+      <span>Bid price</span>
+      <span>{{paper.bid / 10000 | currency:'EUR':true}}</span>
+    </tradity-li-vi>
+    <tradity-li-vi>
+      <span>Tradable amount</span>
+      <span>{{paper.pieces}} pc</span>
+    </tradity-li-vi>
+  </tradity-li-vl>
 </tradity-li>

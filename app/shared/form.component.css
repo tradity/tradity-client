@@ -3,7 +3,8 @@
   flex-wrap: wrap;
 }
 
-:host >>> input {
+:host >>> input,
+:host >>> select {
   margin-bottom: 15px;
   border: 1px solid #D8D8D8;
   border-radius: 3px;
@@ -13,13 +14,15 @@
 :host >>> input[type=text],
 :host >>> input[type=email],
 :host >>> input[type=password],
-:host >>> input[type=number] {
+:host >>> input[type=number],
+:host >>> select {
   flex-basis: 100%;
   padding: 20px;
   font-size: 12px;
   line-height: 15px;
   letter-spacing: 2px;
   color: #170804;
+  background-color: white;
 }
 
 :host >>> input[type=text]:focus,

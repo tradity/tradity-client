@@ -31,7 +31,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.groupListSubscription = this.groupService.groupList
-                                 // filter for top-level schools
+                                 // filter for top-level groups
                                  .map(res => res.filter(val => val.path.split('/').length - 1 === 1))
                                  .subscribe(res => this.groupList = res);
   }
@@ -55,7 +55,9 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       email: this.email,
       password: this.password,
       giv_name: this.givenName,
-      fam_name: this.surname
+      fam_name: this.surname,
+      school: this.school || null,
+      schoolclass: this.class || null
     }).subscribe(result => {
       if (result) this.router.navigateByUrl('dashboard');
     })

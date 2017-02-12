@@ -43,9 +43,10 @@ export class LoginComponent implements OnInit {
   }
   
   login() {
-    this.userService.login(this.username, this.password, this.stayloggedin).subscribe(result => {
-      if (result) this.router.navigateByUrl('dashboard');
-    })
+    this.userService.login(this.username, this.password, this.stayloggedin).subscribe(
+      res => this.router.navigateByUrl('dashboard'),
+      err => alert('Wrong username or password')
+    );
   }
 
 }

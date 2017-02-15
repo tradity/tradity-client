@@ -18,10 +18,12 @@ import { UserService } from './user.service';
 import { RankingService } from './ranking.service';
 import { FeedService } from './feed.service';
 import { GroupService } from './group.service';
+import { AdminService } from './admin.service';
 
 import { LoginModule } from './login/login.module';
 import { RegistrationModule } from './registration/registration.module';
 import { GameModule } from './game/game.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
     declarations: [
@@ -34,7 +36,8 @@ import { GameModule } from './game/game.module';
       routing,
       LoginModule,
       RegistrationModule,
-      GameModule
+      GameModule,
+      AdminModule
     ],
     providers: [
       appRoutingProviders,
@@ -43,7 +46,8 @@ import { GameModule } from './game/game.module';
       UserService,
       RankingService,
       FeedService,
-      GroupService
+      GroupService,
+      AdminService
     ],
     bootstrap: [AppComponent],
 })

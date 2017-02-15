@@ -1,0 +1,88 @@
+<!--
+<p>Anzahl User: {{usercount}}</p>
+<p>User mit 1+ Trades: {{tradeusers}} ({{100 * tradeusers / usercount |number:2}} %) (Gini-Koeffizient: {{tradeGini | number: 3}})</p>
+<p>User mit bestätigter E-Mail: {{verifusers}} ({{100 * verifusers / usercount |number:2}} %)</p>
+
+<form class="pure-form">
+  <button (click)="exportEmailCSV()">E-Mail CSV exportieren</button>
+</form>
+-->
+<form class="pure-form" id="rankingSearch">
+  <input type="search" [(ngModel)]="searchText" name="searchText" placeholder="Suche" class="pure-input">
+  
+  <br />
+  <label for="reverse"><input type="checkbox" [(ngModel)]="reverse" name="reverse" id="reverse" /> Absteigende Sortierung</label>
+  <br />
+  <label for="showImpersonate"><input type="checkbox" [(ngModel)]="showImpersonate" name="showImpersonate" id="showImpersonate" /> Übernehmen</label>
+  <label for="showID"><input type="checkbox" [(ngModel)]="showID" name="showID" id="showID" /> ID</label>
+  <label for="showName"><input type="checkbox" [(ngModel)]="showName" name="showName" id="showName" /> Name</label>
+  <label for="showFullName"><input type="checkbox" [(ngModel)]="showFullName" name="showFullName" id="showFullName" /> Voller Name</label>
+  <label for="showEMail"><input type="checkbox" [(ngModel)]="showEMail" name="showEMail" id="showEMail" /> E-Mail</label>
+  <label for="showRegisterTime"><input type="checkbox" [(ngModel)]="showRegisterTime" name="showRegisterTime" id="showRegisterTime" /> Registrierungs­zeitpunkt</label>
+  <label for="showTrades"><input type="checkbox" [(ngModel)]="showTrades" name="showTrades" id="showTrades" /> #Trades</label>
+  <label for="showComments"><input type="checkbox" [(ngModel)]="showComments" name="showComments" id="showComments" /> #Kommentare</label>
+  <label for="showLastComment"><input type="checkbox" [(ngModel)]="showLastComment" name="showLastComment" id="showLastComment" /> Letzter Kommentar</label>
+  <br />
+  <label for="showBirthday"><input type="checkbox" [(ngModel)]="showBirthday" name="showBirthday" id="showBirthday" /> Geburtsdatum</label>
+  <label for="showSchool"><input type="checkbox" [(ngModel)]="showSchool" name="showSchool" id="showSchool" /> Schule</label>
+  <label for="showAddress"><input type="checkbox" [(ngModel)]="showAddress" name="showAddress" id="showAddress" /> Adresse</label>
+  <label for="showProvision"><input type="checkbox" [(ngModel)]="showProvision" name="showProvision" id="showProvision" /> Provision</label>
+  <label for="showDeletion"><input type="checkbox" [(ngModel)]="showDeletion" name="showDeletion" id="showDeletion" /> Löschzeitpunkt</label>
+  <label for="showFreemoney"><input type="checkbox" [(ngModel)]="showFreemoney" name="showFreemoney" id="showFreemoney" /> Kontostand</label>
+  <label for="showTotalvalue"><input type="checkbox" [(ngModel)]="showTotalvalue" name="showTotalvalue" id="showTotalvalue" /> Gesamtwert</label>
+  <label for="showRecvProvision"><input type="checkbox" [(ngModel)]="showRecvProvision" name="showRecvProvision" id="showRecvProvision" /> Erhaltene Provision</label>
+  <label for="showDeleteUser"><input type="checkbox" [(ngModel)]="showDeleteUser" name="showDeleteUser" id="showDeleteUser" /> Löschen</label>
+</form>
+
+<table>
+  <tr>
+    <th *ngIf="showImpersonate">Übernehmen</th>
+    <th *ngIf="showID">ID</th>
+    <th *ngIf="showName">Name</th>
+    <th *ngIf="showFullName" colspan="2">Voller Name</th>
+    <th *ngIf="showEMail" colspan="3">E-Mail</th>
+    <th *ngIf="showRegisterTime">Registrierungs­zeitpunkt</th>
+    <th *ngIf="showTrades">#Trades</th>
+    <th *ngIf="showComments">#Kommentare</th>
+    <th *ngIf="showLastComment">Letzter Kommentar</th>
+    <th *ngIf="showBirthday">Geburtsdatum</th>
+    <th *ngIf="showSchool" colspan="4">Schule</th>
+    <th *ngIf="showAddress" colspan="3">Adresse</th>
+    <th *ngIf="showProvision" colspan="2">Provision</th>
+    <th *ngIf="showDeletion">Löschzeitpunkt</th>
+    <th *ngIf="showFreemoney">Kontostand</th>
+    <th *ngIf="showTotalvalue">Gesamtwert</th>
+    <th *ngIf="showRecvProvision" colspan="2">Erhaltene Provision</th>
+    <th *ngIf="showDeleteUser">Löschen</th>
+  </tr>
+  <tr *ngFor="let entry of userlist | async">
+    <td *ngIf="showImpersonate"><a (click)="impersonateUser(entry.uid)" style="cursor: pointer">X</a></td>
+    <td *ngIf="showID">{{entry.uid}}</td>
+    <td *ngIf="showName">{{entry.name}}</td>
+    <td *ngIf="showFullName">{{entry.giv_name}}</td>
+    <td *ngIf="showFullName">{{entry.fam_name}}</td>
+    <td *ngIf="showEMail">{{entry.email}}</td>
+    <td *ngIf="showEMail">{{entry.emailverif}}</td>
+    <td *ngIf="showEMail"><a (click)="changeUserEMail(entry)" style="cursor: pointer">X</a></td>
+    <td *ngIf="showRegisterTime"><a ui-sref="admin.userdetails({uid: entry.uid})">{{entry.registertime * 1000 | date:'short'}}</a></td>
+    <td *ngIf="showTrades">{{entry.tradecount}}</td>
+    <td *ngIf="showComments">{{entry.commentcount}}</td>
+    <td *ngIf="showLastComments">{{entry.lastcommenttime * 1000 | date:'short'}}</td>
+    <td *ngIf="showBirthday">{{entry.birthday | date:'short'}}</td>
+    <td *ngIf="showSchool"><a [routerLink]="['/group/' + entry.schoolid]">{{entry.schoolid}}</a></td>
+    <td *ngIf="showSchool"><a [routerLink]="['/group/' + entry.schoolid]">{{entry.schoolpath}}</a></td>
+    <td *ngIf="showSchool">{{entry.schoolclass}}</td>
+    <td *ngIf="showSchool">{{entry.pending}}</td>
+    <td *ngIf="showAddress">{{entry.zip}}</td>
+    <td *ngIf="showAddress">{{entry.town}}</td>
+    <td *ngIf="showAddress">{{entry.street}}</td>
+    <td *ngIf="showProvision">{{entry.wprovision}}</td>
+    <td *ngIf="showProvision">{{entry.lprovision}}</td>
+    <td *ngIf="showDeletion">{{entry.deletiontime * 1000 | date:'short'}}</td>
+    <td *ngIf="showFreemoney">{{entry.freemoney / 10000 | currency:'EUR':true}}</td>
+    <td *ngIf="showTotalvalue">{{entry.totalvalue / 10000 | currency:'EUR':true}}</td>
+    <td *ngIf="showRecvProvision">{{entry.wprov_sum / 10000 | currency:'EUR':true}}</td>
+    <td *ngIf="showRecvProvision">{{entry.lprov_sum / 10000 | currency:'EUR':true}}</td>
+    <td *ngIf="showDeleteUser"><a (click)="deleteUser(entry)"><i class="material-icons">delete</i></a></td>
+  </tr>
+</table>

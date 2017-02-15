@@ -56,7 +56,7 @@ export class StocksService {
   loadHistory(): void {
     this.apiService.get('/user/$self')
     .map(res => res.json())
-    .subscribe(res => this._history.next(res.orders));
+  .subscribe(res => this._history.next(res.orders));
   }
 
   loadOrders(): void {

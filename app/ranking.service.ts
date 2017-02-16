@@ -44,8 +44,36 @@ export class RankingService {
 
   loadGroups() {
     this.apiService.get('/schools')
-    .map(res => res.json())
+    .map(res => res.json().data)
+    .zip(
+      this.apiService.get('/ranking')
+      .map(res => res.json().data),
+      (groups, users) => {
+        let ret = [];
+        for (let group of groups) {
+          group.avgTotalValue = 0;
+          group.rankingUsercount = 0;
+          ret[group.path] = group;
+        }
+        for (let user of users) {
+          if (user.schoolpath) {
+            let splitPath = user.schoolpath.split('/');
+            ret[user.schoolpath].avgTotalValue += user.totalvalue;
+            ret[user.schoolpath].rankingUsercount++;
+            // also add to parent group, if one exists
+            if (splitPath.length - 1 === 2) {
+              ret['/' + splitPath[1]].avgTotalValue += user.totalvalue;
+              ret['/' + splitPath[1]].rankingUsercount++;
+            }
+          }
+        }
+        for (let group of ret) {
+          group.avgTotalValue = group.avgTotalValue / group.rankingUsercount;
+        }
+        ret.sort((a, b) => b.avgTotalValue - a.avgTotalValue)
+        return ret;
+      }
+    )
     .subscribe(res => console.log(res));
   }
-
 }

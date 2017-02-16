@@ -49,7 +49,7 @@ export class RankingService {
       this.apiService.get('/ranking')
       .map(res => res.json().data),
       (groups, users) => {
-        let ret = [];
+        let ret = {};
         for (let group of groups) {
           group.avgTotalValue = 0;
           group.rankingUsercount = 0;
@@ -67,13 +67,14 @@ export class RankingService {
             }
           }
         }
-        for (let group of ret) {
-          group.avgTotalValue = group.avgTotalValue / group.rankingUsercount;
+        let retArr = Object.keys(ret).map(res => ret[res]);
+        for (let group of retArr) {
+          group.avgTotalValue = group.rankingUsercount ? group.avgTotalValue / group.rankingUsercount : 1000000000;
         }
-        ret.sort((a, b) => b.avgTotalValue - a.avgTotalValue)
-        return ret;
+        retArr.sort((a, b) => b.avgTotalValue - a.avgTotalValue)
+        return retArr;
       }
     )
-    .subscribe(res => console.log(res));
+    .subscribe(res => this._rankingGroups.next(res));
   }
 }

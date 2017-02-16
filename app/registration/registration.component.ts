@@ -46,7 +46,34 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   register1() {
-    this.router.navigateByUrl('/register/step2');
+    this.userService.checkUsernameAndEmail(this.username, this.email)
+    .subscribe(
+      res => {
+        if (this.password !== this.passwordCheck) {
+          alert('The passwords do not match');
+        } else if (this.password.length < 5) {
+          alert('The password is too short');
+        } else {
+          this.router.navigateByUrl('/register/step2');
+        }
+      },
+      err => {
+        switch (err.message) {
+          case '/validate-username/:name: 403: already-present':
+            alert('The username has already been taken');
+            break;
+          case '/validate-username/:name: 403: invalid-char':
+            alert('The username contains invalid characters');
+            break;
+          case '/validate-email/:email: 403: already-present':
+            alert('The email address has already been used');
+            break;
+          case '/validate-email/:email: 403: invalid-email':
+            alert('The email address contains invalid characters');
+            break;
+        }
+      }
+    );
   }
 
   register2() {

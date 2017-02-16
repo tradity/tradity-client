@@ -69,4 +69,13 @@ export class UserService {
     })
     .map(res => res.json());
   }
+
+  checkUsernameAndEmail(username: string, email: string) {
+    return this.apiService.get('/validate-username/' + username)
+    .map(res => res.json())
+    .zip(
+      this.apiService.get('/validate-email/' + email)
+      .map(res => res.json())
+    )
+  }
 }

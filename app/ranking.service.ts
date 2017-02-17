@@ -29,14 +29,14 @@ export class RankingService {
   }
   
   loadAll() {
-    this.apiService.get('/ranking?includeAll=true')
+    this.apiService.get('/ranking')
     .map(res => res.json())
     .map(res => res.data.sort((a, b) => b.totalvalue - a.totalvalue))
     .subscribe(res => this._rankingAll.next(res));
   }
 
   loadWeekly() {
-    this.apiService.get('/ranking?includeAll=true&since=' + (Math.floor(Date.now() / 1000) - 604800))
+    this.apiService.get('/ranking?since=' + (Math.floor(Date.now() / 1000) - 604800))
     .map(res => res.json())
     .map(res => res.data.sort((a, b) => b.totalvalue - a.totalvalue))
     .subscribe(res => this._rankingWeekly.next(res));

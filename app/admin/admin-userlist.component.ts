@@ -31,6 +31,8 @@ export class AdminUserlistComponent implements OnInit {
   showRecvProvision = false;
   showDeleteUser = true;
 
+  searchText = '';
+
   userlist: Observable<any>;
 
   constructor(private adminService: AdminService) { }

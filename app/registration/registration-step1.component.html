@@ -1,0 +1,7 @@
+<form (ngSubmit)="parent.register1()" tradity-form>
+  <input type="text" placeholder="User name" name="username" [(ngModel)]="parent.username" autofocus />
+  <input type="email" placeholder="Email address" name="email" [(ngModel)]="parent.email" />
+  <input type="password" placeholder="Password" name="password" [(ngModel)]="parent.password" />
+  <input type="password" placeholder="Repeat password" name="passwordCheck" [(ngModel)]="parent.passwordCheck" />
+  <button type="submit" [disabled]="!(parent.username && parent.email && parent.password && parent.passwordCheck)">Continue</button>
+</form>

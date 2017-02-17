@@ -1,0 +1,27 @@
+<tradity-li *ngFor="let order of history | async">
+  <img src="http://placehold.it/50x50">
+  <tradity-li-header>
+    <span left>{{order.stockname}}</span>
+    <span left>Sold at {{order.buytime * 1000 | date:'short'}}</span>
+    <span right>{{order.money / 10000}} €</span>
+  </tradity-li-header>
+  <tradity-li-action-list>
+    <a role="button" class="material-icons">favorite</a>
+    <a [routerLink]="['/stocks/' + order.stocktextid]" class="material-icons">info</a>
+    <a role="button" tradity-action-expand class="material-icons"></a>
+  </tradity-li-action-list>
+  <tradity-li-vl>
+    <tradity-li-vi>
+      <span>Amount</span>
+      <span>{{order.amount}}</span>
+    </tradity-li-vi>
+    <tradity-li-vi>
+      <span>Price</span>
+      <span>{{order.money / order.amount / 10000}} €</span>
+    </tradity-li-vi>
+    <tradity-li-vi>
+      <span>Transaction fees</span>
+      <span>{{order.fee / 10000}} €</span>
+    </tradity-li-vi>
+  </tradity-li-vl>
+</tradity-li>

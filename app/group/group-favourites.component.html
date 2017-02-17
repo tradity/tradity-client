@@ -1,0 +1,14 @@
+<tradity-li *ngFor="let paper of parent.group.popularStocks">
+    <img src="http://placehold.it/50x50">
+    <tradity-li-header>
+      <span left>{{paper['MIN(oh.stockname)']}}</span>
+      <span left>{{paper.stocktextid}}</span>
+      <span right>{{paper.bid / 10000 | currency:'EUR':true}}</span>
+    </tradity-li-header>
+    <tradity-li-action-list>
+      <a role="button" class="material-icons">favorite</a>
+      <a [routerLink]="['/stocks/' + paper.stocktextid]" class="material-icons">info</a>
+      <a [routerLink]="['/stocks/' + paper.stocktextid + '/trade']" class="material-icons">add</a>
+      <a [routerLink]="['/stocks/' + paper.stocktextid + '/trade']" class="material-icons">remove</a>
+    </tradity-li-action-list>
+  </tradity-li>

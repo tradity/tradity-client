@@ -1,0 +1,25 @@
+<tradity-vl>
+  <tradity-vl-li>
+    <span>TODO</span>
+    <span>Your Group Rank</span>
+  </tradity-vl-li>
+  <tradity-vl-li>
+    <span>{{group.usercount}}</span>
+    <span>Members</span>
+  </tradity-vl-li>
+  <tradity-vl-li>
+    <span>{{group.avgtotalvalue / 1000000000 - 1 | percent}}</span>
+    <span>Average performance</span>
+  </tradity-vl-li>
+  <tradity-vl-li>
+    <span>TODO</span>
+    <span>Number of trades</span>
+  </tradity-vl-li>
+</tradity-vl>
+<nav tradity-subnav>
+  <ul>
+    <li><a [routerLink]="['ranking']" routerLinkActive="active">Leaderboard</a></li><!--
+    --><li><a [routerLink]="['favourites']" routerLinkActive="active">Most traded</a></li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

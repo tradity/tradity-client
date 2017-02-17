@@ -1,0 +1,16 @@
+<tradity-li-header class="big-letters">
+  <span left>{{stock.name}}</span>
+  <span left>{{stock.stocktextid}}</span>
+  <span right>{{stock.ask / 10000 | currency:'EUR':true}}</span>
+</tradity-li-header>
+<tradity-li-vl>
+  <tradity-li-vi>
+    <span>Bid price</span>
+    <span>{{stock.bid / 10000 | currency:'EUR':true}}</span>
+  </tradity-li-vi>
+  <tradity-li-vi>
+    <span>Tradable amount</span>
+    <span>{{stock.pieces}} pc</span>
+  </tradity-li-vi>
+</tradity-li-vl>
+<a [routerLink]="['/stocks/' + stock.stocktextid + '/trade']">Trade</a>

@@ -1,0 +1,11 @@
+:host.active >>> tradity-container-control {
+  margin-bottom: 10px;
+}
+
+:host >>> tradity-li {
+  display: none;
+}
+
+:host.active >>> tradity-li {
+  display: flex;
+}

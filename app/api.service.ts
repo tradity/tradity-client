@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 export class ApiService {
   
   private options: RequestOptions;
-  private baseUrl = 'https://dev.tradity.de:443/api/v1';
+  private baseUrl: string;
 
   constructor(private http: Http, private router: Router) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -15,6 +15,9 @@ export class ApiService {
 
     let authToken = localStorage.getItem('authorizationToken');
     if (authToken) this.setAuthToken(authToken);
+
+    let hostname = document.location.hostname.includes('.tradity.de') ? document.location.hostname : 'dev.tradity.de';
+    this.baseUrl = 'https://' + hostname + ':443/api/v1';
   }
   
   private handleError = (error: any) => {

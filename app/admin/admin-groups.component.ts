@@ -18,7 +18,13 @@ export class AdminGroupsComponent implements OnInit {
   constructor(private adminService: AdminService, private groupService: GroupService) { }
 
   ngOnInit() {
-    this.groups = this.groupService.groupList;
+    this.groups = this.groupService.groupList.map(res => res.sort((a, b) => {
+      let pathA = a.path.toLowerCase();
+      let pathB = b.path.toLowerCase();
+      if (pathA < pathB) return -1;
+      if (pathA > pathB) return 1;
+      return 0;
+    }))
   }
 
   deleteGroup(school: any) {

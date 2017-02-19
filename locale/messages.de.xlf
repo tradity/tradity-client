@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="f65253954b66e929a8b4d5ecaf61f9129f8cec64" datatype="html">
+        <source>Dashboard</source>
+        <target>Übersicht</target>
+      </trans-unit>
+      <trans-unit id="323af13292ecc714ab3848b9dff48f923893be32" datatype="html">
+        <source>Portfolio</source>
+        <target>Depot</target>
+      </trans-unit>
+      <trans-unit id="8bbe5db3e351356b09093540ba6049fb1a4025f7" datatype="html">
+        <source>Stocks</source>
+        <target>Wertpapiere</target>
+      </trans-unit>
+      <trans-unit id="49c5da085adc2bdeef21fe3d6739ac7a9403668a" datatype="html">
+        <source>Leaderboard</source>
+        <target>Rangliste</target>
+      </trans-unit>
+      <trans-unit id="bb694b49d408265c91c62799c2b3a7e3151c824d" datatype="html">
+        <source>Logout</source>
+        <target>Abmelden</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

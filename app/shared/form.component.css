@@ -16,7 +16,7 @@
 :host >>> input[type=password],
 :host >>> input[type=number],
 :host >>> select {
-  flex-basis: 100%;
+  width: 100%;
   padding: 20px;
   font-size: 12px;
   line-height: 15px;

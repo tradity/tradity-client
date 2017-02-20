@@ -12,6 +12,7 @@
       <li><a [routerLink]="['/portfolio']" routerLinkActive = "active" i18n>Portfolio</a></li>
       <li><a [routerLink]="['/stocks']" routerLinkActive = "active" i18n>Stocks</a></li>
       <li><a [routerLink]="['/ranking']" routerLinkActive = "active" i18n>Leaderboard</a></li>
+      <li *ngIf="ownUser.dschoolid"><a [routerLink]="['/group/' + ownUser.dschoolid]" routerLinkActive = "active" i18n>My group</a></li>
       <!--<li><a [routerLink]="['/education']" routerLinkActive = "active" i18n>Education</a></li>-->
       <li><a (click)="logout()" routerLinkActive = "active" i18n>Logout</a></li> 
     </ul>

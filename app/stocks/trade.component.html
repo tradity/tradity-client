@@ -5,11 +5,11 @@
 </tradity-li-header>
 <tradity-li-vl>
   <tradity-li-vi>
-    <span>Ask price</span>
+    <span i18n>Ask price</span>
     <span>{{stock.ask / 10000 | currency:'EUR':true}}</span>
   </tradity-li-vi>
   <tradity-li-vi>
-    <span>Bid price</span>
+    <span i18n>Bid price</span>
     <span>{{stock.bid / 10000 | currency:'EUR':true}}</span>
   </tradity-li-vi>
 </tradity-li-vl>
@@ -17,12 +17,12 @@
 
 <form tradity-form (ngSubmit)="trade()">
   <input type="radio" name="sellbuy" [value]="1" id="buy" [(ngModel)]="sellbuy" (ngModelChange)="calcValue()" />
-  <label for="buy">Buy</label>
+  <label for="buy" i18n>Buy</label>
   <input type="radio" name="sellbuy" [value]="-1" id="sell" [(ngModel)]="sellbuy" (ngModelChange)="calcValue()" />
-  <label for="sell">Sell</label>
-  <input type="number" id="amount" name="amount" [(ngModel)]="amount" placeholder="Number of shares" (ngModelChange)="calcValue()" />
+  <label for="sell" i18n>Sell</label>
+  <input type="number" id="amount" name="amount" [(ngModel)]="amount" placeholder="Number of shares" i18n-placeholder (ngModelChange)="calcValue()" />
   <span>x <span [class.inactive]="sellbuy == -1">{{stock.ask / 10000 | currency:'EUR':true}} (Ask)</span> | <span [class.inactive]="sellbuy == 1">{{stock.bid / 10000 | currency:'EUR':true}} (Bid)</span> =</span>
-  <input type="number" step="any" id="value" name="value" [(ngModel)]="value" placeholder="Euros to be invested" (ngModelChange)="calcAmount()" />
+  <input type="number" step="any" id="value" name="value" [(ngModel)]="value" placeholder="Euros to be invested" i18n-placeholder (ngModelChange)="calcAmount()" />
   <!--<span>+ {{10 | currency:'EUR':true}} transaction fee</span>-->
   <button type="submit">Execute trade</button>
 </form>

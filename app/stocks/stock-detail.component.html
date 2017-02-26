@@ -5,12 +5,12 @@
 </tradity-li-header>
 <tradity-li-vl>
   <tradity-li-vi>
-    <span>Bid price</span>
+    <span i18n>Bid price</span>
     <span>{{stock.bid / 10000 | currency:'EUR':true}}</span>
   </tradity-li-vi>
   <tradity-li-vi>
-    <span>Tradable amount</span>
+    <span i18n>Tradable amount</span>
     <span>{{stock.pieces}} pc</span>
   </tradity-li-vi>
 </tradity-li-vl>
-<a [routerLink]="['/stocks/' + stock.stocktextid + '/trade']">Trade</a>
+<a [routerLink]="['/stocks/' + stock.stocktextid + '/trade']" i18n>Trade</a>

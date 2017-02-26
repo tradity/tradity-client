@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { routing } from './admin.routing';
 import { AdminComponent } from './admin.component';
 import { AdminUserlistComponent } from './admin-userlist.component';
+import { AdminGroupsComponent } from './admin-groups.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { AdminUserlistComponent } from './admin-userlist.component';
   exports: [],
   declarations: [
     AdminComponent,
-    AdminUserlistComponent
+    AdminUserlistComponent,
+    AdminGroupsComponent
   ],
   providers: [],
 })

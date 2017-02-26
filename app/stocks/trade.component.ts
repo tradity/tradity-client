@@ -42,10 +42,9 @@ export class TradeComponent implements OnInit, OnDestroy {
       this.stocksService.trade(this.stock.stocktextid, this.amount * this.sellbuy)
       .subscribe(
         res => {
-          if (res.code === 200) {
-            alert('Successfully traded!');
-            this.router.navigateByUrl('/portfolio/orders');
-          }
+          if (res.identifier === 'autodelay-sxnotopen') alert('Your trade will be executed when the stock exchange opens');
+          else alert('Successfully traded!');
+          this.router.navigateByUrl('/portfolio/orders');
         },
         err => {
           switch (err.identifier) {

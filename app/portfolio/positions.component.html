@@ -17,22 +17,22 @@
   </tradity-li-action-list>
   <tradity-li-vl>
     <tradity-li-vi>
-      <span>Performance today</span>
+      <span i18n>Performance today</span>
       <span>
         {{(paper.bid - paper.daystartvalue)
         / paper.daystartvalue * 100 | number:'1.0-2'}} %
       </span>
     </tradity-li-vi>
     <tradity-li-vi>
-      <span>Amount</span>
+      <span i18n>Amount</span>
       <span>{{paper.amount}}</span>
     </tradity-li-vi>
     <tradity-li-vi>
-      <span>Buy price</span>
+      <span i18n>Buy price</span>
       <span>{{paper.buymoney / paper.amount / 10000 | number:'1.0-3'}} €</span>
     </tradity-li-vi>
     <tradity-li-vi>
-      <span>Current price</span>
+      <span i18n>Current price</span>
       <span>{{paper.bid / 10000 | number:'1.0-3'}} €</span>
     </tradity-li-vi>
   </tradity-li-vl>

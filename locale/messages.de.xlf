@@ -160,7 +160,7 @@
       </trans-unit>
       <trans-unit id="efa0f907f64b3e5b00bf4375ab1a279edd5b75ca" datatype="html" approved="yes">
         <source>Bid price</source>
-        <target state="translated">Angebotspreis</target>
+        <target state="translated">Geldkurs</target>
       </trans-unit>
       <trans-unit id="3b81aaa19b66e2c7f081a03625815db816552d65" datatype="html" approved="yes">
         <source>Tradable amount</source>

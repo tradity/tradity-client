@@ -82,6 +82,10 @@
         <source>Leaderboard</source>
         <target/>
       </trans-unit>
+      <trans-unit id="b1d4e5b5d44f1d41f851ff8d87ce01992db8737f" datatype="html">
+        <source>My group</source>
+        <target/>
+      </trans-unit>
       <trans-unit id="bb694b49d408265c91c62799c2b3a7e3151c824d" datatype="html">
         <source>Logout</source>
         <target/>
@@ -184,6 +188,10 @@
       </trans-unit>
       <trans-unit id="c7529e5f85cef385ef60bf53f084cc7b73ea5cf9" datatype="html">
         <source>Euros to be invested</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="179b8b8f87014277ca282c3f4d811b5b71dbe123" datatype="html">
+        <source>View city</source>
         <target/>
       </trans-unit>
       <trans-unit id="65a06820e454f7e74ca482ae06d9021aa0592191" datatype="html">

@@ -33,7 +33,8 @@ export class LoginComponent implements OnInit {
                 alert('Someone else already verified this email address');
                 break;
               default:
-                alert('Verifying the email address failed');
+                /*alert('Verifying the email address failed');*/
+                alert('Beim Bestätigen der E-Mail-Adresse ist ein Fehler aufgetreten. Bitte schreibe uns eine E-Mail an email@tradity.de (Betreff: Tradity2017). Wir bestätigen Deinen Account dann manuell. In der Zwischenzeit kannst Du bereits spielen. Viel Spaß!');
                 break;
             }
           }

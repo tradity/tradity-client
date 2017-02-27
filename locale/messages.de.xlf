@@ -1,26 +1,214 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
-  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="de">
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="f65253954b66e929a8b4d5ecaf61f9129f8cec64" datatype="html" approved="yes">
+      <trans-unit id="29a53d7ae725efea98041b8367ab79810b4e3cd2" datatype="html">
+        <source>Welcome back!</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="3eb49d60bd859eb2d9d3a6d380cdf4e0b8252333" datatype="html">
+        <source>Remember me</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="f093d9574ab746b231504bd2cbb65f04bd7b00db" datatype="html">
+        <source>Log in</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="6255a8674662e55d6ccc3ad46cc1dd0dd6394d75" datatype="html">
+        <source>Forgot Password?</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="7d6573fb998f3a1cf1356623b85850d9d10edaa9" datatype="html">
+        <source>Registration</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="28629af803ab8b5f6e995b17d486e6a1527e2a96" datatype="html">
+        <source>Sign Up</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="6765b4c916060f6bc42d9bb69e80377dbcb5e4e9" datatype="html">
+        <source>Login</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="024886ca34a6f309e3e51c2ed849320592c3faaa" datatype="html">
+        <source>User name</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="69b6ac577a19acc39fc0c22342092f327fff2529" datatype="html">
+        <source>Email address</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="c32ef07f8803a223a83ed17024b38e8d82292407" datatype="html">
+        <source>Password</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="d78d6fc5e90c093605d4e4f166bf074cdef1acc8" datatype="html">
+        <source>Repeat password</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="ac10a3d9b59575640797c1a8e6aea642cf5d5e77" datatype="html">
+        <source>Continue</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="85a6391dd7a3d9583e9dd3fff581651e5ea99d2f" datatype="html">
+        <source>Given name</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="9e5ac183bc4cf80f01cde3ff96207b11464a4295" datatype="html">
+        <source>Surname</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="f60c6c571ed1e6266976ca261a2b2d0ebaa16c6e" datatype="html">
+        <source>Class</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="c40c132843f349c3aa49730405de1d0ca733aef6" datatype="html">
+        <source>Sign up</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="f65253954b66e929a8b4d5ecaf61f9129f8cec64" datatype="html">
         <source>Dashboard</source>
-        <target state="translated">Übersicht</target>
+        <target/>
       </trans-unit>
-      <trans-unit id="323af13292ecc714ab3848b9dff48f923893be32" datatype="html" approved="yes">
+      <trans-unit id="323af13292ecc714ab3848b9dff48f923893be32" datatype="html">
         <source>Portfolio</source>
-        <target state="translated">Depot</target>
+        <target/>
       </trans-unit>
-      <trans-unit id="8bbe5db3e351356b09093540ba6049fb1a4025f7" datatype="html" approved="yes">
+      <trans-unit id="8bbe5db3e351356b09093540ba6049fb1a4025f7" datatype="html">
         <source>Stocks</source>
-        <target state="translated">Wertpapiere</target>
+        <target/>
       </trans-unit>
-      <trans-unit id="49c5da085adc2bdeef21fe3d6739ac7a9403668a" datatype="html" approved="yes">
+      <trans-unit id="49c5da085adc2bdeef21fe3d6739ac7a9403668a" datatype="html">
         <source>Leaderboard</source>
-        <target state="translated">Rangliste</target>
+        <target/>
       </trans-unit>
-      <trans-unit id="bb694b49d408265c91c62799c2b3a7e3151c824d" datatype="html" approved="yes">
+      <trans-unit id="b1d4e5b5d44f1d41f851ff8d87ce01992db8737f" datatype="html">
+        <source>My group</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="bb694b49d408265c91c62799c2b3a7e3151c824d" datatype="html">
         <source>Logout</source>
-        <target state="translated">Abmelden</target>
+        <target/>
+      </trans-unit>
+      <trans-unit id="2066faa7ad6d88bbf9f9a2abb3afe94cf5bcfadf" datatype="html">
+        <source>Total value</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="311828ec96f91f6f530219b07d5531a8aa507d64" datatype="html">
+        <source>Cash</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="7696601487c074d6e8f05b6f7bb1a61fd0240aaa" datatype="html">
+        <source>Time left</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="7acfeb6214be6d5b9c6ca7285d689dd1402ca446" datatype="html">
+        <source>Positions</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="e6a27066251ca1e04c5be86ad758380856df2506" datatype="html">
+        <source>Pending</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="efac3af0b32e953279c25b6519cae256811e0fe8" datatype="html">
+        <source>History</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="dfc2fb58e2a04ed944a4bd80f0a2087775134068" datatype="html">
+        <source>Amount</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="4d6ee53858628de558a18623894a03c8673bce9e" datatype="html">
+        <source>Price</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="3e0a0705299a25194c697ade404af8f2dbf8b199" datatype="html">
+        <source>Transaction fees</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="b427c1c910044fcf2cdd3e1b26a6e8777c51e701" datatype="html">
+        <source>Performance today</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="d50d60baad0b02edd2dde9e407e643e35a3778a9" datatype="html">
+        <source>Buy price</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="54f1b21ada9461e44265ba2603be4f2ceeda1a35" datatype="html">
+        <source>Current price</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="55d1c97e340e24eefbfae10e4904169c206dd509" datatype="html">
+        <source>All-time</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="fbf7ac0008332622d7380335be909c2d408303ac" datatype="html">
+        <source>Weekly</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="c22ba03540aa3217da059f45e7eab138b51a96e2" datatype="html">
+        <source>Groups</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="82848d457d67d644f5c52b0893501314750a94fc" datatype="html">
+        <source>Most traded</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="8d94a136d5e98d4c34f792e3d3bad8fbf1036135" datatype="html">
+        <source>Your favourites</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="efa0f907f64b3e5b00bf4375ab1a279edd5b75ca" datatype="html">
+        <source>Bid price</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="3b81aaa19b66e2c7f081a03625815db816552d65" datatype="html">
+        <source>Tradable amount</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="8e5a906747557fd674c6836cbf24df94ad27b3fe" datatype="html">
+        <source>Trade</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="3a9bdec9a8441e84139e4ab530a069afde147336" datatype="html">
+        <source>Ask price</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="1befce3c6f0c468b06ae5199116e5b096a35a3ef" datatype="html">
+        <source>Buy</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="fe708b572beec788b18edd1b5852d63c07dfaead" datatype="html">
+        <source>Sell</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="8aaf94f09bd303de1f38d5ba9064e04d5dee0834" datatype="html">
+        <source>Number of shares</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="c7529e5f85cef385ef60bf53f084cc7b73ea5cf9" datatype="html">
+        <source>Euros to be invested</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="179b8b8f87014277ca282c3f4d811b5b71dbe123" datatype="html">
+        <source>View city</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="65a06820e454f7e74ca482ae06d9021aa0592191" datatype="html">
+        <source>Your Group Rank</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="80fa90ce67552f3f8a824f756a94327e41d3fc49" datatype="html">
+        <source>Members</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="adbe886f7775ee3ad3fc3315c6248525a0732f00" datatype="html">
+        <source>Average performance</source>
+        <target/>
+      </trans-unit>
+      <trans-unit id="cd2b9cae07cf610e55f8fb0ccb8eae597cc6ac13" datatype="html">
+        <source>Number of trades</source>
+        <target/>
       </trans-unit>
     </body>
   </file>

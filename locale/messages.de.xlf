@@ -1,214 +1,214 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="en" datatype="plaintext" original="ng2.template">
+<?xml version='1.0' encoding='UTF-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="de">
     <body>
-      <trans-unit id="29a53d7ae725efea98041b8367ab79810b4e3cd2" datatype="html">
+      <trans-unit id="29a53d7ae725efea98041b8367ab79810b4e3cd2" datatype="html" approved="yes">
         <source>Welcome back!</source>
-        <target/>
+        <target state="translated">Willkommen zurück!</target>
       </trans-unit>
-      <trans-unit id="3eb49d60bd859eb2d9d3a6d380cdf4e0b8252333" datatype="html">
+      <trans-unit id="3eb49d60bd859eb2d9d3a6d380cdf4e0b8252333" datatype="html" approved="yes">
         <source>Remember me</source>
-        <target/>
+        <target state="translated">Angemeldet bleiben</target>
       </trans-unit>
-      <trans-unit id="f093d9574ab746b231504bd2cbb65f04bd7b00db" datatype="html">
+      <trans-unit id="f093d9574ab746b231504bd2cbb65f04bd7b00db" datatype="html" approved="yes">
         <source>Log in</source>
-        <target/>
+        <target state="translated">Anmelden</target>
       </trans-unit>
-      <trans-unit id="6255a8674662e55d6ccc3ad46cc1dd0dd6394d75" datatype="html">
+      <trans-unit id="6255a8674662e55d6ccc3ad46cc1dd0dd6394d75" datatype="html" approved="yes">
         <source>Forgot Password?</source>
-        <target/>
+        <target state="translated">Passwort vergessen?</target>
       </trans-unit>
-      <trans-unit id="7d6573fb998f3a1cf1356623b85850d9d10edaa9" datatype="html">
+      <trans-unit id="7d6573fb998f3a1cf1356623b85850d9d10edaa9" datatype="html" approved="yes">
         <source>Registration</source>
-        <target/>
+        <target state="translated">Registrierung</target>
       </trans-unit>
-      <trans-unit id="28629af803ab8b5f6e995b17d486e6a1527e2a96" datatype="html">
+      <trans-unit id="28629af803ab8b5f6e995b17d486e6a1527e2a96" datatype="html" approved="yes">
         <source>Sign Up</source>
-        <target/>
+        <target state="translated">Registrieren</target>
       </trans-unit>
-      <trans-unit id="6765b4c916060f6bc42d9bb69e80377dbcb5e4e9" datatype="html">
+      <trans-unit id="6765b4c916060f6bc42d9bb69e80377dbcb5e4e9" datatype="html" approved="yes">
         <source>Login</source>
-        <target/>
+        <target state="translated">Anmeldung</target>
       </trans-unit>
-      <trans-unit id="024886ca34a6f309e3e51c2ed849320592c3faaa" datatype="html">
+      <trans-unit id="024886ca34a6f309e3e51c2ed849320592c3faaa" datatype="html" approved="yes">
         <source>User name</source>
-        <target/>
+        <target state="translated">Benutzername</target>
       </trans-unit>
-      <trans-unit id="69b6ac577a19acc39fc0c22342092f327fff2529" datatype="html">
+      <trans-unit id="69b6ac577a19acc39fc0c22342092f327fff2529" datatype="html" approved="yes">
         <source>Email address</source>
-        <target/>
+        <target state="translated">E-Mail-Adresse</target>
       </trans-unit>
-      <trans-unit id="c32ef07f8803a223a83ed17024b38e8d82292407" datatype="html">
+      <trans-unit id="c32ef07f8803a223a83ed17024b38e8d82292407" datatype="html" approved="yes">
         <source>Password</source>
-        <target/>
+        <target state="translated">Passwort</target>
       </trans-unit>
-      <trans-unit id="d78d6fc5e90c093605d4e4f166bf074cdef1acc8" datatype="html">
+      <trans-unit id="d78d6fc5e90c093605d4e4f166bf074cdef1acc8" datatype="html" approved="yes">
         <source>Repeat password</source>
-        <target/>
+        <target state="translated">Passwort wiederholen</target>
       </trans-unit>
-      <trans-unit id="ac10a3d9b59575640797c1a8e6aea642cf5d5e77" datatype="html">
+      <trans-unit id="ac10a3d9b59575640797c1a8e6aea642cf5d5e77" datatype="html" approved="yes">
         <source>Continue</source>
-        <target/>
+        <target state="translated">Weiter</target>
       </trans-unit>
-      <trans-unit id="85a6391dd7a3d9583e9dd3fff581651e5ea99d2f" datatype="html">
+      <trans-unit id="85a6391dd7a3d9583e9dd3fff581651e5ea99d2f" datatype="html" approved="yes">
         <source>Given name</source>
-        <target/>
+        <target state="translated">Vorname</target>
       </trans-unit>
-      <trans-unit id="9e5ac183bc4cf80f01cde3ff96207b11464a4295" datatype="html">
+      <trans-unit id="9e5ac183bc4cf80f01cde3ff96207b11464a4295" datatype="html" approved="yes">
         <source>Surname</source>
-        <target/>
+        <target state="translated">Nachname</target>
       </trans-unit>
-      <trans-unit id="f60c6c571ed1e6266976ca261a2b2d0ebaa16c6e" datatype="html">
+      <trans-unit id="f60c6c571ed1e6266976ca261a2b2d0ebaa16c6e" datatype="html" approved="yes">
         <source>Class</source>
-        <target/>
+        <target state="translated">Klasse</target>
       </trans-unit>
-      <trans-unit id="c40c132843f349c3aa49730405de1d0ca733aef6" datatype="html">
+      <trans-unit id="c40c132843f349c3aa49730405de1d0ca733aef6" datatype="html" approved="yes">
         <source>Sign up</source>
-        <target/>
+        <target state="translated">Registrieren</target>
       </trans-unit>
-      <trans-unit id="f65253954b66e929a8b4d5ecaf61f9129f8cec64" datatype="html">
+      <trans-unit id="f65253954b66e929a8b4d5ecaf61f9129f8cec64" datatype="html" approved="yes">
         <source>Dashboard</source>
-        <target/>
+        <target state="translated">Übersicht</target>
       </trans-unit>
-      <trans-unit id="323af13292ecc714ab3848b9dff48f923893be32" datatype="html">
+      <trans-unit id="323af13292ecc714ab3848b9dff48f923893be32" datatype="html" approved="yes">
         <source>Portfolio</source>
-        <target/>
+        <target state="translated">Depot</target>
       </trans-unit>
-      <trans-unit id="8bbe5db3e351356b09093540ba6049fb1a4025f7" datatype="html">
+      <trans-unit id="8bbe5db3e351356b09093540ba6049fb1a4025f7" datatype="html" approved="yes">
         <source>Stocks</source>
-        <target/>
+        <target state="translated">Wertpapiere</target>
       </trans-unit>
-      <trans-unit id="49c5da085adc2bdeef21fe3d6739ac7a9403668a" datatype="html">
+      <trans-unit id="49c5da085adc2bdeef21fe3d6739ac7a9403668a" datatype="html" approved="yes">
         <source>Leaderboard</source>
-        <target/>
+        <target state="translated">Rangliste</target>
       </trans-unit>
-      <trans-unit id="b1d4e5b5d44f1d41f851ff8d87ce01992db8737f" datatype="html">
+      <trans-unit id="b1d4e5b5d44f1d41f851ff8d87ce01992db8737f" datatype="html" approved="yes">
         <source>My group</source>
-        <target/>
+        <target state="translated">Meine Gruppe</target>
       </trans-unit>
-      <trans-unit id="bb694b49d408265c91c62799c2b3a7e3151c824d" datatype="html">
+      <trans-unit id="bb694b49d408265c91c62799c2b3a7e3151c824d" datatype="html" approved="yes">
         <source>Logout</source>
-        <target/>
+        <target state="translated">Abmelden</target>
       </trans-unit>
-      <trans-unit id="2066faa7ad6d88bbf9f9a2abb3afe94cf5bcfadf" datatype="html">
+      <trans-unit id="2066faa7ad6d88bbf9f9a2abb3afe94cf5bcfadf" datatype="html" approved="yes">
         <source>Total value</source>
-        <target/>
+        <target state="translated">Gesamtvermögen</target>
       </trans-unit>
-      <trans-unit id="311828ec96f91f6f530219b07d5531a8aa507d64" datatype="html">
+      <trans-unit id="311828ec96f91f6f530219b07d5531a8aa507d64" datatype="html" approved="yes">
         <source>Cash</source>
-        <target/>
+        <target state="translated">Bargeld</target>
       </trans-unit>
-      <trans-unit id="7696601487c074d6e8f05b6f7bb1a61fd0240aaa" datatype="html">
+      <trans-unit id="7696601487c074d6e8f05b6f7bb1a61fd0240aaa" datatype="html" approved="yes">
         <source>Time left</source>
-        <target/>
+        <target state="translated">Restzeit</target>
       </trans-unit>
-      <trans-unit id="7acfeb6214be6d5b9c6ca7285d689dd1402ca446" datatype="html">
+      <trans-unit id="7acfeb6214be6d5b9c6ca7285d689dd1402ca446" datatype="html" approved="yes">
         <source>Positions</source>
-        <target/>
+        <target state="translated">Positionen</target>
       </trans-unit>
-      <trans-unit id="e6a27066251ca1e04c5be86ad758380856df2506" datatype="html">
+      <trans-unit id="e6a27066251ca1e04c5be86ad758380856df2506" datatype="html" approved="yes">
         <source>Pending</source>
-        <target/>
+        <target state="translated">Ausstehend</target>
       </trans-unit>
-      <trans-unit id="efac3af0b32e953279c25b6519cae256811e0fe8" datatype="html">
+      <trans-unit id="efac3af0b32e953279c25b6519cae256811e0fe8" datatype="html" approved="yes">
         <source>History</source>
-        <target/>
+        <target state="translated">Historie</target>
       </trans-unit>
-      <trans-unit id="dfc2fb58e2a04ed944a4bd80f0a2087775134068" datatype="html">
+      <trans-unit id="dfc2fb58e2a04ed944a4bd80f0a2087775134068" datatype="html" approved="yes">
         <source>Amount</source>
-        <target/>
+        <target state="translated">Anzahl</target>
       </trans-unit>
-      <trans-unit id="4d6ee53858628de558a18623894a03c8673bce9e" datatype="html">
+      <trans-unit id="4d6ee53858628de558a18623894a03c8673bce9e" datatype="html" approved="yes">
         <source>Price</source>
-        <target/>
+        <target state="translated">Preis</target>
       </trans-unit>
-      <trans-unit id="3e0a0705299a25194c697ade404af8f2dbf8b199" datatype="html">
+      <trans-unit id="3e0a0705299a25194c697ade404af8f2dbf8b199" datatype="html" approved="yes">
         <source>Transaction fees</source>
-        <target/>
+        <target state="translated">Transaktionskosten</target>
       </trans-unit>
-      <trans-unit id="b427c1c910044fcf2cdd3e1b26a6e8777c51e701" datatype="html">
+      <trans-unit id="b427c1c910044fcf2cdd3e1b26a6e8777c51e701" datatype="html" approved="yes">
         <source>Performance today</source>
-        <target/>
+        <target state="translated">Heutiger Gewinn</target>
       </trans-unit>
-      <trans-unit id="d50d60baad0b02edd2dde9e407e643e35a3778a9" datatype="html">
+      <trans-unit id="d50d60baad0b02edd2dde9e407e643e35a3778a9" datatype="html" approved="yes">
         <source>Buy price</source>
-        <target/>
+        <target state="translated">Kaufpreis</target>
       </trans-unit>
-      <trans-unit id="54f1b21ada9461e44265ba2603be4f2ceeda1a35" datatype="html">
+      <trans-unit id="54f1b21ada9461e44265ba2603be4f2ceeda1a35" datatype="html" approved="yes">
         <source>Current price</source>
-        <target/>
+        <target state="translated">Aktueller Preis</target>
       </trans-unit>
-      <trans-unit id="55d1c97e340e24eefbfae10e4904169c206dd509" datatype="html">
+      <trans-unit id="55d1c97e340e24eefbfae10e4904169c206dd509" datatype="html" approved="yes">
         <source>All-time</source>
-        <target/>
+        <target state="translated">Gesamt</target>
       </trans-unit>
-      <trans-unit id="fbf7ac0008332622d7380335be909c2d408303ac" datatype="html">
+      <trans-unit id="fbf7ac0008332622d7380335be909c2d408303ac" datatype="html" approved="yes">
         <source>Weekly</source>
-        <target/>
+        <target state="translated">Wöchentlich</target>
       </trans-unit>
-      <trans-unit id="c22ba03540aa3217da059f45e7eab138b51a96e2" datatype="html">
+      <trans-unit id="c22ba03540aa3217da059f45e7eab138b51a96e2" datatype="html" approved="yes">
         <source>Groups</source>
-        <target/>
+        <target state="translated">Gruppen</target>
       </trans-unit>
-      <trans-unit id="82848d457d67d644f5c52b0893501314750a94fc" datatype="html">
+      <trans-unit id="82848d457d67d644f5c52b0893501314750a94fc" datatype="html" approved="yes">
         <source>Most traded</source>
-        <target/>
+        <target state="translated">Meistgehandelt</target>
       </trans-unit>
-      <trans-unit id="8d94a136d5e98d4c34f792e3d3bad8fbf1036135" datatype="html">
+      <trans-unit id="8d94a136d5e98d4c34f792e3d3bad8fbf1036135" datatype="html" approved="yes">
         <source>Your favourites</source>
-        <target/>
+        <target state="translated">Deine Favoriten</target>
       </trans-unit>
-      <trans-unit id="efa0f907f64b3e5b00bf4375ab1a279edd5b75ca" datatype="html">
+      <trans-unit id="efa0f907f64b3e5b00bf4375ab1a279edd5b75ca" datatype="html" approved="yes">
         <source>Bid price</source>
-        <target/>
+        <target state="translated">Angebotspreis</target>
       </trans-unit>
-      <trans-unit id="3b81aaa19b66e2c7f081a03625815db816552d65" datatype="html">
+      <trans-unit id="3b81aaa19b66e2c7f081a03625815db816552d65" datatype="html" approved="yes">
         <source>Tradable amount</source>
-        <target/>
+        <target state="translated">Handelbare Menge</target>
       </trans-unit>
-      <trans-unit id="8e5a906747557fd674c6836cbf24df94ad27b3fe" datatype="html">
+      <trans-unit id="8e5a906747557fd674c6836cbf24df94ad27b3fe" datatype="html" approved="yes">
         <source>Trade</source>
-        <target/>
+        <target state="translated">Handeln</target>
       </trans-unit>
-      <trans-unit id="3a9bdec9a8441e84139e4ab530a069afde147336" datatype="html">
+      <trans-unit id="3a9bdec9a8441e84139e4ab530a069afde147336" datatype="html" approved="yes">
         <source>Ask price</source>
-        <target/>
+        <target state="translated">Briefkurs</target>
       </trans-unit>
-      <trans-unit id="1befce3c6f0c468b06ae5199116e5b096a35a3ef" datatype="html">
+      <trans-unit id="1befce3c6f0c468b06ae5199116e5b096a35a3ef" datatype="html" approved="yes">
         <source>Buy</source>
-        <target/>
+        <target state="translated">Kaufen</target>
       </trans-unit>
-      <trans-unit id="fe708b572beec788b18edd1b5852d63c07dfaead" datatype="html">
+      <trans-unit id="fe708b572beec788b18edd1b5852d63c07dfaead" datatype="html" approved="yes">
         <source>Sell</source>
-        <target/>
+        <target state="translated">Verkaufen</target>
       </trans-unit>
-      <trans-unit id="8aaf94f09bd303de1f38d5ba9064e04d5dee0834" datatype="html">
+      <trans-unit id="8aaf94f09bd303de1f38d5ba9064e04d5dee0834" datatype="html" approved="yes">
         <source>Number of shares</source>
-        <target/>
+        <target state="translated">Zu handelnde Menge</target>
       </trans-unit>
-      <trans-unit id="c7529e5f85cef385ef60bf53f084cc7b73ea5cf9" datatype="html">
+      <trans-unit id="c7529e5f85cef385ef60bf53f084cc7b73ea5cf9" datatype="html" approved="yes">
         <source>Euros to be invested</source>
-        <target/>
+        <target state="translated">Zu handelnder Wert</target>
       </trans-unit>
-      <trans-unit id="179b8b8f87014277ca282c3f4d811b5b71dbe123" datatype="html">
+      <trans-unit id="179b8b8f87014277ca282c3f4d811b5b71dbe123" datatype="html" approved="yes">
         <source>View city</source>
-        <target/>
+        <target state="translated">Stadt ansehen</target>
       </trans-unit>
-      <trans-unit id="65a06820e454f7e74ca482ae06d9021aa0592191" datatype="html">
+      <trans-unit id="65a06820e454f7e74ca482ae06d9021aa0592191" datatype="html" approved="yes">
         <source>Your Group Rank</source>
-        <target/>
+        <target state="translated">Dein Gruppenrang</target>
       </trans-unit>
-      <trans-unit id="80fa90ce67552f3f8a824f756a94327e41d3fc49" datatype="html">
+      <trans-unit id="80fa90ce67552f3f8a824f756a94327e41d3fc49" datatype="html" approved="yes">
         <source>Members</source>
-        <target/>
+        <target state="translated">Mitglieder</target>
       </trans-unit>
-      <trans-unit id="adbe886f7775ee3ad3fc3315c6248525a0732f00" datatype="html">
+      <trans-unit id="adbe886f7775ee3ad3fc3315c6248525a0732f00" datatype="html" approved="yes">
         <source>Average performance</source>
-        <target/>
+        <target state="translated">Durchschnittlicher Gewinn</target>
       </trans-unit>
-      <trans-unit id="cd2b9cae07cf610e55f8fb0ccb8eae597cc6ac13" datatype="html">
+      <trans-unit id="cd2b9cae07cf610e55f8fb0ccb8eae597cc6ac13" datatype="html" approved="yes">
         <source>Number of trades</source>
-        <target/>
+        <target state="translated">Handelsanzahl</target>
       </trans-unit>
     </body>
   </file>

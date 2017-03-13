@@ -89,4 +89,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       if (result) this.router.navigateByUrl('dashboard');
     })
   }
+
+  resetPassword() {
+    this.userService.resetPassword();
+  }
 }

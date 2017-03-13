@@ -7,6 +7,6 @@
   <button type="submit" [disabled]="!(username && password)" i18n>Log in</button>
 </form>
 <tradity-bottom-nav>
-  <a href="#" i18n>Forgot Password?</a><!--
+  <a role="button" (click)="resetPassword()" i18n>Forgot Password?</a><!--
   --><a [routerLink]="['/register']" i18n>Registration</a>
 </tradity-bottom-nav>

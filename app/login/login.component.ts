@@ -50,4 +50,7 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  resetPassword() {
+    this.userService.resetPassword();
+  }
 }

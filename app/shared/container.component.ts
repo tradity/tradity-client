@@ -1,12 +1,18 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   moduleId: module.id,
   selector: 'tradity-container',
   styleUrls: ['container.component.css'],
-  template: '<ng-content></ng-content>'
+  template: `
+    <tradity-container-control>{{ name }}</tradity-container-control>
+    <div class="container-content">
+      <ng-content></ng-content>
+    </div>
+  `
 })
-export class ContainerComponent {  
+export class ContainerComponent {
+  @Input() name: string;
   @HostBinding('class.active') isActive = false;
 
   constructor() { }

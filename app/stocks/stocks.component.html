@@ -1,6 +1,5 @@
 <tradity-stock-search></tradity-stock-search>
-<tradity-container>
-  <tradity-container-control i18n>Most traded</tradity-container-control>
+<tradity-container name="Most traded" i18n-name>
   <tradity-li *ngFor="let paper of popularStocks | async">
     <img src="http://placehold.it/50x50">
     <tradity-li-header>
@@ -16,6 +15,4 @@
     </tradity-li-action-list>
   </tradity-li>
 </tradity-container>
-<tradity-container>
-  <tradity-container-control i18n>Your favourites</tradity-container-control>
-</tradity-container>
+<tradity-container name="Your favourites" i18n-name></tradity-container>

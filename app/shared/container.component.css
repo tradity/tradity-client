@@ -1,3 +1,7 @@
+:host.active tradity-container-control {
+  margin-bottom: 10px;
+}
+
 div.container-content {
   display: none;
 }

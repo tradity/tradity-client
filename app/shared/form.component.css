@@ -27,12 +27,6 @@
     -webkit-text-fill-color: #170804;
 }
 
-:host >>> select:placeholder-shown { font-weight: 100; }
-:host >>> select::placeholder { font-weight: 100; }
-:host >>> select::-moz-placeholder { font-weight: 100; }
-:host >>> select:-ms-input-placeholder { font-weight: 100; }
-:host >>> select::-webkit-input-placeholder { font-weight: 100; }
-
 :host >>> input[type=checkbox] {
   position: absolute;
   left: -10000px;

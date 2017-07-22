@@ -2,5 +2,12 @@
 {
     "editor.tabSize": 2,
     "editor.insertSpaces": true,
-    "typescript.tsdk": "node_modules/typescript/lib"
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/apidoc": true,
+        "**/dist": true,
+        "**/aot": true,
+        "**/tmp": true
+    }
 }

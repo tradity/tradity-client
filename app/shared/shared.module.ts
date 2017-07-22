@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { FormComponent } from './form.component';
+import { ButtonComponent } from './button.component';
 import { SubnavComponent } from './subnav.component';
 import { BottomNavComponent } from './bottom-nav.component';
 import { ContainerComponent } from './container.component';
@@ -17,6 +18,7 @@ import { ValueListItemComponent } from './value-list-item.component';
   imports: [],
   exports: [
     FormComponent,
+    ButtonComponent,
     SubnavComponent,
     BottomNavComponent,
     ContainerComponent,
@@ -31,6 +33,7 @@ import { ValueListItemComponent } from './value-list-item.component';
   ],
   declarations: [
     FormComponent,
+    ButtonComponent,
     SubnavComponent,
     BottomNavComponent,
     ContainerComponent,

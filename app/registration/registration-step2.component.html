@@ -14,5 +14,5 @@
     </option>
   </select>
   <input type="text" placeholder="Class" i18n-placeholder name="class" [(ngModel)]="parent.class" *ngIf="parent.city && parent.school" />
-  <button type="submit" [disabled]="!(parent.givenName && parent.surname)" i18n>Sign up</button>
+  <button tradity-button type="submit" [disabled]="!(parent.givenName && parent.surname)" i18n>Sign up</button>
 </form>

@@ -13,15 +13,15 @@ import { GroupService } from '../group.service';
   styleUrls: ['registration.component.css']
 })
 export class RegistrationComponent implements OnInit, OnDestroy {
-  username: string;
-  email: string;
-  password: string;
-  passwordCheck: string;
-  givenName: string;
-  surname: string;
-  city: string;
-  school: string;
-  class: string;
+  username = '';
+  email = '';
+  password = '';
+  passwordCheck = '';
+  givenName = '';
+  surname = '';
+  city = '';
+  school = '';
+  class = '';
 
   private groupListSubscription: Subscription;
   groupList: any;

@@ -20,7 +20,6 @@ import { ValueListItemComponent } from './value-list-item.component';
     SubnavComponent,
     BottomNavComponent,
     ContainerComponent,
-    ContainerControlComponent,
     ListItemComponent,
     ListItemHeaderComponent,
     ListItemValueListComponent,

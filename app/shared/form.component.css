@@ -3,19 +3,11 @@
   flex-wrap: wrap;
 }
 
-:host >>> input,
 :host >>> select {
   margin-bottom: 15px;
   border: 1px solid #D8D8D8;
   border-radius: 3px;
   outline: none;
-}
-
-:host >>> input[type=text],
-:host >>> input[type=email],
-:host >>> input[type=password],
-:host >>> input[type=number],
-:host >>> select {
   width: 100%;
   padding: 20px;
   font-size: 12px;
@@ -25,34 +17,21 @@
   background-color: white;
 }
 
-:host >>> input[type=text]:focus,
-:host >>> input[type=text]:hover,
-:host >>> input[type=email]:focus,
-:host >>> input[type=email]:hover,
-:host >>> input[type=password]:focus,
-:host >>> input[type=password]:hover,
-:host >>> input[type=number]:focus,
-:host >>> input[type=number]:hover {
-  border-color: #F1592A;
-}
-
 /*
   Hack needed to get rid of Chrome's ugly form autofill colour,
   which for some reason is an outstanding bug since 2008 -.-
   https://bugs.chromium.org/p/chromium/issues/detail?id=46543
 */
-:host >>> input:-webkit-autofill,
-:host >>> textarea:-webkit-autofill,
 :host >>> select:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
     -webkit-text-fill-color: #170804;
 }
 
-:host >>> :placeholder-shown { font-weight: 100; }
-:host >>> ::placeholder { font-weight: 100; }
-:host >>> ::-moz-placeholder { font-weight: 100; }
-:host >>> :-ms-input-placeholder { font-weight: 100; }
-:host >>> ::-webkit-input-placeholder { font-weight: 100; }
+:host >>> select:placeholder-shown { font-weight: 100; }
+:host >>> select::placeholder { font-weight: 100; }
+:host >>> select::-moz-placeholder { font-weight: 100; }
+:host >>> select:-ms-input-placeholder { font-weight: 100; }
+:host >>> select::-webkit-input-placeholder { font-weight: 100; }
 
 :host >>> input[type=checkbox] {
   position: absolute;

@@ -1,6 +1,6 @@
 <form (ngSubmit)="parent.register2()" tradity-form>
-  <input type="text" placeholder="Given name" i18n-placeholder name="givenName" [(ngModel)]="parent.givenName" autofocus />
-  <input type="text" placeholder="Surname" i18n-placeholder name="surname" [(ngModel)]="parent.surname" />
+  <input tradity-input type="text" placeholder="Given name" i18n-placeholder name="givenName" [(ngModel)]="parent.givenName" autofocus />
+  <input tradity-input type="text" placeholder="Surname" i18n-placeholder name="surname" [(ngModel)]="parent.surname" />
   <select placeholder="City" name="city" [(ngModel)]="parent.city" (ngModelChange)="parent.loadSubGroups()">
     <option [value]="">
     <option *ngFor="let city of parent.groupList" [value]="city.path">
@@ -13,6 +13,6 @@
       {{school.name}}
     </option>
   </select>
-  <input type="text" placeholder="Class" i18n-placeholder name="class" [(ngModel)]="parent.class" *ngIf="parent.city && parent.school" />
+  <input tradity-input type="text" placeholder="Class" i18n-placeholder name="class" [(ngModel)]="parent.class" *ngIf="parent.city && parent.school" />
   <button tradity-button type="submit" [disabled]="!(parent.givenName && parent.surname)" i18n>Sign up</button>
 </form>

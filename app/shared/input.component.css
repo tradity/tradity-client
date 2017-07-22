@@ -1,0 +1,31 @@
+:host {
+  margin-bottom: 15px;
+  border: 1px solid #D8D8D8;
+  border-radius: 3px;
+  outline: none;
+  width: 100%;
+  padding: 20px;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 2px;
+  color: #170804;
+  background-color: white;
+  /*
+    Hack needed to get rid of Chrome's ugly form autofill colour,
+    which for some reason is an outstanding bug since 2008 -.-
+    https://bugs.chromium.org/p/chromium/issues/detail?id=46543
+  */
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  -webkit-text-fill-color: #170804;
+}
+
+:host:focus,
+:host:hover {
+  border-color: #F1592A;
+}
+
+:host:placeholder-shown { font-weight: 100; }
+:host::placeholder { font-weight: 100; }
+:host::-moz-placeholder { font-weight: 100; }
+:host:-ms-input-placeholder { font-weight: 100; }
+:host::-webkit-input-placeholder { font-weight: 100; }

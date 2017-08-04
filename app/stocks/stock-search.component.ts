@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { StocksService } from '../stocks.service';
+import { StocksService } from '../core/stocks.service';
 
 @Component({
   moduleId: module.id,

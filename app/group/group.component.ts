@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 
-import { GroupService } from '../group.service';
+import { GroupService } from '../core/group.service';
 import { GameComponent } from '../game/game.component';
 
 @Component({

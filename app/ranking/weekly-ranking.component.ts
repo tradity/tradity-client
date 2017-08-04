@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { RankingService } from '../ranking.service';
+import { RankingService } from '../core/ranking.service';
 import { GameComponent } from '../game/game.component';
 
 @Component({

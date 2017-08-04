@@ -12,14 +12,7 @@ import 'rxjs/add/observable/throw';
 import { routing, appRoutingProviders } from './app.routing';
 import { AppComponent } from './app.component';
 
-import { ApiService } from './api.service';
-import { StocksService } from './stocks.service';
-import { UserService } from './user.service';
-import { RankingService } from './ranking.service';
-import { FeedService } from './feed.service';
-import { GroupService } from './group.service';
-import { AdminService } from './admin.service';
-
+import { CoreModule } from './core/core.module';
 import { LoginModule } from './login/login.module';
 import { RegistrationModule } from './registration/registration.module';
 import { GameModule } from './game/game.module';
@@ -34,21 +27,13 @@ import { AdminModule } from './admin/admin.module';
       FormsModule,
       HttpModule,
       routing,
+      CoreModule,
       LoginModule,
       RegistrationModule,
       GameModule,
       AdminModule
     ],
-    providers: [
-      appRoutingProviders,
-      ApiService,
-      StocksService,
-      UserService,
-      RankingService,
-      FeedService,
-      GroupService,
-      AdminService
-    ],
-    bootstrap: [AppComponent],
+    providers: [appRoutingProviders],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

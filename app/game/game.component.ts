@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
-import { UserService } from '../user.service';
+import { UserService } from '../core/user.service';
 
 @Component({
   moduleId: module.id,

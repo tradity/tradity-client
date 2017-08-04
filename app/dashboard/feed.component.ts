@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { FeedService } from '../feed.service';
+import { FeedService } from '../core/feed.service';
 
 @Component({
   moduleId: module.id,

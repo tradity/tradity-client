@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
-import { UserService } from '../user.service';
-import { GroupService } from '../group.service';
+import { UserService } from '../core/user.service';
+import { GroupService } from '../core/group.service';
 
 @Component({
   moduleId: module.id,

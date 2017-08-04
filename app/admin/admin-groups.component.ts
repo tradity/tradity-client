@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { AdminService } from '../admin.service';
-import { GroupService } from '../group.service';
+import { AdminService } from '../core/admin.service';
+import { GroupService } from '../core/group.service';
 
 @Component({
   moduleId: module.id,

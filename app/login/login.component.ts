@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
+import { Subscription } from 'rxjs/Subscription';
 import { UserService } from '../user.service';
 
 @Component({
@@ -10,6 +10,8 @@ import { UserService } from '../user.service';
   styleUrls: ['login.component.css']
 })
 export class LoginComponent implements OnInit {
+  private ownUserSubscription: Subscription;
+  ownUser: any = {};
   username: string;
   password: string;
   stayloggedin: boolean;
@@ -41,6 +43,14 @@ export class LoginComponent implements OnInit {
         );
       }
     })
+
+    this.ownUserSubscription = this.userService.ownUser.subscribe(res => {
+      //Check if there is a logged in user -> if yes, go to dashboard
+      if (res instanceof(Array) == false) {
+      this.router.navigateByUrl('dashboard')
+      console.log("Angemeldet!")
+    } 
+    });
   }
   
   login() {

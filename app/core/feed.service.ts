@@ -10,7 +10,6 @@ import { FeedEvent } from '../feed/feedEvent.model';
 
 @Injectable()
 export class FeedService {
-  private _events: BehaviorSubject<any>;
   private ownUserSubscription: Subscription;
   private ownUser: any;
 
@@ -19,13 +18,7 @@ export class FeedService {
     private userService: UserService,
     private store: Store<any>
   ) {
-    this._events = new BehaviorSubject([]);
     this.ownUserSubscription = this.userService.ownUser.subscribe(res => this.ownUser = res);
-  }
-
-  get events() {
-    this.loadEvents();
-    return this._events.asObservable();
   }
 
   loadEvents(): void {

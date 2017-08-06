@@ -11,7 +11,7 @@ import { FeedComponent } from './feed.component';
   imports: [
     CommonModule,
     SharedModule,
-    StoreModule.forFeature('feed', { feed: feedReducer })
+    StoreModule.forFeature('feed', feedReducer)
   ],
   exports: [FeedComponent],
   declarations: [FeedComponent],

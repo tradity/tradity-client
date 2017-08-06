@@ -15,7 +15,4 @@ export function feedReducer(state: [FeedEvent] = <[FeedEvent]>[], action: action
   }
 }
 
-export const getFeedState = createSelector(
-  createFeatureSelector<{ feed: [FeedEvent] }>('feed'),
-  state => state.feed
-);
+export const getFeedEvents = createFeatureSelector<[FeedEvent]>('feed');

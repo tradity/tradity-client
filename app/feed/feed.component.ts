@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import { FeedService } from '../core/feed.service';
-import { getFeedState } from './feed.reducer';
+import { getFeedEvents } from './feed.reducer';
 
 @Component({
   moduleId: module.id,
@@ -17,7 +17,7 @@ export class FeedComponent implements OnInit {
   constructor(private store: Store<any>, private feedService: FeedService) { }
 
   ngOnInit() {
-    this.events = this.store.select(getFeedState);
+    this.events = this.store.select(getFeedEvents);
     this.feedService.loadEvents();
   }
 }

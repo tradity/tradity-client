@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 import { FeedService } from '../core/feed.service';
+import { getFeedState } from './feed.reducer';
 
 @Component({
   moduleId: module.id,
@@ -12,9 +14,10 @@ import { FeedService } from '../core/feed.service';
 export class FeedComponent implements OnInit {
   events: Observable<any>;
 
-  constructor(private feedService: FeedService) { }
+  constructor(private store: Store<any>, private feedService: FeedService) { }
 
   ngOnInit() {
-    this.events = this.feedService.events;
+    this.events = this.store.select(getFeedState);
+    this.feedService.loadEvents();
   }
 }

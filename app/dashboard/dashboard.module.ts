@@ -2,19 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedModule } from '../shared/shared.module';
+import { FeedModule } from '../feed/feed.module';
 
 import { DashboardComponent }   from './dashboard.component';
-import { FeedComponent } from './feed.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    FeedModule
   ],
   exports: [],
   declarations: [
-    DashboardComponent,
-    FeedComponent
+    DashboardComponent
   ],
   providers: [],
 })

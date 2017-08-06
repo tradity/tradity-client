@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subscription } from 'rxjs/Subscription';
+import { Store } from '@ngrx/store';
 
 import { ApiService } from './api.service';
 import { UserService } from './user.service';
+import * as feedActions from '../feed/feed.actions';
+import { FeedEvent } from '../feed/feedEvent.model';
 
 @Injectable()
 export class FeedService {
@@ -11,7 +14,11 @@ export class FeedService {
   private ownUserSubscription: Subscription;
   private ownUser: any;
 
-  constructor(private apiService: ApiService, private userService: UserService) {
+  constructor(
+    private apiService: ApiService,
+    private userService: UserService,
+    private store: Store<any>
+  ) {
     this._events = new BehaviorSubject([]);
     this.ownUserSubscription = this.userService.ownUser.subscribe(res => this.ownUser = res);
   }
@@ -26,7 +33,7 @@ export class FeedService {
     this.apiService.get('/events?since=1459168140')
     .map(res => res.json().data)
     .subscribe(res => {
-      let events = [];
+      let events = <[FeedEvent]>[];
       for (let event of res) {
         let type = '';
         if (event.type === 'trade') {
@@ -47,7 +54,7 @@ export class FeedService {
           })
         }
       }
-      this._events.next(events);
+      this.store.dispatch(new feedActions.ReceiveEvents(events));
     });
   }
 }

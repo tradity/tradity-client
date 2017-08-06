@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
 
 import { ApiService } from './api.service';
 import { StocksService } from './stocks.service';

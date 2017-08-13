@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 
 import { StocksService } from '../core/stocks.service';
 import { GameComponent } from '../game/game.component';
+import * as stockActions from './stocks.actions';
+import { getSelectedStock } from './stocks.reducer';
 
 @Component({
   moduleId: module.id,
@@ -16,12 +18,14 @@ export class StockDetailComponent implements OnInit, OnDestroy {
   private stockSubscription: Subscription;
   stock: any = {};
 
-  constructor(private route: ActivatedRoute, private stocksService: StocksService, private gameComponent: GameComponent) { }
+  constructor(private route: ActivatedRoute, private store: Store<any>, private stocksService: StocksService, private gameComponent: GameComponent) { }
 
   ngOnInit() {
     this.gameComponent.heading2 = 'Stock details';
     this.stockSubscription = this.route.params
-      .switchMap((params: Params) => this.stocksService.stock(params['isin']))
+      .do((params: Params) => this.store.dispatch(new stockActions.SelectStock(params['isin'])))
+      .do((params: Params) => this.stocksService.loadStock(params['isin']))
+      .switchMap((params: Params) => this.store.select(getSelectedStock))
       .subscribe(res => {
         this.stock = res;
         this.gameComponent.heading1 = res.name;

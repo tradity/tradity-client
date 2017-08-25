@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
+import {ApiService} from '../api.service'
 import { UserService } from '../user.service';
 
 @Component({
@@ -14,11 +14,22 @@ export class LoginComponent implements OnInit {
   password: string;
   stayloggedin: boolean;
   
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { 
+
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute,  private apiService: ApiService) { 
     this.stayloggedin = false;
   }
 
   ngOnInit() {
+    
+    //check if logged in by accessing the authToken
+    let authToken = localStorage.getItem('authorizationToken'); 
+    //if logged in
+    if (authToken != null) {
+      // go to dashboard
+      this.router.navigateByUrl('dashboard');
+    } 
+    
+
     this.route.params.subscribe((params: Params) => {
       if (params['emailVerifCode'] && params['uid']) {
         this.userService.verifyEmail(params['emailVerifCode'], Number(params['uid'])).

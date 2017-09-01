@@ -17,7 +17,7 @@ const initialState: State = {
   searchResults: []
 }
 
-export function feedReducer(state: State = initialState, action: actions.All): State {
+export function stocksReducer(state: State = initialState, action: actions.All): State {
   switch (action.type) {
     case actions.RECEIVE_STOCK: {
       return Object.assign(

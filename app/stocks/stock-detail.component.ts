@@ -27,6 +27,7 @@ export class StockDetailComponent implements OnInit, OnDestroy {
       .do((params: Params) => this.stocksService.loadStock(params['isin']))
       .switchMap((params: Params) => this.store.select(getSelectedStock))
       .subscribe(res => {
+        console.log(res);
         this.stock = res;
         this.gameComponent.heading1 = res.name;
       });

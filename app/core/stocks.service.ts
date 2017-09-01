@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 import { ApiService } from './api.service';
+import * as stocksActions from '../stocks/stocks.actions';
 
 @Injectable()
 export class StocksService {
@@ -13,7 +15,7 @@ export class StocksService {
   private _popularStocks: BehaviorSubject<any>;
   private _stocks: Array<BehaviorSubject<any>>;
 
-  constructor(private apiService: ApiService) { 
+  constructor(private apiService: ApiService, private store: Store<any>) { 
     this._positions = new BehaviorSubject([]);
     this._history = new BehaviorSubject([]);
     this._orders = new BehaviorSubject([]);
@@ -74,11 +76,7 @@ export class StocksService {
   loadStock(isin: string): void {
     this.apiService.get('/stocks/search?name=' + isin)
     .map(res => res.json().data[0])
-    .subscribe(res => {
-      let id = res.stocktextid;
-      if (!this._stocks[id]) this._stocks[id] = new BehaviorSubject([]);
-      this._stocks[id].next(res);
-    });
+    .subscribe(res => this.store.dispatch(new stocksActions.ReceiveStock(res)));
   }
 
   trade(isin: string, amount: number): Observable<any> {

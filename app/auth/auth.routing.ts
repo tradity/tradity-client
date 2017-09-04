@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login.component';
 
-const loginRoutes: Routes = [
+const authRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent
@@ -14,4 +14,4 @@ const loginRoutes: Routes = [
   }
 ]
 
-export const routing: ModuleWithProviders = RouterModule.forChild(loginRoutes);
+export const routing: ModuleWithProviders = RouterModule.forChild(authRoutes);

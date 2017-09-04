@@ -17,7 +17,7 @@ import { routing, appRoutingProviders } from './app.routing';
 import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
-import { LoginModule } from './login/login.module';
+import { AuthModule } from './auth/auth.module';
 import { RegistrationModule } from './registration/registration.module';
 import { GameModule } from './game/game.module';
 import { AdminModule } from './admin/admin.module';
@@ -34,7 +34,7 @@ import { AdminModule } from './admin/admin.module';
       StoreModule.forRoot({}),
       EffectsModule.forRoot([]),
       CoreModule,
-      LoginModule,
+      AuthModule,
       RegistrationModule,
       GameModule,
       AdminModule

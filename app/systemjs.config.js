@@ -15,6 +15,7 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       '@ngrx/core': 'npm:@ngrx/core/bundles/core.umd.js',
       '@ngrx/store': 'npm:@ngrx/store/bundles/store.umd.js',
+      '@ngrx/effects': 'npm:@ngrx/effects/bundles/effects.umd.js',
       'rxjs': 'npm:rxjs'
     },
     packages: {

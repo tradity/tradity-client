@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 import { UserService } from '../core/user.service';
+import * as authActions from './auth.actions';
 
 @Component({
   moduleId: module.id,
@@ -9,14 +11,8 @@ import { UserService } from '../core/user.service';
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.css']
 })
-export class LoginComponent implements OnInit {
-  username: string;
-  password: string;
-  stayloggedin: boolean;
-  
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { 
-    this.stayloggedin = false;
-  }
+export class LoginComponent implements OnInit {  
+  constructor(private userService: UserService, private store: Store<any>, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -44,10 +40,7 @@ export class LoginComponent implements OnInit {
   }
   
   login() {
-    this.userService.login(this.username, this.password, this.stayloggedin).subscribe(
-      res => this.router.navigateByUrl('dashboard'),
-      err => alert('Wrong username or password')
-    );
+    this.store.dispatch(new authActions.Login());
   }
 
   resetPassword() {

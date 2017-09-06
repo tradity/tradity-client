@@ -5,14 +5,14 @@
     <a [routerLink]="['/stocks']"><i class="material-icons">search</i></a>
     <div [class.menu-open]="isMenuOpen">
     <img src="https://placehold.it/81x81">
-    <h2>{{ownUser.name}}</h2>
-    <p>{{ownUser.email}}</p>
+    <h2>{{user.name}}</h2>
+    <p>{{user.email}}</p>
     <ul>
       <li><a [routerLink]="['/dashboard']" routerLinkActive = "active" i18n>Dashboard</a></li>
       <li><a [routerLink]="['/portfolio']" routerLinkActive = "active" i18n>Portfolio</a></li>
       <li><a [routerLink]="['/stocks']" routerLinkActive = "active" i18n>Stocks</a></li>
       <li><a [routerLink]="['/ranking']" routerLinkActive = "active" i18n>Leaderboard</a></li>
-      <li *ngIf="ownUser.dschoolid"><a [routerLink]="['/group/' + ownUser.dschoolid]" routerLinkActive = "active" i18n>My group</a></li>
+      <li *ngIf="user.dschoolid"><a [routerLink]="['/group/' + user.dschoolid]" routerLinkActive = "active" i18n>My group</a></li>
       <!--<li><a [routerLink]="['/education']" routerLinkActive = "active" i18n>Education</a></li>-->
       <li><a (click)="logout()" routerLinkActive = "active" i18n>Logout</a></li> 
     </ul>

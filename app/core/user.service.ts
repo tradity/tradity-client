@@ -7,22 +7,7 @@ import { ApiService } from './api.service';
 
 @Injectable()
 export class UserService {
-  private _ownUser: BehaviorSubject<any>;
-
-  constructor(private apiService: ApiService) {
-    this._ownUser = new BehaviorSubject([]);
-  }
-
-  get ownUser() {
-    this.loadOwnUser();
-    return this._ownUser.asObservable();
-  }
-  
-  loadOwnUser() {
-    this.apiService.get('/user/$self?nohistory=true')
-    .map(res => res.json())
-    .subscribe(res => this._ownUser.next(res.data));
-  }
+  constructor(private apiService: ApiService) { }
 
   register(data: Object) {
     return this.apiService.post(

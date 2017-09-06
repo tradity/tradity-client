@@ -1,4 +1,5 @@
 export interface User {
+  dschoolid: number;
   email: string;
   email_verif: boolean;
   freemoney: number;

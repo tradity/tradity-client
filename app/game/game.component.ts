@@ -3,8 +3,9 @@ import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 
-import { UserService } from '../core/user.service';
 import * as authActions from '../auth/auth.actions';
+import { getUser } from '../auth/auth.reducer';
+import { User } from '../auth/user.model';
 
 @Component({
   moduleId: module.id,
@@ -14,15 +15,15 @@ import * as authActions from '../auth/auth.actions';
 })
 export class GameComponent implements OnInit, OnDestroy {
   isMenuOpen = false;
-  private ownUserSubscription: Subscription;
-  ownUser: any = {};
+  private userSub: Subscription;
+  user: User;
   heading1: string = '';
   heading2: string = '';
   
-  constructor(private userService: UserService, private router: Router, private store: Store<any>) { }
+  constructor(private router: Router, private store: Store<any>) { }
 
   ngOnInit() {
-    this.ownUserSubscription = this.userService.ownUser.subscribe(res => this.ownUser = res);
+    this.userSub = this.store.select(getUser).subscribe(user => this.user = user);
     this.router.events.subscribe(val => {
     if (NavigationStart) this.isMenuOpen = false;
     else this.isMenuOpen = true;
@@ -30,7 +31,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.ownUserSubscription.unsubscribe();
+    this.userSub.unsubscribe();
   }
   
   logout() {

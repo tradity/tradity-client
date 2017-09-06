@@ -19,7 +19,15 @@ export interface State {
 }
 
 export const initialState: State = {
-  user: null,
+  user: {
+    dschoolid: null,
+    email: null,
+    email_verif: null,
+    freemoney: null,
+    name: null,
+    profilepic: null,
+    uid: null
+  },
   uid: null,
   authKey: null,
   loggingIn: false,

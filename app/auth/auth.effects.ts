@@ -28,10 +28,20 @@ export class AuthEffects {
       })
     );
 
-  @Effect({ dispatch: false })
+  @Effect()
+  loadUser = this.actions
+    .ofType(authActions.LOAD_USER)
+    .switchMap((action) => this.apiService
+      .get('/user/$self?nohistory=true')
+      .map(res => res.json())
+      .map(res => new authActions.ReceiveUser(res.data))
+    )
+  
+  @Effect()
   loginSuccess = this.actions
     .ofType(authActions.LOGIN_SUCCESS)
-    .do(() => this.router.navigateByUrl('dashboard'));
+    .do(() => this.router.navigateByUrl('dashboard'))
+    .map(() => new authActions.LoadUser());
   
   @Effect({ dispatch: false })
   loginFailed = this.actions

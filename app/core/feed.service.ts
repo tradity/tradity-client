@@ -7,18 +7,20 @@ import { ApiService } from './api.service';
 import { UserService } from './user.service';
 import * as feedActions from '../feed/feed.actions';
 import { FeedEvent } from '../feed/feedEvent.model';
+import { getUser } from '../auth/auth.reducer';
+import { User } from '../auth/user.model';
 
 @Injectable()
 export class FeedService {
-  private ownUserSubscription: Subscription;
-  private ownUser: any;
+  private userSub: Subscription;
+  private user: User;
 
   constructor(
     private apiService: ApiService,
     private userService: UserService,
     private store: Store<any>
   ) {
-    this.ownUserSubscription = this.userService.ownUser.subscribe(res => this.ownUser = res);
+    this.userSub = this.store.select(getUser).subscribe(user => this.user = user);
   }
 
   loadEvents(): void {
@@ -32,7 +34,7 @@ export class FeedService {
         if (event.type === 'trade') {
           if (event.amount < 0) type = 'trade-sell'
           else type = 'trade-buy'
-          if (event.srcuser === this.ownUser.uid) {
+          if (event.srcuser === this.user.uid) {
             type += '-self';
           }
           events.push({

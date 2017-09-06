@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+import { Store } from '@ngrx/store';
 
-import { UserService } from '../core/user.service';
+import { getUser } from '../auth/auth.reducer';
+import { User } from '../auth/user.model';
 import { GameComponent } from '../game/game.component';
 
 @Component({
@@ -11,18 +13,19 @@ import { GameComponent } from '../game/game.component';
   styleUrls: ['dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  private ownUserSubscription: Subscription;
-  ownUser: any = {};
+  private userSub: Subscription;
+  user: User;
 
-  constructor(private userService: UserService, private gameComponent: GameComponent) { }
+  constructor(private store: Store<any>, private gameComponent: GameComponent) {
+    this.userSub = this.store.select(getUser).subscribe(user => this.user = user);
+  }
 
   ngOnInit() {
     this.gameComponent.heading1 = 'Dashboard';
     this.gameComponent.heading2 = '';
-    this.ownUserSubscription = this.userService.ownUser.subscribe(res => this.ownUser = res);
   }
 
   ngOnDestroy() {
-    this.ownUserSubscription.unsubscribe();
+    this.userSub.unsubscribe();
   }
 }

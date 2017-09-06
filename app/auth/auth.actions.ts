@@ -3,6 +3,7 @@ import { Action } from '@ngrx/store';
 import { User } from './user.model';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
+export const LOAD_USER = 'LOAD_USER';
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
@@ -15,6 +16,10 @@ export const UPDATE_LOGIN_FORM = 'UPDATE_LOGIN_FORM';
 export class ReceiveUser implements Action {
   readonly type = RECEIVE_USER;
   constructor(public payload: User) {}
+}
+
+export class LoadUser implements Action {
+  readonly type = LOAD_USER;
 }
 
 export class Login implements Action {

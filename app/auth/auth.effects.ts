@@ -37,6 +37,11 @@ export class AuthEffects {
   loginFailed = this.actions
     .ofType(authActions.LOGIN_FAILED)
     .do(() => alert('Wrong username or password'));
+  
+  @Effect({ dispatch: false })
+  logout = this.actions
+    .ofType(authActions.LOGOUT)
+    .do(() => this.router.navigateByUrl('login'));
 
   constructor(
     private actions: Actions,

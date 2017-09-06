@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { Store } from '@ngrx/store';
 
 import { UserService } from '../core/user.service';
+import * as authActions from '../auth/auth.actions';
 
 @Component({
   moduleId: module.id,
@@ -17,7 +19,7 @@ export class GameComponent implements OnInit, OnDestroy {
   heading1: string = '';
   heading2: string = '';
   
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private store: Store<any>) { }
 
   ngOnInit() {
     this.ownUserSubscription = this.userService.ownUser.subscribe(res => this.ownUser = res);
@@ -32,8 +34,7 @@ export class GameComponent implements OnInit, OnDestroy {
   }
   
   logout() {
-    this.userService.logout();
-    this.router.navigateByUrl('login');
+    this.store.dispatch(new authActions.Logout());
   }
 
   toggleMenu() {

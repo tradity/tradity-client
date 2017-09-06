@@ -31,10 +31,6 @@ export class UserService {
       return false;
     });
   }
-  
-  logout() {
-    this.apiService.delAuthToken();
-  }
 
   get ownUser() {
     this.loadOwnUser();

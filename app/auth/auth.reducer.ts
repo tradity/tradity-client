@@ -59,7 +59,14 @@ export function authReducer(state: State = initialState, action: actions.All): S
     }
 
     case actions.UPDATE_LOGIN_FORM: {
-      return Object.assign({}, state, { loginForm: action.payload });
+      if (!state.loginForm.hasOwnProperty(action.payload.key)) return state;
+      return {
+        ...state,
+        loginForm: {
+          ...state.loginForm,
+          [action.payload.key]: action.payload.value
+        }
+      };
     }
 
     default: {

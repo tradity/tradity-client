@@ -50,6 +50,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.store.dispatch(new authActions.Login());
   }
 
+  updateForm(key: string, value: string | boolean) {
+    this.store.dispatch(new authActions.UpdateLoginForm({ key, value }));
+  }
+
   resetPassword() {
     this.userService.resetPassword();
   }

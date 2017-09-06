@@ -49,7 +49,7 @@ export class Logout implements Action {
 
 export class UpdateLoginForm implements Action {
   readonly type = UPDATE_LOGIN_FORM;
-  constructor(public payload: { username: string, password: string, stayLoggedIn: boolean }) {}
+  constructor(public payload: { key: string, value: string | boolean }) {}
 }
 
 export type All

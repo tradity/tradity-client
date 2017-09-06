@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs/Subscription'
 
 import { UserService } from '../core/user.service';
 import * as authActions from './auth.actions';
+import { LoginFormState, getLoginForm } from './auth.reducer';
 
 @Component({
   moduleId: module.id,
@@ -11,8 +13,13 @@ import * as authActions from './auth.actions';
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.css']
 })
-export class LoginComponent implements OnInit {  
-  constructor(private userService: UserService, private store: Store<any>, private router: Router, private route: ActivatedRoute) { }
+export class LoginComponent implements OnInit, OnDestroy {
+  formValues: LoginFormState;
+  formValuesSub: Subscription;
+
+  constructor(private userService: UserService, private store: Store<any>, private router: Router, private route: ActivatedRoute) {
+    this.formValuesSub = this.store.select(getLoginForm).subscribe(res => this.formValues = res);
+  }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -45,5 +52,9 @@ export class LoginComponent implements OnInit {
 
   resetPassword() {
     this.userService.resetPassword();
+  }
+
+  ngOnDestroy() {
+    this.formValuesSub.unsubscribe();
   }
 }

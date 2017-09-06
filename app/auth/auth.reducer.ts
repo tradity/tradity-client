@@ -3,20 +3,22 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { User } from './user.model';
 import * as actions from './auth.actions';
 
-interface State {
+export interface LoginFormState {
+  username: string;
+  password: string;
+  stayLoggedIn: boolean;
+}
+
+export interface State {
   user: User;
   uid: number;
   authKey: string;
   loggingIn: boolean;
   loggedIn: boolean;
-  loginForm: {
-    username: string;
-    password: string;
-    stayLoggedIn: boolean;
-  }
+  loginForm: LoginFormState
 }
 
-const initialState: State = {
+export const initialState: State = {
   user: null,
   uid: null,
   authKey: null,

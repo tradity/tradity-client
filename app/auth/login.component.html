@@ -1,10 +1,10 @@
 <img title="Tradity" alt="Tradity" src="/img/tradity_symbol.png" />
 <h2 i18n>Welcome back!</h2>
 <form (ngSubmit)="login()" tradity-form>
-  <input tradity-input type="text" placeholder="User name" name="username" [(ngModel)]="username" autofocus />
-  <input tradity-input type="password" placeholder="Password" name="password" [(ngModel)]="password" />
-  <input type="checkbox" name="stayloggedin" id="stayloggedin" [(ngModel)]="stayloggedin" /><label for="stayloggedin" i18n>Remember me</label>
-  <button tradity-button type="submit" [disabled]="!(username && password)" i18n>Log in</button>
+  <input tradity-input type="text" placeholder="User name" name="username" [value]="formValues.username" autofocus />
+  <input tradity-input type="password" placeholder="Password" name="password" [value]="formValues.password" />
+  <input type="checkbox" name="stayloggedin" id="stayloggedin" [value]="formValues.stayLoggedIn" /><label for="stayloggedin" i18n>Remember me</label>
+  <button tradity-button type="submit" [disabled]="!(formValues.username && formValues.password)" i18n>Log in</button>
 </form>
 <tradity-bottom-nav>
   <a role="button" (click)="resetPassword()" i18n>Forgot Password?</a><!--

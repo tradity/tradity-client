@@ -31,6 +31,7 @@ export class AuthEffects {
   @Effect()
   loadUser = this.actions
     .ofType(authActions.LOAD_USER)
+    .throttleTime(5000)
     .switchMap((action) => this.apiService
       .get('/user/$self?nohistory=true')
       .map(res => res.json())

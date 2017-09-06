@@ -12,25 +12,6 @@ export class UserService {
   constructor(private apiService: ApiService) {
     this._ownUser = new BehaviorSubject([]);
   }
-  
-  login(username: string, password: string, stayloggedin: boolean): Observable<Boolean> {
-    return this.apiService.post(
-      '/login',
-      {
-        name: username,
-        pw: password,
-        stayloggedin: stayloggedin
-      }
-    )
-    .map(res => res.json())
-    .map(res => {
-      if (res.code === 200) {
-        this.apiService.setAuthToken(res.key);
-        return true;
-      }
-      return false;
-    });
-  }
 
   get ownUser() {
     this.loadOwnUser();

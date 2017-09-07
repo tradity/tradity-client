@@ -11,6 +11,7 @@ export const REGISTER = 'REGISTER';
 export const REGISTRATION_SUCCESS = 'REGISTRATION_SUCCESS';
 export const REGISTRATION_FAILED = 'REGISTRATION_FAILED';
 export const LOGOUT = 'LOGOUT';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const UPDATE_LOGIN_FORM = 'UPDATE_LOGIN_FORM';
 
 export class ReceiveUser implements Action {
@@ -52,6 +53,10 @@ export class Logout implements Action {
   readonly type = LOGOUT;
 }
 
+export class LogoutSuccess implements Action {
+  readonly type = LOGOUT_SUCCESS;
+}
+
 export class UpdateLoginForm implements Action {
   readonly type = UPDATE_LOGIN_FORM;
   constructor(public payload: { key: string, value: string | boolean }) {}
@@ -66,4 +71,5 @@ export type All
   | RegistrationSuccess
   | RegistrationFailed
   | Logout
+  | LogoutSuccess
   | UpdateLoginForm

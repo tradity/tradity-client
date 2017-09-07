@@ -62,7 +62,7 @@ export function authReducer(state: State = initialState, action: actions.All): S
       );
     }
 
-    case actions.LOGOUT: {
+    case actions.LOGOUT_SUCCESS: {
       return initialState;
     }
 

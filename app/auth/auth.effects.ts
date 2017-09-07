@@ -49,9 +49,22 @@ export class AuthEffects {
     .ofType(authActions.LOGIN_FAILED)
     .do(() => alert('Wrong username or password'));
   
-  @Effect({ dispatch: false })
+  @Effect()
   logout = this.actions
     .ofType(authActions.LOGOUT)
+    .mergeMap(() => this.apiService
+      .post('/logout', {})
+      .map(res => res.json())
+      .map(res => {
+        if (res.code === 200) {
+          return new authActions.LogoutSuccess();
+        }
+      })
+    );
+
+  @Effect({ dispatch: false })
+  logoutSuccess = this.actions
+    .ofType(authActions.LOGOUT_SUCCESS)
     .do(() => this.router.navigateByUrl('login'));
 
   constructor(

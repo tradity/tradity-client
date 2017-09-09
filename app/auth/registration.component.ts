@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
+import * as authActions from './auth.actions';
 import { UserService } from '../core/user.service';
 import { GroupService } from '../core/group.service';
 
@@ -27,7 +29,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   groupList: any;
   subGroups: Array<any>;
 
-  constructor(private router: Router, private userService: UserService, private groupService: GroupService) { }
+  constructor(private router: Router, private store: Store<any>, private userService: UserService, private groupService: GroupService) { }
 
   ngOnInit() {
     this.groupListSubscription = this.groupService.groupList
@@ -77,7 +79,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   register2() {
-    this.userService.register({
+    this.store.dispatch(new authActions.Register({
       name: this.username,
       email: this.email,
       password: this.password,
@@ -85,9 +87,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       fam_name: this.surname,
       school: this.school || null,
       schoolclass: this.class || null
-    }).subscribe(result => {
-      if (result) this.router.navigateByUrl('dashboard');
-    })
+    }))
   }
 
   resetPassword() {

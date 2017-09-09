@@ -66,6 +66,23 @@ export class AuthEffects {
   logoutSuccess = this.actions
     .ofType(authActions.LOGOUT_SUCCESS)
     .do(() => this.router.navigateByUrl('login'));
+  
+  @Effect()
+  register = this.actions
+    .ofType(authActions.REGISTER)
+    .switchMap((action: authActions.Register) => this.apiService
+      .post(
+        '/register',
+        action.payload
+      )
+      .map(res => res.json())
+      .map(res => {
+        if (res.code === 200) {
+          return new authActions.LoginSuccess({ uid: res.uid, authKey: res.key });
+        }
+        return new authActions.RegistrationFailed();
+      })
+    );
 
   constructor(
     private actions: Actions,

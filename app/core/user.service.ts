@@ -9,21 +9,6 @@ import { ApiService } from './api.service';
 export class UserService {
   constructor(private apiService: ApiService) { }
 
-  register(data: Object) {
-    return this.apiService.post(
-      '/register',
-      data
-    )
-    .map(res => res.json())
-    .map(res => {
-      if (res.code === 200) {
-        this.apiService.setAuthToken(res.key);
-        return true;
-      }
-      return false;
-    });
-  }
-
   verifyEmail(emailVerifCode: string, uid: number) {
     return this.apiService.post('/verify-email', {
       uid: uid,

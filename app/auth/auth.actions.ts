@@ -38,6 +38,7 @@ export class LoginFailed implements Action {
 
 export class Register implements Action {
   readonly type = REGISTER;
+  constructor(public payload: any) {}
 }
 
 export class RegistrationSuccess implements Action {

@@ -20,7 +20,6 @@ import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
-import { RegistrationModule } from './registration/registration.module';
 import { GameModule } from './game/game.module';
 import { AdminModule } from './admin/admin.module';
 
@@ -37,7 +36,6 @@ import { AdminModule } from './admin/admin.module';
       EffectsModule.forRoot([]),
       CoreModule,
       AuthModule,
-      RegistrationModule,
       GameModule,
       AdminModule
     ],

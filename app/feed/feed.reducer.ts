@@ -3,7 +3,7 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { FeedEvent } from './feedEvent.model';
 import * as actions from './feed.actions';
 
-export function feedReducer(state: [FeedEvent] = <[FeedEvent]>[], action: actions.All): [FeedEvent] {
+export function feedReducer(state: FeedEvent[] = <FeedEvent[]>[], action: actions.All): FeedEvent[] {
   switch (action.type) {
     case actions.RECEIVE_EVENTS: {
       return action.payload;
@@ -15,4 +15,4 @@ export function feedReducer(state: [FeedEvent] = <[FeedEvent]>[], action: action
   }
 }
 
-export const getFeedEvents = createFeatureSelector<[FeedEvent]>('feed');
+export const getFeedEvents = createFeatureSelector<FeedEvent[]>('feed');

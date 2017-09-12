@@ -19,6 +19,6 @@ export class FeedComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new feedActions.LoadEvents());
-    this.events = this.store.select(getFeedEvents);
+    this.events = this.store.select(getFeedEvents).do((events) => console.log(events));
   }
 }

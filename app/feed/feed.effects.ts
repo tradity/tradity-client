@@ -18,7 +18,7 @@ export class FeedEffects {
       // TODO: replace this and figure out why the server doesn't return any events without since parameter
       .get('/events?since=1459168140')
       .map(res => res.json().data)
-      .map((res: any[]) => res.map((event) => {
+      .map((res: any[]) => res.reduce((events: FeedEvent[], event) => {
           let type = '';
           if (event.type === 'trade') {
             if (event.amount < 0) type = 'trade-sell'
@@ -26,7 +26,7 @@ export class FeedEffects {
             if (event.srcuser === ownUser.uid) {
               type += '-self';
             }
-            return {
+            events.push({
               type: type,
               srcusername: event.srcusername,
               targetid: event.targetid,
@@ -35,9 +35,10 @@ export class FeedEffects {
               time: event.eventtime * 1000,
               leader: event.leader,
               amount: Math.abs(event.amount)
-            }
+            })
           }
-      }))        
+          return events;
+      }, []))
       .map((events: FeedEvent[]) => new feedActions.ReceiveEvents(events))
     )
 

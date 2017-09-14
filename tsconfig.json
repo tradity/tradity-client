@@ -11,7 +11,7 @@
     "outDir": "dist"
   },
   "include": [
-    "app/**/*"
+    "app/**/*.ts"
   ],
   "exclude": [
     "app/main.prod.ts"

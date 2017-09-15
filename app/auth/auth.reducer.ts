@@ -66,6 +66,10 @@ export function authReducer(state: State = initialState, action: actions.All): S
       return initialState;
     }
 
+    case actions.NOT_LOGGED_IN: {
+      return initialState;
+    }
+
     case actions.UPDATE_LOGIN_FORM: {
       if (!state.loginForm.hasOwnProperty(action.payload.key)) return state;
       return {

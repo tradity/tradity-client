@@ -83,6 +83,11 @@ export class AuthEffects {
         return new authActions.RegistrationFailed();
       })
     );
+  
+  @Effect({ dispatch: false })
+  notLoggedIn = this.actions
+    .ofType(authActions.NOT_LOGGED_IN)
+    .do(() => this.router.navigateByUrl('login'));
 
   constructor(
     private actions: Actions,

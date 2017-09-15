@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { getAuthKey } from '../auth/auth.reducer';
+import * as authActions from '../auth/auth.actions';
 
 @Injectable()
 export class ApiService {
@@ -24,12 +25,10 @@ export class ApiService {
     });
   }
   
-  private handleError = (error: any) => {
+  private handleError = (error: Response) => {
     if (error.status == 401) {
-      // TODO: use effect for this
-      this.options.headers.delete('Authorization');
-      this.router.navigateByUrl('login');
-      return Observable.throw('Login required');
+      this.store.dispatch(new authActions.NotLoggedIn());
+      return Observable.empty();
     }
     return Observable.throw(error.json());
   }

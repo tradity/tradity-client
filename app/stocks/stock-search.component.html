@@ -1,6 +1,6 @@
 <input type="search" placeholder="Search for stock" [(ngModel)]="searchValue" (keyup)="search()">
 <tradity-li *ngFor="let paper of searchResult">
-  <img src="http://placehold.it/50x50">
+  <tradity-li-img [placeholder]="paper.name"></tradity-li-img>
   <tradity-li-header>
     <span left>{{paper.name}}</span>
     <span left>{{paper.stocktextid}}</span>

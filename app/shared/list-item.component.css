@@ -11,10 +11,3 @@
 :host:last-of-type {
   margin-bottom: 0;
 }
-
-:host >>> img {
-  position: absolute;
-  left: -60px;
-  border-radius: 50%;
-  margin-top: 5px;
-}

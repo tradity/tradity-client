@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { FormComponent } from './form.component';
 import { ButtonComponent } from './button.component';
@@ -9,6 +10,7 @@ import { ContainerComponent } from './container.component';
 import { ContainerControlComponent } from './container-control.component';
 import { ListItemComponent } from './list-item.component';
 import { ListItemHeaderComponent } from './list-item-header.component';
+import { ListItemImageComponent } from './list-item-image.component';
 import { ListItemValueListComponent } from './list-item-value-list.component';
 import { ListItemValueItemComponent } from './list-item-value-item.component';
 import { ListItemActionListComponent, ListItemActionExpandDirective } from './list-item-action-list.component';
@@ -16,7 +18,9 @@ import { ValueListComponent } from './value-list.component';
 import { ValueListItemComponent } from './value-list-item.component';
 
 @NgModule({
-  imports: [],
+  imports: [
+    CommonModule
+  ],
   exports: [
     FormComponent,
     ButtonComponent,
@@ -26,6 +30,7 @@ import { ValueListItemComponent } from './value-list-item.component';
     ContainerComponent,
     ListItemComponent,
     ListItemHeaderComponent,
+    ListItemImageComponent,
     ListItemValueListComponent,
     ListItemValueItemComponent,
     ListItemActionListComponent,
@@ -43,6 +48,7 @@ import { ValueListItemComponent } from './value-list-item.component';
     ContainerControlComponent,
     ListItemComponent,
     ListItemHeaderComponent,
+    ListItemImageComponent,
     ListItemValueListComponent,
     ListItemValueItemComponent,
     ListItemActionListComponent,

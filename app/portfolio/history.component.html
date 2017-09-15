@@ -1,5 +1,5 @@
 <tradity-li *ngFor="let order of history | async">
-  <img src="http://placehold.it/50x50">
+  <tradity-li-img [placeholder]="order.stockname"></tradity-li-img>
   <tradity-li-header>
     <span left>{{order.stockname}}</span>
     <span left>Sold at {{order.buytime * 1000 | date:'short'}}</span>

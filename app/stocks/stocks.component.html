@@ -1,7 +1,7 @@
 <tradity-stock-search></tradity-stock-search>
 <tradity-container name="Most traded" i18n-name>
   <tradity-li *ngFor="let paper of popularStocks | async">
-    <img src="http://placehold.it/50x50">
+    <tradity-li-img [placeholder]="paper['MIN(oh.stockname)']"></tradity-li-img>
     <tradity-li-header>
       <span left>{{paper['MIN(oh.stockname)']}}</span>
       <span left>{{paper.stocktextid}}</span>

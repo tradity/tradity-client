@@ -1,5 +1,5 @@
 <tradity-li *ngFor="let order of orders | async">
-  <img src="http://placehold.it/50x50">
+  <tradity-li-img [placeholder]="order.query.dquerydata.name"></tradity-li-img>
   <tradity-li-header>
     <span left>{{order.query.dquerydata.name}}</span>
     <span left>{{order.query.dquerydata.ordertime | date:'short'}}</span>

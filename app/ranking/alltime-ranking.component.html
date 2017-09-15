@@ -1,5 +1,5 @@
 <tradity-li *ngFor="let entry of ranking | async">
-  <img src="http://placehold.it/50x50">
+  <tradity-li-img [placeholder]="entry.name"></tradity-li-img>
   <tradity-li-header>
     <span left>{{entry.name}}</span>
     <span left>{{entry.schoolname}}</span>

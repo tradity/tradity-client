@@ -3,7 +3,6 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 
-import { StocksService } from '../core/stocks.service';
 import { GameComponent } from '../game/game.component';
 import * as stockActions from './stocks.actions';
 import { getSelectedStock } from './stocks.reducer';
@@ -18,7 +17,7 @@ export class StockDetailComponent implements OnDestroy {
   private stockSubscription: Subscription;
   stock: any = {};
 
-  constructor(private route: ActivatedRoute, private store: Store<any>, private stocksService: StocksService, private gameComponent: GameComponent) {
+  constructor(private route: ActivatedRoute, private store: Store<any>, private gameComponent: GameComponent) {
     this.gameComponent.heading2 = 'Stock details';
     this.stockSubscription = this.route.params
     .do((params: Params) => this.store.dispatch(new stockActions.SelectStock(params['isin'])))

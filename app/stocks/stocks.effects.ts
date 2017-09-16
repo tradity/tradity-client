@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { ApiService } from '../core/api.service';
 import * as stocksActions from './stocks.actions';
+import { Stock } from './stock.model';
 
 @Injectable()
 export class StocksEffects {
@@ -19,7 +20,7 @@ export class StocksEffects {
       return this.apiService
         .get('/stocks/search?name=' + action.payload)
         .map(res => res.json().data)
-        .map(searchResults => new stocksActions.ReceiveSearchResults(searchResults))
+        .map((searchResults: Stock[]) => new stocksActions.ReceiveSearchResults(searchResults))
     });
 
   @Effect()
@@ -33,7 +34,7 @@ export class StocksEffects {
     .switchMap((action: stocksActions.LoadStock) => this.apiService
       .get('/stocks/search?name=' + action.payload)
       .map(res => res.json().data[0])
-      .map(stock => new stocksActions.ReceiveStock(stock))
+      .map((stock: Stock) => new stocksActions.ReceiveStock(stock))
     );
   
   constructor(

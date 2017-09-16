@@ -1,5 +1,5 @@
-<input type="search" placeholder="Search for stock" [(ngModel)]="searchValue" (keyup)="search()">
-<tradity-li *ngFor="let paper of searchResult">
+<input type="search" placeholder="Search for stock" [value]="searchValue | async" (input)="inputSearch($event.target.value)" />
+<tradity-li *ngFor="let paper of searchResults | async">
   <tradity-li-img [placeholder]="paper.name"></tradity-li-img>
   <tradity-li-header>
     <span left>{{paper.name}}</span>

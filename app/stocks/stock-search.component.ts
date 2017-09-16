@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
-import { StocksService } from '../core/stocks.service';
+import * as stocksActions from './stocks.actions';
+import { Stock } from './stock.model';
+import { getSearchValue, getSearchResults } from './stocks.reducer';
 
 @Component({
   moduleId: module.id,
@@ -9,16 +13,15 @@ import { StocksService } from '../core/stocks.service';
   styleUrls: ['stock-search.component.css']
 })
 export class StockSearchComponent {
-  searchValue: string;
-  searchResult: any[];
+  searchValue: Observable<string>;
+  searchResults: Observable<Stock[]>;
 
-  constructor(private stocksService: StocksService) { }
+  constructor(private store: Store<any>) {
+    this.searchValue = this.store.select(getSearchValue);
+    this.searchResults = this.store.select(getSearchResults);
+  }
 
-  search() {
-    if (this.searchValue.length > 2) {
-      this.stocksService.search(this.searchValue).subscribe(res => this.searchResult = res);
-    } else {
-      this.searchResult = [];
-    }
+  inputSearch(value: string) {
+    this.store.dispatch(new stocksActions.InputSearch(value));
   }
 }

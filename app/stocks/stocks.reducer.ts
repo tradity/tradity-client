@@ -38,6 +38,14 @@ export function stocksReducer(state: State = initialState, action: actions.All):
       }
     }
 
+    case actions.INPUT_SEARCH: {
+      return {
+        ...state,
+        searchValue: action.payload,
+        searchResults: action.payload.length < 3 ? [] : state.searchResults
+      }
+    }
+
     case actions.RECEIVE_SEARCH_RESULTS: {
       return {
         ...state,

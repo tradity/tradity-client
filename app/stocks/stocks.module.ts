@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { SharedModule } from '../shared/shared.module';
 
 import { stocksReducer } from './stocks.reducer';
+import { StocksEffects } from './stocks.effects';
 import { StocksComponent }   from './stocks.component';
 import { StockSearchComponent } from './stock-search.component';
 import { StockDetailComponent } from './stock-detail.component';
@@ -18,7 +20,8 @@ import { TradeComponent } from './trade.component';
     FormsModule,
     RouterModule,
     SharedModule,
-    StoreModule.forFeature('stocks', stocksReducer)
+    StoreModule.forFeature('stocks', stocksReducer),
+    EffectsModule.forFeature([StocksEffects])
   ],
   exports: [],
   declarations: [

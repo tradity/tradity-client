@@ -13,6 +13,7 @@ import 'rxjs/add/operator/zip';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/withLatestFrom';
 import 'rxjs/add/operator/throttleTime';
+import 'rxjs/add/operator/filter';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/observable/empty';
 

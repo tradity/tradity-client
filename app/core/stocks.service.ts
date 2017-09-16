@@ -13,14 +13,12 @@ export class StocksService {
   private _history: BehaviorSubject<any>;
   private _orders: BehaviorSubject<any>;
   private _popularStocks: BehaviorSubject<any>;
-  private _stocks: Array<BehaviorSubject<any>>;
 
   constructor(private apiService: ApiService, private store: Store<any>) { 
     this._positions = new BehaviorSubject([]);
     this._history = new BehaviorSubject([]);
     this._orders = new BehaviorSubject([]);
     this._popularStocks = new BehaviorSubject([]);
-    this._stocks = [];
   }
   
   get positions() {
@@ -41,12 +39,6 @@ export class StocksService {
   get popularStocks() {
     this.loadPopularStocks();
     return this._popularStocks.asObservable();
-  }
-
-  stock(isin: string): Observable<any> {
-    this.loadStock(isin);
-    if (!this._stocks[isin]) this._stocks[isin] = new BehaviorSubject([]);
-    return this._stocks[isin].asObservable();
   }
   
   loadPositions(): void {
@@ -71,12 +63,6 @@ export class StocksService {
     this.apiService.get('/stocks/popular')
     .map(res => res.json())
     .subscribe(res => this._popularStocks.next(res.data));
-  }
-
-  loadStock(isin: string): void {
-    this.apiService.get('/stocks/search?name=' + isin)
-    .map(res => res.json().data[0])
-    .subscribe(res => this.store.dispatch(new stocksActions.ReceiveStock(res)));
   }
 
   trade(isin: string, amount: number): Observable<any> {

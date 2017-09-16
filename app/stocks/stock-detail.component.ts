@@ -22,7 +22,6 @@ export class StockDetailComponent implements OnDestroy {
     this.gameComponent.heading2 = 'Stock details';
     this.stockSubscription = this.route.params
     .do((params: Params) => this.store.dispatch(new stockActions.SelectStock(params['isin'])))
-    .do((params: Params) => this.stocksService.loadStock(params['isin']))
     .switchMap((params: Params) => this.store.select(getSelectedStock))
     .subscribe(res => {
       console.log(res);

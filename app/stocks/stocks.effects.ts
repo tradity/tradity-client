@@ -22,6 +22,20 @@ export class StocksEffects {
         .map(searchResults => new stocksActions.ReceiveSearchResults(searchResults))
     });
 
+  @Effect()
+  selectStock = this.actions
+    .ofType(stocksActions.SELECT_STOCK)
+    .map((action: stocksActions.SelectStock) => new stocksActions.LoadStock(action.payload));
+  
+  @Effect()
+  loadStock = this.actions
+    .ofType(stocksActions.LOAD_STOCK)
+    .switchMap((action: stocksActions.LoadStock) => this.apiService
+      .get('/stocks/search?name=' + action.payload)
+      .map(res => res.json().data[0])
+      .map(stock => new stocksActions.ReceiveStock(stock))
+    );
+  
   constructor(
     private actions: Actions,
     private store: Store<any>,

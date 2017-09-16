@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
@@ -14,23 +14,21 @@ import { getSelectedStock } from './stocks.reducer';
   templateUrl: 'stock-detail.component.html',
   styleUrls: ['stock-detail.component.css']
 })
-export class StockDetailComponent implements OnInit, OnDestroy {
+export class StockDetailComponent implements OnDestroy {
   private stockSubscription: Subscription;
   stock: any = {};
 
-  constructor(private route: ActivatedRoute, private store: Store<any>, private stocksService: StocksService, private gameComponent: GameComponent) { }
-
-  ngOnInit() {
+  constructor(private route: ActivatedRoute, private store: Store<any>, private stocksService: StocksService, private gameComponent: GameComponent) {
     this.gameComponent.heading2 = 'Stock details';
     this.stockSubscription = this.route.params
-      .do((params: Params) => this.store.dispatch(new stockActions.SelectStock(params['isin'])))
-      .do((params: Params) => this.stocksService.loadStock(params['isin']))
-      .switchMap((params: Params) => this.store.select(getSelectedStock))
-      .subscribe(res => {
-        console.log(res);
-        this.stock = res;
-        this.gameComponent.heading1 = res.name;
-      });
+    .do((params: Params) => this.store.dispatch(new stockActions.SelectStock(params['isin'])))
+    .do((params: Params) => this.stocksService.loadStock(params['isin']))
+    .switchMap((params: Params) => this.store.select(getSelectedStock))
+    .subscribe(res => {
+      console.log(res);
+      this.stock = res;
+      this.gameComponent.heading1 = res.name;
+    });
   }
 
   ngOnDestroy() {

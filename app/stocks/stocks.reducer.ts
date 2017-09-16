@@ -34,7 +34,18 @@ export function stocksReducer(state: State = initialState, action: actions.All):
     case actions.SELECT_STOCK: {
       return {
         ...state,
-        selectedIsin: action.payload
+        selectedIsin: action.payload,
+        stocks: {
+          ...state.stocks,
+          [action.payload]: state.stocks[action.payload] || {
+            ask: null,
+            bid: null,
+            lastvalue: null,
+            name: null,
+            pieces: null,
+            stocktextid: action.payload
+          }
+        }
       }
     }
 

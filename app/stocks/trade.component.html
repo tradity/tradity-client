@@ -3,18 +3,6 @@
   <span left>{{stock.stocktextid}}</span>
   <span right>{{stock.pieces}} pc</span>
 </tradity-li-header>
-<tradity-li-vl>
-  <tradity-li-vi>
-    <span i18n>Ask price</span>
-    <span>{{stock.ask / 10000 | currency:'EUR':true}}</span>
-  </tradity-li-vi>
-  <tradity-li-vi>
-    <span i18n>Bid price</span>
-    <span>{{stock.bid / 10000 | currency:'EUR':true}}</span>
-  </tradity-li-vi>
-</tradity-li-vl>
-<!-- TODO: Today high, today low, previous close -->
-
 <form tradity-form (ngSubmit)="trade()">
   <input type="radio" name="sellbuy" [value]="1" id="buy" [(ngModel)]="sellbuy" (ngModelChange)="calcValue()" />
   <label for="buy" i18n>Buy</label>

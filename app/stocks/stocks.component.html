@@ -1,9 +1,9 @@
 <tradity-stock-search></tradity-stock-search>
 <tradity-container name="Most traded" i18n-name>
   <tradity-li *ngFor="let paper of popularStocks | async">
-    <tradity-li-img [placeholder]="paper['MIN(oh.stockname)']"></tradity-li-img>
+    <tradity-li-img [placeholder]="paper.stockname"></tradity-li-img>
     <tradity-li-header>
-      <span left>{{paper['MIN(oh.stockname)']}}</span>
+      <span left>{{paper.stockname}}</span>
       <span left>{{paper.stocktextid}}</span>
       <span right>{{paper.bid / 10000 | currency:'EUR':true}}</span>
     </tradity-li-header>

@@ -3,12 +3,27 @@
     <tradity-li-header>
       <span left>{{paper.stockname}}</span>
       <span left>{{paper.stocktextid}}</span>
-      <span right>{{paper.bid / 10000 | currency:'EUR':true}}</span>
+      <span right>{{paper.lastvalue / 10000 | currency:'EUR':true}}</span>
     </tradity-li-header>
     <tradity-li-action-list>
       <a role="button" class="material-icons">favorite</a>
       <a [routerLink]="['/stocks/' + paper.stocktextid]" class="material-icons">info</a>
       <a [routerLink]="['/stocks/' + paper.stocktextid + '/trade']" class="material-icons">add</a>
       <a [routerLink]="['/stocks/' + paper.stocktextid + '/trade']" class="material-icons">remove</a>
+      <a role="button" tradity-action-expand class="material-icons"></a>
     </tradity-li-action-list>
+    <tradity-li-vl>
+      <tradity-li-vi>
+        <span i18n>Ask price</span>
+        <span>{{paper.ask / 10000 | currency:'EUR':true}}</span>
+      </tradity-li-vi>
+      <tradity-li-vi>
+        <span i18n>Bid price</span>
+        <span>{{paper.bid / 10000 | currency:'EUR':true}}</span>
+      </tradity-li-vi>
+      <tradity-li-vi>
+        <span i18n>Tradable amount</span>
+        <span>{{paper.pieces}} pc</span>
+      </tradity-li-vi>
+    </tradity-li-vl>
   </tradity-li>

@@ -1,12 +1,16 @@
 import { Action } from '@ngrx/store';
 
 import { Stock } from './stock.model';
+import { SellBuy } from './stocks.reducer';
 
 export const RECEIVE_STOCK = 'RECEIVE_STOCK';
 export const INPUT_SEARCH = 'INPUT_SEARCH';
 export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';
 export const SELECT_STOCK = 'SELECT_STOCK';
 export const LOAD_STOCK = 'LOAD_STOCK';
+export const INPUT_SELL_BUY = 'INPUT_SELL_BUY';
+export const INPUT_TRADE_AMOUNT = 'INPUT_TRADE_AMOUNT';
+export const INPUT_TRADE_VALUE = 'INPUT_TRADE_VALUE';
 
 export class ReceiveStock implements Action {
   readonly type = RECEIVE_STOCK;
@@ -33,9 +37,27 @@ export class ReceiveSearchResults implements Action {
   constructor(public payload: Stock[]) {}
 }
 
+export class InputSellBuy implements Action {
+  readonly type = INPUT_SELL_BUY;
+  constructor(public payload: SellBuy) {}
+}
+
+export class InputTradeAmount implements Action {
+  readonly type = INPUT_TRADE_AMOUNT;
+  constructor(public payload: number) {}
+}
+
+export class InputTradeValue implements Action {
+  readonly type = INPUT_TRADE_VALUE;
+  constructor(public payload: number) {}
+}
+
 export type All
   = ReceiveStock
   | SelectStock
   | LoadStock
   | ReceiveSearchResults
   | InputSearch
+  | InputSellBuy
+  | InputTradeAmount
+  | InputTradeValue

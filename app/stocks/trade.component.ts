@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 
@@ -7,7 +8,7 @@ import { StocksService } from '../core/stocks.service';
 import { GameComponent } from '../game/game.component';
 import * as stocksActions from './stocks.actions';
 import { Stock } from './stock.model';
-import { getSelectedStock } from './stocks.reducer';
+import { getSelectedStock, getSellBuy, getTradeAmount, getTradeValue, SellBuy } from './stocks.reducer';
 
 @Component({
   moduleId: module.id,
@@ -18,12 +19,18 @@ import { getSelectedStock } from './stocks.reducer';
 export class TradeComponent implements OnDestroy {
   private stockSubscription: Subscription;
   stock: Stock;
-  sellbuy = 1;
-  amount: number;
-  value: number;
+  Buy = SellBuy.Buy;
+  Sell = SellBuy.Sell;
+  sellBuySub: Subscription;
+  sellBuy: SellBuy;
+  amount: Observable<number>;
+  value: Observable<number>;
 
   constructor(private route: ActivatedRoute, private stocksService: StocksService, private gameComponent: GameComponent, private router: Router, private store: Store<any>) {
     this.gameComponent.heading2 = 'Trade';
+    this.sellBuySub = this.store.select(getSellBuy).subscribe(sellBuy => this.sellBuy = sellBuy);
+    this.amount = this.store.select(getTradeAmount);
+    this.value = this.store.select(getTradeValue);
     this.stockSubscription = this.route.params
       .do((params: Params) => this.store.dispatch(new stocksActions.SelectStock(params['isin'])))
       .switchMap((params: Params) => this.store.select(getSelectedStock))
@@ -35,6 +42,19 @@ export class TradeComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.stockSubscription.unsubscribe();
+    this.sellBuySub.unsubscribe();
+  }
+
+  inputSellBuy(sellBuy: SellBuy) {
+    this.store.dispatch(new stocksActions.InputSellBuy(sellBuy));
+  }
+
+  inputAmount(amount: number) {
+    this.store.dispatch(new stocksActions.InputTradeAmount(amount));
+  }
+
+  inputValue(value: number) {
+    this.store.dispatch(new stocksActions.InputTradeValue(value));
   }
 
   trade() {
@@ -67,24 +87,5 @@ export class TradeComponent implements OnDestroy {
         }
       )
     }
-  }
-
-  calcValue() {
-    if (!this.amount) return;
-    if (this.sellbuy == 1) {
-      this.value = parseFloat((this.amount * (this.stock.ask / 10000)).toFixed(2));
-    } else if (this.sellbuy == -1) {
-      this.value = parseFloat((this.amount * (this.stock.bid / 10000)).toFixed(2));
-    }
-    //this.calcFee();
-  }
-
-  calcAmount() {
-    if (this.sellbuy == 1) {
-      this.amount = Math.floor(this.value / (this.stock.ask / 10000));
-    } else if (this.sellbuy == -1) {
-      this.amount = Math.floor(this.value / (this.stock.bid / 10000));
-    }
-    //this.calcFee();
   }
 }

@@ -3,14 +3,14 @@
   <span left>{{stock.stocktextid}}</span>
   <span right>{{stock.pieces}} pc</span>
 </tradity-li-header>
-<form tradity-form (ngSubmit)="trade()">
-  <input type="radio" name="sellbuy" [value]="1" id="buy" [(ngModel)]="sellbuy" (ngModelChange)="calcValue()" />
+<form tradity-form (ngSubmit)="trade()" autocomplete="off">
+  <input type="radio" name="sellbuy" id="buy" [checked]="sellBuy === Buy ? 'checked' : null" (click)="inputSellBuy(Buy)" />
   <label for="buy" i18n>Buy</label>
-  <input type="radio" name="sellbuy" [value]="-1" id="sell" [(ngModel)]="sellbuy" (ngModelChange)="calcValue()" />
+  <input type="radio" name="sellbuy" id="sell" [checked]="sellBuy === Sell ? 'checked' : null" (click)="inputSellBuy(Sell)" />
   <label for="sell" i18n>Sell</label>
-  <input tradity-input type="number" id="amount" name="amount" [(ngModel)]="amount" placeholder="Number of shares" i18n-placeholder (ngModelChange)="calcValue()" />
-  <span>x <span [class.inactive]="sellbuy == -1">{{stock.ask / 10000 | currency:'EUR':true}} (Ask)</span> | <span [class.inactive]="sellbuy == 1">{{stock.bid / 10000 | currency:'EUR':true}} (Bid)</span> =</span>
-  <input tradity-input type="number" step="any" id="value" name="value" [(ngModel)]="value" placeholder="Euros to be invested" i18n-placeholder (ngModelChange)="calcAmount()" />
+  <input tradity-input type="number" id="amount" name="amount" [value]="amount | async" placeholder="Number of shares" i18n-placeholder (input)="inputAmount($event.target.value)" />
+  <span>x <span [class.inactive]="sellBuy === Sell">{{stock.ask / 10000 | currency:'EUR':true}} (Ask)</span> | <span [class.inactive]="sellBuy === Buy">{{stock.bid / 10000 | currency:'EUR':true}} (Bid)</span> =</span>
+  <input tradity-input type="number" step="any" id="value" name="value" [value]="value | async" placeholder="Euros to be invested" i18n-placeholder (input)="inputValue($event.target.value)" />
   <!--<span>+ {{10 | currency:'EUR':true}} transaction fee</span>-->
   <button tradity-button type="submit" i18n>Execute trade</button>
 </form>

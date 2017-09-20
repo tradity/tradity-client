@@ -11,6 +11,9 @@ export const LOAD_STOCK = 'LOAD_STOCK';
 export const INPUT_SELL_BUY = 'INPUT_SELL_BUY';
 export const INPUT_TRADE_AMOUNT = 'INPUT_TRADE_AMOUNT';
 export const INPUT_TRADE_VALUE = 'INPUT_TRADE_VALUE';
+export const TRADE = 'TRADE';
+export const TRADE_SUCCESS = 'TRADE_SUCCESS';
+export const TRADE_FAILURE = 'TRADE_FAILURE';
 
 export class ReceiveStock implements Action {
   readonly type = RECEIVE_STOCK;
@@ -52,6 +55,20 @@ export class InputTradeValue implements Action {
   constructor(public payload: number) {}
 }
 
+export class Trade implements Action {
+  readonly type = TRADE;
+}
+
+export class TradeSuccess implements Action {
+  readonly type = TRADE_SUCCESS;
+  constructor(public payload: { delayed: boolean }) {}
+}
+
+export class TradeFailure implements Action {
+  readonly type = TRADE_FAILURE;
+  constructor(public payload: string) {}
+}
+
 export type All
   = ReceiveStock
   | SelectStock
@@ -61,3 +78,6 @@ export type All
   | InputSellBuy
   | InputTradeAmount
   | InputTradeValue
+  | Trade
+  | TradeSuccess
+  | TradeFailure

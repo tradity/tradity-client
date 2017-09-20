@@ -16,6 +16,7 @@ import 'rxjs/add/operator/throttleTime';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/observable/empty';
+import 'rxjs/add/observable/of';
 
 import { routing, appRoutingProviders } from './app.routing';
 import { AppComponent } from './app.component';

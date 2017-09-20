@@ -58,34 +58,6 @@ export class TradeComponent implements OnDestroy {
   }
 
   trade() {
-    if (this.amount) {
-      this.stocksService.trade(this.stock.stocktextid, this.amount * this.sellbuy)
-      .subscribe(
-        res => {
-          if (res.identifier === 'autodelay-sxnotopen') alert('Your trade will be executed when the stock exchange opens');
-          else alert('Successfully traded!');
-          this.router.navigateByUrl('/portfolio/orders');
-        },
-        err => {
-          switch (err.identifier) {
-            case 'out-of-money':
-              alert('You do not have enough leftover money for this trade!');
-              break;
-            case 'single-paper-share-exceeded':
-              alert('Only 50% of your assets may consist of a single stock!');
-              break;
-            case 'not-enough-stocks':
-              alert('Not enough stocks!');
-              break;
-            case 'over-pieces-limit':
-              alert('Unfortunately, your trade exceeds the maximum tradable amount of this stock');
-              break;
-            case 'stock-not-found':
-              alert('This stock could not be found!');
-              break;
-          }
-        }
-      )
-    }
+    this.store.dispatch(new stocksActions.Trade());
   }
 }

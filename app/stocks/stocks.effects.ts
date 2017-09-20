@@ -6,7 +6,9 @@ import { Observable } from 'rxjs/Observable';
 
 import { ApiService } from '../core/api.service';
 import * as stocksActions from './stocks.actions';
+import { getStocksState } from './stocks.reducer';
 import { Stock } from './stock.model';
+import * as authActions from '../auth/auth.actions';
 
 @Injectable()
 export class StocksEffects {
@@ -37,9 +39,68 @@ export class StocksEffects {
       .map((stock: Stock) => new stocksActions.ReceiveStock(stock))
     );
   
+  @Effect()
+  trade = this.actions
+    .ofType(stocksActions.TRADE)
+    .withLatestFrom(this.store.select(getStocksState))
+    .switchMap(([action, stocksState]) => this.apiService
+      .post(
+        '/trade',
+        {
+          stocktextid: stocksState.selectedIsin,
+          amount: stocksState.tradeAmount * stocksState.sellBuy
+        }
+      )
+      .map(res => res.json())
+      .map(res => {
+        let delayed = false;
+        if (res.identifier === 'autodelay-sxnotopen') delayed = true;
+        return new stocksActions.TradeSuccess({ delayed: delayed });
+      })
+      .catch(err => Observable.of(new stocksActions.TradeFailure(err)))
+    )
+  
+  @Effect()
+  tradeSuccess = this.actions
+    .ofType(stocksActions.TRADE_SUCCESS)
+    .do((action: stocksActions.TradeSuccess) => {
+      if (action.payload.delayed) {
+        alert('Your trade will be executed when the stock exchange opens');
+        this.router.navigateByUrl('/portfolio/orders');
+      } else {
+        alert('Successfully traded!');
+        this.router.navigateByUrl('/portfolio/positions');
+      }
+    })
+    .map((action: stocksActions.TradeSuccess) => new authActions.LoadUser())
+  
+  @Effect({ dispatch: false })
+  tradeFailure = this.actions
+    .ofType(stocksActions.TRADE_FAILURE)
+    .do((action: stocksActions.TradeFailure) => {
+      switch (action.payload) {
+        case 'out-of-money':
+          alert('You do not have enough leftover money for this trade!');
+          break;
+        case 'single-paper-share-exceeded':
+          alert('Only 50% of your assets may consist of a single stock!');
+          break;
+        case 'not-enough-stocks':
+          alert('Not enough stocks!');
+          break;
+        case 'over-pieces-limit':
+          alert('Unfortunately, your trade exceeds the maximum tradable amount of this stock');
+          break;
+        case 'stock-not-found':
+          alert('This stock could not be found!');
+          break;
+      }
+    })
+  
   constructor(
     private actions: Actions,
     private store: Store<any>,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private router: Router
   ) {}
 }

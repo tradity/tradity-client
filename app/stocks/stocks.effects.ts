@@ -57,7 +57,7 @@ export class StocksEffects {
         if (res.identifier === 'autodelay-sxnotopen') delayed = true;
         return new stocksActions.TradeSuccess({ delayed: delayed });
       })
-      .catch(err => Observable.of(new stocksActions.TradeFailure(err)))
+      .catch(err => Observable.of(new stocksActions.TradeFailure(err.identifier)))
     )
   
   @Effect()

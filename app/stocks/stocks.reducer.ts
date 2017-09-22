@@ -123,6 +123,15 @@ export function stocksReducer(state: State = initialState, action: actions.All):
       }
     }
 
+    case actions.TRADE_SUCCESS: {
+      return {
+        ...state,
+        sellBuy: initialState.sellBuy,
+        tradeAmount: initialState.tradeAmount,
+        tradeValue: initialState.tradeValue
+      }
+    }
+
     default: {
       return state;
     }

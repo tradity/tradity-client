@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
-import { routing } from './game.routing';
+import { gameRoutes } from './game.routing';
 import { GameComponent } from './game.component';
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { PortfolioModule } from '../portfolio/portfolio.module';
@@ -11,8 +12,8 @@ import { GroupModule } from '../group/group.module';
 
 @NgModule({
   imports: [
-    routing,
     CommonModule,
+    RouterModule.forChild(gameRoutes),
     DashboardModule,
     PortfolioModule,
     RankingModule,

@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { SharedModule } from '../shared/shared.module';
 
-import { routing } from './auth.routing';
+import { authRoutes } from './auth.routing';
 import { authReducer } from './auth.reducer';
 import { AuthEffects } from './auth.effects';
 import { LoginComponent } from './login.component';
@@ -18,10 +19,10 @@ import { RegistrationStep2Component } from './registration-step2.component';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule.forChild(authRoutes),
     StoreModule.forFeature('auth', authReducer),
     EffectsModule.forFeature([AuthEffects]),
-    SharedModule,
-    routing
+    SharedModule
   ],
   exports: [],
   declarations: [

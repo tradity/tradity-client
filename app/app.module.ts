@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -18,7 +19,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/observable/empty';
 import 'rxjs/add/observable/of';
 
-import { routing, appRoutingProviders } from './app.routing';
+import { appRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
@@ -34,7 +35,7 @@ import { AdminModule } from './admin/admin.module';
       BrowserModule,
       FormsModule,
       HttpModule,
-      routing,
+      RouterModule.forRoot(appRoutes),
       StoreModule.forRoot({}),
       EffectsModule.forRoot([]),
       CoreModule,
@@ -42,7 +43,7 @@ import { AdminModule } from './admin/admin.module';
       GameModule,
       AdminModule
     ],
-    providers: [appRoutingProviders],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

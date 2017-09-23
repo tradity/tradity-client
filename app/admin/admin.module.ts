@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
-import { routing } from './admin.routing';
+import { adminRoutes } from './admin.routing';
 import { AdminComponent } from './admin.component';
 import { AdminUserlistComponent } from './admin-userlist.component';
 import { AdminGroupsComponent } from './admin-groups.component';
@@ -11,7 +12,7 @@ import { AdminGroupsComponent } from './admin-groups.component';
   imports: [
     CommonModule,
     FormsModule,
-    routing
+    RouterModule.forChild(adminRoutes)
   ],
   exports: [],
   declarations: [

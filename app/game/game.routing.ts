@@ -1,5 +1,4 @@
-import { ModuleWithProviders } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 
 import { GameComponent } from './game.component';
 
@@ -23,7 +22,7 @@ import { GroupComponent } from '../group/group.component';
 import { GroupRankingComponent } from '../group/group-ranking.component';
 import { GroupFavouritesComponent } from '../group/group-favourites.component';
 
-const gameRoutes: Routes = [
+export const gameRoutes: Routes = [
   {
     path: '',
     component: GameComponent,
@@ -76,5 +75,3 @@ const gameRoutes: Routes = [
     ]
   }
 ]
-
-export const routing: ModuleWithProviders = RouterModule.forChild(gameRoutes);

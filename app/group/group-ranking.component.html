@@ -1,4 +1,5 @@
-<tradity-li *ngFor="let entry of parent.group.ranking">
+<tradity-li *ngFor="let entry of parent.group.ranking; let index = index">
+  <tradity-li-index [index]="index + 1"></tradity-li-index>
   <tradity-li-img [placeholder]="entry.name"></tradity-li-img>
   <tradity-li-header>
     <span left>{{entry.name}}</span>

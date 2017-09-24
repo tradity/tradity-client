@@ -10,6 +10,7 @@ import { ContainerComponent } from './container.component';
 import { ContainerControlComponent } from './container-control.component';
 import { ListItemComponent } from './list-item.component';
 import { ListItemHeaderComponent } from './list-item-header.component';
+import { ListItemIndexComponent } from './list-item-index.component';
 import { ListItemImageComponent } from './list-item-image.component';
 import { ListItemValueListComponent } from './list-item-value-list.component';
 import { ListItemValueItemComponent } from './list-item-value-item.component';
@@ -30,6 +31,7 @@ import { ValueListItemComponent } from './value-list-item.component';
     ContainerComponent,
     ListItemComponent,
     ListItemHeaderComponent,
+    ListItemIndexComponent,
     ListItemImageComponent,
     ListItemValueListComponent,
     ListItemValueItemComponent,
@@ -48,6 +50,7 @@ import { ValueListItemComponent } from './value-list-item.component';
     ContainerControlComponent,
     ListItemComponent,
     ListItemHeaderComponent,
+    ListItemIndexComponent,
     ListItemImageComponent,
     ListItemValueListComponent,
     ListItemValueItemComponent,

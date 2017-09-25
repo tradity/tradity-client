@@ -57,7 +57,8 @@ export function authReducer(state: State = initialState, action: actions.All): S
           uid: action.payload.uid,
           authKey: action.payload.authKey,
           loggingIn: false,
-          loggedIn: true
+          loggedIn: true,
+          loginForm: initialState.loginForm
         }
       );
     }

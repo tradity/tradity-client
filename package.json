@@ -44,6 +44,7 @@
     "@ngrx/core": "^1.2.0",
     "@ngrx/effects": "^4.0.5",
     "@ngrx/store": "^4.0.3",
+    "@ngrx/store-devtools": "^4.0.0",
     "core-js": "^2.5.1",
     "material-design-icons": "^3.0.1",
     "normalize.css": "^7.0.0",

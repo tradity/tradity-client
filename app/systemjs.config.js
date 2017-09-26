@@ -16,6 +16,7 @@
       '@ngrx/core': 'npm:@ngrx/core/bundles/core.umd.js',
       '@ngrx/store': 'npm:@ngrx/store/bundles/store.umd.js',
       '@ngrx/effects': 'npm:@ngrx/effects/bundles/effects.umd.js',
+      '@ngrx/store-devtools': 'npm:@ngrx/store-devtools/bundles/store-devtools.umd.js',
       'rxjs': 'npm:rxjs'
     },
     packages: {

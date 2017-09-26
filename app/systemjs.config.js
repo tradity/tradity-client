@@ -17,6 +17,7 @@
       '@ngrx/store': 'npm:@ngrx/store/bundles/store.umd.js',
       '@ngrx/effects': 'npm:@ngrx/effects/bundles/effects.umd.js',
       '@ngrx/store-devtools': 'npm:@ngrx/store-devtools/bundles/store-devtools.umd.js',
+      'ngrx-store-localstorage': 'npm:ngrx-store-localstorage/dist/index.js',
       'rxjs': 'npm:rxjs'
     },
     packages: {

@@ -3,9 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { localStorageSync } from 'ngrx-store-localstorage';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -28,6 +29,12 @@ import { AuthModule } from './auth/auth.module';
 import { GameModule } from './game/game.module';
 import { AdminModule } from './admin/admin.module';
 
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({ keys: ['auth', 'feed', 'stocks'], rehydrate: true })(reducer);
+}
+
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
+
 @NgModule({
     declarations: [
       AppComponent
@@ -37,7 +44,7 @@ import { AdminModule } from './admin/admin.module';
       FormsModule,
       HttpModule,
       RouterModule.forRoot(appRoutes),
-      StoreModule.forRoot({}),
+      StoreModule.forRoot({}, { metaReducers }),
       isDevMode ? StoreDevtoolsModule.instrument({ maxAge: 25 }) : [],
       EffectsModule.forRoot([]),
       CoreModule,

@@ -10,7 +10,7 @@
     <tradity-action-favourite></tradity-action-favourite>
     <tradity-action-stock-info [isin]="paper.stocktextid"></tradity-action-stock-info>
     <tradity-action-buy [isin]="paper.stocktextid"></tradity-action-buy>
-    <a [routerLink]="['/stocks/' + paper.stocktextid + '/trade']" class="material-icons">remove</a>
+    <tradity-action-sell [isin]="paper.stocktextid"></tradity-action-sell>
     <a role="button" tradity-action-expand class="material-icons"></a>
   </tradity-li-action-list>
   <tradity-li-vl>

@@ -20,6 +20,7 @@ import { ValueListItemComponent } from './value-list-item.component';
 import { FavouriteActionComponent } from './favourite-action.component';
 import { StockInfoActionComponent } from './stock-info-action.component';
 import { BuyActionComponent } from './buy-action.component';
+import { SellActionComponent } from './sell-action.component';
 
 @NgModule({
   imports: [
@@ -44,7 +45,8 @@ import { BuyActionComponent } from './buy-action.component';
     ValueListItemComponent,
     FavouriteActionComponent,
     StockInfoActionComponent,
-    BuyActionComponent
+    BuyActionComponent,
+    SellActionComponent
   ],
   declarations: [
     FormComponent,
@@ -66,7 +68,8 @@ import { BuyActionComponent } from './buy-action.component';
     ValueListItemComponent,
     FavouriteActionComponent,
     StockInfoActionComponent,
-    BuyActionComponent
+    BuyActionComponent,
+    SellActionComponent
   ],
   providers: [],
 })

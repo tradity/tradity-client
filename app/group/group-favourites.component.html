@@ -7,7 +7,7 @@
     </tradity-li-header>
     <tradity-li-action-list>
       <tradity-action-favourite></tradity-action-favourite>
-      <a [routerLink]="['/stocks/' + paper.stocktextid]" class="material-icons">info</a>
+      <tradity-action-stock-info [isin]="paper.stocktextid"></tradity-action-stock-info>
       <a [routerLink]="['/stocks/' + paper.stocktextid + '/trade']" class="material-icons">add</a>
       <a [routerLink]="['/stocks/' + paper.stocktextid + '/trade']" class="material-icons">remove</a>
       <a role="button" tradity-action-expand class="material-icons"></a>

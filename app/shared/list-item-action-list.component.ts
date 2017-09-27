@@ -1,15 +1,4 @@
-import { Component, Directive, HostListener } from '@angular/core';
-
-import { ListItemComponent } from './list-item.component';
-
-@Directive({ selector: '[tradity-action-expand]' })
-export class ListItemActionExpandDirective {
-  @HostListener('click') onClick() {
-    this.listElem.toggleExpand();
-  }
-
-  constructor(private listElem: ListItemComponent) { }
-}
+import { Component } from '@angular/core';
 
 @Component({
   moduleId: module.id,

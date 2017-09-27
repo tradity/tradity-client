@@ -9,11 +9,3 @@
   text-decoration: none;
   color: rgba(23,8,4,0.8);
 }
-
-:host >>> a[tradity-action-expand]::before {
-  content: "expand_more";
-}
-
-:host-context(tradity-li.expanded) >>> a[tradity-action-expand]::before {
-  content: "expand_less";
-}

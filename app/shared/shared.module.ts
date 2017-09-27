@@ -14,13 +14,14 @@ import { ListItemIndexComponent } from './list-item-index.component';
 import { ListItemImageComponent } from './list-item-image.component';
 import { ListItemValueListComponent } from './list-item-value-list.component';
 import { ListItemValueItemComponent } from './list-item-value-item.component';
-import { ListItemActionListComponent, ListItemActionExpandDirective } from './list-item-action-list.component';
+import { ListItemActionListComponent } from './list-item-action-list.component';
 import { ValueListComponent } from './value-list.component';
 import { ValueListItemComponent } from './value-list-item.component';
 import { FavouriteActionComponent } from './favourite-action.component';
 import { StockInfoActionComponent } from './stock-info-action.component';
 import { BuyActionComponent } from './buy-action.component';
 import { SellActionComponent } from './sell-action.component';
+import { ListItemExpandActionComponent } from './list-item-expand-action.component';
 
 @NgModule({
   imports: [
@@ -40,13 +41,13 @@ import { SellActionComponent } from './sell-action.component';
     ListItemValueListComponent,
     ListItemValueItemComponent,
     ListItemActionListComponent,
-    ListItemActionExpandDirective,
     ValueListComponent,
     ValueListItemComponent,
     FavouriteActionComponent,
     StockInfoActionComponent,
     BuyActionComponent,
-    SellActionComponent
+    SellActionComponent,
+    ListItemExpandActionComponent
   ],
   declarations: [
     FormComponent,
@@ -63,13 +64,13 @@ import { SellActionComponent } from './sell-action.component';
     ListItemValueListComponent,
     ListItemValueItemComponent,
     ListItemActionListComponent,
-    ListItemActionExpandDirective,
     ValueListComponent,
     ValueListItemComponent,
     FavouriteActionComponent,
     StockInfoActionComponent,
     BuyActionComponent,
-    SellActionComponent
+    SellActionComponent,
+    ListItemExpandActionComponent
   ],
   providers: [],
 })

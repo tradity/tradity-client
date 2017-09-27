@@ -2,6 +2,7 @@
   display: flex;
   flex-basis: 100%;
   justify-content: space-around;
+  margin: -5px 0 5px;
 }
 
 :host >>> a {

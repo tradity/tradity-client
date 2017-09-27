@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   moduleId: module.id,
   selector: 'tradity-action-stock-info',
-  template: '<i class="material-icons">info_outline</i>'
+  template: '<tradity-icon>info_outline</tradity-icon>'
 })
 export class StockInfoActionComponent {
   @HostBinding('attr.role') role = 'link';

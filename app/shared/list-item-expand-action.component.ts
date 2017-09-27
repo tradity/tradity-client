@@ -5,7 +5,7 @@ import { ListItemComponent } from './list-item.component';
 @Component({
   moduleId: module.id,
   selector: 'tradity-action-expand',
-  template: '<i class="material-icons"></i>',
+  template: '<tradity-icon></tradity-icon>',
   styleUrls: ['list-item-expand-action.component.css']
 })
 export class ListItemExpandActionComponent {

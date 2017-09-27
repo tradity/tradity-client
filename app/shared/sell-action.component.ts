@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   moduleId: module.id,
   selector: 'tradity-action-sell',
-  template: '<i class="material-icons">remove</i>'
+  template: '<tradity-icon>remove</tradity-icon>'
 })
 export class SellActionComponent {
   @HostBinding('attr.role') role = 'link';

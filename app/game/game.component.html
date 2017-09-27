@@ -1,8 +1,8 @@
 <header>
   <nav>
-    <a role="button" (click)="toggleMenu()"><i class="material-icons">menu</i></a>
+    <a role="button" (click)="toggleMenu()"><tradity-icon>menu</tradity-icon></a>
     <span>Tradity</span>
-    <a [routerLink]="['/stocks']"><i class="material-icons">search</i></a>
+    <a [routerLink]="['/stocks']"><tradity-icon>search</tradity-icon></a>
     <div [class.menu-open]="isMenuOpen">
       <img id="profile-pic" src="https://placehold.it/80x80">
       <span id="username">{{user.name}}</span>

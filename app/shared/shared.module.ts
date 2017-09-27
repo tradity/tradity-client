@@ -22,6 +22,7 @@ import { StockInfoActionComponent } from './stock-info-action.component';
 import { BuyActionComponent } from './buy-action.component';
 import { SellActionComponent } from './sell-action.component';
 import { ListItemExpandActionComponent } from './list-item-expand-action.component';
+import { IconComponent } from './icon.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { ListItemExpandActionComponent } from './list-item-expand-action.compone
     StockInfoActionComponent,
     BuyActionComponent,
     SellActionComponent,
-    ListItemExpandActionComponent
+    ListItemExpandActionComponent,
+    IconComponent
   ],
   declarations: [
     FormComponent,
@@ -70,7 +72,8 @@ import { ListItemExpandActionComponent } from './list-item-expand-action.compone
     StockInfoActionComponent,
     BuyActionComponent,
     SellActionComponent,
-    ListItemExpandActionComponent
+    ListItemExpandActionComponent,
+    IconComponent
   ],
   providers: [],
 })

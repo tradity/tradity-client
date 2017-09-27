@@ -7,7 +7,7 @@
   </tradity-li-header>
   <tradity-li-action-list>
     <tradity-action-favourite></tradity-action-favourite>
-    <a [routerLink]="['/stocks/' + order.stocktextid]" class="material-icons">info</a>
+    <tradity-action-stock-info [isin]="order.stocktextid"></tradity-action-stock-info>
     <tradity-action-expand></tradity-action-expand>
   </tradity-li-action-list>
   <tradity-li-vl>

@@ -17,6 +17,7 @@ import { ListItemValueItemComponent } from './list-item-value-item.component';
 import { ListItemActionListComponent, ListItemActionExpandDirective } from './list-item-action-list.component';
 import { ValueListComponent } from './value-list.component';
 import { ValueListItemComponent } from './value-list-item.component';
+import { FavouriteActionComponent } from './favourite-action.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { ValueListItemComponent } from './value-list-item.component';
     ListItemActionListComponent,
     ListItemActionExpandDirective,
     ValueListComponent,
-    ValueListItemComponent
+    ValueListItemComponent,
+    FavouriteActionComponent
   ],
   declarations: [
     FormComponent,
@@ -57,7 +59,8 @@ import { ValueListItemComponent } from './value-list-item.component';
     ListItemActionListComponent,
     ListItemActionExpandDirective,
     ValueListComponent,
-    ValueListItemComponent
+    ValueListItemComponent,
+    FavouriteActionComponent
   ],
   providers: [],
 })

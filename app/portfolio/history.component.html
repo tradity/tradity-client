@@ -6,7 +6,7 @@
     <span right>{{order.money / 10000}} €</span>
   </tradity-li-header>
   <tradity-li-action-list>
-    <a role="button" class="material-icons">favorite</a>
+    <tradity-action-favourite></tradity-action-favourite>
     <a [routerLink]="['/stocks/' + order.stocktextid]" class="material-icons">info</a>
     <a role="button" tradity-action-expand class="material-icons"></a>
   </tradity-li-action-list>

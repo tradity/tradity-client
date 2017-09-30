@@ -5,7 +5,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   moduleId: module.id,
   selector: 'tradity-input[type=text], tradity-input[type=email], tradity-input[type=password]',
   styleUrls: ['input.component.css'],
-  template: '<span class="prefix"><tradity-icon *ngIf="prefix">{{ prefix }}</tradity-icon></span><input [type]="type" [value]="value" [placeholder]="placeholder" [autofocus]="autofocus" (input)="onChange($event.target.value)" (focus)="onFocus()" (blur)="onBlur()" /><span class="suffix"><tradity-icon *ngIf="prefix">{{ suffix }}</tradity-icon></span>',
+  template: '<span class="prefix"><tradity-icon *ngIf="prefix">{{ prefix }}</tradity-icon></span><input [type]="type" [value]="value" [placeholder]="placeholder" [autofocus]="autofocus" [disabled]="disabled" (input)="onChange($event.target.value)" (focus)="onFocus()" (blur)="onBlur()" /><span class="suffix"><tradity-icon *ngIf="prefix">{{ suffix }}</tradity-icon></span>',
   providers: [
     { 
       provide: NG_VALUE_ACCESSOR,
@@ -23,12 +23,17 @@ export class InputComponent implements ControlValueAccessor {
   @HostBinding('class.focus') focus = false;
 
   private _autofocus: boolean;
+  private _disabled: boolean;
   private onChange: (value: any) => void;
   private onTouched: () => void;
 
   @Input()
   get autofocus(): boolean { return this._autofocus }
-  set autofocus(value) { this._autofocus = value != null }  
+  set autofocus(value) { this._autofocus = value != null }
+
+  @Input()
+  get disabled(): boolean { return this._disabled }
+  set disabled(isDisabled) { this._disabled = isDisabled != null }
 
   onFocus() {
     this.focus = true;
@@ -49,5 +54,9 @@ export class InputComponent implements ControlValueAccessor {
 
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean) {
+    this.disabled = isDisabled;
   }
 }

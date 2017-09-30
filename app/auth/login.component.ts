@@ -1,11 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription'
 
 import { UserService } from '../core/user.service';
 import * as authActions from './auth.actions';
-import { LoginFormState, getLoginForm } from './auth.reducer';
 
 @Component({
   moduleId: module.id,
@@ -13,15 +13,16 @@ import { LoginFormState, getLoginForm } from './auth.reducer';
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.css']
 })
-export class LoginComponent implements OnInit, OnDestroy {
-  formValues: LoginFormState;
-  formValuesSub: Subscription;
+export class LoginComponent {
+  form: FormGroup;
 
-  constructor(private userService: UserService, private store: Store<any>, private router: Router, private route: ActivatedRoute) {
-    this.formValuesSub = this.store.select(getLoginForm).subscribe(res => this.formValues = res);
-  }
+  constructor(private userService: UserService, private store: Store<any>, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      username: '',
+      password: '',
+      stayLoggedIn: false
+    });
 
-  ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       if (params['emailVerifCode'] && params['uid']) {
         this.userService.verifyEmail(params['emailVerifCode'], Number(params['uid'])).
@@ -47,18 +48,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
   
   login() {
-    this.store.dispatch(new authActions.Login());
-  }
-
-  updateForm(key: string, value: string | boolean) {
-    this.store.dispatch(new authActions.UpdateLoginForm({ key, value }));
+    this.store.dispatch(new authActions.Login(this.form.value));
   }
 
   resetPassword() {
     this.userService.resetPassword();
-  }
-
-  ngOnDestroy() {
-    this.formValuesSub.unsubscribe();
   }
 }

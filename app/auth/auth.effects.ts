@@ -5,19 +5,17 @@ import { Store } from '@ngrx/store';
 
 import { ApiService } from '../core/api.service';
 import * as authActions from './auth.actions';
-import { getLoginForm } from './auth.reducer';
 
 @Injectable()
 export class AuthEffects {
   @Effect()
   login = this.actions
     .ofType(authActions.LOGIN)
-    .withLatestFrom(this.store.select(getLoginForm))
-    .switchMap(([action, loginForm]) => this.apiService
+    .switchMap((action: authActions.Login) => this.apiService
       .post('/login', {
-        name: loginForm.username,
-        pw: loginForm.password,
-        stayloggedin: loginForm.stayLoggedIn
+        name: action.payload.username,
+        pw: action.payload.password,
+        stayloggedin: action.payload.stayLoggedIn
       })
       .map(res => res.json())
       .map(res => {

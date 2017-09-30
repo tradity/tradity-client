@@ -13,7 +13,6 @@ export const REGISTRATION_FAILED = 'REGISTRATION_FAILED';
 export const LOGOUT = 'LOGOUT';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const NOT_LOGGED_IN = 'NOT_LOGGED_IN';
-export const UPDATE_LOGIN_FORM = 'UPDATE_LOGIN_FORM';
 
 export class ReceiveUser implements Action {
   readonly type = RECEIVE_USER;
@@ -26,6 +25,7 @@ export class LoadUser implements Action {
 
 export class Login implements Action {
   readonly type = LOGIN;
+  constructor(public payload: { username: string, password: string, stayLoggedIn: boolean }) {}
 }
 
 export class LoginSuccess implements Action {
@@ -63,11 +63,6 @@ export class NotLoggedIn implements Action {
   readonly type = NOT_LOGGED_IN;
 }
 
-export class UpdateLoginForm implements Action {
-  readonly type = UPDATE_LOGIN_FORM;
-  constructor(public payload: { key: string, value: string | boolean }) {}
-}
-
 export type All
   = ReceiveUser
   | Login
@@ -79,4 +74,3 @@ export type All
   | Logout
   | LogoutSuccess
   | NotLoggedIn
-  | UpdateLoginForm

@@ -3,19 +3,12 @@ import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { User } from './user.model';
 import * as actions from './auth.actions';
 
-export interface LoginFormState {
-  username: string;
-  password: string;
-  stayLoggedIn: boolean;
-}
-
 export interface State {
   user: User;
   uid: number;
   authKey: string;
   loggingIn: boolean;
   loggedIn: boolean;
-  loginForm: LoginFormState
 }
 
 export const initialState: State = {
@@ -31,12 +24,7 @@ export const initialState: State = {
   uid: null,
   authKey: null,
   loggingIn: false,
-  loggedIn: false,
-  loginForm: {
-    username: '',
-    password: '',
-    stayLoggedIn: false
-  }
+  loggedIn: false
 }
 
 export function authReducer(state: State = initialState, action: actions.All): State {
@@ -57,8 +45,7 @@ export function authReducer(state: State = initialState, action: actions.All): S
           uid: action.payload.uid,
           authKey: action.payload.authKey,
           loggingIn: false,
-          loggedIn: true,
-          loginForm: initialState.loginForm
+          loggedIn: true
         }
       );
     }
@@ -69,17 +56,6 @@ export function authReducer(state: State = initialState, action: actions.All): S
 
     case actions.NOT_LOGGED_IN: {
       return initialState;
-    }
-
-    case actions.UPDATE_LOGIN_FORM: {
-      if (!state.loginForm.hasOwnProperty(action.payload.key)) return state;
-      return {
-        ...state,
-        loginForm: {
-          ...state.loginForm,
-          [action.payload.key]: action.payload.value
-        }
-      };
     }
 
     default: {
@@ -108,9 +84,4 @@ export const getLoggedIn = createSelector(
 export const getLoggingIn = createSelector(
   getAuthState,
   (state: State) => state.loggingIn
-);
-
-export const getLoginForm = createSelector(
-  getAuthState,
-  (state: State) => state.loginForm
 );

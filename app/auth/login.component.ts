@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription'
 
 import { UserService } from '../core/user.service';
@@ -18,8 +18,8 @@ export class LoginComponent {
 
   constructor(private userService: UserService, private store: Store<any>, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
-      username: '',
-      password: '',
+      username: ['', Validators.required],
+      password: ['', Validators.required],
       stayLoggedIn: false
     });
 

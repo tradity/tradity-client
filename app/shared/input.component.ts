@@ -24,8 +24,8 @@ export class InputComponent implements ControlValueAccessor {
 
   private _autofocus: boolean;
   private _disabled: boolean;
-  private onChange: (value: any) => void;
-  private onTouched: () => void;
+  private onChange = (value: any): void => {};
+  private onTouched = () => {};
 
   @Input()
   get autofocus(): boolean { return this._autofocus }
@@ -59,4 +59,23 @@ export class InputComponent implements ControlValueAccessor {
   setDisabledState(isDisabled: boolean) {
     this.disabled = isDisabled;
   }
+}
+
+@Component({
+  moduleId: module.id,
+  selector: 'tradity-input[type=number]',
+  styleUrls: ['input.component.css'],
+  template: '<span class="prefix"></span><input type="number" [value]="value" [min]="min" [max]="max" [step]="step" [placeholder]="placeholder" [autofocus]="autofocus" [disabled]="disabled" (input)="onChange($event.target.value)" (focus)="onFocus()" (blur)="onBlur()" /><span class="suffix"></span>',
+  providers: [
+    { 
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputComponent),
+      multi: true
+    }
+  ]
+})
+export class InputNumberComponent extends InputComponent {
+  @Input() min: number;
+  @Input() max: number;
+  @Input() step: number;
 }

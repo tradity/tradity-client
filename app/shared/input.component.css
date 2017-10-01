@@ -53,3 +53,12 @@ input::placeholder { font-weight: 100; }
 input::-moz-placeholder { font-weight: 100; }
 input:-ms-input-placeholder { font-weight: 100; }
 input::-webkit-input-placeholder { font-weight: 100; }
+
+:host-context(tradity-trade) input[type=number] {
+  font-size: 16px;
+  font-weight: 100;
+  text-align: center;
+  line-height: 15px;
+  letter-spacing: 2px;
+  color: #170804;
+}

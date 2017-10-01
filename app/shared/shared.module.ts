@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { FormComponent } from './form.component';
 import { ButtonComponent } from './button.component';
-import { InputComponent } from './input.component';
+import { InputComponent, InputNumberComponent } from './input.component';
 import { SubnavComponent } from './subnav.component';
 import { BottomNavComponent } from './bottom-nav.component';
 import { ContainerComponent } from './container.component';
@@ -32,6 +32,7 @@ import { IconComponent } from './icon.component';
     FormComponent,
     ButtonComponent,
     InputComponent,
+    InputNumberComponent,
     SubnavComponent,
     BottomNavComponent,
     ContainerComponent,
@@ -55,6 +56,7 @@ import { IconComponent } from './icon.component';
     FormComponent,
     ButtonComponent,
     InputComponent,
+    InputNumberComponent,
     SubnavComponent,
     BottomNavComponent,
     ContainerComponent,

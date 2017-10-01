@@ -8,9 +8,9 @@
   <label for="buy" i18n>Buy</label>
   <input type="radio" name="sellbuy" id="sell" [checked]="sellBuy === Sell ? 'checked' : null" (click)="inputSellBuy(Sell)" />
   <label for="sell" i18n>Sell</label>
-  <input tradity-input type="number" id="amount" name="amount" [value]="amount | async" min="0" [max]="stock.pieces" placeholder="Number of shares" i18n-placeholder (input)="inputAmount($event.target.value)" />
+  <tradity-input type="number" id="amount" name="amount" [value]="amount | async" min="0" [max]="stock.pieces" placeholder="Number of shares" i18n-placeholder (input)="inputAmount($event.target.value)"></tradity-input>
   <span>x <span [class.inactive]="sellBuy === Sell">{{stock.ask / 10000 | currency:'EUR':true}} (Ask)</span> | <span [class.inactive]="sellBuy === Buy">{{stock.bid / 10000 | currency:'EUR':true}} (Bid)</span> =</span>
-  <input tradity-input type="number" step="any" id="value" name="value" [value]="value | async" placeholder="Euros to be invested" i18n-placeholder (input)="inputValue($event.target.value)" />
+  <tradity-input type="number" step="any" id="value" name="value" [value]="value | async" placeholder="Euros to be invested" i18n-placeholder (input)="inputValue($event.target.value)"></tradity-input>
   <!--<span>+ {{10 | currency:'EUR':true}} transaction fee</span>-->
   <button tradity-button type="submit" i18n>Execute trade</button>
 </form>

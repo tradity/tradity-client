@@ -13,6 +13,16 @@
   border-color: #F1592A;
 }
 
+:host.ng-touched.ng-invalid,
+:host.ng-dirty.ng-invalid {
+  border-color: #D0021B;
+}
+
+:host.ng-touched.ng-valid,
+:host.ng-dirty.ng-valid {
+  border-color: green;
+}
+
 span.prefix,
 span.suffix,
 input {

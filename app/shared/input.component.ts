@@ -24,7 +24,7 @@ export class InputComponent implements ControlValueAccessor {
 
   private _autofocus: boolean;
   private _disabled: boolean;
-  private onChange = (value: any): void => {};
+  public onChange = (value: any): void => {};
   private onTouched = () => {};
 
   @Input()
@@ -42,7 +42,7 @@ export class InputComponent implements ControlValueAccessor {
   onBlur() {
     this.focus = false;
     this.onTouched();
-  }  
+  }
 
   writeValue(value: any): void {
     this.value = value;

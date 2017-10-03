@@ -14,6 +14,9 @@
     "app/**/*.ts"
   ],
   "exclude": [
-    "app/main.prod.ts"
+    "app/main.prod.ts",
+    "dist",
+    "tmp",
+    "aot"
   ]
 }

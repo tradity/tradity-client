@@ -5,5 +5,6 @@ export interface User {
   freemoney: number;
   name: string;
   profilepic: string;
+  totalvalue: number;
   uid: number;
 }

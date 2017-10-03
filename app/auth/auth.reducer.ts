@@ -19,6 +19,7 @@ export const initialState: State = {
     freemoney: null,
     name: null,
     profilepic: null,
+    totalvalue: null,
     uid: null
   },
   uid: null,

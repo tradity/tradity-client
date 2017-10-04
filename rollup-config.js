@@ -8,6 +8,11 @@ export default {
   sourceMap: true,
   sourceMapFile: 'dist/build.js.map',
   format: 'iife',
+  onwarn: (warning, warn) => {
+    // skip warnings about this being rewritten to undefined
+    if (warning.code === 'THIS_IS_UNDEFINED') return;
+    warn(warning);
+  },
   plugins: [
     nodeResolve({jsnext: true, module: true}),
     commonjs({

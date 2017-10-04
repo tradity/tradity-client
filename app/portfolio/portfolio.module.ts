@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 
+import { portfolioRoutes } from './portfolio.routes';
 import { PortfolioComponent }   from './portfolio.component';
 import { HistoryComponent } from './history.component';
 import { PositionsComponent } from './positions.component';
@@ -13,7 +14,7 @@ import { OrdersComponent } from './orders.component';
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule
+    RouterModule.forChild(portfolioRoutes)
   ],
   exports: [],
   declarations: [

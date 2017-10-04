@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
 
 import { StocksService } from '../core/stocks.service';
-import { GameComponent } from '../game/game.component';
+import { AppComponent } from '../app.component';
 import * as stocksActions from './stocks.actions';
 import { Stock } from './stock.model';
 import { getSelectedStock, getSellBuy, getTradeAmount, getTradeValue, SellBuy } from './stocks.reducer';
@@ -26,8 +26,8 @@ export class TradeComponent implements OnDestroy {
   amount: Observable<number>;
   value: Observable<number>;
 
-  constructor(private route: ActivatedRoute, private stocksService: StocksService, private gameComponent: GameComponent, private router: Router, private store: Store<any>) {
-    this.gameComponent.heading2 = 'Trade';
+  constructor(private route: ActivatedRoute, private stocksService: StocksService, private appComponent: AppComponent, private router: Router, private store: Store<any>) {
+    this.appComponent.heading2 = 'Trade';
     this.sellBuySub = this.store.select(getSellBuy).subscribe(sellBuy => this.sellBuy = sellBuy);
     this.amount = this.store.select(getTradeAmount);
     this.value = this.store.select(getTradeValue);
@@ -36,7 +36,7 @@ export class TradeComponent implements OnDestroy {
       .switchMap((params: Params) => this.store.select(getSelectedStock))
       .subscribe((stock: Stock) => {
         this.stock = stock;
-        this.gameComponent.heading1 = stock.name;
+        this.appComponent.heading1 = stock.name;
       });
   }
 

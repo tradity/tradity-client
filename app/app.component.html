@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="isLoggedIn | async">
   <nav>
     <a role="button" (click)="toggleMenu()"><tradity-icon>menu</tradity-icon></a>
     <span>Tradity</span>

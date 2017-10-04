@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { RankingService } from '../core/ranking.service';
-import { GameComponent } from '../game/game.component';
+import { AppComponent } from '../app.component';
 
 @Component({
   moduleId: module.id,
@@ -12,10 +12,10 @@ import { GameComponent } from '../game/game.component';
 export class GroupsRankingComponent implements OnInit {
   ranking: Observable<any>;
 
-  constructor(private rankingService: RankingService, private gameComponent: GameComponent) { }
+  constructor(private rankingService: RankingService, private appComponent: AppComponent) { }
 
   ngOnInit() {
-    this.gameComponent.heading1 = 'Groups';
+    this.appComponent.heading1 = 'Groups';
     this.ranking = this.rankingService.rankingGroups;
     this.rankingService.loadGroups();
   }

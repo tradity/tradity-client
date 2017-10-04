@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { StocksService } from '../core/stocks.service';
-import { GameComponent } from '../game/game.component';
+import { AppComponent } from '../app.component';
 
 @Component({
   moduleId: module.id,
@@ -11,10 +11,10 @@ import { GameComponent } from '../game/game.component';
   styles: [':host { display: flex; flex-direction: column; padding: 20px; }']
 })
 export class PortfolioComponent implements OnInit {
-  constructor(private gameComponent: GameComponent) { }
+  constructor(private appComponent: AppComponent) { }
 
   ngOnInit() {
-    this.gameComponent.heading2 = 'Portfolio';
+    this.appComponent.heading2 = 'Portfolio';
   }
 
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { StocksService } from '../core/stocks.service';
-import { GameComponent } from '../game/game.component';
+import { AppComponent } from '../app.component';
 
 @Component({
   moduleId: module.id,
@@ -12,10 +12,10 @@ import { GameComponent } from '../game/game.component';
 export class PositionsComponent implements OnInit {
   positions: Observable<any>;
   
-  constructor(private stocksService: StocksService, private gameComponent: GameComponent) { }
+  constructor(private stocksService: StocksService, private appComponent: AppComponent) { }
 
   ngOnInit() {
-    this.gameComponent.heading1 = 'Positions';
+    this.appComponent.heading1 = 'Positions';
     this.positions = this.stocksService.positions;
   }
 }

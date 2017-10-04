@@ -7,6 +7,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { SharedModule } from '../shared/shared.module';
 
+import { stocksRoutes } from './stocks.routes';
 import { stocksReducer } from './stocks.reducer';
 import { StocksEffects } from './stocks.effects';
 import { StocksComponent }   from './stocks.component';
@@ -18,7 +19,7 @@ import { TradeComponent } from './trade.component';
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule,
+    RouterModule.forChild(stocksRoutes),
     SharedModule,
     StoreModule.forFeature('stocks', stocksReducer),
     EffectsModule.forFeature([StocksEffects])

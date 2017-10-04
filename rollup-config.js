@@ -3,11 +3,13 @@ import commonjs    from 'rollup-plugin-commonjs';
 import uglify      from 'rollup-plugin-uglify'
 
 export default {
-  entry: 'tmp/app/main.prod.js',
-  dest: 'dist/build.js',
-  sourceMap: true,
-  sourceMapFile: 'dist/build.js.map',
-  format: 'iife',
+  input: 'tmp/app/main.prod.js',
+  output: {
+    file: 'dist/build.js',
+    format: 'iife',
+    sourcemap: true,
+    sourcemapFile: 'dist/build.js.map'
+  },
   onwarn: (warning, warn) => {
     // skip warnings about this being rewritten to undefined
     if (warning.code === 'THIS_IS_UNDEFINED') return;

@@ -9,6 +9,7 @@ export const adminRoutes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
+      { path: '', redirectTo: 'userlist', pathMatch: 'full'},
       { path: 'userlist', component: AdminUserlistComponent },
       { path: 'groups', component: AdminGroupsComponent }
     ]

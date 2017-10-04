@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, Event, NavigationStart } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { Store } from '@ngrx/store';
@@ -25,9 +25,8 @@ export class AppComponent implements OnDestroy {
   constructor(private router: Router, private store: Store<any>) {
     this.isLoggedIn = this.store.select(getLoggedIn);
     this.userSub = this.store.select(getUser).subscribe(user => this.user = user);
-    this.router.events.subscribe(val => {
-      if (NavigationStart) this.isMenuOpen = false;
-      else this.isMenuOpen = true;
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) this.isMenuOpen = false;
     })
   }
 

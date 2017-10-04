@@ -14,7 +14,7 @@ import { User } from './auth/user.model';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnDestroy {
   isMenuOpen = false;
   isLoggedIn: Observable<boolean>;
   private userSub: Subscription;
@@ -22,14 +22,12 @@ export class AppComponent implements OnInit, OnDestroy {
   heading1: string = '';
   heading2: string = '';
   
-  constructor(private router: Router, private store: Store<any>) { }
-
-  ngOnInit() {
+  constructor(private router: Router, private store: Store<any>) {
     this.isLoggedIn = this.store.select(getLoggedIn);
     this.userSub = this.store.select(getUser).subscribe(user => this.user = user);
     this.router.events.subscribe(val => {
-    if (NavigationStart) this.isMenuOpen = false;
-    else this.isMenuOpen = true;
+      if (NavigationStart) this.isMenuOpen = false;
+      else this.isMenuOpen = true;
     })
   }
 

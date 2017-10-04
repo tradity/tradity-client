@@ -5,8 +5,4 @@ import { Component, OnInit } from '@angular/core';
   selector: 'tradity-admin',
   templateUrl: 'admin.component.html'
 })
-export class AdminComponent implements OnInit {
-  constructor() { }
-
-  ngOnInit() { }
-}
+export class AdminComponent { }

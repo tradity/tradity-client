@@ -10,12 +10,10 @@ import { AppComponent } from '../app.component';
   templateUrl: 'stocks.component.html',
   styleUrls: ['stocks.component.css']
 })
-export class StocksComponent implements OnInit {
+export class StocksComponent {
   popularStocks: Observable<any>;
 
-  constructor(private stocksService: StocksService, private appComponent: AppComponent) { }
-
-  ngOnInit() {
+  constructor(private stocksService: StocksService, private appComponent: AppComponent) {
     this.appComponent.heading2 = 'Stocks';
     this.appComponent.heading1 = 'Stock search';
     this.popularStocks = this.stocksService.popularStocks;

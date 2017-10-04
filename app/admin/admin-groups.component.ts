@@ -10,21 +10,19 @@ import { GroupService } from '../core/group.service';
   templateUrl: 'admin-groups.component.html',
   styles: ['table, th, td { border: 1px solid black; }']
 })
-export class AdminGroupsComponent implements OnInit {
+export class AdminGroupsComponent {
   name: string;
   path: string;
   groups: Observable<any>;
 
-  constructor(private adminService: AdminService, private groupService: GroupService) { }
-
-  ngOnInit() {
+  constructor(private adminService: AdminService, private groupService: GroupService) {
     this.groups = this.groupService.groupList.map(res => res.sort((a, b) => {
       let pathA = a.path.toLowerCase();
       let pathB = b.path.toLowerCase();
       if (pathA < pathB) return -1;
       if (pathA > pathB) return 1;
       return 0;
-    }))
+    }));
   }
 
   deleteGroup(school: any) {

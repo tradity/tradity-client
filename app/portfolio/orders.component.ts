@@ -9,15 +9,12 @@ import { AppComponent } from '../app.component';
   selector: 'tradity-orders',
   templateUrl: 'orders.component.html'
 })
-export class OrdersComponent implements OnInit {
+export class OrdersComponent {
   
   orders: Observable<any>;
   
-  constructor(private stocksService: StocksService, private appComponent: AppComponent) {}
-
-  ngOnInit() {
+  constructor(private stocksService: StocksService, private appComponent: AppComponent) {
     this.appComponent.heading1 = 'Pending orders';
     this.orders = this.stocksService.orders;
   }
-
 }

@@ -7,8 +7,6 @@ import { GroupComponent } from './group.component';
   selector: 'tradity-group-favourites',
   templateUrl: 'group-favourites.component.html'
 })
-export class GroupFavouritesComponent implements OnInit {
+export class GroupFavouritesComponent {
   constructor(public parent: GroupComponent) { }
-
-  ngOnInit() { }
 }

@@ -10,11 +10,8 @@ import { AppComponent } from '../app.component';
   templateUrl: 'portfolio.component.html',
   styles: [':host { display: flex; flex-direction: column; padding: 20px; }']
 })
-export class PortfolioComponent implements OnInit {
-  constructor(private appComponent: AppComponent) { }
-
-  ngOnInit() {
+export class PortfolioComponent {
+  constructor(private appComponent: AppComponent) {
     this.appComponent.heading2 = 'Portfolio';
   }
-
 }

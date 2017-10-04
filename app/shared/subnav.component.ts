@@ -6,9 +6,4 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['subnav.component.css'],
   template: '<ng-content></ng-content>'
 })
-export class SubnavComponent implements OnInit {
-  constructor() { }
-
-  ngOnInit() { }
-
-}
+export class SubnavComponent { }

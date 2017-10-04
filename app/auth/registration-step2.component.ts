@@ -7,8 +7,6 @@ import { RegistrationComponent } from './registration.component';
   selector: 'tradity-registration-step2',
   templateUrl: 'registration-step2.component.html'
 })
-export class RegistrationStep2Component implements OnInit {
+export class RegistrationStep2Component {
   constructor(public parent: RegistrationComponent) { }
-
-  ngOnInit() { }
 }

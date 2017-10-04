@@ -8,11 +8,8 @@ import { AppComponent } from '../app.component';
   templateUrl: 'ranking.component.html',
   styles: [':host { display: flex; flex-direction: column; padding: 20px; }']
 })
-export class RankingComponent implements OnInit {
-  constructor(private appComponent: AppComponent) { }
-
-  ngOnInit() {
-    this.appComponent.heading2 = 'Leaderboard';
+export class RankingComponent {
+  constructor(private appComponent: AppComponent) {
+    this.appComponent.heading2 = 'Leaderboard';    
   }
-
 }

@@ -9,7 +9,7 @@ import { AdminService } from '../core/admin.service';
   templateUrl: 'admin-userlist.component.html',
   styles: ['table, th, td { border: 1px solid black; }']
 })
-export class AdminUserlistComponent implements OnInit {
+export class AdminUserlistComponent {
   reverse = true;
   showImpersonate = true;
   showID = true;
@@ -35,9 +35,7 @@ export class AdminUserlistComponent implements OnInit {
 
   userlist: Observable<any>;
 
-  constructor(private adminService: AdminService) { }
-
-  ngOnInit() {
+  constructor(private adminService: AdminService) {
     this.userlist = this.adminService.userlist;
   }
 }

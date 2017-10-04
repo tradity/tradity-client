@@ -12,13 +12,11 @@ import { AppComponent } from '../app.component';
   templateUrl: 'group.component.html',
   styleUrls: ['group.component.css']
 })
-export class GroupComponent implements OnInit {
+export class GroupComponent {
   private groupSubscription: Subscription;
   group: any = {};
 
-  constructor(private route: ActivatedRoute, private groupService: GroupService, private appComponent: AppComponent) { }
-
-  ngOnInit() {
+  constructor(private route: ActivatedRoute, private groupService: GroupService, private appComponent: AppComponent) {
     this.appComponent.heading2 = 'Group';
     this.groupSubscription = this.route.params
       .switchMap((params: Params) => this.groupService.getGroup(params['id']))

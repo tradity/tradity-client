@@ -14,7 +14,7 @@ import { GroupService } from '../core/group.service';
   templateUrl: 'registration.component.html',
   styleUrls: ['registration.component.css']
 })
-export class RegistrationComponent implements OnInit, OnDestroy {
+export class RegistrationComponent implements OnDestroy {
   username = '';
   email = '';
   password = '';
@@ -29,13 +29,11 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   groupList: any;
   subGroups: Array<any>;
 
-  constructor(private router: Router, private store: Store<any>, private userService: UserService, private groupService: GroupService) { }
-
-  ngOnInit() {
+  constructor(private router: Router, private store: Store<any>, private userService: UserService, private groupService: GroupService) {
     this.groupListSubscription = this.groupService.groupList
-                                 // filter for top-level groups
-                                 .map(res => res.filter(val => val.path.split('/').length - 1 === 1))
-                                 .subscribe(res => this.groupList = res);
+      // filter for top-level groups
+      .map(res => res.filter(val => val.path.split('/').length - 1 === 1))
+      .subscribe(res => this.groupList = res);
   }
 
   ngOnDestroy() {

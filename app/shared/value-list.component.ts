@@ -6,8 +6,4 @@ import { Component, OnInit } from '@angular/core';
   template: '<ng-content></ng-content>',
   styleUrls: ['value-list.component.css']
 })
-export class ValueListComponent implements OnInit {
-  constructor() { }
-
-  ngOnInit() { }
-}
+export class ValueListComponent { }

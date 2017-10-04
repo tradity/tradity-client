@@ -13,18 +13,15 @@ import { AppComponent } from '../app.component';
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent implements OnDestroy {
   private userSub: Subscription;
   user: User;
 
   constructor(private store: Store<any>, private appComponent: AppComponent) {
-    this.store.dispatch(new authActions.LoadUser());
-    this.userSub = this.store.select(getUser).subscribe(user => this.user = user);
-  }
-
-  ngOnInit() {
     this.appComponent.heading1 = 'Dashboard';
     this.appComponent.heading2 = '';
+    this.store.dispatch(new authActions.LoadUser());
+    this.userSub = this.store.select(getUser).subscribe(user => this.user = user);
   }
 
   ngOnDestroy() {

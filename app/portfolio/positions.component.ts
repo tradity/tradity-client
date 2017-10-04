@@ -9,12 +9,10 @@ import { AppComponent } from '../app.component';
   selector: 'tradity-positions',
   templateUrl: 'positions.component.html'
 })
-export class PositionsComponent implements OnInit {
+export class PositionsComponent {
   positions: Observable<any>;
   
-  constructor(private stocksService: StocksService, private appComponent: AppComponent) { }
-
-  ngOnInit() {
+  constructor(private stocksService: StocksService, private appComponent: AppComponent) {
     this.appComponent.heading1 = 'Positions';
     this.positions = this.stocksService.positions;
   }

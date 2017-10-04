@@ -9,15 +9,12 @@ import { AppComponent } from '../app.component';
   selector: 'tradity-history',
   templateUrl: 'history.component.html'
 })
-export class HistoryComponent implements OnInit {
+export class HistoryComponent {
   
   history: Observable<any>;
   
-  constructor(private stocksService: StocksService, private appComponent: AppComponent) {}
-
-  ngOnInit() {
+  constructor(private stocksService: StocksService, private appComponent: AppComponent) {
     this.appComponent.heading1 = 'Order history';
     this.history = this.stocksService.history;
   }
-
 }

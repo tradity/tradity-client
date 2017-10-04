@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+/*import { StoreDevtoolsModule } from '@ngrx/store-devtools';*/
 import { localStorageSync } from 'ngrx-store-localstorage';
 
 import 'rxjs/add/operator/map';
@@ -45,7 +45,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
       HttpModule,
       RouterModule.forRoot(appRoutes),
       StoreModule.forRoot({}, { metaReducers }),
-      isDevMode ? StoreDevtoolsModule.instrument({ maxAge: 25 }) : [],
+      /*isDevMode ? StoreDevtoolsModule.instrument({ maxAge: 25 }) : [],*/
       EffectsModule.forRoot([]),
       CoreModule,
       AuthModule,

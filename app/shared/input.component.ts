@@ -1,5 +1,8 @@
 import { Component, Input, forwardRef, HostBinding } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Store } from '@ngrx/store';
+
+import * as appActions from '../app.actions';
 
 @Component({
   moduleId: module.id,
@@ -35,13 +38,17 @@ export class InputComponent implements ControlValueAccessor {
   get disabled(): boolean { return this._disabled }
   set disabled(isDisabled) { this._disabled = isDisabled != null }
 
+  constructor(private store: Store<any>) { }
+
   onFocus() {
     this.focus = true;
+    this.store.dispatch(new appActions.SetInputFocus(true));
   }
 
   onBlur() {
     this.focus = false;
     this.onTouched();
+    this.store.dispatch(new appActions.SetInputFocus(false));
   }
 
   writeValue(value: any): void {

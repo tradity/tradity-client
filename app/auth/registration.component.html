@@ -1,7 +1,7 @@
 <img title="Tradity" alt="Tradity" src="/img/tradity_symbol.png" />
 <h2 i18n>Sign Up</h2>
 <router-outlet></router-outlet>
-<tradity-bottom-nav>
+<tradity-bottom-nav *ngIf="!(inputFocus | async)">
   <a role="button" (click)="resetPassword()" i18n>Forgot Password?</a><!--
   --><a [routerLink]="['/login']" i18n>Login</a>
 </tradity-bottom-nav>

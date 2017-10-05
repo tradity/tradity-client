@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription'
+import { Observable } from 'rxjs/Observable';
 
 import { UserService } from '../core/user.service';
 import * as authActions from './auth.actions';
+import { getInputFocus } from '../app.reducer';
 
 @Component({
   moduleId: module.id,
@@ -15,6 +16,7 @@ import * as authActions from './auth.actions';
 })
 export class LoginComponent {
   form: FormGroup;
+  inputFocus: Observable<boolean>;
 
   constructor(private userService: UserService, private store: Store<any>, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
@@ -22,6 +24,8 @@ export class LoginComponent {
       password: ['', Validators.required],
       stayLoggedIn: false
     });
+
+    this.inputFocus = this.store.select(getInputFocus);
 
     this.route.params.subscribe((params: Params) => {
       if (params['emailVerifCode'] && params['uid']) {

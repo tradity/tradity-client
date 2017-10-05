@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 
 import * as authActions from './auth.actions';
+import { getInputFocus } from '../app.reducer';
 import { UserService } from '../core/user.service';
 import { GroupService } from '../core/group.service';
 
@@ -28,12 +29,15 @@ export class RegistrationComponent implements OnDestroy {
   private groupListSubscription: Subscription;
   groupList: any;
   subGroups: Array<any>;
+  inputFocus: Observable<boolean>;
 
   constructor(private router: Router, private store: Store<any>, private userService: UserService, private groupService: GroupService) {
     this.groupListSubscription = this.groupService.groupList
       // filter for top-level groups
       .map(res => res.filter(val => val.path.split('/').length - 1 === 1))
       .subscribe(res => this.groupList = res);
+    
+    this.inputFocus = this.store.select(getInputFocus);
   }
 
   ngOnDestroy() {

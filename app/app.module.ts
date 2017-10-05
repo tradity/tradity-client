@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-/*import { StoreDevtoolsModule } from '@ngrx/store-devtools';*/
+// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
 import 'rxjs/add/operator/map';
@@ -22,6 +22,7 @@ import 'rxjs/add/observable/empty';
 import 'rxjs/add/observable/of';
 
 import { appRoutes } from './app.routing';
+import { appReducer } from './app.reducer';
 import { AppComponent } from './app.component';
 
 import { CoreModule } from './core/core.module';
@@ -49,8 +50,8 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
       FormsModule,
       HttpModule,
       RouterModule.forRoot(appRoutes),
-      StoreModule.forRoot({}, { metaReducers }),
-      /*isDevMode ? StoreDevtoolsModule.instrument({ maxAge: 25 }) : [],*/
+      StoreModule.forRoot({ app: appReducer }, { metaReducers }),
+      // isDevMode ? StoreDevtoolsModule.instrument({ maxAge: 25 }) : [],
       EffectsModule.forRoot([]),
       CoreModule,
       SharedModule,

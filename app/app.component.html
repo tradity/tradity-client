@@ -1,3 +1,11 @@
+<div id="notifications">
+  <tradity-notification
+    *ngFor="let notification of notifications | async"
+    [id]="notification.id"
+    [type]="notification.type"
+    [message]="notification.message"
+  ></tradity-notification>
+</div>
 <header *ngIf="isLoggedIn | async">
   <nav>
     <a role="button" (click)="toggleMenu()"><tradity-icon>menu</tradity-icon></a>

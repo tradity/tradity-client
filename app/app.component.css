@@ -107,3 +107,9 @@ li a.active {
   font-weight: 900;
   line-height: 36px;
 }
+
+div#notifications {
+  position: fixed;
+  width: calc(100vw - 20px);
+  padding: 10px;
+}

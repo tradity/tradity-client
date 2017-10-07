@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Effect, Actions } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
 import { ApiService } from '../core/api.service';
 import * as authActions from './auth.actions';
+import * as appActions from '../app.actions';
 
 @Injectable()
 export class AuthEffects {
@@ -22,8 +24,8 @@ export class AuthEffects {
         if (res.code === 200) {
           return new authActions.LoginSuccess({ uid: res.uid, authKey: res.key });
         }
-        return new authActions.LoginFailed();
       })
+      .catch((error: any) => Observable.of(new authActions.LoginFailed()))
     );
 
   @Effect()
@@ -41,10 +43,10 @@ export class AuthEffects {
     .do(() => this.router.navigateByUrl('dashboard'))
     .map(() => new authActions.LoadUser());
   
-  @Effect({ dispatch: false })
+  @Effect()
   loginFailed = this.actions
     .ofType(authActions.LOGIN_FAILED)
-    .do(() => alert('Wrong username or password'));
+    .map(() => new appActions.CreateNotification({ type: 'error', message: 'Wrong username or password' }));
   
   @Effect()
   logout = this.actions

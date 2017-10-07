@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: red;
+  color: darkred;
+}
+
+span {
+  flex: 1 1 auto;
+}

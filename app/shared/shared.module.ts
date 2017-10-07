@@ -23,6 +23,7 @@ import { BuyActionComponent } from './buy-action.component';
 import { SellActionComponent } from './sell-action.component';
 import { ListItemExpandActionComponent } from './list-item-expand-action.component';
 import { IconComponent } from './icon.component';
+import { NotificationComponent } from './notification.component';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import { IconComponent } from './icon.component';
     BuyActionComponent,
     SellActionComponent,
     ListItemExpandActionComponent,
-    IconComponent
+    IconComponent,
+    NotificationComponent
   ],
   declarations: [
     FormComponent,
@@ -75,7 +77,8 @@ import { IconComponent } from './icon.component';
     BuyActionComponent,
     SellActionComponent,
     ListItemExpandActionComponent,
-    IconComponent
+    IconComponent,
+    NotificationComponent
   ],
   providers: [],
 })

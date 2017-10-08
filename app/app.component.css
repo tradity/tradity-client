@@ -110,6 +110,7 @@ li a.active {
 
 div#notifications {
   position: fixed;
+  top: 55px;
   width: calc(100vw - 20px);
-  padding: 10px;
+  padding: 0 10px;
 }

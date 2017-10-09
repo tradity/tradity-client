@@ -28,7 +28,9 @@ export class NotificationComponent {
   }
   icon: string;
 
-  constructor(private store: Store<any>) {}
+  constructor(private store: Store<any>) {
+    setTimeout(this.close.bind(this), 4000);
+  }
 
   close() {
     this.store.dispatch(new appActions.CloseNotification(this.id));

@@ -40,7 +40,7 @@ export class AuthEffects {
   @Effect()
   loginSuccess = this.actions
     .ofType(authActions.LOGIN_SUCCESS)
-    .do(() => this.router.navigateByUrl('dashboard'))
+    .do(() => this.router.navigateByUrl('/'))
     .map(() => new authActions.LoadUser());
   
   @Effect()

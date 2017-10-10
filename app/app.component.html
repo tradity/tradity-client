@@ -16,7 +16,7 @@
       <span id="username">{{user.name}}</span>
       <span id="email">{{user.email}}</span>
       <ul>
-        <li><a [routerLink]="['/dashboard']" routerLinkActive = "active" i18n>Dashboard</a></li>
+        <li><a [routerLink]="['/']" routerLinkActive = "active" [routerLinkActiveOptions]="{ exact: true }" i18n>Dashboard</a></li>
         <li><a [routerLink]="['/portfolio']" routerLinkActive = "active" i18n>Portfolio</a></li>
         <li><a [routerLink]="['/stocks']" routerLinkActive = "active" i18n>Stocks</a></li>
         <li><a [routerLink]="['/ranking']" routerLinkActive = "active" i18n>Leaderboard</a></li>

@@ -18,7 +18,7 @@ export class DashboardComponent implements OnDestroy {
   user: User;
 
   constructor(private store: Store<any>, private appComponent: AppComponent) {
-    this.appComponent.heading1 = 'Dashboard';
+    this.appComponent.heading1 = '';
     this.appComponent.heading2 = '';
     this.store.dispatch(new authActions.LoadUser());
     this.userSub = this.store.select(getUser).subscribe(user => this.user = user);

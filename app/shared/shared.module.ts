@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChartsModule } from 'ng2-charts';
 
 import { FormComponent } from './form.component';
 import { ButtonComponent } from './button.component';
@@ -24,10 +25,12 @@ import { SellActionComponent } from './sell-action.component';
 import { ListItemExpandActionComponent } from './list-item-expand-action.component';
 import { IconComponent } from './icon.component';
 import { NotificationComponent } from './notification.component';
+import { ChartComponent } from './chart.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    ChartsModule
   ],
   exports: [
     FormComponent,
@@ -52,7 +55,8 @@ import { NotificationComponent } from './notification.component';
     SellActionComponent,
     ListItemExpandActionComponent,
     IconComponent,
-    NotificationComponent
+    NotificationComponent,
+    ChartComponent
   ],
   declarations: [
     FormComponent,
@@ -78,7 +82,8 @@ import { NotificationComponent } from './notification.component';
     SellActionComponent,
     ListItemExpandActionComponent,
     IconComponent,
-    NotificationComponent
+    NotificationComponent,
+    ChartComponent
   ],
   providers: [],
 })

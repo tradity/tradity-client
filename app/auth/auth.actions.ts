@@ -21,6 +21,7 @@ export class ReceiveUser implements Action {
 
 export class LoadUser implements Action {
   readonly type = LOAD_USER;
+  constructor(public payload: boolean = false) {}
 }
 
 export class Login implements Action {

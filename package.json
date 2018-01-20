@@ -45,8 +45,10 @@
     "@ngrx/effects": "^4.0.5",
     "@ngrx/store": "^4.0.3",
     "@ngrx/store-devtools": "^4.0.0",
+    "chart.js": "^2.7.1",
     "core-js": "^2.5.1",
     "material-design-icons": "^3.0.1",
+    "ng2-charts": "^1.6.0",
     "ngrx-store-localstorage": "^0.2.2",
     "normalize.css": "^7.0.0",
     "reflect-metadata": "^0.1.10",
@@ -56,6 +58,7 @@
   },
   "devDependencies": {
     "@compodoc/compodoc": "1.0.1",
+    "@types/chart.js": "^2.7.3",
     "@types/node": "^8.0.32",
     "angular": "^1.6.6",
     "angular-marked": "^1.2.2",

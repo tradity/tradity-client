@@ -31,17 +31,17 @@ export class AuthEffects {
   @Effect()
   loadUser = this.actions
     .ofType(authActions.LOAD_USER)
-    .switchMap((action) => this.apiService
-      .get('/user/$self?nohistory=true')
+    .switchMap((action: authActions.LoadUser) => this.apiService
+      .get('/user/$self?nohistory=' + String(action.payload))
       .map(res => res.json())
-      .map(res => new authActions.ReceiveUser(res.data))
-    )
+      .map(res => new authActions.ReceiveUser(res))
+    );
   
   @Effect()
   loginSuccess = this.actions
     .ofType(authActions.LOGIN_SUCCESS)
     .do(() => this.router.navigateByUrl('/'))
-    .map(() => new authActions.LoadUser());
+    .map(() => new authActions.LoadUser(true));
   
   @Effect()
   loginFailed = this.actions

@@ -16,6 +16,7 @@ import { AppComponent } from '../app.component';
 export class DashboardComponent implements OnDestroy {
   private userSub: Subscription;
   user: User;
+  values: [number, number][] = [[2, 2], [4, 4]];
 
   constructor(private store: Store<any>, private appComponent: AppComponent) {
     this.appComponent.heading1 = '';

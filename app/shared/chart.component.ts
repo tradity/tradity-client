@@ -37,7 +37,14 @@ export class ChartComponent implements AfterViewInit {
                 x: new Date(),
                 y: 15
               }
-            ]
+            ],
+            fill: false,
+            borderColor: "#F1592A",
+            borderWidth: 1,
+            pointRadius: 0,
+            pointHitRadius: 6,
+            pointHoverBackgroundColor: "white",
+            pointHoverBorderColor: "white"
           }
         ]
       },
@@ -47,8 +54,28 @@ export class ChartComponent implements AfterViewInit {
         },
         scales: {
           xAxes: [{
-            type: 'time',
-            display: true,
+            type: "time",
+            gridLines: {
+              lineWidth: 0.3,
+              color: "#9B9B9B",
+              drawBorder: false
+            },
+            ticks: {
+              fontColor: "white",
+              fontFamily: "Lato"
+            }
+          }],
+          yAxes: [{
+            type: "linear",
+            gridLines: {
+              lineWidth: 0.3,
+              color: "#9B9B9B",
+              drawBorder: false
+            },
+            ticks: {
+              fontColor: "#F1592A",
+              fontFamily: "Lato"
+            }
           }]
         }
       }

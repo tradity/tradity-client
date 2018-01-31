@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChartsModule } from 'ng2-charts';
 
 import { FormComponent } from './form.component';
 import { ButtonComponent } from './button.component';
@@ -29,8 +28,7 @@ import { ChartComponent } from './chart.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    ChartsModule
+    CommonModule
   ],
   exports: [
     FormComponent,

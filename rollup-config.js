@@ -1,6 +1,7 @@
-import nodeResolve from 'rollup-plugin-node-resolve'
+import nodeResolve from 'rollup-plugin-node-resolve';
 import commonjs    from 'rollup-plugin-commonjs';
-import uglify      from 'rollup-plugin-uglify'
+import uglify      from 'rollup-plugin-uglify';
+import alias       from 'rollup-plugin-alias';
 
 export default {
   input: 'tmp/app/main.prod.js',
@@ -20,8 +21,12 @@ export default {
     commonjs({
       include: [
         'node_modules/rxjs/**',
-        'node_modules/ngrx-store-localstorage/dist/index.js'
-      ]
+        'node_modules/ngrx-store-localstorage/dist/index.js',
+        'node_modules/chart.js/dist/Chart.bundle.js'
+      ],
+      namedExports: {
+        'node_modules/chart.js/dist/Chart.bundle.js': ['Chart']
+      }
     }),
     uglify()
   ]

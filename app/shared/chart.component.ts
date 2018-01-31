@@ -9,17 +9,15 @@ import { Chart } from 'chart.js';
 })
 export class ChartComponent implements AfterViewInit {
   @Input()
-  set values(values: { date: number, totalvalue: number }[]) {
-    console.log(values);
+  set values(values: { time: number, totalvalue: number }[]) {
     this.data = [];
     for (const value of values) {
       this.data.push({
-        x: new Date(value.date),
+        x: new Date(value.time * 1000),
         y: value.totalvalue
       });
     }
     if (this.chart != null) {
-      console.log("updating");
       this.chart.data.datasets[0].data = this.data;
       this.chart.update();
     }

@@ -1,10 +1,11 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 
-import { User } from './user.model';
+import { User, Value } from './user.model';
 import * as actions from './auth.actions';
 
 export interface State {
   user: User;
+  values: Value[];
   uid: number;
   authKey: string;
   loggingIn: boolean;
@@ -22,6 +23,7 @@ export const initialState: State = {
     totalvalue: null,
     uid: null
   },
+  values: [],
   uid: null,
   authKey: null,
   loggingIn: false,
@@ -31,7 +33,14 @@ export const initialState: State = {
 export function authReducer(state: State = initialState, action: actions.All): State {
   switch (action.type) {
     case actions.RECEIVE_USER: {
-      return Object.assign({}, state, { user: action.payload });
+      return Object.assign(
+        {},
+        state,
+        {
+          user: action.payload.data,
+          values: action.payload.values != null ? action.payload.values : state.values
+        }
+      );
     }
 
     case actions.LOGIN: {
@@ -70,6 +79,11 @@ export const getAuthState = createFeatureSelector<State>('auth');
 export const getUser = createSelector(
   getAuthState,
   (state: State) => state.user
+);
+
+export const getValues = createSelector(
+  getAuthState,
+  (state: State) => state.values
 );
 
 export const getAuthKey = createSelector(

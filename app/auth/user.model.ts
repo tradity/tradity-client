@@ -8,3 +8,13 @@ export interface User {
   totalvalue: number;
   uid: number;
 }
+
+export interface Value {
+  time: number;
+  totalvalue: number;
+}
+
+export interface UserResponse {
+  data: User;
+  values?: Value[];
+}

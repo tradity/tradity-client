@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { User } from './user.model';
+import { UserResponse } from './user.model';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const LOAD_USER = 'LOAD_USER';
@@ -16,7 +16,7 @@ export const NOT_LOGGED_IN = 'NOT_LOGGED_IN';
 
 export class ReceiveUser implements Action {
   readonly type = RECEIVE_USER;
-  constructor(public payload: User) {}
+  constructor(public payload: UserResponse) {}
 }
 
 export class LoadUser implements Action {

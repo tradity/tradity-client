@@ -3,6 +3,7 @@
   <tradity-input type="text" placeholder="Surname" i18n-placeholder name="surname" [(ngModel)]="parent.surname"></tradity-input>
   <select name="city" [(ngModel)]="parent.city" (ngModelChange)="parent.loadSubGroups()">
     <option selected value="" i18n>Select your city</option>
+    <option value="" i18n>Other city</option>
     <option *ngFor="let city of parent.groupList" [value]="city.path">
       {{city.name}}
     </option>

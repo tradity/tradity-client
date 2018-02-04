@@ -49,8 +49,8 @@ nav div.menu-open {
   display: flex;
   justify-content: center;
   align-items: center;
-  visibility: inherit;
-  opacity: inherit;
+  visibility: visible;
+  opacity: 1;
 }
 
 #profile-pic img {

@@ -45,6 +45,22 @@ nav div.menu-open {
   border-radius: 50%;
   border: 1px solid #979797;
   margin-bottom: 25px;
+  background-color: rgba(23,8,4,0.02);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile-pic img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+#profile-pic span {
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 25px;
 }
 
 #username {

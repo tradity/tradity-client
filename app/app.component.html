@@ -12,7 +12,10 @@
     <span>Tradity</span>
     <a [routerLink]="['/stocks']"><tradity-icon>search</tradity-icon></a>
     <div [class.menu-open]="isMenuOpen">
-      <img id="profile-pic" src="https://placehold.it/80x80">
+      <div id="profile-pic">
+        <img *ngIf="user.profilepic" [src]="user.profilepic" />
+        <span *ngIf="!user.profilepic && user.name">{{ user.name.toUpperCase()[0] }}</span>
+      </div>
       <span id="username">{{user.name}}</span>
       <span id="email">{{user.email}}</span>
       <ul>

@@ -19,7 +19,7 @@
     "prebuild": "npm run clean",
     "build": "parallelshell 'npm run build:js' 'npm run build:cp' 'tsc -p tsconfig.json' 'npm run build:indexhtml -- -e dev'",
     "prebuild:prod": "npm run clean",
-    "build:prod": "npm run build:cp && npm run build:symlink && npm run build:indexhtml -- -e prod && ngc -p tsconfig.prod.json && rollup -c rollup-config.js",
+    "build:prod": "npm run build:cp && npm run build:symlink && npm run build:indexhtml -- -e prod && ngc -p tsconfig.prod.json --i18nFile=./locale/messages.de.xlf --locale=de --i18nFormat=xlf && rollup -c rollup-config.js",
     "build:symlink": "cd dist && ln -sf ../node_modules || true",
     "build:indexhtml": "htmlprocessor index.html -o dist/index.html",
     "build:js": "cp -r app dist/ && npm run build:symlink",

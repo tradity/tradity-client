@@ -9,6 +9,9 @@ import { AppComponent } from '../app.component';
 import * as stocksActions from './stocks.actions';
 import { Stock } from './stock.model';
 import { getSelectedStock, getSellBuy, getTradeAmount, getTradeValue, SellBuy } from './stocks.reducer';
+import { getUser } from '../auth/auth.reducer';
+import { User } from '../auth/user.model';
+import * as authActions from '../auth/auth.actions';
 
 @Component({
   moduleId: module.id,
@@ -19,6 +22,8 @@ import { getSelectedStock, getSellBuy, getTradeAmount, getTradeValue, SellBuy } 
 export class TradeComponent implements OnDestroy {
   private stockSubscription: Subscription;
   stock: Stock;
+  private userSub: Subscription;
+  user: User;
   Buy = SellBuy.Buy;
   Sell = SellBuy.Sell;
   sellBuySub: Subscription;
@@ -38,6 +43,8 @@ export class TradeComponent implements OnDestroy {
         this.stock = stock;
         this.appComponent.heading1 = stock.name;
       });
+    this.store.dispatch(new authActions.LoadUser());
+    this.userSub = this.store.select(getUser).subscribe(user => this.user = user);
   }
 
   ngOnDestroy() {

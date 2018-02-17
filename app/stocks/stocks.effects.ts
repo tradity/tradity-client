@@ -23,6 +23,7 @@ export class StocksEffects {
         .get('/stocks/search?name=' + action.payload)
         .map(res => res.json().data)
         .map((searchResults: Stock[]) => new stocksActions.ReceiveSearchResults(searchResults))
+        .catch(err => Observable.of(new stocksActions.ReceiveSearchResults([])))
     });
 
   @Effect()

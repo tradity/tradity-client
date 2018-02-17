@@ -14,7 +14,7 @@ export class ChartComponent implements AfterViewInit {
     for (const value of values) {
       this.data.push({
         x: new Date(value.time * 1000),
-        y: value.totalvalue
+        y: value.totalvalue / 10000
       });
     }
     if (this.chart != null) {

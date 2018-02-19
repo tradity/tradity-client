@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
@@ -13,6 +13,7 @@ import { FeedEvent } from './feedEvent.model';
   styles: [':host { display: flex; flex-direction: column; }']
 })
 export class FeedComponent {
+  @Input() emailVerified: Boolean;
   events: Observable<FeedEvent[]>;
 
   constructor(private store: Store<any>) {

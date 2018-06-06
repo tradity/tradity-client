@@ -1,0 +1,78 @@
+module Main exposing (Model, Msg, init, subscriptions, update, view)
+
+import Html exposing (..)
+import Navigation exposing (Location)
+import Route
+import UrlParser
+
+
+main : Program Never Model Msg
+main =
+    Navigation.program SetRoute
+        { init = init
+        , view = view
+        , update = update
+        , subscriptions = subscriptions
+        }
+
+
+type Page
+    = Dashboard
+    | Login
+
+
+type alias Model =
+    { page : Page
+    }
+
+
+initialModel : Model
+initialModel =
+    { page = Dashboard
+    }
+
+
+type Msg
+    = SetRoute Location
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        SetRoute location ->
+            ( setRoute location model, Cmd.none )
+
+
+view : Model -> Html Msg
+view model =
+    case model.page of
+        Dashboard ->
+            h1 [] [ text "Dashboard" ]
+
+        Login ->
+            h1 [] [ text "Login" ]
+
+
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
+
+
+init : Location -> ( Model, Cmd Msg )
+init location =
+    ( setRoute location initialModel, Cmd.none )
+
+
+setRoute : Location -> Model -> Model
+setRoute location model =
+    let
+        route =
+            UrlParser.parsePath Route.route location
+                |> Maybe.withDefault Route.Dashboard
+    in
+    case route of
+        Route.Dashboard ->
+            { model | page = Dashboard }
+
+        Route.Login ->
+            { model | page = Login }

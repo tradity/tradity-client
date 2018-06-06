@@ -4,6 +4,7 @@ tmp
 cclient
 .tmp
 node_modules
+elm-stuff
 docs
 *.log
 .DS_Store

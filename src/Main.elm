@@ -2,6 +2,7 @@ module Main exposing (Model, Msg, init, subscriptions, update, view)
 
 import Html exposing (..)
 import Navigation exposing (Location)
+import Page.Login as Login
 import Route
 import UrlParser
 
@@ -18,7 +19,7 @@ main =
 
 type Page
     = Dashboard
-    | Login
+    | Login Login.Model
 
 
 type alias Model =
@@ -34,6 +35,7 @@ initialModel =
 
 type Msg
     = SetRoute Location
+    | LoginMsg Login.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -42,6 +44,18 @@ update msg model =
         SetRoute location ->
             ( setRoute location model, Cmd.none )
 
+        LoginMsg loginMsg ->
+            case model.page of
+                Login loginModel ->
+                    let
+                        ( newLoginModel, cmd ) =
+                            Login.update loginMsg loginModel
+                    in
+                    ( { model | page = Login newLoginModel }, Cmd.map LoginMsg cmd )
+
+                _ ->
+                    ( model, Cmd.none )
+
 
 view : Model -> Html Msg
 view model =
@@ -49,8 +63,9 @@ view model =
         Dashboard ->
             h1 [] [ text "Dashboard" ]
 
-        Login ->
-            h1 [] [ text "Login" ]
+        Login loginModel ->
+            Login.view loginModel
+                |> Html.map LoginMsg
 
 
 subscriptions : Model -> Sub Msg
@@ -75,4 +90,4 @@ setRoute location model =
             { model | page = Dashboard }
 
         Route.Login ->
-            { model | page = Login }
+            { model | page = Login Login.initalModel }

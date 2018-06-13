@@ -1,6 +1,6 @@
 module Main exposing (Model, Msg, init, subscriptions, update, view)
 
-import Html exposing (..)
+import Html.Styled as Html exposing (..)
 import Navigation exposing (Location)
 import Page.Login as Login
 import Route
@@ -11,7 +11,7 @@ main : Program Never Model Msg
 main =
     Navigation.program SetRoute
         { init = init
-        , view = view
+        , view = view >> toUnstyled
         , update = update
         , subscriptions = subscriptions
         }

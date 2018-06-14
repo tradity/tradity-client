@@ -1,9 +1,18 @@
-module Views.Form exposing (input)
+module Views.Form exposing (form, input)
 
 import Css exposing (..)
 import Css.Colors exposing (..)
 import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes exposing (css)
+
+
+form : List (Attribute msg) -> List (Html msg) -> Html msg
+form =
+    styled Html.form
+        [ display inlineFlex
+        , flexWrap wrap
+        , margin2 zero (px 50)
+        ]
 
 
 input : List (Attribute msg) -> Html msg
@@ -49,10 +58,14 @@ inputChild =
         , height (px 57)
         ]
 
-{-  Hack needed to get rid of Chrome's ugly form autofill colour,
-    which for some reason is an outstanding bug since 2008 -.-
-    https://bugs.chromium.org/p/chromium/issues/detail?id=46543
+
+
+{- Hack needed to get rid of Chrome's ugly form autofill colour,
+   which for some reason is an outstanding bug since 2008 -.-
+   https://bugs.chromium.org/p/chromium/issues/detail?id=46543
 -}
+
+
 removeChromiumAutofillColor : Style
 removeChromiumAutofillColor =
     Css.batch

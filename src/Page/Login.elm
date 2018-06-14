@@ -49,7 +49,7 @@ view model =
                 ]
             ]
             [ text "Welcome back!" ]
-        , Html.form []
+        , Form.form []
             [ Form.input
                 [ type_ "text"
                 , placeholder "Username"

@@ -61,7 +61,7 @@ view model =
                 , placeholder "Password"
                 , onInput SetPassword
                 ]
-            , button [ type_ "submit" ] [ text "Log in" ]
+            , Form.button [ type_ "submit" ] [ text "Log in" ]
             ]
         ]
 

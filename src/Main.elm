@@ -40,21 +40,20 @@ type Msg
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    case msg of
-        SetRoute location ->
+    case ( msg, model.page ) of
+        ( SetRoute location, _ ) ->
             ( setRoute location model, Cmd.none )
 
-        LoginMsg loginMsg ->
-            case model.page of
-                Login loginModel ->
-                    let
-                        ( newLoginModel, cmd ) =
-                            Login.update loginMsg loginModel
-                    in
-                    ( { model | page = Login newLoginModel }, Cmd.map LoginMsg cmd )
+        ( LoginMsg loginMsg, Login loginModel ) ->
+            let
+                ( newLoginModel, cmd ) =
+                    Login.update loginMsg loginModel
+            in
+            ( { model | page = Login newLoginModel }, Cmd.map LoginMsg cmd )
 
-                _ ->
-                    ( model, Cmd.none )
+        ( _, _ ) ->
+            -- Ignore messages arriving for the wrong page
+            ( model, Cmd.none )
 
 
 view : Model -> Html Msg

@@ -1,5 +1,6 @@
-module Route exposing (Route(..), route)
+module Route exposing (Route(..), route, redirect)
 
+import Navigation
 import UrlParser exposing (Parser, map, oneOf, s, top)
 
 
@@ -14,3 +15,22 @@ route =
         [ map Dashboard top
         , map Login (s "login")
         ]
+
+
+routeToString : Route -> String
+routeToString page =
+    let
+        pieces =
+            case page of
+                Dashboard ->
+                    []
+
+                Login ->
+                    [ "login" ]
+    in
+    String.join "/" pieces
+
+
+redirect : Route -> Cmd msg
+redirect =
+    Navigation.newUrl << routeToString

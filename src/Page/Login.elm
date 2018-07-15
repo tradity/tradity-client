@@ -4,7 +4,10 @@ import Css exposing (..)
 import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes exposing (..)
 import Html.Styled.Events exposing (..)
+import Http
 import Views.Form as Form
+import Request.User
+import Route
 
 type alias Model =
     { username : String
@@ -49,7 +52,8 @@ view model =
                 ]
             ]
             [ text "Welcome back!" ]
-        , Form.form []
+        , Form.form
+            [ onSubmit SubmitForm ]
             [ Form.input
                 [ type_ "text"
                 , placeholder "Username"
@@ -69,6 +73,8 @@ view model =
 type Msg
     = SetUsername String
     | SetPassword String
+    | SubmitForm
+    | LoginResponse (Result Http.Error String)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -79,3 +85,12 @@ update msg model =
 
         SetPassword password ->
             ( { model | password = password }, Cmd.none )
+
+        SubmitForm ->
+            ( model
+            , Http.send LoginResponse <|
+                Request.User.login model.username model.password False
+            )
+        
+        LoginResponse authToken ->
+            ( model, Route.redirect Route.Dashboard )

@@ -24,12 +24,14 @@ type Page
 
 type alias Model =
     { page : Page
+    , session : String
     }
 
 
 initialModel : Model
 initialModel =
     { page = Dashboard
+    , session = ""
     }
 
 
@@ -46,10 +48,18 @@ update msg model =
 
         ( LoginMsg loginMsg, Login loginModel ) ->
             let
-                ( newLoginModel, cmd ) =
+                ( ( newLoginModel, cmd ), msgFromPage ) =
                     Login.update loginMsg loginModel
+
+                newModel =
+                    case msgFromPage of
+                        Login.NoMsg ->
+                            model
+
+                        Login.SetSession session ->
+                            { model | session = session }
             in
-            ( { model | page = Login newLoginModel }, Cmd.map LoginMsg cmd )
+            ( { newModel | page = Login newLoginModel }, Cmd.map LoginMsg cmd )
 
         ( _, _ ) ->
             -- Ignore messages arriving for the wrong page

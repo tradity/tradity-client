@@ -1,13 +1,14 @@
-module Page.Login exposing (Model, Msg, initalModel, update, view)
+module Page.Login exposing (Model, Msg, ExternalMsg(..), initalModel, update, view)
 
 import Css exposing (..)
 import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes exposing (..)
 import Html.Styled.Events exposing (..)
 import Http
-import Views.Form as Form
 import Request.User
 import Route
+import Views.Form as Form
+
 
 type alias Model =
     { username : String
@@ -77,20 +78,30 @@ type Msg
     | LoginResponse (Result Http.Error String)
 
 
-update : Msg -> Model -> ( Model, Cmd Msg )
+type ExternalMsg
+    = NoMsg
+    | SetSession String
+
+
+update : Msg -> Model -> ( ( Model, Cmd Msg ), ExternalMsg )
 update msg model =
     case msg of
         SetUsername username ->
-            ( { model | username = username }, Cmd.none )
+            ( ( { model | username = username }, Cmd.none ), NoMsg )
 
         SetPassword password ->
-            ( { model | password = password }, Cmd.none )
+            ( ( { model | password = password }, Cmd.none ), NoMsg )
 
         SubmitForm ->
-            ( model
-            , Http.send LoginResponse <|
-                Request.User.login model.username model.password False
+            ( ( model
+              , Http.send LoginResponse <|
+                    Request.User.login model.username model.password False
+              )
+            , NoMsg
             )
-        
-        LoginResponse authToken ->
-            ( model, Route.redirect Route.Dashboard )
+
+        LoginResponse (Err error) ->
+            ( ( model, Cmd.none ), NoMsg )
+
+        LoginResponse (Ok authToken) ->
+            ( ( model, Route.redirect Route.Dashboard ), SetSession authToken )

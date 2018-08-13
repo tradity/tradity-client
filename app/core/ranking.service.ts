@@ -1,5 +1,7 @@
+
+import {map, zip} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 import { ApiService } from './api.service';
 
@@ -29,25 +31,25 @@ export class RankingService {
   }
   
   loadAll() {
-    this.apiService.get('/ranking')
-    .map(res => res.json())
-    .map(res => res.data.sort((a, b) => b.totalvalue - a.totalvalue).slice(0, 100))
+    this.apiService.get('/ranking').pipe(
+    map(res => res.json()),
+    map(res => res.data.sort((a, b) => b.totalvalue - a.totalvalue).slice(0, 100)),)
     .subscribe(res => this._rankingAll.next(res));
   }
 
   loadWeekly() {
-    this.apiService.get('/ranking?since=' + (Math.floor(Date.now() / 1000) - 604800))
-    .map(res => res.json())
-    .map(res => res.data.sort((a, b) => b.totalvalue - a.totalvalue).slice(0, 100))
+    this.apiService.get('/ranking?since=' + (Math.floor(Date.now() / 1000) - 604800)).pipe(
+    map(res => res.json()),
+    map(res => res.data.sort((a, b) => b.totalvalue - a.totalvalue).slice(0, 100)),)
     .subscribe(res => this._rankingWeekly.next(res));
   }
 
   loadGroups() {
-    this.apiService.get('/schools')
-    .map(res => res.json().data)
-    .zip(
-      this.apiService.get('/ranking')
-      .map(res => res.json().data),
+    this.apiService.get('/schools').pipe(
+    map(res => res.json().data),
+    zip(
+      this.apiService.get('/ranking').pipe(
+      map(res => res.json().data)),
       (groups, users) => {
         let ret = {};
         for (let group of groups) {
@@ -74,7 +76,7 @@ export class RankingService {
         retArr.sort((a, b) => b.avgTotalValue - a.avgTotalValue)
         return retArr;
       }
-    )
+    ),)
     .subscribe(res => this._rankingGroups.next(res));
   }
 }

@@ -1,8 +1,11 @@
+
+import {of as observableOf,  Observable } from 'rxjs';
+
+import {tap, switchMap, map, catchError, mergeMap} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Effect, Actions } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
 
 import { ApiService } from '../core/api.service';
 import * as authActions from './auth.actions';
@@ -12,81 +15,81 @@ import * as appActions from '../app.actions';
 export class AuthEffects {
   @Effect()
   login = this.actions
-    .ofType(authActions.LOGIN)
-    .switchMap((action: authActions.Login) => this.apiService
+    .ofType(authActions.LOGIN).pipe(
+    switchMap((action: authActions.Login) => this.apiService
       .post('/login', {
         name: action.payload.username,
         pw: action.payload.password,
         stayloggedin: action.payload.stayLoggedIn
-      })
-      .map(res => res.json())
-      .map(res => {
+      }).pipe(
+      map(res => res.json()),
+      map(res => {
         if (res.code === 200) {
           return new authActions.LoginSuccess({ uid: res.uid, authKey: res.key });
         }
-      })
-      .catch((error: any) => Observable.of(new authActions.LoginFailed()))
-    );
+      }),
+      catchError((error: any) => observableOf(new authActions.LoginFailed())),)
+    ));
 
   @Effect()
   loadUser = this.actions
-    .ofType(authActions.LOAD_USER)
-    .switchMap((action: authActions.LoadUser) => this.apiService
-      .get('/user/$self?nohistory=' + String(action.payload))
-      .map(res => res.json())
-      .map(res => new authActions.ReceiveUser(res))
-    );
+    .ofType(authActions.LOAD_USER).pipe(
+    switchMap((action: authActions.LoadUser) => this.apiService
+      .get('/user/$self?nohistory=' + String(action.payload)).pipe(
+      map(res => res.json()),
+      map(res => new authActions.ReceiveUser(res)),)
+    ));
   
   @Effect()
   loginSuccess = this.actions
-    .ofType(authActions.LOGIN_SUCCESS)
-    .do(() => this.router.navigateByUrl('/'))
-    .map(() => new authActions.LoadUser(true));
+    .ofType(authActions.LOGIN_SUCCESS).pipe(
+    tap(() => this.router.navigateByUrl('/')),
+    map(() => new authActions.LoadUser(true)),);
   
   @Effect()
   loginFailed = this.actions
-    .ofType(authActions.LOGIN_FAILED)
-    .map(() => new appActions.CreateNotification({ type: 'error', message: 'Wrong username or password' }));
+    .ofType(authActions.LOGIN_FAILED).pipe(
+    map(() => new appActions.CreateNotification({ type: 'error', message: 'Wrong username or password' })));
   
   @Effect()
   logout = this.actions
-    .ofType(authActions.LOGOUT)
-    .mergeMap(() => this.apiService
-      .post('/logout', {})
-      .map(res => res.json())
-      .map(res => {
+    .ofType(authActions.LOGOUT).pipe(
+    mergeMap(() => this.apiService
+      .post('/logout', {}).pipe(
+      map(res => res.json()),
+      map(res => {
         if (res.code === 200) {
           return new authActions.LogoutSuccess();
         }
-      })
-    );
+      }),)
+    ));
 
   @Effect({ dispatch: false })
   logoutSuccess = this.actions
-    .ofType(authActions.LOGOUT_SUCCESS)
-    .do(() => this.router.navigateByUrl('login'));
+    .ofType(authActions.LOGOUT_SUCCESS).pipe(
+    tap(() => this.router.navigateByUrl('login')));
   
   @Effect()
   register = this.actions
-    .ofType(authActions.REGISTER)
-    .switchMap((action: authActions.Register) => this.apiService
+    .ofType(authActions.REGISTER).pipe(
+    switchMap((action: authActions.Register) => this.apiService
       .post(
         '/register',
         action.payload
-      )
-      .map(res => res.json())
-      .map(res => {
+      ).pipe(
+      map(res => res.json()),
+      map(res => {
         if (res.code === 200) {
           return new authActions.LoginSuccess({ uid: res.uid, authKey: res.key });
         }
         return new authActions.RegistrationFailed();
-      })
-    );
+      }),)
+    ));
   
   @Effect({ dispatch: false })
   notLoggedIn = this.actions
-    .ofType(authActions.NOT_LOGGED_IN)
-    .do(() => this.router.navigateByUrl('login'));
+    .ofType(authActions.NOT_LOGGED_IN).pipe(
+    tap(() => this.router.navigateByUrl('login')));
 
   constructor(
     private actions: Actions,

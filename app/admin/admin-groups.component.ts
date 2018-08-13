@@ -1,5 +1,7 @@
+
+import {map} from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 import { AdminService } from '../core/admin.service';
 import { GroupService } from '../core/group.service';
@@ -16,13 +18,13 @@ export class AdminGroupsComponent {
   groups: Observable<any>;
 
   constructor(private adminService: AdminService, private groupService: GroupService) {
-    this.groups = this.groupService.groupList.map(res => res.sort((a, b) => {
+    this.groups = this.groupService.groupList.pipe(map(res => res.sort((a, b) => {
       let pathA = a.path.toLowerCase();
       let pathB = b.path.toLowerCase();
       if (pathA < pathB) return -1;
       if (pathA > pathB) return 1;
       return 0;
-    }));
+    })));
   }
 
   deleteGroup(school: any) {

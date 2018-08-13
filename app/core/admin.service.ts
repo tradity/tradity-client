@@ -1,5 +1,7 @@
+
+import {map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 
 import { ApiService } from './api.service';
 
@@ -17,21 +19,21 @@ export class AdminService {
   }
 
   loadUserlist() {
-    this.apiService.get('/users')
-    .map(res => res.json().data)
+    this.apiService.get('/users').pipe(
+    map(res => res.json().data))
     .subscribe(res => this._userlist.next(res));
   }
 
   deleteGroup(gid: number) {
-    return this.apiService.post('/school/null/merge/' + gid, {})
-    .map(res => res.json());
+    return this.apiService.post('/school/null/merge/' + gid, {}).pipe(
+    map(res => res.json()));
   }
 
   createSchool(name: string, path: string) {
     return this.apiService.post('/school', {
       schoolname: name,
       schoolpath: path
-    })
-    .map(res => res.json());
+    }).pipe(
+    map(res => res.json()));
   }
 }

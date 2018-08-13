@@ -19,7 +19,6 @@ export default {
     nodeResolve({jsnext: true, module: true}),
     commonjs({
       include: [
-        'node_modules/rxjs/**',
         'node_modules/ngrx-store-localstorage/dist/index.js',
         'node_modules/chart.js/dist/Chart.bundle.js'
       ],

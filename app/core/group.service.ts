@@ -1,6 +1,7 @@
+
+import {map, zip} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject ,  Observable } from 'rxjs';
 
 import { ApiService } from './api.service';
 
@@ -26,12 +27,12 @@ export class GroupService {
   }
 
   loadGroup(id: string): void {
-    this.apiService.get('/school/' + id)
-    .map(res => res.json().data)
-    .zip(
-      this.apiService.get('/ranking?schoolid=' + id)
-      .map(res => res.json())
-      .map(res => res.data.sort((a, b) => b.totalvalue - a.totalvalue)),
+    this.apiService.get('/school/' + id).pipe(
+    map(res => res.json().data),
+    zip(
+      this.apiService.get('/ranking?schoolid=' + id).pipe(
+      map(res => res.json()),
+      map(res => res.data.sort((a, b) => b.totalvalue - a.totalvalue)),),
       (res1, res2) => {
         res1["ranking"] = res2;
 
@@ -41,7 +42,7 @@ export class GroupService {
 
         return res1;
       }
-    )
+    ),)
     .subscribe(res => {
       if (!this._groups[id]) this._groups[id] = new BehaviorSubject([]);
       this._groups[id].next(res);
@@ -49,13 +50,13 @@ export class GroupService {
   }
 
   loadGroups() {
-    this.apiService.get('/schools')
-    .map(res => res.json().data)
+    this.apiService.get('/schools').pipe(
+    map(res => res.json().data))
     .subscribe(res => this._groupList.next(res));
   }
 
   getSubGroups(path: string): Observable<any> {
-    return this.apiService.get('/schools?parentPath=' + path)
-           .map(res => res.json().data)
+    return this.apiService.get('/schools?parentPath=' + path).pipe(
+           map(res => res.json().data))
   }
 }

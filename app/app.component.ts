@@ -1,7 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router, Event, NavigationStart } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable ,  Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import * as authActions from './auth/auth.actions';

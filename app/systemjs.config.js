@@ -4,7 +4,7 @@
       'npm:': 'node_modules/'
     },
     map: {
-      app: 'app',
+      'app': 'app',
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
       '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
       '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
@@ -20,14 +20,20 @@
       'ngrx-store-localstorage': 'npm:ngrx-store-localstorage/dist/index.js',
       'chart.js': 'npm:chart.js/dist/Chart.bundle.js',
       'ng2-charts': 'npm:ng2-charts/bundles/ng2-charts.umd.js',
-      'rxjs': 'npm:rxjs'
+      'rxjs': 'npm:rxjs',
+      'rxjs/operators': 'npm:rxjs/operators'
     },
     packages: {
-      app: {
+      'app': {
         main: './main.dev.js',
         defaultExtension: 'js'
       },
-      rxjs: {
+      'rxjs': {
+        main: 'index.js',
+        defaultExtension: 'js'
+      },
+      'rxjs/operators': {
+        main: 'index.js',
         defaultExtension: 'js'
       }
     }

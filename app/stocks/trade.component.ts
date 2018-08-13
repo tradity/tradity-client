@@ -1,7 +1,8 @@
+
+import {switchMap, tap} from 'rxjs/operators';
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable ,  Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { StocksService } from '../core/stocks.service';
@@ -36,9 +37,9 @@ export class TradeComponent implements OnDestroy {
     this.sellBuySub = this.store.select(getSellBuy).subscribe(sellBuy => this.sellBuy = sellBuy);
     this.amount = this.store.select(getTradeAmount);
     this.value = this.store.select(getTradeValue);
-    this.stockSubscription = this.route.params
-      .do((params: Params) => this.store.dispatch(new stocksActions.SelectStock(params['isin'])))
-      .switchMap((params: Params) => this.store.select(getSelectedStock))
+    this.stockSubscription = this.route.params.pipe(
+      tap((params: Params) => this.store.dispatch(new stocksActions.SelectStock(params['isin']))),
+      switchMap((params: Params) => this.store.select(getSelectedStock)),)
       .subscribe((stock: Stock) => {
         this.stock = stock;
         this.appComponent.heading1 = stock.name;

@@ -1,7 +1,10 @@
+
+import {throwError as observableThrowError, empty as observableEmpty,  Observable } from 'rxjs';
+
+import {catchError} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { getAuthKey } from '../auth/auth.reducer';
 import * as authActions from '../auth/auth.actions';
@@ -28,16 +31,16 @@ export class ApiService {
   private handleError = (error: Response) => {
     if (error.status == 401) {
       this.store.dispatch(new authActions.NotLoggedIn());
-      return Observable.empty();
+      return observableEmpty();
     }
-    return Observable.throw(error.json());
+    return observableThrowError(error.json());
   }
   
   get(url: string) : Observable<Response> {
-    return this.http.get(this.baseUrl + url, this.options).catch(this.handleError);
+    return this.http.get(this.baseUrl + url, this.options).pipe(catchError(this.handleError));
   }
   
   post(url: string, body: any) : Observable<Response> {
-    return this.http.post(this.baseUrl + url, JSON.stringify(body), this.options).catch(this.handleError);
+    return this.http.post(this.baseUrl + url, JSON.stringify(body), this.options).pipe(catchError(this.handleError));
   }
 }

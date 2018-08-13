@@ -1,6 +1,7 @@
+
+import {map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject ,  Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import { ApiService } from './api.service';
@@ -42,26 +43,26 @@ export class StocksService {
   }
   
   loadPositions(): void {
-    this.apiService.get('/depot')
-    .map(res => res.json())
+    this.apiService.get('/depot').pipe(
+    map(res => res.json()))
     .subscribe(res => this._positions.next(res.data));
   }
   
   loadHistory(): void {
-    this.apiService.get('/user/$self')
-    .map(res => res.json())
+    this.apiService.get('/user/$self').pipe(
+    map(res => res.json()))
   .subscribe(res => this._history.next(res.orders));
   }
 
   loadOrders(): void {
-    this.apiService.get('/dqueries')
-    .map(res => res.json())
+    this.apiService.get('/dqueries').pipe(
+    map(res => res.json()))
     .subscribe(res => this._orders.next(res.data));
   }
 
   loadPopularStocks(): void {
-    this.apiService.get('/stocks/popular')
-    .map(res => res.json())
+    this.apiService.get('/stocks/popular').pipe(
+    map(res => res.json()))
     .subscribe(res => this._popularStocks.next(res.data));
   }
 
@@ -72,7 +73,7 @@ export class StocksService {
         stocktextid: isin,
         amount: amount
       }
-    )
-    .map(res => res.json());
+    ).pipe(
+    map(res => res.json()));
   }
 }

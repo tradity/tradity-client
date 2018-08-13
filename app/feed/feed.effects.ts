@@ -1,3 +1,5 @@
+
+import {map, withLatestFrom, switchMap} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Effect, Actions } from '@ngrx/effects';
@@ -12,13 +14,13 @@ import { getUser } from '../auth/auth.reducer';
 export class FeedEffects {
   @Effect()
   loadEvents = this.actions
-    .ofType(feedActions.LOAD_EVENTS)
-    .withLatestFrom(this.store.select(getUser))
-    .switchMap(([action, ownUser]) => this.apiService
+    .ofType(feedActions.LOAD_EVENTS).pipe(
+    withLatestFrom(this.store.select(getUser)),
+    switchMap(([action, ownUser]) => this.apiService
       // TODO: replace this and figure out why the server doesn't return any events without since parameter
-      .get('/events?since=1459168140')
-      .map(res => res.json().data)
-      .map((res: any[]) => res.reduce((events: FeedEvent[], event) => {
+      .get('/events?since=1459168140').pipe(
+      map(res => res.json().data),
+      map((res: any[]) => res.reduce((events: FeedEvent[], event) => {
           let type = '';
           if (event.type === 'trade') {
             if (event.amount < 0) type = 'trade-sell'
@@ -38,9 +40,9 @@ export class FeedEffects {
             })
           }
           return events;
-      }, []))
-      .map((events: FeedEvent[]) => new feedActions.ReceiveEvents(events))
-    )
+      }, [])),
+      map((events: FeedEvent[]) => new feedActions.ReceiveEvents(events)),)
+    ),)
 
   constructor(
     private actions: Actions,

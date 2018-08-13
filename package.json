@@ -47,7 +47,6 @@
     "chart.js": "^2.7.1",
     "core-js": "^2.5.7",
     "material-design-icons": "^3.0.1",
-    "ng2-charts": "^1.6.0",
     "ngrx-store-localstorage": "^5.0.1",
     "normalize.css": "^7.0.0",
     "reflect-metadata": "^0.1.12",

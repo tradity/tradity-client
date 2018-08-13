@@ -19,7 +19,6 @@
       '@ngrx/store-devtools': 'npm:@ngrx/store-devtools/bundles/store-devtools.umd.js',
       'ngrx-store-localstorage': 'npm:ngrx-store-localstorage/dist/index.js',
       'chart.js': 'npm:chart.js/dist/Chart.bundle.js',
-      'ng2-charts': 'npm:ng2-charts/bundles/ng2-charts.umd.js',
       'rxjs': 'npm:rxjs',
       'rxjs/operators': 'npm:rxjs/operators'
     },

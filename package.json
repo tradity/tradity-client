@@ -67,7 +67,7 @@
     "htmlprocessor": "^0.2.6",
     "jshint": "^2.9.5",
     "jshint-stylish": "2.2.1",
-    "marked": "^0.3.6",
+    "marked": "^0.4.0",
     "parallelshell": "^3.0.1",
     "rimraf": "^2.6.2",
     "rollup": "^0.50.0",

@@ -70,12 +70,12 @@
     "marked": "^0.4.0",
     "parallelshell": "^3.0.1",
     "rimraf": "^2.6.2",
-    "rollup": "^0.50.0",
+    "rollup": "^0.64.1",
     "rollup-plugin-alias": "^1.4.0",
-    "rollup-plugin-commonjs": "^8.2.1",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-uglify": "^2.0.1",
-    "rollup-pluginutils": "^2.0.1",
+    "rollup-plugin-commonjs": "^9.1.5",
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup-plugin-uglify": "^4.0.0",
+    "rollup-pluginutils": "^2.3.1",
     "typescript": "^2.9.2",
     "watch-run": "^1.2.5"
   }

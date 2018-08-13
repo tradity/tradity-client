@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, RequestOptionsArgs, RequestOptions, Headers, Response } from '@angular/http';
+import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';

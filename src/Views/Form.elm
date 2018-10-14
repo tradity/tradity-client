@@ -1,7 +1,6 @@
-module Views.Form exposing (form, input, button)
+module Views.Form exposing (button, form, input)
 
 import Css exposing (..)
-import Css.Colors exposing (..)
 import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes exposing (css)
 
@@ -39,7 +38,7 @@ input attrs =
                 , lineHeight (px 15)
                 , letterSpacing (px 2)
                 , color (hex "#170804")
-                , backgroundColor white
+                , backgroundColor (hex "#ffffff")
                 , inputChild
                 , removeChromiumAutofillColor
                 ]
@@ -60,7 +59,7 @@ button =
         , boxShadow5 zero (px 2) (px 1) zero (hex "#F1592A")
         , border3 (px 1) solid (rgba 241 89 42 0.97)
         , borderRadius (px 3)
-        , color white
+        , color (hex "#ffffff")
         , fontFamily inherit
         , fontSize (px 16)
         , lineHeight (px 19)

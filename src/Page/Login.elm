@@ -1,5 +1,6 @@
-module Page.Login exposing (Model, Msg, ExternalMsg(..), initalModel, update, view)
+module Page.Login exposing (ExternalMsg(..), Model, Msg, init, update, view)
 
+import Browser.Navigation as Nav
 import Css exposing (..)
 import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes exposing (..)
@@ -11,14 +12,16 @@ import Views.Form as Form
 
 
 type alias Model =
-    { username : String
+    { navKey : Nav.Key
+    , username : String
     , password : String
     }
 
 
-initalModel : Model
-initalModel =
-    { username = ""
+init : Nav.Key -> Model
+init navKey =
+    { navKey = navKey
+    , username = ""
     , password = ""
     }
 
@@ -104,4 +107,4 @@ update msg model =
             ( ( model, Cmd.none ), NoMsg )
 
         LoginResponse (Ok authToken) ->
-            ( ( model, Route.redirect Route.Dashboard ), SetSession authToken )
+            ( ( model, Route.redirect model.navKey Route.Dashboard ), SetSession authToken )

@@ -1,7 +1,7 @@
-module Route exposing (Route(..), route, redirect)
+module Route exposing (Route(..), redirect, route)
 
-import Navigation
-import UrlParser exposing (Parser, map, oneOf, s, top)
+import Browser.Navigation as Nav
+import Url.Parser exposing (Parser, map, oneOf, s, top)
 
 
 type Route
@@ -31,6 +31,6 @@ routeToString page =
     String.join "/" pieces
 
 
-redirect : Route -> Cmd msg
-redirect =
-    Navigation.newUrl << routeToString
+redirect : Nav.Key -> Route -> Cmd msg
+redirect key =
+    Nav.pushUrl key << routeToString

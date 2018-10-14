@@ -1,19 +1,22 @@
 module Main exposing (Model, Msg, init, subscriptions, update, view)
 
+import Browser
+import Browser.Navigation as Nav
 import Html.Styled as Html exposing (..)
-import Navigation exposing (Location)
 import Page.Login as Login
 import Route
-import UrlParser
+import Url
+import Url.Parser
 
 
-main : Program Never Model Msg
 main =
-    Navigation.program SetRoute
+    Browser.application
         { init = init
-        , view = view >> toUnstyled
+        , view = view
         , update = update
         , subscriptions = subscriptions
+        , onUrlRequest = LinkClicked
+        , onUrlChange = SetRoute
         }
 
 
@@ -25,26 +28,29 @@ type Page
 type alias Model =
     { page : Page
     , session : String
-    }
-
-
-initialModel : Model
-initialModel =
-    { page = Dashboard
-    , session = ""
+    , navKey : Nav.Key
     }
 
 
 type Msg
-    = SetRoute Location
+    = SetRoute Url.Url
+    | LinkClicked Browser.UrlRequest
     | LoginMsg Login.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case ( msg, model.page ) of
-        ( SetRoute location, _ ) ->
-            ( setRoute location model, Cmd.none )
+        ( SetRoute url, _ ) ->
+            ( setRoute url model, Cmd.none )
+
+        ( LinkClicked urlRequest, _ ) ->
+            case urlRequest of
+                Browser.Internal url ->
+                    ( model, Nav.pushUrl model.navKey (Url.toString url) )
+
+                Browser.External href ->
+                    ( model, Nav.load href )
 
         ( LoginMsg loginMsg, Login loginModel ) ->
             let
@@ -66,15 +72,20 @@ update msg model =
             ( model, Cmd.none )
 
 
-view : Model -> Html Msg
+view : Model -> Browser.Document Msg
 view model =
-    case model.page of
-        Dashboard ->
-            h1 [] [ text "Dashboard" ]
+    { title = "Tradity"
+    , body =
+        [ toUnstyled <|
+            case model.page of
+                Dashboard ->
+                    h1 [] [ text "Dashboard" ]
 
-        Login loginModel ->
-            Login.view loginModel
-                |> Html.map LoginMsg
+                Login loginModel ->
+                    Login.view loginModel
+                        |> Html.map LoginMsg
+        ]
+    }
 
 
 subscriptions : Model -> Sub Msg
@@ -82,16 +93,22 @@ subscriptions model =
     Sub.none
 
 
-init : Location -> ( Model, Cmd Msg )
-init location =
-    ( setRoute location initialModel, Cmd.none )
+init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
+init _ url navKey =
+    ( setRoute url
+        { page = Dashboard
+        , session = ""
+        , navKey = navKey
+        }
+    , Cmd.none
+    )
 
 
-setRoute : Location -> Model -> Model
-setRoute location model =
+setRoute : Url.Url -> Model -> Model
+setRoute url model =
     let
         route =
-            UrlParser.parsePath Route.route location
+            Url.Parser.parse Route.route url
                 |> Maybe.withDefault Route.Dashboard
     in
     case route of
@@ -99,4 +116,4 @@ setRoute location model =
             { model | page = Dashboard }
 
         Route.Login ->
-            { model | page = Login Login.initalModel }
+            { model | page = Login (Login.init model.navKey) }

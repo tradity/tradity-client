@@ -8,3 +8,4 @@ elm-stuff
 docs
 *.log
 .DS_Store
+.cache

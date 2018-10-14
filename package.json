@@ -14,20 +14,9 @@
     "lint": "jshint --config=.jshintrc --reporter=node_modules/jshint-stylish app/js/*.js app/js/*/*.js",
     "test": "npm run lint",
     "i18n": "ng-xi18n",
-    "doc": "compodoc -p tsconfig.json -d docs",
-    "clean": "rimraf dist/ aot/ tmp/ docs/ && mkdir -p dist/",
-    "prebuild": "npm run clean",
-    "build": "parallelshell 'npm run build:js' 'npm run build:cp'",
-    "prebuild:prod": "npm run clean",
-    "build:prod": "npm run build:cp && npm run build:symlink && npm run build:indexhtml -- -e prod && ngc -p tsconfig.prod.json --i18nFile=./locale/messages.de.xlf --locale=de --i18nFormat=xlf && rollup -c rollup-config.js",
-    "build:symlink": "cd dist && ln -sf ../node_modules || true",
-    "build:indexhtml": "htmlprocessor index.html -o dist/index.html",
-    "build:js": "elm make --debug src/Main.elm --output=dist/main.js && npm run build:symlink",
-    "build:cp": "cp -r *.html *.txt *.ico fonts img scripts apidoc dist/",
-    "watch": "parallelshell 'npm run watch:js' 'npm run watch:cp'",
-    "watch:js": "watch-run -p 'src/**' npm run build:js",
-    "watch:cp": "watch-run -p '*.html,*.txt,*.ico,fonts/**,img/**,scripts/**' npm run build:cp",
-    "start": "npm run build && parallelshell 'npm run watch' 'browser-sync start --config bs-config.js'"
+    "clean": "rimraf dist/ .cache/ aot/ tmp/ docs/",
+    "build": "parcel build index.html",
+    "start": "parcel index.html"
   },
   "dependencies": {
     "@angular/animations": "^4.4.4",
@@ -57,27 +46,16 @@
     "zone.js": "^0.8.18"
   },
   "devDependencies": {
-    "@compodoc/compodoc": "1.0.1",
     "@types/chart.js": "^2.7.3",
     "@types/node": "^8.0.32",
     "angular": "^1.6.6",
     "angular-marked": "^1.2.2",
-    "browser-sync": "^2.18.13",
-    "connect-history-api-fallback": "^1.3.0",
-    "hashmark": "^5.0.0",
-    "htmlprocessor": "^0.2.6",
     "jshint": "^2.9.5",
     "jshint-stylish": "2.2.1",
     "marked": "^0.3.6",
-    "parallelshell": "^3.0.1",
+    "node-elm-compiler": "^5.0.1",
+    "parcel-bundler": "^1.10.3",
     "rimraf": "^2.6.2",
-    "rollup": "^0.50.0",
-    "rollup-plugin-alias": "^1.4.0",
-    "rollup-plugin-commonjs": "^8.2.1",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-uglify": "^2.0.1",
-    "rollup-pluginutils": "^2.0.1",
-    "typescript": "^2.5.3",
-    "watch-run": "^1.2.5"
+    "typescript": "^2.5.3"
   }
 }

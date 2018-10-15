@@ -49,4 +49,4 @@ login username password stayLoggedIn =
 getOwnUser : String -> Http.Request User
 getOwnUser session =
     Decode.field "data" decoder
-        |> Http.get "https://dev.tradity.de/api/v1/user"
+        |> Http.get "https://dev.tradity.de/api/v1/user/$self"

@@ -1,4 +1,4 @@
-module Request.User exposing (login)
+module User exposing (login)
 
 import Http
 import Json.Decode as Decode

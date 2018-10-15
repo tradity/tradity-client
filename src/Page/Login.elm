@@ -6,7 +6,7 @@ import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes exposing (..)
 import Html.Styled.Events exposing (..)
 import Http
-import Request.User
+import User
 import Route
 import Views.Form as Form
 
@@ -98,7 +98,7 @@ update msg model =
         SubmitForm ->
             ( ( model
               , Http.send LoginResponse <|
-                    Request.User.login model.username model.password False
+                    User.login model.username model.password False
               )
             , NoMsg
             )

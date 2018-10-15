@@ -3,6 +3,7 @@ module Main exposing (Model, Msg, init, subscriptions, update, view)
 import Browser
 import Browser.Navigation as Nav
 import Html.Styled as Html exposing (..)
+import Page.Dashboard as Dashboard
 import Page.Login as Login
 import Route
 import Url
@@ -21,7 +22,8 @@ main =
 
 
 type Page
-    = Dashboard
+    = Loading
+    | Dashboard Dashboard.Model
     | Login Login.Model
 
 
@@ -36,13 +38,14 @@ type Msg
     = SetRoute Url.Url
     | LinkClicked Browser.UrlRequest
     | LoginMsg Login.Msg
+    | DashboardMsg Dashboard.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case ( msg, model.page ) of
         ( SetRoute url, _ ) ->
-            ( setRoute url model, Cmd.none )
+            setRoute url model
 
         ( LinkClicked urlRequest, _ ) ->
             case urlRequest of
@@ -67,6 +70,13 @@ update msg model =
             in
             ( { newModel | page = Login newLoginModel }, Cmd.map LoginMsg cmd )
 
+        ( DashboardMsg dashboardMsg, Dashboard dashboardModel ) ->
+            let
+                ( newDashboardModel, cmd ) =
+                    Dashboard.update dashboardMsg dashboardModel
+            in
+            ( { model | page = Dashboard newDashboardModel }, Cmd.map DashboardMsg cmd )
+
         ( _, _ ) ->
             -- Ignore messages arriving for the wrong page
             ( model, Cmd.none )
@@ -78,8 +88,12 @@ view model =
     , body =
         [ toUnstyled <|
             case model.page of
-                Dashboard ->
-                    h1 [] [ text "Dashboard" ]
+                Loading ->
+                    text "Loading…"
+
+                Dashboard dashboardModel ->
+                    Dashboard.view dashboardModel
+                        |> Html.map DashboardMsg
 
                 Login loginModel ->
                     Login.view loginModel
@@ -95,16 +109,14 @@ subscriptions model =
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init _ url navKey =
-    ( setRoute url
-        { page = Dashboard
+    setRoute url
+        { page = Loading
         , session = ""
         , navKey = navKey
         }
-    , Cmd.none
-    )
 
 
-setRoute : Url.Url -> Model -> Model
+setRoute : Url.Url -> Model -> ( Model, Cmd Msg )
 setRoute url model =
     let
         route =
@@ -113,7 +125,11 @@ setRoute url model =
     in
     case route of
         Route.Dashboard ->
-            { model | page = Dashboard }
+            let
+                ( newModel, cmd ) =
+                    Dashboard.init model.session
+            in
+            ( { model | page = Dashboard newModel }, Cmd.map DashboardMsg cmd )
 
         Route.Login ->
-            { model | page = Login (Login.init model.navKey) }
+            ( { model | page = Login (Login.init model.navKey) }, Cmd.none )

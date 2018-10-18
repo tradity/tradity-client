@@ -1,5 +1,6 @@
 module User exposing (User, decoder, getOwnUser, login)
 
+import Api
 import Http
 import Json.Decode as Decode
 import Json.Decode.Pipeline exposing (required)
@@ -43,10 +44,10 @@ login username password stayLoggedIn =
                 |> Http.jsonBody
     in
     Decode.field "key" Decode.string
-        |> Http.post "https://dev.tradity.de/api/v1/login" body
+        |> Api.post "/login" Nothing body
 
 
 getOwnUser : String -> Http.Request User
 getOwnUser session =
     Decode.field "data" decoder
-        |> Http.get "https://dev.tradity.de/api/v1/user/$self"
+        |> Api.get "/user/$self" (Just session)

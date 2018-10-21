@@ -26,7 +26,7 @@ decoder =
         |> required "dschoolid" Decode.int
         |> required "name" Decode.string
         |> required "email" Decode.string
-        |> required "email_verif" Decode.bool
+        |> required "email_verif" Api.decodeIntAsBool
         |> required "freemoney" Decode.int
         |> required "profilepic" (Decode.nullable Decode.string)
         |> required "totalvalue" Decode.int

@@ -1,10 +1,10 @@
-module Api exposing (get, handleError, post)
+module Api exposing (decodeIntAsBool, get, handleError, post)
 
 import Http
-import Json.Decode exposing (Decoder)
+import Json.Decode as Decode
 
 
-get : String -> Maybe String -> Decoder a -> Http.Request a
+get : String -> Maybe String -> Decode.Decoder a -> Http.Request a
 get endpoint maybeSession decoder =
     Http.request
         { method = "GET"
@@ -23,7 +23,7 @@ get endpoint maybeSession decoder =
         }
 
 
-post : String -> Maybe String -> Http.Body -> Decoder a -> Http.Request a
+post : String -> Maybe String -> Http.Body -> Decode.Decoder a -> Http.Request a
 post endpoint maybeSession body decoder =
     Http.request
         { method = "POST"
@@ -49,3 +49,17 @@ handleError error =
             Debug.log "Error: " error
     in
     Cmd.none
+
+
+decodeIntAsBool : Decode.Decoder Bool
+decodeIntAsBool =
+    Decode.int
+        |> Decode.andThen
+            (\val ->
+                case val > 0 of
+                    True ->
+                        Decode.succeed True
+
+                    False ->
+                        Decode.succeed False
+            )

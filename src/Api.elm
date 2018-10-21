@@ -1,4 +1,4 @@
-module Api exposing (get, post)
+module Api exposing (get, handleError, post)
 
 import Http
 import Json.Decode exposing (Decoder)
@@ -40,3 +40,12 @@ post endpoint maybeSession body decoder =
         , timeout = Nothing
         , withCredentials = False
         }
+
+
+handleError : Http.Error -> Cmd msg
+handleError error =
+    let
+        _ =
+            Debug.log "Error: " error
+    in
+    Cmd.none

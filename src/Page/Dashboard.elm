@@ -1,11 +1,13 @@
 module Page.Dashboard exposing (Model, Msg, init, update, view)
 
+import Api
 import Css exposing (..)
 import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes exposing (..)
 import Html.Styled.Events exposing (..)
 import Http
 import User
+import Views.ValueList as ValueList
 
 
 type alias Model =
@@ -17,6 +19,7 @@ type alias Model =
 type Status a
     = Loading
     | Loaded a
+    | Failed
 
 
 init : String -> ( Model, Cmd Msg )
@@ -31,7 +34,20 @@ init session =
 
 view : Model -> Html Msg
 view model =
-    h1 [] [ text "Dashboard" ]
+    case model.user of
+        Loading ->
+            text "Loading user…"
+
+        Failed ->
+            text "Failed to load user"
+
+        Loaded user ->
+            ValueList.view
+                [ ( "Total value", String.fromFloat (toFloat user.totalValue / 10000) ++ " €" )
+                , ( "Cash", String.fromFloat (toFloat user.freeMoney / 10000) ++ " €" )
+                , ( "Portfolio", String.fromFloat (toFloat (user.totalValue - user.freeMoney) / 10000) ++ " €" )
+                , ( "Time left", "–" )
+                ]
 
 
 type Msg
@@ -42,7 +58,7 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         ReceivedUser (Err error) ->
-            ( model, Cmd.none )
+            ( { model | user = Failed }, Api.handleError error )
 
         ReceivedUser (Ok user) ->
             ( { model | user = Loaded user }, Cmd.none )

@@ -14,7 +14,7 @@ type alias User =
     , email : String
     , emailVerified : Bool
     , freeMoney : Int
-    , profilePic : String
+    , profilePic : Maybe String
     , totalValue : Int
     }
 
@@ -28,7 +28,7 @@ decoder =
         |> required "email" Decode.string
         |> required "email_verif" Decode.bool
         |> required "freemoney" Decode.int
-        |> required "profilepic" Decode.string
+        |> required "profilepic" (Decode.nullable Decode.string)
         |> required "totalvalue" Decode.int
 
 

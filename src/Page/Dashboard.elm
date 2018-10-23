@@ -1,6 +1,7 @@
 module Page.Dashboard exposing (Model, Msg, init, update, view)
 
 import Api
+import Browser.Navigation as Nav
 import Css exposing (..)
 import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes exposing (..)
@@ -54,11 +55,11 @@ type Msg
     = ReceivedUser (Result Http.Error User.User)
 
 
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
+update : Msg -> Model -> Nav.Key -> ( Model, Cmd Msg )
+update msg model navKey =
     case msg of
         ReceivedUser (Err error) ->
-            ( { model | user = Failed }, Api.handleError error )
+            ( { model | user = Failed }, Api.handleError error navKey )
 
         ReceivedUser (Ok user) ->
             ( { model | user = Loaded user }, Cmd.none )

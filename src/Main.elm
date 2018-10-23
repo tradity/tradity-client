@@ -73,7 +73,7 @@ update msg model =
         ( DashboardMsg dashboardMsg, Dashboard dashboardModel ) ->
             let
                 ( newDashboardModel, cmd ) =
-                    Dashboard.update dashboardMsg dashboardModel
+                    Dashboard.update dashboardMsg dashboardModel model.navKey
             in
             ( { model | page = Dashboard newDashboardModel }, Cmd.map DashboardMsg cmd )
 

@@ -1,8 +1,9 @@
 module Api exposing (decodeIntAsBool, get, handleError, post)
 
+import Browser.Navigation as Nav
 import Http
 import Json.Decode as Decode
-
+import Route
 
 get : String -> Maybe String -> Decode.Decoder a -> Http.Request a
 get endpoint maybeSession decoder =
@@ -42,13 +43,23 @@ post endpoint maybeSession body decoder =
         }
 
 
-handleError : Http.Error -> Cmd msg
-handleError error =
+handleError : Http.Error -> Nav.Key -> Cmd msg
+handleError error navKey =
     let
         _ =
             Debug.log "Error: " error
     in
-    Cmd.none
+    case error of
+        Http.BadStatus response ->
+            if response.status.code == 401 then
+                Route.redirect navKey Route.Login
+            else Cmd.none
+        
+        Http.BadPayload err response ->
+            Cmd.none
+
+        _ ->
+            Cmd.none
 
 
 decodeIntAsBool : Decode.Decoder Bool

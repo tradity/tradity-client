@@ -1,4 +1,4 @@
-module Page.Dashboard exposing (Model, Msg, init, update, view)
+module Page.Dashboard exposing (Model, Msg, OutMsg(..), init, update, view)
 
 import Api
 import Browser.Navigation as Nav
@@ -22,6 +22,10 @@ type Status a
     | Loaded a
     | Failed
 
+
+type OutMsg
+    = NoMsg
+    | SetUser User.User
 
 init : String -> ( Model, Cmd Msg )
 init session =
@@ -55,11 +59,11 @@ type Msg
     = ReceivedUser (Result Http.Error User.User)
 
 
-update : Msg -> Model -> ( Model, Cmd Msg )
+update : Msg -> Model -> ( Model, Cmd Msg, OutMsg )
 update msg model =
     case msg of
         ReceivedUser (Err error) ->
-            ( { model | user = Failed }, Api.handleError error )
+            ( { model | user = Failed }, Api.handleError error, NoMsg )
 
         ReceivedUser (Ok user) ->
-            ( { model | user = Loaded user }, Cmd.none )
+            ( { model | user = Loaded user }, Cmd.none, SetUser user )

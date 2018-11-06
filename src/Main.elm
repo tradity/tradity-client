@@ -9,6 +9,7 @@ import Route
 import Session
 import Url
 import Url.Parser
+import User
 
 
 main =
@@ -32,6 +33,7 @@ type alias Model =
     { page : Page
     , session : Maybe String
     , navKey : Nav.Key
+    , user : Maybe User.User
     }
 
 
@@ -84,10 +86,18 @@ update message model =
 
         ( DashboardMsg msg, Dashboard dashboard ) ->
             let
-                ( newDashboardModel, cmd ) =
+                ( newDashboardModel, cmd, outMsg ) =
                     Dashboard.update msg dashboard
+
+                newModel =
+                    case outMsg of
+                        Dashboard.NoMsg ->
+                            model
+
+                        Dashboard.SetUser user ->
+                            { model | user = Just user }
             in
-            ( { model | page = Dashboard newDashboardModel }, Cmd.map DashboardMsg cmd )
+            ( { newModel | page = Dashboard newDashboardModel }, Cmd.map DashboardMsg cmd )
 
         ( _, _ ) ->
             -- Ignore messages arriving for the wrong page
@@ -125,6 +135,7 @@ init session url navKey =
         { page = Loading
         , session = session
         , navKey = navKey
+        , user = Nothing
         }
 
 

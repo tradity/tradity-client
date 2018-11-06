@@ -55,11 +55,11 @@ type Msg
     = ReceivedUser (Result Http.Error User.User)
 
 
-update : Msg -> Model -> Nav.Key -> ( Model, Cmd Msg )
-update msg model navKey =
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
     case msg of
         ReceivedUser (Err error) ->
-            ( { model | user = Failed }, Api.handleError error navKey )
+            ( { model | user = Failed }, Api.handleError error )
 
         ReceivedUser (Ok user) ->
             ( { model | user = Loaded user }, Cmd.none )

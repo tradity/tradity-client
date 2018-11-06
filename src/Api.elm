@@ -4,6 +4,7 @@ import Browser.Navigation as Nav
 import Http
 import Json.Decode as Decode
 import Route
+import Session
 
 
 get : String -> Maybe String -> Decode.Decoder a -> Http.Request a
@@ -44,12 +45,12 @@ post endpoint maybeSession body decoder =
         }
 
 
-handleError : Http.Error -> Nav.Key -> Cmd msg
-handleError error navKey =
+handleError : Http.Error -> Cmd msg
+handleError error =
     case error of
         Http.BadStatus response ->
             if response.status.code == 401 then
-                Route.redirect navKey Route.Login
+                Session.storeSession Nothing
 
             else
                 Cmd.none

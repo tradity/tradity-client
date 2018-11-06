@@ -1,4 +1,4 @@
-module Page.Login exposing (ExternalMsg(..), Model, Msg, init, update, view)
+module Page.Login exposing (Model, Msg, init, update, view)
 
 import Browser.Navigation as Nav
 import Css exposing (..)
@@ -6,8 +6,9 @@ import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes exposing (..)
 import Html.Styled.Events exposing (..)
 import Http
-import User
 import Route
+import Session
+import User
 import Views.Form as Form
 
 
@@ -81,30 +82,23 @@ type Msg
     | LoginResponse (Result Http.Error String)
 
 
-type ExternalMsg
-    = NoMsg
-    | SetSession String
-
-
-update : Msg -> Model -> ( ( Model, Cmd Msg ), ExternalMsg )
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         SetUsername username ->
-            ( ( { model | username = username }, Cmd.none ), NoMsg )
+            ( { model | username = username }, Cmd.none )
 
         SetPassword password ->
-            ( ( { model | password = password }, Cmd.none ), NoMsg )
+            ( { model | password = password }, Cmd.none )
 
         SubmitForm ->
-            ( ( model
-              , Http.send LoginResponse <|
-                    User.login model.username model.password False
-              )
-            , NoMsg
+            ( model
+            , Http.send LoginResponse <|
+                User.login model.username model.password False
             )
 
         LoginResponse (Err error) ->
-            ( ( model, Cmd.none ), NoMsg )
+            ( model, Cmd.none )
 
         LoginResponse (Ok authToken) ->
-            ( ( model, Route.redirect model.navKey Route.Dashboard ), SetSession authToken )
+            ( model, Session.storeSession (Just authToken) )

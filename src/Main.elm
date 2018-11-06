@@ -42,8 +42,8 @@ type Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    case ( msg, model.page ) of
+update message model =
+    case ( message, model.page ) of
         ( SetRoute url, _ ) ->
             setRoute url model
 
@@ -55,10 +55,10 @@ update msg model =
                 Browser.External href ->
                     ( model, Nav.load href )
 
-        ( LoginMsg loginMsg, Login loginModel ) ->
+        ( LoginMsg msg, Login login ) ->
             let
                 ( ( newLoginModel, cmd ), msgFromPage ) =
-                    Login.update loginMsg loginModel
+                    Login.update msg login
 
                 newModel =
                     case msgFromPage of
@@ -70,10 +70,10 @@ update msg model =
             in
             ( { newModel | page = Login newLoginModel }, Cmd.map LoginMsg cmd )
 
-        ( DashboardMsg dashboardMsg, Dashboard dashboardModel ) ->
+        ( DashboardMsg msg, Dashboard dashboard ) ->
             let
                 ( newDashboardModel, cmd ) =
-                    Dashboard.update dashboardMsg dashboardModel model.navKey
+                    Dashboard.update msg dashboard model.navKey
             in
             ( { model | page = Dashboard newDashboardModel }, Cmd.map DashboardMsg cmd )
 

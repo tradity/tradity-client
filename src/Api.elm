@@ -5,6 +5,7 @@ import Http
 import Json.Decode as Decode
 import Route
 
+
 get : String -> Maybe String -> Decode.Decoder a -> Http.Request a
 get endpoint maybeSession decoder =
     Http.request
@@ -45,17 +46,19 @@ post endpoint maybeSession body decoder =
 
 handleError : Http.Error -> Nav.Key -> Cmd msg
 handleError error navKey =
-    let
-        _ =
-            Debug.log "Error: " error
-    in
     case error of
         Http.BadStatus response ->
             if response.status.code == 401 then
                 Route.redirect navKey Route.Login
-            else Cmd.none
-        
+
+            else
+                Cmd.none
+
         Http.BadPayload err response ->
+            let
+                _ =
+                    Debug.log "Error: " err
+            in
             Cmd.none
 
         _ ->

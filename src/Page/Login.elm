@@ -8,6 +8,7 @@ import Html.Styled.Events exposing (..)
 import Http
 import Route
 import Session
+import Shell
 import User
 import Views.Form as Form
 
@@ -27,52 +28,57 @@ init navKey =
     }
 
 
-view : Model -> Html Msg
+view : Model -> Shell.Content Msg
 view model =
-    div
-        [ css
-            [ displayFlex
-            , flexDirection column
-            , alignItems center
-            ]
-        ]
-        [ img
-            [ title "Tradity"
-            , alt "Tradity"
-            , src "/img/tradity_symbol.png"
-            , css
-                [ Css.width (px 100)
-                , Css.height (px 100)
-                , marginTop (px 60)
-                ]
-            ]
-            []
-        , h1
+    { title = "Login"
+    , showHeader = False
+    , header = Nothing
+    , main =
+        div
             [ css
-                [ margin3 (px 30) zero (px 36)
-                , fontSize (px 20)
-                , fontWeight (int 900)
-                , lineHeight (px 24)
-                , color (hex "#170804")
+                [ displayFlex
+                , flexDirection column
+                , alignItems center
                 ]
             ]
-            [ text "Welcome back!" ]
-        , Form.form
-            [ onSubmit SubmitForm ]
-            [ Form.input
-                [ type_ "text"
-                , placeholder "Username"
-                , autofocus True
-                , onInput SetUsername
+            [ img
+                [ title "Tradity"
+                , alt "Tradity"
+                , src "/img/tradity_symbol.png"
+                , css
+                    [ Css.width (px 100)
+                    , Css.height (px 100)
+                    , marginTop (px 60)
+                    ]
                 ]
-            , Form.input
-                [ type_ "password"
-                , placeholder "Password"
-                , onInput SetPassword
+                []
+            , h1
+                [ css
+                    [ margin3 (px 30) zero (px 36)
+                    , fontSize (px 20)
+                    , fontWeight (int 900)
+                    , lineHeight (px 24)
+                    , color (hex "#170804")
+                    ]
                 ]
-            , Form.button [ type_ "submit" ] [ text "Log in" ]
+                [ text "Welcome back!" ]
+            , Form.form
+                [ onSubmit SubmitForm ]
+                [ Form.input
+                    [ type_ "text"
+                    , placeholder "Username"
+                    , autofocus True
+                    , onInput SetUsername
+                    ]
+                , Form.input
+                    [ type_ "password"
+                    , placeholder "Password"
+                    , onInput SetPassword
+                    ]
+                , Form.button [ type_ "submit" ] [ text "Log in" ]
+                ]
             ]
-        ]
+    }
 
 
 type Msg

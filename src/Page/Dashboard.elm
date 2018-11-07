@@ -7,6 +7,7 @@ import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes exposing (..)
 import Html.Styled.Events exposing (..)
 import Http
+import Shell
 import User
 import Views.ValueList as ValueList
 
@@ -27,6 +28,7 @@ type OutMsg
     = NoMsg
     | SetUser User.User
 
+
 init : String -> ( Model, Cmd Msg )
 init session =
     ( { session = session
@@ -37,22 +39,27 @@ init session =
     )
 
 
-view : Model -> Html Msg
+view : Model -> Shell.Content Msg
 view model =
-    case model.user of
-        Loading ->
-            text "Loading user…"
+    { title = "Dashboard"
+    , showHeader = True
+    , header = Nothing
+    , main =
+        case model.user of
+            Loading ->
+                text "Loading user…"
 
-        Failed ->
-            text "Failed to load user"
+            Failed ->
+                text "Failed to load user"
 
-        Loaded user ->
-            ValueList.view
-                [ ( "Total value", String.fromFloat (toFloat user.totalValue / 10000) ++ " €" )
-                , ( "Cash", String.fromFloat (toFloat user.freeMoney / 10000) ++ " €" )
-                , ( "Portfolio", String.fromFloat (toFloat (user.totalValue - user.freeMoney) / 10000) ++ " €" )
-                , ( "Time left", "–" )
-                ]
+            Loaded user ->
+                ValueList.view
+                    [ ( "Total value", String.fromFloat (toFloat user.totalValue / 10000) ++ " €" )
+                    , ( "Cash", String.fromFloat (toFloat user.freeMoney / 10000) ++ " €" )
+                    , ( "Portfolio", String.fromFloat (toFloat (user.totalValue - user.freeMoney) / 10000) ++ " €" )
+                    , ( "Time left", "–" )
+                    ]
+    }
 
 
 type Msg

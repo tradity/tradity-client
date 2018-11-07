@@ -7,6 +7,7 @@ import Page.Dashboard as Dashboard
 import Page.Login as Login
 import Route
 import Session
+import Shell
 import Url
 import Url.Parser
 import User
@@ -33,6 +34,7 @@ type alias Model =
     { page : Page
     , session : Maybe String
     , navKey : Nav.Key
+    , navOpen : Bool
     , user : Maybe User.User
     }
 
@@ -106,22 +108,22 @@ update message model =
 
 view : Model -> Browser.Document Msg
 view model =
-    { title = "Tradity"
-    , body =
-        [ toUnstyled <|
-            case model.page of
-                Loading ->
-                    text "Loading…"
+    case model.page of
+        Loading ->
+            Shell.view model.navOpen never <|
+                { title = ""
+                , showHeader = True
+                , header = Nothing
+                , main = text "Loading…"
+                }
 
-                Dashboard dashboardModel ->
-                    Dashboard.view dashboardModel
-                        |> Html.map DashboardMsg
+        Dashboard dashboardModel ->
+            Shell.view model.navOpen DashboardMsg <|
+                Dashboard.view dashboardModel
 
-                Login loginModel ->
-                    Login.view loginModel
-                        |> Html.map LoginMsg
-        ]
-    }
+        Login loginModel ->
+            Shell.view model.navOpen LoginMsg <|
+                Login.view loginModel
 
 
 subscriptions : Model -> Sub Msg
@@ -135,6 +137,7 @@ init session url navKey =
         { page = Loading
         , session = session
         , navKey = navKey
+        , navOpen = False
         , user = Nothing
         }
 

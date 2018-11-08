@@ -1,11 +1,14 @@
 module Shell exposing (Content, view, viewHeader)
 
 import Browser
+import Color
 import Css exposing (..)
 import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes exposing (..)
 import Html.Styled.Events exposing (..)
-
+import Material.Icons.Action
+import Material.Icons.Navigation
+import Svg.Styled as Svg
 
 type alias Content msg =
     { title : String
@@ -41,9 +44,12 @@ viewHeader navOpen content =
             , justifyContent spaceBetween
             , padding2 (px 13) (px 20)
             , color (hex "#170804")
+            , fontSize (px 24)
+            , fontWeight (int 900)
+            , lineHeight (px 29)
             ]
         ]
-        [ a [ attribute "role" "button" ] []
+        [ a [ attribute "role" "button" ] [ Svg.fromUnstyled <| Material.Icons.Navigation.menu Color.black 24 ]
         , content
-        , a [] []
+        , a [] [ Svg.fromUnstyled <| Material.Icons.Action.search Color.black 24 ]
         ]

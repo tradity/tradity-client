@@ -26,9 +26,11 @@ view navOpen toMsg content =
     , body =
         [ toUnstyled <|
             div []
-                [ content
+                [ if content.showHeader then
+                    content
                     |> viewHeader navOpen
                     |> Html.map toMsg
+                else text ""
                 , main_ [] [ content.main ]
                     |> Html.map toMsg
                 ]

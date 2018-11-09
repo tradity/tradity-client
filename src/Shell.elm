@@ -42,14 +42,15 @@ viewHeader navOpen content =
             [ displayFlex
             , flexWrap Css.wrap
             , justifyContent spaceBetween
-            , padding2 (px 13) (px 20)
+            , alignItems center
+            , padding2 (px 15) (px 20)
             , color (hex "#170804")
-            , fontSize (px 24)
+            , fontSize (px 25)
             , fontWeight (int 900)
-            , lineHeight (px 29)
+            , lineHeight (int 0)
             ]
         ]
-        [ a [ attribute "role" "button" ] [ Svg.fromUnstyled <| Material.Icons.Navigation.menu Color.black 24 ]
+        [ a [ attribute "role" "button" ] [ Svg.fromUnstyled <| Material.Icons.Navigation.menu Color.black 25 ]
         , content
-        , a [] [ Svg.fromUnstyled <| Material.Icons.Action.search Color.black 24 ]
+        , a [] [ Svg.fromUnstyled <| Material.Icons.Action.search Color.black 25 ]
         ]

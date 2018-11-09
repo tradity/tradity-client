@@ -35,7 +35,6 @@ input attrs =
                 , margin2 zero (px 7)
                 , fontFamily inherit
                 , fontSize (px 12)
-                , lineHeight (px 15)
                 , letterSpacing (px 2)
                 , color (hex "#170804")
                 , backgroundColor (hex "#ffffff")
@@ -62,7 +61,6 @@ button =
         , color (hex "#ffffff")
         , fontFamily inherit
         , fontSize (px 16)
-        , lineHeight (px 19)
         ]
 
 

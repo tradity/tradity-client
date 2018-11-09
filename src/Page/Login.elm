@@ -77,6 +77,12 @@ view model =
                     ]
                 , Form.button [ type_ "submit" ] [ text "Log in" ]
                 ]
+            , div
+                [ css [ marginTop (px 20) ] ]
+                [ a [ css [ color (hex "#F1592A") ] ] [ text "Forgot password?" ]
+                , text " · "
+                , a [ css [ color (hex "#F1592A") ] ] [ text "Create account" ]
+                ]
             ]
     }
 

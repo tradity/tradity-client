@@ -10,6 +10,7 @@ import Material.Icons.Action
 import Material.Icons.Navigation
 import Svg.Styled as Svg
 
+
 type alias Content msg =
     { title : String
     , showHeader : Bool
@@ -25,17 +26,17 @@ view navOpen toMsg content =
     , body =
         [ toUnstyled <|
             div []
-                [ Html.map toMsg <|
-                    viewHeader navOpen <|
-                        Maybe.withDefault (span [] [ text content.title ]) content.header
-                , Html.map toMsg <|
-                    main_ [] [ content.main ]
+                [ content
+                    |> viewHeader navOpen
+                    |> Html.map toMsg
+                , main_ [] [ content.main ]
+                    |> Html.map toMsg
                 ]
         ]
     }
 
 
-viewHeader : Bool -> Html msg -> Html msg
+viewHeader : Bool -> Content msg -> Html msg
 viewHeader navOpen content =
     header
         [ css
@@ -45,12 +46,21 @@ viewHeader navOpen content =
             , alignItems center
             , padding2 (px 15) (px 20)
             , color (hex "#170804")
-            , fontSize (px 25)
-            , fontWeight (int 900)
             , lineHeight (int 0)
             ]
         ]
         [ a [ attribute "role" "button" ] [ Svg.fromUnstyled <| Material.Icons.Navigation.menu Color.black 25 ]
-        , content
+        , case content.header of
+            Just header ->
+                header
+
+            Nothing ->
+                h1
+                    [ css
+                        [ fontSize (px 25)
+                        , fontWeight (int 900)
+                        ]
+                    ]
+                    [ text content.title ]
         , a [] [ Svg.fromUnstyled <| Material.Icons.Action.search Color.black 25 ]
         ]

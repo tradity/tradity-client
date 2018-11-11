@@ -53,7 +53,6 @@ button =
     styled Html.button
         [ width (pct 100)
         , height (px 48)
-        , marginTop (px 15)
         , backgroundColor (rgba 241 89 42 0.95)
         , boxShadow5 zero (px 2) (px 1) zero (hex "#F1592A")
         , border3 (px 1) solid (rgba 241 89 42 0.97)

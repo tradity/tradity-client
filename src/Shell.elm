@@ -65,7 +65,7 @@ viewHeader navOpen toggleNav toMsg content =
                     [ css
                         [ fontSize (px 25)
                         , fontWeight (int 900)
-                        , margin (px 0)
+                        , margin zero
                         ]
                     ]
                     [ text content.title ]

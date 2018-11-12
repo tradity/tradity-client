@@ -17,6 +17,7 @@ type alias Model =
     { navKey : Nav.Key
     , username : String
     , password : String
+    , stayLoggedIn : Bool
     }
 
 
@@ -25,6 +26,7 @@ init navKey =
     { navKey = navKey
     , username = ""
     , password = ""
+    , stayLoggedIn = False
     }
 
 
@@ -75,6 +77,7 @@ view model =
                     , placeholder "Password"
                     , onInput SetPassword
                     ]
+                , Form.checkbox ToggleStayLoggedIn model.stayLoggedIn "Remember me"
                 , Form.button [ type_ "submit" ] [ text "Log in" ]
                 ]
             , div
@@ -90,6 +93,7 @@ view model =
 type Msg
     = SetUsername String
     | SetPassword String
+    | ToggleStayLoggedIn
     | SubmitForm
     | LoginResponse (Result Http.Error String)
 
@@ -103,10 +107,13 @@ update msg model =
         SetPassword password ->
             ( { model | password = password }, Cmd.none )
 
+        ToggleStayLoggedIn ->
+            ( { model | stayLoggedIn = not model.stayLoggedIn }, Cmd.none )
+
         SubmitForm ->
             ( model
             , Http.send LoginResponse <|
-                User.login model.username model.password False
+                User.login model.username model.password model.stayLoggedIn
             )
 
         LoginResponse (Err error) ->

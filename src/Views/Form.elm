@@ -1,8 +1,12 @@
-module Views.Form exposing (button, form, input)
+module Views.Form exposing (button, checkbox, form, input)
 
+import Color
 import Css exposing (..)
 import Html.Styled as Html exposing (..)
-import Html.Styled.Attributes exposing (css)
+import Html.Styled.Attributes exposing (css, type_)
+import Html.Styled.Events exposing (..)
+import Material.Icons.Toggle
+import Svg.Styled as Svg
 
 
 form : List (Attribute msg) -> List (Html msg) -> Html msg
@@ -60,6 +64,36 @@ button =
         , color (hex "#ffffff")
         , fontFamily inherit
         , fontSize (px 16)
+        ]
+
+
+checkbox : msg -> Bool -> String -> Html msg
+checkbox msg value label =
+    Html.label
+        [ css
+            [ display inlineFlex
+            , alignItems center
+            , fontSize (px 12)
+            , height (px 24)
+            , margin4 zero zero (px 15) (px -3)
+            ]
+        ]
+        [ Html.input
+            [ type_ "checkbox"
+            , onClick msg
+            , css
+                [ position absolute
+                , left (px -10000)
+                ]
+            ]
+            []
+        , Svg.fromUnstyled <|
+            if value then
+                Material.Icons.Toggle.check_box (Color.rgb255 241 89 42) 32
+
+            else
+                Material.Icons.Toggle.check_box_outline_blank (Color.rgb255 216 216 216) 32
+        , span [ css [ marginLeft (px 6) ] ] [ text label ]
         ]
 
 

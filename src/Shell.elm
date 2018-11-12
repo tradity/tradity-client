@@ -19,18 +19,18 @@ type alias Content msg =
     }
 
 
-view : Bool -> (a -> msg) -> Content a -> Browser.Document msg
-view navOpen toMsg content =
+view : Bool -> msg -> (subMsg -> msg) -> Content subMsg -> Browser.Document msg
+view navOpen toggleNav toMsg content =
     { title =
         content.title ++ " – Tradity"
     , body =
         [ toUnstyled <|
             div []
                 [ if content.showHeader then
-                    content
-                    |> viewHeader navOpen
-                    |> Html.map toMsg
-                else text ""
+                    viewHeader navOpen toggleNav toMsg content
+
+                  else
+                    text ""
                 , main_ [] [ content.main ]
                     |> Html.map toMsg
                 ]
@@ -38,8 +38,8 @@ view navOpen toMsg content =
     }
 
 
-viewHeader : Bool -> Content msg -> Html msg
-viewHeader navOpen content =
+viewHeader : Bool -> msg -> (subMsg -> msg) -> Content subMsg -> Html msg
+viewHeader navOpen toggleNav toMsg content =
     header
         [ css
             [ displayFlex
@@ -51,10 +51,14 @@ viewHeader navOpen content =
             , lineHeight (int 0)
             ]
         ]
-        [ a [ attribute "role" "button" ] [ Svg.fromUnstyled <| Material.Icons.Navigation.menu Color.black 25 ]
+        [ a
+            [ attribute "role" "button"
+            , onClick toggleNav
+            ]
+            [ Svg.fromUnstyled <| Material.Icons.Navigation.menu Color.black 25 ]
         , case content.header of
             Just header ->
-                header
+                Html.map toMsg header
 
             Nothing ->
                 h1
@@ -66,4 +70,29 @@ viewHeader navOpen content =
                     ]
                     [ text content.title ]
         , a [] [ Svg.fromUnstyled <| Material.Icons.Action.search Color.black 25 ]
+        , div
+            [ css
+                ([ Css.property "transition-duration" "1s"
+                 , Css.width (pct 100)
+                 , displayFlex
+                 , flexDirection column
+                 , alignItems center
+                 , boxSizing borderBox
+                 ]
+                    ++ (if navOpen then
+                            [ Css.height (vh 100)
+                            , paddingTop (px 15)
+                            , visibility visible
+                            , opacity (int 1)
+                            ]
+
+                        else
+                            [ Css.height zero
+                            , visibility Css.hidden
+                            , opacity zero
+                            ]
+                       )
+                )
+            ]
+            []
         ]

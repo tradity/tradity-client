@@ -43,6 +43,7 @@ type Msg
     = SetRoute Url.Url
     | LinkClicked Browser.UrlRequest
     | SessionChanged (Maybe String)
+    | ToggleNav
     | LoginMsg Login.Msg
     | DashboardMsg Dashboard.Msg
 
@@ -79,6 +80,9 @@ update message model =
                 ( Just _, _ ) ->
                     ( newModel, Cmd.none )
 
+        ( ToggleNav, _ ) ->
+            ( { model | navOpen = not model.navOpen }, Cmd.none )
+
         ( LoginMsg msg, Login login ) ->
             let
                 ( newLoginModel, cmd ) =
@@ -110,7 +114,7 @@ view : Model -> Browser.Document Msg
 view model =
     case model.page of
         Loading ->
-            Shell.view model.navOpen never <|
+            Shell.view model.navOpen ToggleNav never <|
                 { title = ""
                 , showHeader = True
                 , header = Nothing
@@ -118,11 +122,11 @@ view model =
                 }
 
         Dashboard dashboardModel ->
-            Shell.view model.navOpen DashboardMsg <|
+            Shell.view model.navOpen ToggleNav DashboardMsg <|
                 Dashboard.view dashboardModel
 
         Login loginModel ->
-            Shell.view model.navOpen LoginMsg <|
+            Shell.view model.navOpen ToggleNav LoginMsg <|
                 Login.view loginModel
 
 

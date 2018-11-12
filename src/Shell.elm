@@ -51,9 +51,20 @@ viewHeader navOpen toggleNav toMsg content =
             , lineHeight (int 0)
             ]
         ]
-        [ a
-            [ attribute "role" "button"
+        [ button
+            [ type_ "button"
             , onClick toggleNav
+            , css
+                [ border zero
+                , padding zero
+                , lineHeight inherit
+                , Css.property "background" "none"
+                , hover [ Css.property "background" "none" ]
+                , focus
+                    [ Css.property "background" "none"
+                    , outline none
+                    ]
+                ]
             ]
             [ Svg.fromUnstyled <| Material.Icons.Navigation.menu Color.black 25 ]
         , case content.header of

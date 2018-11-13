@@ -6,9 +6,11 @@ import Html.Styled as Html exposing (..)
 import Html.Styled.Attributes exposing (..)
 import Html.Styled.Events exposing (..)
 import Http
+import Icons
 import Route
 import Session
 import Shell
+import Svg.Styled.Attributes as SA
 import User
 import Views.Form as Form
 
@@ -43,11 +45,8 @@ view model =
                 , alignItems center
                 ]
             ]
-            [ img
-                [ title "Tradity"
-                , alt "Tradity"
-                , src "/img/tradity_symbol.png"
-                , css
+            [ Icons.logo
+                [ SA.css
                     [ Css.width (px 100)
                     , Css.height (px 100)
                     , marginTop (px 60)

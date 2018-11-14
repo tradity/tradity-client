@@ -66,7 +66,7 @@ viewHeader navOpen toggleNav toMsg content =
                     ]
                 ]
             ]
-            [ Svg.fromUnstyled <| Material.Icons.Navigation.menu Color.black 25 ]
+            [ Svg.fromUnstyled <| Material.Icons.Navigation.menu Color.black 24 ]
         , case content.header of
             Just header ->
                 Html.map toMsg header
@@ -74,13 +74,13 @@ viewHeader navOpen toggleNav toMsg content =
             Nothing ->
                 h1
                     [ css
-                        [ fontSize (px 25)
+                        [ fontSize (px 24)
                         , fontWeight (int 900)
                         , margin zero
                         ]
                     ]
                     [ text content.title ]
-        , a [] [ Svg.fromUnstyled <| Material.Icons.Action.search Color.black 25 ]
+        , a [] [ Svg.fromUnstyled <| Material.Icons.Action.search Color.black 24 ]
         , div
             [ css
                 ([ Css.property "transition-duration" "1s"

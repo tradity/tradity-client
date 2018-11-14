@@ -2,7 +2,7 @@ module Page.Portfolio exposing (Model, Msg, init, update, view)
 
 import Html.Styled as Html exposing (..)
 import Shell
-
+import Views.Tabs as Tabs
 
 type alias Model =
     { tab : Tab }
@@ -36,5 +36,9 @@ view model =
     , showHeader = True
     , header = Nothing
     , main =
-        text ""
+        Tabs.view
+            [ ( "Positions", "", True )
+            , ( "Orders", "", False )
+            , ( "History", "", False )
+            ]
     }

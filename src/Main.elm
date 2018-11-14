@@ -5,6 +5,7 @@ import Browser.Navigation as Nav
 import Html.Styled as Html exposing (..)
 import Page.Dashboard as Dashboard
 import Page.Login as Login
+import Page.Portfolio as Portfolio
 import Route
 import Session
 import Shell
@@ -26,8 +27,9 @@ main =
 
 type Page
     = Loading
-    | Dashboard Dashboard.Model
     | Login Login.Model
+    | Dashboard Dashboard.Model
+    | Portfolio Portfolio.Model
 
 
 type alias Model =
@@ -46,6 +48,7 @@ type Msg
     | ToggleNav
     | LoginMsg Login.Msg
     | DashboardMsg Dashboard.Msg
+    | PortfolioMsg Portfolio.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -105,6 +108,13 @@ update message model =
             in
             ( { newModel | page = Dashboard newDashboardModel }, Cmd.map DashboardMsg cmd )
 
+        ( PortfolioMsg msg, Portfolio portfolio ) ->
+            let
+                ( newPortfolioModel, cmd ) =
+                    Portfolio.update msg portfolio
+            in
+            ( { model | page = Portfolio newPortfolioModel }, Cmd.map PortfolioMsg cmd )
+
         ( _, _ ) ->
             -- Ignore messages arriving for the wrong page
             ( model, Cmd.none )
@@ -121,13 +131,17 @@ view model =
                 , main = text "Loading…"
                 }
 
+        Login loginModel ->
+            Shell.view model.navOpen ToggleNav LoginMsg <|
+                Login.view loginModel
+
         Dashboard dashboardModel ->
             Shell.view model.navOpen ToggleNav DashboardMsg <|
                 Dashboard.view dashboardModel
 
-        Login loginModel ->
-            Shell.view model.navOpen ToggleNav LoginMsg <|
-                Login.view loginModel
+        Portfolio portfolioModel ->
+            Shell.view model.navOpen ToggleNav PortfolioMsg <|
+                Portfolio.view portfolioModel
 
 
 subscriptions : Model -> Sub Msg
@@ -169,3 +183,11 @@ setRoute url model =
                     Dashboard.init session
             in
             ( { model | page = Dashboard newModel }, Cmd.map DashboardMsg cmd )
+
+        ( Just session, Route.Portfolio ) ->
+            let
+                ( newModel, cmd ) =
+                    Portfolio.init session
+            in
+            ( { model | page = Portfolio newModel }, Cmd.map PortfolioMsg cmd )
+            

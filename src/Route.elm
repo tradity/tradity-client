@@ -7,6 +7,7 @@ import Url.Parser exposing (Parser, map, oneOf, s, top)
 type Route
     = Dashboard
     | Login
+    | Portfolio
 
 
 route : Parser (Route -> Route) Route
@@ -14,6 +15,7 @@ route =
     oneOf
         [ map Dashboard top
         , map Login (s "login")
+        , map Portfolio (s "portfolio")
         ]
 
 
@@ -27,6 +29,9 @@ routeToString page =
 
                 Login ->
                     [ "login" ]
+                
+                Portfolio ->
+                    [ "portfolio" ]
     in
     String.join "/" pieces
 

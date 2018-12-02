@@ -14,7 +14,7 @@ import Views.ValueList as ValueList
 
 type alias Model =
     { session : String
-    , user : Status User.User
+    , user : Status User.UserDetails
     }
 
 
@@ -54,16 +54,16 @@ view model =
 
             Loaded user ->
                 ValueList.view
-                    [ ( "Total value", String.fromFloat (toFloat user.totalValue / 10000) ++ " €" )
-                    , ( "Cash", String.fromFloat (toFloat user.freeMoney / 10000) ++ " €" )
-                    , ( "Portfolio", String.fromFloat (toFloat (user.totalValue - user.freeMoney) / 10000) ++ " €" )
+                    [ ( "Total value", String.fromFloat (toFloat user.user.totalValue / 10000) ++ " €" )
+                    , ( "Cash", String.fromFloat (toFloat user.user.freeMoney / 10000) ++ " €" )
+                    , ( "Portfolio", String.fromFloat (toFloat (user.user.totalValue - user.user.freeMoney) / 10000) ++ " €" )
                     , ( "Time left", "–" )
                     ]
     }
 
 
 type Msg
-    = ReceivedUser (Result Http.Error User.User)
+    = ReceivedUser (Result Http.Error User.UserDetails)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg, OutMsg )
@@ -73,4 +73,4 @@ update msg model =
             ( { model | user = Failed }, Api.handleError error, NoMsg )
 
         ReceivedUser (Ok user) ->
-            ( { model | user = Loaded user }, Cmd.none, SetUser user )
+            ( { model | user = Loaded user }, Cmd.none, SetUser user.user )

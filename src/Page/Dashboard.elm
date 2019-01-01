@@ -9,12 +9,14 @@ import Html.Styled.Events exposing (..)
 import Http
 import Shell
 import User
+import Views.Chart as Chart
 import Views.ValueList as ValueList
 
 
 type alias Model =
     { session : String
     , user : Status User.UserDetails
+    , chartHovered : Maybe User.UserValue
     }
 
 
@@ -33,6 +35,7 @@ init : String -> ( Model, Cmd Msg )
 init session =
     ( { session = session
       , user = Loading
+      , chartHovered = Nothing
       }
     , Http.send ReceivedUser <|
         User.getOwnUser session
@@ -53,17 +56,21 @@ view model =
                 text "Failed to load user"
 
             Loaded user ->
-                ValueList.view
-                    [ ( "Total value", String.fromFloat (toFloat user.user.totalValue / 10000) ++ " €" )
-                    , ( "Cash", String.fromFloat (toFloat user.user.freeMoney / 10000) ++ " €" )
-                    , ( "Portfolio", String.fromFloat (toFloat (user.user.totalValue - user.user.freeMoney) / 10000) ++ " €" )
-                    , ( "Time left", "–" )
+                div []
+                    [ Chart.view user.values model.chartHovered HoverChart
+                    , ValueList.view
+                        [ ( "Total value", String.fromFloat (toFloat user.user.totalValue / 10000) ++ " €" )
+                        , ( "Cash", String.fromFloat (toFloat user.user.freeMoney / 10000) ++ " €" )
+                        , ( "Portfolio", String.fromFloat (toFloat (user.user.totalValue - user.user.freeMoney) / 10000) ++ " €" )
+                        , ( "Time left", "–" )
+                        ]
                     ]
     }
 
 
 type Msg
     = ReceivedUser (Result Http.Error User.UserDetails)
+    | HoverChart (Maybe User.UserValue)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg, OutMsg )
@@ -74,3 +81,6 @@ update msg model =
 
         ReceivedUser (Ok user) ->
             ( { model | user = Loaded user }, Cmd.none, SetUser user.user )
+        
+        HoverChart hovered ->
+            ( { model | chartHovered = hovered }, Cmd.none, NoMsg )

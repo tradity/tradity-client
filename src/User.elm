@@ -1,4 +1,4 @@
-module User exposing (User, UserDetails, getOwnUser, login)
+module User exposing (User, UserDetails, UserValue, getOwnUser, login)
 
 import Api
 import Http

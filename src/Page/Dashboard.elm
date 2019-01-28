@@ -57,7 +57,7 @@ view model =
 
             Loaded user ->
                 div []
-                    [ Chart.view user.values model.chartHovered HoverChart
+                    [ Chart.view (List.take 12000 user.values) model.chartHovered HoverChart
                     , ValueList.view
                         [ ( "Total value", String.fromFloat (toFloat user.user.totalValue / 10000) ++ " €" )
                         , ( "Cash", String.fromFloat (toFloat user.user.freeMoney / 10000) ++ " €" )
@@ -81,6 +81,6 @@ update msg model =
 
         ReceivedUser (Ok user) ->
             ( { model | user = Loaded user }, Cmd.none, SetUser user.user )
-        
+
         HoverChart hovered ->
             ( { model | chartHovered = hovered }, Cmd.none, NoMsg )

@@ -37,6 +37,6 @@ view values hovered hoverMsg =
         , line = Line.default
         , dots = Dots.hoverOne hovered
         }
-        [ LineChart.line Colors.blueLight Dots.circle "Value" values
+        [ LineChart.line Colors.blueLight Dots.none "Value" values
         ])
         |> fromUnstyled

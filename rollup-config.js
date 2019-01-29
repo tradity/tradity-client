@@ -20,10 +20,12 @@ export default {
     commonjs({
       include: [
         'node_modules/ngrx-store-localstorage/dist/index.js',
-        'node_modules/chart.js/dist/Chart.bundle.js'
+        'node_modules/chart.js/dist/Chart.bundle.js',
+        'node_modules/@angular/common/locales/de.js'
       ],
       namedExports: {
-        'node_modules/chart.js/dist/Chart.bundle.js': ['Chart']
+        'node_modules/chart.js/dist/Chart.bundle.js': ['Chart'],
+        'node_modules/@angular/common/locales/de.js': ['localeDe']
       }
     }),
     uglify()

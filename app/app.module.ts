@@ -7,6 +7,8 @@ import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 // import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
 
 import { appRoutes } from './app.routing';
 import { appReducer } from './app.reducer';
@@ -27,6 +29,8 @@ export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionRedu
 }
 
 const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
+
+registerLocaleData(localeDe, 'de');
 
 @NgModule({
     declarations: [

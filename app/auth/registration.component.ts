@@ -26,6 +26,7 @@ export class RegistrationComponent implements OnDestroy {
   city = '';
   school = '';
   class = '';
+  agb = false;
 
   private groupListSubscription: Subscription;
   groupList: any;

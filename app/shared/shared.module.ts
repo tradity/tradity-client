@@ -5,7 +5,6 @@ import { FormComponent } from './form.component';
 import { ButtonComponent } from './button.component';
 import { InputComponent, InputNumberComponent } from './input.component';
 import { SubnavComponent } from './subnav.component';
-import { BottomNavComponent } from './bottom-nav.component';
 import { ContainerComponent } from './container.component';
 import { ContainerControlComponent } from './container-control.component';
 import { ListItemComponent } from './list-item.component';
@@ -36,7 +35,6 @@ import { ChartComponent } from './chart.component';
     InputComponent,
     InputNumberComponent,
     SubnavComponent,
-    BottomNavComponent,
     ContainerComponent,
     ListItemComponent,
     ListItemHeaderComponent,
@@ -62,7 +60,6 @@ import { ChartComponent } from './chart.component';
     InputComponent,
     InputNumberComponent,
     SubnavComponent,
-    BottomNavComponent,
     ContainerComponent,
     ContainerControlComponent,
     ListItemComponent,

@@ -6,7 +6,6 @@
   <input type="checkbox" formControlName="stayLoggedIn" id="stayloggedin" /><label for="stayloggedin" i18n>Remember me</label>
   <button tradity-button type="submit" [disabled]="!form.valid" i18n>Log in</button>
 </form>
-<tradity-bottom-nav *ngIf="!(inputFocus | async)">
-  <a role="button" (click)="resetPassword()" i18n>Forgot Password?</a><!--
-  --><a [routerLink]="['/register']" i18n>Registration</a>
-</tradity-bottom-nav>
+<div>
+  <a role="button" (click)="resetPassword()" i18n>Forgot Password?</a> · <a [routerLink]="['/register']" i18n>Registration</a>
+</div>

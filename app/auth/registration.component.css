@@ -22,3 +22,12 @@ h2 {
 :host >>> [tradity-form] {
   margin: 0 3em;
 }
+
+div {
+  margin-top: 20px;
+}
+
+div a {
+  color: #F1592A;
+  text-decoration: none;
+}

@@ -9,7 +9,7 @@ import { StocksService } from '../core/stocks.service';
 import { AppComponent } from '../app.component';
 import * as stocksActions from './stocks.actions';
 import { Stock } from './stock.model';
-import { getSelectedStock, getSellBuy, getTradeAmount, getTradeValue, SellBuy } from './stocks.reducer';
+import { getSelectedStock, getSellBuy, getTradeAmount, getTradeValue, getTradeFee, SellBuy } from './stocks.reducer';
 import { getUser } from '../auth/auth.reducer';
 import { User } from '../auth/user.model';
 import * as authActions from '../auth/auth.actions';
@@ -31,12 +31,14 @@ export class TradeComponent implements OnDestroy {
   sellBuy: SellBuy;
   amount: Observable<number>;
   value: Observable<number>;
+  fee: Observable<number>;
 
   constructor(private route: ActivatedRoute, private stocksService: StocksService, private appComponent: AppComponent, private router: Router, private store: Store<any>) {
     this.appComponent.heading2 = 'Trade';
     this.sellBuySub = this.store.select(getSellBuy).subscribe(sellBuy => this.sellBuy = sellBuy);
     this.amount = this.store.select(getTradeAmount);
     this.value = this.store.select(getTradeValue);
+    this.fee = this.store.select(getTradeFee);
     this.stockSubscription = this.route.params.pipe(
       tap((params: Params) => this.store.dispatch(new stocksActions.SelectStock(params['isin']))),
       switchMap((params: Params) => this.store.select(getSelectedStock)),)

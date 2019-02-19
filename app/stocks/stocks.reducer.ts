@@ -16,6 +16,7 @@ interface State {
   sellBuy: SellBuy;
   tradeAmount: number;
   tradeValue: number;
+  tradeFee: number;
 }
 
 const initialState: State = {
@@ -25,7 +26,12 @@ const initialState: State = {
   searchResults: [],
   sellBuy: SellBuy.Buy,
   tradeAmount: null,
-  tradeValue: null
+  tradeValue: null,
+  tradeFee: null
+}
+
+function calcFee(value: number): number {
+  return Math.max(value * 0.001, 10);
 }
 
 export function stocksReducer(state: State = initialState, action: actions.All): State {
@@ -103,23 +109,28 @@ export function stocksReducer(state: State = initialState, action: actions.All):
       return {
         ...state,
         tradeAmount: action.payload,
-        tradeValue: tradeValue
+        tradeValue: tradeValue,
+        tradeFee: calcFee(tradeValue)
       }
     }
 
     case actions.INPUT_TRADE_VALUE: {
       let tradeAmount = initialState.tradeAmount;
+      let tradeFee = initialState.tradeFee;
       if (action.payload) {
         if (state.sellBuy === SellBuy.Buy) {
           tradeAmount = Math.floor(action.payload / (state.stocks[state.selectedIsin].ask / 10000));
+          tradeFee = calcFee(state.stocks[state.selectedIsin].ask * tradeAmount / 10000);
         } else {
           tradeAmount = Math.floor(action.payload / (state.stocks[state.selectedIsin].bid / 10000));
+          tradeFee = calcFee(state.stocks[state.selectedIsin].bid * tradeAmount / 10000);
         }
       }
       return {
         ...state,
         tradeValue: action.payload,
-        tradeAmount: tradeAmount
+        tradeAmount: tradeAmount,
+        tradeFee: tradeFee
       }
     }
 
@@ -179,4 +190,9 @@ export const getTradeAmount = createSelector(
 export const getTradeValue = createSelector(
   getStocksState,
   (state: State) => state.tradeValue
+);
+
+export const getTradeFee = createSelector(
+  getStocksState,
+  (state: State) => state.tradeFee
 );

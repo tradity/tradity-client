@@ -79,10 +79,10 @@
     <td *ngIf="showProvision">{{entry.wprovision}}</td>
     <td *ngIf="showProvision">{{entry.lprovision}}</td>
     <td *ngIf="showDeletion">{{entry.deletiontime * 1000 | date:'short'}}</td>
-    <td *ngIf="showFreemoney">{{entry.freemoney / 10000 | currency:'EUR':true}}</td>
-    <td *ngIf="showTotalvalue">{{entry.totalvalue / 10000 | currency:'EUR':true}}</td>
-    <td *ngIf="showRecvProvision">{{entry.wprov_sum / 10000 | currency:'EUR':true}}</td>
-    <td *ngIf="showRecvProvision">{{entry.lprov_sum / 10000 | currency:'EUR':true}}</td>
+    <td *ngIf="showFreemoney">{{entry.freemoney / 10000 | currency:'EUR'}}</td>
+    <td *ngIf="showTotalvalue">{{entry.totalvalue / 10000 | currency:'EUR'}}</td>
+    <td *ngIf="showRecvProvision">{{entry.wprov_sum / 10000 | currency:'EUR'}}</td>
+    <td *ngIf="showRecvProvision">{{entry.lprov_sum / 10000 | currency:'EUR'}}</td>
     <td *ngIf="showDeleteUser"><a (click)="deleteUser(entry)"><tradity-icon>delete</tradity-icon></a></td>
   </tr>
 </table>

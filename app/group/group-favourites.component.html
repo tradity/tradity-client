@@ -3,7 +3,7 @@
     <tradity-li-header>
       <span left>{{paper.stockname}}</span>
       <span left>{{paper.stocktextid}}</span>
-      <span right>{{paper.lastvalue / 10000 | currency:'EUR':true}}</span>
+      <span right>{{paper.lastvalue / 10000 | currency:'EUR'}}</span>
     </tradity-li-header>
     <tradity-li-action-list>
       <tradity-action-favourite></tradity-action-favourite>
@@ -15,11 +15,11 @@
     <tradity-li-vl>
       <tradity-li-vi>
         <span i18n>Ask price</span>
-        <span>{{paper.ask / 10000 | currency:'EUR':true}}</span>
+        <span>{{paper.ask / 10000 | currency:'EUR'}}</span>
       </tradity-li-vi>
       <tradity-li-vi>
         <span i18n>Bid price</span>
-        <span>{{paper.bid / 10000 | currency:'EUR':true}}</span>
+        <span>{{paper.bid / 10000 | currency:'EUR'}}</span>
       </tradity-li-vi>
       <tradity-li-vi>
         <span i18n>Tradable amount</span>

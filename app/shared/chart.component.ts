@@ -5,7 +5,14 @@ import { Chart } from 'chart.js';
   moduleId: module.id,
   selector: 'tradity-chart',
   template: '<canvas #canvas></canvas>',
-  styleUrls: ['chart.component.css']
+  styles: [`
+    :host {
+      display: block;
+      max-width: 100vh;
+      background-color: #0C135F;
+      padding-top: 5px;
+    }
+  `]
 })
 export class ChartComponent implements AfterViewInit {
   @Input()

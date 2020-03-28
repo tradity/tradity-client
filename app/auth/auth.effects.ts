@@ -22,7 +22,6 @@ export class AuthEffects {
         pw: action.payload.password,
         stayloggedin: action.payload.stayLoggedIn
       }).pipe(
-      map(res => res.json()),
       map(res => {
         if (res.code === 200) {
           return new authActions.LoginSuccess({ uid: res.uid, authKey: res.key });
@@ -36,7 +35,6 @@ export class AuthEffects {
     .ofType(authActions.LOAD_USER).pipe(
     switchMap((action: authActions.LoadUser) => this.apiService
       .get('/user/$self?nohistory=' + String(action.payload)).pipe(
-      map(res => res.json()),
       map(res => new authActions.ReceiveUser(res)),)
     ));
   
@@ -56,7 +54,6 @@ export class AuthEffects {
     .ofType(authActions.LOGOUT).pipe(
     mergeMap(() => this.apiService
       .post('/logout', {}).pipe(
-      map(res => res.json()),
       map(res => {
         if (res.code === 200) {
           return new authActions.LogoutSuccess();
@@ -77,7 +74,6 @@ export class AuthEffects {
         '/register',
         action.payload
       ).pipe(
-      map(res => res.json()),
       map(res => {
         if (res.code === 200) {
           return new authActions.LoginSuccess({ uid: res.uid, authKey: res.key });

@@ -24,7 +24,7 @@ export class StocksEffects {
       if (action.payload.length < 3) return observableEmpty()
       return this.apiService
         .get('/stocks/search?name=' + action.payload).pipe(
-        map(res => res.json().data),
+        map(res => res.data),
         map((searchResults: Stock[]) => new stocksActions.ReceiveSearchResults(searchResults)),
         catchError(err => observableOf(new stocksActions.ReceiveSearchResults([]))),)
     }));
@@ -39,7 +39,7 @@ export class StocksEffects {
     .ofType(stocksActions.LOAD_STOCK).pipe(
     switchMap((action: stocksActions.LoadStock) => this.apiService
       .get('/stocks/search?name=' + action.payload).pipe(
-      map(res => res.json().data[0]),
+      map(res => res.data[0]),
       map((stock: Stock) => new stocksActions.ReceiveStock(stock)),)
     ));
   
@@ -55,7 +55,6 @@ export class StocksEffects {
           amount: stocksState.tradeAmount * stocksState.sellBuy
         }
       ).pipe(
-      map(res => res.json()),
       map(res => {
         let delayed = false;
         if (res.identifier === 'autodelay-sxnotopen') delayed = true;

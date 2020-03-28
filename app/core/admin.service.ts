@@ -20,20 +20,18 @@ export class AdminService {
 
   loadUserlist() {
     this.apiService.get('/users').pipe(
-    map(res => res.json().data))
+    map(res => res.data))
     .subscribe(res => this._userlist.next(res));
   }
 
   deleteGroup(gid: number) {
-    return this.apiService.post('/school/null/merge/' + gid, {}).pipe(
-    map(res => res.json()));
+    return this.apiService.post('/school/null/merge/' + gid, {});
   }
 
   createSchool(name: string, path: string) {
     return this.apiService.post('/school', {
       schoolname: name,
       schoolpath: path
-    }).pipe(
-    map(res => res.json()));
+    });
   }
 }

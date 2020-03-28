@@ -1,8 +1,6 @@
 
-import {map, zip} from 'rxjs/operators';
+import { zip } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Headers, RequestOptions } from '@angular/http';
-import { Observable ,  BehaviorSubject } from 'rxjs';
 
 import { ApiService } from './api.service';
 
@@ -14,17 +12,14 @@ export class UserService {
     return this.apiService.post('/verify-email', {
       uid: uid,
       key: emailVerifCode
-    }).pipe(
-    map(res => res.json()));
+    });
   }
 
   checkUsernameAndEmail(username: string, email: string) {
     return this.apiService.get('/validate-username/' + username).pipe(
-    map(res => res.json()),
     zip(
-      this.apiService.get('/validate-email/' + email).pipe(
-      map(res => res.json()))
-    ),)
+      this.apiService.get('/validate-email/' + email)
+    ))
   }
 
   resetPassword() {
@@ -32,8 +27,7 @@ export class UserService {
     if (username) {
       this.apiService.post('/reset-password', {
         name: username
-      }).pipe(
-      map(res => res.json()))
+      })
       .subscribe(
         res => alert('Neues Passwort erfolgreich versandt'),
         err => {

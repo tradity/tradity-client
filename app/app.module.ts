@@ -1,7 +1,6 @@
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -39,7 +38,6 @@ registerLocaleData(localeDe, 'de');
     imports: [
       BrowserModule,
       FormsModule,
-      HttpModule,
       RouterModule.forRoot(appRoutes),
       StoreModule.forRoot({ app: appReducer }, { metaReducers }),
       // isDevMode ? StoreDevtoolsModule.instrument({ maxAge: 25 }) : [],

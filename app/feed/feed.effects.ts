@@ -19,7 +19,7 @@ export class FeedEffects {
     switchMap(([action, ownUser]) => this.apiService
       // TODO: replace this and figure out why the server doesn't return any events without since parameter
       .get('/events?since=1459168140').pipe(
-      map(res => res.json().data),
+      map(res => res.data),
       map((res: any[]) => res.reduce((events: FeedEvent[], event) => {
           let type = '';
           if (event.type === 'trade') {

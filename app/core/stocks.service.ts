@@ -43,27 +43,19 @@ export class StocksService {
   }
   
   loadPositions(): void {
-    this.apiService.get('/depot').pipe(
-    map(res => res.json()))
-    .subscribe(res => this._positions.next(res.data));
+    this.apiService.get('/depot').subscribe(res => this._positions.next(res.data));
   }
   
   loadHistory(): void {
-    this.apiService.get('/user/$self').pipe(
-    map(res => res.json()))
-  .subscribe(res => this._history.next(res.orders));
+    this.apiService.get('/user/$self').subscribe(res => this._history.next(res.orders));
   }
 
   loadOrders(): void {
-    this.apiService.get('/dqueries').pipe(
-    map(res => res.json()))
-    .subscribe(res => this._orders.next(res.data));
+    this.apiService.get('/dqueries').subscribe(res => this._orders.next(res.data));
   }
 
   loadPopularStocks(): void {
-    this.apiService.get('/stocks/popular').pipe(
-    map(res => res.json()))
-    .subscribe(res => this._popularStocks.next(res.data));
+    this.apiService.get('/stocks/popular').subscribe(res => this._popularStocks.next(res.data));
   }
 
   trade(isin: string, amount: number): Observable<any> {
@@ -73,7 +65,6 @@ export class StocksService {
         stocktextid: isin,
         amount: amount
       }
-    ).pipe(
-    map(res => res.json()));
+    );
   }
 }

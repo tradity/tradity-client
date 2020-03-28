@@ -32,24 +32,22 @@ export class RankingService {
   
   loadAll() {
     this.apiService.get('/ranking').pipe(
-    map(res => res.json()),
     map(res => res.data.sort((a, b) => b.totalvalue - a.totalvalue).slice(0, 100)),)
     .subscribe(res => this._rankingAll.next(res));
   }
 
   loadWeekly() {
     this.apiService.get('/ranking?since=' + (Math.floor(Date.now() / 1000) - 604800)).pipe(
-    map(res => res.json()),
     map(res => res.data.sort((a, b) => b.totalvalue - a.totalvalue).slice(0, 100)),)
     .subscribe(res => this._rankingWeekly.next(res));
   }
 
   loadGroups() {
     this.apiService.get('/schools').pipe(
-    map(res => res.json().data),
+    map(res => res.data),
     zip(
       this.apiService.get('/ranking').pipe(
-      map(res => res.json().data)),
+      map(res => res.data)),
       (groups, users) => {
         let ret = {};
         for (let group of groups) {

@@ -28,10 +28,9 @@ export class GroupService {
 
   loadGroup(id: string): void {
     this.apiService.get('/school/' + id).pipe(
-    map(res => res.json().data),
+    map(res => res.data),
     zip(
       this.apiService.get('/ranking?schoolid=' + id).pipe(
-      map(res => res.json()),
       map(res => res.data.sort((a, b) => b.totalvalue - a.totalvalue)),),
       (res1, res2) => {
         res1["ranking"] = res2;
@@ -51,12 +50,12 @@ export class GroupService {
 
   loadGroups() {
     this.apiService.get('/schools').pipe(
-    map(res => res.json().data))
+    map(res => res.data))
     .subscribe(res => this._groupList.next(res));
   }
 
   getSubGroups(path: string): Observable<any> {
     return this.apiService.get('/schools?parentPath=' + path).pipe(
-           map(res => res.json().data))
+           map(res => res.data))
   }
 }

@@ -57,7 +57,7 @@
     "@compodoc/compodoc": "1.0.1",
     "@types/chart.js": "^2.7.3",
     "@types/node": "^8.0.32",
-    "angular": "^1.6.6",
+    "angular": "^1.7.9",
     "angular-marked": "^1.2.2",
     "browser-sync": "^2.18.13",
     "connect-history-api-fallback": "^1.3.0",

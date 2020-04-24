@@ -45,6 +45,7 @@
     "@ngrx/store-devtools": "^6.1.0",
     "chart.js": "^2.7.1",
     "core-js": "^2.5.7",
+    "lit-html": "^1.2.1",
     "material-design-icons": "^3.0.1",
     "ngrx-store-localstorage": "^5.0.1",
     "normalize.css": "^7.0.0",

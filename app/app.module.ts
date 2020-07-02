@@ -2,10 +2,9 @@ import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { StoreModule, ActionReducer, MetaReducer } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 // import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { localStorageSync } from 'ngrx-store-localstorage';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 
@@ -23,12 +22,6 @@ import { RankingModule } from './ranking/ranking.module';
 import { StocksModule } from './stocks/stocks.module';
 import { GroupModule } from './group/group.module';
 
-export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
-  return localStorageSync({ keys: ['auth', 'feed', 'stocks'], rehydrate: true })(reducer);
-}
-
-const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
-
 registerLocaleData(localeDe, 'de');
 
 @NgModule({
@@ -39,7 +32,7 @@ registerLocaleData(localeDe, 'de');
       BrowserModule,
       FormsModule,
       RouterModule.forRoot(appRoutes),
-      StoreModule.forRoot({ app: appReducer }, { metaReducers }),
+      StoreModule.forRoot({ app: appReducer }),
       // isDevMode ? StoreDevtoolsModule.instrument({ maxAge: 25 }) : [],
       EffectsModule.forRoot([]),
       CoreModule,

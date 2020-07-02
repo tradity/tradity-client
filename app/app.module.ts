@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 
@@ -32,7 +31,6 @@ registerLocaleData(localeDe, 'de');
       FormsModule,
       RouterModule.forRoot([]),
       StoreModule.forRoot({ app: appReducer }),
-      // isDevMode ? StoreDevtoolsModule.instrument({ maxAge: 25 }) : [],
       EffectsModule.forRoot([]),
       CoreModule,
       SharedModule,

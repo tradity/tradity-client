@@ -42,7 +42,6 @@
     "@angular/router": "^6.1.2",
     "@ngrx/effects": "^6.1.0",
     "@ngrx/store": "^6.1.0",
-    "@ngrx/store-devtools": "^6.1.0",
     "chart.js": "^2.7.1",
     "core-js": "^2.5.7",
     "lit-html": "^1.2.1",

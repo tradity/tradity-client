@@ -8,7 +8,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 
-import { appRoutes } from './app.routing';
 import { appReducer } from './app.reducer';
 import { AppComponent } from './app.component';
 
@@ -31,7 +30,7 @@ registerLocaleData(localeDe, 'de');
     imports: [
       BrowserModule,
       FormsModule,
-      RouterModule.forRoot(appRoutes),
+      RouterModule.forRoot([]),
       StoreModule.forRoot({ app: appReducer }),
       // isDevMode ? StoreDevtoolsModule.instrument({ maxAge: 25 }) : [],
       EffectsModule.forRoot([]),

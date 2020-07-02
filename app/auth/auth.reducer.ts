@@ -52,8 +52,6 @@ export function authReducer(state: State = initialState, action: actions.All): S
         {},
         state,
         {
-          uid: action.payload.uid,
-          authKey: action.payload.authKey,
           loggingIn: false,
           loggedIn: true
         }

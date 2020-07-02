@@ -15,10 +15,17 @@ export class ApiService {
     let hostname = document.location.hostname.includes('.tradity.de') ? document.location.hostname : 'dev.tradity.de';
     this.baseUrl = 'https://' + hostname + ':443/api/v1';
 
-    this.store.select(getAuthKey).subscribe((key: string) => {
-      if (key != null) this.headers['Authorization'] = key;
-      else delete this.headers['Authorization'];
-    });
+    this.setAuthKey(localStorage.getItem('authKey'));
+  }
+
+  setAuthKey(key: string): void {
+    if (key != null) {
+      this.headers['Authorization'] = key;
+      localStorage.setItem('authKey', key);
+    } else {
+      delete this.headers['Authorization'];
+      localStorage.removeItem('authKey');
+    }
   }
 
   private request(method: string, url: string, body?: any): Observable<any> {

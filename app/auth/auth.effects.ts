@@ -24,7 +24,8 @@ export class AuthEffects {
       }).pipe(
       map(res => {
         if (res.code === 200) {
-          return new authActions.LoginSuccess({ uid: res.uid, authKey: res.key });
+          this.apiService.setAuthKey(res.key);
+          return new authActions.LoginSuccess();
         }
       }),
       catchError((error: any) => observableOf(new authActions.LoginFailed())),)
@@ -64,7 +65,10 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   logoutSuccess = this.actions
     .ofType(authActions.LOGOUT_SUCCESS).pipe(
-    tap(() => this.router.navigateByUrl('login')));
+    tap(() => {
+      this.apiService.setAuthKey(null);
+      this.router.navigateByUrl('login');
+    }));
   
   @Effect()
   register = this.actions
@@ -76,7 +80,7 @@ export class AuthEffects {
       ).pipe(
       map(res => {
         if (res.code === 200) {
-          return new authActions.LoginSuccess({ uid: res.uid, authKey: res.key });
+          return new authActions.LoginSuccess();
         }
         return new authActions.RegistrationFailed();
       }),)

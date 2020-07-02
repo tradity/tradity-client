@@ -31,7 +31,6 @@ export class Login implements Action {
 
 export class LoginSuccess implements Action {
   readonly type = LOGIN_SUCCESS;
-  constructor(public payload: { uid: number, authKey: string }) {}
 }
 
 export class LoginFailed implements Action {

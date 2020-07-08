@@ -10,7 +10,18 @@ import { getInputFocus } from '../app.reducer';
 
 @Component({
   selector: 'tradity-login',
-  templateUrl: 'login.component.html',
+  template: `
+    <img title="Tradity" alt="Tradity" src="/img/tradity_symbol.png" />
+    <h2 i18n>Welcome back!</h2>
+    <form (ngSubmit)="login()" tradity-form [formGroup]="form" novalidate>
+      <tradity-input type="text" placeholder="User name" i18n-placeholder formControlName="username" autofocus></tradity-input>
+      <tradity-input type="password" placeholder="Password" i18n-placeholder formControlName="password"></tradity-input>
+      <input type="checkbox" formControlName="stayLoggedIn" id="stayloggedin" /><label for="stayloggedin" i18n>Remember me</label>
+      <button tradity-button type="submit" [disabled]="!form.valid" i18n>Log in</button>
+    </form>
+    <div>
+      <a role="button" (click)="resetPassword()" i18n>Forgot Password?</a> · <a [routerLink]="['/register']" i18n>Registration</a>
+    </div>`,
   styleUrls: ['login.component.css']
 })
 export class LoginComponent {

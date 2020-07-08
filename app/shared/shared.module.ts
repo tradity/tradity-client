@@ -23,7 +23,7 @@ import { SellActionComponent } from './sell-action.component';
 import { ListItemExpandActionComponent } from './list-item-expand-action.component';
 import { IconComponent } from './icon.component';
 import { NotificationComponent } from './notification.component';
-import { ChartComponent } from './chart.component';
+//import { ChartComponent } from './chart.component';
 
 @NgModule({
   imports: [
@@ -51,8 +51,8 @@ import { ChartComponent } from './chart.component';
     SellActionComponent,
     ListItemExpandActionComponent,
     IconComponent,
-    NotificationComponent,
-    ChartComponent
+    NotificationComponent
+    /*ChartComponent*/
   ],
   declarations: [
     FormComponent,
@@ -77,8 +77,8 @@ import { ChartComponent } from './chart.component';
     SellActionComponent,
     ListItemExpandActionComponent,
     IconComponent,
-    NotificationComponent,
-    ChartComponent
+    NotificationComponent
+    /*ChartComponent*/
   ],
   providers: [],
 })

@@ -5,7 +5,14 @@ import { ListItemComponent } from './list-item.component';
 @Component({
   selector: 'tradity-action-expand',
   template: '<tradity-icon></tradity-icon>',
-  styleUrls: ['list-item-expand-action.component.css']
+  styles: [`
+    tradity-icon::before {
+      content: "expand_more";
+    }
+    
+    :host-context(tradity-li.expanded) tradity-icon::before {
+      content: "expand_less";
+    }`]
 })
 export class ListItemExpandActionComponent {
   @HostBinding('attr.role') role = 'button';

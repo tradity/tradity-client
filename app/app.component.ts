@@ -50,7 +50,141 @@ import { Notification, getNotifications } from './app.reducer';
     <main role="main">
       <router-outlet></router-outlet>
     </main>`,
-  styleUrls: ['app.component.css']
+  styles: [`
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 13px 20px;
+      color: #170804;
+    }
+    
+    nav a {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: #170804;
+    }
+    
+    nav span:first-of-type {
+      font-size: 24px;
+      font-weight: 900;
+      line-height: 29px;
+    }
+    
+    nav div {
+      width: 100%;
+      transition: all 1s ease;
+      height: 0;
+      visibility: hidden;
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    nav div.menu-open {
+      height: 100vh;
+      margin-top: 5px;
+      padding-top: 10px;
+      box-sizing: border-box;
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    #profile-pic {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 1px solid #979797;
+      margin-bottom: 25px;
+      background-color: rgba(23,8,4,0.02);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    #profile-pic img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+    }
+    
+    #profile-pic span {
+      font-weight: bold;
+      font-size: 40px;
+      line-height: 40px;
+    }
+    
+    #username {
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 20px;
+      opacity: 0.87;
+    }
+    
+    #email {
+      font-size: 14px;
+      line-height: 17px;
+      color: rgba(23,8,4,0.8);
+    }
+    
+    ul {
+      width: 215px;
+      margin: 15px 0 0 0;
+      padding: 30px 0 0 0;
+      list-style: none;
+      border-top: 1px solid #9B9B9B;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    li {
+      display: block; 
+      color: #170804;
+      font-size: 16px;
+      line-height: 19px;
+      margin-bottom: 25px;
+    }
+    
+    li a {
+      text-decoration: none;
+      color: #170804;
+    }
+    
+    li a.active {
+      color: #F1592A;
+    }
+    
+    #subheader {
+      background-color: #f1592a;
+      color: white;
+      overflow: hidden;
+      padding: 20px;
+    }
+    
+    #subheader h2 {
+      margin: 8px 0 2px;
+      font-size: 16px;
+      line-height: 19px;
+    }
+    
+    #subheader h1 {
+      margin: 2px 0 8px;
+      font-size: 30px;
+      font-weight: 900;
+      line-height: 36px;
+    }
+    
+    div#notifications {
+      position: fixed;
+      top: 55px;
+      width: calc(100vw - 20px);
+      padding: 0 10px;
+    }`]
 })
 export class AppComponent implements OnDestroy {
   isMenuOpen = false;

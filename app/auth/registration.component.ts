@@ -12,7 +12,13 @@ import { GroupService } from '../core/group.service';
 
 @Component({
   selector: 'tradity-registration',
-  templateUrl: 'registration.component.html',
+  template: `
+    <img title="Tradity" alt="Tradity" src="/img/tradity_symbol.png" />
+    <h2 i18n>Sign Up</h2>
+    <router-outlet></router-outlet>
+    <div>
+      <a role="button" (click)="resetPassword()" i18n>Forgot Password?</a> · <a [routerLink]="['/login']" i18n>Login</a>
+    </div>`,
   styleUrls: ['registration.component.css']
 })
 export class RegistrationComponent implements OnDestroy {

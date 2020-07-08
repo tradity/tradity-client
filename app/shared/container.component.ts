@@ -2,7 +2,18 @@ import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'tradity-container',
-  styleUrls: ['container.component.css'],
+  styles: [`
+    :host.active tradity-container-control {
+      margin-bottom: 10px;
+    }
+    
+    div.container-content {
+      display: none;
+    }
+    
+    :host.active div.container-content {
+      display: block;
+    }`],
   template: `
     <tradity-container-control>{{ name }}</tradity-container-control>
     <div class="container-content">

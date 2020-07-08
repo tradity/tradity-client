@@ -56,11 +56,7 @@
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <!-- build:remove:prod -->
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>    
-    <script src="app/systemjs.config.js"></script>
-    <script>
-      System.import('app').catch(function (err) { console.error(err); });
-    </script>
+    <script type="module" src="app/main.dev.js"></script>
     <!-- /build -->
     <!-- build:remove:dev -->
     <script>window.module = 'aot';</script>

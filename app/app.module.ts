@@ -34,13 +34,13 @@ import { GroupModule } from './group/group.module';
       EffectsModule.forRoot([]),
       CoreModule,
       SharedModule,
-      AuthModule,
+      AuthModule/*,
       AdminModule,
       DashboardModule,
       PortfolioModule,
       RankingModule,
       StocksModule,
-      GroupModule
+      GroupModule*/
     ],
     providers: [],
     bootstrap: [AppComponent]

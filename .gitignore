@@ -7,3 +7,5 @@ node_modules
 docs
 *.log
 .DS_Store
+app/**/*.js
+index.dev.html

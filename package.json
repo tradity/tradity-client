@@ -19,15 +19,11 @@
     "prebuild": "npm run clean",
     "build": "parallelshell 'npm run build:js' 'npm run build:cp' 'tsc -p tsconfig.json' 'npm run build:indexhtml -- -e dev'",
     "prebuild:prod": "npm run clean",
-    "build:prod": "npm run build:cp && npm run build:symlink && npm run build:indexhtml -- -e prod && ngc -p tsconfig.prod.json && rollup -c rollup-config.js",
-    "build:symlink": "cd dist && ln -sf ../node_modules || true",
-    "build:indexhtml": "htmlprocessor index.html -o dist/index.html",
-    "build:js": "cp -r app dist/ && npm run build:symlink",
-    "build:cp": "cp -r *.html *.txt *.ico manifest.json fonts img scripts apidoc dist/",
-    "watch": "parallelshell 'npm run watch:js' 'npm run watch:cp' 'tsc -p tsconfig.json -w' 'npm run build:indexhtml -- -e dev'",
-    "watch:js": "watch-run -p 'app/**' npm run build:js",
-    "watch:cp": "watch-run -p '*.html,*.txt,*.ico,fonts/**,img/**,scripts/**' npm run build:cp",
-    "start": "npm run build && parallelshell 'npm run watch' 'browser-sync start --config bs-config.js'"
+    "build:prod": "npm run build:cp && npm run build:indexhtml -- -e prod && ngc -p tsconfig.prod.json && rollup -c rollup-config.js",
+    "build:indexhtml": "htmlprocessor index.html -o index.dev.html",
+    "build:js": "cp -r app dist/",
+    "build:cp": "cp -r *.txt *.ico manifest.json fonts img scripts apidoc dist/",
+    "start": "npm run build:indexhtml -- -e dev && parallelshell 'tsc -p tsconfig.json -w' 'es-dev-server --app-index index.dev.html --node-resolve --watch'"
   },
   "dependencies": {
     "@angular/animations": "^6.1.2",
@@ -49,7 +45,6 @@
     "normalize.css": "^7.0.0",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.2.2",
-    "systemjs": "^0.21.4",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
@@ -58,8 +53,7 @@
     "@types/node": "10.x.x",
     "angular": "^1.6.6",
     "angular-marked": "^1.2.2",
-    "browser-sync": "^2.18.13",
-    "connect-history-api-fallback": "^1.3.0",
+    "es-dev-server": "^1.56.0",
     "hashmark": "^5.0.0",
     "htmlprocessor": "^0.2.6",
     "jshint": "^2.9.5",
@@ -73,7 +67,6 @@
     "rollup-plugin-node-resolve": "^3.3.0",
     "rollup-plugin-uglify": "^4.0.0",
     "rollup-pluginutils": "^2.3.1",
-    "typescript": "^3.8.3",
-    "watch-run": "^1.2.5"
+    "typescript": "^3.8.3"
   }
 }

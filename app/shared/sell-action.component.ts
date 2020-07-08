@@ -6,7 +6,6 @@ import * as stocksActions from '../stocks/stocks.actions';
 import { SellBuy } from '../stocks/stocks.reducer';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-action-sell',
   template: '<tradity-icon>remove</tradity-icon>'
 })

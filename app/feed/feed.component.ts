@@ -7,7 +7,6 @@ import { getFeedEvents } from './feed.reducer';
 import { FeedEvent } from './feedEvent.model';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-feed',
   templateUrl: 'feed.component.html',
   styles: [':host { display: flex; flex-direction: column; }']

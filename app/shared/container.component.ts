@@ -1,7 +1,6 @@
 import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-container',
   styleUrls: ['container.component.css'],
   template: `

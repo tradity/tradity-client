@@ -8,7 +8,6 @@ import * as authActions from '../auth/auth.actions';
 import { AppComponent } from '../app.component';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-dashboard',
   templateUrl: 'dashboard.component.html',
   styleUrls: ['dashboard.component.css']

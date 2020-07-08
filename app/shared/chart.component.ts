@@ -2,7 +2,6 @@ import { Component, Input, ViewChild, AfterViewInit, ElementRef } from '@angular
 import { Chart } from 'chart.js';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-chart',
   template: '<canvas #canvas></canvas>',
   styles: [`

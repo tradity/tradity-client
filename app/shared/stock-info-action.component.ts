@@ -2,7 +2,6 @@ import { Component, HostBinding, HostListener, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-action-stock-info',
   template: '<tradity-icon>info_outline</tradity-icon>'
 })

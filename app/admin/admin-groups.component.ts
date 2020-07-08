@@ -7,7 +7,6 @@ import { AdminService } from '../core/admin.service';
 import { GroupService } from '../core/group.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-admin-groups',
   templateUrl: 'admin-groups.component.html',
   styles: ['table, th, td { border: 1px solid black; }']

@@ -7,7 +7,6 @@ import { Stock } from './stock.model';
 import { getSearchValue, getSearchResults } from './stocks.reducer';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-stock-search',
   templateUrl: 'stock-search.component.html',
   styleUrls: ['stock-search.component.css']

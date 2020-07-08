@@ -11,7 +11,6 @@ import { getSelectedStock } from './stocks.reducer';
 import { Stock } from './stock.model';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-stock-detail',
   templateUrl: 'stock-detail.component.html',
   styleUrls: ['stock-detail.component.css']

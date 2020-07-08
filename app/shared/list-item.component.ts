@@ -1,7 +1,6 @@
 import { Component, HostBinding } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-li',
   template: '<ng-content></ng-content>',
   styleUrls: ['list-item.component.css']

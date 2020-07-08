@@ -5,7 +5,6 @@ import { StocksService } from '../core/stocks.service';
 import { AppComponent } from '../app.component';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-stocks',
   templateUrl: 'stocks.component.html',
   styleUrls: ['stocks.component.css']

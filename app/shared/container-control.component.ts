@@ -3,7 +3,6 @@ import { Component, HostListener, HostBinding } from '@angular/core';
 import { ContainerComponent } from './container.component';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-container-control',
   template: '<ng-content></ng-content>',
   styleUrls: ['container-control.component.css']

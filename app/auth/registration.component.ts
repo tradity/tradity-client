@@ -11,7 +11,6 @@ import { UserService } from '../core/user.service';
 import { GroupService } from '../core/group.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-registration',
   templateUrl: 'registration.component.html',
   styleUrls: ['registration.component.css']

@@ -9,7 +9,6 @@ import { User } from './auth/user.model';
 import { Notification, getNotifications } from './app.reducer';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css']

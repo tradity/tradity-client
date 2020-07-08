@@ -15,7 +15,6 @@ import { User } from '../auth/user.model';
 import * as authActions from '../auth/auth.actions';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-trade',
   templateUrl: 'trade.component.html',
   styleUrls: ['trade.component.css']

@@ -8,7 +8,6 @@ import { GroupService } from '../core/group.service';
 import { AppComponent } from '../app.component';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-group',
   templateUrl: 'group.component.html',
   styleUrls: ['group.component.css']

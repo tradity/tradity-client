@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { AdminService } from '../core/admin.service';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-admin-userlist',
   templateUrl: 'admin-userlist.component.html',
   styles: ['table, th, td { border: 1px solid black; }']

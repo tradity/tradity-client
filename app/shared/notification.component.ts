@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import * as appActions from '../app.actions';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-notification',
   styleUrls: ['notification.component.css'],
   template: '<tradity-icon>{{ icon }}</tradity-icon><span>{{ message }}</span><tradity-icon (click)="close()">close</tradity-icon>'

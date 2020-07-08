@@ -9,7 +9,6 @@ import * as authActions from './auth.actions';
 import { getInputFocus } from '../app.reducer';
 
 @Component({
-  moduleId: module.id,
   selector: 'tradity-login',
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.css']

@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { registerLocaleData } from '@angular/common';
-import localeDe from '@angular/common/locales/de';
+//import { registerLocaleData } from '@angular/common';
+//import localeDe from '@angular/common/locales/de';
 
 import { appReducer } from './app.reducer';
 import { AppComponent } from './app.component';
@@ -20,7 +20,7 @@ import { RankingModule } from './ranking/ranking.module';
 import { StocksModule } from './stocks/stocks.module';
 import { GroupModule } from './group/group.module';
 
-registerLocaleData(localeDe, 'de');
+//registerLocaleData(localeDe, 'de');
 
 @NgModule({
     declarations: [

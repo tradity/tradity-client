@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { UserService } from '../core/user.service';
@@ -13,11 +12,11 @@ import { getInputFocus } from '../app.reducer';
   template: `
     <img title="Tradity" alt="Tradity" src="/img/tradity_symbol.png" />
     <h2 i18n>Welcome back!</h2>
-    <form (ngSubmit)="login()" tradity-form [formGroup]="form" novalidate>
-      <tradity-input type="text" placeholder="User name" i18n-placeholder formControlName="username" autofocus></tradity-input>
-      <tradity-input type="password" placeholder="Password" i18n-placeholder formControlName="password"></tradity-input>
-      <input type="checkbox" formControlName="stayLoggedIn" id="stayloggedin" /><label for="stayloggedin" i18n>Remember me</label>
-      <button tradity-button type="submit" [disabled]="!form.valid" i18n>Log in</button>
+    <form (ngSubmit)="login()" tradity-form>
+      <tradity-input type="text" placeholder="User name" name="username" [(ngModel)]="username" autofocus></tradity-input>
+      <tradity-input type="password" placeholder="Password" name="password" [(ngModel)]="password"></tradity-input>
+      <input type="checkbox" id="stayloggedin" name="stayloggedin" [(ngModel)]="stayLoggedIn" /><label for="stayloggedin" i18n>Remember me</label>
+      <button tradity-button type="submit" [disabled]="!(this.username && this.password)" i18n>Log in</button>
     </form>
     <div>
       <a role="button" (click)="resetPassword()" i18n>Forgot Password?</a> · <a [routerLink]="['/register']" i18n>Registration</a>
@@ -58,15 +57,15 @@ import { getInputFocus } from '../app.reducer';
     }`]
 })
 export class LoginComponent {
-  form: FormGroup;
+  username: string;
+  password: string;
+  stayLoggedIn: boolean;
   inputFocus: Observable<boolean>;
 
-  constructor(private userService: UserService, private store: Store<any>, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder) {
-    this.form = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      stayLoggedIn: false
-    });
+  constructor(private userService: UserService, private store: Store<any>, private router: Router, private route: ActivatedRoute) {
+    this.username = '';
+    this.password = '';
+    this.stayLoggedIn = false;
 
     this.inputFocus = this.store.select(getInputFocus);
 
@@ -95,7 +94,7 @@ export class LoginComponent {
   }
   
   login() {
-    this.store.dispatch(new authActions.Login(this.form.value));
+    this.store.dispatch(new authActions.Login({ username: this.username, password: this.password, stayLoggedIn: this.stayLoggedIn }));
   }
 
   resetPassword() {

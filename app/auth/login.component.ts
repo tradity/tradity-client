@@ -22,7 +22,40 @@ import { getInputFocus } from '../app.reducer';
     <div>
       <a role="button" (click)="resetPassword()" i18n>Forgot Password?</a> · <a [routerLink]="['/register']" i18n>Registration</a>
     </div>`,
-  styleUrls: ['login.component.css']
+  styles: [`
+    :host {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 100px;
+    }
+    
+    img {
+      width: 100px;
+      height: 100px;
+      margin: 60px 0 0;
+    }
+    
+    h2 {
+      margin: 30px 0 36px;
+      font-size: 20px;
+      font-weight: 900;
+      line-height: 24px;
+      color: #170804;
+    }
+    
+    [tradity-form] {
+      margin: 0 3em;
+    }
+    
+    div {
+      margin-top: 20px;
+    }
+    
+    div a {
+      color: #F1592A;
+      text-decoration: none;
+    }`]
 })
 export class LoginComponent {
   form: FormGroup;

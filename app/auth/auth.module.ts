@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -33,5 +33,6 @@ import { RegistrationStep2Component } from './registration-step2.component';
     RegistrationStep2Component
   ],
   providers: [],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AuthModule { }

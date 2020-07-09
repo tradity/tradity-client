@@ -15,7 +15,7 @@ import { getInputFocus } from '../app.reducer';
     <form (ngSubmit)="login()" tradity-form>
       <tradity-input type="text" placeholder="User name" name="username" [(ngModel)]="username" autofocus></tradity-input>
       <tradity-input type="password" placeholder="Password" name="password" [(ngModel)]="password"></tradity-input>
-      <input type="checkbox" id="stayloggedin" name="stayloggedin" [(ngModel)]="stayLoggedIn" /><label for="stayloggedin" i18n>Remember me</label>
+      <tradity-checkbox [value]="stayLoggedIn" (input)="stayLoggedIn = $event.target.value">Remember me</tradity-checkbox>
       <button tradity-button type="submit" [disabled]="!(this.username && this.password)" i18n>Log in</button>
     </form>
     <div>

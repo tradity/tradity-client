@@ -24,6 +24,7 @@ import { ListItemExpandActionComponent } from './list-item-expand-action.compone
 import { IconComponent } from './icon.component';
 import { NotificationComponent } from './notification.component';
 //import { ChartComponent } from './chart.component';
+import './checkbox';
 
 @NgModule({
   imports: [

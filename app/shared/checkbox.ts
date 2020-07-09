@@ -2,16 +2,26 @@ import { html, render } from "../../node_modules/lit-html/lit-html.js";
 
 class TradityCheckbox extends HTMLElement {
   root: ShadowRoot;
+  #value: boolean;
+
+  get value() {
+    return this.#value;
+  }
+
+  set value(value: boolean) {
+    this.#value = value;
+    this.render();
+  }
   
   constructor() {
     super();
 
     this.root = this.attachShadow({ mode: "open" });
-    render(this.template(), this.root);
+    this.render();
   }
 
-  template() {
-    return html`
+  render() {
+    render(html`
       <style>
         input {
           position: absolute;
@@ -44,8 +54,8 @@ class TradityCheckbox extends HTMLElement {
           color: #F1592A;
         }
       </style>
-      <input type="checkbox" id="checkbox" @input="${(e: InputEvent) => this.dispatchEvent(e)}" /><label for="checkbox"><slot></slot></label>
-    `
+      <input type="checkbox" id="checkbox" .checked=${this.#value} @input=${e => this.#value = e.target.checked} /><label for="checkbox"><slot></slot></label>
+    `, this.root);
   }
 }
 

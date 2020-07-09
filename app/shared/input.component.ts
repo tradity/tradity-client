@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 
 import * as appActions from '../app.actions';
 
-const template = `
+const styles = `
   :host {
     width: 100%;
     display: inline-flex;
@@ -82,7 +82,7 @@ const template = `
 
 @Component({
   selector: 'tradity-input[type=text], tradity-input[type=email], tradity-input[type=password]',
-  styleUrls: [template],
+  styles: [styles],
   template: '<span class="prefix"><tradity-icon *ngIf="prefix">{{ prefix }}</tradity-icon></span><input [type]="type" [value]="value" [placeholder]="placeholder" [autofocus]="autofocus" [disabled]="disabled" (input)="onChange($event.target.value)" (focus)="onFocus()" (blur)="onBlur()" /><span class="suffix"><tradity-icon *ngIf="prefix">{{ suffix }}</tradity-icon></span>',
   providers: [
     { 
@@ -145,7 +145,7 @@ export class InputComponent implements ControlValueAccessor {
 
 @Component({
   selector: 'tradity-input[type=number]',
-  styleUrls: [template],
+  styles: [styles],
   template: '<span class="prefix"></span><input type="number" [value]="value" [min]="min" [max]="max" [step]="step" [placeholder]="placeholder" [autofocus]="autofocus" [disabled]="disabled" (input)="onChange($event.target.value)" (focus)="onFocus()" (blur)="onBlur()" /><span class="suffix"></span>',
   providers: [
     { 

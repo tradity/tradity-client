@@ -17,13 +17,9 @@
     "doc": "compodoc -p tsconfig.json -d docs",
     "clean": "rimraf dist/ aot/ tmp/ docs/ && mkdir -p dist/",
     "prebuild": "npm run clean",
-    "build": "parallelshell 'npm run build:js' 'npm run build:cp' 'tsc -p tsconfig.json' 'npm run build:indexhtml -- -e dev'",
-    "prebuild:prod": "npm run clean",
-    "build:prod": "npm run build:cp && npm run build:indexhtml -- -e prod && ngc -p tsconfig.prod.json && rollup -c rollup-config.js",
-    "build:indexhtml": "htmlprocessor index.html -o index.dev.html",
-    "build:js": "cp -r app dist/",
+    "build": "npm run build:cp && htmlprocessor index.html -o dist/index.html -e prod && ngc -p tsconfig.prod.json && rollup -c rollup-config.js",
     "build:cp": "cp -r *.txt *.ico manifest.json fonts img scripts apidoc dist/",
-    "start": "npm run build:indexhtml -- -e dev && parallelshell 'tsc -p tsconfig.json -w' 'es-dev-server --app-index index.dev.html --node-resolve --watch'"
+    "start": "htmlprocessor index.html -o index.dev.html -e dev && parallelshell 'tsc -p tsconfig.json -w' 'es-dev-server --app-index index.dev.html --node-resolve --watch'"
   },
   "dependencies": {
     "@angular/common": "^6.1.2",

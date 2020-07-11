@@ -1,6 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -19,7 +19,6 @@ import { RegistrationStep2Component } from './registration-step2.component';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
     RouterModule.forChild(authRoutes),
     StoreModule.forFeature('auth', authReducer),
     EffectsModule.forFeature([AuthEffects]),

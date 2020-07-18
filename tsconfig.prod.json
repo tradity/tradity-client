@@ -20,6 +20,7 @@
     "typings"
   ],
   "angularCompilerOptions": {
-    "skipMetadataEmit" : true
+    "skipMetadataEmit" : true,
+    "enableIvy": false
   }
 }

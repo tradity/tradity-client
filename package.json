@@ -22,24 +22,25 @@
     "start": "htmlprocessor index.html -o index.dev.html -e dev && parallelshell 'tsc -p tsconfig.json -w' 'es-dev-server --app-index index.dev.html --node-resolve --watch --compatibility none'"
   },
   "dependencies": {
-    "@angular/common": "8.x.x",
-    "@angular/compiler": "8.x.x",
-    "@angular/compiler-cli": "8.x.x",
-    "@angular/core": "8.x.x",
-    "@angular/forms": "8.x.x",
-    "@angular/platform-browser": "8.x.x",
-    "@angular/platform-browser-dynamic": "8.x.x",
-    "@angular/platform-server": "8.x.x",
-    "@angular/router": "8.x.x",
-    "@ngrx/effects": "8.x.x",
-    "@ngrx/store": "8.x.x",
+    "@angular/common": "9.x.x",
+    "@angular/compiler": "9.x.x",
+    "@angular/compiler-cli": "9.x.x",
+    "@angular/core": "9.x.x",
+    "@angular/forms": "9.x.x",
+    "@angular/platform-browser": "9.x.x",
+    "@angular/platform-browser-dynamic": "9.x.x",
+    "@angular/platform-server": "9.x.x",
+    "@angular/router": "9.x.x",
+    "@ngrx/effects": "9.x.x",
+    "@ngrx/store": "9.x.x",
     "chart.js": "^2.7.1",
     "lit-html": "^1.2.1",
     "material-design-icons": "^3.0.1",
     "normalize.css": "^7.0.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^6.4.0",
-    "zone.js": "^0.9.1"
+    "rxjs": "^6.5.3",
+    "tslib": "^1.13.0",
+    "zone.js": "^0.10.3"
   },
   "devDependencies": {
     "@compodoc/compodoc": "1.0.1",
@@ -60,6 +61,6 @@
     "@rollup/plugin-node-resolve": "^8.4.0",
     "rollup-plugin-terser": "^6.1.0",
     "rollup-pluginutils": "^2.8.2",
-    "typescript": "3.5.x"
+    "typescript": "3.8.x"
   }
 }

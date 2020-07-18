@@ -1,5 +1,5 @@
-import nodeResolve from 'rollup-plugin-node-resolve';
-import { uglify }  from 'rollup-plugin-uglify';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import { terser } from 'rollup-plugin-terser';
 
 export default {
   input: 'tmp/app/main.prod.js',
@@ -16,6 +16,6 @@ export default {
   },
   plugins: [
     nodeResolve({jsnext: true, module: true}),
-    uglify()
+    terser()
   ]
 }

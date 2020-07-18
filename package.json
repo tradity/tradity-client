@@ -55,11 +55,11 @@
     "marked": "^0.4.0",
     "parallelshell": "^3.0.1",
     "rimraf": "^2.6.2",
-    "rollup": "^0.64.1",
-    "rollup-plugin-alias": "^1.4.0",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-uglify": "^4.0.0",
-    "rollup-pluginutils": "^2.3.1",
-    "typescript": "^3.8.3"
+    "rollup": "^2.22.0",
+    "@rollup/plugin-alias": "^3.1.1",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "rollup-plugin-terser": "^6.1.0",
+    "rollup-pluginutils": "^2.8.2",
+    "typescript": "3.5.x"
   }
 }

@@ -19,7 +19,7 @@
     "prebuild": "npm run clean",
     "build": "npm run build:cp && htmlprocessor index.html -o dist/index.html -e prod && ngc -p tsconfig.prod.json && rollup -c rollup-config.js",
     "build:cp": "cp -r *.txt *.ico manifest.json fonts img scripts apidoc dist/",
-    "start": "htmlprocessor index.html -o index.dev.html -e dev && parallelshell 'tsc -p tsconfig.json -w' 'es-dev-server --app-index index.dev.html --node-resolve --watch'"
+    "start": "htmlprocessor index.html -o index.dev.html -e dev && parallelshell 'tsc -p tsconfig.json -w' 'es-dev-server --app-index index.dev.html --node-resolve --watch --compatibility none'"
   },
   "dependencies": {
     "@angular/common": "^6.1.2",

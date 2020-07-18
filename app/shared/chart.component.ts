@@ -28,7 +28,7 @@ export class ChartComponent implements AfterViewInit {
       this.chart.update();
     }
   }
-  @ViewChild('canvas') canvas: ElementRef;
+  @ViewChild('canvas', { static: false }) canvas: ElementRef;
   private chart: Chart;
   private data: Chart.ChartPoint[];
   ngAfterViewInit() {

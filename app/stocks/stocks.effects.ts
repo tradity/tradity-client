@@ -4,7 +4,7 @@ import {of as observableOf, empty as observableEmpty,  Observable } from 'rxjs';
 import {map, withLatestFrom, switchMap, tap, catchError} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Effect, Actions } from '@ngrx/effects';
+import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
 import { ApiService } from '../core/api.service';
@@ -16,8 +16,8 @@ import * as authActions from '../auth/auth.actions';
 @Injectable()
 export class StocksEffects {
   @Effect()
-  inputSearch = this.actions
-    .ofType(stocksActions.INPUT_SEARCH).pipe(
+  inputSearch = this.actions.pipe(
+    ofType(stocksActions.INPUT_SEARCH),
     switchMap((action: stocksActions.InputSearch) => {
       // don't send inputs of less than three characters to the server,
       // but cancel any previous running request
@@ -27,25 +27,28 @@ export class StocksEffects {
         map(res => res.data),
         map((searchResults: Stock[]) => new stocksActions.ReceiveSearchResults(searchResults)),
         catchError(err => observableOf(new stocksActions.ReceiveSearchResults([]))),)
-    }));
+    })
+  );
 
   @Effect()
-  selectStock = this.actions
-    .ofType(stocksActions.SELECT_STOCK).pipe(
-    map((action: stocksActions.SelectStock) => new stocksActions.LoadStock(action.payload)));
+  selectStock = this.actions.pipe(
+    ofType(stocksActions.SELECT_STOCK),
+    map((action: stocksActions.SelectStock) => new stocksActions.LoadStock(action.payload))
+  );
   
   @Effect()
-  loadStock = this.actions
-    .ofType(stocksActions.LOAD_STOCK).pipe(
+  loadStock = this.actions.pipe(
+    ofType(stocksActions.LOAD_STOCK),
     switchMap((action: stocksActions.LoadStock) => this.apiService
       .get('/stocks/search?name=' + action.payload).pipe(
       map(res => res.data[0]),
       map((stock: Stock) => new stocksActions.ReceiveStock(stock)),)
-    ));
+    )
+  );
   
   @Effect()
-  trade = this.actions
-    .ofType(stocksActions.TRADE).pipe(
+  trade = this.actions.pipe(
+    ofType(stocksActions.TRADE),
     withLatestFrom(this.store.select(getStocksState)),
     switchMap(([action, stocksState]) => this.apiService
       .post(
@@ -61,11 +64,12 @@ export class StocksEffects {
         return new stocksActions.TradeSuccess({ delayed: delayed });
       }),
       catchError(err => observableOf(new stocksActions.TradeFailure(err.identifier))),)
-    ),)
+    )
+  );
   
   @Effect()
-  tradeSuccess = this.actions
-    .ofType(stocksActions.TRADE_SUCCESS).pipe(
+  tradeSuccess = this.actions.pipe(
+    ofType(stocksActions.TRADE_SUCCESS),
     tap((action: stocksActions.TradeSuccess) => {
       if (action.payload.delayed) {
         alert('Your trade will be executed when the stock exchange opens');
@@ -75,11 +79,12 @@ export class StocksEffects {
         this.router.navigateByUrl('/portfolio/positions');
       }
     }),
-    map((action: stocksActions.TradeSuccess) => new authActions.LoadUser()),)
+    map((action: stocksActions.TradeSuccess) => new authActions.LoadUser())
+  );
   
   @Effect({ dispatch: false })
-  tradeFailure = this.actions
-    .ofType(stocksActions.TRADE_FAILURE).pipe(
+  tradeFailure = this.actions.pipe(
+    ofType(stocksActions.TRADE_FAILURE),
     tap((action: stocksActions.TradeFailure) => {
       switch (action.payload) {
         case 'out-of-money':
@@ -98,7 +103,8 @@ export class StocksEffects {
           alert('This stock could not be found!');
           break;
       }
-    }))
+    })
+  );
   
   constructor(
     private actions: Actions,

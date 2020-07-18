@@ -4,7 +4,7 @@ import {of as observableOf,  Observable } from 'rxjs';
 import {tap, switchMap, map, catchError, mergeMap} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Effect, Actions } from '@ngrx/effects';
+import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
 import { ApiService } from '../core/api.service';
@@ -14,8 +14,8 @@ import * as appActions from '../app.actions';
 @Injectable()
 export class AuthEffects {
   @Effect()
-  login = this.actions
-    .ofType(authActions.LOGIN).pipe(
+  login = this.actions.pipe(
+    ofType(authActions.LOGIN),
     switchMap((action: authActions.Login) => this.apiService
       .post('/login', {
         name: action.payload.username,
@@ -29,30 +29,34 @@ export class AuthEffects {
         }
       }),
       catchError((error: any) => observableOf(new authActions.LoginFailed())),)
-    ));
+    )
+  );
 
   @Effect()
-  loadUser = this.actions
-    .ofType(authActions.LOAD_USER).pipe(
+  loadUser = this.actions.pipe(
+    ofType(authActions.LOAD_USER),
     switchMap((action: authActions.LoadUser) => this.apiService
       .get('/user/$self?nohistory=' + String(action.payload)).pipe(
       map(res => new authActions.ReceiveUser(res)),)
-    ));
+    )
+  );
   
   @Effect()
-  loginSuccess = this.actions
-    .ofType(authActions.LOGIN_SUCCESS).pipe(
+  loginSuccess = this.actions.pipe(
+    ofType(authActions.LOGIN_SUCCESS),
     tap(() => this.router.navigateByUrl('/')),
-    map(() => new authActions.LoadUser(true)),);
+    map(() => new authActions.LoadUser(true))
+  );
   
   @Effect()
-  loginFailed = this.actions
-    .ofType(authActions.LOGIN_FAILED).pipe(
-    map(() => new appActions.CreateNotification({ type: 'error', message: 'Wrong username or password' })));
+  loginFailed = this.actions.pipe(
+    ofType(authActions.LOGIN_FAILED),
+    map(() => new appActions.CreateNotification({ type: 'error', message: 'Wrong username or password' }))
+  );
   
   @Effect()
-  logout = this.actions
-    .ofType(authActions.LOGOUT).pipe(
+  logout = this.actions.pipe(
+    ofType(authActions.LOGOUT),
     mergeMap(() => this.apiService
       .post('/logout', {}).pipe(
       map(res => {
@@ -60,19 +64,21 @@ export class AuthEffects {
           return new authActions.LogoutSuccess();
         }
       }),)
-    ));
+    )
+  );
 
   @Effect({ dispatch: false })
-  logoutSuccess = this.actions
-    .ofType(authActions.LOGOUT_SUCCESS).pipe(
+  logoutSuccess = this.actions.pipe(
+    ofType(authActions.LOGOUT_SUCCESS),
     tap(() => {
       this.apiService.setAuthKey(null);
       this.router.navigateByUrl('login');
-    }));
+    })
+  );
   
   @Effect()
-  register = this.actions
-    .ofType(authActions.REGISTER).pipe(
+  register = this.actions.pipe(
+    ofType(authActions.REGISTER),
     switchMap((action: authActions.Register) => this.apiService
       .post(
         '/register',
@@ -84,12 +90,14 @@ export class AuthEffects {
         }
         return new authActions.RegistrationFailed();
       }),)
-    ));
+    )
+  );
   
   @Effect({ dispatch: false })
-  notLoggedIn = this.actions
-    .ofType(authActions.NOT_LOGGED_IN).pipe(
-    tap(() => this.router.navigateByUrl('login')));
+  notLoggedIn = this.actions.pipe(
+    ofType(authActions.NOT_LOGGED_IN),
+    tap(() => this.router.navigateByUrl('login'))
+  );
 
   constructor(
     private actions: Actions,

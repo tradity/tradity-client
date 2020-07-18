@@ -2,7 +2,7 @@
 import {map, withLatestFrom, switchMap} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Effect, Actions } from '@ngrx/effects';
+import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 
 import { ApiService } from '../core/api.service';
@@ -13,8 +13,8 @@ import { getUser } from '../auth/auth.reducer';
 @Injectable()
 export class FeedEffects {
   @Effect()
-  loadEvents = this.actions
-    .ofType(feedActions.LOAD_EVENTS).pipe(
+  loadEvents = this.actions.pipe(
+    ofType(feedActions.LOAD_EVENTS),
     withLatestFrom(this.store.select(getUser)),
     switchMap(([action, ownUser]) => this.apiService
       // TODO: replace this and figure out why the server doesn't return any events without since parameter

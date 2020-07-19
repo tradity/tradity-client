@@ -1,5 +1,6 @@
 import nodeResolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
+import visualizer from 'rollup-plugin-visualizer';
 
 export default {
   input: 'tmp/app/main.prod.js',
@@ -16,6 +17,7 @@ export default {
   },
   plugins: [
     nodeResolve({jsnext: true, module: true}),
-    terser()
+    terser(),
+    visualizer({ filename: 'dist/bundle-stats.html' })
   ]
 }

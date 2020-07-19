@@ -1,6 +1,8 @@
 import nodeResolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import visualizer from 'rollup-plugin-visualizer';
+import gzip from 'rollup-plugin-gzip';
+import { brotliCompressSync } from 'zlib';
 
 export default {
   input: 'tmp/app/main.prod.js',
@@ -18,6 +20,11 @@ export default {
   plugins: [
     nodeResolve({jsnext: true, module: true}),
     terser(),
-    visualizer({ filename: 'dist/bundle-stats.html' })
+    visualizer({ filename: 'dist/bundle-stats.html' }),
+    gzip(),
+    gzip({
+      customCompression: content => brotliCompressSync(Buffer.from(content)),
+      fileName: '.br'
+    })
   ]
 }

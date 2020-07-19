@@ -37,7 +37,6 @@
     "material-design-icons": "^3.0.1",
     "normalize.css": "^7.0.0",
     "reflect-metadata": "^0.1.13",
-    "rollup-plugin-gzip": "^2.5.0",
     "rxjs": "^6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "^0.10.3"
@@ -58,6 +57,7 @@
     "parallelshell": "^3.0.1",
     "rimraf": "^2.6.2",
     "rollup": "^2.22.0",
+    "rollup-plugin-gzip": "^2.5.0",
     "rollup-plugin-terser": "^6.1.0",
     "rollup-plugin-visualizer": "^4.0.4",
     "rollup-pluginutils": "^2.8.2",

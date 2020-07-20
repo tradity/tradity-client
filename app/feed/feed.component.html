@@ -4,12 +4,6 @@
     <span left>You have not yet verified your email address. Please click the link in the email we've sent you.</span>
   </tradity-li-header>
 </tradity-li>
-<tradity-li>
-  <tradity-li-img src="/img/tradity_symbol.png"></tradity-li-img>
-  <tradity-li-header class="no-right">
-    <span left>Tradity Meets WHU am 21.03. Mehr erfahren unter <a href="https://tradity.de/event">tradity.de/event</a> und anmelden unter <a href="https://tradity.de/event-anmeldung">tradity.de/event-anmeldung</a></span>
-  </tradity-li-header>
-</tradity-li>
 <tradity-li *ngFor="let event of events | async" [ngSwitch]="event.type">
   <tradity-li-img [placeholder]="event.srcusername"></tradity-li-img>
   <tradity-li-header class="no-right">

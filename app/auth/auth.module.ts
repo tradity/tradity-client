@@ -12,8 +12,6 @@ import { authReducer } from './auth.reducer';
 import { AuthEffects } from './auth.effects';
 import { LoginComponent } from './login.component';
 import { RegistrationComponent }   from './registration.component';
-import { RegistrationStep1Component } from './registration-step1.component';
-import { RegistrationStep2Component } from './registration-step2.component';
 
 @NgModule({
   imports: [
@@ -27,9 +25,7 @@ import { RegistrationStep2Component } from './registration-step2.component';
   exports: [],
   declarations: [
     LoginComponent,
-    RegistrationComponent,
-    RegistrationStep1Component,
-    RegistrationStep2Component
+    RegistrationComponent
   ],
   providers: [],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

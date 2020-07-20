@@ -15,7 +15,33 @@ import { GroupService } from '../core/group.service';
   template: `
     <img title="Tradity" alt="Tradity" src="/img/tradity_symbol.png" />
     <h2 i18n>Sign Up</h2>
-    <router-outlet></router-outlet>
+    <form *ngIf="step === 1" (ngSubmit)="register1()" tradity-form>
+      <tradity-input type="text" prefix="person" placeholder="User name" i18n-placeholder name="username" [(ngModel)]="username" autofocus></tradity-input>
+      <tradity-input type="email" prefix="email" placeholder="Email address" i18n-placeholder name="email" [(ngModel)]="email"></tradity-input>
+      <tradity-input type="password" prefix="lock" placeholder="Password" i18n-placeholder name="password" [(ngModel)]="password"></tradity-input>
+      <tradity-input type="password" prefix="lock" placeholder="Repeat password" i18n-placeholder name="passwordCheck" [(ngModel)]="passwordCheck"></tradity-input>
+      <input type="checkbox" name="agb" id="agb" [(ngModel)]="agb" /><label for="agb"><span>Ich akzeptiere die <a target="_blank" href="https://tradity.de/agb">AGB</a> und habe die <a target="_blank" href="img/Datenschutzerklaerung.pdf">Datenschutzerklärung</a> gelesen.</span></label>
+      <button tradity-button type="submit" [disabled]="!(username && email && password && passwordCheck && agb)" i18n>Continue</button>
+    </form>
+    <form *ngIf="step === 2" (ngSubmit)="register2()" tradity-form>
+      <tradity-input type="text" placeholder="Given name" i18n-placeholder name="givenName" [(ngModel)]="givenName" autofocus></tradity-input>
+      <tradity-input type="text" placeholder="Surname" i18n-placeholder name="surname" [(ngModel)]="surname"></tradity-input>
+      <select name="city" [(ngModel)]="city" (ngModelChange)="loadSubGroups()">
+        <option selected value="">Wähle deine Metropole</option>
+        <option value="" i18n>Nur Bundeswettbewerb</option>
+        <option *ngFor="let city of groupList" [value]="city.path">
+          {{city.name}}
+        </option>
+      </select>
+      <select name="school" [(ngModel)]="school" *ngIf="city">
+        <option selected value="" i18n>Select your school</option>
+        <option *ngFor="let school of subGroups" [value]="school.path">
+          {{school.name}}
+        </option>
+      </select>
+      <tradity-input type="text" placeholder="Stadt" name="class" [(ngModel)]="class"></tradity-input>
+      <button tradity-button type="submit" [disabled]="!(givenName && surname)" i18n>Sign up</button>
+    </form>
     <div>
       <a role="button" (click)="resetPassword()" i18n>Forgot Password?</a> · <a [routerLink]="['/login']" i18n>Login</a>
     </div>`,
@@ -55,6 +81,7 @@ import { GroupService } from '../core/group.service';
     }`]
 })
 export class RegistrationComponent implements OnDestroy {
+  step = 1;
   username = '';
   email = '';
   password = '';
@@ -98,7 +125,7 @@ export class RegistrationComponent implements OnDestroy {
         } else if (this.password.length < 5) {
           alert('The password is too short');
         } else {
-          this.router.navigateByUrl('/register/step2');
+          this.step = 2;
         }
       },
       err => {

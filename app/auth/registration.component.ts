@@ -67,7 +67,7 @@ import { GroupService } from '../core/group.service';
       color: #170804;
     }
     
-    :host >>> [tradity-form] {
+    [tradity-form] {
       margin: 0 3em;
     }
     

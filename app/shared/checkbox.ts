@@ -12,6 +12,10 @@ class TradityCheckbox extends HTMLElement {
     this.#value = value;
     this.render();
   }
+
+  get name() {
+    return this.getAttribute("name");
+  }
   
   constructor() {
     super();

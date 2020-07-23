@@ -45,7 +45,7 @@
     "@rollup/plugin-node-resolve": "^8.4.0",
     "@types/chart.js": "^2.7.3",
     "@types/node": "10.x.x",
-    "angular": "^1.6.6",
+    "angular": "^1.8.0",
     "angular-marked": "^1.2.2",
     "es-dev-server": "^1.56.0",
     "hashmark": "^5.0.0",

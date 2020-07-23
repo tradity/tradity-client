@@ -13,10 +13,10 @@ import { getInputFocus } from '../app.reducer';
     <img title="Tradity" alt="Tradity" src="/img/tradity_symbol.png" />
     <h2 i18n>Welcome back!</h2>
     <form (ngSubmit)="login()" tradity-form>
-      <tradity-input type="text" placeholder="User name" name="username" [(ngModel)]="username" autofocus></tradity-input>
-      <tradity-input type="password" placeholder="Password" name="password" [(ngModel)]="password"></tradity-input>
-      <tradity-checkbox [value]="stayLoggedIn" (input)="stayLoggedIn = $event.target.value">Remember me</tradity-checkbox>
-      <button tradity-button type="submit" [disabled]="!(this.username && this.password)" i18n>Log in</button>
+      <tradity-input type="text" placeholder="User name" name="username" [value]="form.username" (input)="updateForm($event)" autofocus></tradity-input>
+      <tradity-input type="password" placeholder="Password" name="password" [value]="form.password" (input)="updateForm($event)"></tradity-input>
+      <tradity-checkbox name="stayLoggedIn" [value]="form.stayLoggedIn" (input)="updateForm($event)">Remember me</tradity-checkbox>
+      <button tradity-button type="submit" [disabled]="!(form.username && form.password)" i18n>Log in</button>
     </form>
     <div>
       <a role="button" (click)="resetPassword()" i18n>Forgot Password?</a> · <a [routerLink]="['/register']" i18n>Registration</a>
@@ -57,16 +57,14 @@ import { getInputFocus } from '../app.reducer';
     }`]
 })
 export class LoginComponent {
-  username: string;
-  password: string;
-  stayLoggedIn: boolean;
+  form = {
+    username: '',
+    password: '',
+    stayLoggedIn: false
+  }
   inputFocus: Observable<boolean>;
 
   constructor(private userService: UserService, private store: Store<any>, private router: Router, private route: ActivatedRoute) {
-    this.username = '';
-    this.password = '';
-    this.stayLoggedIn = false;
-
     this.inputFocus = this.store.select(getInputFocus);
 
     this.route.params.subscribe((params: Params) => {
@@ -92,9 +90,13 @@ export class LoginComponent {
       }
     })
   }
+
+  updateForm(e) {
+    this.form[e.target.name] = e.target.value;
+  }
   
   login() {
-    this.store.dispatch(new authActions.Login({ username: this.username, password: this.password, stayLoggedIn: this.stayLoggedIn }));
+    this.store.dispatch(new authActions.Login({ username: this.form.username, password: this.form.password, stayLoggedIn: this.form.stayLoggedIn }));
   }
 
   resetPassword() {

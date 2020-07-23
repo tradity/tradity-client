@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { FormComponent } from './form.component';
 import { ButtonComponent } from './button.component';
-import { InputComponent, InputNumberComponent } from './input.component';
 import { SubnavComponent } from './subnav.component';
 import { ContainerComponent } from './container.component';
 import { ContainerControlComponent } from './container-control.component';
@@ -25,6 +24,7 @@ import { IconComponent } from './icon.component';
 import { NotificationComponent } from './notification.component';
 //import { ChartComponent } from './chart.component';
 import './checkbox';
+import './input';
 
 @NgModule({
   imports: [
@@ -33,8 +33,6 @@ import './checkbox';
   exports: [
     FormComponent,
     ButtonComponent,
-    InputComponent,
-    InputNumberComponent,
     SubnavComponent,
     ContainerComponent,
     ListItemComponent,
@@ -58,8 +56,6 @@ import './checkbox';
   declarations: [
     FormComponent,
     ButtonComponent,
-    InputComponent,
-    InputNumberComponent,
     SubnavComponent,
     ContainerComponent,
     ContainerControlComponent,

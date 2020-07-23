@@ -16,31 +16,31 @@ import { GroupService } from '../core/group.service';
     <img title="Tradity" alt="Tradity" src="/img/tradity_symbol.png" />
     <h2 i18n>Sign Up</h2>
     <form *ngIf="step === 1" (ngSubmit)="register1()" tradity-form>
-      <tradity-input type="text" prefix="person" placeholder="User name" i18n-placeholder name="username" [(ngModel)]="username" autofocus></tradity-input>
-      <tradity-input type="email" prefix="email" placeholder="Email address" i18n-placeholder name="email" [(ngModel)]="email"></tradity-input>
-      <tradity-input type="password" prefix="lock" placeholder="Password" i18n-placeholder name="password" [(ngModel)]="password"></tradity-input>
-      <tradity-input type="password" prefix="lock" placeholder="Repeat password" i18n-placeholder name="passwordCheck" [(ngModel)]="passwordCheck"></tradity-input>
-      <input type="checkbox" name="agb" id="agb" [(ngModel)]="agb" /><label for="agb"><span>Ich akzeptiere die <a target="_blank" href="https://tradity.de/agb">AGB</a> und habe die <a target="_blank" href="img/Datenschutzerklaerung.pdf">Datenschutzerklärung</a> gelesen.</span></label>
-      <button tradity-button type="submit" [disabled]="!(username && email && password && passwordCheck && agb)" i18n>Continue</button>
+      <tradity-input type="text" prefix="person" placeholder="User name" i18n-placeholder name="username" [value]="form.username" (input)="updateForm($event)" autofocus></tradity-input>
+      <tradity-input type="email" prefix="email" placeholder="Email address" i18n-placeholder name="email" [value]="form.email" (input)="updateForm($event)"></tradity-input>
+      <tradity-input type="password" prefix="lock" placeholder="Password" i18n-placeholder name="password" [value]="form.password1" (input)="updateForm($event)"></tradity-input>
+      <tradity-input type="password" prefix="lock" placeholder="Repeat password" i18n-placeholder name="passwordCheck" [value]="form.password2" (input)="updateForm($event)"></tradity-input>
+      <tradity-checkbox name="agb" id="agb" [value]="form.agb" (input)="updateForm($event)"><span>Ich akzeptiere die <a target="_blank" href="https://tradity.de/agb">AGB</a> und habe die <a target="_blank" href="img/Datenschutzerklaerung.pdf">Datenschutzerklärung</a> gelesen.</span></tradity-checkbox>
+      <button tradity-button type="submit" [disabled]="!(form.username && form.email && form.password && form.passwordCheck && form.agb)" i18n>Continue</button>
     </form>
     <form *ngIf="step === 2" (ngSubmit)="register2()" tradity-form>
-      <tradity-input type="text" placeholder="Given name" i18n-placeholder name="givenName" [(ngModel)]="givenName" autofocus></tradity-input>
-      <tradity-input type="text" placeholder="Surname" i18n-placeholder name="surname" [(ngModel)]="surname"></tradity-input>
-      <select name="city" [(ngModel)]="city" (ngModelChange)="loadSubGroups()">
+      <tradity-input type="text" placeholder="Given name" i18n-placeholder name="givenName" [value]="form.givName" (input)="updateForm($event)" autofocus></tradity-input>
+      <tradity-input type="text" placeholder="Surname" i18n-placeholder name="surname" [value]="form.famName" (input)="updateForm($event)"></tradity-input>
+      <select name="city" [value]="form.city" (input)="updateForm($event)">
         <option selected value="">Wähle deine Metropole</option>
         <option value="" i18n>Nur Bundeswettbewerb</option>
         <option *ngFor="let city of groupList" [value]="city.path">
           {{city.name}}
         </option>
       </select>
-      <select name="school" [(ngModel)]="school" *ngIf="city">
+      <select name="school" [value]="form.school" (input)="updateForm($event)" *ngIf="form.city">
         <option selected value="" i18n>Select your school</option>
         <option *ngFor="let school of subGroups" [value]="school.path">
           {{school.name}}
         </option>
       </select>
-      <tradity-input type="text" placeholder="Stadt" name="class" [(ngModel)]="class"></tradity-input>
-      <button tradity-button type="submit" [disabled]="!(givenName && surname)" i18n>Sign up</button>
+      <tradity-input type="text" placeholder="Stadt" name="class" [value]="form.class" (input)="updateForm($event)"></tradity-input>
+      <button tradity-button type="submit" [disabled]="!(form.givName && form.famName)" i18n>Sign up</button>
     </form>
     <div>
       <a role="button" (click)="resetPassword()" i18n>Forgot Password?</a> · <a [routerLink]="['/login']" i18n>Login</a>
@@ -82,16 +82,18 @@ import { GroupService } from '../core/group.service';
 })
 export class RegistrationComponent implements OnDestroy {
   step = 1;
-  username = '';
-  email = '';
-  password = '';
-  passwordCheck = '';
-  givenName = '';
-  surname = '';
-  city = '';
-  school = '';
-  class = '';
-  agb = false;
+  form = {
+    username: '',
+    email: '',
+    password1: '',
+    password2: '',
+    givName: '',
+    famName: '',
+    city: '',
+    school: '',
+    class: '',
+    agb: false
+  }
 
   private groupListSubscription: Subscription;
   groupList: any;
@@ -112,17 +114,23 @@ export class RegistrationComponent implements OnDestroy {
   }
 
   loadSubGroups() {
-    this.groupService.getSubGroups(this.city)
+    this.groupService.getSubGroups(this.form.city)
     .subscribe(res => this.subGroups = res);
   }
 
+  updateForm(e) {
+    console.log(e.target.name);
+    this.form[e.target.name] = e.target.value;
+    if (e.target.name === "city") this.loadSubGroups();
+  }
+
   register1() {
-    this.userService.checkUsernameAndEmail(this.username, this.email)
+    this.userService.checkUsernameAndEmail(this.form.username, this.form.email)
     .subscribe(
       res => {
-        if (this.password !== this.passwordCheck) {
+        if (this.form.password1 !== this.form.password2) {
           alert('The passwords do not match');
-        } else if (this.password.length < 5) {
+        } else if (this.form.password1.length < 5) {
           alert('The password is too short');
         } else {
           this.step = 2;
@@ -149,13 +157,13 @@ export class RegistrationComponent implements OnDestroy {
 
   register2() {
     this.store.dispatch(new authActions.Register({
-      name: this.username,
-      email: this.email,
-      password: this.password,
-      giv_name: this.givenName,
-      fam_name: this.surname,
-      school: this.school || null,
-      schoolclass: this.class || null
+      name: this.form.username,
+      email: this.form.email,
+      password: this.form.password1,
+      giv_name: this.form.givName,
+      fam_name: this.form.famName,
+      school: this.form.school || null,
+      schoolclass: this.form.class || null
     }))
   }
 

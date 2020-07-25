@@ -15,7 +15,7 @@ import { GroupService } from '../core/group.service';
   template: `
     <img title="Tradity" alt="Tradity" src="/img/tradity_symbol.png" />
     <h2 i18n>Sign Up</h2>
-    <form *ngIf="step === 1" (submit)="submit1($event)" tradity-form>
+    <form *ngIf="step === 1" (submit)="submit1($event)">
       <tradity-input type="text" prefix="person" placeholder="User name" i18n-placeholder name="username" [value]="form.username" (input)="updateForm($event)" autofocus></tradity-input>
       <tradity-input type="email" prefix="email" placeholder="Email address" i18n-placeholder name="email" [value]="form.email" (input)="updateForm($event)"></tradity-input>
       <tradity-input type="password" prefix="lock" placeholder="Password" i18n-placeholder name="password1" [value]="form.password1" (input)="updateForm($event)"></tradity-input>
@@ -23,7 +23,7 @@ import { GroupService } from '../core/group.service';
       <tradity-checkbox name="agb" id="agb" [value]="form.agb" (input)="updateForm($event)"><span>Ich akzeptiere die <a target="_blank" href="https://tradity.de/agb">AGB</a> und habe die <a target="_blank" href="img/Datenschutzerklaerung.pdf">Datenschutzerklärung</a> gelesen.</span></tradity-checkbox>
       <button tradity-button type="submit" [disabled]="!(form.username && form.email && form.password1 && form.password2 && form.agb)" i18n>Continue</button>
     </form>
-    <form *ngIf="step === 2" (submit)="submit2($event)" tradity-form>
+    <form *ngIf="step === 2" (submit)="submit2($event)">
       <tradity-input type="text" placeholder="Given name" i18n-placeholder name="givName" [value]="form.givName" (input)="updateForm($event)" autofocus></tradity-input>
       <tradity-input type="text" placeholder="Surname" i18n-placeholder name="famName" [value]="form.famName" (input)="updateForm($event)"></tradity-input>
       <select name="city" [value]="form.city" (input)="updateForm($event)">
@@ -67,7 +67,9 @@ import { GroupService } from '../core/group.service';
       color: #170804;
     }
     
-    [tradity-form] {
+    form {
+      display: inline-flex;
+      flex-wrap: wrap;
       margin: 0 3em;
     }
     
@@ -78,7 +80,33 @@ import { GroupService } from '../core/group.service';
     div a {
       color: #F1592A;
       text-decoration: none;
-    }`]
+    }
+
+    select {
+      margin-bottom: 15px;
+      border: 1px solid #D8D8D8;
+      border-radius: 3px;
+      outline: none;
+      width: 100%;
+      padding: 20px;
+      font-family: inherit;
+      font-size: 12px;
+      line-height: 15px;
+      letter-spacing: 2px;
+      color: #170804;
+      background-color: white;
+    }
+    
+    /*
+      Hack needed to get rid of Chrome's ugly form autofill colour,
+      which for some reason is an outstanding bug since 2008 -.-
+      https://bugs.chromium.org/p/chromium/issues/detail?id=46543
+    */
+    select:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px white inset;
+        -webkit-text-fill-color: #170804;
+    }
+  `]
 })
 export class RegistrationComponent implements OnDestroy {
   step = 1;

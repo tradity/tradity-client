@@ -14,11 +14,6 @@
     "app/app.module.ts",
     "app/main.prod.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "typings"
-  ],
   "angularCompilerOptions": {
     "skipMetadataEmit" : true,
     "enableIvy": false

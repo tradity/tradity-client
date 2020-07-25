@@ -18,14 +18,14 @@ import { GroupService } from '../core/group.service';
     <form *ngIf="step === 1" (submit)="submit1($event)" tradity-form>
       <tradity-input type="text" prefix="person" placeholder="User name" i18n-placeholder name="username" [value]="form.username" (input)="updateForm($event)" autofocus></tradity-input>
       <tradity-input type="email" prefix="email" placeholder="Email address" i18n-placeholder name="email" [value]="form.email" (input)="updateForm($event)"></tradity-input>
-      <tradity-input type="password" prefix="lock" placeholder="Password" i18n-placeholder name="password" [value]="form.password1" (input)="updateForm($event)"></tradity-input>
-      <tradity-input type="password" prefix="lock" placeholder="Repeat password" i18n-placeholder name="passwordCheck" [value]="form.password2" (input)="updateForm($event)"></tradity-input>
+      <tradity-input type="password" prefix="lock" placeholder="Password" i18n-placeholder name="password1" [value]="form.password1" (input)="updateForm($event)"></tradity-input>
+      <tradity-input type="password" prefix="lock" placeholder="Repeat password" i18n-placeholder name="password2" [value]="form.password2" (input)="updateForm($event)"></tradity-input>
       <tradity-checkbox name="agb" id="agb" [value]="form.agb" (input)="updateForm($event)"><span>Ich akzeptiere die <a target="_blank" href="https://tradity.de/agb">AGB</a> und habe die <a target="_blank" href="img/Datenschutzerklaerung.pdf">Datenschutzerklärung</a> gelesen.</span></tradity-checkbox>
-      <button tradity-button type="submit" [disabled]="!(form.username && form.email && form.password && form.passwordCheck && form.agb)" i18n>Continue</button>
+      <button tradity-button type="submit" [disabled]="!(form.username && form.email && form.password1 && form.password2 && form.agb)" i18n>Continue</button>
     </form>
     <form *ngIf="step === 2" (submit)="submit2($event)" tradity-form>
-      <tradity-input type="text" placeholder="Given name" i18n-placeholder name="givenName" [value]="form.givName" (input)="updateForm($event)" autofocus></tradity-input>
-      <tradity-input type="text" placeholder="Surname" i18n-placeholder name="surname" [value]="form.famName" (input)="updateForm($event)"></tradity-input>
+      <tradity-input type="text" placeholder="Given name" i18n-placeholder name="givName" [value]="form.givName" (input)="updateForm($event)" autofocus></tradity-input>
+      <tradity-input type="text" placeholder="Surname" i18n-placeholder name="famName" [value]="form.famName" (input)="updateForm($event)"></tradity-input>
       <select name="city" [value]="form.city" (input)="updateForm($event)">
         <option selected value="">Wähle deine Metropole</option>
         <option value="" i18n>Nur Bundeswettbewerb</option>

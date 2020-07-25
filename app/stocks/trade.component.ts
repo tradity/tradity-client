@@ -22,7 +22,7 @@ import * as authActions from '../auth/auth.actions';
       <span left>{{stock.stocktextid}}</span>
       <span right>{{stock.pieces}} pc</span>
     </tradity-li-header>
-    <form tradity-form (submit)="submit($event)" autocomplete="off">
+    <form (submit)="submit($event)" autocomplete="off">
       <input type="radio" name="sellbuy" id="buy" [checked]="sellBuy === Buy ? 'checked' : null" (click)="inputSellBuy(Buy)" />
       <label for="buy" i18n>Buy</label>
       <input type="radio" name="sellbuy" id="sell" [checked]="sellBuy === Sell ? 'checked' : null" (click)="inputSellBuy(Sell)" />
@@ -36,7 +36,9 @@ import * as authActions from '../auth/auth.actions';
     </form>
   `,
   styles: [`
-    [tradity-form] {
+    form {
+      display: inline-flex;
+      flex-wrap: wrap;
       margin: 0 50px;
     }
 

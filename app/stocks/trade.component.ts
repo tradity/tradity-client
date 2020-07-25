@@ -106,6 +106,7 @@ export class TradeComponent implements OnDestroy {
   ngOnDestroy() {
     this.stockSubscription.unsubscribe();
     this.sellBuySub.unsubscribe();
+    this.userSub.unsubscribe();
   }
 
   inputSellBuy(sellBuy: SellBuy) {

@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -18,19 +17,17 @@ import { TradeComponent } from './trade.component';
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
     RouterModule.forChild(stocksRoutes),
     SharedModule,
     StoreModule.forFeature('stocks', stocksReducer),
     EffectsModule.forFeature([StocksEffects])
   ],
-  exports: [],
   declarations: [
     StocksComponent,
     StockSearchComponent,
     StockDetailComponent,
     TradeComponent
   ],
-  providers: [],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
 })
 export class StocksModule { }

@@ -13,10 +13,10 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { StocksModule } from './stocks/stocks.module';
 /*import { AdminModule } from './admin/admin.module';
 import { PortfolioModule } from './portfolio/portfolio.module';
 import { RankingModule } from './ranking/ranking.module';
-import { StocksModule } from './stocks/stocks.module';
 import { GroupModule } from './group/group.module';*/
 
 //registerLocaleData(localeDe, 'de');
@@ -33,11 +33,11 @@ import { GroupModule } from './group/group.module';*/
       CoreModule,
       SharedModule,
       AuthModule,
-      DashboardModule/*,
+      DashboardModule,
+      StocksModule/*,
       AdminModule,
       PortfolioModule,
       RankingModule,
-      StocksModule,
       GroupModule*/
     ],
     providers: [],

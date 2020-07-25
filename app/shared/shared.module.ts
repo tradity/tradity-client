@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ButtonComponent } from './button.component';
@@ -19,11 +19,11 @@ import { StockInfoActionComponent } from './stock-info-action.component';
 import { BuyActionComponent } from './buy-action.component';
 import { SellActionComponent } from './sell-action.component';
 import { ListItemExpandActionComponent } from './list-item-expand-action.component';
-import { IconComponent } from './icon.component';
 import { NotificationComponent } from './notification.component';
 //import { ChartComponent } from './chart.component';
 import './checkbox';
 import './input';
+import './icon';
 
 @NgModule({
   imports: [
@@ -47,7 +47,6 @@ import './input';
     BuyActionComponent,
     SellActionComponent,
     ListItemExpandActionComponent,
-    IconComponent,
     NotificationComponent
     /*ChartComponent*/
   ],
@@ -70,10 +69,9 @@ import './input';
     BuyActionComponent,
     SellActionComponent,
     ListItemExpandActionComponent,
-    IconComponent,
     NotificationComponent
     /*ChartComponent*/
   ],
-  providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule { }

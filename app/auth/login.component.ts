@@ -12,7 +12,7 @@ import { getInputFocus } from '../app.reducer';
   template: `
     <img title="Tradity" alt="Tradity" src="/img/tradity_symbol.png" />
     <h2 i18n>Welcome back!</h2>
-    <form (ngSubmit)="login()" tradity-form>
+    <form (submit)="submit($event)" tradity-form>
       <tradity-input type="text" placeholder="User name" name="username" [value]="form.username" (input)="updateForm($event)" autofocus></tradity-input>
       <tradity-input type="password" placeholder="Password" name="password" [value]="form.password" (input)="updateForm($event)"></tradity-input>
       <tradity-checkbox name="stayLoggedIn" [value]="form.stayLoggedIn" (input)="updateForm($event)">Remember me</tradity-checkbox>
@@ -95,7 +95,8 @@ export class LoginComponent {
     this.form[e.target.name] = e.target.value;
   }
   
-  login() {
+  submit(e) {
+    e.preventDefault();
     this.store.dispatch(new authActions.Login({ username: this.form.username, password: this.form.password, stayLoggedIn: this.form.stayLoggedIn }));
   }
 

@@ -22,7 +22,7 @@ import * as authActions from '../auth/auth.actions';
       <span left>{{stock.stocktextid}}</span>
       <span right>{{stock.pieces}} pc</span>
     </tradity-li-header>
-    <form tradity-form (ngSubmit)="trade()" autocomplete="off">
+    <form tradity-form (submit)="submit($event)" autocomplete="off">
       <input type="radio" name="sellbuy" id="buy" [checked]="sellBuy === Buy ? 'checked' : null" (click)="inputSellBuy(Buy)" />
       <label for="buy" i18n>Buy</label>
       <input type="radio" name="sellbuy" id="sell" [checked]="sellBuy === Sell ? 'checked' : null" (click)="inputSellBuy(Sell)" />
@@ -120,7 +120,8 @@ export class TradeComponent implements OnDestroy {
     this.store.dispatch(new stocksActions.InputTradeValue(value));
   }
 
-  trade() {
+  submit(e) {
+    e.preventDefault();
     this.store.dispatch(new stocksActions.Trade());
   }
 }

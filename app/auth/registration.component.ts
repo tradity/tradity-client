@@ -15,7 +15,7 @@ import { GroupService } from '../core/group.service';
   template: `
     <img title="Tradity" alt="Tradity" src="/img/tradity_symbol.png" />
     <h2 i18n>Sign Up</h2>
-    <form *ngIf="step === 1" (ngSubmit)="register1()" tradity-form>
+    <form *ngIf="step === 1" (submit)="submit1($event)" tradity-form>
       <tradity-input type="text" prefix="person" placeholder="User name" i18n-placeholder name="username" [value]="form.username" (input)="updateForm($event)" autofocus></tradity-input>
       <tradity-input type="email" prefix="email" placeholder="Email address" i18n-placeholder name="email" [value]="form.email" (input)="updateForm($event)"></tradity-input>
       <tradity-input type="password" prefix="lock" placeholder="Password" i18n-placeholder name="password" [value]="form.password1" (input)="updateForm($event)"></tradity-input>
@@ -23,7 +23,7 @@ import { GroupService } from '../core/group.service';
       <tradity-checkbox name="agb" id="agb" [value]="form.agb" (input)="updateForm($event)"><span>Ich akzeptiere die <a target="_blank" href="https://tradity.de/agb">AGB</a> und habe die <a target="_blank" href="img/Datenschutzerklaerung.pdf">Datenschutzerklärung</a> gelesen.</span></tradity-checkbox>
       <button tradity-button type="submit" [disabled]="!(form.username && form.email && form.password && form.passwordCheck && form.agb)" i18n>Continue</button>
     </form>
-    <form *ngIf="step === 2" (ngSubmit)="register2()" tradity-form>
+    <form *ngIf="step === 2" (submit)="submit2($event)" tradity-form>
       <tradity-input type="text" placeholder="Given name" i18n-placeholder name="givenName" [value]="form.givName" (input)="updateForm($event)" autofocus></tradity-input>
       <tradity-input type="text" placeholder="Surname" i18n-placeholder name="surname" [value]="form.famName" (input)="updateForm($event)"></tradity-input>
       <select name="city" [value]="form.city" (input)="updateForm($event)">
@@ -124,7 +124,8 @@ export class RegistrationComponent implements OnDestroy {
     if (e.target.name === "city") this.loadSubGroups();
   }
 
-  register1() {
+  submit1(e) {
+    e.preventDefault();
     this.userService.checkUsernameAndEmail(this.form.username, this.form.email)
     .subscribe(
       res => {
@@ -155,7 +156,8 @@ export class RegistrationComponent implements OnDestroy {
     );
   }
 
-  register2() {
+  submit2(e) {
+    e.preventDefault();
     this.store.dispatch(new authActions.Register({
       name: this.form.username,
       email: this.form.email,

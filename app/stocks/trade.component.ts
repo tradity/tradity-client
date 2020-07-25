@@ -68,7 +68,7 @@ import * as authActions from '../auth/auth.actions';
       background-color: rgba(40,59,144,0.95);
     }
     
-    [tradity-form] tradity-input#amount + span {
+    tradity-input#amount + span {
       display: block;
       text-align: center;
       margin: 0 auto 1rem;
@@ -78,11 +78,11 @@ import * as authActions from '../auth/auth.actions';
       color: #170804;
     }
     
-    [tradity-form] tradity-input#amount + span span.inactive {
+    tradity-input#amount + span span.inactive {
       color: rgba(23,8,4,0.2);
     }
     
-    [tradity-form] tradity-input#value + span {
+    tradity-input#value + span {
       margin: -6px auto 20px;
       text-align: center;
       font-size: 10px;
@@ -91,7 +91,7 @@ import * as authActions from '../auth/auth.actions';
       color: #170804;
     }
     
-    [tradity-form] span#cash {
+    span#cash {
       text-align: center;
       margin: 0 auto 20px;
       font-size: 15px;

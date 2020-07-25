@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FormComponent } from './form.component';
 import { ButtonComponent } from './button.component';
 import { SubnavComponent } from './subnav.component';
 import { ContainerComponent } from './container.component';
@@ -31,7 +30,6 @@ import './input';
     CommonModule
   ],
   exports: [
-    FormComponent,
     ButtonComponent,
     SubnavComponent,
     ContainerComponent,
@@ -54,7 +52,6 @@ import './input';
     /*ChartComponent*/
   ],
   declarations: [
-    FormComponent,
     ButtonComponent,
     SubnavComponent,
     ContainerComponent,

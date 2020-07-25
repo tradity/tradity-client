@@ -32,34 +32,7 @@ import { Component, OnInit } from '@angular/core';
         -webkit-box-shadow: 0 0 0px 1000px white inset;
         -webkit-text-fill-color: #170804;
     }
-    
-    :host >>> input[type=radio] {
-      position: absolute;
-      left: -10000px;
-    }
-    
-    :host >>> input[type=radio] + label {
-      font-size: 30px;
-      font-weight: 900;
-      line-height: 36px;
-      color: #FFFFFF;
-      text-transform: uppercase;
-      background-color: rgba(23,8,4,0.2);
-      display: inline-flex;
-      flex-basis: 50%;
-      padding: 26px 0;
-      justify-content: center;
-      margin-bottom: 30px;
-    }
-    
-    :host >>> input[type=radio] + label:first-of-type {
-      border-right: 1px solid white;
-      flex-basis: calc(50% - 1px);
-    }
-    
-    :host >>> input[type=radio]:checked + label {
-      background-color: rgba(40,59,144,0.95);
-    }`],
+  `],
   template: '<ng-content></ng-content>'
 })
 export class FormComponent { }

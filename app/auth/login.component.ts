@@ -12,7 +12,7 @@ import { getInputFocus } from '../app.reducer';
   template: `
     <img title="Tradity" alt="Tradity" src="/img/tradity_symbol.png" />
     <h2 i18n>Welcome back!</h2>
-    <form (submit)="submit($event)" tradity-form>
+    <form (submit)="submit($event)">
       <tradity-input type="text" placeholder="User name" name="username" [value]="form.username" (input)="updateForm($event)" autofocus></tradity-input>
       <tradity-input type="password" placeholder="Password" name="password" [value]="form.password" (input)="updateForm($event)"></tradity-input>
       <tradity-checkbox name="stayLoggedIn" [value]="form.stayLoggedIn" (input)="updateForm($event)">Remember me</tradity-checkbox>
@@ -43,7 +43,9 @@ import { getInputFocus } from '../app.reducer';
       color: #170804;
     }
     
-    [tradity-form] {
+    form {
+      display: inline-flex;
+      flex-wrap: wrap;
       margin: 0 3em;
     }
     

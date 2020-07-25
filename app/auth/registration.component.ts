@@ -147,7 +147,6 @@ export class RegistrationComponent implements OnDestroy {
   }
 
   updateForm(e) {
-    console.log(e.target.name);
     this.form[e.target.name] = e.target.value;
     if (e.target.name === "city") this.loadSubGroups();
   }

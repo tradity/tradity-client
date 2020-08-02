@@ -20,11 +20,11 @@ export default {
   plugins: [
     nodeResolve({jsnext: true, module: true}),
     terser(),
-    visualizer({ filename: 'dist/bundle-stats.html' }),
     gzip(),
     gzip({
       customCompression: content => brotliCompressSync(Buffer.from(content)),
       fileName: '.br'
-    })
+    }),
+    visualizer({ filename: 'dist/bundle-stats.html', sourcemap: true })
   ]
 }

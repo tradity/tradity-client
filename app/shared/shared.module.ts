@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { ButtonComponent } from './button.component';
 import { SubnavComponent } from './subnav.component';
-import { ContainerComponent } from './container.component';
-import { ContainerControlComponent } from './container-control.component';
 import { ListItemComponent } from './list-item.component';
 import { ListItemHeaderComponent } from './list-item-header.component';
 import { ListItemIndexComponent } from './list-item-index.component';
@@ -24,6 +22,7 @@ import { NotificationComponent } from './notification.component';
 import './checkbox';
 import './input';
 import './icon';
+import './container';
 
 @NgModule({
   imports: [
@@ -32,7 +31,6 @@ import './icon';
   exports: [
     ButtonComponent,
     SubnavComponent,
-    ContainerComponent,
     ListItemComponent,
     ListItemHeaderComponent,
     ListItemIndexComponent,
@@ -53,8 +51,6 @@ import './icon';
   declarations: [
     ButtonComponent,
     SubnavComponent,
-    ContainerComponent,
-    ContainerControlComponent,
     ListItemComponent,
     ListItemHeaderComponent,
     ListItemIndexComponent,
